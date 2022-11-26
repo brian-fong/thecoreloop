@@ -1,0 +1,36 @@
+{
+  "name": "thecoreloop",
+  "version": "1.0.0",
+  "description": "Gaming news aggregator, curated by @0xkapital_k",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc -p ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0xfrian/thecoreloop.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/0xfrian/thecoreloop/issues"
+  },
+  "homepage": "https://github.com/0xfrian/thecoreloop#readme",
+  "devDependencies": {
+    "typescript": "^4.9.3"
+  },
+  "dependencies": {
+    "@google-cloud/local-auth": "^2.1.1",
+    "@types/node": "^18.11.9",
+    "@types/treeify": "^1.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "fs": "^0.0.1-security",
+    "googleapis": "^109.0.1",
+    "nodemon": "^2.0.20",
+    "path": "^0.12.7",
+    "treeify": "^1.1.0"
+  }
+}
