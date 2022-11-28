@@ -4,3 +4,11 @@ node_modules/
 # Ignore environmental variables 
 .env
 
+# Ignore authentication credentials
+auth/
+
+# Ignore archived folder 
+archived/
+
+# Ignore practice file
+practice.ts

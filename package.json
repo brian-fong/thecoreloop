@@ -4,6 +4,8 @@
   "description": "Gaming news aggregator, curated by @0xkapital_k",
   "main": "index.js",
   "scripts": {
+    "index": "ts-node ./src/index",
+    "practice": "ts-node ./src/practice",
     "build": "tsc -p ."
   },
   "repository": {
@@ -29,8 +31,10 @@
     "express": "^4.18.2",
     "fs": "^0.0.1-security",
     "googleapis": "^109.0.1",
+    "input": "^1.0.1",
     "nodemon": "^2.0.20",
     "path": "^0.12.7",
+    "telegram": "^2.14.7",
     "treeify": "^1.1.0"
   }
 }
