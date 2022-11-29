@@ -3,7 +3,7 @@ import fs from "fs";
 import path from "path";
 import { LAG } from "../LAG";
 import { TelegramClient } from "telegram";
-import { createTelegramClient, readMessages } from "../telegram";
+import { createTelegramClient, updateIndex, readMessages } from "../telegram";
 
 // Initialize pretty-logger
 import PrettyLogger from "../helper/pretty-log";
@@ -18,6 +18,18 @@ const string_session: string = process.env.TELEGRAM_STRING_SESSION!;
 async function main(): Promise<void> {
   plog.log("===== Test: Telegram =====", 0, 2);
 
+  // Connect to Telegram
+  plog.log("Connecting to Telegram . . . ", 0, 1);
+  const client: TelegramClient = await createTelegramClient(string_session);
+  plog.done(`Successfully connected!`, 0, 2);
+
+  plog.log("Updating Telegram index . . . ", 0, 1);
+  const telegram_index: number[] = await updateIndex(client);
+
+  plog.log(`Telegram Index: [${telegram_index.join(", ")}]`, 0 , 2);
+}
+
+async function readLAGs() {
   // Read Telegram Index
   plog.log("Reading Telegram Index . . . ", 0, 0);
   const telegram_index: number[] = JSON.parse(fs.readFileSync(FILEPATH_INDEX, { encoding: "utf-8" }));
@@ -43,20 +55,10 @@ async function main(): Promise<void> {
     // Assign message and message ID
     const message: string = messages[i];
     const message_id: number = telegram_index[i];
-
-    let search_string = "Storytime";
-    if (message.includes(search_string.trim())) {
-      const heading = message.split("\n")[0];
-      const hashtag_index: number = heading.indexOf("#");
-      if (hashtag_index >= 0) {
-        const ending_index: number = heading.indexOf(" ", hashtag_index);
-        const number: number = Number(heading.slice(hashtag_index+1, ending_index));
-        plog.log(`LAG #${number} contains ${search_string}`, 0, 1);
-      }
-    }
-
+    
     // Instantiate <LAG> object
-    // const lag: LAG = new LAG(message, message_id);
+    const lag: LAG = new LAG(message, message_id);
+    plog.tree(lag);
   }
   plog.log("", 0, 1);
 }

@@ -1,5 +1,8 @@
 // Dependencies
 require('dotenv').config();
+import fs from "fs";
+import path from "path";
+import { LAG } from "./LAG";
 const input = require("input");
 import { Api, TelegramClient } from "telegram";
 import { StringSession } from "telegram/sessions";
@@ -47,6 +50,55 @@ export async function createTelegramClient(string_session: string = ""): Promise
   client.setLogLevel(log_level);
 
   return client;
+}
+
+// Update LAG index
+export async function updateIndex(client: TelegramClient): Promise<number[]> {
+  // Read Telegram indices
+  const FILEPATH_INDEX: string = path.join(__dirname, "../LAG/telegram-index.json");
+  const telegram_index: number[] = JSON.parse(fs.readFileSync(FILEPATH_INDEX, { encoding: "utf-8" }));
+  
+  // Assign latest Telegram index
+  const latest_index: number = telegram_index[telegram_index.length-1];
+
+  // Find the latest Telegram 
+  let empty_message_count = 0;
+  let index: number = latest_index+1;
+  while (empty_message_count < 10) {
+    plog.log(`Reading message #${index} . . . `, 1, 0);
+    const messages: string[] = await readMessages(client, [index]);
+    if (messages.length > 0) {
+      try {
+        // Instantiate <LAG> object
+        const message: string = messages[0];
+        const lag: LAG = new LAG(message);
+        telegram_index.push(index);
+        
+        // Console-log findings
+        plog.done(`LAG #${lag.number} found!`, 0 , 1);
+
+        // Write to file
+        plog.log(`Writing to file . . . `, 2, 0);
+        fs.writeFileSync(
+          FILEPATH_INDEX,
+          JSON.stringify(telegram_index, null, 2)
+        );
+        plog.done("Done", 0, 1);
+
+        empty_message_count = 0;
+      } catch (error) {
+        plog.error(`Error: ${error}`, 0, 2);
+      }
+    } else {
+      plog.alert("Empty message", 0, 1);
+      empty_message_count++;
+    }
+
+    // Increment message index
+    index++;
+  }
+  plog.log("", 0, 1);
+  return telegram_index;
 }
 
 // Read Telegram messages
