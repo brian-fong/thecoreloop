@@ -44,9 +44,19 @@ async function main(): Promise<void> {
     const message: string = messages[i];
     const message_id: number = telegram_index[i];
 
+    let search_string = "Storytime";
+    if (message.includes(search_string.trim())) {
+      const heading = message.split("\n")[0];
+      const hashtag_index: number = heading.indexOf("#");
+      if (hashtag_index >= 0) {
+        const ending_index: number = heading.indexOf(" ", hashtag_index);
+        const number: number = Number(heading.slice(hashtag_index+1, ending_index));
+        plog.log(`LAG #${number} contains ${search_string}`, 0, 1);
+      }
+    }
+
     // Instantiate <LAG> object
-    const lag: LAG = new LAG(message, message_id);
-    plog.log(lag.heading, 1, 1);
+    // const lag: LAG = new LAG(message, message_id);
   }
   plog.log("", 0, 1);
 }

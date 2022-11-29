@@ -29,9 +29,8 @@ export class Date {
   month: string = "N/A";
   year: string = "N/A";
 
-  constructor(_line: string) {
-    const line: string = _line.toLowerCase();
-    const words: string[] = line.split(" ");
+  constructor(line: string = "") {
+    const words: string[] = line.toLowerCase().split(" ");
 
     for (const word of words) {
       if      (WEEKDAYS.includes(word))   this.weekday  = word;
