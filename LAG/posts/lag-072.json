@@ -1,0 +1,94 @@
+{
+  "heading": "LAG #72",
+  "telegram_message_id": 82,
+  "number": 72,
+  "date": "Tuesday October 11th 2022",
+  "content": [
+    {
+      "category": "🔦 Spotlight 🌟",
+      "entries": [
+        {
+          "caption": "A look at Xbox Cloud gaming coming to Meta Quest",
+          "url": "https://www.gamesindustry.biz/meta-quest-pro-headset-announced-launching-october-25"
+        }
+      ]
+    },
+    {
+      "category": "🌊 MARKET ☎️",
+      "entries": [
+        {
+          "caption": "A look at how much Sony & Microsoft paid to bring games to PS Plus & Xbox Game Pass",
+          "url": "https://www.gamedeveloper.com/business/heres-how-much-sony-and-microsoft-spent-to-bring-ark-survival-evolved-to-ps-plus-and-xbox-game-pass"
+        },
+        {
+          "caption": "A look at Meta Quest earning $1.5B in rev across 40 months",
+          "url": "https://venturebeat.com/games/meta-quest-revenue-october-22/"
+        }
+      ]
+    },
+    {
+      "category": "🌈 Platforms 🏔",
+      "entries": [
+        {
+          "caption": "A look at BMW allowing you to use your phone to play casual games on car screen",
+          "url": "https://www.theverge.com/2022/10/11/23399754/bmw-7-series-ix-airconsole-car-video-games-curved-infotainment-screen"
+        },
+        {
+          "caption": "A look at the Best & Worst of Meta Connect 2022",
+          "url": "https://www.gamedeveloper.com/blogs/best-and-worst-of-meta-connect-2022"
+        },
+        {
+          "caption": "A look at Bing & Microsoft Edge can launch Xbox Cloud Gaming titles",
+          "url": "https://www.gamedeveloper.com/the-cloud/xbox-cloud-games-can-be-launched-through-bing-and-microsoft-edge"
+        },
+        {
+          "caption": "A look at Xbox Cloud gaming coming to Meta Quest",
+          "url": "https://www.gamesindustry.biz/meta-quest-pro-headset-announced-launching-october-25"
+        },
+        {
+          "caption": "A look at top esports talent launching a podcast network",
+          "url": "https://venturebeat.com/games/esports-talent-podcast-last-free-nation/"
+        },
+        {
+          "caption": "A look at Google supporting cloud-gaming on Chromebooks",
+          "url": "https://venturebeat.com/games/google-supports-cloud-gaming-chromebook-laptops-for-gamers/"
+        }
+      ]
+    },
+    {
+      "category": "✨ Web 3️⃣ + Meta 🌎",
+      "entries": [
+        {
+          "caption": "A look at Sky Mavis staking 11M AXS tokens",
+          "url": "https://www.theblock.co/post/176222/sky-mavis-to-stake-over-11-million-axs-tokens"
+        },
+        {
+          "caption": "A look at Ready Player Me launching Avatar API",
+          "url": "https://venturebeat.com/games/ready-player-me-launches-api-for-avatar-interoperability/"
+        },
+        {
+          "caption": "A look at Onboarding the Mass Market to web3 ft Gala Games by @naavik_co",
+          "url": "https://www.youtube.com/watch?v=ltR69tBQk9E&ab_channel=Naavik"
+        }
+      ]
+    },
+    {
+      "category": "🧠 Knowledge Hub 📚",
+      "entries": [
+        {
+          "caption": "A look at ad channel diversification",
+          "url": "https://www.pocketgamer.biz/news/79884/appsumer-on-ad-channel-diversification/"
+        }
+      ]
+    },
+    {
+      "category": "💰 Fundraising 🧧",
+      "entries": [
+        {
+          "caption": "A look at Muus Collective raising $5M for fashion-centric games & collectibles",
+          "url": "https://venturebeat.com/games/muus-collective-raises-5m-for-fashion-centric-games-and-collectibles/"
+        }
+      ]
+    }
+  ]
+}

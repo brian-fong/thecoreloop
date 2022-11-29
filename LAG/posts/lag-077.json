@@ -1,0 +1,73 @@
+{
+  "heading": "LAG #77",
+  "telegram_message_id": 87,
+  "number": 77,
+  "date": "Tuesday October 18th 2022",
+  "content": [
+    {
+      "category": "🔦 Spotlight 🌟",
+      "entries": [
+        {
+          "caption": "A look at the future of in-game ads & in-app purchases",
+          "url": "https://www.gamesindustry.biz/the-future-of-in-game-ads-in-app-purchases-and-beyond-podcast"
+        }
+      ]
+    },
+    {
+      "category": "🌊 MARKET ☎️",
+      "entries": [
+        {
+          "caption": "A look at top mobile games genres in live streams",
+          "url": "https://streamhatchet.com/2022/10/18/most-popular-mobile-game-genres-in-live-streaming/"
+        }
+      ]
+    },
+    {
+      "category": "💎 Deep Dives 🔎",
+      "entries": [
+        {
+          "caption": "A look at the future of in-game ads & in-app purchases",
+          "url": "https://www.gamesindustry.biz/the-future-of-in-game-ads-in-app-purchases-and-beyond-podcast"
+        },
+        {
+          "caption": "A look at how HyperBeard escaped shutting down and discovering its niche",
+          "url": "https://mobilegamer.biz/how-hyperbeard-escaped-closure-twice-before-finding-its-cute-casual-niche/"
+        }
+      ]
+    },
+    {
+      "category": "🌈 Platforms 🏔",
+      "entries": [
+        {
+          "caption": "A look at Netflix exploring cloud gaming service",
+          "url": "https://www.theverge.com/2022/10/18/23411684/netflix-cloud-gaming-studio-pc-tv"
+        },
+        {
+          "caption": "A look at the next Sims game aiming to be a creative platform",
+          "url": "https://www.gamedeveloper.com/pc/next-i-the-sims-i-game-next-gen-creative-platform"
+        },
+        {
+          "caption": "A look at Valve's new dock.  It won't replace your Switch but p good",
+          "url": "https://www.theverge.com/2022/10/18/23409757/valve-steam-deck-dock-docking-station-tv-gaming-nintendo-switch"
+        }
+      ]
+    },
+    {
+      "category": "✨ Web 3️⃣ + Meta 🌎",
+      "entries": [
+        {
+          "caption": "A look at Azuki's by @theblockres",
+          "url": "https://www.theblockresearch.com/rapid-insights-examining-azukis-scan-to-own-narrative-177999"
+        },
+        {
+          "caption": "A look at Sorare launching beta NFT-based fantasy sports game",
+          "url": "https://venturebeat.com/games/sorare-launches-beta-for-nft-based-nba-fantasy-sports-game/"
+        },
+        {
+          "caption": "A look at Web2 devs  vs Web3 designers by @naavik_co",
+          "url": "https://www.youtube.com/watch?v=H9kGbeTAU0c&ab_channel=Naavik"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "heading": "LAG #53",
+  "telegram_message_id": 64,
+  "number": 53,
+  "date": "Wednesday September 14th 2022",
+  "content": [
+    {
+      "category": "🔦 Spotlight 🌟",
+      "entries": [
+        {
+          "caption": "A look at China's 3Hr Rule, one year later by the good folks over at @nikochina",
+          "url": "https://nikopartners.com/chinas-three-hour-rule-for-young-gamers-one-year-later/"
+        }
+      ]
+    },
+    {
+      "category": "🌊 MARKET ☎️",
+      "entries": [
+        {
+          "caption": "A look at Kaspersky report showing malware targeting gamers.",
+          "url": "https://venturebeat.com/games/kaspersky-report-malware-attacks-targeting-gamers-increase/"
+        },
+        {
+          "caption": "A look at China's 3Hr Rule, one year later by the good folks over at @nikochina",
+          "url": "https://nikopartners.com/chinas-three-hour-rule-for-young-gamers-one-year-later/"
+        }
+      ]
+    },
+    {
+      "category": "💎 Deep Dives 🔎",
+      "entries": [
+        {
+          "caption": "A look at Diablo Immortal generating nearly $100M in August",
+          "url": "https://www.pocketgamer.biz/news/79630/diablo-immortal-generated-97-million-in-august/"
+        },
+        {
+          "caption": "A look at Tower Defence games reaching $2.3B by 2030",
+          "url": "https://www.pocketgamer.biz/news/79629/tower-defence-games-to-reach-23-billion-in-revenue-by-2030/"
+        },
+        {
+          "caption": "A look at The Sims 4 going F2P",
+          "url": "https://www.gamedeveloper.com/business/the-sims-4-is-going-free-to-play"
+        },
+        {
+          "caption": "A look at Battle Passes & trying to make them work",
+          "url": "https://newsletter.gamediscover.co/p/temtem-and-battle-pass-a-study-in"
+        }
+      ]
+    },
+    {
+      "category": "🌈 Platforms 🏔",
+      "entries": [
+        {
+          "caption": "A look at what Immersive Ads means for Roblox by @naavik_co",
+          "url": "https://naavik.co/digest/what-immersive-ads-means-for-roblox"
+        },
+        {
+          "caption": "A look at Discord adding Forum channels to servers",
+          "url": "https://www.gamedeveloper.com/business/discord-is-adding-forum-channels-to-community-servers"
+        },
+        {
+          "caption": "A look at EA betting on UGC for lucrative upside",
+          "url": "https://www.axios.com/2022/09/14/ea-ceo-player-made-creations"
+        },
+        {
+          "caption": "A look at Roblox launching in-game ads next year",
+          "url": "https://www.gamesindustry.biz/roblox-to-launch-in-game-advertisements-next-year"
+        }
+      ]
+    }
+  ]
+}

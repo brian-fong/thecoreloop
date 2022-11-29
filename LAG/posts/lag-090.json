@@ -1,0 +1,56 @@
+{
+  "heading": "LAG #90",
+  "telegram_message_id": 100,
+  "number": 90,
+  "date": "Friday November 4th 2022",
+  "content": [
+    {
+      "category": "🔦 Spotlight 🌟",
+      "entries": [
+        {
+          "caption": "A look at the Southeast Asia gaming markets",
+          "url": "https://nikopartners.com/inside-the-fastest-growing-future-oriented-games-market-in-the-world-southeast-asia/"
+        }
+      ]
+    },
+    {
+      "category": "🌊 MARKET ☎️",
+      "entries": [
+        {
+          "caption": "A look at the Southeast Asia gaming markets",
+          "url": "https://nikopartners.com/inside-the-fastest-growing-future-oriented-games-market-in-the-world-southeast-asia/"
+        }
+      ]
+    },
+    {
+      "category": "✨ Web 3️⃣ + Meta 🌎",
+      "entries": [
+        {
+          "caption": "A look at payments in the metaverse",
+          "url": "https://venturebeat.com/games/the-deanbeat-how-to-make-payments-in-the-metaverse/"
+        },
+        {
+          "caption": "A look at making metaverse safe",
+          "url": "https://venturebeat.com/games/making-the-metaverse-safe/"
+        },
+        {
+          "caption": "A look at Immutable unveiling new tools to enforce NFT royalties",
+          "url": "https://www.theblock.co/post/183010/immutablex-solution-enforce-royalties-ethereum"
+        }
+      ]
+    },
+    {
+      "category": "🧠 Knowledge Hub 📚",
+      "entries": [
+        {
+          "caption": "A look at a new way of estimating Steam Week 1 sales",
+          "url": "https://newsletter.gamediscover.co/p/plus-a-new-way-to-estimate-steam"
+        },
+        {
+          "caption": "A look at Impact & Narrative design",
+          "url": "https://www.gamedeveloper.com/design/deep-dive-roadwarden"
+        }
+      ]
+    }
+  ]
+}

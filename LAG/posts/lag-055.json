@@ -1,0 +1,56 @@
+{
+  "heading": "LAG #55",
+  "telegram_message_id": 66,
+  "number": 55,
+  "date": "Friday September 16th 2022",
+  "content": [
+    {
+      "category": "🔦 Spotlight 🌟",
+      "entries": [
+        {
+          "caption": "A look at Gadsme launching in-game AUDIO ads",
+          "url": "https://venturebeat.com/games/gadsme-launches-in-game-monetization-for-audio-ads/"
+        }
+      ]
+    },
+    {
+      "category": "🌊 MARKET ☎️",
+      "entries": [
+        {
+          "caption": "A look at Gadsme launching in-game AUDIO ads",
+          "url": "https://venturebeat.com/games/gadsme-launches-in-game-monetization-for-audio-ads/"
+        },
+        {
+          "caption": "A look at Animoca Brands acquiring WePlay Media",
+          "url": "https://www.pocketgamer.biz/news/79660/animoca-brands-begins-acquisition-proceedings-of-weplay-media/"
+        },
+        {
+          "caption": "A look at 1% of publishers responsible for 91% of app rev",
+          "url": "https://www.pocketgamer.biz/news/79656/1-of-publishers-are-responsible-for-91-of-app-revenue/"
+        }
+      ]
+    },
+    {
+      "category": "💎 Deep Dives 🔎",
+      "entries": [
+        {
+          "caption": "A look at \"long tail\" for year-old games",
+          "url": "https://newsletter.gamediscover.co/p/plus-how-does-long-tail-differ-for"
+        },
+        {
+          "caption": "A look at Mobile Clones, IP Ecosystems, UGC by @naavik_co",
+          "url": "https://www.youtube.com/watch?v=rVxgHWEJdjA&ab_channel=Naavik"
+        }
+      ]
+    },
+    {
+      "category": "🌈 Platforms 🏔",
+      "entries": [
+        {
+          "caption": "A look at Xbox continuing M&A onslaught",
+          "url": "https://www.gamesindustry.biz/phil-spencer-says-xbox-will-continue-ma-activity-to-remain-competitive"
+        }
+      ]
+    }
+  ]
+}

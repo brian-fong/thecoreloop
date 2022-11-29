@@ -1,0 +1,81 @@
+{
+  "heading": "LAG #6",
+  "telegram_message_id": 13,
+  "number": 6,
+  "date": "Monday July 4th 2022",
+  "content": [
+    {
+      "category": "🔦 Spotlight 🌟",
+      "entries": [
+        {
+          "caption": "A look at Super-Apps via Gaming.  Think WeChat but for the gaming ecosystem",
+          "url": "https://www.konvoy.vc/newsletter/super-apps-via-gaming"
+        }
+      ]
+    },
+    {
+      "category": "🌊 MARKET ☎️",
+      "entries": [
+        {
+          "caption": "A look at China's player market.  TLDR, its down YoY.",
+          "url": "https://www.pocketgamer.biz/news/79112/research-and-markets-report-finds-chinas-playerbase-fell-to-706-million-in-2021/"
+        },
+        {
+          "caption": "A look at what's going on in 2022 for delayed titles",
+          "url": "https://www.gamesindustry.biz/articles/2022-06-15-what-has-happened-to-all-the-video-games"
+        },
+        {
+          "caption": "A look at salary transparency in games in the UK.",
+          "url": "https://www.gamesindustry.biz/articles/2022-07-04-spreadsheet-shows-average-salary-for-jobs-in-games"
+        }
+      ]
+    },
+    {
+      "category": "🧠 Knowledge Hub 📚",
+      "entries": [
+        {
+          "caption": "A look at Battle Passes.  Learn yourself.",
+          "url": "https://www.youtube.com/watch?v=1xdc1M2JOIU&ab_channel=DeconstructorofFun"
+        },
+        {
+          "caption": "A look at Playstation Plus and Subscriptions.",
+          "url": "https://www.gamesindustry.biz/articles/2022-04-01-playstation-plus-and-the-rise-of-subscriptions"
+        },
+        {
+          "caption": "A look at how to get your Indie game noticed.",
+          "url": "https://www.gamesindustry.biz/articles/2022-07-04-how-to-get-your-indie-game-noticed"
+        }
+      ]
+    },
+    {
+      "category": "💎 Deep Dives 🔎",
+      "entries": [
+        {
+          "caption": "A look at how Niantic could turn into a social media co.",
+          "url": "https://www.pocketgamer.biz/news/79124/niantic-introduces-social-app-campfire/"
+        },
+        {
+          "caption": "A look at Super-Apps via Gaming.  Think WeChat but for the gaming ecosystem",
+          "url": "https://www.konvoy.vc/newsletter/super-apps-via-gaming"
+        }
+      ]
+    },
+    {
+      "category": "🌈 Platforms 🏔",
+      "entries": [
+        {
+          "caption": "A look at how Xbox went from edgy to everyone",
+          "url": "https://www.gamesindustry.biz/articles/2022-06-24-xboxs-move-from-edgy-to-everyone-this-week-in-business"
+        },
+        {
+          "caption": "A look at Xbox & Besthesda Games showcase",
+          "url": "https://www.deconstructoroffun.com/thisweekingames/bdtxbgs"
+        },
+        {
+          "caption": "A look at Google's HTML5 game platform: GameSnacks.  Potentially another distribution?",
+          "url": "https://www.gamedeveloper.com/business/google-s-html5-game-platform-gamesnacks-crosses-35-million-users"
+        }
+      ]
+    }
+  ]
+}

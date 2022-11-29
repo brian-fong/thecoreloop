@@ -1,0 +1,34 @@
+{
+  "heading": "LAG #30",
+  "telegram_message_id": 40,
+  "number": 30,
+  "date": "Friday August N/A 2022",
+  "content": [
+    {
+      "category": "🔦 Spotlight 🌟",
+      "entries": [
+        {
+          "caption": "A look at AppLovin's game of musical chairs with @deconoffun",
+          "url": "https://anchor.fm/deconstructoroffun/episodes/TWIG-195-AppLovins-game-of-musical-chairs-I-JamCitys-infamous-layoffs-I-Roblox-misses-estimates-e1mcc2h"
+        }
+      ]
+    },
+    {
+      "category": "🌊 MARKET ☎️",
+      "entries": [
+        {
+          "caption": "A look at AppLovin's game of musical chairs with @deconoffun",
+          "url": "https://anchor.fm/deconstructoroffun/episodes/TWIG-195-AppLovins-game-of-musical-chairs-I-JamCitys-infamous-layoffs-I-Roblox-misses-estimates-e1mcc2h"
+        },
+        {
+          "caption": "A look at Krafton (PUBG's creator) H1 2022.  Q2 Rev $326.5M",
+          "url": "https://www.gamedeveloper.com/business/krafton-credits-i-pubg-mobile-i-for-its-successful-h1-2022"
+        },
+        {
+          "caption": "A look at the loss leaders of the pack",
+          "url": "https://www.gamesindustry.biz/loss-leaders-of-the-pack"
+        }
+      ]
+    }
+  ]
+}

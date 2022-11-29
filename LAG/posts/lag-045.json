@@ -1,0 +1,39 @@
+{
+  "heading": "LAG #45",
+  "telegram_message_id": 55,
+  "number": 45,
+  "date": "Friday September 2nd 2022",
+  "content": [
+    {
+      "category": "🔦 Spotlight 🌟",
+      "entries": [
+        {
+          "caption": "A look at ChromeOS gaming overlay, putting touch on your PC",
+          "url": "https://www.theverge.com/2022/9/2/23333400/google-chromeos-touch-android-games-keyboard-controls"
+        }
+      ]
+    },
+    {
+      "category": "🌊 MARKET ☎️",
+      "entries": [
+        {
+          "caption": "A look at Garena's $1B quarter loss",
+          "url": "https://www.gamesindustry.biz/after-1bn-quarter-loss-garena-parent-company-halts-projects-and-lays-off-some-staff"
+        }
+      ]
+    },
+    {
+      "category": "💎 Deep Dives 🔎",
+      "entries": [
+        {
+          "caption": "A look at Nintendo removing gacha from Mario Kart Tour",
+          "url": "https://www.gamedeveloper.com/business/nintendo-is-removing-i-mario-kart-tour-i-s-gacha-mechanic"
+        },
+        {
+          "caption": "A look at what could be Steam's next biggest game",
+          "url": "https://newsletter.gamediscover.co/p/plus-what-next-quarters-hype-says"
+        }
+      ]
+    }
+  ]
+}

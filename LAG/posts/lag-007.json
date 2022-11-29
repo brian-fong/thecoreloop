@@ -1,0 +1,81 @@
+{
+  "heading": "LAG #7",
+  "telegram_message_id": 15,
+  "number": 7,
+  "date": "Wednesday July 6th 2022",
+  "content": [
+    {
+      "category": "🔦 Spotlight 🌟",
+      "entries": [
+        {
+          "caption": "A look at \"What the heck is going on?\" in games by DoF",
+          "url": "https://www.deconstructoroffun.com/thisweekingames/wthigo"
+        }
+      ]
+    },
+    {
+      "category": "👾 Game & Stats Releases 🎮",
+      "entries": [
+        {
+          "caption": "A look at God of War: Ragnarok Release Date.  I normally don't post game releases but GoW is one of my fave franchises.",
+          "url": "https://venturebeat.com/2022/07/06/god-of-war-ragnarok-launches-on-november-9/"
+        }
+      ]
+    },
+    {
+      "category": "🌊 MARKET ☎️",
+      "entries": [
+        {
+          "caption": "A look at a possible decline in Game Revenue in 2022.  More bera posting.",
+          "url": "https://venturebeat.com/2022/07/05/report-suggests-games-market-might-see-decline-in-2022/"
+        },
+        {
+          "caption": "A look at EU attempto to regulate gatekeepers like Apple & Google.  The walls in the walled garden is being chipped away.",
+          "url": "https://venturebeat.com/2022/07/05/european-union-regulates-apple-and-google-duopoly-as-platform-gatekeepers/"
+        },
+        {
+          "caption": "A look at EU's DMA & DSA legisltations by E.S..  Maybe too little too late?",
+          "url": "https://mobiledevmemo.com/the-digital-markets-act-and-the-content-fortress-ification-of-the-app-economy/"
+        },
+        {
+          "caption": "A look at US spending on games.  TLDR its down 9% YoY.  More bera posting.",
+          "url": "https://www.gamesindustry.biz/articles/2022-07-06-us-spending-on-games-to-drop-8-7-percent-this-year-says-npd"
+        },
+        {
+          "caption": "A look at Diablo Immortal's earnings.  $50M in 30 days.  What bera market.",
+          "url": "https://www.gamesindustry.biz/articles/2022-07-05-diablo-immortals-first-month-earnings-near-usd50m"
+        },
+        {
+          "caption": "A look at \"What the heck is going on?\" in games by DoF",
+          "url": "https://www.deconstructoroffun.com/thisweekingames/wthigo"
+        },
+        {
+          "caption": "A look at WHY the industry is declining with Naavik's Aaron Bush and Eric Kress",
+          "url": "https://www.youtube.com/watch?v=j3luGU6TGY8&ab_channel=Naavik"
+        }
+      ]
+    },
+    {
+      "category": "💰 Fundraising 🧧",
+      "entries": [
+        {
+          "caption": "A look at Konvoy's Fund III.  $150M baby.",
+          "url": "https://www.konvoy.vc/newsletter/konvoy-fund-iii-announcement"
+        }
+      ]
+    },
+    {
+      "category": "🧠 Knowledge Hub 📚",
+      "entries": [
+        {
+          "caption": "A look at Ad Creatives.  Learn yourself",
+          "url": "https://www.gamedeveloper.com/blogs/big-mobile-marketing-creative-review-the-things-that-work"
+        },
+        {
+          "caption": "A look at some UA protips from Pollen VC.",
+          "url": "https://www.pocketgamer.biz/news/79123/pollen-user-acquisitions-costs-remain-stubbornly-high/"
+        }
+      ]
+    }
+  ]
+}

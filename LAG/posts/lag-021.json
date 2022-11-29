@@ -1,0 +1,109 @@
+{
+  "heading": "LAG #21",
+  "telegram_message_id": 31,
+  "number": 21,
+  "date": "Monday August 1st 2022",
+  "content": [
+    {
+      "category": "🔦 Spotlight 🌟",
+      "entries": [
+        {
+          "caption": "A look at Dean's take on how the game industry should deal with the recession",
+          "url": "https://venturebeat.com/2022/07/29/the-deanbeat-how-should-the-game-industry-deal-with-the-recession/"
+        }
+      ]
+    },
+    {
+      "category": "🌊 MARKET ☎️",
+      "entries": [
+        {
+          "caption": "A look at PlayStation's revenue figures & business model",
+          "url": "https://www.gamedeveloper.com/blogs/playstation-s-problem-third-party-royalties-or-ps-revenue-"
+        },
+        {
+          "caption": "A look at Sony's PlayStation 2022 sales forecast",
+          "url": "https://www.axios.com/2022/07/29/sony-playstation-sales-forecast"
+        },
+        {
+          "caption": "A look at Activision Blizzard's financial earnings",
+          "url": "https://venturebeat.com/2022/08/01/activision-blizzard-hits-financial-targets-with-q2-bookings-of-1-64b/"
+        },
+        {
+          "caption": "A look at Activision Blizzard losing 40M MAU",
+          "url": "https://www.gamedeveloper.com/business/activision-blizzard-loses-monthly-average-users-still-beats-expectations"
+        },
+        {
+          "caption": "A look at Capcom's earnings.  Down bad.  -48% YoY.",
+          "url": "https://naavik.co/digest/speed-bumps-in-the-console-market"
+        },
+        {
+          "caption": "A look at speed bumps in the console market by Naavik",
+          "url": "https://naavik.co/digest/speed-bumps-in-the-console-market"
+        },
+        {
+          "caption": "A look at Epic Games & Steam getting banned in Indonesia",
+          "url": "https://www.gamesindustry.biz/indonesia-blocks-valve-epic-games-and-more-for-failing-to-comply-with-new-regulations"
+        },
+        {
+          "caption": "A look at Dean's take on how the game industry should deal with the recession",
+          "url": "https://venturebeat.com/2022/07/29/the-deanbeat-how-should-the-game-industry-deal-with-the-recession/"
+        }
+      ]
+    },
+    {
+      "category": "💎 Deep Dives 🔎",
+      "entries": [
+        {
+          "caption": "A look at Nike being the most prominent apparel brand among Twitch streamers.",
+          "url": "https://streamhatchet.com/2022/08/01/nike-is-the-most-prominent-apparel-brand-among-twitch-streamers/"
+        },
+        {
+          "caption": "A look at Gaming's $1B Gray Market by Konvoy",
+          "url": "https://www.konvoy.vc/newsletter/gamings-gray-market"
+        }
+      ]
+    },
+    {
+      "category": "🌈 Platforms 🏔",
+      "entries": [
+        {
+          "caption": "A look at Xsolla's Pay Station updates -- being the 'business engine' for games",
+          "url": "https://venturebeat.com/2022/08/01/xsollas-pay-station-update-adds-web-shops-streamlined-payments-and-a-startup-accelerator/"
+        },
+        {
+          "caption": "A look at Google AdMob adding TikTok's ad network to their network.",
+          "url": "https://www.gamesindustry.biz/google-admob-adds-pangle-as-a-bidding-partner-1"
+        },
+        {
+          "caption": "A look at how Apple's internal ad network by @eric_seufert",
+          "url": "https://mobiledevmemo.com/apple-robbed-the-mobs-bank-part-3/"
+        },
+        {
+          "caption": "A look at Sony not liking Microsoft's acquisition of Activision & CoD",
+          "url": "https://www.gamedeveloper.com/business/sony-thoughts-on-microsoft-acquiring-activision"
+        },
+        {
+          "caption": "A look at Google Play's new guidelines for unexpected ads",
+          "url": "https://www.gamedeveloper.com/business/new-guidelines-will-prohibit-google-play-devs-from-using-unexpected-advertising"
+        }
+      ]
+    },
+    {
+      "category": "✨ Web 3️⃣ + Meta 🌎",
+      "entries": [
+        {
+          "caption": "A look at @TheTreeverse by @Loopifyyy.  Very excited for this MMORPG.  Prolly on my top 3 list for sure.",
+          "url": "https://twitter.com/Loopifyyy/status/1554183684714029059"
+        },
+        {
+          "caption": "A look at @Yugalabs by @Naavik_co",
+          "url": "https://twitter.com/naavik_co/status/1554076477268041728"
+        },
+        {
+          "caption": "A look at @moonbirds nesting on @nifty_island",
+          "url": "https://twitter.com/Nifty_Island/status/1554218706451853312"
+        }
+      ]
+    }
+  ]
+}

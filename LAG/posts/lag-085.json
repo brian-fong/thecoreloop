@@ -1,0 +1,68 @@
+{
+  "heading": "LAG #85",
+  "telegram_message_id": 95,
+  "number": 85,
+  "date": "Friday October 28th 2022",
+  "content": [
+    {
+      "category": "🔦 Spotlight 🌟",
+      "entries": [
+        {
+          "caption": "A look at Sonic The Hedgehog series sold 1.5B copies",
+          "url": "https://www.gamesindustry.biz/sonic-the-hedgehog-series-has-sold-15bn-copies"
+        }
+      ]
+    },
+    {
+      "category": "🌊 MARKET ☎️",
+      "entries": [
+        {
+          "caption": "A look at Rovio seeing an 8.4% YoY increase in Q3 Rev.  $77M in Rev",
+          "url": "https://www.pocketgamer.biz/news/80042/rovio-saw-an-84-year-on-year-increase-in-revenue-in-q3-with-the-angry-birds-franchise-at-the-top-of-the-pecking-order/"
+        },
+        {
+          "caption": "A look at Youtube game streaming viewership in September",
+          "url": "https://www.gamesindustry.biz/youtube-game-streaming-viewership-jumps-in-september"
+        },
+        {
+          "caption": "A look at Saudi Arabia aims to be world hub for esports",
+          "url": "https://www.pocketgamer.biz/interview/80038/saudi-arabia-aims-to-be-a-world-hub-for-esports-and-to-grow-its-own-booming-gaming-industry/"
+        }
+      ]
+    },
+    {
+      "category": "💎 Deep Dives 🔎",
+      "entries": [
+        {
+          "caption": "A look at Unity CEO saying multiplayer in mobile to be a BIG deal",
+          "url": "https://www.pocketgamer.biz/news/80037/unity-ceo-john-riccitiello-i-think-multiplayer-in-mobile-is-a-big-story/"
+        },
+        {
+          "caption": "A look at Android accounting for 70%+ ad creatives in Q2 2022",
+          "url": "https://www.pocketgamer.biz/news/80034/android-accounts-for-over-70-percent-of-ad-creatives-in-q2-2022/"
+        }
+      ]
+    },
+    {
+      "category": "✨ Web 3️⃣ + Meta 🌎",
+      "entries": [
+        {
+          "caption": "A look at Will Wright's take on memories, NFTs, and future of gaming",
+          "url": "https://venturebeat.com/games/the-deanbeat-will-wrights-view-of-the-future-of-gaming/"
+        },
+        {
+          "caption": "A look at whether Apple's NFT guidelines will kill crypto mobile games by @naavik_co",
+          "url": "https://www.youtube.com/watch?v=stBbYlsGmKY&ab_channel=Naavik"
+        },
+        {
+          "caption": "A look at Singapore-based mobile game co Storms announcing new web3 gaming platform",
+          "url": "https://www.pocketgamer.biz/news/80039/singapore-based-mobile-game-company-storms-announces-web3-gaming-platform/"
+        },
+        {
+          "caption": "A look at how Volt capital looks into crypto gaming",
+          "url": "https://www.theblock.co/post/178959/the-center-of-gravity-has-shifted-in-crypto-says-soona-amhaz"
+        }
+      ]
+    }
+  ]
+}

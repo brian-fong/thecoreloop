@@ -1,0 +1,56 @@
+{
+  "heading": "LAG #64",
+  "telegram_message_id": 74,
+  "number": 64,
+  "date": "Thursday September 29th 2022",
+  "content": [
+    {
+      "category": "🔦 Spotlight 🌟",
+      "entries": [
+        {
+          "caption": "A look at Saudi Arabia's $37.8B commitment to gaming investments",
+          "url": "https://www.axios.com/2022/09/29/saudi-arabia-invest-37-billion-gaming"
+        }
+      ]
+    },
+    {
+      "category": "🌊 MARKET ☎️",
+      "entries": [
+        {
+          "caption": "A look at Newzoo's Global Games Market Report",
+          "url": "https://newzoo.com/insights/trend-reports/newzoo-global-games-market-report-2022-free-version"
+        },
+        {
+          "caption": "A look at FaZe Clan's $71.4M PIPE investment defaulting",
+          "url": "https://venturebeat.com/games/faze-clan-pipe-investment-default-spac/"
+        },
+        {
+          "caption": "A look at Saudi Arabia's $37.8B commitment to gaming investments",
+          "url": "https://www.axios.com/2022/09/29/saudi-arabia-invest-37-billion-gaming"
+        }
+      ]
+    },
+    {
+      "category": "💎 Deep Dives 🔎",
+      "entries": [
+        {
+          "caption": "A look at Tenjin's hypercasual games benchmark report",
+          "url": "https://www.pocketgamer.biz/news/79789/tenjin-has-released-its-hypercasual-games-benchmark-report/"
+        }
+      ]
+    },
+    {
+      "category": "🌈 Platforms 🏔",
+      "entries": [
+        {
+          "caption": "A look at Google closing down Stadia",
+          "url": "https://www.gameinformer.com/2022/09/29/stadia-will-close-in-january-google-issuing-refunds-for-all-hardware-and-software"
+        },
+        {
+          "caption": "A look at Netflix Gaming's deep lineup",
+          "url": "https://www.theverge.com/2022/9/29/23378549/netflix-desta-the-memories-mobile-ustwo-games"
+        }
+      ]
+    }
+  ]
+}

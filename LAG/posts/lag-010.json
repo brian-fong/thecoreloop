@@ -1,0 +1,119 @@
+{
+  "heading": "LAG #10",
+  "telegram_message_id": 19,
+  "number": 10,
+  "date": "Friday July 15th 2022",
+  "content": [
+    {
+      "category": "🔦 Spotlight 🌟",
+      "entries": [
+        {
+          "caption": "A look at RP1's 4000 people gathering in a SINGLE shard.  This is really something else.  CoD and Fortnite pack 100-150 players but this is a step in the right direction.",
+          "url": "https://venturebeat.com/2022/07/15/the-deanbeat-rp1-simulates-putting-4000-people-together-in-a-single-metaverse-plaza/"
+        },
+        {
+          "caption": "A look at Adverty's launch of the streaming In-Play ads.  Game changer.  Imagine the billboard ad space in Fortnite is plugged into the ad network and up for auction.  In-Play Ads, fully native to the game.",
+          "url": "https://www.pocketgamer.biz/news/79198/adverty-launches-industry-first-streaming-video-technology-in-play-ads/"
+        }
+      ]
+    },
+    {
+      "category": "🌊 MARKET ☎️",
+      "entries": [
+        {
+          "caption": "A look at all the data rev data together.  YTD $26B, down 10%",
+          "url": "https://venturebeat.com/2022/07/15/june-2022-npd-overwatch-and-final-fantasy-vii-return-to-the-top-20/"
+        },
+        {
+          "caption": "A look at mobile games earnings in H1 2022.  $41.2B globally baby.",
+          "url": "https://www.gamesindustry.biz/articles/2022-07-14-during-the-first-half-of-2022-mobile-games-earned-usd41-2bn-globally"
+        },
+        {
+          "caption": "A look at how Apps are beating mobile games rev.",
+          "url": "https://www.pocketgamer.biz/special-report/79199/apps-earning-more-revenue-than-games-for-first-time-ever/"
+        },
+        {
+          "caption": "A look at PC markets going down hard.  12.6% down in shipments",
+          "url": "https://www.gamesindustry.biz/articles/2022-07-15-pc-market-had-sharpest-decline-in-nine-years"
+        },
+        {
+          "caption": "A look at gaming investments hitting $2.6B in Q1 2022",
+          "url": "https://www.pocketgamer.biz/special-report/79174/gaming-investment-reached-26-billion-in-q1-2022/"
+        }
+      ]
+    },
+    {
+      "category": "💎 Deep Dives 🔎",
+      "entries": [
+        {
+          "caption": "A look at Sucker Punch's Ghost of Tsushima.  There's some great stats here.  78M photos taken.  9.7M copies sold",
+          "url": "https://twitter.com/SuckerPunchProd/status/1548034687049748480"
+        },
+        {
+          "caption": "A look at RP1's 4000 people gathering in a SINGLE shard.  This is really something else.  CoD and Fortnite pack 100-150 players but this is a step in the right direction.",
+          "url": "https://venturebeat.com/2022/07/15/the-deanbeat-rp1-simulates-putting-4000-people-together-in-a-single-metaverse-plaza/"
+        },
+        {
+          "caption": "A look at Adverty's launch of the streaming In-Play ads.  Game changer.  Imagine the billboard ad space in Fortnite is plugged into the ad network and up for auction.  In-Play Ads, fully native to the game.",
+          "url": "https://www.pocketgamer.biz/news/79198/adverty-launches-industry-first-streaming-video-technology-in-play-ads/"
+        }
+      ]
+    },
+    {
+      "category": "🌈 Platforms 🏔",
+      "entries": [
+        {
+          "caption": "A look at Sony's purchase of Bungie (FINALIZED)!  $3.6billies.",
+          "url": "https://www.gamesindustry.biz/articles/2022-07-15-sonys-purchase-of-bungie-is-now-finalized"
+        },
+        {
+          "caption": "A look at Netflix & Microsoft partner for new subscription plan",
+          "url": "https://www.pocketgamer.biz/news/79193/netflix-and-microsoft-partner-for-new-subscription-plan/"
+        }
+      ]
+    },
+    {
+      "category": "✨ Web 3️⃣ + Meta 🌎",
+      "entries": [
+        {
+          "caption": "A look at the Kingmaker of Gen. Art: Art Blocks",
+          "url": "https://www.theblockresearch.com/art-blocks-the-kingmaker-of-generative-art-157835"
+        },
+        {
+          "caption": "A look at how 44% of gamers would accept ads for free stuff in the metaverse",
+          "url": "https://www.pocketgamer.biz/special-report/79191/44-gamers-would-accept-advertising-exchange-for-free-services-metaverse/"
+        }
+      ]
+    },
+    {
+      "category": "🧠 Knowledge Hub 📚",
+      "entries": [
+        {
+          "caption": "A look at the PC casual games market.  Interesting . . .",
+          "url": "https://www.gamedeveloper.com/blogs/pc-casual-games---exploring-a-vestigial-market-"
+        },
+        {
+          "caption": "A look at Mobile game lag & latency.  34% of gamers quite the app due to it",
+          "url": "https://www.pocketgamer.biz/news/79186/edgegap-lag-and-latency-are-major-problems-for-gamers/"
+        },
+        {
+          "caption": "A look at Mintegral, a playable ad editor.",
+          "url": "https://www.pocketgamer.biz/news/79176/mintegral-launches-playable-ad-editor/"
+        }
+      ]
+    },
+    {
+      "category": "💰 Fundraising 🧧",
+      "entries": [
+        {
+          "caption": "A look at studio CLUB's raise",
+          "url": "https://venturebeat.com/2022/07/14/club-closes-3-1-million-seed-round-for-the-first-football-ownership-game/"
+        },
+        {
+          "caption": "A look at UnCaged Studios series A",
+          "url": "https://venturebeat.com/2022/07/14/uncaged-studios-closes-successful-funding-round/"
+        }
+      ]
+    }
+  ]
+}

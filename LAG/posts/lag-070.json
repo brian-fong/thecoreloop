@@ -1,0 +1,91 @@
+{
+  "heading": "LAG #70",
+  "telegram_message_id": 80,
+  "number": 70,
+  "date": "Friday October 7th 2022",
+  "content": [
+    {
+      "category": "🔦 Spotlight 🌟",
+      "entries": [
+        {
+          "caption": "A look at the enterprise flywheel of the metaverse by @deantak",
+          "url": "https://venturebeat.com/games/the-deanbeat-metabeat-highlighted-the-enterprise-flywheel-of-the-metaverse/"
+        }
+      ]
+    },
+    {
+      "category": "🌊 MARKET ☎️",
+      "entries": [
+        {
+          "caption": "A look at the Rise of the Mega Investors: Tencent & Savvy Gaming Group by @naavik_co",
+          "url": "https://www.youtube.com/watch?v=aJnD_3AiTgI&ab_channel=Naavik"
+        },
+        {
+          "caption": "A look at AMD's weak Q3 revenues as PC market weakens",
+          "url": "https://venturebeat.com/games/amd-warns-of-weak-q3-revenues-as-pc-market-is-weaker-than-expected/"
+        }
+      ]
+    },
+    {
+      "category": "💎 Deep Dives 🔎",
+      "entries": [
+        {
+          "caption": "A look at mobile apps, do winner really take it all",
+          "url": "https://www.pocketgamer.biz/special-report/79866/does-the-winner-really-take-it-all/"
+        },
+        {
+          "caption": "A look at cloud streaming future after Stadia",
+          "url": "https://www.gamesindustry.biz/after-stadia-is-the-future-still-bright-for-cloud-streaming-opinion"
+        }
+      ]
+    },
+    {
+      "category": "🌈 Platforms 🏔",
+      "entries": [
+        {
+          "caption": "A look at EA's new PC app to replace Origin",
+          "url": "https://www.theverge.com/2022/10/7/23392775/ea-new-pc-app-launcher-replace-origin-macos"
+        }
+      ]
+    },
+    {
+      "category": "✨ Web 3️⃣ + Meta 🌎",
+      "entries": [
+        {
+          "caption": "A look at Epic Games Store welcoming web3",
+          "url": "https://naavik.co/digest/epic-games-store-welcomes-web3"
+        },
+        {
+          "caption": "A look at the enterprise flywheel of the metaverse by @deantak",
+          "url": "https://venturebeat.com/games/the-deanbeat-metabeat-highlighted-the-enterprise-flywheel-of-the-metaverse/"
+        },
+        {
+          "caption": "A look at Coda Labs global poll showing gamers not ready for web3 games",
+          "url": "https://venturebeat.com/games/coda-labs-global-poll-shows-gamers-havent-embraced-web3-games-yet/"
+        },
+        {
+          "caption": "A look at Metaverse Builder Improbable saying metaverse land is mispriced",
+          "url": "https://www.theblock.co/post/173774/creators-of-bayc-metaverse-think-most-metaverse-land-is-overvalued"
+        }
+      ]
+    },
+    {
+      "category": "🧠 Knowledge Hub 📚",
+      "entries": [
+        {
+          "caption": "A look at how to pitch for a well-known IP",
+          "url": "https://www.gamesindustry.biz/pitching-to-work-on-a-well-known-ip"
+        }
+      ]
+    },
+    {
+      "category": "💰 Fundraising 🧧",
+      "entries": [
+        {
+          "caption": "A look at Bidstack raising $11M",
+          "url": "https://www.gamesindustry.biz/bidstack-secures-11m-in-funding-round"
+        }
+      ]
+    }
+  ]
+}

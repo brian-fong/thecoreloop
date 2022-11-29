@@ -1,0 +1,39 @@
+{
+  "heading": "LAG #49",
+  "telegram_message_id": 59,
+  "number": 49,
+  "date": "Thursday September 8th 2022",
+  "content": [
+    {
+      "category": "🔦 Spotlight 🌟",
+      "entries": [
+        {
+          "caption": "A look at Coinbase supporting Ethusiast Gaming (creator of EV.io)",
+          "url": "https://www.theblock.co/post/168726/enthusiast-gaming-taps-coinbase-to-help-build-its-web3-game-offerings?utm_source=telegram1&utm_medium=social"
+        }
+      ]
+    },
+    {
+      "category": "🌊 MARKET ☎️",
+      "entries": [
+        {
+          "caption": "A look at Scopely acquiring Stumble Guys",
+          "url": "https://mobilegamer.biz/scopely-has-acquired-stumble-guys-from-kitka-games/"
+        },
+        {
+          "caption": "A look at GameStop's earnings.  Net Sales $1.14B",
+          "url": "https://www.gamesindustry.biz/gamestop-continues-to-post-losses"
+        }
+      ]
+    },
+    {
+      "category": "💎 Deep Dives 🔎",
+      "entries": [
+        {
+          "caption": "A look at what Players really want from new games",
+          "url": "https://newsletter.gamediscover.co/p/what-do-players-really-want-from"
+        }
+      ]
+    }
+  ]
+}

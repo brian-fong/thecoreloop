@@ -1,0 +1,70 @@
+{
+  "heading": "LAG #42",
+  "telegram_message_id": 52,
+  "number": 42,
+  "date": "Tuesday August 30th 2022",
+  "content": [
+    {
+      "category": "🔦 Spotlight 🌟",
+      "entries": [
+        {
+          "caption": "A look at an interview with Jensen Huang (Cofounder of Nvidia) on the vision for the metaverse",
+          "url": "https://venturebeat.com/games/jensen-huang-interview-how-the-metaverse-vision-will-outlast-any-economic-downturn/"
+        }
+      ]
+    },
+    {
+      "category": "🌊 MARKET ☎️",
+      "entries": [
+        {
+          "caption": "A look at gamers feeling strongly about climate",
+          "url": "https://venturebeat.com/games/gamers-feel-strongly-about-climate-change-according-to-unity-report/"
+        },
+        {
+          "caption": "A look at the investment gaming deals activity of H1 2022 by @naavik_co and @hirocapital",
+          "url": "https://venturebeat.com/games/investgame-releases-report-for-the-first-half-of-2022/"
+        }
+      ]
+    },
+    {
+      "category": "🌈 Platforms 🏔",
+      "entries": [
+        {
+          "caption": "A look at Logitech's cloud gaming handheld device",
+          "url": "https://www.theverge.com/2022/8/30/23328440/logitech-g-gaming-handheld-google-play-cloud-gaming"
+        }
+      ]
+    },
+    {
+      "category": "✨ Web 3️⃣ + Meta 🌎",
+      "entries": [
+        {
+          "caption": "A look at an interview with Jensen Huang (Cofounder of Nvidia) on the vision for the metaverse",
+          "url": "https://venturebeat.com/games/jensen-huang-interview-how-the-metaverse-vision-will-outlast-any-economic-downturn/"
+        },
+        {
+          "caption": "A look at the Meteoric Rise of DigiDaigaku",
+          "url": "https://www.theblockresearch.com/the-meteoric-rise-of-digidaigaku-166499"
+        }
+      ]
+    },
+    {
+      "category": "🧠 Knowledge Hub 📚",
+      "entries": [
+        {
+          "caption": "A look at how to get your game wishlist'd on Steam",
+          "url": "https://www.gamesindustry.biz/earning-wishlists-on-steam-a-case-study"
+        }
+      ]
+    },
+    {
+      "category": "💰 Fundraising 🧧",
+      "entries": [
+        {
+          "caption": "A look at Xterio raising $40M for high-end mobile web3 games",
+          "url": "https://venturebeat.com/games/xterio-raises-40m-for-high-end-mobile-web3-games/"
+        }
+      ]
+    }
+  ]
+}

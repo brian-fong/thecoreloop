@@ -1,0 +1,78 @@
+{
+  "heading": "LAG #78",
+  "telegram_message_id": 88,
+  "number": 78,
+  "date": "Wednesday October 19th 2022",
+  "content": [
+    {
+      "category": "🔦 Spotlight 🌟",
+      "entries": [
+        {
+          "caption": "A look at gaming deals for Q3 by Drake Star",
+          "url": "https://venturebeat.com/games/drake-star-game-deals-picked-up-in-q3-despite-economic-headwinds/"
+        }
+      ]
+    },
+    {
+      "category": "🌊 MARKET ☎️",
+      "entries": [
+        {
+          "caption": "A look at 2022 Mobile App Habit Report.",
+          "url": "https://www.pocketgamer.biz/data-and-research/79965/digital-turbines-mobile-app-habit-report-highlights-what-gamers-want-to-see-before-installing-an-app/"
+        },
+        {
+          "caption": "A look at Data.ai's report.  $1.54B spent per week on mobile games in Q3 2022",
+          "url": "https://venturebeat.com/games/data-ai-1-54b-spent-per-week-on-mobile-games-in-q3-2022/"
+        },
+        {
+          "caption": "A look at gaming deals for Q3 by Drake Star",
+          "url": "https://venturebeat.com/games/drake-star-game-deals-picked-up-in-q3-despite-economic-headwinds/"
+        },
+        {
+          "caption": "A look at Netflix's Q3 earnings by @eric_seufert",
+          "url": "https://mobiledevmemo.com/does-netflixs-q3-earnings-beat-undermine-techs-macro-narrative/"
+        }
+      ]
+    },
+    {
+      "category": "💎 Deep Dives 🔎",
+      "entries": [
+        {
+          "caption": "A look at Homa Games' $100M raise",
+          "url": "https://naavik.co/digest/breaking-down-homa-games-raise"
+        }
+      ]
+    },
+    {
+      "category": "🌈 Platforms 🏔",
+      "entries": [
+        {
+          "caption": "A look at Xbox revving up a mobile games store",
+          "url": "https://www.gamedeveloper.com/mobile/xbox-is-revving-up-a-mobile-games-store"
+        }
+      ]
+    },
+    {
+      "category": "✨ Web 3️⃣ + Meta 🌎",
+      "entries": [
+        {
+          "caption": "A look at Major League Baseball hiring NFT, digital games, and metaverse roles",
+          "url": "https://www.theblock.co/post/178318/major-league-baseball-is-hiring-to-expand-its-nft-digital-games-and-metaverse-presence"
+        }
+      ]
+    },
+    {
+      "category": "🧠 Knowledge Hub 📚",
+      "entries": [
+        {
+          "caption": "A look at Xsolla solutions helping game developers unlock new strategies",
+          "url": "https://venturebeat.com/game-development/as-turbulence-ramps-up-xsolla-solutions-unlock-new-strategies-for-game-developers/"
+        },
+        {
+          "caption": "A look at some tips for more immserive sound design",
+          "url": "https://www.gamesindustry.biz/tips-for-more-immersive-sound-design"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "heading": "LAG #80",
+  "telegram_message_id": 90,
+  "number": 80,
+  "date": "Friday October 21st 2022",
+  "content": [
+    {
+      "category": "🔦 Spotlight 🌟",
+      "entries": [
+        {
+          "caption": "A look at Netflix's game plan",
+          "url": "https://www.gamesindustry.biz/what-is-netflixs-game-plan-this-week-in-business"
+        }
+      ]
+    },
+    {
+      "category": "🌊 MARKET ☎️",
+      "entries": [
+        {
+          "caption": "A look at gaming as a source of income for the Philippine despite industry crackdowns",
+          "url": "https://www.pocketgamer.biz/asia/news/79993/dfnn-gaming-for-profit-will-remain-a-part-of-the-filipino-industry-despite-crackdowns/"
+        },
+        {
+          "caption": "A look at the mobile gaming marketing on track for record breaking year",
+          "url": "https://www.pocketgamer.biz/special-report/79989/the-mobile-gaming-market-is-on-track-for-a-record-breaking-year/"
+        },
+        {
+          "caption": "A look at a Genre Report from Newzoo",
+          "url": "https://newzoo.com/insights/trend-reports/shooter-games-revealed-newzoo-game-genre-report"
+        }
+      ]
+    },
+    {
+      "category": "💎 Deep Dives 🔎",
+      "entries": [
+        {
+          "caption": "A look at which comes first, monetisation or game play? Why not both?",
+          "url": "https://www.pocketgamer.biz/news/79991/which-comes-first-monetisation-or-gameplay-why-not-have-both/"
+        }
+      ]
+    },
+    {
+      "category": "🌈 Platforms 🏔",
+      "entries": [
+        {
+          "caption": "A look at Netflix's game plan",
+          "url": "https://www.gamesindustry.biz/what-is-netflixs-game-plan-this-week-in-business"
+        },
+        {
+          "caption": "A look at Snap missing Q3 revenue, big problems",
+          "url": "https://mobiledevmemo.com/snap-misses-on-q3-revenue-and-its-problem-may-not-be-the-economy/"
+        }
+      ]
+    },
+    {
+      "category": "✨ Web 3️⃣ + Meta 🌎",
+      "entries": [
+        {
+          "caption": "A look at a P2E data-driven platform as the next big thing",
+          "url": "https://www.pocketgamer.biz/news/79992/could-a-play-to-earn-data-driven-platform-be-the-new-big-thing/"
+        },
+        {
+          "caption": "A look at Magic Eden making royalties optional",
+          "url": "https://www.youtube.com/watch?v=qZgaVbXVuAY&ab_channel=Naavik"
+        },
+        {
+          "caption": "A look at Axie Infinity Shards price dropping before investor unlock",
+          "url": "https://www.theblock.co/post/178860/axie-infinity-shards-price-drops-sharply-ahead-of-early-investor-token-unlock"
+        }
+      ]
+    },
+    {
+      "category": "🧠 Knowledge Hub 📚",
+      "entries": [
+        {
+          "caption": "A look at how to choose an art style for your video game",
+          "url": "https://kevurugames.com/blog/choosing-an-art-style-for-your-video-game/"
+        }
+      ]
+    }
+  ]
+}

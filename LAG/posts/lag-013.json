@@ -1,0 +1,56 @@
+{
+  "heading": "LAG #13",
+  "telegram_message_id": 22,
+  "number": 13,
+  "date": "Wednesday July 20th 2022",
+  "content": [
+    {
+      "category": "🔦 Spotlight 🌟",
+      "entries": [
+        {
+          "caption": "A look at Minecraft banning NFTs & Blockchain!",
+          "url": "https://www.gamedeveloper.com/business/third-party-nfts-and-blockchain-tech-are-now-banned-from-minecraft"
+        }
+      ]
+    },
+    {
+      "category": "🌊 MARKET ☎️",
+      "entries": [
+        {
+          "caption": "A look at FaZe Clan going public on Nasdaq.  Didn't look too hot.",
+          "url": "https://venturebeat.com/2022/07/20/faze-clan-goes-public-as-first-esports-and-gamer-lifestyle-brand-on-nasdaq/"
+        },
+        {
+          "caption": "A look at retail momentum across the categories (more than just gaming)",
+          "url": "https://www.npd.com/news/thought-leadership/2022/retail-momentum-ups-and-downs/"
+        }
+      ]
+    },
+    {
+      "category": "💎 Deep Dives 🔎",
+      "entries": [
+        {
+          "caption": "A look at how the future of Hypercasual genre is bundled",
+          "url": "https://naavik.co/digest/hypercasual-bundled-cryptounicorns"
+        }
+      ]
+    },
+    {
+      "category": "🌈 Platforms 🏔",
+      "entries": [
+        {
+          "caption": "A look at Discord voice finally coming to Xbox",
+          "url": "https://www.gameinformer.com/2022/07/20/discord-support-finally-comes-to-xbox"
+        },
+        {
+          "caption": "A look at Netflix Games' August line up",
+          "url": "https://mobilegamer.biz/netflix-games-august-line-up-includes-heads-up-and-thriller-twelve-minutes/"
+        },
+        {
+          "caption": "A look at Minecraft banning NFTs & Blockchain!",
+          "url": "https://www.gamedeveloper.com/business/third-party-nfts-and-blockchain-tech-are-now-banned-from-minecraft"
+        }
+      ]
+    }
+  ]
+}

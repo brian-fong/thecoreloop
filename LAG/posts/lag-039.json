@@ -1,0 +1,89 @@
+{
+  "heading": "LAG #39",
+  "telegram_message_id": 49,
+  "number": 39,
+  "date": "Thursday August 25th 2022",
+  "content": [
+    {
+      "category": "🔦 Spotlight 🌟",
+      "entries": [
+        {
+          "caption": "A look at iHeartRadio trying out Fortnite concert arena",
+          "url": "https://www.theverge.com/2022/8/25/23321395/fortnite-charlie-puth-metaverse-concert-iheartland"
+        }
+      ]
+    },
+    {
+      "category": "💎 Deep Dives 🔎",
+      "entries": [
+        {
+          "caption": "A look at a deep dive into the ART in gaming",
+          "url": "https://www.gamedeveloper.com/art/deep-dive-optimizing-glow-season-in-i-was-a-teenage-exocolonist"
+        },
+        {
+          "caption": "A look at Bandai Namco saying acquisitions is making it hard to work with devs",
+          "url": "https://www.gamedeveloper.com/business/bandai-namco-talks-how-to-secure-ip-in-the-age-of-acquisitions"
+        },
+        {
+          "caption": "A look at Stumble guys crushing $40M rev and 225M downloads",
+          "url": "https://mobilegamer.biz/surprise-smash-stumble-guys-hits-40m-revenue-and-225m-downloads/"
+        },
+        {
+          "caption": "A look at Zynga's history and now",
+          "url": "https://www.gamesindustry.biz/everybody-hates-zynga-10-years-ago-this-month"
+        }
+      ]
+    },
+    {
+      "category": "🌈 Platforms 🏔",
+      "entries": [
+        {
+          "caption": "A look at Valve's long-term vision",
+          "url": "https://www.theverge.com/2022/8/25/23322516/valve-steam-deck-long-term-vision-digital-book-ebook-booklet"
+        },
+        {
+          "caption": "A look at Warner Bros. gaming division",
+          "url": "https://www.axios.com/2022/08/25/warner-bros-games-discovery-david-haddad"
+        },
+        {
+          "caption": "A look at the BioShock movie by Netflix",
+          "url": "https://www.gameinformer.com/gamer-culture/2022/08/25/netflix-has-found-a-director-and-writer-for-its-bioshock-movie"
+        },
+        {
+          "caption": "A look at Horizon Zero Dawn's TV show by Netflix (again!)",
+          "url": "https://www.theverge.com/2022/8/25/23321655/horizon-zero-dawn-netflix-tv-show-series-steve-blackman"
+        },
+        {
+          "caption": "A look at Xbox's cloud gaming trojan horse through your TV",
+          "url": "https://www.gamesindustry.biz/xbox-tv-key-to-taking-cloud-gaming-mainstream"
+        },
+        {
+          "caption": "A look at iHeartRadio trying out Fortnite concert arena",
+          "url": "https://www.theverge.com/2022/8/25/23321395/fortnite-charlie-puth-metaverse-concert-iheartland"
+        }
+      ]
+    },
+    {
+      "category": "✨ Web 3️⃣ + Meta 🌎",
+      "entries": [
+        {
+          "caption": "A look at the State of Crypto Gaming",
+          "url": "https://www.theblockresearch.com/the-state-of-crypto-gaming-165652"
+        },
+        {
+          "caption": "A look at CoinMarketCap's GameFi report",
+          "url": "https://twitter.com/Cov_duk/status/1561962575855702018"
+        }
+      ]
+    },
+    {
+      "category": "🧠 Knowledge Hub 📚",
+      "entries": [
+        {
+          "caption": "A look at how real-time engagement drives retention",
+          "url": "https://www.gamedeveloper.com/webinars/learn-how-real-time-engagement-drives-retention-in-gaming-virtual-spaces"
+        }
+      ]
+    }
+  ]
+}

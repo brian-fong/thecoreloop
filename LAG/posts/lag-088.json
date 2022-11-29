@@ -1,0 +1,69 @@
+{
+  "heading": "LAG #88",
+  "telegram_message_id": 98,
+  "number": 88,
+  "date": "Wednesday November 2nd 2022",
+  "content": [
+    {
+      "category": "🔦 Spotlight 🌟",
+      "entries": [
+        {
+          "caption": "A look at Google Play Android games now available on PC",
+          "url": "https://www.theverge.com/2022/11/2/23436453/google-play-games-android-pc-open-beta"
+        }
+      ]
+    },
+    {
+      "category": "💎 Deep Dives 🔎",
+      "entries": [
+        {
+          "caption": "A look at Rec Room by @naavik_co",
+          "url": "https://naavik.co/digest/mini-spotlight-rec-room"
+        }
+      ]
+    },
+    {
+      "category": "🌈 Platforms 🏔",
+      "entries": [
+        {
+          "caption": "A look at Google Play Android games now available on PC",
+          "url": "https://www.theverge.com/2022/11/2/23436453/google-play-games-android-pc-open-beta"
+        }
+      ]
+    },
+    {
+      "category": "✨ Web 3️⃣ + Meta 🌎",
+      "entries": [
+        {
+          "caption": "A look at Dapper Labs laying off 22% of staff",
+          "url": "https://www.theblock.co/post/182461/dapper-labs-feldman-a-difficult-day-as-company-lays-off-22-of-staff"
+        },
+        {
+          "caption": "A look at Muus Collective teaming up with Revolve Group to blend fashion, games and Web3",
+          "url": "https://venturebeat.com/games/muus-collective-teams-up-with-revolve-group-to-blend-fashion-games-and-web3/"
+        },
+        {
+          "caption": "A look at LooksRare's Royalty Update",
+          "url": "https://www.theblockresearch.com/rapid-insights-looksrares-royalty-update-sees-limited-success-182278"
+        },
+        {
+          "caption": "A look at Game of Thrones NFTs latest effort with crypto collectibles",
+          "url": "https://www.theblock.co/post/182259/game-of-thrones-nfts-latest-effort-to-tempt-fans-with-crypto-collectibles"
+        },
+        {
+          "caption": "A look at VRJam launching Web3 venue for virtual concerts & live events",
+          "url": "https://venturebeat.com/games/vrjam-launches-a-web3-venue-for-virtual-concerts-and-live-events/"
+        }
+      ]
+    },
+    {
+      "category": "💰 Fundraising 🧧",
+      "entries": [
+        {
+          "caption": "A look at Wemade raising $46M",
+          "url": "https://www.theblock.co/post/182099/microsofts-latest-web3-investment-is-in-south-korean-gaming-firm-wemade"
+        }
+      ]
+    }
+  ]
+}

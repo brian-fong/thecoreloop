@@ -1,0 +1,90 @@
+{
+  "heading": "LAG #19",
+  "telegram_message_id": 29,
+  "number": 19,
+  "date": "Thursday July 28th 2022",
+  "content": [
+    {
+      "category": "🔦 Spotlight 🌟",
+      "entries": [
+        {
+          "caption": "A look at Diablo Immortal hitting $100M in 2 months.",
+          "url": "https://mobilegamer.biz/diablo-immortal-hits-100m-revenue-in-under-two-months/"
+        }
+      ]
+    },
+    {
+      "category": "🌊 MARKET ☎️",
+      "entries": [
+        {
+          "caption": "A look at Intel rev falling 17%",
+          "url": "https://venturebeat.com/2022/07/28/intel-misses-targets-in-q2-with-revenue-falling-17-to-15-3b/"
+        },
+        {
+          "caption": "A look at FaZe Clan's streaming stats in Q2.  46M hours watched.  FAZE trading at $778M mkt cap",
+          "url": "https://streamhatchet.com/2022/07/27/blog-faze-clan-generated-46-million-hours-watched-in-q2-2022/"
+        }
+      ]
+    },
+    {
+      "category": "💎 Deep Dives 🔎",
+      "entries": [
+        {
+          "caption": "A look at a canceled Kickstarter game openning its source code",
+          "url": "https://www.gamedeveloper.com/production/canceled-kickstarter-game-i-limit-theory-i-opens-its-source-code"
+        },
+        {
+          "caption": "A look at Diablo Immortal hitting $100M in 2 months.",
+          "url": "https://mobilegamer.biz/diablo-immortal-hits-100m-revenue-in-under-two-months/"
+        },
+        {
+          "caption": "A look at a simulation of Kmart in VR Chat… with real employees",
+          "url": "https://twitter.com/CoachDorntastic/status/1552358470141214720?s=20&t=TVr7_OHGuyW2x3EuBb3XAA"
+        }
+      ]
+    },
+    {
+      "category": "🌈 Platforms 🏔",
+      "entries": [
+        {
+          "caption": "A look at Snapchat launching AR horror game",
+          "url": "https://venturebeat.com/2022/07/28/snapchat-launches-ar-horror-game-ghost-phone/"
+        },
+        {
+          "caption": "A look at PlayStation mobile controller officially licensed by Backbone",
+          "url": "https://www.gamedeveloper.com/business/backbone-has-made-an-officially-licensed-playstation-mobile-controller"
+        }
+      ]
+    },
+    {
+      "category": "✨ Web 3️⃣ + Meta 🌎",
+      "entries": [
+        {
+          "caption": "A look at 0xKepler's gaming thesis.  Gud read.  Shoutout to @0xKepler",
+          "url": "https://twitter.com/0xKepler/status/1552607056514846720"
+        },
+        {
+          "caption": "A look at Ryan's teardown of Rise of Kingdoms @0xRyze",
+          "url": "https://twitter.com/0xRyze/status/1552713612254662656?s=20&t=3COLPbTORGBoUvxtYDZ3Og"
+        },
+        {
+          "caption": "A look at @0xtaetaehoho 's @goblinsax podcast on @hookprotocol",
+          "url": "https://twitter.com/0xtaetaehoho/status/1552707320848625670?s=20&t=3COLPbTORGBoUvxtYDZ3Og"
+        },
+        {
+          "caption": "A look at Axie Infinity's CEO moving some AXS to Binance before announcing the hack",
+          "url": "https://www.bloomberg.com/news/articles/2022-07-28/axie-ceo-moved-axs-tokens-to-binance-before-disclosing-ronin-hack"
+        }
+      ]
+    },
+    {
+      "category": "💰 Fundraising 🧧",
+      "entries": [
+        {
+          "caption": "A look at @mapleLeafcap 's thread on @MightyBearGames",
+          "url": "https://twitter.com/MapleLeafCap/status/1552597192372027392"
+        }
+      ]
+    }
+  ]
+}

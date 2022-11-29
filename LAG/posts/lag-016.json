@@ -1,0 +1,89 @@
+{
+  "heading": "LAG #16",
+  "telegram_message_id": 26,
+  "number": 16,
+  "date": "Monday July 25th 2022",
+  "content": [
+    {
+      "category": "🔦 Spotlight 🌟",
+      "entries": [
+        {
+          "caption": "A look at Roblox's developer unit economics.",
+          "url": "https://naavik.co/digest/roblox-developer-unit-economics"
+        }
+      ]
+    },
+    {
+      "category": "🌊 MARKET ☎️",
+      "entries": [
+        {
+          "caption": "A look at the Chinese market's decline for the first time in 14 years",
+          "url": "https://www.gamesindustry.biz/articles/2022-07-22-chinese-market-declines-for-first-time-in-10-years"
+        },
+        {
+          "caption": "A look at an indue studio unionising in LA.  The games industry is known for 'crunch' and it's unsurprising to see the desire to unionize",
+          "url": "https://www.gamesindustry.biz/articles/2022-07-25-indie-studio-tender-claws-to-unionise"
+        }
+      ]
+    },
+    {
+      "category": "💎 Deep Dives 🔎",
+      "entries": [
+        {
+          "caption": "A look at revolutionizing the farming genre with mechs",
+          "url": "https://www.gamesindustry.biz/articles/2022-07-22-revolutionising-the-farming-genre-with-mechs-big-robots-dont-have-to-fight-godzilla-to-be-cool"
+        }
+      ]
+    },
+    {
+      "category": "🌈 Platforms 🏔",
+      "entries": [
+        {
+          "caption": "A look at what Roblox needed to change to release its game in China",
+          "url": "https://www.gamedeveloper.com/business/roblox-leaked-documents-chinese-release"
+        },
+        {
+          "caption": "A look at Roblox's developer unit economics.",
+          "url": "https://naavik.co/digest/roblox-developer-unit-economics"
+        }
+      ]
+    },
+    {
+      "category": "✨ Web 3️⃣ + Meta 🌎",
+      "entries": [
+        {
+          "caption": "A look at Axie Infinity's Axie Creator School!",
+          "url": "https://twitter.com/AxieInfinity/status/1551562146261225472"
+        },
+        {
+          "caption": "A look at Webaverse's special drop on Aug 3rd",
+          "url": "https://twitter.com/webaverse/status/1551575739476377602"
+        },
+        {
+          "caption": "A look at Dark Forest's new marketplace",
+          "url": "https://blog.zkga.me/nightmarket"
+        },
+        {
+          "caption": "A look at Parallel's teaser trailer @ParallelNFT",
+          "url": "https://twitter.com/ParallelNFT/status/1551686644457259015"
+        },
+        {
+          "caption": "A look at Non-Fngitble Films' trailer",
+          "url": "https://twitter.com/NonFungibleFilm/status/1551590962987560960"
+        },
+        {
+          "caption": "A look at cat's take on metaverse money.  @CL207",
+          "url": "https://twitter.com/CL207/status/1551598109947359232"
+        },
+        {
+          "caption": "A look at the Open Metaverse Alliance for web3.  This sounds like the Metaverse Standard Forum amd the Blockchain Game Alliance",
+          "url": "https://twitter.com/staratlas/status/1551602683630432257"
+        },
+        {
+          "caption": "A look at Dragonfly's Hasseb Qureshi web3 entrepreneurship class.  @hosseeb",
+          "url": "https://twitter.com/hosseeb/status/1551657284081635328"
+        }
+      ]
+    }
+  ]
+}

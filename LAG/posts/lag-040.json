@@ -1,0 +1,52 @@
+{
+  "heading": "LAG #40",
+  "telegram_message_id": 50,
+  "number": 40,
+  "date": "Friday August 26th 2022",
+  "content": [
+    {
+      "category": "🔦 Spotlight 🌟",
+      "entries": [
+        {
+          "caption": "A look at Beijing announcing a two year Metaverse innovation and development plan",
+          "url": "https://twitter.com/ballmatthew/status/1562899937225949185"
+        }
+      ]
+    },
+    {
+      "category": "🌊 MARKET ☎️",
+      "entries": [
+        {
+          "caption": "A look at Tomb Raider, Deus Ex going to Embracer",
+          "url": "https://www.gamedeveloper.com/business/tomb-raider-deus-ex-and-more-are-now-officially-embracer-franchises"
+        },
+        {
+          "caption": "A look at Gamescom by Dean from GamesBeat",
+          "url": "https://venturebeat.com/games/the-deanbeat-gamescom-can-restore-your-faith-in-gaming-as-economy-slows/"
+        },
+        {
+          "caption": "A look at Beijing announcing a two year Metaverse innovation and development plan",
+          "url": "https://twitter.com/ballmatthew/status/1562899937225949185"
+        }
+      ]
+    },
+    {
+      "category": "💎 Deep Dives 🔎",
+      "entries": [
+        {
+          "caption": "A look at the hottest game on mobile",
+          "url": "https://www.axios.com/2022/08/26/survivorio-habby-tiktok-ios-android"
+        }
+      ]
+    },
+    {
+      "category": "🌈 Platforms 🏔",
+      "entries": [
+        {
+          "caption": "A look at Meta's new VR headset",
+          "url": "https://www.gamedeveloper.com/business/meta-s-next-vr-headset-confirmed-for-october-release"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "heading": "LAG #12",
+  "telegram_message_id": 21,
+  "number": 12,
+  "date": "Tuesday July 19th 2022",
+  "content": [
+    {
+      "category": "🔦 Spotlight 🌟",
+      "entries": [
+        {
+          "caption": "A look at GDC 2023 Core Concept talks. GDC is one of the TOP conferences in gaming.  Pro-tip: the prev talks could be found at the GDC Vault.  A lot of good content there",
+          "url": "https://www.gamedeveloper.com/gdc/gdc-2023-core-concepts-talk-submissions-are-now-open"
+        }
+      ]
+    },
+    {
+      "category": "🌊 MARKET ☎️",
+      "entries": [
+        {
+          "caption": "A look at the M&A Activity in H1 2022 by Drake Star Partners",
+          "url": "https://venturebeat.com/2022/07/19/drake-star-partners-gaming-ma-and-investments-hit-651-deals-worth-107b-in-first-half/"
+        },
+        {
+          "caption": "A look at how investment in game companies soared in H1 2022",
+          "url": "https://www.axios.com/2022/07/19/video-game-deals-drakestar-2022"
+        }
+      ]
+    },
+    {
+      "category": "💎 Deep Dives 🔎",
+      "entries": [
+        {
+          "caption": "A look at LoL: Wild Rift hitting $500M in lifetime rev.",
+          "url": "https://mobilegamer.biz/league-of-legends-wild-rift-hits-500m-in-lifetime-player-spend/"
+        },
+        {
+          "caption": "A look at InnoGames' salary transparency report.  It's worth a look.  $87k for expert game developer",
+          "url": "https://www.gamesindustry.biz/articles/2022-07-19-innogames-shares-salary-transparency-report-as-a-matter-of-fairness"
+        }
+      ]
+    },
+    {
+      "category": "🌈 Platforms 🏔",
+      "entries": [
+        {
+          "caption": "A look at a group of Blizzard staffers filing for Union election.  QA is a vital yet almost always underrated and underappreciated division.",
+          "url": "https://www.gamesindustry.biz/articles/2022-07-19-blizzard-albany-staffers-file-for-union-election-with-the-national-labor-relations-board"
+        },
+        {
+          "caption": "A look at Google Play letting app devs used 3rd party payments to comply with EU -- sadly its just for NON-GAMING apps.",
+          "url": "https://www.gamedeveloper.com/business/google-play-will-let-app-devs-use-third-party-payments-to-comply-with-new-eu-rules"
+        },
+        {
+          "caption": "A look at PlayStation Store's lawsuit for stopping 3rdparty retailers to sell digital codes for PS games.",
+          "url": "https://www.gamedeveloper.com/business/playstation-store-class-action-lawsuit-dismissed"
+        }
+      ]
+    },
+    {
+      "category": "✨ Web 3️⃣ + Meta 🌎",
+      "entries": [
+        {
+          "caption": "A look at TenthPlanet, a studio founded by former TikTok gaming leaders",
+          "url": "https://venturebeat.com/2022/07/19/tenthplanet-unveils-two-ambitious-blockchain-games/"
+        }
+      ]
+    },
+    {
+      "category": "🧠 Knowledge Hub 📚",
+      "entries": [
+        {
+          "caption": "A look at GDC 2023 Core Concept talks. GDC is one of the TOP conferences in gaming.  Pro-tip: the prev talks could be found at the GDC Vault.  A lot of good content there",
+          "url": "https://www.gamedeveloper.com/gdc/gdc-2023-core-concepts-talk-submissions-are-now-open"
+        }
+      ]
+    },
+    {
+      "category": "💰 Fundraising 🧧",
+      "entries": [
+        {
+          "caption": "A look at Zebedee, a blockchain game payments system built on Bitcion",
+          "url": "https://venturebeat.com/2022/07/19/zebedee-raised-35m-from-investors-including-square-enix-for-blockchain-game-payments/"
+        },
+        {
+          "caption": "A look at Nekcom's $8M round with Galaxy Interactive leading",
+          "url": "https://venturebeat.com/2022/07/19/nekcom-raises-8-million-to-fuel-game-development-and-expansion/"
+        }
+      ]
+    }
+  ]
+}

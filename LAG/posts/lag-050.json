@@ -1,0 +1,102 @@
+{
+  "heading": "LAG #50",
+  "telegram_message_id": 60,
+  "number": 50,
+  "date": "Friday September 9th 2022",
+  "content": [
+    {
+      "category": "🔦 Spotlight 🌟",
+      "entries": [
+        {
+          "caption": "A look at the challenges in the technology gap to build web3 mobile games",
+          "url": "https://www.pocketgamer.biz/asia/comment-and-opinion/79562/building-blockchain-games/"
+        }
+      ]
+    },
+    {
+      "category": "💎 Deep Dives 🔎",
+      "entries": [
+        {
+          "caption": "A look at how Runescape is workign with the community to build better MMO experience",
+          "url": "https://www.gamedeveloper.com/production/how-runescape-dev-jagex-is-working-with-players-to-help-the-mmo-adapt-and-thrive"
+        },
+        {
+          "caption": "A look at learnings from Downsized Social media Games by @naavik_co",
+          "url": "https://www.youtube.com/watch?v=_rvklM50zhQ&ab_channel=Naavik"
+        },
+        {
+          "caption": "A look at Audio Ads by Gadsme",
+          "url": "https://www.pocketgamer.biz/news/79580/gadsme-branching-into-audio-ads/"
+        }
+      ]
+    },
+    {
+      "category": "🌈 Platforms 🏔",
+      "entries": [
+        {
+          "caption": "A look at Roblox's anti-cloning measures",
+          "url": "https://www.gamedeveloper.com/programming/-i-roblox-i-takes-aim-at-game-cloning-in-new-developer-update"
+        },
+        {
+          "caption": "A look at Roblox rolling out higher fidelity graphics and other parameters",
+          "url": "https://venturebeat.com/games/roblox-is-rolling-out-voice-chat-high-fidelity-avatars-and-age-recommendations/"
+        },
+        {
+          "caption": "A look at Social platforms giving up on gaming",
+          "url": "https://www.gamesindustry.biz/social-platform-gaming-ambitions-disappear-in-a-snap-this-week-in-business"
+        }
+      ]
+    },
+    {
+      "category": "✨ Web 3️⃣ + Meta 🌎",
+      "entries": [
+        {
+          "caption": "A look at Indonesia leaning towards blockchain gaming by @Dean from GamesBeat",
+          "url": "https://venturebeat.com/games/the-deanbeat-indonesias-growing-game-economy-leans-toward-blockchain/"
+        },
+        {
+          "caption": "A look at Atari launching an experience in The Sandbox",
+          "url": "https://venturebeat.com/games/atari-launches-its-sunnyvale-experience-in-the-sandbox-metaverse/"
+        },
+        {
+          "caption": "A look at Sky Mavis teaming up with Google Cloud to secure blockchain network",
+          "url": "https://venturebeat.com/games/sky-mavis-teams-with-google-cloud-to-secure-blockchain-network/"
+        },
+        {
+          "caption": "A look at the challenges in the technology gap to build web3 mobile games",
+          "url": "https://www.pocketgamer.biz/asia/comment-and-opinion/79562/building-blockchain-games/"
+        },
+        {
+          "caption": "A look at DBS Bank coming to the metaverse",
+          "url": "https://twitter.com/dbsbank/status/1568085536677445633?s=20&t=O7lS17aNe9Q17wwJXYtSdQ"
+        }
+      ]
+    },
+    {
+      "category": "🧠 Knowledge Hub 📚",
+      "entries": [
+        {
+          "caption": "A look at a conversation re: mobile winners with Joakim Achren (founder of Elite Game Developers and investing at Play Ventures",
+          "url": "https://www.pocketgamer.biz/profile/79584/the-future-winners-on-mobile-will-be-the-ones-who-double-down-on-live-ops-and-the-content-treadmill/"
+        }
+      ]
+    },
+    {
+      "category": "💰 Fundraising 🧧",
+      "entries": [
+        {
+          "caption": "A look at Revolving Games raised $13.2M",
+          "url": "https://www.theblock.co/post/168754/web3-game-developer-revolving-games-closes-25-million-seed-funding-round"
+        },
+        {
+          "caption": "A look at Animoca brand raises $110M",
+          "url": "https://www.pocketgamer.biz/asia/news/79585/animoca-brand-raises-110-million-in-funding/"
+        },
+        {
+          "caption": "A look at Limit Break raising $200M",
+          "url": "https://www.theblock.co/post/166268/mobile-gaming-firm-limit-break-raises-200-million-across-two-rounds"
+        }
+      ]
+    }
+  ]
+}

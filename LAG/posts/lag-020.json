@@ -1,0 +1,82 @@
+{
+  "heading": "LAG #20",
+  "telegram_message_id": 30,
+  "number": 20,
+  "date": "Friday July 29th 2022",
+  "content": [
+    {
+      "category": "🔦 Spotlight 🌟",
+      "entries": [
+        {
+          "caption": "A look at SudoSwap brought to you by The Block Research  @sudoswap @0xmons @0xhamachi @boredGenius h/t to these guys who kept building since I met them in Sept in NY last yr",
+          "url": "https://www.theblockresearch.com/sudoswap-reconceptualizing-nft-trading-160275"
+        }
+      ]
+    },
+    {
+      "category": "🌊 MARKET ☎️",
+      "entries": [
+        {
+          "caption": "A look at Hypercasual genre taking a hit as Google cracks down on ads",
+          "url": "https://mobilegamer.biz/hypercasual-to-take-a-hit-as-google-cracks-down-on-intrusive-ads/"
+        },
+        {
+          "caption": "A look at PlayStation's Q1 rev dip by 2% to $4.5B",
+          "url": "https://www.gamesindustry.biz/playstations-q1-revenues-dip-by-2-to-45-billion-amid-sales-decline-increasing-costs"
+        },
+        {
+          "caption": "A look at Twitch viewership fall agaisnt Facebook Gaming",
+          "url": "https://www.gamesindustry.biz/twitch-viewership-fell-as-facebook-gaming-rose-in-june"
+        },
+        {
+          "caption": "A look at @eric_seufert unpacking Meta's Q2 2022 earnings",
+          "url": "https://mobiledevmemo.com/unpacking-metas-q2-2022-earnings-measurement-still-looms-large/"
+        },
+        {
+          "caption": "A look at Mobile games viewership growing on YouTube but not Twitch",
+          "url": "https://venturebeat.com/2022/07/29/streamelements-mobile-games-are-growing-on-youtube-but-not-twitch/"
+        }
+      ]
+    },
+    {
+      "category": "💎 Deep Dives 🔎",
+      "entries": [
+        {
+          "caption": "A look at Super Evil Megacorp's learning form Vainglory",
+          "url": "https://mobilegamer.biz/how-super-evil-megacorp-took-everything-it-learned-from-vainglory-and-put-it-into-catalyst-black/"
+        },
+        {
+          "caption": "A look at the Anti-Defamation League's study on Minecraft servers.  46% experienced harrassment",
+          "url": "https://www.gamesindustry.biz/adl-studies-hate-harassment-on-minecraft-servers"
+        }
+      ]
+    },
+    {
+      "category": "🌈 Platforms 🏔",
+      "entries": [
+        {
+          "caption": "A look at PS5 sales hitting 21.7M units but gameplay time declined by 15% YoY",
+          "url": "https://www.gamedeveloper.com/business/ps5-sales-hit-21-7-million-units-but-playstation-owners-are-spending-less-time-playing-games"
+        }
+      ]
+    },
+    {
+      "category": "✨ Web 3️⃣ + Meta 🌎",
+      "entries": [
+        {
+          "caption": "A look at SudoSwap brought to you by The Block Research  @sudoswap @0xmons @0xhamachi @boredGenius h/t to these guys who kept building since I met them in Sept in NY last yr",
+          "url": "https://www.theblockresearch.com/sudoswap-reconceptualizing-nft-trading-160275"
+        }
+      ]
+    },
+    {
+      "category": "🧠 Knowledge Hub 📚",
+      "entries": [
+        {
+          "caption": "A look at Newzoo's report on IP-Based Mobile Games",
+          "url": "https://newzoo.com/insights/trend-reports/ip-based-mobile-games-report-2022"
+        }
+      ]
+    }
+  ]
+}

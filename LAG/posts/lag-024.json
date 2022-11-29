@@ -1,0 +1,64 @@
+{
+  "heading": "LAG #24",
+  "telegram_message_id": 34,
+  "number": 24,
+  "date": "Thursday August 4th 2022",
+  "content": [
+    {
+      "category": "🔦 Spotlight 🌟",
+      "entries": [
+        {
+          "caption": "A look at @TencentGames seeking to become @Ubisoft 's largest shareholder",
+          "url": "https://www.gamedeveloper.com/business/report-tencent-seeking-to-become-ubisoft-s-single-largest-shareholder"
+        }
+      ]
+    },
+    {
+      "category": "🌊 MARKET ☎️",
+      "entries": [
+        {
+          "caption": "A look at @TencentGames seeking to become @Ubisoft 's largest shareholder",
+          "url": "https://www.gamedeveloper.com/business/report-tencent-seeking-to-become-ubisoft-s-single-largest-shareholder"
+        },
+        {
+          "caption": "A look at Jam City laying off hundreds (17%) of its staff. @JamCityHQ",
+          "url": "https://www.gamedeveloper.com/business/mobile-game-studio-jam-city-lays-off-staff"
+        },
+        {
+          "caption": "A look at Warner Bros. quarterly financials.  $2.8B in rev.  @wbgames",
+          "url": "https://www.gamedeveloper.com/business/games-contributed-strongly-to-warner-bros-discovery-s-quarterly-financials"
+        }
+      ]
+    },
+    {
+      "category": "💎 Deep Dives 🔎",
+      "entries": [
+        {
+          "caption": "A look at how IP can help Mobile overcome challenges by @newzooHQ",
+          "url": "https://newzoo.com/insights/articles/mobile-developers-are-leveraging-the-power-of-entertainment-ip-to-offset-mobiles-biggest-challenges"
+        },
+        {
+          "caption": "A look at Mobile Game Market Review in July 2022 by the fine folks over @GameRefinery",
+          "url": "https://www.gamerefinery.com/mobile-game-market-review-july-2022/"
+        }
+      ]
+    },
+    {
+      "category": "🌈 Platforms 🏔",
+      "entries": [
+        {
+          "caption": "A look at @Activision overreliance on @CallofDuty (single franchise)",
+          "url": "https://www.axios.com/2022/08/04/activision-call-of-duty-quarterly-earnings"
+        },
+        {
+          "caption": "A look at @JoinSuperLeague publishing @Roblox titles (!!)",
+          "url": "https://venturebeat.com/2022/08/04/super-league-gaming-now-publisher-of-roblox-title-anime-battlegrounds-x/"
+        },
+        {
+          "caption": "A look at the anime Bakugan being streamed INSIDE Roblox",
+          "url": "https://venturebeat.com/2022/08/04/spin-master-to-play-bakugan-anime-in-roblox-as-metaverse-experience/"
+        }
+      ]
+    }
+  ]
+}

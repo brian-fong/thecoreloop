@@ -1,0 +1,73 @@
+{
+  "heading": "LAG #11",
+  "telegram_message_id": 20,
+  "number": 11,
+  "date": "Monday July 18th 2022",
+  "content": [
+    {
+      "category": "🔦 Spotlight 🌟",
+      "entries": [
+        {
+          "caption": "A look at the economics of the Metaverse",
+          "url": "https://mobiledevmemo.com/the-economics-of-infinity-a-conversation-with-matthew-ball/"
+        }
+      ]
+    },
+    {
+      "category": "🌊 MARKET ☎️",
+      "entries": [
+        {
+          "caption": "A look at antitrust regulations and mobile gaming by Konvoy.",
+          "url": "https://www.konvoy.vc/newsletter/us-regulation-likely-to-expand-mobile-gaming"
+        },
+        {
+          "caption": "A look at a consolidated analysis of the Unity x Iron Source merger",
+          "url": "https://mobilegamer.biz/unity-x-ironsource-a-smart-deal-or-two-drunks-holding-each-other-up/"
+        },
+        {
+          "caption": "A look at the UK urging the games industry to police its loot box problem",
+          "url": "https://www.gamesindustry.biz/articles/2022-07-17-the-games-industry-is-given-one-more-shot-to-fix-its-loot-box-problem-opinion"
+        }
+      ]
+    },
+    {
+      "category": "💎 Deep Dives 🔎",
+      "entries": [
+        {
+          "caption": "A look at how LoL's Champions are designed.",
+          "url": "https://www.gamedeveloper.com/pc/behind-the-design-of-league-of-legends-bel-veth"
+        },
+        {
+          "caption": "A look at the economics of the Metaverse",
+          "url": "https://mobiledevmemo.com/the-economics-of-infinity-a-conversation-with-matthew-ball/"
+        }
+      ]
+    },
+    {
+      "category": "🧠 Knowledge Hub 📚",
+      "entries": [
+        {
+          "caption": "A look at what it takes to be a great game producer",
+          "url": "https://www.gamesindustry.biz/articles/2022-07-18-what-it-takes-to-be-a-great-game-producer"
+        }
+      ]
+    },
+    {
+      "category": "🌈 Platforms 🏔",
+      "entries": [
+        {
+          "caption": "A look at how Riot is partnering up with AWS to add analytics to esports",
+          "url": "https://venturebeat.com/2022/07/18/riot-games-and-aws-are-teaming-up-to-deliver-fresh-esports-content/"
+        },
+        {
+          "caption": "A look at a new indie publisher: Hook by Digital Bros (parent co of 505 games)",
+          "url": "https://www.gamesindustry.biz/articles/2022-07-15-digital-bros-forms-hook-an-indie-publisher-with-aaa-resources"
+        },
+        {
+          "caption": "A look at Russian tech giants planning to create a national game engine",
+          "url": "https://www.gamesindustry.biz/articles/2022-07-18-russian-tech-giants-in-talks-to-create-a-national-game-engine"
+        }
+      ]
+    }
+  ]
+}

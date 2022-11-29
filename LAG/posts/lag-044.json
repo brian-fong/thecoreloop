@@ -1,0 +1,39 @@
+{
+  "heading": "LAG #44",
+  "telegram_message_id": 54,
+  "number": 44,
+  "date": "Thursday September 1st 2022",
+  "content": [
+    {
+      "category": "🔦 Spotlight 🌟",
+      "entries": [
+        {
+          "caption": "A look at League of Legends: Wild Rift pulling in $750M in global spending",
+          "url": "https://www.gamesindustry.biz/league-of-legends-wild-rift-pulls-in-750m-global-player-spending"
+        }
+      ]
+    },
+    {
+      "category": "💎 Deep Dives 🔎",
+      "entries": [
+        {
+          "caption": "A look at the ticking time bomb of F2P games",
+          "url": "https://www.theverge.com/2022/9/1/23330632/free-to-play-gacha-games-closures-dragalia-lost-kingdom-hearts"
+        },
+        {
+          "caption": "A look at Survivor.io passing $15M IAP Rev and 12M Downloads",
+          "url": "https://mobilegamer.biz/tiktok-drives-habbys-survivor-io-past-15m-iap-revenue-12m-downloads/"
+        }
+      ]
+    },
+    {
+      "category": "🌈 Platforms 🏔",
+      "entries": [
+        {
+          "caption": "A look at PlayStation VR2 being easier to port to other consoles",
+          "url": "https://www.gamedeveloper.com/production/playstation-vr2-will-be-easier-to-develop-ports-for-says-sony"
+        }
+      ]
+    }
+  ]
+}
