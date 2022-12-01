@@ -1,7 +1,6 @@
 {
   "heading": "LAG #68",
   "telegram_message_id": 78,
-  "number": 68,
   "date": "Wednesday October 5th 2022",
   "content": [
     {
@@ -57,5 +56,6 @@
         }
       ]
     }
-  ]
+  ],
+  "number": 68
 }
