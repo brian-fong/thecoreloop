@@ -17,28 +17,32 @@ export interface CategoryGroup {
   entries: Entry[];
 }
 
+export interface StringMap {
+  [key: string]: string;
+}
+
 // String array containing Categories keywords
-export const CATEGORIES: string[] = [
-  "‼️ SPECIAL INSIGHTS 👀",
-  "🔦 Spotlight 🌟",
-  "🌊 MARKET ☎️ ",
-  "🧠 Knowledge Hub 📚",
-  "💎 Deep Dives 🔎",
-  "🌈 Platforms 🏔",
-  "✨ Web 3️⃣ + Meta  🌎 ",
-  "💰 Fundraising 🧧",
-  "👾 Game & Stats Releases 🎮",
-];
+export const CATEGORIES: StringMap = {
+  "‼️ SPECIAL INSIGHTS 👀": "SPECIAL INSIGHTS",
+  "🔦 Spotlight 🌟": "SPOTLIGHT",
+  "🌊 MARKET ☎️": "MARKET",
+  "🧠 Knowledge Hub 📚": "KNOWLEDGE HUB",
+  "💎 Deep Dives 🔎": "DEEP DIVES",
+  "🌈 Platforms 🏔": "PLATFORMS",
+  "✨ Web 3️⃣ + Meta 🌎": "WEB3 + META",
+  "💰 Fundraising 🧧": "FUNDRAISING",
+  "👾 Game & Stats Releases 🎮": "GAME & STATS RELEASES",
+};
 
 export class LAG {
   // telegram_message: string = "N/A";
   heading: string = "N/A";
   telegram_message_id: number = -1;
-  number: number = -1;
+  number: number;
   date: string = "N/A";
   content: CategoryGroup[] = [];
 
-  constructor(message: string, telegram_message_id: number = -1) {
+  constructor(message: string, telegram_message_id: number) {
     // Assign Telegram message and message ID
     // this.telegram_message = message;
     this.telegram_message_id = telegram_message_id;
@@ -77,6 +81,8 @@ export class LAG {
       const line = lines[i];
       if (isCategory(line)) category_indices.push(i);
     }
+
+    if (category_indices.length == 0) throw Error("No categories found");
 
     // Organize content within LAG post
     let content: CategoryGroup[] = [];  // Initialize content array
@@ -143,23 +149,36 @@ export class LAG {
 
 // Check if given string contains keyphrases
 export function isCategory(line: string): boolean {
-  for (const category of CATEGORIES) {
+  // Check if a category has been found
+  let category_found = false;
+  const categories = Object.keys(CATEGORIES);
+  for (const category of categories) {
     const keywords: string[] = category
       .split(" ")
       .filter(word => word.length > 0)
       .map(word => word.toLowerCase());
 
-    let category_found = true;
+    // Check if each category keyword is present in line
     for (const keyword of keywords) {
-      if (!line.toLowerCase().includes(keyword)) category_found = false;
+      if (line.toLowerCase().includes(keyword)) keywords.shift();
+      if (keywords.length == 0) category_found = true;
     }
-    if (category_found) return true;
+    if (category_found) break;
   }
-  return false;
+
+  // If category found, check if line is exact match to official category
+  if (category_found && !categories.includes(line)) category_found = false;
+  
+  return category_found;
 }
 
 // Check if given string contains a URL
 export function isURL(line: string): boolean {
   return Boolean(new URL(line));
+}
+
+// Check if LAG post contains a Spotlight article 
+export function hasSpotlight(line: string): boolean {
+  return true;
 }
 

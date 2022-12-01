@@ -3,7 +3,7 @@ import fs from "fs";
 import path from "path";
 import { LAG } from "../LAG";
 import { TelegramClient } from "telegram";
-import { createTelegramClient, readMessages } from "../telegram";
+import { createTelegramClient, TelegramIndex, readIndex, readMessages } from "../telegram";
 
 // Initialize pretty-logger
 import PrettyLogger from "../helper/pretty-log";
@@ -13,7 +13,6 @@ const plog: PrettyLogger = new PrettyLogger(2);
 const string_session: string = process.env.TELEGRAM_STRING_SESSION!;
 
 // Filepaths 
-const FILEPATH_INDEX: string = path.join(__dirname, "../../LAG/telegram-index.json");
 const FILEPATH_POSTS_DIR: string = path.join(__dirname, "../../LAG/posts/");
 
 async function main() {
@@ -22,7 +21,7 @@ async function main() {
   try {
     // Read Telegram Index
     plog.log("Reading Telegram Index . . . ", 0, 0);
-    const telegram_index: number[] = JSON.parse(fs.readFileSync(FILEPATH_INDEX, { encoding: "utf-8" }));
+    const telegram_index: TelegramIndex = readIndex();
     plog.done("Done", 0, 1);
     
     // Connect to Telegram
@@ -32,7 +31,8 @@ async function main() {
 
     // Read Telegram messages
     plog.log("Reading Telegram messages . . . ", 0, 0);
-    const messages: string[] = await readMessages(client, telegram_index);
+    const message_ids: number[] = Object.keys(telegram_index).map(message_id => Number(message_id));
+    const messages: string[] = await readMessages(client, "thecoreloop", message_ids);
     plog.done("Done", 0, 2);
 
     // Iterate through Telegram messages
@@ -50,7 +50,8 @@ async function main() {
       // Write result to .json file 
       const filename = `lag-${lag.number.toString().padStart(3, "0")}.json`;
       const filepath = path.join(FILEPATH_POSTS_DIR, filename);
-      plog.log(`Writing to file: ${filepath} . . . `, 1, 0);
+      const filepath_short = filepath.split("/").slice(-4).join("/");
+      plog.log(`Writing to file: /${filepath_short} . . . `, 1, 0);
       fs.writeFileSync(
         filepath, 
         JSON.stringify(lag, null, 2)
