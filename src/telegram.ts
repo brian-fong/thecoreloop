@@ -1,26 +1,25 @@
-// Dependencies
+// === Node Modules ===
 require('dotenv').config();
 import fs from "fs";
 import path from "path";
-import { LAG } from "./LAG";
 const input = require("input");
 import { Api, TelegramClient } from "telegram";
 import { StringSession } from "telegram/sessions";
 import { LogLevel } from "telegram/extensions/Logger";
 
-// Initialize pretty logger
+// === Local Modules ===
+import { LAG } from "./LAG";
 import PrettyLogger from "./helper/pretty-log";
 const plog: PrettyLogger = new PrettyLogger(2);
 
-// Telegram API keys
-const API_ID = Number(process.env.TELEGRAM_API_ID)!;
-const API_HASH = process.env.TELEGRAM_API_HASH!;
+// === Types ===
+import { TelegramIndex } from "./types";
 
-export interface TelegramIndex {
-  [key: number]: number;
-}
+// === Telegram API keys ===
+const API_ID: number = Number(process.env.TELEGRAM_API_ID)!;
+const API_HASH: string = process.env.TELEGRAM_API_HASH!;
 
-// Create Telegram client
+// Create <TelegramClient> object; requires Telegram user credentials 
 export async function createTelegramClient(string_session: string = ""): Promise<TelegramClient> {
   // Instantiate <TelegramClient> object
   const client: TelegramClient = new TelegramClient(
@@ -30,7 +29,8 @@ export async function createTelegramClient(string_session: string = ""): Promise
     { connectionRetries: 5 },
   );
 
-  // If string_session is undefined/invalid, then prompt user for Telegram credentials (terminal-input)
+  // If string_session is undefined/invalid, then prompt user 
+  //   for Telegram credentials within the terminal
   if (string_session == "" || !client) {
     await client.start({
       phoneNumber: async () => await input.text("Phone Number (include +1 for US): "),
@@ -40,66 +40,58 @@ export async function createTelegramClient(string_session: string = ""): Promise
     });
   }
 
-  // Connect to Telegram
+  // Try connecting to Telegram
   try {
     await client.connect();
+    
+    // Optional: console-log StringSession to terminal
     // plog.log(`Session String: "${client.session.save()}"`, 0, 2);
   } catch (error) {
     plog.error(`Something went wrong!`, 0, 1)
     plog.log(`${error}`, 1, 2);
   }
 
-  // Disable Telegram logging
+  // Disable Telegram event logging
   const log_level: LogLevel = LogLevel.NONE;
   client.setLogLevel(log_level);
 
   return client;
 }
 
-// Read Telegram Index
-export function readIndex(): TelegramIndex {
-  // Filepath to Telegram index
-  const FILEPATH_INDEX: string = path.join(__dirname, "../LAG/telegram-index.json");
-
-  // Read Telegram indices
-  const telegram_index: number[] = JSON.parse(fs.readFileSync(FILEPATH_INDEX, { encoding: "utf-8" }));
+// Read telegram-index.json file, returns <TelegramIndex> object
+export function readIndex(filepath_index: string): TelegramIndex {
+  let telegram_index: TelegramIndex = {};
+  try {
+    const telegram_index: TelegramIndex = JSON.parse(fs.readFileSync(filepath_index, { encoding: "utf-8" }));
+  } catch (error: any) {
+    if (error.code == "ENOENT") plog.alert(`ENOENT: telegram-index.json file not found`, 0, 1);
+    else plog.error(`${error}`, 0, 1);
+  }
   return telegram_index;
 }
 
-// Check Telegram Index
+// Check telegram-index.json, returns array of missing LAG numbers
 export function checkIndex(telegram_index: TelegramIndex): number[] {
-  // Define missing LAG numbers
-  const MISSING_LAG_NUMBERS = [1, 2, 3, 56, 57, 58, 59, 60, 62];
+  // These LAG numbers are not present or do not contain LAG content
+  const EXCEPTIONS = [1, 2, 3, 56, 57, 58, 59, 60, 62];
 
+  // Collect all LAG numbers
+  const LAG_numbers = Object.values(telegram_index);
+  // Assign latest LAG number
+  const latest_LAG_number: number = Number(Object.values(telegram_index).slice(-1)[0]);
+
+  // Create number array from 1 to latest LAG number (inclusive)
+  const number_array: number[] = [];
+  for (let i = 1; i <= latest_LAG_number; i++) number_array.push(i);
+  
   // Initialize missing LAG numbers array
-  const missing_LAG_numbers: number[] = [];
-
-  // Filepath to Telegram index
-  const FILEPATH_INDEX: string = path.join(__dirname, "../LAG/telegram-index.json");
-
-  // Read Telegram indices
-  const latest_index: number = Number(Object.keys(telegram_index).slice(-1)[0]);
-  const latest_LAG_number = telegram_index[latest_index];
-
-  // Create number array 
-  let number_array: number[] = [];
-  for (let i = 1; i <= latest_LAG_number; i++) {
-    number_array.push(i);
-  }
-
-  // Compare LAG posts to number array
-  const LAG_index = Object.values(telegram_index);
-  for (const number of number_array) {
-    if (!LAG_index.includes(number) && !MISSING_LAG_NUMBERS.includes(number)) {
-      missing_LAG_numbers.push(number);
-    }
-  }
+  const missing_LAG_numbers: number[] = number_array.filter(number => (!LAG_numbers.includes(number) && !EXCEPTIONS.includes(number)));
 
   return missing_LAG_numbers;
 }
 
 // Update LAG index
-export async function getIndex(client: TelegramClient, debug: boolean = false): Promise<TelegramIndex> {
+export async function getIndex(client: TelegramClient): Promise<TelegramIndex> {
   // Filepath to Telegram index
   const FILEPATH_INDEX: string = path.join(__dirname, "../LAG/telegram-index.json");
 
@@ -107,9 +99,9 @@ export async function getIndex(client: TelegramClient, debug: boolean = false): 
   let telegram_index: TelegramIndex = {};
   try {
     // Read Telegram Index
-    if (debug) plog.log(`\nReading Telegram Index JSON file . . . `, 1, 0);
+    plog.log(`\nReading Telegram Index JSON file . . . `, 1, 0);
     telegram_index = JSON.parse(fs.readFileSync(FILEPATH_INDEX, { encoding: "utf-8" }));
-    if (debug) plog.done("Done", 0, 1);
+    plog.done("Done", 0, 1);
   } catch (error: any) {
     if (error.code == "ENOENT") {
       plog.alert(`ENOENT: file not found`, 0, 1);
@@ -133,16 +125,16 @@ export async function getIndex(client: TelegramClient, debug: boolean = false): 
   if (message_ids.length > 0) {
     latest_message_id = message_ids[message_ids.length-1];
     const latest_LAG_number: number = telegram_index[latest_message_id];
-    if (debug) plog.log(`Latest LAG post: #${latest_LAG_number}`, 1, 1);
+    plog.log(`Latest LAG post: #${latest_LAG_number}`, 1, 1);
   }
 
   // Iterate through Telegram messages
   let empty_message_count = 0;
   let message_id: number = latest_message_id+1;
-  if (debug) plog.log(`Reading Telegram messages . . . `, 1, 1);
+  plog.log(`Reading Telegram messages . . . `, 1, 1);
   while (empty_message_count < 10) {
     // Read Telegram message
-    if (debug) plog.log(`Parsing message #${message_id} . . . `, 2, 0);
+    plog.log(`Parsing message #${message_id} . . . `, 2, 0);
     const messages: string[] = await readMessages(client, "thecoreloop", [message_id]);
     if (messages.length > 0) {
       try {
@@ -151,38 +143,38 @@ export async function getIndex(client: TelegramClient, debug: boolean = false): 
 
         // Instantiate <LAG> object
         const lag: LAG = new LAG(message, message_id);
-        if (debug) plog.done(`LAG #${lag.number} found!`, 0, 1);
+        plog.done(`LAG #${lag.number} found!`, 0, 1);
 
         // Assuming LAG post is valid, append message ID to Telegram index
         if (lag.number) telegram_index[message_id] = lag.number;
         
         // Write/update telegram-index.json file
-        // plog.log(`Writing file: /${FILEPATH_INDEX.split("/").slice(-3).join("/")} . . . `, 3, 0);
+        plog.log(`Updating Telegram Index . . . `, 3, 0);
         fs.writeFileSync(
           FILEPATH_INDEX,
           JSON.stringify(telegram_index, null, 2)
         );
-        // plog.done(`Done`, 0, 1);
+        plog.done(`Done`, 0, 1);
 
         // Write lag-###.json file
         const FILEPATH_POSTS_DIR: string = path.join(__dirname, "../LAG/posts/");
         const filename = `lag-${lag.number.toString().padStart(3, "0")}.json`;
         const filepath_lag_post = path.join(FILEPATH_POSTS_DIR, filename);
-        // plog.log(`Writing file: /${filepath_lag_post.split("/").slice(-4).join("/")} . . . `, 3, 0);
+        plog.log(`Writing file: /${filepath_lag_post.split("/").slice(-4).join("/")} . . . `, 3, 0);
         fs.writeFileSync(
           filepath_lag_post, 
           JSON.stringify(lag, null, 2)
         );
-        // plog.done(`Done`, 0, 1);
+        plog.done(`Done`, 0, 1);
 
         // Reset empty message count
         empty_message_count = 0;
       } catch (error: any) {
-        if (debug) plog.error(error.message, 0, 1);
+        plog.error(error.message, 0, 1);
       }
     } else {
       // In case of empty message
-      if (debug) plog.alert(`Empty message`, 0, 1);
+      plog.alert(`Empty message`, 0, 1);
       empty_message_count++;
     }
 
