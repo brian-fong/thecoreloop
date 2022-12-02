@@ -75,6 +75,19 @@
           "url": "https://www.pocketgamer.biz/news/79123/pollen-user-acquisitions-costs-remain-stubbornly-high/"
         }
       ]
+    },
+    {
+      "category": "✨ Web 3️⃣ + Meta 🌎",
+      "entries": [
+        {
+          "caption": "A look at a studio funded by Dapper Labs & building on Flow",
+          "url": "https://venturebeat.com/2022/07/06/crypthulhu-studios-raises-3-million-for-dimension-x-blockchain-game/"
+        },
+        {
+          "caption": "A look at the current state of web3 game fundraising with Naavik",
+          "url": "https://www.youtube.com/watch?v=BvxiBsJwMfo&ab_channel=Naavik"
+        }
+      ]
     }
   ],
   "number": 7

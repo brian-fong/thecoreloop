@@ -66,6 +66,27 @@
           "url": "https://www.gamesindustry.biz/articles/2022-06-28-valve-ramps-up-steam-deck-production-and-shipping"
         }
       ]
+    },
+    {
+      "category": "✨ Web 3️⃣ + Meta 🌎",
+      "entries": [
+        {
+          "caption": "A look at 10 Key Trends of the Future by Newzoo",
+          "url": "https://www.pocketgamer.biz/news/79080/newzoo-10-key-trends-of-the-future-metaverse/"
+        },
+        {
+          "caption": "A look at 'Building on-Chain Gaming on Starknet' -- by the one and only @_calmdonut",
+          "url": "https://www.theblockresearch.com/building-on-chain-gaming-on-starknet-154278"
+        },
+        {
+          "caption": "A look at Korean gaming cos going HAM on web3.  3N (Nexon, Netmarble, NCSoft) + WeMade.",
+          "url": "https://n.news.naver.com/article/018/0005255135"
+        },
+        {
+          "caption": "A look at Soba, which raised $13.5M to be the web3 Roblox",
+          "url": "https://venturebeat.com/2022/06/29/soba-raises-13-5m-for-no-code-game-tools-for-creators/"
+        }
+      ]
     }
   ],
   "number": 4

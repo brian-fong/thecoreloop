@@ -86,6 +86,19 @@
           "url": "https://www.gamedeveloper.com/blogs/late-game-lessons-of-live-service-design"
         }
       ]
+    },
+    {
+      "category": "✨ Web 3️⃣ + Meta 🌎",
+      "entries": [
+        {
+          "caption": "A look at the Monaverse.  Kinda like a sandbox except you get to build then sell your world.",
+          "url": "https://venturebeat.com/2022/06/30/mona-raises-14-6m-for-metaverse-platform-for-creators/"
+        },
+        {
+          "caption": "A look at Echo3D.  Cloud storage & streaming of 3D AR/VR assets.  Tool for cloud authoring",
+          "url": "https://venturebeat.com/2022/07/01/echo3d-raises-5-5m-for-cloud-authorning-tools-for-3d-ar-and-vr-content/"
+        }
+      ]
     }
   ],
   "number": 5

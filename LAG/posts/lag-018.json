@@ -68,6 +68,23 @@
           "url": "https://www.gamedeveloper.com/pc/the-evolution-of-steam-tags-why-we-dig-em"
         }
       ]
+    },
+    {
+      "category": "💰 Fundraising 🧧",
+      "entries": [
+        {
+          "caption": "A look at Open World, a studio founded by Loaded (a gaming talent management agency)",
+          "url": "https://venturebeat.com/2022/07/27/new-studio-open-world-announced-by-loaded/"
+        },
+        {
+          "caption": "A look at Magicave's $6.4M raise",
+          "url": "https://venturebeat.com/2022/07/27/digital-hobby-startup-magicave-receives-new-round-of-funding/"
+        },
+        {
+          "caption": "A look at Magic Eden + Genopets' first gaming semi-fungible token marketplace",
+          "url": "https://venturebeat.com/2022/07/27/magic-eden-introduces-semi-fungible-tokens-sfts-marketplace-with-genopets/"
+        }
+      ]
     }
   ],
   "number": 18

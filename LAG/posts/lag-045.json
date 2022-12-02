@@ -33,6 +33,27 @@
           "url": "https://newsletter.gamediscover.co/p/plus-what-next-quarters-hype-says"
         }
       ]
+    },
+    {
+      "category": "🌈 Platforms 🏔",
+      "entries": [
+        {
+          "caption": "A look at Microsoft keeping CoD on PlayStation for more years to come",
+          "url": "https://www.theverge.com/2022/9/2/23334619/microsoft-sony-call-of-duty-playstation-letter-commitment-activision-blizzard"
+        },
+        {
+          "caption": "A look at Meta acquiring a haptic VR startup Lofelt",
+          "url": "https://www.gamesindustry.biz/meta-acquires-haptic-vr-start-up-lofelt"
+        },
+        {
+          "caption": "A look at if Netflix could command premium advertising?  By @eric_seufert",
+          "url": "https://mobiledevmemo.com/can-netflix-command-premium-advertising-pricing/"
+        },
+        {
+          "caption": "A look at ChromeOS gaming overlay, putting touch on your PC",
+          "url": "https://www.theverge.com/2022/9/2/23333400/google-chromeos-touch-android-games-keyboard-controls"
+        }
+      ]
     }
   ],
   "number": 45

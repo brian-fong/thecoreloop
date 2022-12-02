@@ -54,6 +54,19 @@
           "url": "https://www.gamesindustry.biz/royelles-the-future-of-the-metaverse-is-female"
         }
       ]
+    },
+    {
+      "category": "🧠 Knowledge Hub 📚",
+      "entries": [
+        {
+          "caption": "A look at how to analyze sales comps & estimating your reach for games",
+          "url": "https://www.gamedeveloper.com/blogs/sales-comps-for-your-game-how-not-to-do-it-"
+        },
+        {
+          "caption": "A look at the monetization trap by Mr. @eric_seufert",
+          "url": "https://mobiledevmemo.com/the-monetization-trap/"
+        }
+      ]
     }
   ],
   "number": 23

@@ -72,6 +72,19 @@
           "url": "https://www.gamesindustry.biz/is-it-a-good-time-to-be-an-indie-dev"
         }
       ]
+    },
+    {
+      "category": "👾 Game & Stats Releases 🎮",
+      "entries": [
+        {
+          "caption": "A look at Pokemon Scarlet & Violet selling 10M units (~$600M assuming $60 per unit)",
+          "url": "https://venturebeat.com/games/pokemon-scarlet-and-violet-hit-10m-in-sales-in-first-three-days/"
+        },
+        {
+          "caption": "A look at God of War Ragnarok selling 5M units",
+          "url": "https://www.gamesindustry.biz/god-of-war-ragnarok-has-sold-5m-units-since-its-release-news-in-brief"
+        }
+      ]
     }
   ],
   "number": 103

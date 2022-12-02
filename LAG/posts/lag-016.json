@@ -83,6 +83,27 @@
           "url": "https://twitter.com/hosseeb/status/1551657284081635328"
         }
       ]
+    },
+    {
+      "category": "🧠 Knowledge Hub 📚",
+      "entries": [
+        {
+          "caption": "A look at the load time arms race",
+          "url": "https://www.gamedeveloper.com/blogs/video-game-load-times-might-not-be-with-us-for-much-longer"
+        },
+        {
+          "caption": "A look at when B Teams are ready for investment",
+          "url": "https://elitegamedevelopers.com/what-makes-a-gaming-startup-ready-for-an-investment/"
+        },
+        {
+          "caption": "A look at Eric's Mobile Ad Tech 101 series -- The Supply Side Platform",
+          "url": "https://mobiledevmemo.com/podcast-what-is-an-ssp-with-liat-barer/"
+        },
+        {
+          "caption": "A look at why DLC's may be better monization",
+          "url": "https://www.gamedeveloper.com/blogs/why-paid-dlc-might-be-the-right-choice-for-your-pc-console-game"
+        }
+      ]
     }
   ],
   "number": 16

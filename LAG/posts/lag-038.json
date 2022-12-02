@@ -79,6 +79,23 @@
           "url": "https://mobilegamer.biz/rockstar-and-rovio-veterans-black-block-are-making-the-sprawl-a-gta-style-web3-game/"
         }
       ]
+    },
+    {
+      "category": "🧠 Knowledge Hub 📚",
+      "entries": [
+        {
+          "caption": "A look at when in the year you should release your game",
+          "url": "https://newsletter.gamediscover.co/p/which-time-of-year-should-you-release"
+        },
+        {
+          "caption": "A look at how mobile game devs are using ecommerce strategies",
+          "url": "https://venturebeat.com/games/how-mobile-game-developers-are-leveraging-ecommerce-strategies-to-thrive/"
+        },
+        {
+          "caption": "A look at some GDC Master Classes",
+          "url": "https://www.gamedeveloper.com/gdc/get-certified-in-agile-leadership-at-several-levels-in-these-gdc-masterclass-courses"
+        }
+      ]
     }
   ],
   "number": 38

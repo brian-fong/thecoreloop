@@ -46,6 +46,19 @@
           "url": "https://naavik.co/pro-blockchain-games/mastering-liquidity-pools"
         }
       ]
+    },
+    {
+      "category": "🧠 Knowledge Hub 📚",
+      "entries": [
+        {
+          "caption": "A look at how to get more utility out of your game music",
+          "url": "https://www.gamedeveloper.com/blogs/utility-for-modular-game-music-composing-for-lineage-m-gdc-2022-"
+        },
+        {
+          "caption": "A look at social media marketing tips by Riot Games",
+          "url": "https://www.gamedeveloper.com/marketing/solid-social-media-game-marketing-tips-from-riot-games"
+        }
+      ]
     }
   ],
   "number": 32

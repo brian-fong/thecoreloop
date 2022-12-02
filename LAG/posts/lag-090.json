@@ -50,6 +50,19 @@
           "url": "https://www.gamedeveloper.com/design/deep-dive-roadwarden"
         }
       ]
+    },
+    {
+      "category": "💰 Fundraising 🧧",
+      "entries": [
+        {
+          "caption": "A look at Freedom Games raising $10M",
+          "url": "https://venturebeat.com/games/freedom-games-raises-10m-to-publish-indie-games/"
+        },
+        {
+          "caption": "A look at Playgig raising $10.85M",
+          "url": "https://www.pocketgamer.biz/news/80103/new-studio-playgig-launches-with-1085m-in-seed-funding-and-possible-moba-ip/"
+        }
+      ]
     }
   ],
   "number": 90

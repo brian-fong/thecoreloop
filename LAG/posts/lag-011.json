@@ -67,6 +67,19 @@
           "url": "https://www.gamesindustry.biz/articles/2022-07-18-russian-tech-giants-in-talks-to-create-a-national-game-engine"
         }
       ]
+    },
+    {
+      "category": "✨ Web 3️⃣ + Meta 🌎",
+      "entries": [
+        {
+          "caption": "A look at an introduction to blockchain gaming infra by Naavik",
+          "url": "https://naavik.co/deep-dives/forte-blockchain-infrastructure"
+        },
+        {
+          "caption": "A look at how web3 games can be more sustainable by Deconstructor of Fun",
+          "url": "https://www.deconstructoroffun.com/blog/2022/7/17/sustainable-web3-gaming"
+        }
+      ]
     }
   ],
   "number": 11
