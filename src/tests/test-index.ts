@@ -157,6 +157,20 @@ async function main(): Promise<void> {
           }
         } catch (error: any) {
           plog.error(`${error}`, 0, 1);
+          if (error.errorMessage.includes("FLOOD")) {
+            // Sleep for 5 mins (300s)
+            plog.log(`Sleeping for 300s . . . `, 0, 0);
+            await sleep(300000);
+            plog.done(`Done`, 0, 1);
+            // Retry reading lag-###.json file
+            const filepath_LAG_json: string = path.join(FILEPATH_LAG_DIR, "/json/", filename_LAG_json);
+            plog.log(`Reading file: /${filepath_LAG_json.split("/").slice(-4).join("/")} . . . `, 1, 0);
+            const lag: LAG = JSON.parse(fs.readFileSync(filepath_LAG_json, { encoding: "utf-8" }))
+            lag_cache = lag;
+            // Retry sending message to thecoreloop_test channel
+            const response: any = await sendMessage(client, "thecoreloop_test", formatString(lag_cache));
+            plog.done(`LAG #${lag_cache.number} posted`, 0, 1);
+          }
         }
       }
       plog.log(`Finished`, 0, 2);
