@@ -5,7 +5,7 @@ const input = require("input");
 import { LAG } from "../LAG";
 import { CATEGORIES } from "../LAG";
 import { TelegramClient } from "telegram";
-import { createTelegramClient, getIndex, checkIndex, editMessage, readMessages } from "../telegram";
+import { createTelegramClient, checkIndex, editMessage, readMessages } from "../telegram";
 
 // Initialize pretty-logger
 import PrettyLogger from "../helper/pretty-log";
@@ -30,7 +30,7 @@ async function main(): Promise<void> {
     plog.done(`Done`, 0, 1);
 
     // Official categories
-    const categories: string[] = Object.keys(CATEGORIES);
+    const categories: string[] = Object.values(CATEGORIES);
     // Collect categories found in given LAG post
     const categories_found: string[] = lag.content.map(category_group => category_group.category);
 

@@ -5,34 +5,7 @@ import { Date } from "./helper/date";
 import PrettyLogger from "./helper/pretty-log";
 const plog: PrettyLogger = new PrettyLogger(2);
 
-// Define interface representing an entry in LAG post
-export interface Entry {
-  caption: string; 
-  url: string;
-}
-
-// Define interface representing a group of entries in LAG post
-export interface CategoryGroup {
-  category: string; 
-  entries: Entry[];
-}
-
-export interface StringMap {
-  [key: string]: string;
-}
-
-// String array containing Categories keywords
-export const CATEGORIES: StringMap = {
-  "‼️ SPECIAL INSIGHTS 👀": "SPECIAL INSIGHTS",
-  "🔦 Spotlight 🌟": "SPOTLIGHT",
-  "🌊 MARKET ☎️": "MARKET",
-  "🧠 Knowledge Hub 📚": "KNOWLEDGE HUB",
-  "💎 Deep Dives 🔎": "DEEP DIVES",
-  "🌈 Platforms 🏔": "PLATFORMS",
-  "✨ Web 3️⃣ + Meta 🌎": "WEB3 + META",
-  "💰 Fundraising 🧧": "FUNDRAISING",
-  "👾 Game & Stats Releases 🎮": "GAME & STATS RELEASES",
-};
+import { CATEGORIES, CategoryGroup, Entry } from "./types";
 
 export class LAG {
   heading: string = "N/A";
@@ -156,8 +129,8 @@ export class LAG {
 export function isCategory(line: string, LAG_number: number): boolean {
   // Check if a category has been found
   let category_found = true;
-  const categories = Object.keys(CATEGORIES);
-  for (const category of categories) {
+  const official_categories = Object.values(CATEGORIES);
+  for (const category of official_categories) {
     category_found = true; // initialize value to be true
     
     // Split category into keywords
@@ -176,7 +149,7 @@ export function isCategory(line: string, LAG_number: number): boolean {
   }
 
   // If category found, check if line is exact match to official category
-  if (category_found && !categories.includes(line)) throw Error(`LAG #${LAG_number} contains typo on line: ${line}`);
+  if (category_found && !official_categories.includes(line)) throw Error(`LAG #${LAG_number} contains typo on line: ${line}`);
   
   return category_found;
 }
@@ -184,5 +157,55 @@ export function isCategory(line: string, LAG_number: number): boolean {
 // Check if given string contains a URL
 export function isURL(line: string): boolean {
   return Boolean(new URL(line));
+}
+
+  // Formats string to display LAG post with spacing convention 
+export function formatString(lag: LAG): string {
+  // Initialized sorted content array
+  let content_sorted: CategoryGroup[] = [];
+
+  let official_categories: string[] = Object.values(CATEGORIES);
+  for (const official_category of official_categories) {
+    for (const category_group of lag.content) {
+      if (category_group.category == official_category) content_sorted.push(category_group);
+    }
+  }
+
+  // Initialize string
+  let output: string = "";
+
+  // Append heading line
+  const heading: string = `Look at Gaming #${lag.number} | ${lag.date}` + "\n";
+  output += heading + "\n\n";
+
+  // Iterate through categories
+  for (let i = 0; i < content_sorted.length; i++) {
+    // Assign category group
+    const category_group: CategoryGroup = content_sorted[i];
+
+    // Append category line
+    output += category_group.category + "\n";
+
+    // Append captions & URLs
+    if (category_group.category == CATEGORIES["SPECIAL INSIGHTS"]) {
+      // For SPECIAL INSIGHTS category, append only caption
+      output += category_group.entries[0].caption + "\n\n\n";
+    } else {
+      // For every other category, append caption + URL
+      for (let j = 0; j < category_group.entries.length; j++) {
+        // Append entry
+        const entry: Entry = category_group.entries[j];
+        output += entry.caption + "\n"; 
+        output += entry.url + "\n";
+
+        // If not last entry, then add empty line after entry
+        if (j < category_group.entries.length-1) output += "\n"
+      }
+
+      // Append 2 empty lines between categories
+      if (i < content_sorted.length-1) output += "\n\n";
+    }
+  }
+  return output;
 }
 
