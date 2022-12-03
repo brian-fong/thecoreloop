@@ -1,0 +1,53 @@
+Look at Gaming #102 | Tuesday November 22nd 2022 
+
+‼️ SPECIAL INSIGHTS 👀
+powered by AppMagic.rocks 😎
+
+Today I want to take a look at ABK, which is Activision Blizzard King! With Microsoft's $69B bid and them saying the mobile division is the most attractive asset, I wanted to dive deeper.  So obviously, King's Candy Crush franchise is leading in terms of lifetime rev ($5.5B) and downloads (1.1B) but Activision's CoD Mobile ($1.1B / 383M) and Blizzard's Hearthstone ($976M / 95M) & Diablo Immortal ($164M / 17.5M) aren't too shabby either.  In aggregate, there's about $7.74B in lifetime rev and $2.0B YTD 2022.  Not bad, but is it worth the $69B bid? 
+
+My dashboard: 
+https://appmagic.rocks/dashboards/637d91ac29f69?promoCode=6373c4a19d368
+
+(First Come, First Served.  The dashboard is available for the first few users.  Make sure you turn NOTIF on if you missed this one).
+ 
+
+🔦 Spotlight 🌟
+A look at Unity integrating Tezos (WOW!)
+https://game-news24.com/2022/11/22/unity-is-integrating-tezos-blockchain-in-games-development-engine/
+
+
+🌊 MARKET ☎️
+A look at the market by Superjoost
+https://superjoost.substack.com/p/corporate-dexterity-and-games
+
+A look at China claiming they have fixed the youth game addiction
+https://www.pocketgamer.biz/news/80249/china-claims-they-have-fixed-the-problem-of-youth-game-addiction/
+
+
+💎 Deep Dives 🔎 
+A look at why horror games are so popular on Roblox
+https://www.gamedeveloper.com/design/why-are-horror-games-so-popular-on-roblox-
+
+
+✨ Web 3️⃣ + Meta 🌎
+A look at Magic Eden expanding to Polygon network
+https://www.theblock.co/post/189035/magic-eden-expands-nft-support-to-polygon-network-embargo-9-am-et
+
+A look at the Web3 marketing stack by @naavik_co
+https://www.youtube.com/watch?v=tNTjbwt2MwI&ab_channel=Naavik
+
+A look at Unity integrating Tezos (WOW!)
+https://game-news24.com/2022/11/22/unity-is-integrating-tezos-blockchain-in-games-development-engine/
+
+
+🧠 Knowledge Hub 📚
+A look at how Mobile Game Devs used Halloween events to boost downloads and revenue
+https://www.gamerefinery.com/how-mobile-game-developers-boosted-downloads-and-revenue-with-halloween-2022-events/
+
+
+💰 Fundraising 🧧
+A look at Thirdverse raising $15M
+https://www.theblock.co/post/189162/web3-and-vr-gaming-studio-thirdverse-raises-15-million-in-latest-funding-round
+
+A look at City State Entertainment raising $15M
+https://venturebeat.com/games/city-state-entertainment-raises-15m-to-fund-games-with-massive-medieval-battles/
