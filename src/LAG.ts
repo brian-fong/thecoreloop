@@ -1,25 +1,43 @@
-// Dependencies
+// === Local Modules ===
 import { Date } from "./helper/date";
-
-// Initialize pretty-logger
+import { StringMap, CategoryGroup, Entry, TelegramMessage } from "./types";
 import PrettyLogger from "./helper/pretty-log";
 const plog: PrettyLogger = new PrettyLogger(2);
 
-import { CATEGORIES, CategoryGroup, Entry } from "./types";
+
+// === Constants ===
+// CATEGORIES: String array containing official LAG categories
+export const CATEGORIES: StringMap = {
+  "SPECIAL INSIGHTS": "‼️ SPECIAL INSIGHTS 👀",
+  "SPOTLIGHT": "🔦 Spotlight 🌟",
+  "MARKET": "🌊 MARKET ☎️",
+  "DEEP DIVES": "💎 Deep Dives 🔎",
+  "PLATFORMS": "🌈 Platforms 🏔",
+  "WEB3 + META": "✨ Web 3️⃣ + Meta 🌎",
+  "KNOWLEDGE HUB": "🧠 Knowledge Hub 📚",
+  "FUNDRAISING": "💰 Fundraising 🧧",
+  "GAME & STATS RELEASES": "👾 Game & Stats Releases 🎮",
+};
+
+// LAG_EXCEPTIONS: number array of LAG numbers that are not present or 
+//   do not contain LAG content
+export const LAG_EXCEPTIONS: number[] = [1, 2, 3, 56, 57, 58, 59, 60, 62];
+
 
 export class LAG {
-  heading: string = "N/A";
+  heading: string = "";
+  subheading: string = "";
   telegram_message_id: number = -1;
   number: number;
-  date: string = "N/A";
+  date: string = "";
   content: CategoryGroup[] = [];
 
-  constructor(message: string, telegram_message_id: number = -1) {
+  constructor(message: TelegramMessage) {
     // Assign Telegram message ID
-    this.telegram_message_id = telegram_message_id;
+    this.telegram_message_id = message.id;
 
-    // Split message line-by-line
-    const lines: string[] = message
+    // Split text content line-by-line
+    const lines: string[] = message.text
       .split("\n")
       .filter(line => line.length > 1)
       .map(line => line.trim());
@@ -57,6 +75,11 @@ export class LAG {
     }
     if (category_indices.length == 0) throw Error(`LAG #${this.number}: No LAG categories found`);
 
+    // If the 2nd line is NOT a category, then assume subheading until 1st category index
+    if (category_indices[0] != 1) {
+      this.subheading = lines.slice(1, category_indices[0]).join();
+    }
+
     // Organize content within LAG post
     let content: CategoryGroup[] = [];  // Initialize content array
     let has_spotlight: boolean = false;
@@ -77,14 +100,14 @@ export class LAG {
         : lines.length;
 
       // Handle SPECIAL INSIGHTS category 
-      if (category == "‼️ SPECIAL INSIGHTS 👀") {
+      if (category == CATEGORIES["SPECIAL INSIGHTS"]) {
         // Assign caption
         const caption: string = lines.slice(current_index+1, next_index).join("\n");
 
         // Instantiate <Entry> object
         const entry: Entry = {
           caption: caption,
-          url: "N/A",
+          url: "",
         };
         
         // Append Entry to CategoryGroup entries array
@@ -118,6 +141,7 @@ export class LAG {
       content.push(category_group);
     }
 
+    // Throw error if no Spotlight section detected
     if (!has_spotlight) throw Error("No Spotlight category");
 
     // Assign content property
@@ -159,29 +183,31 @@ export function isURL(line: string): boolean {
   return Boolean(new URL(line));
 }
 
-  // Formats string to display LAG post with spacing convention 
-export function formatString(lag: LAG): string {
-  // Initialized sorted content array
-  let content_sorted: CategoryGroup[] = [];
-
-  let official_categories: string[] = Object.values(CATEGORIES);
-  for (const official_category of official_categories) {
-    for (const category_group of lag.content) {
-      if (category_group.category == official_category) content_sorted.push(category_group);
+// Formats string to display LAG post with spacing convention 
+export function formatString(lag: LAG, ordered: boolean = false): string {
+  // Initialize content array
+  let content: CategoryGroup[] = [];
+  if (ordered) {
+    let official_categories: string[] = Object.values(CATEGORIES);
+    for (const official_category of official_categories) {
+      for (const category_group of lag.content) {
+        if (category_group.category == official_category) content.push(category_group);
+      }
     }
-  }
+  } else content = lag.content;
 
   // Initialize string
   let output: string = "";
 
   // Append heading line
   const heading: string = `Look at Gaming #${lag.number} | ${lag.date}` + "\n";
-  output += heading + "\n\n";
+  if (lag.subheading.length > 0) output += heading + "\n\n";
+  else output += heading + "\n" + lag.subheading + "\n" + "\n\n";
 
   // Iterate through categories
-  for (let i = 0; i < content_sorted.length; i++) {
+  for (let i = 0; i < content.length; i++) {
     // Assign category group
-    const category_group: CategoryGroup = content_sorted[i];
+    const category_group: CategoryGroup = content[i];
 
     // Append category line
     output += category_group.category + "\n";
@@ -203,7 +229,7 @@ export function formatString(lag: LAG): string {
       }
 
       // Append 2 empty lines between categories
-      if (i < content_sorted.length-1) output += "\n\n";
+      if (i < content.length-1) output += "\n\n";
     }
   }
   return output;

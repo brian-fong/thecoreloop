@@ -1,8 +1,12 @@
-// === Input ===
+// === General ===
+// StringMap: dictionary of key-value pairs of <string> type
+export interface StringMap {
+  [key: string]: string;
+}
+
 // Choice: object representing choice(s) for the user to choose
 export interface Choice {
   name: string, 
-  value: number,
 }
 
 
@@ -11,6 +15,12 @@ export interface Choice {
 export interface TelegramMessage {
   text: string, 
   id: number,
+}
+
+// Telegram Index: object whose keys are Telegram message IDs and
+//   values are the corresponding LAG # found
+export interface TelegramIndex {
+  [key: number]: number;
 }
 
 
@@ -28,22 +38,4 @@ export interface Entry {
   caption: string; 
   url: string;
 }
-
-// StringMap: dictionary of key-value pairs of <string> type
-export interface StringMap {
-  [key: string]: string;
-}
-
-// CATEGORIES: String array containing official LAG categories
-export const CATEGORIES: StringMap = {
-  "SPECIAL INSIGHTS": "‼️ SPECIAL INSIGHTS 👀",
-  "SPOTLIGHT": "🔦 Spotlight 🌟",
-  "MARKET": "🌊 MARKET ☎️",
-  "DEEP DIVES": "💎 Deep Dives 🔎",
-  "PLATFORMS": "🌈 Platforms 🏔",
-  "WEB3 + META": "✨ Web 3️⃣ + Meta 🌎",
-  "KNOWLEDGE HUB": "🧠 Knowledge Hub 📚",
-  "FUNDRAISING": "💰 Fundraising 🧧",
-  "GAME & STATS RELEASES": "👾 Game & Stats Releases 🎮",
-};
 

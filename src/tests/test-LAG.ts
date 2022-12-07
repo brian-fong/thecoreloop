@@ -3,7 +3,7 @@ import fs from "fs";
 import path from "path";
 import { LAG } from "../LAG";
 import { TelegramClient } from "telegram";
-import { createTelegramClient, TelegramIndex, readIndex, readMessages } from "../telegram";
+import { createTelegramClient, readMessages } from "../telegram";
 
 // Initialize pretty-logger
 import PrettyLogger from "../helper/pretty-log";
