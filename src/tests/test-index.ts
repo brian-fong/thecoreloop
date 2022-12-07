@@ -11,6 +11,7 @@ import clearChannel from "../scripts/clear-channel";
 import compareMessages from "../scripts/compare-messages";
 import sortMessages from "../scripts/sort-messages";
 import PrettyLogger from "../helper/pretty-log";
+import checkSorted from "../scripts/check-sorted";
 const plog: PrettyLogger = new PrettyLogger(2);
 
 // String Session Token (used to skip Telegram authorization)
@@ -35,7 +36,10 @@ async function main(): Promise<void> {
     },
     {
       name: "Sort messages in developer channel",
-    }
+    }, 
+    {
+      name: "Check if messages are sorted (developer channel)",
+    },
   ];
 
   // Prompt user input
@@ -95,6 +99,13 @@ async function main(): Promise<void> {
       //      formatString() to update message with categories sorted
       
       await sortMessages(client, "thecoreloop_test");
+    } else if (choice.includes("Check if messages are sorted")) {
+      // === Check if LAG posts are sorted === 
+      // 1. Read Telegram messages from production channel
+      // 2. Parses LAG content from Telegram messages and checks order of categories 
+      // 3. Console-log results
+      
+      await checkSorted(client, "thecoreloop_test");
     }
   }
 }

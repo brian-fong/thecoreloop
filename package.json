@@ -4,13 +4,13 @@
   "description": "Gaming news aggregator, curated by @0xkapital_k",
   "main": "index.js",
   "scripts": {
+    "dev": "ts-node ./src/tests/test-index",
     "index": "ts-node ./src/index",
     "practice": "ts-node ./src/practice",
     "build": "tsc -p .",
     "test-telegram": "ts-node ./src/tests/test-telegram",
     "test-LAG": "ts-node ./src/tests/test-LAG",
-    "test-gdrive": "ts-node ./src/tests/test-gdrive",
-    "test-index": "ts-node ./src/tests/test-index"
+    "test-gdrive": "ts-node ./src/tests/test-gdrive"
   },
   "repository": {
     "type": "git",

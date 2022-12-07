@@ -68,6 +68,32 @@ export default async function sortMessages(client: TelegramClient, channel: stri
       const lag: LAG = new LAG(LAG_message);
       new_message = formatString(lag, true);
 
+      // Assign string array of lines of LAG post
+      const lines_a: string[] = LAG_message.text
+        .split("\n")
+        .filter(line => line.length > 0);
+      const lines_b: string[] = new_message
+        .split("\n")
+        .filter(line => line.length > 0);
+
+      // Compare lines
+      let equality: boolean = true; 
+      if (lines_a.length == lines_b.length) {
+        for (let i = 0; i < lines_a.length; i++) {
+          const line_a: string = lines_a[i];
+          const line_b: string = lines_b[i];
+          if (line_a != line_b) {
+            equality = false;
+            break;
+          }
+        }
+      }
+        
+      if (equality) {
+        plog.done(`Already sorted`, 0, 2);
+        continue;
+      }
+
       // Edit Telegram message using output of formatString()
       await editMessage(
         client, 
@@ -78,21 +104,16 @@ export default async function sortMessages(client: TelegramClient, channel: stri
       plog.done(`Done`, 0, 2);
     } catch(error: any) {
       if (error.errorMessage.includes("FLOOD")) {
+        plog.error(`${error}`, 0, 2);
+        
         // Sleep for 5 mins (300s)
         plog.log(`Sleeping for 300s . . . `, 0, 0);
         await sleep(300000);
         plog.done(`Done`, 0, 2);
         
-        // Retry editing message
-        plog.log(`${i+1}. Sorting LAG #${telegram_index[message_id]} . . . `, 1, 0);
-        await editMessage(
-          client, 
-          channel, 
-          message_id,
-          new_message,
-        );
-        plog.done(`Done`, 0, 2);
-      } else if (error.message.includes("RPCError: 400: MESSAGE_NOT_MODIFIED")) plog.alert(`Message already sorted`, 0, 2);
+        // Decrement i
+        i--;
+      } else if (error.errorMessage.includes("MESSAGE_NOT_MODIFIED")) plog.alert(`Message already sorted`, 0, 2);
       else plog.error(`${error}`, 0, 2);
     }
   }

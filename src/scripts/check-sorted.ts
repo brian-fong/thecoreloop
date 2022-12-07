@@ -19,7 +19,7 @@ export default async function checkSorted(client: TelegramClient, channel: strin
   for (let i = 1; i <= 10000; i++) number_array.push(i);
 
   // Read Telegram messages from production channel
-  plog.log(`Reading Telegram messages: thecoreloop . . . `, 0, 0);
+  plog.log(`Reading Telegram messages: ${channel} . . . `, 0, 0);
   const messages: TelegramMessage[] = await readMessages(
     client, 
     channel, 
