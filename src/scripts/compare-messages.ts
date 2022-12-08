@@ -9,7 +9,7 @@ import { readMessages } from "../telegram";
 import PrettyLogger from "../helper/pretty-log";
 const plog: PrettyLogger = new PrettyLogger(2);
 
-export default async function compareMessages(client: TelegramClient) {
+export default async function compareMessages(client: TelegramClient): Promise<void> {
   // === Compare messages between production vs developer channels ===
   // 1. Read Telegram messages from production & developer channels
   // 2. Parse LAG content from both channels
@@ -57,7 +57,10 @@ export default async function compareMessages(client: TelegramClient) {
   plog.log(`==> ${messages_lag_test.length} LAG posts found`, 0, 2);
 
   // Compare number of messages between production vs developer channels
-  if (messages_lag.length != messages_lag_test.length) throw Error("Channels contain differing number of LAG posts");
+  if (messages_lag.length != messages_lag_test.length) {
+    plog.error("Channels contain differing number of LAG posts", 0, 2);
+    return;
+  }
 
   // Compare text content of messages 1-by-1
   const mismatching_messages: TelegramMessage[][] = [];
@@ -86,8 +89,8 @@ export default async function compareMessages(client: TelegramClient) {
     plog.alert(`${mismatching_messages.length} mismatching messages!`, 0, 1);
     for (let i = 0; i < mismatching_messages.length; i++) {
       const [message_a, message_b]: TelegramMessage[] = mismatching_messages[i];
-      plog.log(`==> thecoreloop: ${message_a.text.split("\n")[0]}`, 1, 1);
-      plog.log(`==> thecoreloop_test: ${message_b.text.split("\n")[0]}`, 1, 2);
+      plog.log(`==> production: ${message_a.text.split("\n")[0]}`, 1, 1);
+      plog.log(`==> developer: ${message_b.text.split("\n")[0]}`, 1, 2);
     }
   }
 }

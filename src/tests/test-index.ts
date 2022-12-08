@@ -7,11 +7,11 @@ import { Choice } from "../types";
 import { createTelegramClient } from "../telegram";
 import buildArchive from "../scripts/build-lag-archive";
 import pushMessages from "../scripts/push-messages";
-import clearChannel from "../scripts/clear-channel";
+import clearMessages from "../scripts/clear-messages";
 import compareMessages from "../scripts/compare-messages";
 import sortMessages from "../scripts/sort-messages";
-import PrettyLogger from "../helper/pretty-log";
 import checkSorted from "../scripts/check-sorted";
+import PrettyLogger from "../helper/pretty-log";
 const plog: PrettyLogger = new PrettyLogger(2);
 
 // String Session Token (used to skip Telegram authorization)
@@ -82,7 +82,7 @@ async function main(): Promise<void> {
       );
 
       // Clear channel or exit
-      if (confirm_clear) await clearChannel(client);
+      if (confirm_clear) await clearMessages(client);
       else plog.log(`Exiting`, 0, 2);
     } else if (choice.includes("Compare messages")) {
       // === Compare messages between production vs developer channels ===

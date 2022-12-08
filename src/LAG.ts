@@ -77,7 +77,7 @@ export class LAG {
 
     // If the 2nd line is NOT a category, then assume subheading until 1st category index
     if (category_indices[0] != 1) {
-      this.subheading = lines.slice(1, category_indices[0]).join();
+      this.subheading = message.text.split("\n").slice(1, category_indices[0]).join("\n");
     }
 
     // Organize content within LAG post
@@ -200,9 +200,8 @@ export function formatString(lag: LAG, ordered: boolean = false): string {
   let output: string = "";
 
   // Append heading line
-  const heading: string = `Look at Gaming #${lag.number} | ${lag.date}` + "\n";
-  if (lag.subheading.length > 0) output += heading + "\n\n";
-  else output += heading + "\n" + lag.subheading + "\n" + "\n\n";
+  const heading: string = `Look at Gaming #${lag.number} | ${lag.date}`;
+  output += heading + lag.subheading + "\n\n";
 
   // Iterate through categories
   for (let i = 0; i < content.length; i++) {

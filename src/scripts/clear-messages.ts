@@ -8,7 +8,7 @@ import { readMessages, deleteMessages } from "../telegram";
 import PrettyLogger from "../helper/pretty-log";
 const plog: PrettyLogger = new PrettyLogger(2);
 
-export default async function clearChannel(client: TelegramClient) {
+export default async function clearMessages(client: TelegramClient) {
   // === Clear All Messages in developer channel === 
   // 1. Read Telegram messages in developer channel, collecting message IDs
   // 2. Use collected message IDs to delete all messages at once
@@ -23,11 +23,21 @@ export default async function clearChannel(client: TelegramClient) {
   plog.done(`Done`, 0, 1);
   plog.log(`==> ${messages.length} messages found`, 0, 2);
   
-  // Delete Telegram messages
-  const message_ids: number[] = messages.map(message => message.id);
-  plog.log(`Deleting Telegram messages . . . `, 0, 0);
-  await deleteMessages(client, "thecoreloop_test", message_ids);
-  plog.done(`Done`, 0, 2);
+  if (messages.length > 0) {
+    // Delete Telegram messages one-by-one
+    plog.log(`Deleting Telegram messages . . . `, 0, 0);
+    for (const message of messages) {
+      plog.log(`Deleting message: ${message.text.split("\n")[0]} . . . `, 1, 0);
+      await deleteMessages(client, "thecoreloop_test", [message.id]);
+      plog.done(`Done`, 0, 2);
+    }
+    plog.log(`Finished`, 0, 2);
+
+    // Delete all Telegram messages at once (doesn't always work, deletes ~100 and leaves ~10 remaining)
+    // const message_ids: number[] = messages.map(message => message.id);
+    // await deleteMessages(client, "thecoreloop_test", message_ids);
+    // plog.done(`Done`, 0, 2);
+  }
 
   // Delay 
   await sleep(100);

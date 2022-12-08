@@ -65,7 +65,7 @@ export default async function checkSorted(client: TelegramClient, channel: strin
       // Else console-log the first out-of-order category
       else {
         plog.alert(`Out of order`, 0, 1);
-        plog.log(`==> Starting with category: ${category_out_of_order}`, 0, 2);
+        plog.log(`==> Starting with category: ${category_out_of_order}`, 1, 2);
       }
     } catch (error) {
       plog.error(`${error}`, 0, 2);
