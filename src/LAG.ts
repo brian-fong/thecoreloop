@@ -68,17 +68,19 @@ export class LAG {
     let categories_found: string[] = [];
     let category_indices: number[] = [];
     for (let i = 1; i < lines.length; i++) {
-      if (isCategory(lines[i], this.number)) {
-        category_indices.push(i);
-        categories_found.push(lines[i]);
+      try {
+        if (isCategory(lines[i])) {
+          category_indices.push(i);
+          categories_found.push(lines[i]);
+        }
+      } catch (error) {
+        throw Error(`Something went wrong while checking category: ${error}`);
       }
     }
     if (category_indices.length == 0) throw Error(`LAG #${this.number}: No LAG categories found`);
 
     // If the 2nd line is NOT a category, then assume subheading until 1st category index
-    if (category_indices[0] != 1) {
-      this.subheading = message.text.split("\n").slice(1, category_indices[0]).join("\n");
-    }
+    if (category_indices[0] != 1) this.subheading = lines.slice(1, category_indices[0]).join("\n") + "\n";
 
     // Organize content within LAG post
     let content: CategoryGroup[] = [];  // Initialize content array
@@ -102,15 +104,13 @@ export class LAG {
       // Handle SPECIAL INSIGHTS category 
       if (category == CATEGORIES["SPECIAL INSIGHTS"]) {
         // Assign caption
-        const caption: string = lines.slice(current_index+1, next_index).join("\n");
+        const caption: string = parseTextByCategory(message.text, CATEGORIES["SPECIAL INSIGHTS"]);
 
         // Instantiate <Entry> object
         const entry: Entry = {
           caption: caption,
-          url: "",
+          url: "N/A",
         };
-        
-        // Append Entry to CategoryGroup entries array
         category_group.entries.push(entry);
       } else {
         if (category.toLowerCase().includes("spotlight")) has_spotlight = true;
@@ -128,11 +128,9 @@ export class LAG {
 
           // Instantiate <Entry> object
           const entry: Entry = {
-            caption: caption, 
+            caption: caption,
             url: url,
           };
-
-          // Append Entry to CategoryGroup entries array
           category_group.entries.push(entry);
         }
       }
@@ -150,7 +148,7 @@ export class LAG {
 }
 
 // Check if given string contains keyphrases
-export function isCategory(line: string, LAG_number: number): boolean {
+export function isCategory(line: string): boolean {
   // Check if a category has been found
   let category_found = true;
   const official_categories = Object.values(CATEGORIES);
@@ -173,7 +171,7 @@ export function isCategory(line: string, LAG_number: number): boolean {
   }
 
   // If category found, check if line is exact match to official category
-  if (category_found && !official_categories.includes(line)) throw Error(`LAG #${LAG_number} contains typo on line: ${line}`);
+  if (category_found && !official_categories.includes(line)) throw Error(`Potential typo on line: ${line}`);
   
   return category_found;
 }
@@ -200,8 +198,9 @@ export function formatString(lag: LAG, ordered: boolean = false): string {
   let output: string = "";
 
   // Append heading line
-  const heading: string = `Look at Gaming #${lag.number} | ${lag.date}`;
-  output += heading + lag.subheading + "\n\n";
+  const heading: string = `Look at Gaming #${lag.number} | ${lag.date}` + "\n";
+  if(lag.subheading.length > 0) output += heading + "\n\n" + lag.subheading + "\n\n";
+  else output += heading + "\n\n";
 
   // Iterate through categories
   for (let i = 0; i < content.length; i++) {
@@ -214,7 +213,7 @@ export function formatString(lag: LAG, ordered: boolean = false): string {
     // Append captions & URLs
     if (category_group.category == CATEGORIES["SPECIAL INSIGHTS"]) {
       // For SPECIAL INSIGHTS category, append only caption
-      output += category_group.entries[0].caption + "\n\n\n";
+      output += category_group.entries[0].caption + "\n";
     } else {
       // For every other category, append caption + URL
       for (let j = 0; j < category_group.entries.length; j++) {
@@ -232,5 +231,31 @@ export function formatString(lag: LAG, ordered: boolean = false): string {
     }
   }
   return output;
+}
+
+function parseTextByCategory(raw_text: string, line_start: string): string {
+  // Split raw text line-by-line and remove surrounding whitespaces
+  const lines: string[] = raw_text.split("\n").map(line => line.trim());
+
+  // Collect line indices containing categories
+  const category_indices: number[] = [];
+  for (let i = 0; i < lines.length; i++) {
+    const line: string = lines[i];
+    if (isCategory(line)) category_indices.push(i);
+  }
+
+  let special_insights_section: string = "";
+  for (let i = 0; i < category_indices.length-1; i++) {
+    const current_index: number = category_indices[i];
+    const next_index: number = category_indices[i+1];
+    const category: string = lines[current_index];
+
+    if (category == line_start) {
+      special_insights_section = lines.slice(current_index+1, next_index).join("\n");
+      break;
+    }
+  }
+
+  return special_insights_section;
 }
 

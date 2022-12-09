@@ -4,8 +4,7 @@
   "description": "Gaming news aggregator, curated by @0xkapital_k",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node ./src/tests/test-index",
-    "index": "ts-node ./src/index",
+    "dev": "ts-node ./src/index",
     "practice": "ts-node ./src/practice",
     "build": "tsc -p .",
     "test-telegram": "ts-node ./src/tests/test-telegram",

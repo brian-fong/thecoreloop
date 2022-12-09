@@ -30,12 +30,14 @@ export default async function checkSorted(client: TelegramClient, channel: strin
 
   // Parse LAG content from Telegram messages 
   plog.log(`Parsing Telegram messages: `, 0, 1);
+  let sorted_message_count: number = 0;
+  let lag_message_count: number = 0;
   for (const message of messages) {
     try {
       // Instantiate <LAG> object
-      plog.log(`Parsing message #${message.id} . . . `, 1, 0);
       const lag: LAG = new LAG(message);
-      plog.done(`LAG #${lag.number} found!`, 0, 1);
+      lag_message_count++;
+      plog.log(`LAG #${lag.number} found! Checking if sorted . . . `, 1, 0);
 
       // Assign array of official categories
       const categories_official: string[] = Object.values(CATEGORIES);
@@ -44,7 +46,6 @@ export default async function checkSorted(client: TelegramClient, channel: strin
       const indices_found: number[] = lag.content.map(category_group => categories_official.indexOf(category_group.category));
 
       // Check order of categories
-      plog.log(`Checking category order . . . `, 1, 0);
       let ascending_order: boolean = true;
       let category_out_of_order: string = "";
       for (let i = 0; i < indices_found.length-1; i++) {
@@ -60,17 +61,21 @@ export default async function checkSorted(client: TelegramClient, channel: strin
         }
       }
 
-      // If LAG post is in ascending order, then console-log all good
-      if (ascending_order) plog.done(`All good`, 0, 2);
-      // Else console-log the first out-of-order category
+      if (ascending_order) {
+        // If LAG post is in ascending order, then console-log all good
+        plog.done(`All good`, 0, 1);
+        sorted_message_count++;
+      }
       else {
+        // Console-log the first out-of-order category
         plog.alert(`Out of order`, 0, 1);
-        plog.log(`==> Starting with category: ${category_out_of_order}`, 1, 2);
+        plog.log(`==> Starting with category: ${category_out_of_order}`, 1, 1);
       }
     } catch (error) {
-      plog.error(`${error}`, 0, 2);
+      // plog.error(`${error}`, 0, 2);
+      continue
     }
   }
-  plog.log(`Finished`, 0, 2);
+  plog.log(`Finished: ${sorted_message_count} out of ${lag_message_count} messages sorted`, 0, 2);
 }
 

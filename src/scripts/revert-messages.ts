@@ -10,7 +10,7 @@ import { readMessages, editMessage } from "../telegram";
 import PrettyLogger from "../helper/pretty-log";
 const plog: PrettyLogger = new PrettyLogger(2);
 
-export default async function resetMessages(client: TelegramClient, channel: string): Promise<void> {
+export default async function revertMessages(client: TelegramClient, channel: string): Promise<void> {
   // === Re-Edit messages from production channel to saved backup (in case SHTF) ===
   // 1. Read Telegram messages from production channel and build Telegram Index
   // 2. Read lag-###.txt files in telegram-backup directory
@@ -36,17 +36,18 @@ export default async function resetMessages(client: TelegramClient, channel: str
   for (const message of messages) {
     try {
       // Instantiate <LAG> object
-      plog.log(`Parsing message #${message.id} . . . `, 1, 0);
       const lag: LAG = new LAG(message);
-      plog.done(`LAG #${lag.number} found!`, 0, 1);
+      plog.done(`LAG #${lag.number} found!`, 1, 1);
 
       // Assuming <LAG> object instantiated successfully, 
       //   append entry to Telegram Index
       telegram_index[message.id] = lag.number;
     } catch (error) {
-      plog.error(`${error}`, 0, 1);
+      // plog.error(`${error}`, 0, 1);
+      continue;
     }
   }
+  plog.log(`Finished`, 0, 2);
 
   // Assign Telegram message IDs, these IDs should only be associated with 
   //   Telegram messages containing LAG content
@@ -64,13 +65,13 @@ export default async function resetMessages(client: TelegramClient, channel: str
   if (filenames.length == message_ids.length) plog.done(`Equal!`, 0, 2);
   else {
     plog.error(`Not Equal!`, 0, 1);
-    plog.alert(`${filenames.length} lag-###.txt files found and ${message_ids.length} Telegram message IDs`, 0, 2);
+    plog.alert(`${filenames.length} lag-###.txt files found and ${message_ids.length} Telegram message IDs`, 1, 2);
     plog.log(`No edits have been made`, 0, 2);
     return;
   }
 
   // Iterate through Telegram message IDs and lag-###.txt filenames
-  plog.log(`Iterating through Telegram messages and lag-###.txt filenames . . . `, 0, 1);
+  plog.log(`Reverting Telegram messages . . . `, 0, 1);
   for (let i = 0; i < filenames.length; i++) {
     // Assign message ID and filename
     const message_id: number = message_ids[i];
@@ -81,15 +82,18 @@ export default async function resetMessages(client: TelegramClient, channel: str
     const message: string = fs.readFileSync(filepath, { encoding: "utf-8" });
 
     // Edit message on Telegram channel, replacing with string from lag-###.txt file
-    plog.log(`Resetting message #${message_id} . . . `, 1, 0);
-    await editMessage(
-      client, 
-      channel, 
-      message_id, 
-      message
-    );
-    plog.done(`Done`, 0, 1);
-    plog.log(`==> Message: ${message.split("\n")[0]}`, 1, 2);
+    plog.log(`Reverting message #${message_id}: ${message.split("\n")[0]} . . . `, 1, 0);
+    try {
+      await editMessage(
+        client, 
+        channel, 
+        message_id, 
+        message
+      );
+      plog.done(`Done`, 0, 1);
+    } catch (error: any) {
+      plog.error(`Some error occurred; no edit has been made`, 0, 1);
+    }
   }
   plog.log(`Finished`, 0, 2);
   return;

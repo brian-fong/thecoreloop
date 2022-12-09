@@ -22,42 +22,18 @@ export default async function compareMessages(client: TelegramClient): Promise<v
 
   // Read Telegram messages from production channel
   plog.log(`Reading Telegram messages: thecoreloop . . . `, 0, 0);
-  const messages: TelegramMessage[] = await readMessages(client, "thecoreloop", number_array);
+  const messages_prod: TelegramMessage[] = await readMessages(client, "thecoreloop", number_array);
   plog.done(`Done`, 0, 1);
-  plog.log(`==> ${messages.length} messages found`, 0, 1);
-
-  // Parse LAG content from Telegram messages
-  const messages_lag: TelegramMessage[] = [];
-  for (const message of messages) {
-    try {
-      const lag: LAG = new LAG(message);
-      messages_lag.push(message);
-    } catch (error) {
-      continue;
-    }
-  }
-  plog.log(`==> ${messages_lag.length} LAG posts found`, 0, 2);
+  plog.log(`==> ${messages_prod.length} messages found`, 0, 1);
 
   // Read Telegram messages from developer channel
   plog.log(`Reading Telegram messages: thecoreloop_test . . . `, 0, 0);
-  const messages_test: TelegramMessage[] = await readMessages(client, "thecoreloop_test", number_array);
+  const messages_dev: TelegramMessage[] = await readMessages(client, "thecoreloop_test", number_array);
   plog.done(`Done`, 0, 1);
-  plog.log(`==> ${messages_test.length} messages found`, 0, 1);
-
-  // Parse LAG content from Telegram messages
-  const messages_lag_test: TelegramMessage[] = [];
-  for (const message of messages_test) {
-    try {
-      const lag: LAG = new LAG(message);
-      messages_lag_test.push(message);
-    } catch (error) {
-      continue;
-    }
-  }
-  plog.log(`==> ${messages_lag_test.length} LAG posts found`, 0, 2);
+  plog.log(`==> ${messages_dev.length} messages found`, 0, 1);
 
   // Compare number of messages between production vs developer channels
-  if (messages_lag.length != messages_lag_test.length) {
+  if (messages_prod.length != messages_dev.length) {
     plog.error("Channels contain differing number of LAG posts", 0, 2);
     return;
   }
@@ -65,10 +41,10 @@ export default async function compareMessages(client: TelegramClient): Promise<v
   // Compare text content of messages 1-by-1
   const mismatching_messages: TelegramMessage[][] = [];
   plog.log(`Comparing messages . . . `, 0, 1);
-  for (let i = 0; i < messages_lag.length; i++) {
+  for (let i = 0; i < messages_prod.length; i++) {
     // Assign messages
-    const message_a: TelegramMessage = messages_lag[i];         // production
-    const message_b: TelegramMessage = messages_lag_test[i];    // developer
+    const message_a: TelegramMessage = messages_prod[i];         // production
+    const message_b: TelegramMessage = messages_dev[i];    // developer
 
     // Compare messages 
     plog.log(`Comparing thecoreloop message #${message_a.id} vs. thecoreloop_test message #${message_b.id} . . . `, 1, 0);
