@@ -1,0 +1,79 @@
+{
+  "heading": "LAG #111",
+  "subheading": "",
+  "telegram_message_id": 123,
+  "date": "Monday December 5th 2022",
+  "content": [
+    {
+      "category": "‼️ SPECIAL INSIGHTS 👀",
+      "entries": [
+        {
+          "caption": "powered by AppMagic.rocks 😎\nSorry!  This research piece is taking longer than expected but I will share it with you guys soon!  Promise!!",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "category": "🔦 Spotlight 🌟",
+      "entries": [
+        {
+          "caption": "A look at Mobile games bucking the mobile games recession",
+          "url": "https://www.deconstructoroffun.com/blog/2022/12/5/bucking-the-recession"
+        }
+      ]
+    },
+    {
+      "category": "🌊 MARKET ☎️",
+      "entries": [
+        {
+          "caption": "A look at web3 cloud gaming ecosystem",
+          "url": "https://newzoo.com/insights/articles/cloud-gaming-ecosystem-diagram-2022"
+        },
+        {
+          "caption": "A look at data.ai & deconstructor of fun mobile gaming in 2022",
+          "url": "https://gamedevreports.substack.com/p/dataai-and-deconstructor-of-fun-mobile"
+        },
+        {
+          "caption": "A look at Mobil games bucking the mobile games recession",
+          "url": "https://www.deconstructoroffun.com/blog/2022/12/5/bucking-the-recession"
+        }
+      ]
+    },
+    {
+      "category": "💎 Deep Dives 🔎",
+      "entries": [
+        {
+          "caption": "a look at Fall Guys data",
+          "url": "https://newzoo.com/insights/articles/fall-guy-data-newzoo-expert-spotlight"
+        },
+        {
+          "caption": "A look at the biggest discovery competition",
+          "url": "https://newsletter.gamediscover.co/p/new-games-biggest-discovery-competition"
+        }
+      ]
+    },
+    {
+      "category": "✨ Web 3️⃣ + Meta 🌎",
+      "entries": [
+        {
+          "caption": "A look at web3 fantasy sport\\",
+          "url": "https://www.theblockresearch.com/sorare-the-web3-fantasy-sports-phenomenon-191802"
+        }
+      ]
+    },
+    {
+      "category": "👾 Game & Stats Releases 🎮",
+      "entries": [
+        {
+          "caption": "A look at PUBG hitting $9B in lifetime user spending",
+          "url": "https://venturebeat.com/games/pubg-mobile-9-billion-lifetime-spending-pubgm-sensor-tower/"
+        },
+        {
+          "caption": "A look at Genshin Impact earning $3.7B in Mobile in first 2 years",
+          "url": "https://venturebeat.com/games/genshin-impact-earned-3-7-billion-mobile-first-2-years-sensor-tower/"
+        }
+      ]
+    }
+  ],
+  "number": 111
+}
