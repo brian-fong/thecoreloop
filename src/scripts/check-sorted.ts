@@ -29,7 +29,7 @@ export default async function checkSorted(client: TelegramClient, channel: strin
   plog.log(`==> ${messages.length} messages found`, 0, 2);
 
   // Parse LAG content from Telegram messages 
-  plog.log(`Parsing Telegram messages: `, 0, 1);
+  plog.log(`Checking if Telegram messages are sorted: `, 0, 1);
   let sorted_message_count: number = 0;
   let lag_message_count: number = 0;
   for (const message of messages) {
