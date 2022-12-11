@@ -230,7 +230,8 @@ export function formatString(lag: LAG, ordered: boolean = false): string {
       if (i < content.length-1) output += "\n\n";
     }
   }
-  return output;
+
+  return output.slice(0, -1);
 }
 
 function parseTextByCategory(raw_text: string, line_start: string): string {

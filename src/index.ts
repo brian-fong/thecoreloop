@@ -24,6 +24,7 @@ async function main(): Promise<void> {
   // Assign main menu options for user
   const main_menu: Choice[] = [
     { name: "Build LAG Archive [mainnet]" }, 
+    { name: "Backup messages [mainnet --> backup]" }, 
     { name: "Push messages [mainnet --> devnet]" },
     { name: "Compare messages [mainnet vs devnet]" },
     { name: "Format messages [mainnet/devnet]" }, 
@@ -53,13 +54,15 @@ async function main(): Promise<void> {
       // 3. Write lag-###.txt/json files
       
       await buildArchive(client);
+    } else if (choice.includes("Backup messages")) {
+      await pushMessages(client, "thecoreloop", "thecoreloop_backup");
     } else if (choice.includes("Push messages")) {
       // === Push messages: mainnet --> devnet ===
       // 1. Read messages from mainnet
       // 2. Send messages to devnet, one-by-one
       // Note: if FloodWaitError, then sleep for 300s and try again
 
-      await pushMessages(client);
+      await pushMessages(client, "thecoreloop", "thecoreloop_test");
     } else if (choice.includes("Compare messages")) {
       // === Compare messages: mainnet vs devnet ===
       // 1. Read messages mainnet + devnet

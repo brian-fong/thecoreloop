@@ -25,7 +25,7 @@ export default async function clearMessages(client: TelegramClient) {
   
   if (messages.length > 0) {
     // Delete Telegram messages one-by-one
-    plog.log(`Deleting Telegram messages . . . `, 0, 0);
+    plog.log(`Deleting Telegram messages . . . `, 0, 1);
     for (const message of messages) {
       plog.log(`Deleting message: ${message.text.split("\n")[0]} . . . `, 1, 0);
       await deleteMessages(client, "thecoreloop_test", [message.id]);

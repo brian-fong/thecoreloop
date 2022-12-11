@@ -38,25 +38,30 @@ export default async function formatMessages(client: TelegramClient, channel: st
     try {
       // Instantiate <LAG> object
       const lag: LAG = new LAG(message);
+      plog.log(`Formatting LAG #${lag.number} . . . `, 1, 0);
 
       // Assign raw and formatted text
       const text_raw: string = message.text;
       const text_formatted: string = formatString(lag, true);
 
-      if (text_raw == text_formatted) plog.done(`Already formatted`, 0, 1);
+      if (text_raw == text_formatted) {
+        // If raw text and formatted text are equivalent, then skip
+        plog.done(`Already formatted`, 0, 1);
+      }
       else {
-        // Edit Telegram message using output of formatString()
+        // Else, edit Telegram message using output of formatString()
         await editMessage(
           client, 
           channel, 
           message.id,
           text_formatted,
         );
-        plog.done(`Successfully formatted`, 0, 2);
+        plog.done(`Successfully formatted`, 0, 1);
       }
     } catch(error: any) {
-      if (error.errorMessage.includes("FLOOD")) {
-        plog.error(`${error}`, 0, 2);
+      plog.error(`${error}`, 1, 1);
+      if (error.errorMessage && error.errorMessage.includes("FLOOD")) {
+        plog.error(`${error}`, 1, 1);
         
         // Sleep for 5 mins (300s)
         plog.log(`Sleeping for 300s . . . `, 0, 0);
@@ -65,8 +70,7 @@ export default async function formatMessages(client: TelegramClient, channel: st
         
         // Decrement i
         i--;
-      } else if (error.errorMessage.includes("MESSAGE_NOT_MODIFIED")) plog.alert(`Message already sorted`, 0, 2);
-      else plog.error(`${error}`, 0, 2);
+      } 
     }
   }
   plog.done(`Finished`, 0, 2);
