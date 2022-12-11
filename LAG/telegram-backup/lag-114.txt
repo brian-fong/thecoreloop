@@ -1,0 +1,75 @@
+Look at Gaming #114 | Thursday December 8th 2022 
+
+‼️ SPECIAL INSIGHTS 👀
+powered by AppMagic.rocks 😎
+
+Today I decided to look at the my favorite game genres on the app store, which are RPG, Casinos, Shooters, and Card Games. 
+
+RPG and Casinos each has about 5.8k games in their genres.  Shooters has about a third of that at 2.2k, while Card Games only had about 1.1k.  Although, the gross revenue for each genre seems to be in-line with one another (ie RPG has 3x the revenue of shooters), the Revenue per downloads (RpD)  is all over the place.  
+
+RPGs has a RpD of $12.72, while Shooters had a mere $1.15 — even Card Games had a better RpD at $2.36.  Despite having the same game count as RPGs, Casino games had an RpD of $6.81.  However, when you break it up into East vs. West, a completely different pattern emerges.  
+
+In the West, we have Casino games pulling in $15.8 RpD and RPGs only at $10.35.  But in the East, RPGs pull down a whopping $28.01 versus $11.61 for Casino.  
+
+First Come, First Served:
+If you're interested in seeing more of this data, you can access my dashboard here: https://appmagic.rocks/dashboards/6392b5c06e1cb?promoCode=6373c4a19d368
+
+
+🔦 Spotlight 🌟
+A look at the ATVI-MSFT merger, 4 pro-competitive argument in favor of the deal  by SuperJoost 
+https://superjoost.substack.com/p/bigger-means-different?utm_source=post-email-title&publication_id=66617&post_id=89256268&isFreemail=true&utm_medium=email
+
+
+🌊 MARKET ☎️
+A look at all the Game Awards 2022 announcements & trailers
+https://www.theverge.com/2022/12/8/23500703/the-game-awards-2022-announcements-trailers
+
+A look at FTC suing Microsoft-Activision Blizzard merger
+https://www.axios.com/2022/12/08/ftc-block-microsoft-activision-blizzard-merger
+
+A look at GameStop Q3 losses. Rev $1.2B.  Loss $94M
+https://www.gamesindustry.biz/gamestop-losses-continue-in-q3
+
+A look at Embracer approved to trade on Nasdaq Stockholm
+https://www.gamesindustry.biz/embracer-approved-to-trade-on-nasdaq-stockholm
+
+A look at the Mobile Game Market in Nov 2022 by gamerefinery
+https://www.gamerefinery.com/mobile-game-market-review-november-2022/
+
+
+💎 Deep Dives 🔎 
+A look at the ATVI-MSFT merger, 4 pro-competitive argument in favor of the deal  by SuperJoost 
+https://superjoost.substack.com/p/bigger-means-different?utm_source=post-email-title&publication_id=66617&post_id=89256268&isFreemail=true&utm_medium=email
+
+
+🌈 Platforms 🏔 
+A look at Amazon's new anime MMO, Blue Protocol (codeveloped with Bandai Namco)
+https://venturebeat.com/games/amazon-games-brings-blue-protocol-mmo-to-western-audiences/
+
+A look at Epic CEO Tim Sweeney saying no Fortnite VR
+https://www.theverge.com/2022/12/8/23501012/epic-no-plans-vr-fortnite-meta
+
+A look at Xbox Game Pass subscribers getting access to every LoL & Valorant character
+https://www.theverge.com/2022/12/8/23499055/xbox-game-pass-riot-games-league-of-legends-valorant-account
+
+
+✨ Web 3️⃣ + Meta 🌎
+A look at Magic Eden hiring new Chief Gaming Officer
+https://www.pocketgamer.biz/job-news/80382/magic-eden-appoints-chris-akhaven-as-chief-gaming-officer/
+
+A look at Uniswap's NFT aggregator's tepid traction
+https://www.theblockresearch.com/rapid-insights-nfts-on-uniswap-gain-modest-momentum-193321
+
+A look at Decentralland allowing you to be a virtual landlord
+https://www.theblock.co/post/193353/decentraland-will-now-let-you-become-a-virtual-landlord
+
+A look at Starbucks NFT now available to beta testers
+https://www.theblock.co/post/193312/starbucks-nfts-are-now-available-to-beta-testers
+
+
+👾 Game & Stats Releases 🎮
+A look at Diablo IV arriving in June
+https://www.gameinformer.com/the-game-awards-2022/2022/12/08/diablo-iv-arrives-in-june
+
+A look at Tekken 8 gameplay trailer
+https://www.gameinformer.com/the-game-awards-2022/2022/12/08/tekken-8-first-gameplay-revealed-in-new-trailer
