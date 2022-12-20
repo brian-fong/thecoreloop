@@ -7,7 +7,7 @@ import { TelegramClient } from "telegram";
 import sleep from "../helper/sleep";
 import { formatString, LAG } from "../LAG";
 import { editMessage, readMessages } from "../telegram";
-import { TelegramIndex, TelegramMessage } from "../types";
+import { TelegramMessage } from "../types";
 import PrettyLogger from "../helper/pretty-log";
 const plog: PrettyLogger = new PrettyLogger(2);
 
@@ -44,12 +44,10 @@ export default async function formatMessages(client: TelegramClient, channel: st
       const text_raw: string = message.text;
       const text_formatted: string = formatString(lag, true);
 
-      if (text_raw == text_formatted) {
-        // If raw text and formatted text are equivalent, then skip
-        plog.done(`Already formatted`, 0, 1);
-      }
+      // If raw text and formatted text are equivalent, then skip.
+      // Else, edit Telegram message using output of formatString()
+      if (text_raw == text_formatted) plog.done(`Already formatted`, 0, 1); 
       else {
-        // Else, edit Telegram message using output of formatString()
         await editMessage(
           client, 
           channel, 
@@ -59,7 +57,6 @@ export default async function formatMessages(client: TelegramClient, channel: st
         plog.done(`Successfully formatted`, 0, 1);
       }
     } catch(error: any) {
-      plog.error(`${error}`, 1, 1);
       if (error.errorMessage && error.errorMessage.includes("FLOOD")) {
         plog.error(`${error}`, 1, 1);
         

@@ -48,49 +48,26 @@ async function main(): Promise<void> {
 
     // Handle each choice
     if (choice.includes("Build LAG Archive")) {
-      // === Build LAG Archive: mainnet ===
-      // 1. Read Telegram messages from mainnet
-      // 2. Parse Telegram messages for LAG content
-      // 3. Write lag-###.txt/json files
-      
+      // Build LAG Archive: mainnet 
       await buildArchive(client);
     } else if (choice.includes("Backup messages")) {
+      // Backup messages (push messages: mainnet --> backup) ===
       await pushMessages(client, "thecoreloop", "thecoreloop_backup");
     } else if (choice.includes("Push messages")) {
-      // === Push messages: mainnet --> devnet ===
-      // 1. Read messages from mainnet
-      // 2. Send messages to devnet, one-by-one
+      // Push messages: mainnet --> devnet ===
       // Note: if FloodWaitError, then sleep for 300s and try again
-
       await pushMessages(client, "thecoreloop", "thecoreloop_test");
     } else if (choice.includes("Compare messages")) {
-      // === Compare messages: mainnet vs devnet ===
-      // 1. Read messages mainnet + devnet
-      // 2. Parse LAG content from both messages
-      // 3. Compare number of messages & text content
-      // 4. Console-log results
-
+      // Compare messages: mainnet vs devnet 
       await compareMessages(client);
     } else if (choice.includes("Format messages")) {
-      // === Format messages: mainnet/devnet  ===
-      // 1. Read messages from mainnet/devnet
-      // 2. Parse LAG content and replace (edit) messages using 
-      //      output of formatString()
-      
+      // Format messages: mainnet/devnet  
       await formatMessages(client, "thecoreloop_test");
     } else if (choice.includes("Check messages")) {
-      // === Check messages === 
-      // 1. Read messages from mainnet/devnet
-      // 2. Parses LAG content and checks for the following:
-      //      i. If message is formatted appropriately, using output of formatString()
-      //      ii. If there are any LAG posts missing, accounting for exceptions
-      
+      // Check messages 
       await checkMessages(client, "thecoreloop_test");
     } else if (choice.includes("Revert messages")) {
-      // === Reverts messages ===
-      // 1. Read Telegram messages from production channel and build Telegram Index
-      // 2. Read lag-###.txt files in telegram-backup directory
-      // 3. Edit all messages using Telegram Index 
+      // Revert messages
       
       // Prompt user for confirmation
       const confirm = await input.confirm(
@@ -101,9 +78,7 @@ async function main(): Promise<void> {
       if (confirm) await revertMessages(client, "thecoreloop_test");
       else plog.log(`Exiting`, 0, 2);
     } else if (choice.includes("Clear messages")) {
-      // === Clear All Messages in developer channel === 
-      // 1. Read Telegram messages in developer channel, collecting message IDs
-      // 2. Use collected message IDs to delete all messages at once
+      // Clear all Messages in developer channel 
       
       // Prompt user for confirmation
       const confirm = await input.confirm(
