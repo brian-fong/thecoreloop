@@ -43,3 +43,4 @@ export default async function clearMessages(client: TelegramClient) {
   await sleep(100);
 }
 
+

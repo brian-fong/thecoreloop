@@ -1,14 +1,29 @@
-# Ignore Node modules
+# NextJS
+/.next/
+/out/
+
+# Production
+/build
+
+# Typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# Node modules
 node_modules/
 
-# Ignore environmental variables 
+# Environmental variables 
 .env
 
-# Ignore authentication credentials
+# Authentication credentials
 auth/
 
-# Ignore archived folder 
+# Archived folder 
 archived/
 
-# Ignore practice file
+# Vercel
+.vercel
+
+# Local test files and notes
 practice.ts
+notes.md

@@ -1,43 +1,21 @@
 {
   "name": "thecoreloop",
-  "version": "1.0.0",
-  "description": "Gaming news aggregator, curated by @0xkapital_k",
-  "main": "index.js",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "dev": "ts-node ./src/index",
-    "practice": "ts-node ./src/practice",
-    "build": "tsc -p .",
-    "test-telegram": "ts-node ./src/tests/test-telegram",
-    "test-LAG": "ts-node ./src/tests/test-LAG",
-    "test-gdrive": "ts-node ./src/tests/test-gdrive"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/0xfrian/thecoreloop.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/0xfrian/thecoreloop/issues"
-  },
-  "homepage": "https://github.com/0xfrian/thecoreloop#readme",
-  "devDependencies": {
-    "typescript": "^4.9.3"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
-    "@google-cloud/local-auth": "^2.1.1",
-    "@types/node": "^18.11.9",
-    "@types/treeify": "^1.0.0",
-    "cors": "^2.8.5",
-    "dotenv": "^16.0.3",
-    "express": "^4.18.2",
-    "fs": "^0.0.1-security",
-    "googleapis": "^109.0.1",
-    "input": "^1.0.1",
-    "nodemon": "^2.0.20",
-    "path": "^0.12.7",
-    "telegram": "^2.14.7",
-    "treeify": "^1.1.0"
+    "@next/font": "13.0.7",
+    "@types/node": "18.11.17",
+    "@types/react": "18.0.26",
+    "@types/react-dom": "18.0.9",
+    "next": "13.0.7",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "typescript": "4.9.4"
   }
 }
