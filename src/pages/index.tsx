@@ -10,7 +10,7 @@ export default function index() {
         <title>thecoreloop</title>
         <meta
           name="description"
-          content="Gaming-related news aggregator at the intersection of Web2 and Web3, curated by @0xkapital_k"
+          content="Gaming aggregator at the intersection of Web2 and Web3, curated by @0xkapital_k"
         />
       </Head>
 
