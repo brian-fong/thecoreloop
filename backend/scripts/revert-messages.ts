@@ -1,13 +1,10 @@
 // Node Modules 
-import fs from "fs";
-import path from "path";
 import { TelegramClient } from "telegram";
 
 // Local Modules
-import { TelegramMessage, TelegramIndex } from "../types";
-import { LAG } from "../LAG";
-import { readMessages, editMessage } from "../telegram";
-import PrettyLogger from "../helper/pretty-log";
+import { TelegramMessage } from "../modules/types";
+import { readMessages, editMessage } from "../modules/telegram";
+import PrettyLogger from "../modules/pretty-log";
 const plog: PrettyLogger = new PrettyLogger(2);
 
 export default async function revertMessages(client: TelegramClient, channel: string): Promise<void> {

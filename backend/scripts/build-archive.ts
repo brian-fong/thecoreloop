@@ -5,11 +5,11 @@ const input = require("input");
 import { TelegramClient } from "telegram";
 
 // === Local Modules ===
-import { LAG } from "../LAG";
-import { TelegramMessage } from "../types";
-import { readMessages } from "../telegram";
-import PrettyLogger from "../helper/pretty-log";
+import { TelegramMessage } from "../modules/types";
+import PrettyLogger from "../modules/pretty-log";
 const plog: PrettyLogger = new PrettyLogger(2);
+import { LAG } from "../modules/look-at-games";
+import { readMessages } from "../modules/telegram";
 
 // === Filepaths ===
 const FILEPATH_LAG_DIR: string = path.join(__dirname, "../../LAG/");

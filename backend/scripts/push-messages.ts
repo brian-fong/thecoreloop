@@ -1,14 +1,12 @@
 // === Node Modules ===
-import fs from "fs";
-import path from "path";
 const input = require("input");
 import { TelegramClient } from "telegram";
 
 // === Local Modules ===
-import sleep from "../helper/sleep";
-import { TelegramMessage } from "../types";
-import { readMessages, sendMessage } from "../telegram";
-import PrettyLogger from "../helper/pretty-log";
+import { TelegramMessage } from "../modules/types";
+import sleep from "../modules/sleep";
+import { readMessages, sendMessage } from "../modules/telegram";
+import PrettyLogger from "../modules/pretty-log";
 const plog: PrettyLogger = new PrettyLogger(2);
 
 export default async function pushMessages(client: TelegramClient, source_channel: string, target_channel: string): Promise<void> {

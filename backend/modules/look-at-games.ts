@@ -1,7 +1,7 @@
 // === Local Modules ===
-import { Date } from "./helper/date";
 import { StringMap, CategoryGroup, Entry, TelegramMessage } from "./types";
-import PrettyLogger from "./helper/pretty-log";
+import { Date } from "./date";
+import PrettyLogger from "./pretty-log";
 const plog: PrettyLogger = new PrettyLogger(2);
 
 

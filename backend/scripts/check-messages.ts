@@ -2,11 +2,11 @@
 import { TelegramClient } from "telegram";
 
 // Local Modules
-import { LAG_EXCEPTIONS, LAG, formatString } from "../LAG";
-import { TelegramMessage } from "../types";
-import { readMessages } from "../telegram";
-import PrettyLogger from "../helper/pretty-log";
+import { TelegramMessage } from "../modules/types";
+import PrettyLogger from "../modules/pretty-log";
 const plog: PrettyLogger = new PrettyLogger(2);
+import { LAG_EXCEPTIONS, LAG, formatString } from "../modules/look-at-games";
+import { readMessages } from "../modules/telegram";
 
 export default async function checkMessages(client: TelegramClient, channel: string) {
   // === Check messages === 

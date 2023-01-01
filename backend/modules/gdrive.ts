@@ -7,7 +7,7 @@ import { authenticate } from "@google-cloud/local-auth";
 import { JSONClient } from "google-auth-library/build/src/auth/googleauth";
 
 // Initialize pretty-logger 
-import PrettyLogger from "./helper/pretty-log";
+import PrettyLogger from "./pretty-log";
 const plog: PrettyLogger = new PrettyLogger(2);
 
 // Set Google API scope (read-only)

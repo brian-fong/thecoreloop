@@ -1,14 +1,12 @@
 // === Node Modules ===
 require('dotenv').config();
-import fs from "fs";
-import path from "path";
 const input = require("input");
 import { Api, TelegramClient } from "telegram";
 import { StringSession } from "telegram/sessions";
 import { LogLevel } from "telegram/extensions/Logger";
 
 // === Local Modules ===
-import PrettyLogger from "./helper/pretty-log";
+import PrettyLogger from "./pretty-log";
 const plog: PrettyLogger = new PrettyLogger(2);
 
 // === Types ===

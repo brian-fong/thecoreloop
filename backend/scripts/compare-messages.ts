@@ -2,11 +2,10 @@
 import { TelegramClient } from "telegram";
 
 // === Local Modules ===
-import sleep from "../helper/sleep";
-import { LAG } from "../LAG";
-import { TelegramMessage } from "../types";
-import { readMessages } from "../telegram";
-import PrettyLogger from "../helper/pretty-log";
+import { TelegramMessage } from "../modules/types";
+import sleep from "../modules/sleep";
+import { readMessages } from "../modules/telegram";
+import PrettyLogger from "../modules/pretty-log";
 const plog: PrettyLogger = new PrettyLogger(2);
 
 export default async function compareMessages(client: TelegramClient): Promise<void> {

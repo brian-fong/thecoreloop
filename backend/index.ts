@@ -3,17 +3,17 @@ const input = require("input");
 import { TelegramClient } from "telegram";
 
 // === Local Modules ===
-import { Choice } from "./types";
-import { createTelegramClient } from "./telegram";
-import buildArchive from "./scripts/build-lag-archive";
+import { Choice } from "./modules/types";
+import { createTelegramClient } from "./modules/telegram";
+import PrettyLogger from "./modules/pretty-log";
+const plog: PrettyLogger = new PrettyLogger(2);
+import buildArchive from "./scripts/build-archive";
 import pushMessages from "./scripts/push-messages";
 import clearMessages from "./scripts/clear-messages";
 import compareMessages from "./scripts/compare-messages";
 import formatMessages from "./scripts/format-messages";
 import checkMessages from "./scripts/check-messages";
 import revertMessages from "./scripts/revert-messages";
-import PrettyLogger from "./helper/pretty-log";
-const plog: PrettyLogger = new PrettyLogger(2);
 
 // String Session Token (used to skip Telegram authorization)
 const string_session: string = process.env.TELEGRAM_STRING_SESSION!;

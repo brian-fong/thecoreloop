@@ -1,5 +1,5 @@
 // Local Modules
-import PrettyLogger from "../helper/pretty-log";
+import PrettyLogger from "./pretty-log";
 const plog: PrettyLogger = new PrettyLogger(2);
 
 // Sets delay for <time> number of milliseconds

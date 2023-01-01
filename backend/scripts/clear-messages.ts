@@ -2,10 +2,10 @@
 import { TelegramClient } from "telegram";
 
 // === Local Modules ===
-import sleep from "../helper/sleep";
-import { TelegramMessage } from "../types";
-import { readMessages, deleteMessages } from "../telegram";
-import PrettyLogger from "../helper/pretty-log";
+import sleep from "../modules/sleep";
+import { TelegramMessage } from "../modules/types";
+import { readMessages, deleteMessages } from "../modules/telegram";
+import PrettyLogger from "../modules/pretty-log";
 const plog: PrettyLogger = new PrettyLogger(2);
 
 export default async function clearMessages(client: TelegramClient) {

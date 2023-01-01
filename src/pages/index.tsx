@@ -1,21 +1,18 @@
-// index.tsx
+// _app.tsx 
 
-import Head from "next/head";
-import App from "./_app";
+import { 
+  ChakraProvider,
+} from '@chakra-ui/react'
+import theme from "./theme";
+import Head from "./Head";
+import Main from "./Main";
+import type { AppProps } from "next/app";
 
-export default function index() {
+export default function Home({ Component, pageProps }: AppProps) {
   return (
-    <>
-      <Head>
-        <title>thecoreloop</title>
-        <meta
-          name="description"
-          content="Gaming aggregator at the intersection of Web2 and Web3, curated by @0xkapital_k"
-        />
-      </Head>
-
-      <App />
-    </>
+    <ChakraProvider theme={theme}>
+      <Head />
+      <Main />
+    </ChakraProvider>
   );
 }
-
