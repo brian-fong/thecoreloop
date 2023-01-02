@@ -5,10 +5,14 @@ export default function Head() {
     <NextHead>
       <title>thecoreloop</title>
       <meta charSet="UTF-8" />
+      <meta property="title" content="thecoreloop" />
       <meta property="og:title" content="thecoreloop" />
+      <meta name="description" content="Gaming aggregator at the intersection of Web2 and Web3, curated by @0xkapital_k" />
       <meta name="og:description" content="Gaming aggregator at the intersection of Web2 and Web3, curated by @0xkapital_k" />
+      <meta property="type" content="blog" />
       <meta property="og:type" content="blog" />
-      <meta property="og:image" content="https://imgur.com/sa9WFVT" />
+      <meta property="image" content="https://i.imgur.com/sa9WFVT.png" />
+      <meta property="og:image" content="https://i.imgur.com/sa9WFVT.png" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="icon" type="image/x-icon" href="/thecoreloop-favicon.png" />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
