@@ -13,7 +13,7 @@ export type PostProps = {
   cards: CardProps[];
 };
 
-export default function LAG_Post({ 
+export default function Post({ 
   title="LAG # Not Found (⊙_☉)", 
   date="Date not found ( • ᴖ • ｡)", 
   cards=[] 
@@ -27,17 +27,17 @@ export default function LAG_Post({
       boxSizing="border-box"
     >
       { /* Inner Container */ }
-      <Flex flexDir="column" justify="start" align="start" m="10px" p="15px" width="100%" height="100%" minHeight="500px"
+      <Flex flexDir="column" justify="start" align="start" m="10px" p="15px" width="100%" height="100%"
         border="2px solid" borderColor="border_line"
       >
-        <Flex position="relative" top="-27px" flexDir="row" justify="center" align="center" width="100%">
-          <Heading fontWeight="400" fontSize="20px" p="0px 15px" color="black" backgroundColor="standard_bkg">
+        <Flex position="relative" top="-25px" flexDir="row" justify="center" align="center" width="100%">
+          <Heading p="0px 15px" fontWeight="400" fontSize="16px" color="black" backgroundColor="standard_bkg">
             {title}
           </Heading>
         </Flex>
         { /* LAG Date Container */ }
         <Flex pos="relative" top="-25px" flexDir="row" justify="right" align="center" width="100%">
-          <Text color="black" fontSize="16px">
+          <Text color="black" fontSize="14px">
             {date}
           </Text>
         </Flex>

@@ -28,29 +28,29 @@ export default function Card({
   return (
     <Flex flexDir="column" justify="center" align="start" width="100%">
       { /* Container 1: caption */ }
-      <Text color="black" fontSize="15px" fontStyle="italic" m="0px 0px 5px 0px" width="100%">
+      <Text color="black" fontSize="14px" fontStyle="italic" m="0px 0px 5px 0px" width="100%">
         {caption}
       </Text>
       { /* Container 2: title/description/category/image/source */ }
       <Flex flexDir="row" gap="10px" justify="start" align="start" width="100%">
         { /* Container 2.1: image */ }
-        <Flex flexDir="column" justify="center" align="center" maxWidth="250px" height="100%"
-          boxSizing="border-box" border="1px solid black"
+        <Flex flexDir="column" shrink="2" justify="center" align="center" maxWidth="250px" height="100%"
+          bg="black" border="1px solid black" boxSizing="border-box" 
         >
           <Link href={url} target="_blank" draggable="false">
-            <Image src={image} objectFit="cover" alt={image} fontSize="15px" textAlign="center"
+            <Image src={image} objectFit="cover" alt={image} 
+              fontSize="15px" textAlign="center"
               draggable="false" loading="lazy"
               _hover={{ cursor: "pointer"}}
             />
           </Link>
         </Flex>
         { /* Container 2.2: title/description/category/source */ }
-        <Flex flexDir="column" justify="space-between" align="start" height="100%" width="100%">
+        <Flex flexDir="column" shrink="1" justify="space-between" align="start" height="100%" width="100%">
           { /* Container 2.2.1: title/description */ }
           <Flex flexDir="column" justify="start" align="start" width="100%">
             { /* Title */ }
-            <Link color="blue" fontSize="15px" fontWeight="800" textAlign="justify"  
-              width="100%"
+            <Link color="blue" fontSize="14px" fontWeight="800" width="100%"
               transition="background-color 200ms ease" 
               _hover={{ textDecoration: "underline", cursor: "pointer", color: "white", bg: "blue" }}
               href={url} target="_blank" draggable="false"
@@ -58,12 +58,12 @@ export default function Card({
               {title}
             </Link>
             { /* Description */ }
-            <Text color="black" fontSize="13px" textAlign="left" lineHeight="1.2" pb="5px 0px">
+            <Text color="black" fontSize="14px" textAlign="left" lineHeight="1.2" p="5px 0px 10px">
               {description}
             </Text>
           </Flex>
           { /* Container 2.2.2: category/source */ }
-          <Flex flexDir="row" justify="space-between" align="center" width="100%">
+          <Flex flexDir="row" justify="space-between" align="center" wrap="wrap" width="100%">
             <Flex flexDir="row" gap="15px" justify="start" align="center">
               { /* Category */ }
               <Text color="white" bg="category_bkg" fontSize="13px" p="1px 2px" 

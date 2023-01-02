@@ -5,7 +5,7 @@ import {
 
 // Components
 import Logo from "./Logo";
-import Post, { PostProps } from "./Post";
+import Post from "./Post";
 import { CardProps } from "./Card";
 import NavBar from "./NavBar";
 
@@ -72,20 +72,20 @@ export default function Main() {
       { /* Body Container */ }
       <Flex flexDir="column" justify="start" align="center" width="100vw" height="100vh" bg="bkg"
         m="0px" p="0px"
-        overflow="scroll" overflowX="hidden"
+        overflowX="hidden"
         boxSizing="border-box"
       >
         <NavBar />
 
         { /* Main Column Container */ }
         <Flex flexDir="column" gap="50px" justify="start" align="center" 
-          m="40px 0px 60px" p="0px"
+          m="40px 40px 60px" p="0px"
           minWidth="400px" maxWidth="750px"
           boxSizing="border-box"
         >
           <Logo />
           <Post 
-            title="Look At Gaming #123"
+            title="Look At Gaming: #123"
             date="Wed Dec 21 2022"
             cards={cards}
           />
