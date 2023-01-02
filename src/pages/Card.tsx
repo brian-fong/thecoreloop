@@ -1,3 +1,4 @@
+// ChakraUI
 import { 
   Flex,
   Text,
@@ -16,14 +17,14 @@ export type CardProps = {
 };
 
 export default function Card({ 
-  url="URL not found",
-  caption="A look at . . . ", 
-  title="Title not found (×﹏×)", 
-  description="Description not found", 
-  category="Category not found", 
-  source="???",
-  image=" Image not found (⊙_⊙) " 
-}: CardProps) {
+    url="URL not found",
+    caption="A look at . . . ", 
+    title="Title not found (×﹏×)", 
+    description="Description not found", 
+    category="Category not found", 
+    source="???",
+    image=" Image not found (⊙_⊙) " 
+  }: CardProps) {
 
   return (
     <Flex flexDir="column" justify="center" align="start" width="100%">
