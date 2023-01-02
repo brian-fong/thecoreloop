@@ -28,7 +28,7 @@ export default function Post({
     >
       { /* Inner Container */ }
       <Flex flexDir="column" justify="start" align="start" m="10px" p="15px" width="100%" height="100%"
-        border="2px solid" borderColor="border_line"
+        border="1px solid" borderColor="rgba(0, 0, 0, 0.5)"
       >
         <Flex position="relative" top="-25px" flexDir="row" justify="center" align="center" width="100%">
           <Heading p="0px 15px" fontWeight="400" fontSize="16px" color="black" backgroundColor="standard_bkg">
