@@ -1,15 +1,12 @@
-// _app.tsx 
+// ChakraUI
+import { ChakraProvider } from '@chakra-ui/react'
+import theme from "../theme";
 
-import { 
-  ChakraProvider,
-} from '@chakra-ui/react'
-import theme from "./theme";
+// React Components
 import Head from "./Head";
 import Main from "./Main";
-import type { AppProps } from "next/app";
-import NavBar from "./NavBar";
 
-export default function Home({ Component, pageProps }: AppProps) {
+export default function Home() {
   return (
     <ChakraProvider theme={theme}>
       <Head />
