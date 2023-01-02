@@ -30,7 +30,7 @@ export default function LAG_Post({
       <Flex flexDir="column" justify="start" align="start" m="10px" p="15px" width="100%" height="100%" minHeight="500px"
         border="2px solid" borderColor="border_line"
       >
-        <Flex position="relative" top="-25px" flexDir="row" justify="center" align="center" width="100%">
+        <Flex position="relative" top="-27px" flexDir="row" justify="center" align="center" width="100%">
           <Heading fontWeight="400" fontSize="20px" p="0px 15px" color="black" backgroundColor="standard_bkg">
             {title}
           </Heading>
@@ -42,7 +42,7 @@ export default function LAG_Post({
           </Text>
         </Flex>
         { /* Card Gallery Container */ }
-        <Flex flexDir="column" gap="30px" justify="start" align="start" width="100%">
+        <Flex position="relative" top="-10px" flexDir="column" gap="30px" justify="start" align="start" width="100%">
           {
             cards.map(card => {
               return <Card 

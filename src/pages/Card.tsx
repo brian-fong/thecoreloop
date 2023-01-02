@@ -50,7 +50,7 @@ export default function Card({
           <Flex flexDir="column" justify="start" align="start" width="100%">
             { /* Title */ }
             <Link color="blue" fontSize="15px" fontWeight="800" textAlign="justify"  
-              width="100%" pb="5px"
+              width="100%"
               transition="background-color 200ms ease" 
               _hover={{ textDecoration: "underline", cursor: "pointer", color: "white", bg: "blue" }}
               href={url} target="_blank" draggable="false"
@@ -58,7 +58,7 @@ export default function Card({
               {title}
             </Link>
             { /* Description */ }
-            <Text color="black" fontSize="13px" textAlign="left" lineHeight="1.2" pb="5px">
+            <Text color="black" fontSize="13px" textAlign="left" lineHeight="1.2" pb="5px 0px">
               {description}
             </Text>
           </Flex>

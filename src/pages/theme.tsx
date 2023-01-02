@@ -5,7 +5,6 @@ import {
 export default extendTheme({
   colors: {
     bkg: "#313244",
-    navbar_bkg: "#656673",
     logo_bkg: "#6711CF",
     standard_bkg: "#C0C0C0",
     category_bkg: "#909090",
@@ -25,6 +24,6 @@ export default extendTheme({
         "caretColor": "rgba(0, 0, 0, 0.6)",
       }
     }
-  }
+  },
 });
 
