@@ -81,6 +81,7 @@ export default function App() {
           href="/thecoreloop-favicon.png" 
         />
         <meta name="viewport" content="viewport-fit=cover" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <Flex 
         flexDir="column" 

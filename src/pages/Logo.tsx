@@ -80,7 +80,7 @@ export default function Logo() {
         flexDir="row" 
         justify="start" 
         align="center" 
-        p="5px"
+        p="5px 5px 5px 10px"
         width="100%" 
         bg="logo_bkg" 
         border="6px double white"
@@ -91,8 +91,8 @@ export default function Logo() {
         <Image 
           src="/mario-question-box.png" 
           alt={"(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧	"}
-          m="-10px" 
-          height="60px" 
+          m="-5px" 
+          height="50px" 
           draggable="false" 
           userSelect="none" 
         />
@@ -100,7 +100,7 @@ export default function Logo() {
           fontSize="16px"
           color="white" 
         >
-          Hint: join the&nbsp;
+          Hint: join&nbsp;
           <Link 
             fontStyle="italic"
             color="tcl_yellow" 
@@ -109,16 +109,16 @@ export default function Logo() {
             target="_blank"
             _hover={{ color: "tcl_yellow_hover" }}
           >
-            Telegram channel
+            Telegram channel 
           </Link> 
-          &nbsp;to receive the latest&nbsp;
+          &nbsp;to get a&nbsp;
           <Text 
             display="inline" 
             fontWeight="bold"
           >
             Look At Gaming
           </Text> 
-          &nbsp;posts!
+          &nbsp;every weekday (read-only)
         </Heading>
       </Flex>
     </>
