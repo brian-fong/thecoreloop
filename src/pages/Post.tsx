@@ -90,6 +90,7 @@ export default function Post({
           width="100%"
         >
           <Heading 
+            fontFamily="JetBrains Mono"
             fontWeight="400" 
             fontSize="16px" 
             p="0px 15px" 

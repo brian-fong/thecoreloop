@@ -34,9 +34,7 @@
     "react-dom": "18.2.0",
     "react-uuid": "^2.0.0",
     "telegram": "^2.15.2",
-    "treeify": "^1.1.0"
-  },
-  "devDependencies": {
+    "treeify": "^1.1.0",
     "typescript": "^4.9.4"
   }
 }

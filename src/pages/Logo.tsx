@@ -36,9 +36,9 @@ export default function Logo() {
             userSelect="none" 
           />
           <Heading 
+            fontFamily="Urbanist" 
             fontWeight="400" 
             fontSize="40px" 
-            fontFamily="Urbanist" 
             color="white" 
             letterSpacing="3px" 
             draggable="false" 
@@ -97,8 +97,11 @@ export default function Logo() {
           userSelect="none" 
         />
         <Heading 
+          fontFamily="JetBrains Mono"
+          fontWeight="400"
           fontSize="16px"
           color="white" 
+          letterSpacing="0px"
         >
           Hint: join&nbsp;
           <Link 
@@ -118,7 +121,7 @@ export default function Logo() {
           >
             Look At Gaming
           </Text> 
-          &nbsp;every weekday (read-only)
+          &nbsp;every weekday
         </Heading>
       </Flex>
     </>
