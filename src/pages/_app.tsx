@@ -21,10 +21,8 @@ import { CardProps } from "../components/Card";
 export default function App() {
   useEffect(() => {
     async function testApi(): Promise<void> {
-      const response: any = await axios.post("/api", {
-
-      });
-      console.log("Response: ", response.data.message);
+      const response: any = await axios.post("/api");
+      console.log("Response: ", response.data);
     }
 
     testApi();
