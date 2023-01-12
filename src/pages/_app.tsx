@@ -1,99 +1,75 @@
+// Node Modules
+import axios from "axios";
+import uuid from 'react-uuid';
+
+// React
+import { useEffect, useState, ReactElement } from "react";
+
 // ChakraUI
 import { Flex } from '@chakra-ui/react'
 import { ChakraProvider } from '@chakra-ui/react'
 import theme from "../styles/theme";
-
-// React
-import { useEffect } from "react";
 
 // Components
 import Head from "next/head";
 import Logo from "../components/Logo";
 import Post from "../components/Post";
 import NavBar from "../components/NavBar";
-
-// Node Modules
-import axios from "axios";
+import Card from "../components/Card";
 
 // Types
-import { CardProps } from "../components/Card";
+import { LAG, Card as CardProps } from "../types";
 
 export default function App() {
+  // Initialize latest LAG state variable
+  const [LAG, setLAG] = useState<LAG>({
+    heading: "",
+    subheading: "",
+    message_id: -1,
+    number: -1,
+    date: "",
+    content: [],
+  });
+
+  // Initialize Special Insights state variable
+  const [SI, setSI] = useState<string>("");
+
+  // Initialize Cards array state variable
+  const [cards, setCards] = useState<ReactElement[]>([]);
+
   useEffect(() => {
-    async function testApi(): Promise<void> {
+    async function init(): Promise<void> {
       const response: any = await axios.post("/api");
-      console.log("Response: ", response.data);
+      const lag: LAG = response.data;
+
+      console.log("LAG: ", lag);
+      setLAG(lag);
+      for (const category_group of lag.content) {
+        // Assign Special Insights caption
+        if (category_group.category.toLowerCase().includes("special insights")) {
+          setSI(category_group.articles[0].caption);
+          continue;
+        }
+        
+        // Build Cards array
+        for (const article of category_group.articles) {
+          const card: ReactElement = <Card 
+            key={uuid()}
+            url={article.url || ""}
+            caption={article.caption || ""}
+            title={article.title || ""}
+            description={article.description || ""}
+            image={article.image || ""}
+            category={category_group.category || ""}
+            source={article.source || ""}
+          />;
+          setCards(cards => [...cards, card])
+        }
+      }
     }
 
-    testApi();
+    init();
   }, []);
-
-  const special_insights: string = "powered by AppMagic.rocks 😎\n\nSorry no insights today frens.  Currently feeling sick. 🤒  Let's get straight to the news.";
-  const cards: CardProps[] = [
-    {
-      url: "https://mobiledevmemo.com/the-duopoly-is-over-because-everything-is-an-ad-network/",
-      caption: "A look at everything being an ad network by @eric_seufert",
-      title: "The Duopoly is over (because Everything is an Ad Network) | Mobile Dev Memo by Eric Seufert",
-      description: "The Duopoly is over (because Everything is an Ad Network). Mobile marketing and advertising, freemium monetization strategy, and marketing science. Mobile Dev",
-      image: "https://mobiledevmemo.com/wp-content/uploads/2022/12/mdm_duopoly_over.jpg",
-      source: "Mobile Dev Memo",
-      category: "🔦 Spotlight 🌟",
-    },
-    {
-      url: "https://twitter.com/0xkapital_k/status/1550655795083128833?s=21&t=rjq6GQLWJDECfOdwCVcVLg",
-      caption: "A look at Digital Fashion by @accel_capital from @1kxnetwork",
-      title: "Accel XR || 1kx 🕹👾 on Twitter",
-      description: 'Fashion is evolving.\n' + '\n' + '- Your hoodie will connect to a smart contract\n' + '- Your in-game skin will unlock live events\n' + '- Your closet will be financialized\n' + '\n' + 'On the state of digital fashion, from digiphysical and AR to avatar wearables and decentralized brands:\n' + '\n' + 'https://t.co/BUQlc144FS',
-      image: "https://cdn-images-1.medium.com/max/600/0*mH-z7yElJ_4j-ZPr",
-      source: "Twitter",
-      category: "🔦 Spotlight 🌟",
-    },
-    {
-      url: "https://newzoo.com/insights/articles/the-games-market-in-2022-the-year-in-numbers",
-      caption: "A look at the games market in 2022 by the numbers",
-      title: "The Games Market in 2022: The Year in Numbers | Newzoo",
-      description: "Take a look back at the games market in 2022, featuring the latest market figures, trends, and quotes from Newzoo's expert analysts.",
-      image: "https://newzoo.com/wp-content/uploads/2022/12/Games-Market-in-Numbers-2022-Look-Back-post-tiny.png",
-      source: "Newzoo",
-      category: "🌊 MARKET ☎️",
-    },
-    {
-      url: "https://www.theblockresearch.com/2022-review-of-metaverse-194134",
-      caption: "A look at a 2022 Review of Metaverse",
-      title: "2022 Review of Metaverse",
-      description: "The term “metaverse” became one of the most overused words in 2022 due to its wide variety of interpretations. The Block Research defines “metaverse” as a",
-      image: "https://www.tbstat.com/wp/uploads/2022/12/Gaming_Text-1200x675.jpg",
-      source: "The Block",
-      category: "🌊 MARKET ☎️",
-    },
-    {
-      url: "https://www.gamesindustry.biz/games-of-the-year-2022-podcast",
-      caption: "A look at some favorite titles of the year ",
-      title: "Games of the Year 2022 | Podcast",
-      description: "For our final podcast of 2022, the GamesIndustry.biz team gathers around their mics and discusses their favourite games…",
-      image: "https://assets.reedpopcdn.com/goty2022-LEAD.jpg/BROK/thumbnail/1600x900/format/jpg/quality/80/goty2022-LEAD.jpg",
-      source: "GamesIndustry.biz",
-      category: "🌊 MARKET ☎️",
-    },
-    {
-      url: "https://venturebeat.com/games/apex-legends-was-ea-games-most-popular-in-house-ip-in-2022/",
-      caption: "A look at EA Games' most successful in-house IP ",
-      title: "Apex Legends was EA Games’ most popular in-house IP in 2022",
-      description: "Electronic Arts released its year-end report, which highlights various stats for its most popular games, such as Apex Legends.",
-      image: "https://venturebeat.com/wp-content/uploads/2019/02/apex-14.jpg?w=1200&strip=all",
-      source: "VentureBeat",
-      category: "💎 Deep Dives 🔎",
-    },
-    {
-      url: "https://mobiledevmemo.com/the-duopoly-is-over-because-everything-is-an-ad-network/",
-      caption: "A look at everything being an ad network by @eric_seufert",
-      title: "The Duopoly is over (because Everything is an Ad Network) | Mobile Dev Memo by Eric Seufert",
-      description: "The Duopoly is over (because Everything is an Ad Network). Mobile marketing and advertising, freemium monetization strategy, and marketing science. Mobile Dev",
-      image: "https://mobiledevmemo.com/wp-content/uploads/2022/12/mdm_duopoly_over.jpg",
-      source: "Mobile Dev Memo",
-      category: "💎 Deep Dives 🔎",
-    },
-  ];
 
   return (
     <ChakraProvider theme={theme}>
@@ -135,8 +111,8 @@ export default function App() {
         >
           <Logo />
          <Post 
-          special_insights={special_insights}
-          title="Look At Gaming: #123"
+          special_insights={SI}
+          heading={LAG.heading}
           date="Wed Dec 21 2022"
           cards={cards}
         />

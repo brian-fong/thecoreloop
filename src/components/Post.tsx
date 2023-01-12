@@ -1,6 +1,3 @@
-// Node Modules
-import uuid from 'react-uuid';
-
 // ChakraUI
 import { 
   Flex,
@@ -8,28 +5,23 @@ import {
   Heading,
 } from '@chakra-ui/react';
 
+// React
 import { useState, useEffect } from "react";
 
+// React Components
 import Card from "./Card";
-import { CardProps } from "./Card";
-
-export type PostProps = {
-  special_insights: string;
-  title: string; 
-  date: string; 
-  cards: CardProps[];
-};
+import { Post as PostProps, Card as CardProps } from "../types";
 
 export default function Post({ 
   special_insights="",
-  title="LAG # Not Found (⊙_☉)", 
+  heading="LAG # Not Found (⊙_☉)", 
   date="Date not found ( • ᴖ • ｡)", 
   cards=[],
 }: PostProps) {
-  const [SI_content, setSI_content] = useState<React.ReactElement[]>([]);
+  const [SI_section, setSI_section] = useState<React.ReactElement[]>([]);
 
   useEffect(() => {
-    if (special_insights.length > 0 && SI_content.length == 0) {
+    if (special_insights.length > 0 && SI_section.length == 0) {
       const heading: React.ReactElement = (
         <Heading 
           key="heading"
@@ -50,7 +42,7 @@ export default function Post({
           {special_insights}
         </Text>
       );
-      setSI_content(SI_content => [...SI_content, heading, text]);
+      setSI_section(SI_section => [...SI_section, heading, text]);
     }
   }, []);
 
@@ -78,9 +70,10 @@ export default function Post({
         p="15px" 
         width="100%" 
         height="100%"
+        minHeight="200px"
         border="1px solid gray" 
       >
-        { /* Title Container */ }
+        { /* Heading Container */ }
         <Flex 
           position="relative" 
           top="-25px"
@@ -97,7 +90,7 @@ export default function Post({
             color="black" 
             bg="standard_bkg"
           >
-            {title}
+            {heading}
           </Heading>
         </Flex>
 
@@ -127,23 +120,19 @@ export default function Post({
           _hover={{ bg: "tcl_pink" }}
           transition="background-color 200ms ease" 
         >
-          {SI_content}
+          {SI_section}
         </Flex>
         { /* Card Gallery Container */ }
-        <Flex position="relative" top="-10px" flexDir="column" gap="30px" justify="start" align="start" width="100%">
-          {
-            cards.map(card => 
-              <Card 
-                key={uuid()}
-                url={card.url} 
-                caption={card.caption} 
-                title={card.title} 
-                description={card.description} 
-                image={card.image} 
-                source={card.source} 
-                category={card.category} 
-              />)
-          }
+        <Flex 
+          position="relative" 
+          top="-10px" 
+          flexDir="column" 
+          gap="30px" 
+          justify="start" 
+          align="start" 
+          width="100%"
+        >
+          { cards }
         </Flex>
       </Flex>
     </Flex>

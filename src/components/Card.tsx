@@ -10,25 +10,17 @@ import {
 import { useEffect, useState } from "react";
 
 // Types
-export type CardProps = {
-  url: string;
-  caption: string; 
-  title: string; 
-  description: string; 
-  category: string; 
-  source: string;
-  image: string;
-};
+import { Card as CardProps } from '../types';
 
 export default function Card(
   { 
-    url="URL not found",
+    url="",
     caption="A look at . . . ", 
     title="Title not found (×﹏×)", 
     description="Description not found", 
-    category="Category not found", 
+    image="",
+    category="", 
     source="???",
-    image="" 
   }: CardProps) {
 
   const [image_bg, setImage_bg] = useState("black");
@@ -69,6 +61,7 @@ export default function Card(
           shrink="2" 
           justify="center" 
           align="center" 
+          width="100%"
           maxWidth="250px" 
           height="100%"
           bg={image_bg} 
@@ -82,7 +75,7 @@ export default function Card(
           >
             <Image 
               src={image} 
-              alt={image} 
+              alt={image || "Image not found"} 
               objectFit="cover" 
               fontSize="14px" 
               textAlign="center"
