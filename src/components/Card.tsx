@@ -6,6 +6,10 @@ import {
   Image,
 } from '@chakra-ui/react'
 
+// React
+import { useEffect, useState } from "react";
+
+// Types
 export type CardProps = {
   url: string;
   caption: string; 
@@ -16,15 +20,22 @@ export type CardProps = {
   image: string;
 };
 
-export default function Card({ 
+export default function Card(
+  { 
     url="URL not found",
     caption="A look at . . . ", 
     title="Title not found (×﹏×)", 
     description="Description not found", 
     category="Category not found", 
     source="???",
-    image=" Image not found (⊙_⊙) " 
+    image="" 
   }: CardProps) {
+
+  const [image_bg, setImage_bg] = useState("black");
+
+  useEffect(() => {
+    if (image.includes("https://assets.stickpng.com/images/580b57fcd9996e24bc43c53e.png")) setImage_bg("white");
+  }, []);
 
   return (
     <Flex 
@@ -60,7 +71,7 @@ export default function Card({
           align="center" 
           maxWidth="250px" 
           height="100%"
-          bg="black" 
+          bg={image_bg} 
           border="1px solid black" 
           boxSizing="border-box" 
         >
@@ -147,7 +158,8 @@ export default function Card({
                 fontSize="13px" 
                 color="white" 
                 bg="category_bkg" 
-                p="1px 2px" 
+                m="0px 40px 0px 0px" 
+                p="0px 1px"
                 transition="background-color 200ms ease" 
                 _hover={{ 
                   bg: "category_bkg_hover",

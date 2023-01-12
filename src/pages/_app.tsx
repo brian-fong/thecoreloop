@@ -1,18 +1,35 @@
 // ChakraUI
-import { 
-  Flex,
-} from '@chakra-ui/react'
+import { Flex } from '@chakra-ui/react'
 import { ChakraProvider } from '@chakra-ui/react'
 import theme from "../styles/theme";
 
+// React
+import { useEffect } from "react";
+
 // Components
 import Head from "next/head";
-import Logo from "./Logo";
-import Post from "./Post";
-import { CardProps } from "./Card";
-import NavBar from "./NavBar";
+import Logo from "../components/Logo";
+import Post from "../components/Post";
+import NavBar from "../components/NavBar";
+
+// Node Modules
+import axios from "axios";
+
+// Types
+import { CardProps } from "../components/Card";
 
 export default function App() {
+  useEffect(() => {
+    async function testApi(): Promise<void> {
+      const response: any = await axios.post("/api", {
+
+      });
+      console.log("Response: ", response.data.message);
+    }
+
+    testApi();
+  }, []);
+
   const special_insights: string = "powered by AppMagic.rocks 😎\n\nSorry no insights today frens.  Currently feeling sick. 🤒  Let's get straight to the news.";
   const cards: CardProps[] = [
     {
@@ -22,6 +39,15 @@ export default function App() {
       description: "The Duopoly is over (because Everything is an Ad Network). Mobile marketing and advertising, freemium monetization strategy, and marketing science. Mobile Dev",
       image: "https://mobiledevmemo.com/wp-content/uploads/2022/12/mdm_duopoly_over.jpg",
       source: "Mobile Dev Memo",
+      category: "🔦 Spotlight 🌟",
+    },
+    {
+      url: "https://twitter.com/0xkapital_k/status/1550655795083128833?s=21&t=rjq6GQLWJDECfOdwCVcVLg",
+      caption: "A look at Digital Fashion by @accel_capital from @1kxnetwork",
+      title: "Accel XR || 1kx 🕹👾 on Twitter",
+      description: 'Fashion is evolving.\n' + '\n' + '- Your hoodie will connect to a smart contract\n' + '- Your in-game skin will unlock live events\n' + '- Your closet will be financialized\n' + '\n' + 'On the state of digital fashion, from digiphysical and AR to avatar wearables and decentralized brands:\n' + '\n' + 'https://t.co/BUQlc144FS',
+      image: "https://cdn-images-1.medium.com/max/600/0*mH-z7yElJ_4j-ZPr",
+      source: "Twitter",
       category: "🔦 Spotlight 🌟",
     },
     {
@@ -110,12 +136,12 @@ export default function App() {
           boxSizing="border-box"
         >
           <Logo />
-          <Post 
-            special_insights={special_insights}
-            title="Look At Gaming: #123"
-            date="Wed Dec 21 2022"
-            cards={cards}
-          />
+         <Post 
+          special_insights={special_insights}
+          title="Look At Gaming: #123"
+          date="Wed Dec 21 2022"
+          cards={cards}
+        />
         </Flex>
       </Flex>
     </ChakraProvider>

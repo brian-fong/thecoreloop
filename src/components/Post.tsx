@@ -125,10 +125,10 @@ export default function Post({
           m="0px 0px 20px"
           p="1px 2px"
           _hover={{ bg: "tcl_pink" }}
+          transition="background-color 200ms ease" 
         >
           {SI_content}
         </Flex>
-
         { /* Card Gallery Container */ }
         <Flex position="relative" top="-10px" flexDir="column" gap="30px" justify="start" align="start" width="100%">
           {
