@@ -39,7 +39,8 @@ export default function App() {
 
   useEffect(() => {
     async function init(): Promise<void> {
-      const response: any = await axios.post("/api");
+      console.log("Sending GET request to /api endpoint . . .");
+      const response: any = await axios.get("/api");
       const lag: LAG = response.data;
 
       console.log("LAG: ", lag);
