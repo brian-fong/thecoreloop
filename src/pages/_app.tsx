@@ -18,7 +18,7 @@ import NavBar from "../components/NavBar";
 import Card from "../components/Card";
 
 // Types
-import { LAG, Card as CardProps } from "../types";
+import { LAG } from "../types";
 
 export default function App() {
   // Initialize latest LAG state variable
@@ -113,7 +113,7 @@ export default function App() {
          <Post 
           special_insights={SI}
           heading={LAG.heading}
-          date="Wed Dec 21 2022"
+          date={LAG.date}
           cards={cards}
         />
         </Flex>
