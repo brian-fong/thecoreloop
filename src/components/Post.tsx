@@ -111,7 +111,7 @@ export default function Post({
         { /* Special Insights Container */ }
         <Flex 
           position="relative"
-          top="-10px"
+          top="-30px"
           flexDir="column" 
           justify="start" 
           align="start"
@@ -125,7 +125,7 @@ export default function Post({
         { /* Card Gallery Container */ }
         <Flex 
           position="relative" 
-          top="-10px" 
+          top="-30px" 
           flexDir="column" 
           gap="30px" 
           justify="start" 

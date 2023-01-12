@@ -24,6 +24,7 @@ export default async function handler (request: NextApiRequest, response: NextAp
   try {
     // Create MongoDB Client
     const uri: string = process.env.MONGODB_URI || "";
+    console.log("MongoDB URI: ", uri);
     const client: MongoClient = await createMongoDBClient(uri);
 
     // Read LAG #130

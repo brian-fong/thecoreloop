@@ -40,32 +40,41 @@ export default function App() {
   useEffect(() => {
     async function init(): Promise<void> {
       console.log("Sending GET request to /api endpoint . . .");
-      const response: any = await axios.get("/api");
-      const lag: LAG = response.data;
+      let response: any = {};
+      try {
+        // Send GET request to /api endpoint
+        response = await axios.get("/api");
+        const lag: LAG = response.data;
 
-      console.log("LAG: ", lag);
-      setLAG(lag);
-      for (const category_group of lag.content) {
-        // Assign Special Insights caption
-        if (category_group.category.toLowerCase().includes("special insights")) {
-          setSI(category_group.articles[0].caption);
-          continue;
+        // Assign LAG and console-log LAG
+        console.log("LAG: ", lag);
+        setLAG(lag);
+
+        for (const category_group of lag.content) {
+          // Assign Special Insights caption
+          if (category_group.category.toLowerCase().includes("special insights")) {
+            setSI(category_group.articles[0].caption);
+            continue;
+          }
+          
+          // Build Cards array
+          for (const article of category_group.articles) {
+            const card: ReactElement = <Card 
+              key={uuid()}
+              url={article.url || ""}
+              caption={article.caption || ""}
+              title={article.title || ""}
+              description={article.description || ""}
+              image={article.image || ""}
+              category={category_group.category || ""}
+              source={article.source || ""}
+            />;
+            setCards(cards => [...cards, card])
+          }
         }
-        
-        // Build Cards array
-        for (const article of category_group.articles) {
-          const card: ReactElement = <Card 
-            key={uuid()}
-            url={article.url || ""}
-            caption={article.caption || ""}
-            title={article.title || ""}
-            description={article.description || ""}
-            image={article.image || ""}
-            category={category_group.category || ""}
-            source={article.source || ""}
-          />;
-          setCards(cards => [...cards, card])
-        }
+      } catch (error) {
+        console.log(error);
+        return;
       }
     }
 
