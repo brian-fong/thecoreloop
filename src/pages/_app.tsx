@@ -121,11 +121,11 @@ export default function App() {
         >
           <Logo />
          <Post 
-          special_insights={SI}
-          heading={LAG.heading}
-          date={LAG.date}
-          cards={cards}
-        />
+            special_insights={SI}
+            heading={LAG.heading}
+            date={LAG.date}
+            cards={cards}
+          />
         </Flex>
       </Flex>
     </ChakraProvider>
