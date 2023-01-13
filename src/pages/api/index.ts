@@ -1,5 +1,5 @@
 // Local Modules
-import { createMongoDBClient, readLAG } from "../../hooks/mongodb";
+import { createMongoDBClient, getLatestLAG, readLAG } from "../../hooks/mongodb";
 
 // Next
 import type { NextApiRequest, NextApiResponse } from "next";
@@ -27,8 +27,10 @@ export default async function handler (request: NextApiRequest, response: NextAp
     console.log("MongoDB URI: ", uri);
     const client: MongoClient = await createMongoDBClient(uri);
 
-    // Read LAG #130
-    lag = await readLAG(client, 130);
+    // Read latest LAG
+    const latest_lag_number: number = await getLatestLAG(client);
+    lag = await readLAG(client, latest_lag_number);
+
   } catch (error) {
     console.log(error);
   }

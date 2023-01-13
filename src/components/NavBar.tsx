@@ -23,6 +23,7 @@ export default function NavBar() {
         bg="blue"
         draggable="false" 
         userSelect="none"
+        href="."
       >
         Home
       </Link>

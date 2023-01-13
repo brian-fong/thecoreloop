@@ -102,6 +102,7 @@ export default function Logo() {
           fontSize="16px"
           color="white" 
           letterSpacing="0px"
+          pr="5px"
         >
           Hint: join&nbsp;
           <Link 
