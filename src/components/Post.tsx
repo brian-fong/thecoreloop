@@ -1,50 +1,57 @@
-// ChakraUI
 import { 
   Flex,
   Text,
   Heading,
 } from '@chakra-ui/react';
+import uuid from 'react-uuid';
+import Card from "../components/Card";
+import { Post as PostProps } from "../types";
+import { useState, useEffect, ReactElement } from "react";
 
-// React
-import { useState, useEffect } from "react";
+export default function Post({ lag }: PostProps) {
+  // Initialize Cards array
+  const [cards, set_cards] = useState<ReactElement[]>([]);
 
-// React Components
-import Card from "./Card";
-import { Post as PostProps, Card as CardProps } from "../types";
-
-export default function Post({ 
-  special_insights="",
-  heading="LAG # Not Found (⊙_☉)", 
-  date="Date not found ( • ᴖ • ｡)", 
-  cards=[],
-}: PostProps) {
-  const [SI_section, setSI_section] = useState<React.ReactElement[]>([]);
+  // Initialize Special Insights text array 
+  const [special_insights, set_special_insights] = useState<ReactElement[]>([]);
 
   useEffect(() => {
-    if (special_insights.length > 0 && SI_section.length == 0) {
-      const heading: React.ReactElement = (
-        <Heading 
-          key="heading"
-          fontWeight="800" 
-          fontSize="15px"
-          color="black"
-        >
-          Special Insights
-        </Heading>
-      );
-      const text: React.ReactElement =  (
-        <Text
-          key="text"
+    // Toggle Special Insights section 
+    if (lag.special_insights) {
+      lag.special_insights = lag.special_insights;
+
+      const container: HTMLElement = document.getElementById("special_insights_container")!;
+      container.style.display = "block";
+
+      for (const line of lag.special_insights.split("\n")) {
+        const text: ReactElement = <Text
           fontSize="14px"
           textAlign="justify"
           color="black"
         >
-          {special_insights}
-        </Text>
-      );
-      setSI_section(SI_section => [...SI_section, heading, text]);
+          {line}
+        </Text>;
+        set_special_insights(special_insights => [...special_insights, text]);
+      }
     }
-  }, []);
+
+    // Build Cards array
+    for (const category_group of lag.content) {
+      for (const article of category_group.articles) {
+        const card: ReactElement = <Card 
+          key={uuid()}
+          url={article.url || ""}
+          caption={article.caption || ""}
+          title={article.title || ""}
+          description={article.description || ""}
+          image={article.image || ""}
+          category={category_group.category || ""}
+          source={article.source || ""}
+        />;
+        set_cards(cards => [...cards, card])
+      }
+    }
+  }, [lag]);
 
   return (
     /* Outer Container */
@@ -90,7 +97,7 @@ export default function Post({
             color="black" 
             bg="standard_bkg"
           >
-            {heading}
+            {lag.heading}
           </Heading>
         </Flex>
 
@@ -104,35 +111,44 @@ export default function Post({
           width="100%"
         >
           <Text color="black" fontSize="14px">
-            {date}
+            {lag.date}
           </Text>
         </Flex>
 
         { /* Special Insights Container */ }
         <Flex 
+          display="none"
+          id="special_insights_container"
           position="relative"
-          top="-30px"
+          top="-20px"
           flexDir="column" 
           justify="start" 
           align="start"
           m="0px 0px 20px"
           p="1px 2px"
-          _hover={{ bg: "tcl_pink" }}
-          transition="background-color 200ms ease" 
+          width="100%"
+          bg="tcl_pink"
         >
-          {SI_section}
+          <Heading 
+            fontWeight="800" 
+            fontSize="15px"
+            color="black"
+          >
+            Special Insights
+          </Heading>
+          {special_insights}
         </Flex>
+
         { /* Card Gallery Container */ }
         <Flex 
-          position="relative" 
-          top="-30px" 
           flexDir="column" 
           gap="30px" 
           justify="start" 
           align="start" 
+          mt="-20px"
           width="100%"
         >
-          { cards }
+          {cards}
         </Flex>
       </Flex>
     </Flex>

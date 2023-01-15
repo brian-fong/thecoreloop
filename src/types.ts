@@ -1,13 +1,13 @@
 // React
-import { ReactElement } from "react";
 
 // Look At Gaming
 export interface LAG {
   heading: string;
   subheading: string;
-  message_id: number;     // TODO: change to string
-  number: number;         // TODO: change to string
+  message_id: number;
+  number: number;
   date: string;
+  special_insights: string;
   content: ArticleGroup[];
 }
 
@@ -28,13 +28,11 @@ export interface Article {
 
 // React Components
 export type Post = {
-  special_insights: string;
-  heading: string; 
-  date: string; 
-  cards: ReactElement[];
+  lag: LAG;
 };
 
 export type Card = {
+  key: string;
   url: string;
   caption: string; 
   title: string; 

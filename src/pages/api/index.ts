@@ -8,7 +8,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { LAG } from "../../types";
 import { MongoClient } from "mongodb";
 
-export default async function handler (request: NextApiRequest, response: NextApiResponse) {
+export default async function handler (_: NextApiRequest, response: NextApiResponse) {
   console.log("Request received at api/");
 
   // Initialize <LAG> object
@@ -18,13 +18,13 @@ export default async function handler (request: NextApiRequest, response: NextAp
     message_id: -1,
     number: -1,
     date: "",
+    special_insights: "",
     content: [],
   };
 
   try {
     // Create MongoDB Client
     const uri: string = process.env.MONGODB_URI || "";
-    console.log("MongoDB URI: ", uri);
     const client: MongoClient = await createMongoDBClient(uri);
 
     // Read latest LAG

@@ -1,9 +1,8 @@
 // Node Modules
 import axios from "axios";
-import uuid from 'react-uuid';
 
 // React
-import { useEffect, useState, ReactElement } from "react";
+import { useEffect, useState } from "react";
 
 // ChakraUI
 import { Flex } from '@chakra-ui/react'
@@ -15,27 +14,21 @@ import Head from "next/head";
 import Logo from "../components/Logo";
 import Post from "../components/Post";
 import NavBar from "../components/NavBar";
-import Card from "../components/Card";
 
 // Types
 import { LAG } from "../types";
 
 export default function App() {
   // Initialize latest LAG state variable
-  const [LAG, setLAG] = useState<LAG>({
+  const [lag, set_lag] = useState<LAG>({
     heading: "",
     subheading: "",
     message_id: -1,
     number: -1,
     date: "",
+    special_insights: "",
     content: [],
   });
-
-  // Initialize Special Insights state variable
-  const [SI, setSI] = useState<string>("");
-
-  // Initialize Cards array state variable
-  const [cards, setCards] = useState<ReactElement[]>([]);
 
   useEffect(() => {
     async function init(): Promise<void> {
@@ -48,30 +41,8 @@ export default function App() {
 
         // Assign LAG and console-log LAG
         console.log("LAG: ", lag);
-        setLAG(lag);
+        set_lag(lag);
 
-        for (const category_group of lag.content) {
-          // Assign Special Insights caption
-          if (category_group.category.toLowerCase().includes("special insights")) {
-            setSI(category_group.articles[0].caption);
-            continue;
-          }
-          
-          // Build Cards array
-          for (const article of category_group.articles) {
-            const card: ReactElement = <Card 
-              key={uuid()}
-              url={article.url || ""}
-              caption={article.caption || ""}
-              title={article.title || ""}
-              description={article.description || ""}
-              image={article.image || ""}
-              category={category_group.category || ""}
-              source={article.source || ""}
-            />;
-            setCards(cards => [...cards, card])
-          }
-        }
       } catch (error) {
         console.log(error);
         return;
@@ -109,23 +80,22 @@ export default function App() {
 
         { /* Main Column Container */ }
         <Flex 
+          id="main_container"
           flexDir="column" 
           gap="50px" 
           justify="start" 
           align="center" 
-          m="40px 40px 60px" 
-          p="0px"
-          minWidth="400px" 
-          maxWidth="750px"
+          m="0px"
+          p="40px 40px 60px" 
+          minWidth="450px" 
+          width="100%"
+          maxWidth="800px"
           boxSizing="border-box"
         >
           <Logo />
-         <Post 
-            special_insights={SI}
-            heading={LAG.heading}
-            date={LAG.date}
-            cards={cards}
-          />
+           <Post 
+              lag={lag}
+            />
         </Flex>
       </Flex>
     </ChakraProvider>

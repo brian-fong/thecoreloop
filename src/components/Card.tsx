@@ -14,6 +14,7 @@ import { Card as CardProps } from '../types';
 
 export default function Card(
   { 
+    key="",
     url="",
     caption="A look at . . . ", 
     title="Title not found (×﹏×)", 
@@ -26,11 +27,25 @@ export default function Card(
   const [image_bg, setImage_bg] = useState("black");
 
   useEffect(() => {
+    // Change background color for images with default Twitter logo 
     if (image.includes("https://assets.stickpng.com/images/580b57fcd9996e24bc43c53e.png")) setImage_bg("white");
+
+    // Enable hover effect between title & image 
+    const image_container: HTMLElement = document.getElementById("image_container")!;
+    const title_node: HTMLElement = document.getElementById("title")!;
+    image_container.addEventListener("mouseover", () => {
+      title_node.style.color="white";
+      title_node.style.background = "blue";
+    });
+    image_container.addEventListener("mouseout", () => {
+      title_node.style.color="blue";
+      title_node.style.background = "transparent";
+    });
   }, []);
 
   return (
     <Flex 
+      id={key}
       flexDir="column" 
       justify="center" 
       align="start" 
@@ -57,12 +72,12 @@ export default function Card(
       >
         { /* Container 2.1: image */ }
         <Flex 
+          id="image_container"
           flexDir="column" 
-          shrink="2" 
           justify="center" 
           align="center" 
           width="100%"
-          maxWidth="250px" 
+          maxWidth="400px" 
           height="100%"
           bg={image_bg} 
           border="1px solid black" 
@@ -104,6 +119,7 @@ export default function Card(
           >
             { /* Title */ }
             <Link 
+              id="title"
               fontSize="14px" 
               fontWeight="800" 
               color="blue"  
@@ -128,7 +144,7 @@ export default function Card(
               textAlign="left" 
               lineHeight="1.2" 
               color="black" 
-              p="5px 0px 10px"
+              p="5px 0px 30px"
             >
               {description}
             </Text>

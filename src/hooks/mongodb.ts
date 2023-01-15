@@ -23,32 +23,6 @@ export async function getLatestLAG(client: MongoClient): Promise<number> {
   return response.number;
 }
 
-export async function setLatestLAG(client: MongoClient, lag_number: number): Promise<any> {
-  const lag_collection: Collection = client 
-    .db("LAG_Database")
-    .collection("Latest_LAG");
-
-  const new_latest_lag: any = {
-    heading: "Latest LAG",
-    number: lag_number,
-  };
-
-  const response_update: any = await lag_collection.updateOne({ heading: "Latest LAG" }, { $set: new_latest_lag });
-  if (response_update.modifiedCount == 0) {
-    const response_insert: any = await lag_collection.insertOne(new_latest_lag);
-    return response_insert;
-  } else return response_update;
-}
-
-export async function createLAG(client: MongoClient, lag: LAG): Promise<void> {
-  const lag_collection: Collection = client 
-    .db("LAG_Database")
-    .collection("LAG_Collection");
-
-  const response: any = await lag_collection.insertOne(lag)
-  return response;
-}
-
 export async function readLAG(client: MongoClient, lag_number: number): Promise<LAG> {
   const lag_collection: Collection = client 
     .db("LAG_Database")
@@ -56,24 +30,6 @@ export async function readLAG(client: MongoClient, lag_number: number): Promise<
 
   const lag: any = await lag_collection.findOne({ number: lag_number });
   return lag;
-}
-
-export async function updateLAG(client: MongoClient, lag_number: number, new_lag: LAG) : Promise<void> {
-  const lag_collection: Collection = client 
-    .db("LAG_Database")
-    .collection("LAG_Collection");
-
-  const lag: any = await lag_collection.updateOne({ number: lag_number }, { $set: new_lag });
-  return lag;
-}
-
-export async function deleteLAG(client: MongoClient, lag_number: number) : Promise<void> {
-  const lag_collection: Collection = client 
-    .db("LAG_Database")
-    .collection("LAG_Collection");
-
-  const response: any = await lag_collection.deleteOne({ number: lag_number });
-  return response;
 }
 
 export async function readLAGCollection(client: MongoClient): Promise<LAG[]> {
@@ -91,6 +47,7 @@ export async function readLAGCollection(client: MongoClient): Promise<LAG[]> {
       message_id: document.message_id,
       number: document.number,
       date: document.date,
+      special_insights: document.special_insights,
       content: document.content,
     };
     lags.push(lag_obj);
@@ -98,13 +55,4 @@ export async function readLAGCollection(client: MongoClient): Promise<LAG[]> {
 
   return lags;
 }
-
-export async function deleteLAGCollection(client: MongoClient): Promise<void> {
-  const lags: LAG[] = await readLAGCollection(client);
-
-  for (const lag of lags) {
-    await deleteLAG(client, lag.number);
-  }
-}
-
 
