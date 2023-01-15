@@ -25,6 +25,7 @@ export default function Post({ lag }: PostProps) {
 
       for (const line of lag.special_insights.split("\n")) {
         const text: ReactElement = <Text
+          key={uuid()}
           fontSize="14px"
           textAlign="justify"
           color="black"
@@ -141,6 +142,7 @@ export default function Post({ lag }: PostProps) {
 
         { /* Card Gallery Container */ }
         <Flex 
+          id="card_gallery"
           flexDir="column" 
           gap="30px" 
           justify="start" 

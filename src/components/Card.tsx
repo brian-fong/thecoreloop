@@ -14,7 +14,6 @@ import { Card as CardProps } from '../types';
 
 export default function Card(
   { 
-    key="",
     url="",
     caption="A look at . . . ", 
     title="Title not found (×﹏×)", 
@@ -29,23 +28,10 @@ export default function Card(
   useEffect(() => {
     // Change background color for images with default Twitter logo 
     if (image.includes("https://assets.stickpng.com/images/580b57fcd9996e24bc43c53e.png")) setImage_bg("white");
-
-    // Enable hover effect between title & image 
-    const image_container: HTMLElement = document.getElementById("image_container")!;
-    const title_node: HTMLElement = document.getElementById("title")!;
-    image_container.addEventListener("mouseover", () => {
-      title_node.style.color="white";
-      title_node.style.background = "blue";
-    });
-    image_container.addEventListener("mouseout", () => {
-      title_node.style.color="blue";
-      title_node.style.background = "transparent";
-    });
   }, []);
 
   return (
     <Flex 
-      id={key}
       flexDir="column" 
       justify="center" 
       align="start" 
@@ -71,22 +57,25 @@ export default function Card(
         width="100%"
       >
         { /* Container 2.1: image */ }
-        <Flex 
-          id="image_container"
-          flexDir="column" 
-          justify="center" 
-          align="center" 
+        <Link 
+          href={url} 
+          target="_blank" 
+          draggable="false"
           width="100%"
           maxWidth="400px" 
           height="100%"
-          bg={image_bg} 
-          border="1px solid black" 
-          boxSizing="border-box" 
         >
-          <Link 
-            href={url} 
-            target="_blank" 
-            draggable="false"
+          <Flex 
+            id="image_container"
+            flexDir="column" 
+            justify="center" 
+            align="center" 
+            width="100%"
+            maxWidth="400px" 
+            height="100%"
+            bg={image_bg} 
+            border="1px solid black" 
+            boxSizing="border-box" 
           >
             <Image 
               src={image} 
@@ -98,8 +87,8 @@ export default function Card(
               loading="lazy"
               _hover={{ cursor: "pointer" }}
             />
-          </Link>
-        </Flex>
+          </Flex>
+        </Link>
 
         { /* Container 2.2: title, description, category, source */ }
         <Flex 

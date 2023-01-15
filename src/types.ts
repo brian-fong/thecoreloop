@@ -32,7 +32,6 @@ export type Post = {
 };
 
 export type Card = {
-  key: string;
   url: string;
   caption: string; 
   title: string; 
