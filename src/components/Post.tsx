@@ -128,7 +128,9 @@ export default function Post({ lag }: PostProps) {
           m="0px 0px 20px"
           p="1px 2px"
           width="100%"
-          bg="tcl_pink"
+          // bg="tcl_pink"
+          transition="background-color 200ms ease" 
+          _hover={{ bg: "tcl_pink" }}
         >
           <Heading 
             fontWeight="800" 

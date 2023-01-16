@@ -140,44 +140,34 @@ export default function Card(
           </Flex>
           { /* Container 2.2.2: category/source */ }
           <Flex 
-            flexDir="row" 
-            justify="space-between" 
-            align="center" 
+            flexDir="column" 
+            justify="end" 
+            align="start" 
             wrap="wrap" 
             width="100%"
           >
-            <Flex 
-              flexDir="row" 
-              justify="start" 
-              align="center"
+            { /* Category */ }
+            <Text 
+              fontSize="13px" 
+              color="white" 
+              bg="category_bkg" 
+              transition="background-color 200ms ease" 
+              _hover={{ 
+                bg: "category_bkg_hover",
+                cursor: "pointer", 
+                textDecoration: "underline", 
+              }}
             >
-              { /* Category */ }
-              <Text 
-                fontSize="13px" 
-                color="white" 
-                bg="category_bkg" 
-                m="0px 40px 0px 0px" 
-                p="0px 1px"
-                transition="background-color 200ms ease" 
-                _hover={{ 
-                  bg: "category_bkg_hover",
-                  cursor: "pointer", 
-                  textDecoration: "underline", 
-                }}
-              >
-                {category}
-              </Text>
-            </Flex>
-            <Flex 
-              flexDir="row" 
-              justify="end" 
-              align="center"
+              {category}
+            </Text>
+            { /* Source */ }
+            <Text 
+              p="2px 0px 0px"
+              fontSize="13px" 
+              color="black" 
             >
-              { /* Source */ }
-              <Text fontSize="13px" color="black" >
-                Source: {source}
-              </Text>
-            </Flex>
+              Source: {source}
+            </Text>
           </Flex>
         </Flex>
       </Flex>
