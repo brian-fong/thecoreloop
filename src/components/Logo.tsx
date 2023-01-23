@@ -15,6 +15,7 @@ export default function Logo() {
         justify="start" 
         align="center" 
         width="100%" 
+        minWidth="300px"
         bg="logo_bkg"
         border="6px double white"
         boxShadow="0px 0px 0px 3px #6711CF, 
@@ -26,26 +27,13 @@ export default function Logo() {
           gap="30px" 
           justify="center" 
           align="center" 
-          p="25px 0px 10px" 
+          p="20px 20px 0px" 
           width="100%"
         >
-          <Image  
-            src="/thecoreloop-favicon.png" 
-            height="60px" 
-            draggable="false" 
-            userSelect="none" 
+          <Image 
+            src="./thecoreloop-logo.png"
+            objectFit="contain"
           />
-          <Heading 
-            fontFamily="Urbanist" 
-            fontWeight="400" 
-            fontSize="40px" 
-            color="white" 
-            letterSpacing="3px" 
-            draggable="false" 
-            userSelect="none"
-          >
-            thecoreloop
-          </Heading>
         </Flex>
         <Flex 
           flexDir="row" 
@@ -82,6 +70,7 @@ export default function Logo() {
         align="center" 
         p="5px 5px 5px 10px"
         width="100%" 
+        minWidth="300px"
         bg="logo_bkg" 
         border="6px double white"
         boxShadow="0px 0px 0px 3px #6711CF, 

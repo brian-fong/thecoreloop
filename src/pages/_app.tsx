@@ -88,7 +88,7 @@ export default function App() {
           align="center" 
           m="0px"
           p="40px 40px 60px" 
-          minWidth="450px" 
+          minWidth="300px" 
           width="100%"
           maxWidth="800px"
           boxSizing="border-box"

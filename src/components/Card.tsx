@@ -135,7 +135,7 @@ export function Card_Landscape(
               fontSize="14px" 
               textAlign="left" 
               lineHeight="1.2" 
-              color="black" 
+              color="rgba(0, 0, 0, 0.6)"
               p="5px 0px 30px"
             >
               {description}
@@ -202,6 +202,7 @@ export function Card_Portrait(
     <Flex 
       id="card-portrait"
       flexDir="column" 
+      gap="5px"
       justify="space-between" 
       align="center" 
       width="100%"
@@ -258,7 +259,6 @@ export function Card_Portrait(
         id="title"
         href={url} 
         width="100%"
-        margin="5px 0px"
         fontSize="14px" 
         fontWeight="800" 
         color="blue"  
@@ -281,19 +281,17 @@ export function Card_Portrait(
         textAlign="left" 
         lineHeight="1.2" 
         color="black" 
-        m="0px 0px 10px"
       >
         {description}
       </Text>
 
-      { /* Container: Category & Source */}
-      <Flex
-        flexDirection="row"
-        justify="space-between"
-        align="center"
+      { /* Category */}
+      <Flex 
+        flexDir="row"
+        justify="start" 
+        align="start" 
         width="100%"
       >
-        { /* Category */ }
         <Text 
           fontSize="13px" 
           color="white" 
@@ -307,14 +305,16 @@ export function Card_Portrait(
         >
           {category}
         </Text>
-        { /* Source */ }
-        <Text 
-          fontSize="13px" 
-          color="black" 
-        >
-          Source: {source}
-        </Text>
       </Flex>
+
+      { /* Source */}
+      <Text 
+        width="100%"
+        fontSize="13px" 
+        color="black" 
+      >
+        Source: {source}
+      </Text>
     </Flex>
   );
 }

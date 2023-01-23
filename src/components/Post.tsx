@@ -46,6 +46,7 @@ export default function Post({ lag }: PostProps) {
       m="0px" 
       p="15px 15px 10px 15px" 
       width="100%" 
+      minWidth="300px"
       bg="standard_bkg"
       border="6px double white" 
       boxShadow="0px 0px 0px 3px #c0c0c0, 

@@ -12,6 +12,7 @@ export default function NavBar() {
       align="start" 
       wrap="wrap"
       width="100%" 
+      minWidth="420px"
       bg="standard_bkg"
     >
       <Link 
