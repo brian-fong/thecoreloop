@@ -31,6 +31,10 @@ export type Post = {
   lag: LAG;
 };
 
+export type Gallery = {
+  lag: LAG;
+};
+
 export type Card = {
   url: string;
   caption: string; 

@@ -31,6 +31,7 @@ export default function App() {
   });
 
   useEffect(() => {
+    // Send GET request to /api endpoint
     async function init(): Promise<void> {
       console.log("Sending GET request to /api endpoint . . .");
       let response: any = {};

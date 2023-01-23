@@ -7,7 +7,6 @@ export default extendTheme({
     standard_bkg: "#C0C0C0",
     category_bkg: "#909090",
     category_bkg_hover: "#606060",
-    special_insights: "#2C666E",
     tcl_yellow: "#FAFF2F",
     tcl_yellow_hover: "#BCC024",
     tcl_pink: "#F93CA3",

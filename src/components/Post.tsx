@@ -4,14 +4,11 @@ import {
   Heading,
 } from '@chakra-ui/react';
 import uuid from 'react-uuid';
-import Card from "../components/Card";
+import Gallery from "../components/Gallery";
 import { Post as PostProps } from "../types";
 import { useState, useEffect, ReactElement } from "react";
 
 export default function Post({ lag }: PostProps) {
-  // Initialize Cards array
-  const [cards, set_cards] = useState<ReactElement[]>([]);
-
   // Initialize Special Insights text array 
   const [special_insights, set_special_insights] = useState<ReactElement[]>([]);
 
@@ -20,7 +17,9 @@ export default function Post({ lag }: PostProps) {
     if (lag.special_insights) {
       lag.special_insights = lag.special_insights;
 
-      const container: HTMLElement = document.getElementById("special_insights_container")!;
+      const container: HTMLElement = document.getElementById(
+        "special_insights_container"
+      )!;
       container.style.display = "block";
 
       for (const line of lag.special_insights.split("\n")) {
@@ -36,22 +35,6 @@ export default function Post({ lag }: PostProps) {
       }
     }
 
-    // Build Cards array
-    for (const category_group of lag.content) {
-      for (const article of category_group.articles) {
-        const card: ReactElement = <Card 
-          key={uuid()}
-          url={article.url || ""}
-          caption={article.caption || ""}
-          title={article.title || ""}
-          description={article.description || ""}
-          image={article.image || ""}
-          category={category_group.category || ""}
-          source={article.source || ""}
-        />;
-        set_cards(cards => [...cards, card])
-      }
-    }
   }, [lag]);
 
   return (
@@ -84,13 +67,14 @@ export default function Post({ lag }: PostProps) {
         { /* Heading Container */ }
         <Flex 
           position="relative" 
-          top="-25px"
+          top="-15px"
           flexDir="row" 
           justify="center" 
           align="center" 
           width="100%"
         >
           <Heading 
+            position="absolute"
             fontFamily="JetBrains Mono"
             fontWeight="400" 
             fontSize="16px" 
@@ -104,14 +88,15 @@ export default function Post({ lag }: PostProps) {
 
         { /* Date Container */ }
         <Flex 
-          position="relative" 
-          top="-25px"
           flexDir="row" 
           justify="right" 
           align="center" 
           width="100%"
         >
-          <Text color="black" fontSize="14px">
+          <Text 
+            fontSize="14px"
+            color="black" 
+          >
             {lag.date}
           </Text>
         </Flex>
@@ -141,19 +126,10 @@ export default function Post({ lag }: PostProps) {
           </Heading>
           {special_insights}
         </Flex>
-
-        { /* Card Gallery Container */ }
-        <Flex 
-          id="card_gallery"
-          flexDir="column" 
-          gap="30px" 
-          justify="start" 
-          align="start" 
-          mt="-20px"
-          width="100%"
-        >
-          {cards}
-        </Flex>
+        
+        <Gallery 
+          lag={lag}
+        />
       </Flex>
     </Flex>
   );
