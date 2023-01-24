@@ -135,7 +135,7 @@ export function Card_Landscape(
               fontSize="14px" 
               textAlign="left" 
               lineHeight="1.2" 
-              color="rgba(0, 0, 0, 0.6)"
+              color="description_fg"
               p="5px 0px 30px"
             >
               {description}
@@ -280,7 +280,7 @@ export function Card_Portrait(
         fontSize="14px" 
         textAlign="left" 
         lineHeight="1.2" 
-        color="black" 
+        color="description_fg"
       >
         {description}
       </Text>

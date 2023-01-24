@@ -75,7 +75,7 @@ export default function App() {
         height="100vh" 
         bg="bkg"
         boxSizing="border-box"
-        overflowX="auto"
+        overflowX="hidden"
       >
         <NavBar />
 

@@ -30,6 +30,14 @@ export default function Document() {
           property="og:type" 
           content="blog" 
         />
+        <meta
+          property="image"
+          content="https://i.imgur.com/OXjCetQ.png"
+        />
+        <meta
+          property="og:image"
+          content="https://i.imgur.com/OXjCetQ.png"
+        />
 
         { /* Google Fonts */ }
         <link 

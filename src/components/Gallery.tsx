@@ -44,7 +44,8 @@ export default function Gallery({ lag }: GalleryProps) {
 
     // Toggle between Portrait vs Landscape card layout
     const min_pixel_limit: number = 600;
-    const orientation: string = screen.orientation.type;
+    const orientation: string = screen.orientation.type.toLowerCase();
+    console.log("Window Orienatation: ", orientation);
     if (window_width < min_pixel_limit 
         && card_mode == "Landscape") {
       set_card_mode("Portrait");
