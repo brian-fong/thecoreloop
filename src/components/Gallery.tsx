@@ -6,6 +6,28 @@ import { Gallery as GalleryProps } from '../types';
 import { useState, useEffect, useRef, ReactElement } from "react";
 import { Card_Landscape, Card_Portrait } from "../components/Card";
 
+function detectDevice(): string {
+  const user_agent: string = window?.navigator?.userAgent?.toLowerCase();
+  let device: string = "desktop";
+  const MOBILE_DEVICES: string[] = [
+    "android",
+    "iphone",
+    // "ipad",
+    "ipod",
+    "blackberry",
+    "windows phone",
+  ];
+
+  for (const DEVICE of MOBILE_DEVICES) {
+    if (user_agent.includes(DEVICE)) {
+      device = "mobile";
+      break;
+    }
+  }
+
+  return device;
+}
+
 export default function Gallery({ lag }: GalleryProps) {
   // Initialize number to store current width of window
   const [window_width, set_window_width] = useState<Number>(
@@ -18,7 +40,7 @@ export default function Gallery({ lag }: GalleryProps) {
   const throttled = useRef<boolean>(false);
 
   // Initialize string to store card mode
-  const [card_mode, set_card_mode] = useState<String>("Landscape");
+  const [card_mode, set_card_mode] = useState<String>("landscape");
 
   // Initialize array to store <Card> objects
   const [cards, set_cards] = useState<ReactElement[]>([]);
@@ -44,24 +66,22 @@ export default function Gallery({ lag }: GalleryProps) {
 
     // Toggle between Portrait vs Landscape card layout
     const min_pixel_limit: number = 600;
-    const orientation: string = screen.orientation.type.toLowerCase();
-    console.log("Window Orienatation: ", orientation);
+    const device: string = detectDevice();
     if (window_width < min_pixel_limit 
-        && card_mode == "Landscape") {
-      set_card_mode("Portrait");
+        && card_mode == "landscape") {
+      set_card_mode("portrait");
     } else if (window_width >= min_pixel_limit 
-               && card_mode == "Portrait") {
-      set_card_mode("Landscape");
-    } else if (window_width < min_pixel_limit
-               && orientation.includes("portrait")) {
-      set_card_mode("Portrait");
+               && card_mode == "portrait") {
+      set_card_mode("landscape");
+    } else if (device == "mobile") {
+      set_card_mode("portrait");
     }
 
     // Build Cards array
     set_cards([]);
     for (const article_group of lag.content) {
       for (const article of article_group.articles) {
-        const card: ReactElement = (card_mode == "Portrait")
+        const card: ReactElement = (card_mode == "portrait")
           ? <Card_Portrait
             key={uuid()}
             url={article.url || ""}
