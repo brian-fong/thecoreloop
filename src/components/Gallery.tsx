@@ -26,7 +26,6 @@ export default function Gallery({ lag }: GalleryProps) {
   useEffect(() => {
     // Updates state variable representing width of window
     function updateWidth() {
-      console.log("Window Width: ", window.innerWidth);
       set_window_width(window.innerWidth);
     }
 
@@ -46,19 +45,15 @@ export default function Gallery({ lag }: GalleryProps) {
     // Toggle between Portrait vs Landscape card layout
     const min_pixel_limit: number = 600;
     const orientation: string = screen.orientation.type;
-    console.log("Screen Orientation: ", orientation);
-    if (window_width < min_pixel_limit && card_mode == "Landscape") {
+    if (window_width < min_pixel_limit 
+        && card_mode == "Landscape") {
       set_card_mode("Portrait");
-      console.log("Switching card mode to Portrait");
-    } else if (window_width >= min_pixel_limit && card_mode == "Portrait"){
+    } else if (window_width >= min_pixel_limit 
+               && card_mode == "Portrait") {
       set_card_mode("Landscape");
-      console.log("Switching card mode to Landscape");
-    } else if (
-      orientation.includes("portrait") 
-      && window_width < min_pixel_limit
-    ) {
+    } else if (window_width < min_pixel_limit
+               && orientation.includes("portrait")) {
       set_card_mode("Portrait");
-      console.log("Portrait display detected");
     }
 
     // Build Cards array
@@ -90,7 +85,7 @@ export default function Gallery({ lag }: GalleryProps) {
       }
     }
 
-    // 
+    // Clean up "resize" event listener
     return () => window.removeEventListener("resize", handleResize);
   }, [lag, card_mode, window_width]);
 

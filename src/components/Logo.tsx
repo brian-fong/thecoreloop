@@ -33,6 +33,7 @@ export default function Logo() {
           <Image 
             src="./thecoreloop-logo.png"
             objectFit="contain"
+            height="100px"
           />
         </Flex>
         <Flex 
