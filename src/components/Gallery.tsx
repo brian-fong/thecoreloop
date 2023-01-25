@@ -74,17 +74,13 @@ export default function Gallery({ lag }: GalleryProps) {
     if (
       window_width < min_pixel_limit 
       && card_mode == "landscape"
-      && device != "mobile"
     ) {
       set_card_mode("portrait");
     } else if (
       window_width >= min_pixel_limit 
       && card_mode == "portrait"
-      && device != "mobile"
     ) {
       set_card_mode("landscape");
-    } else if (device == "mobile") {
-      set_card_mode("portrait");
     }
 
     // Build Cards array
