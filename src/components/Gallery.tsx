@@ -4,7 +4,8 @@ import {
 import uuid from 'react-uuid';
 import { Gallery as GalleryProps } from '../types';
 import { useState, useEffect, useRef, ReactElement } from "react";
-import { Card_Landscape, Card_Portrait } from "../components/Card";
+import Card_Portrait from "../components/Card_Portrait";
+import Card_Landscape from "../components/Card_Landscape";
 
 function detectDevice(): string {
   const user_agent: string = window?.navigator?.userAgent?.toLowerCase();
@@ -67,11 +68,15 @@ export default function Gallery({ lag }: GalleryProps) {
     // Toggle between Portrait vs Landscape card layout
     const min_pixel_limit: number = 600;
     const device: string = detectDevice();
-    if (window_width < min_pixel_limit 
-        && card_mode == "landscape") {
+    if (
+      window_width < min_pixel_limit 
+      && card_mode == "landscape"
+    ) {
       set_card_mode("portrait");
-    } else if (window_width >= min_pixel_limit 
-               && card_mode == "portrait") {
+    } else if (
+      window_width >= min_pixel_limit 
+      && card_mode == "portrait"
+    ) {
       set_card_mode("landscape");
     } else if (device == "mobile") {
       set_card_mode("portrait");
@@ -114,7 +119,7 @@ export default function Gallery({ lag }: GalleryProps) {
     <Flex 
       id="card_gallery"
       flexDir="column" 
-      gap="30px" 
+      gap="15px" 
       justify="start" 
       align="start" 
       margin="10px 0px 0px"

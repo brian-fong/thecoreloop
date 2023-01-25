@@ -6,6 +6,7 @@ import {
 export default function NavBar() {
   return (
     <Flex 
+      id="navbar"
       flexDir="row" 
       gap="0px" 
       justify="center" 
@@ -35,7 +36,10 @@ export default function NavBar() {
         fontWeight="800" 
         color="black" 
         bg="standard_bkg"
-        _hover={{ color: "white", bg: "blue" }}
+        _hover={{ 
+          color: "white", 
+          bg: "rgba(0, 0, 0, 0.5)",
+        }}
         transition="background-color 200ms ease" 
         draggable="false" 
         userSelect="none"
@@ -49,7 +53,10 @@ export default function NavBar() {
         fontWeight="800" 
         color="black" 
         bg="standard_bkg"
-        _hover={{ color: "white", bg: "blue" }}
+        _hover={{ 
+          color: "white", 
+          bg: "rgba(0, 0, 0, 0.5)",
+        }}
         transition="background-color 200ms ease" 
         draggable="false" 
         userSelect="none"
@@ -65,7 +72,10 @@ export default function NavBar() {
         fontWeight="800" 
         color="black" 
         bg="standard_bkg"
-        _hover={{ color: "white", bg: "blue" }}
+        _hover={{ 
+          color: "white", 
+          bg: "rgba(0, 0, 0, 0.5)",
+        }}
         transition="background-color 200ms ease" 
         draggable="false" 
         userSelect="none"
@@ -81,7 +91,10 @@ export default function NavBar() {
         fontWeight="800" 
         color="black" 
         bg="standard_bkg"
-        _hover={{ color: "white", bg: "blue" }}
+        _hover={{ 
+          color: "white", 
+          bg: "rgba(0, 0, 0, 0.5)",
+        }}
         transition="background-color 200ms ease" 
         draggable="false" 
         userSelect="none"
