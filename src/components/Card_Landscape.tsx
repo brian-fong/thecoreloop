@@ -103,62 +103,76 @@ export default function Card_Landscape(
           height="100%"
            width="100%"
         >
-          { /* Title */ }
-          <Link 
-            id="title"
-            fontSize="14px" 
-            fontWeight="800" 
-            color="blue"  
+          <Flex
+            flexDir="column"
+            justify="space-between"
+            align="start"
             width="100%"
-            href={url} 
-            target="_blank" 
-            transition="background-color 200ms ease" 
-            _hover={{ 
-              color: "white",
-              bg: "blue",
-              textDecoration: "underline", 
-              cursor: "pointer", 
-            }}
-            draggable="false"
           >
-            {title}
-          </Link>
+            { /* Title */ }
+            <Link 
+              id="title"
+              fontSize="14px" 
+              fontWeight="800" 
+              color="blue"  
+              width="100%"
+              href={url} 
+              target="_blank" 
+              transition="background-color 200ms ease" 
+              _hover={{ 
+                color: "white",
+                bg: "blue",
+                textDecoration: "underline", 
+                cursor: "pointer", 
+              }}
+              draggable="false"
+            >
+              {title}
+            </Link>
 
-          { /* Description */ }
-          <Text 
-            fontSize="14px" 
-            textAlign="left" 
-            lineHeight="1.2" 
-            color="description_fg"
-            p="5px 0px 30px"
-          >
-            {description}
-          </Text>
+            { /* Description */ }
+            <Text 
+              fontSize="14px" 
+              textAlign="left" 
+              lineHeight="1.2" 
+              color="description_fg"
+              p="0px 0px 30px"
+            >
+              {description}
+            </Text>
+          </Flex>
 
-          { /* Category */ }
-          <Text 
-            m="5px 0px"
-            fontSize="13px" 
-            color="white" 
-            bg="category_bkg" 
-            transition="background-color 200ms ease" 
-            _hover={{ 
-              bg: "category_bkg_hover",
-              cursor: "pointer", 
-              textDecoration: "underline", 
-            }}
+          <Flex
+            flexDir="column"
+            justify="space-between"
+            align="start"
+            width="100%"
           >
-            {category}
-          </Text>
+            { /* Category */ }
+            <Text 
+              m="5px 0px"
+              fontSize="13px" 
+              color="white" 
+              bg="category_bkg" 
+              transition="background-color 200ms ease" 
+              _hover={{ 
+                bg: "category_bkg_hover",
+                cursor: "pointer", 
+                textDecoration: "underline", 
+              }}
+            >
+              {category}
+            </Text>
 
-          { /* Source */ }
-          <Text 
-            fontSize="13px" 
-            lineHeight="0.9"
-            color="black" 
-          >
-            Source: {source}
-          </Text>
+            { /* Source */ }
+            <Text 
+              fontSize="13px" 
+              lineHeight="0.9"
+              color="black" 
+            >
+              Source: {source}
+            </Text>
+          </Flex>
         </Flex>
       </Flex>
     </Flex>
