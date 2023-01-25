@@ -4,6 +4,9 @@ import {
 import uuid from 'react-uuid';
 import { Gallery as GalleryProps } from '../types';
 import { useState, useEffect, useRef, ReactElement } from "react";
+
+// Components
+import Line from "../components/Line";
 import Card_Portrait from "../components/Card_Portrait";
 import Card_Landscape from "../components/Card_Landscape";
 
@@ -66,16 +69,18 @@ export default function Gallery({ lag }: GalleryProps) {
     window.addEventListener("resize", handleResize);
 
     // Toggle between Portrait vs Landscape card layout
-    const min_pixel_limit: number = 600;
+    const min_pixel_limit: number = 650;
     const device: string = detectDevice();
     if (
       window_width < min_pixel_limit 
       && card_mode == "landscape"
+      && device != "mobile"
     ) {
       set_card_mode("portrait");
     } else if (
       window_width >= min_pixel_limit 
       && card_mode == "portrait"
+      && device != "mobile"
     ) {
       set_card_mode("landscape");
     } else if (device == "mobile") {
@@ -84,8 +89,10 @@ export default function Gallery({ lag }: GalleryProps) {
 
     // Build Cards array
     set_cards([]);
-    for (const article_group of lag.content) {
-      for (const article of article_group.articles) {
+    for (const [i, article_group] of lag.content.entries()) {
+      const last_group: boolean = i == lag.content.length-1;
+      for (const [j, article] of article_group.articles.entries()) {
+        const last_article: boolean = j == article_group.articles.length;
         const card: ReactElement = (card_mode == "portrait")
           ? <Card_Portrait
             key={uuid()}
@@ -107,7 +114,12 @@ export default function Gallery({ lag }: GalleryProps) {
             category={article_group.category || ""}
             source={article.source || ""}
           />;
-        set_cards(cards => [...cards, card])
+        if (!last_group && !last_article) {
+          const line: ReactElement = <Line />;
+          set_cards(cards => [...cards, card, line]);
+        } else {
+          set_cards(cards => [...cards, card]);
+        }
       }
     }
 

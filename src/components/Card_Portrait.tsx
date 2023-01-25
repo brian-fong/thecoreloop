@@ -34,7 +34,7 @@ export default function Card_Portrait(
 
   return (
     <Flex 
-      id="card-portrait"
+      id="card-container"
       flexDir="column" 
       gap="5px"
       justify="space-between" 
@@ -59,6 +59,7 @@ export default function Card_Portrait(
         draggable="false"
         width="100%"
         height="100%"
+        border="1px solid black" 
       >
         <Flex 
           id="image_container"
@@ -68,7 +69,6 @@ export default function Card_Portrait(
           width="100%"
           height="100%"
           bg={image_bg} 
-          border="1px solid black" 
           boxSizing="border-box" 
           overflow="hidden"
         >

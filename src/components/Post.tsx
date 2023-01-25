@@ -47,6 +47,7 @@ export default function Post({ lag }: PostProps) {
       p="15px 15px 10px 15px" 
       width="100%" 
       minWidth="300px"
+      minHeight="300px"
       bg="standard_bkg"
       border="6px double white" 
       boxShadow="0px 0px 0px 3px #c0c0c0, 
@@ -62,7 +63,6 @@ export default function Post({ lag }: PostProps) {
         p="15px" 
         width="100%" 
         height="100%"
-        minHeight="200px"
         border="1px solid gray" 
       >
         { /* Heading Container */ }

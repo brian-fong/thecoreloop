@@ -34,13 +34,13 @@ export default function Card_Landscape(
 
   return (
     <Flex 
-      id="card-landscape"
+      id="card-container"
       flexDir="column" 
       justify="center" 
       align="center" 
       width="100%"
     >
-      { /* Container 1: caption */ }
+      { /* Caption */ }
       <Text 
         fontSize="14px" 
         fontStyle="italic" 
@@ -51,7 +51,7 @@ export default function Card_Landscape(
         {caption}
       </Text>
 
-      { /* Container 2: title, description, image, source, category */ }
+      { /* Container: Title, Description, Image, Source, Category */ }
       <Flex 
         flexDir="row" 
         gap="10px" 
@@ -59,7 +59,7 @@ export default function Card_Landscape(
         align="start" 
         width="100%"
       >
-        { /* Container 2.1: image */ }
+        { /* Thumbnail */ }
         <Link 
           href={url} 
           target="_blank" 
@@ -67,9 +67,10 @@ export default function Card_Landscape(
           width="100%"
           maxWidth="400px" 
           height="100%"
+          border="1px solid black" 
         >
           <Flex 
-            id="image_container"
+            id="thumbnail_container"
             flexDir="column" 
             justify="center" 
             align="center" 
@@ -77,10 +78,10 @@ export default function Card_Landscape(
             maxWidth="400px" 
             height="100%"
             bg={image_bg} 
-            border="1px solid black" 
             boxSizing="border-box" 
           >
             <Image 
+              id="thumbnail"
               src={image} 
               alt={image || "Image not found"} 
               objectFit="cover" 
@@ -93,7 +94,7 @@ export default function Card_Landscape(
           </Flex>
         </Link>
 
-        { /* Container 2.2: title, description, category, source */ }
+        { /* Container: Title, Description, Category, Source */ }
         <Flex 
           flexDir="column" 
           shrink="1" 
@@ -102,77 +103,62 @@ export default function Card_Landscape(
           height="100%"
            width="100%"
         >
-          { /* Container 2.2.1: title, description */ }
-          <Flex 
-            flexDir="column" 
-            justify="start" 
-            align="start" 
+          { /* Title */ }
+          <Link 
+            id="title"
+            fontSize="14px" 
+            fontWeight="800" 
+            color="blue"  
             width="100%"
+            href={url} 
+            target="_blank" 
+            transition="background-color 200ms ease" 
+            _hover={{ 
+              color: "white",
+              bg: "blue",
+              textDecoration: "underline", 
+              cursor: "pointer", 
+            }}
+            draggable="false"
           >
-            { /* Title */ }
-            <Link 
-              id="title"
-              fontSize="14px" 
-              fontWeight="800" 
-              color="blue"  
-              width="100%"
-              href={url} 
-              target="_blank" 
-              transition="background-color 200ms ease" 
-              _hover={{ 
-                color: "white",
-                bg: "blue",
-                textDecoration: "underline", 
-                cursor: "pointer", 
-              }}
-              draggable="false"
-            >
-              {title}
-            </Link>
+            {title}
+          </Link>
 
-            { /* Description */ }
-            <Text 
-              fontSize="14px" 
-              textAlign="left" 
-              lineHeight="1.2" 
-              color="description_fg"
-              p="5px 0px 30px"
-            >
-              {description}
-            </Text>
-          </Flex>
-          { /* Container 2.2.2: category/source */ }
-          <Flex 
-            flexDir="column" 
-            justify="end" 
-            align="start" 
-            wrap="wrap" 
-            width="100%"
+          { /* Description */ }
+          <Text 
+            fontSize="14px" 
+            textAlign="left" 
+            lineHeight="1.2" 
+            color="description_fg"
+            p="5px 0px 30px"
           >
-            { /* Category */ }
-            <Text 
-              m="5px 0px"
-              fontSize="13px" 
-              color="white" 
-              bg="category_bkg" 
-              transition="background-color 200ms ease" 
-              _hover={{ 
-                bg: "category_bkg_hover",
-                cursor: "pointer", 
-                textDecoration: "underline", 
-              }}
-            >
-              {category}
-            </Text>
-            { /* Source */ }
-            <Text 
-              fontSize="13px" 
-              lineHeight="0.9"
-              color="black" 
-            >
-              Source: {source}
-            </Text>
-          </Flex>
+            {description}
+          </Text>
+
+          { /* Category */ }
+          <Text 
+            m="5px 0px"
+            fontSize="13px" 
+            color="white" 
+            bg="category_bkg" 
+            transition="background-color 200ms ease" 
+            _hover={{ 
+              bg: "category_bkg_hover",
+              cursor: "pointer", 
+              textDecoration: "underline", 
+            }}
+          >
+            {category}
+          </Text>
+
+          { /* Source */ }
+          <Text 
+            fontSize="13px" 
+            lineHeight="0.9"
+            color="black" 
+          >
+            Source: {source}
+          </Text>
         </Flex>
       </Flex>
     </Flex>
