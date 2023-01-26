@@ -58,18 +58,19 @@ export default function Gallery({ lag }: GalleryProps) {
     // Callback function for event listener on "resize"
     function handleResize() {
       // Throttle function execution to optimize performance
+      const delay: number = 100;
       if (throttled && !throttled.current) {
         updateWidth();
         throttled.current = true;
         setTimeout(function() {
           throttled.current = false;
-        }, 300);
+        }, delay);
       }
     }
     window.addEventListener("resize", handleResize);
 
     // Toggle between Portrait vs Landscape card layout
-    const min_pixel_limit: number = 650;
+    const min_pixel_limit: number = 700;
     const device: string = detectDevice();
     if (
       window_width < min_pixel_limit 
