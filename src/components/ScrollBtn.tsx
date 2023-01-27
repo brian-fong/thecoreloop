@@ -27,17 +27,15 @@ export default function ScrollBtn({ elem_id, text }: ScrollBtnProps) {
       _focusVisible={{
         color: "white",
         bg: "tcl_blue_hover",
-        boxShadow: "5px 5px 2px rgba(0, 0, 0, 0.5)",
         outline: "1px solid blue",
       }}
       _hover={{
         color: "white",
         bg: "tcl_blue_hover",
-        boxShadow: "5px 5px 2px rgba(0, 0, 0, 0.5)",
       }}
       _active={{
         boxShadow: "none",
-        transform: "translate(1px, 1px)",
+        transform: "translate(2px, 2px)",
       }}
       draggable="false" 
       userSelect="none"

@@ -39,10 +39,6 @@ export default function kietfonf() {
         >
           <Logo />
           <CreateLAG />
-          <ScrollBtn 
-            elem_id="navbar"
-            text="Back to Top"
-          />
         </Flex>
       </Flex>
     </>

@@ -2,15 +2,11 @@ import {
   Flex,
   Text,
   Input,
-  Select,
   Heading,
   Textarea,
 } from "@chakra-ui/react";
-import { 
-  ChatIcon,
-  LinkIcon,
-} from "@chakra-ui/icons";
 
+import uuid from "react-uuid";
 import CatGroup from "./CatGroup";
 import { formatDate } from "../utils/date";
 import { useState, useEffect, ReactElement } from "react";
@@ -28,9 +24,7 @@ export const CATEGORIES: string[] = [
 
 export default function CreateLAG() {
   const [lag_date, set_lag_date] = useState<string>("Enter date above")
-  const [groups, set_groups] = useState<ReactElement[]>([
-    <CatGroup />
-  ]);
+  const [groups, set_groups] = useState<ReactElement[]>([]);
 
   function handleDateChange() {
     const lag_date_input: any = document.getElementById(
@@ -41,8 +35,16 @@ export default function CreateLAG() {
   }
 
   useEffect(() => {
-    console.log("Category Groups: ", groups);
-  }, [groups]);
+    const lag_number_input: HTMLElement = document.getElementById(
+      "lag-number"
+    )!;
+    lag_number_input!.focus();
+
+    for (const CATEGORY of CATEGORIES) {
+      const group: ReactElement = <CatGroup key={uuid()} category={CATEGORY} />
+      set_groups((groups: any) => [...groups, group]);
+    }
+  }, []);
 
   return (
     <Flex 
@@ -127,7 +129,7 @@ export default function CreateLAG() {
                   padding: "2px 10px",
                   width: "min-content",
                   height: "100%",
-                  fontSize: "18px",
+                  fontSize: "16px",
                   whiteSpace: "nowrap",
                 }}
               >
@@ -136,7 +138,7 @@ export default function CreateLAG() {
               <Input
                 id="lag-number"
                 p="2px 10px"
-                fontSize="18px"
+                fontSize="16px"
                 letterSpacing="3px"
                 width="63px"
                 bg="white"
@@ -153,7 +155,7 @@ export default function CreateLAG() {
                   outline: "1px solid blue",
                 }}
                 isRequired
-                autoFocus
+                autoFocus={true}
               />
             </Flex>
 
@@ -182,7 +184,7 @@ export default function CreateLAG() {
                     "width": "min-content",
                     "height": "100%",
                     "color": "white",
-                    "fontSize": "18px",
+                    "fontSize": "16px",
                     "whiteSpace": "nowrap",
                   }}
                   >
@@ -193,7 +195,7 @@ export default function CreateLAG() {
                   type="date"
                   m="0px"
                   p="0px 5px 0px 0px"
-                  fontSize="18px"
+                  fontSize="16px"
                   textAlign="center"
                   bg="white"
                   border="none"
@@ -234,7 +236,7 @@ export default function CreateLAG() {
               style={{
                 padding: "2px 10px",
                 width: "min-content",
-                fontSize: "18px",
+                fontSize: "16px",
                 color: "white",
                 background: "#114dcf",
                 border: "1px solid black",
@@ -274,6 +276,51 @@ export default function CreateLAG() {
             height="100%"
           >
             {groups}
+          </Flex>
+
+          <Flex
+            flexDir="column"
+            justify="start"
+            align="center"
+            width="100%"
+          >
+            <Flex
+              flexDir="column" 
+              justify="center" 
+              align="center" 
+              width="min-content" 
+              padding="10px 15px"
+              bg="tcl_blue"
+              border="1px solid black" 
+              boxShadow="2px 2px 2px rgba(0, 0, 0, 0.5)"
+              boxSizing="border-box"
+              cursor="pointer"
+              transition="background-color 200ms ease" 
+              _focusVisible={{
+                color: "white",
+                bg: "tcl_blue_hover",
+                outline: "1px solid blue",
+              }}
+              _hover={{
+                color: "white",
+                bg: "tcl_blue_hover",
+              }}
+              _active={{
+                boxShadow: "none",
+                transform: "translate(1px, 1px)",
+              }}
+              draggable="false" 
+              userSelect="none"
+              tabIndex={0}
+            >
+              <Text
+                fontSize="14px"
+                fontWeight="800"
+                whiteSpace="nowrap"
+              >
+                Preview
+              </Text>
+            </Flex>
           </Flex>
         </Flex>
       </Flex>
