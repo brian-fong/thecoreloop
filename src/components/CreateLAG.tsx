@@ -119,7 +119,6 @@ export default function CreateLAG() {
               align="center"
               width="min-content"
               height="min-content"
-              color="white"
               bg="#114dcf"
               border="1px solid black"
             >
@@ -129,6 +128,7 @@ export default function CreateLAG() {
                   padding: "2px 10px",
                   width: "min-content",
                   height: "100%",
+                  color: "white",
                   fontSize: "16px",
                   whiteSpace: "nowrap",
                 }}
@@ -141,6 +141,7 @@ export default function CreateLAG() {
                 fontSize="16px"
                 letterSpacing="3px"
                 width="63px"
+                color="black"
                 bg="white"
                 border="none"
                 placeholder="123"
