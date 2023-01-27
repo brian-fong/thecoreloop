@@ -30,12 +30,13 @@ export default function Article() {
           bg="category_bkg"
           borderRight="1px solid black"
         >
-          <ChatIcon color="white" boxSize="15px" userSelect="none" />
+          <LinkIcon color="white" boxSize="15px" userSelect="none" />
         </Flex>
-        <Textarea
+        <Input
+          type="url"
           p="4px"
-          height="30px"
-          minHeight="30px"
+          width="100%"
+          height="100%"
           bg="white"
           style={{
             "border": "none",
@@ -45,8 +46,7 @@ export default function Article() {
             outline: "1px solid blue",
           }}
           fontSize="14px"
-          placeholder="A look at..."
-          resize="vertical"
+          placeholder="https://..."
           isRequired
         />
       </Flex>
@@ -65,13 +65,12 @@ export default function Article() {
           bg="category_bkg"
           borderRight="1px solid black"
         >
-          <LinkIcon color="white" boxSize="15px" userSelect="none" />
+          <ChatIcon color="white" boxSize="15px" userSelect="none" />
         </Flex>
-        <Input
-          type="url"
+        <Textarea
           p="4px"
-          width="100%"
-          height="100%"
+          height="30px"
+          minHeight="50px"
           bg="white"
           style={{
             "border": "none",
@@ -81,7 +80,8 @@ export default function Article() {
             outline: "1px solid blue",
           }}
           fontSize="14px"
-          placeholder="https://..."
+          placeholder="A look at..."
+          resize="vertical"
           isRequired
         />
       </Flex>
