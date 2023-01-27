@@ -30,7 +30,11 @@ export default function ScrollBtn({ elem_id, text }: ScrollBtnProps) {
       _hover={{
         bg: "tcl_blue_hover",
         boxShadow: "0px 0px 0px 3px #40a89f, \
-                    10px 10px 2px rgba(0, 0, 0, 0.5)",
+                    8px 8px 2px rgba(0, 0, 0, 0.5)",
+      }}
+      _active={{
+        boxShadow: "0px 0px 0px 3px #40a89f",
+        transform: "translate(1px, 1px)",
       }}
       onClick={() => scrollTo(elem_id)}
     >
