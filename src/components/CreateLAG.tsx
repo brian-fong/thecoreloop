@@ -293,7 +293,6 @@ export default function CreateLAG() {
               bg="tcl_blue"
               border="1px solid black" 
               boxShadow="2px 2px 2px rgba(0, 0, 0, 0.5)"
-              boxSizing="border-box"
               cursor="pointer"
               transition="background-color 200ms ease" 
               _focusVisible={{

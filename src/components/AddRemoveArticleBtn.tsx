@@ -65,20 +65,19 @@ function wait(ms: number) {
           background: "#32995f",
           cursor: "pointer",
         }}
-        _active={{
-          transform: "translate(1px, 1px)",
-          boxShadow: "none"
-        }}
         onClick={(event: any) => {
-          pressButton(event.target);
-          removeArticle()
+          event.preventDefault();
+          pressButton(event.currentTarget);
+          addArticle()
         }}
         onKeyPress={(event: any) => {
           if (event.key == "Enter") {
-            pressButton(event.target);
+            event.preventDefault();
+            pressButton(event.currentTarget);
             addArticle()
           }
         }}
+        zIndex={2}
       >
         <AddIcon boxSize="10px" />
       </Flex>
@@ -108,17 +107,15 @@ function wait(ms: number) {
           background: "#993d3d",
           cursor: "pointer",
         }}
-        _active={{
-          transform: "translate(1px, 1px)",
-          boxShadow: "none"
-        }}
         onClick={(event: any) => {
-          pressButton(event.target);
+          event.preventDefault();
+          pressButton(event.currentTarget);
           removeArticle()
         }}
         onKeyPress={(event: any) => {
           if (event.key == "Enter") {
-            pressButton(event.target);
+            event.preventDefault();
+            pressButton(event.currentTarget);
             removeArticle();
           }
         }}
