@@ -19,28 +19,34 @@ export default function ScrollBtn({ elem_id, text }: ScrollBtnProps) {
       width="min-content" 
       padding="10px 15px"
       bg="tcl_blue"
-      border="6px double black" 
-      boxShadow="0px 0px 0px 3px #4FD1C5, 
-                 10px 10px 2px rgba(0, 0, 0, 0.5)"
+      border="1px solid black" 
+      boxShadow="10px 10px 2px rgba(0, 0, 0, 0.5)"
       boxSizing="border-box"
       cursor="pointer"
       transition="background-color 200ms ease" 
-      draggable="false" 
-      userSelect="none"
-      _hover={{
+      _focusVisible={{
+        color: "white",
         bg: "tcl_blue_hover",
-        boxShadow: "0px 0px 0px 3px #40a89f, \
-                    8px 8px 2px rgba(0, 0, 0, 0.5)",
+        boxShadow: "5px 5px 2px rgba(0, 0, 0, 0.5)",
+        outline: "1px solid blue",
+      }}
+      _hover={{
+        color: "white",
+        bg: "tcl_blue_hover",
+        boxShadow: "5px 5px 2px rgba(0, 0, 0, 0.5)",
       }}
       _active={{
-        boxShadow: "0px 0px 0px 3px #40a89f",
+        boxShadow: "none",
         transform: "translate(1px, 1px)",
       }}
+      draggable="false" 
+      userSelect="none"
       onClick={() => scrollTo(elem_id)}
+      tabIndex={0}
     >
       <Text
         fontSize="14px"
-        color="black"
+        fontWeight="800"
         whiteSpace="nowrap"
       >
         {text}
