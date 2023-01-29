@@ -43,23 +43,6 @@ export default function NavBar() {
         transition="background-color 200ms ease" 
         draggable="false" 
         userSelect="none"
-      >
-        Archive
-      </Link>
-      <Link 
-        m="0px 30px" 
-        p="0px 10px"
-        fontSize="13px" 
-        fontWeight="800" 
-        color="black" 
-        bg="standard_bkg"
-        _hover={{ 
-          color: "white", 
-          bg: "rgba(0, 0, 0, 0.5)",
-        }}
-        transition="background-color 200ms ease" 
-        draggable="false" 
-        userSelect="none"
         href="https://t.me/thecoreloop" 
         target="_blank"
       >

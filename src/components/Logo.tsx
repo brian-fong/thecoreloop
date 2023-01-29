@@ -4,64 +4,51 @@ import {
   Text,
   Image,
 } from '@chakra-ui/react'
+import CurveContainerAlt from './CurveContainerAlt';
 
 export default function Logo() {
   return (
-    <>
-      { /* Logo Container */ }
+    <CurveContainerAlt>
       <Flex 
-        flexDir="column" 
-        justify="start" 
+        flexDir="row" 
+        gap="30px" 
+        justify="center" 
         align="center" 
-        width="100%" 
-        minWidth="300px"
-        bg="logo_bkg"
-        border="6px double white"
-        boxShadow="0px 0px 0px 3px #6711CF, 
-                   20px 20px 2px rgba(0, 0, 0, 0.5)"
-        boxSizing="border-box"
+        p="20px 20px 0px" 
+        width="100%"
       >
-        <Flex 
-          flexDir="row" 
-          gap="30px" 
-          justify="center" 
-          align="center" 
-          p="20px 20px 0px" 
-          width="100%"
-        >
-          <Image 
-            src="./thecoreloop-logo.png"
-            objectFit="contain"
-            height="100px"
-          />
-        </Flex>
-        <Flex 
-          flexDir="row" 
-          justify="end" 
-          align="center" 
-          p="0px 10px 10px 0px" 
-          width="100%"
-        >
-          <Text 
-            fontSize="11px" 
-            fontStyle="italic" 
-            color="white" 
-            draggable="false" 
-            userSelect="none"
-          >
-            UI inspired by&nbsp;
-            <Link 
-              color="tcl_yellow" 
-              textDecoration="underline" 
-              _hover={{ color: "tcl_yellow_hover" }}
-              href="https://classic.curve.fi/" 
-              target="_blank"
-            >
-              Curve Finance
-            </Link>
-          </Text>
-        </Flex>
+        <Image 
+          src="./thecoreloop-logo.png"
+          objectFit="contain"
+          height="100px"
+        />
       </Flex>
-    </>
+      <Flex 
+        flexDir="row" 
+        justify="end" 
+        align="center" 
+        p="0px 10px 10px 0px" 
+        width="100%"
+      >
+        <Text 
+          fontSize="11px" 
+          fontStyle="italic" 
+          color="white" 
+          draggable="false" 
+          userSelect="none"
+        >
+          UI inspired by&nbsp;
+          <Link 
+            color="tcl_yellow" 
+            textDecoration="underline" 
+            _hover={{ color: "tcl_yellow_hover" }}
+            href="https://classic.curve.fi/" 
+            target="_blank"
+          >
+            Curve Finance
+          </Link>
+        </Text>
+      </Flex>
+    </CurveContainerAlt>
   );
 }
