@@ -27,7 +27,9 @@ export default function Card_Landscape(
 
   useEffect(() => {
     // Change background color for images with default Twitter logo 
-    if (image.includes("https://assets.stickpng.com/images/580b57fcd9996e24bc43c53e.png")) {
+    if (image.includes(
+      "https://assets.stickpng.com/images/580b57fcd9996e24bc43c53e.png"
+    )) {
       setImage_bg("white");
     }
   }, []);
@@ -85,6 +87,7 @@ export default function Card_Landscape(
               src={image} 
               alt={image || "Image not found"} 
               objectFit="cover" 
+              color="white"
               fontSize="14px" 
               textAlign="center"
               draggable="false" 

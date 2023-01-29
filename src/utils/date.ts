@@ -18,7 +18,7 @@ export const YEARS: string[] = [
   "2022", "2023", "2024"
 ];
 
-export function getTodaysDate(): string {
+export function getTodaysDate(verbose: boolean = true): string {
   const date: Date = new Date();
   const weekday: string = new Intl.DateTimeFormat(
     "en-US", 
@@ -27,18 +27,30 @@ export function getTodaysDate(): string {
   const day: string = DAYS[date.getDate()-1];
   const month: string = MONTHS[date.getMonth()];
   const year: string = date.getFullYear().toString();
-  return `${weekday.slice(0, 3)} ${month.slice(0, 3)} ${day} ${year}`;
+    if (verbose) {
+      return `${weekday} ${month} ${day} ${year}`;
+    } else {
+      return `${weekday.slice(0, 3)} ${month.slice(0, 3)} ${day} ${year}`;
+    }
 }
 
-export function formatDate(_date: string): string {
-  const date: Date = new Date(_date);
-  const weekday: string = new Intl.DateTimeFormat(
-    "en-US", 
-    { weekday: "long", timeZone: "UTC" },
-  ).format(date);
-  const day: string = DAYS[date.getDate()];
-  const month: string = MONTHS[date.getMonth()];
-  const year: number = date.getFullYear();
-  return `${weekday.slice(0, 3)} ${month.slice(0, 3)} ${day} ${year}`;
+export function formatDate(_date: string, verbose: boolean = true): string {
+  try {
+    const date: Date = new Date(_date);
+    const weekday: string = new Intl.DateTimeFormat(
+      "en-US", 
+      { weekday: "long", timeZone: "UTC" },
+    ).format(date);
+    const day: string = DAYS[date.getDate()];
+    const month: string = MONTHS[date.getMonth()];
+    const year: number = date.getFullYear();
+    if (verbose) {
+      return `${weekday} ${month} ${day} ${year}`;
+    } else {
+      return `${weekday.slice(0, 3)} ${month.slice(0, 3)} ${day} ${year}`;
+    }
+  } catch (error: any) {
+    throw error;
+  }
 }
 

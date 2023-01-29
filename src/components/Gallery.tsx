@@ -10,27 +10,27 @@ import Line from "../components/Line";
 import Card_Portrait from "../components/Card_Portrait";
 import Card_Landscape from "../components/Card_Landscape";
 
-function detectDevice(): string {
-  const user_agent: string = window?.navigator?.userAgent?.toLowerCase();
-  let device: string = "desktop";
-  const MOBILE_DEVICES: string[] = [
-    "android",
-    "iphone",
-    // "ipad",
-    "ipod",
-    "blackberry",
-    "windows phone",
-  ];
-
-  for (const DEVICE of MOBILE_DEVICES) {
-    if (user_agent.includes(DEVICE)) {
-      device = "mobile";
-      break;
-    }
-  }
-
-  return device;
-}
+// function detectDevice(): string {
+//   const user_agent: string = window?.navigator?.userAgent?.toLowerCase();
+//   let device: string = "desktop";
+//   const MOBILE_DEVICES: string[] = [
+//     "android",
+//     "iphone",
+//     // "ipad",
+//     "ipod",
+//     "blackberry",
+//     "windows phone",
+//   ];
+//
+//   for (const DEVICE of MOBILE_DEVICES) {
+//     if (user_agent.includes(DEVICE)) {
+//       device = "mobile";
+//       break;
+//     }
+//   }
+//
+//   return device;
+// }
 
 export default function Gallery({ lag }: GalleryProps) {
   // Initialize number to store current width of window
@@ -71,7 +71,6 @@ export default function Gallery({ lag }: GalleryProps) {
 
     // Toggle between Portrait vs Landscape card layout
     const min_pixel_limit: number = 700;
-    const device: string = detectDevice();
     if (
       window_width < min_pixel_limit 
       && card_mode == "landscape"

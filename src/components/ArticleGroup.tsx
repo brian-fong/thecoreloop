@@ -2,18 +2,20 @@ import {
   Flex,
 } from "@chakra-ui/react";
 
-import AddRemoveArticleBtn from "./AddRemoveArticleBtn";
-import { useState, useEffect, ReactElement } from "react";
+import AddRemoveArticleBtns from "./AddRemoveArticleBtns";
+import { useState, ReactElement } from "react";
 
-export default function CatGroup({ category }: any) {
+export default function ArticleGroup({ category }: any) {
   const [articles, set_articles] = useState<ReactElement[]>([]);
 
-  useEffect(() => {
-    console.log("Article Count: ", articles.length);
-  }, [articles]);
-
   return (
-    <>
+    <Flex
+      flexDir="column"
+      gap="5px"
+      justify="center"
+      align="start"
+      width="100%"
+    >
       <Flex
         flexDir="row"
         gap="10px"
@@ -37,7 +39,7 @@ export default function CatGroup({ category }: any) {
         >
           {category}
         </Flex>
-        <AddRemoveArticleBtn 
+        <AddRemoveArticleBtns 
           articles={articles}
           set_articles={set_articles}
         />
@@ -49,7 +51,7 @@ export default function CatGroup({ category }: any) {
       >
         {articles}
       </Flex>
-    </>
+    </Flex>
   );
 }
 

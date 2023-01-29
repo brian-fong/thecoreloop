@@ -3,11 +3,11 @@
 // Look At Gaming
 export interface LAG {
   heading: string;
-  subheading: string;
-  message_id: number;
+  subheading?: string;
+  message_id?: number;
   number: number;
   date: string;
-  special_insights: string;
+  special_insights?: string;
   content: ArticleGroup[];
 }
 

@@ -6,7 +6,7 @@ import uuid from "react-uuid";
 import Article from "./Article";
 import { ReactElement } from "react";
 
-export default function AddRemoveArticleBtn({ articles, set_articles }: any) {
+export default function AddRemoveArticleBtns({ articles, set_articles }: any) {
   function addArticle() {
     const article: ReactElement = <Article key={uuid()} />;
     set_articles((articles: any) => [...articles, article]);
@@ -55,6 +55,7 @@ function wait(ms: number) {
         transition="background-color 200ms ease" 
         tabIndex={0}
         userSelect="none"
+        cursor="pointer"
         _focusVisible={{
           color: "white",
           background: "#32995f",
@@ -63,7 +64,6 @@ function wait(ms: number) {
         _hover={{
           color: "white",
           background: "#32995f",
-          cursor: "pointer",
         }}
         onClick={(event: any) => {
           event.preventDefault();
@@ -97,6 +97,7 @@ function wait(ms: number) {
         transition="background-color 200ms ease"
         tabIndex={0}
         userSelect="none"
+        cursor="pointer"
         _focusVisible={{
           color: "white",
           background: "#993d3d",
@@ -105,7 +106,6 @@ function wait(ms: number) {
         _hover={{
           color: "white",
           background: "#993d3d",
-          cursor: "pointer",
         }}
         onClick={(event: any) => {
           event.preventDefault();

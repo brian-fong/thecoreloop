@@ -1,12 +1,12 @@
 import { 
   Flex,
 } from "@chakra-ui/react";
-import CatGroup from "./CatGroup";
+import ArticleGroup from "./ArticleGroup";
 import { ReactElement } from "react";
 
-export default function AddCatBtn({ groups, set_groups }: any) {
+export default function AddGroupBtn({ groups, set_groups }: any) {
   function addGroup() {
-    const group: ReactElement = <CatGroup />;
+    const group: ReactElement = <ArticleGroup />;
     set_groups((groups: any) => [...groups, group]);
   }
 

@@ -19,14 +19,17 @@ export default extendTheme({
   },
   styles: {
     global: {
-      "body": {
-        "margin": "0px", 
-        "padding": "0px",
-        "fontSize": "20px",
-        "fontFamily": "Jetbrains Mono",
-        "scrollBehavior": "smooth",
-      }
-    }
+      html: {
+        scrollBehavior: "smooth",
+      },
+      body: {
+        margin: "0px", 
+        padding: "0px",
+        fontSize: "20px",
+        fontFamily: "Jetbrains Mono",
+        scrollBehavior: "smooth",
+      },
+    },
   },
 });
 
