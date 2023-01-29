@@ -41,7 +41,7 @@ export function formatDate(_date: string, verbose: boolean = true): string {
       "en-US", 
       { weekday: "long", timeZone: "UTC" },
     ).format(date);
-    const day: string = DAYS[date.getDate()];
+    const day: string = DAYS[date.getDate()-1];
     const month: string = MONTHS[date.getMonth()];
     const year: number = date.getFullYear();
     if (verbose) {
