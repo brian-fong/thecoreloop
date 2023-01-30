@@ -46,6 +46,7 @@ export default function CreateLAG({ set_lag }: any) {
     const lag_date: string = (document.getElementById(
       "lag-date"
     )! as HTMLInputElement).value;
+    console.log("LAG Date: ", lag_date);
 
     // Indicate if LAG date is valid/invalid
     try {

@@ -36,14 +36,18 @@ export function getTodaysDate(verbose: boolean = true): string {
 
 export function formatDate(_date: string, verbose: boolean = true): string {
   try {
-    const date: Date = new Date(_date);
+    const date_obj: Date = new Date(_date);
+    const date: string[] = _date.split("-");
     const weekday: string = new Intl.DateTimeFormat(
       "en-US", 
       { weekday: "long", timeZone: "UTC" },
-    ).format(date);
-    const day: string = DAYS[date.getDate()];
-    const month: string = MONTHS[date.getMonth()];
-    const year: number = date.getFullYear();
+    ).format(date_obj);
+    const day: string = DAYS[Number(date[2])-1];
+    const month: string = MONTHS[Number(date[1])-1];
+    const year: string = date[0];
+    // const day: string = DAYS[date.getDate()];
+    // const month: string = MONTHS[date.getMonth()];
+    // const year: number = date.getFullYear();
     if (verbose) {
       return `${weekday} ${month} ${day} ${year}`;
     } else {
