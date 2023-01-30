@@ -2,35 +2,13 @@ import {
   Flex,
 } from '@chakra-ui/react';
 import uuid from 'react-uuid';
-import { Gallery as GalleryProps } from '../types';
+import { Gallery as GalleryProps } from '../../types';
 import { useState, useEffect, useRef, ReactElement } from "react";
 
 // Components
-import Line from "../components/Line";
-import Card_Portrait from "../components/Card_Portrait";
-import Card_Landscape from "../components/Card_Landscape";
-
-// function detectDevice(): string {
-//   const user_agent: string = window?.navigator?.userAgent?.toLowerCase();
-//   let device: string = "desktop";
-//   const MOBILE_DEVICES: string[] = [
-//     "android",
-//     "iphone",
-//     // "ipad",
-//     "ipod",
-//     "blackberry",
-//     "windows phone",
-//   ];
-//
-//   for (const DEVICE of MOBILE_DEVICES) {
-//     if (user_agent.includes(DEVICE)) {
-//       device = "mobile";
-//       break;
-//     }
-//   }
-//
-//   return device;
-// }
+import Line from "./Line";
+import Card_Portrait from "./Card_Portrait";
+import Card_Landscape from "./Card_Landscape";
 
 export default function Gallery({ lag }: GalleryProps) {
   // Initialize number to store current width of window
@@ -94,21 +72,21 @@ export default function Gallery({ lag }: GalleryProps) {
               key={uuid()}
               url={article.url}
               caption={article.caption}
-              title={article.title}
-              description={article.description}
-              image={article.image}
+              title={article.title!}
+              description={article.description!}
+              image={article.image!}
               category={article_group.category}
-              source={article.source}
+              source={article.source!}
             />
           : <Card_Landscape
               key={uuid()}
               url={article.url}
               caption={article.caption}
-              title={article.title}
-              description={article.description}
-              image={article.image}
+              title={article.title!}
+              description={article.description!}
+              image={article.image!}
               category={article_group.category}
-              source={article.source}
+              source={article.source!}
             />;
         if (!last_group && !last_article) {
           const line: ReactElement = <Line />;

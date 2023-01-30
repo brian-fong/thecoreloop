@@ -110,7 +110,7 @@ export default function PreviewLAG({ set_lag }: any) {
         align="center" 
         width="min-content" 
         padding="10px 15px"
-        bg="tcl_blue"
+        bg="tcl_yellow"
         border="1px solid black" 
         boxShadow="2px 2px 2px rgba(0, 0, 0, 0.5)"
         transition="background-color 200ms ease" 
@@ -132,12 +132,12 @@ export default function PreviewLAG({ set_lag }: any) {
         }}
         _focusVisible={{
           color: "white",
-          bg: "tcl_blue_hover",
+          bg: "tcl_yellow_hover",
           outline: "1px solid blue",
         }}
         _hover={{
           color: "white",
-          bg: "tcl_blue_hover",
+          bg: "tcl_yellow_hover",
         }}
       >
         <Text
