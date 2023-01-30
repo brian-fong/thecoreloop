@@ -1,18 +1,70 @@
-import { 
-  Flex,
-  Text,
-  Heading,
-} from "@chakra-ui/react";
-
+import wait from "../../utils/wait";
+import TGramSubmit from "./TGramSubmit";
 import { useState, useEffect } from "react";
-import { formatTgramMsg } from "../utils/lag";
-import CurveContainer from "./CurveContainer";
+import { Flex, Text } from "@chakra-ui/react";
+import CurveContainer from "../Core/CurveContainer";
+import { getTodaysDate, formatDate } from "../../utils/date";
 
 export default function TGramPreview({ lag }: any) {
   const [tgram_msg, set_tgram_msg] = useState<string>("");
 
+  async function handleCopy() {
+    const tgram_preview: any = document.getElementById("telegram-preview");
+    navigator.clipboard.writeText(tgram_preview.textContent);
+    const copy_btn: any = document.getElementById("copy-btn");
+    copy_btn.style.opacity = 0.5;
+    await wait(300);
+    copy_btn.style.opacity = 1.0;
+  }
+
   useEffect(() => {
-    set_tgram_msg(formatTgramMsg(lag));
+    // On each lag state change, update Telegram message preview
+    
+    // === Build Telegram message string ===
+    let msg: string = "";
+    
+    // Date
+    let lag_date: string = getTodaysDate();
+    try {
+      lag_date = formatDate(lag.date);
+    } catch (error: any) {
+      console.log(error.message);
+    }
+
+    // Heading
+    msg += `Look at Gaming #${lag.number} | ${lag_date}`;
+    msg += "\n\n";
+
+    // Subheading
+    if (lag.subheading) {
+      msg += lag.subheading; 
+      msg += "\n\n";
+    }
+
+    // Special Insights
+    if (lag.special_insights) {
+      msg += "‼️ SPECIAL INSIGHTS 👀" + "\n";
+      msg += lag.special_insights;
+      msg += "\n\n";
+    }
+
+    // Iterate through Article Groups
+    for (const [i, article_group] of lag.content.entries()) {
+      const last_group: boolean = i == lag.content.length-1;
+      msg += article_group.category + "\n"; 
+      for (const [j, article] of article_group.articles.entries()) {
+        const last_article: boolean = j == article_group.articles.length-1;
+        msg += article.caption + "\n"; 
+        msg += article.url + "\n";
+        if (!last_article) msg += "\n";
+      }
+      if (!last_group) msg += "\n\n";
+    }
+
+    // Update state variable 
+    set_tgram_msg(msg);
+
+    // Scroll down to view Telegram Preview
     const tgram_preview: HTMLElement = document.getElementById(
       "telegram-preview"
     )!;
@@ -23,13 +75,58 @@ export default function TGramPreview({ lag }: any) {
 
   return (
     <CurveContainer heading="Telegram Message">
-      <Text
-        id="telegram-preview"
-        fontSize="14px"
-        whiteSpace="pre-line"
+      <Flex
+        flexDir="column"
+        gap="20px"
+        justify="space-between"
+        align="center"
+        width="100%"
+        height="100%"
       >
-        {tgram_msg}
-      </Text>
+        <Flex
+          flexDir="row"
+          justify="center"
+          align="start"
+          width="100%"
+          background="standard_bkg_alt"
+        >
+          <Text
+            id="telegram-preview"
+            p="10px 10px"
+            width="100%"
+            height="100%"
+            fontSize="14px"
+            color="black"
+            whiteSpace="pre-line"
+          >
+            {tgram_msg}
+          </Text>
+          <Flex
+            id="copy-btn"
+            flexDir="row"
+            justify="center"
+            align="center"
+            margin="10px"
+            padding="2px 5px"
+            fontSize="14px"
+            background="category_bkg"
+            borderRadius="5px"
+            cursor="pointer"
+            transition="background-color 200ms ease,
+                        opacity 300ms ease" 
+            onClick={handleCopy}
+            _hover={{
+              color: "white",
+              background: "category_bkg_hover",
+            }}
+          >
+            Copy
+          </Flex>
+        </Flex>
+
+        {/* Add Copy to Clipboard Button */}
+        <TGramSubmit />
+      </Flex>
     </CurveContainer>
   );
 }

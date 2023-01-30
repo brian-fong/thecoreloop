@@ -4,8 +4,8 @@ import {
   Heading,
 } from '@chakra-ui/react';
 import uuid from 'react-uuid';
-import Gallery from "../components/Gallery";
-import { Post as PostProps } from "../types";
+import Gallery from "./Gallery";
+import { Post as PostProps } from "../../types";
 import { useState, useEffect, ReactElement } from "react";
 
 export default function Post({ lag }: PostProps) {

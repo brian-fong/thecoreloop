@@ -45,8 +45,3 @@ export type Card = {
   source: string;
 };
 
-export type ScrollBtn = {
-  elem_id: string; 
-  text: string;
-}
-

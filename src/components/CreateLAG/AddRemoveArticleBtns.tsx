@@ -1,35 +1,22 @@
-import { 
-  Flex,
-} from "@chakra-ui/react";
-import { AddIcon, MinusIcon } from "@chakra-ui/icons";
 import uuid from "react-uuid";
 import Article from "./Article";
 import { ReactElement } from "react";
+import { Flex } from "@chakra-ui/react";
+import { AddIcon, MinusIcon } from "@chakra-ui/icons";
+import { pressButton } from "../../styles/ButtonPress";
 
 export default function AddRemoveArticleBtns({ articles, set_articles }: any) {
   function addArticle() {
+    // Append new article to Article Group
     const article: ReactElement = <Article key={uuid()} />;
     set_articles((articles: any) => [...articles, article]);
   }
 
   function removeArticle() {
+    // Remove last article in Article Group
     if (articles.length > 0) {
       set_articles((articles: any) => articles.slice(0, -1));
     }
-  }
-
-function wait(ms: number) {
-    return new Promise(resolve => {
-        setTimeout(() => { resolve('') }, ms);
-    })
-}
-
-  async function pressButton(btn: any) {
-    btn.style.transform = "translate(1px, 1px)";
-    btn.style.boxShadow = "none";
-    await wait(100);
-    btn.style.transform = "translate(0px, 0px)";
-    btn.style.boxShadow = "2px 2px 2px rgba(0, 0, 0, 0.5)";
   }
 
   return (

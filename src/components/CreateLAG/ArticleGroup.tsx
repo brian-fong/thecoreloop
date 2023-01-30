@@ -1,9 +1,6 @@
-import { 
-  Flex,
-} from "@chakra-ui/react";
-
-import AddRemoveArticleBtns from "./AddRemoveArticleBtns";
+import { Flex } from "@chakra-ui/react";
 import { useState, ReactElement } from "react";
+import AddRemoveArticleBtns from "./AddRemoveArticleBtns";
 
 export default function ArticleGroup({ category }: any) {
   const [articles, set_articles] = useState<ReactElement[]>([]);
@@ -23,6 +20,7 @@ export default function ArticleGroup({ category }: any) {
         align="center"
         width="100%"
       >
+        {/* Category Container */}
         <Flex 
           flexDir="row"
           justify="center"
@@ -45,6 +43,7 @@ export default function ArticleGroup({ category }: any) {
           set_articles={set_articles}
         />
       </Flex>
+      {/* Article Group Container */}
       <Flex
         flexDir="column"
         gap="20px"

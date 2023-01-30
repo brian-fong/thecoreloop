@@ -1,15 +1,9 @@
-import { 
-  Flex,
-  Heading,
-} from "@chakra-ui/react";
+import { Flex, Heading } from "@chakra-ui/react";
 
-export default function CurveContainer({ 
-  children, 
-  heading,
-}: any) {
+export default function CurveContainer({ children, heading }: any) {
   return (
     <Flex 
-      id="outer_container"
+      className="outer_container"
       flexDir="column" 
       justify="start" 
       align="center" 
@@ -25,7 +19,7 @@ export default function CurveContainer({
       boxSizing="border-box"
     >
       <Flex 
-        id="inner_container"
+        className="inner_container"
         position="relative"
         flexDir="column" 
         gap="30px"
@@ -37,7 +31,7 @@ export default function CurveContainer({
         height="100%"
         border="1px solid gray" 
       >
-        { /* Heading */ }
+        { /* Heading Container */ }
         <Flex 
           position="absolute" 
           top="-10px"
@@ -60,7 +54,7 @@ export default function CurveContainer({
           </Heading>
         </Flex>
 
-        { /* Children */ }
+        { /* React component children */ }
         {children}
       </Flex>
     </Flex>

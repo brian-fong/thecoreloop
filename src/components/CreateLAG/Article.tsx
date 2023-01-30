@@ -3,10 +3,7 @@ import {
   Input,
   Textarea,
 } from "@chakra-ui/react";
-import { 
-  ChatIcon,
-  LinkIcon,
-} from "@chakra-ui/icons";
+import { ChatIcon, LinkIcon } from "@chakra-ui/icons";
 
 export default function Article() {
   return (
@@ -15,6 +12,7 @@ export default function Article() {
       flexDir="column"
       gap="5px"
     >
+      {/* Caption Container */}
       <Flex
         flexDir="row"
         justify="center"
@@ -49,6 +47,7 @@ export default function Article() {
           }}
         />
       </Flex>
+      {/* URL Container */}
       <Flex
         flexDir="row"
         justify="center"

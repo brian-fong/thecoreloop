@@ -3,8 +3,8 @@ import { extendTheme } from "@chakra-ui/react";
 export default extendTheme({
   colors: {
     bkg: "#313244",
-    card_bkg: "#adadad",
     standard_bkg: "#C0C0C0",
+    standard_bkg_alt: "#adadad",
     category_bkg: "#909090",
     category_bkg_hover: "#606060",
     description_fg: "rgba(0, 0, 0, 0.7)",

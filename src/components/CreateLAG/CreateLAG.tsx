@@ -4,12 +4,11 @@ import {
   Input,
   Textarea,
 } from "@chakra-ui/react";
-
 import uuid from "react-uuid";
 import PreviewLAG from "./PreviewLAG";
 import ArticleGroup from "./ArticleGroup";
-import { formatDate } from "../utils/date";
-import CurveContainer from "./CurveContainer";
+import { formatDate } from "../../utils/date";
+import CurveContainer from "../Core/CurveContainer";
 import { useState, useEffect, ReactElement } from "react";
 
 export const CATEGORIES: string[] = [

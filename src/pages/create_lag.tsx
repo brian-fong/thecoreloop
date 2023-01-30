@@ -1,11 +1,12 @@
-import { Flex } from "@chakra-ui/react";
 import Head from "next/head";
 import { LAG } from "../types";
 import { useState } from "react";
-import Logo from "../components/Logo";
-import NavBar from "../components/NavBar";
-import CreateLAG from "../components/CreateLAG";
-import TGramPreview from "../components/TGramPreview";
+import { Flex } from "@chakra-ui/react";
+import Logo from "../components/Core/Logo";
+import NavBar from "../components/Core/NavBar";
+import ScrollBtn from "../components/Misc/ScrollBtn";
+import CreateLAG from "../components/CreateLAG/CreateLAG";
+import TGramPreview from "../components/CreateLAG/TGramPreview";
 
 export default function create_lag() {
   const [lag, set_lag] = useState<LAG>({
@@ -61,6 +62,10 @@ export default function create_lag() {
             set_lag={set_lag}
           />
           {lag.heading ? <TGramPreview lag={lag} /> : ""}
+          <ScrollBtn 
+            elem_id="navbar"
+            text="Back to Top"
+          />
         </Flex>
       </Flex>
     </>

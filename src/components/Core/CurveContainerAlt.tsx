@@ -1,13 +1,9 @@
-import { 
-  Flex,
-} from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 
-export default function CurveContainerAlt({ 
-  children, 
-}: any) {
+export default function CurveContainerAlt({ children }: any) {
   return (
     <Flex 
-      id="outer_container"
+      className="outer_container"
       flexDir="column" 
       justify="start" 
       align="center" 
@@ -19,6 +15,7 @@ export default function CurveContainerAlt({
                  20px 20px 2px rgba(0, 0, 0, 0.5)"
       boxSizing="border-box"
     >
+      { /* React component children */ }
       {children}
     </Flex>
   );

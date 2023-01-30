@@ -1,9 +1,6 @@
-import { 
-  Flex,
-  Text,
-} from "@chakra-ui/react";
-
-import { LAG, Article, ArticleGroup } from "../types";
+import { Flex, Text } from "@chakra-ui/react";
+import { pressButton } from "../../styles/ButtonPress";
+import { LAG, Article, ArticleGroup } from "../../types";
 
 export default function PreviewLAG({ set_lag }: any) {
   function handlePreview() {
@@ -24,11 +21,12 @@ export default function PreviewLAG({ set_lag }: any) {
     const lag_special_insights: string = (document.getElementById(
       "special-insights"
     ) as HTMLInputElement).value;
-    // Category Groups 
+    // Article Groups 
     const article_group_container = document.getElementById(
       "article-group-container"
     )!;
     
+    // Assign data values to new <LAG> object
     const lag: LAG = {
       heading: `Look at Gaming #${lag_number}`,
       subheading: lag_subheading,
@@ -37,21 +35,30 @@ export default function PreviewLAG({ set_lag }: any) {
       special_insights: lag_special_insights,
       content:  [],
     };
-    for (const _article_group of Array.from(
+
+    // Iterate through Article Groups and build content array
+    for (const article_group_input of Array.from(
       article_group_container.childNodes
     )) {
-      const article_container: ChildNode = _article_group.lastChild!;
+      // Parse Articles 
+      const article_container: ChildNode = article_group_input.lastChild!;
       const articles: ChildNode[] = Array.from(article_container.childNodes);
-      const category: string = _article_group
-        .firstChild!
-        .firstChild!
-        .textContent!;
       if (articles.length > 0) {
+        // Parse category
+        const category: string = article_group_input
+          .firstChild!
+          .firstChild!
+          .textContent!;
+
+        // Instantiate new <ArticleGroup> object
         const article_group: ArticleGroup = {
           category: category,
           articles: [],
         };
+
+        // Iterate through Articles, parsing caption + URL
         for (const _article of articles) {
+          // Parse caption + URL
           let caption: string = (_article
             .firstChild!
             .lastChild! as HTMLInputElement)
@@ -60,21 +67,31 @@ export default function PreviewLAG({ set_lag }: any) {
             .lastChild!
             .lastChild! as HTMLInputElement)
             .value!;
-          if (!caption || caption.length == 0) {
+
+          // If caption/URL are empty, then assign <empty_input> value
+          if (!caption || caption.replaceAll("\n", "").trim().length == 0) {
             caption = "<empty_caption>";
           }
-          if (!url || url.length == 0) {
+          if (!url || url.replaceAll("\n", "").trim().length == 0) {
             url = "<empty_url>";
           }
+
+          // Instantiate new <Article> object
           const article: Article = {
-            caption: caption, 
+            caption: `A look at ${caption}`, 
             url: url, 
           };
+
+          // Append Article to Articles array
           article_group.articles.push(article);
         }
+
+        // Append Article Group to content array
         lag.content.push(article_group);
       }
     }
+
+    // Set LAG to update state (trigger Telegram Preview)
     set_lag(lag);
   }
 
@@ -85,6 +102,7 @@ export default function PreviewLAG({ set_lag }: any) {
       align="center"
       width="100%"
     >
+      {/* Preview Button */}
       <Flex
         id="preview-btn"
         flexDir="column" 
@@ -100,7 +118,18 @@ export default function PreviewLAG({ set_lag }: any) {
         draggable="false" 
         userSelect="none"
         tabIndex={0}
-        onClick={handlePreview}
+        onClick={(event: any) => {
+          event.preventDefault();
+          pressButton(event.currentTarget);
+          handlePreview();
+        }}
+        onKeyPress={(event: any) => {
+          if (event.key == "Enter") {
+            event.preventDefault();
+            pressButton(event.currentTarget);
+            handlePreview();
+          }
+        }}
         _focusVisible={{
           color: "white",
           bg: "tcl_blue_hover",
@@ -109,10 +138,6 @@ export default function PreviewLAG({ set_lag }: any) {
         _hover={{
           color: "white",
           bg: "tcl_blue_hover",
-        }}
-        _active={{
-          boxShadow: "none",
-          transform: "translate(1px, 1px)",
         }}
       >
         <Text

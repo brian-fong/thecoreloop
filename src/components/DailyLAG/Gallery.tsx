@@ -91,25 +91,25 @@ export default function Gallery({ lag }: GalleryProps) {
         const last_article: boolean = j == article_group.articles.length;
         const card: ReactElement = (card_mode == "portrait")
           ? <Card_Portrait
-            key={uuid()}
-            url={article.url || ""}
-            caption={article.caption || ""}
-            title={article.title || ""}
-            description={article.description || ""}
-            image={article.image || ""}
-            category={article_group.category || ""}
-            source={article.source || ""}
-          />
+              key={uuid()}
+              url={article.url}
+              caption={article.caption}
+              title={article.title}
+              description={article.description}
+              image={article.image}
+              category={article_group.category}
+              source={article.source}
+            />
           : <Card_Landscape
-            key={uuid()}
-            url={article.url || ""}
-            caption={article.caption || ""}
-            title={article.title || ""}
-            description={article.description || ""}
-            image={article.image || ""}
-            category={article_group.category || ""}
-            source={article.source || ""}
-          />;
+              key={uuid()}
+              url={article.url}
+              caption={article.caption}
+              title={article.title}
+              description={article.description}
+              image={article.image}
+              category={article_group.category}
+              source={article.source}
+            />;
         if (!last_group && !last_article) {
           const line: ReactElement = <Line />;
           set_cards(cards => [...cards, card, line]);

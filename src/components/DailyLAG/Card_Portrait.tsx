@@ -10,7 +10,7 @@ import {
 import { useEffect, useState } from "react";
 
 // Types
-import { Card as CardProps } from '../types';
+import { Card as CardProps } from "../../types";
 
 export default function Card_Portrait(
   { 

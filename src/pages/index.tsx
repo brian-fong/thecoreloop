@@ -5,11 +5,11 @@ import { useEffect, useState } from "react";
 import { ChakraProvider } from '@chakra-ui/react'
 
 // Components
-import Logo from "../components/Logo";
-import Hint from "../components/Hint";
-import Post from "../components/Post";
-import NavBar from "../components/NavBar";
-import ScrollBtn from "../components/ScrollBtn";
+import Logo from "../components/Core/Logo";
+import Hint from "../components/Misc/Hint";
+import ScrollBtn from "../components/Misc/ScrollBtn";
+import NavBar from "../components/Core/NavBar";
+import Post from "../components/DailyLAG/Post";
 
 // Types
 import { LAG } from "../types";

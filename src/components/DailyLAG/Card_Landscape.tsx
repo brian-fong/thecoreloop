@@ -1,16 +1,11 @@
-// ChakraUI
 import { 
   Flex,
   Text,
   Link,
   Image,
 } from '@chakra-ui/react'
-
-// React
 import { useEffect, useState } from "react";
-
-// Types
-import { Card as CardProps } from '../types';
+import { Card as CardProps } from '../../types';
 
 export default function Card_Landscape(
   { 

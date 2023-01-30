@@ -1,7 +1,4 @@
-import { 
-  Flex,
-  Link,
-} from '@chakra-ui/react'
+import { Flex, Link } from '@chakra-ui/react'
 
 export default function NavBar() {
   return (
