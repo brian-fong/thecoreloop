@@ -1,5 +1,5 @@
 import { Flex, Text } from "@chakra-ui/react";
-import { toggleButton } from "../../styles/ButtonPress";
+import { toggleButton } from "../../styles/ButtonActions";
 
 export default function TGramSubmit() {
   function handlePush() {

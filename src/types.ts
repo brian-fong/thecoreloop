@@ -4,8 +4,8 @@
 export interface LAG {
   heading: string;
   subheading?: string;
+  number: string;
   message_id?: number;
-  number: number;
   date: string;
   special_insights?: string;
   content: ArticleGroup[];

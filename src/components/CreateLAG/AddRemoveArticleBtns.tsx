@@ -3,18 +3,28 @@ import Article from "./Article";
 import { ReactElement } from "react";
 import { Flex } from "@chakra-ui/react";
 import { AddIcon, MinusIcon } from "@chakra-ui/icons";
-import { pressButton } from "../../styles/ButtonPress";
+import { pressButton } from "../../styles/ButtonActions";
 
-export default function AddRemoveArticleBtns({ articles, set_articles }: any) {
+export default function AddRemoveArticleBtns({ 
+  articles, 
+  set_articles, 
+  set_update_LAG 
+}: any) {
   function shorten(s: string) {
-    if (s.length > 50) {
-      return s.slice(0, 50) + "...";
-    } else return s;
+    const limit: number = 40;
+    if (s.length > limit) {
+      return s.slice(0, limit) + "...";
+    } else {
+      return s;
+    }
   }
 
   function addArticle() {
     // Append new article to Article Group
-    const article: ReactElement = <Article key={uuid()} />;
+    const article: ReactElement = <Article 
+      key={uuid()} 
+      set_update_LAG={set_update_LAG}
+    />;
     set_articles((articles: any) => [...articles, article]);
   }
 
@@ -57,9 +67,9 @@ export default function AddRemoveArticleBtns({ articles, set_articles }: any) {
         //  prompt user for confirmation
         const conf_msg: string = 
           `Non-empty article caption/URL detected!\n\n`
-          + `${category}\n`
-          + `  ﬌ '${shorten(caption)}'\n`
-          + `  ﬌ '${shorten(url)}'\n\n`
+          + `Category: "${category}"\n`
+          + `Caption: "${shorten(caption)}"\n`
+          + `URL: "${shorten(url)}"\n\n`
           + `Are you sure you want to remove this article?`;
         const confirmation: boolean = confirm(conf_msg);
         if (confirmation) {
@@ -92,7 +102,7 @@ export default function AddRemoveArticleBtns({ articles, set_articles }: any) {
         fontWeight="800"
         whiteSpace="nowrap"
         color="black"
-        background="#47d685"
+        background="tcl_green"
         border="1px solid black"
         boxShadow="2px 2px 2px rgba(0, 0, 0, 0.5)"
         transition="background-color 200ms ease" 
@@ -101,12 +111,12 @@ export default function AddRemoveArticleBtns({ articles, set_articles }: any) {
         cursor="pointer"
         _focusVisible={{
           color: "white",
-          background: "#32995f",
+          background: "tcl_green_hover",
           outline: "1px solid blue",
         }}
         _hover={{
           color: "white",
-          background: "#32995f",
+          background: "tcl_green_hover",
         }}
         onClick={(event: any) => {
           event.preventDefault();
@@ -134,7 +144,7 @@ export default function AddRemoveArticleBtns({ articles, set_articles }: any) {
         fontWeight="800"
         whiteSpace="nowrap"
         color="black"
-        background="#ff6666"
+        background="tcl_red"
         border="1px solid black"
         boxShadow="2px 2px 2px rgba(0, 0, 0, 0.5)"
         transition="background-color 200ms ease"
@@ -143,12 +153,12 @@ export default function AddRemoveArticleBtns({ articles, set_articles }: any) {
         cursor="pointer"
         _focusVisible={{
           color: "white",
-          background: "#993d3d",
+          background: "tcl_red_hover",
           outline: "1px solid blue",
         }}
         _hover={{
           color: "white",
-          background: "#993d3d",
+          background: "tcl_red_hover",
         }}
         onClick={(event: any) => {
           event.preventDefault();

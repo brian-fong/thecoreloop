@@ -5,7 +5,11 @@ import {
   Textarea,
 } from "@chakra-ui/react";
 import uuid from "react-uuid";
-import PreviewLAG from "./PreviewLAG";
+import { 
+  LAG, 
+  ArticleGroup as ArticleGroupType,
+  Article as ArticleType,
+} from "../../types";
 import ArticleGroup from "./ArticleGroup";
 import { formatDate } from "../../utils/date";
 import CurveContainer from "../Core/CurveContainer";
@@ -22,10 +26,111 @@ export const CATEGORIES: string[] = [
   "👾 Game & Stats Releases 🎮",
 ];
 
-export default function CreateLAG({ set_lag }: any) {
-  const [lag_num, set_lag_num] = useState<string>("");
-  const [lag_date, set_lag_date] = useState<string>("Enter date above")
+export default function InputLAG({ set_lag }: any) {
+  const [num_msg, set_num_msg] = useState<string>("");
+  const [date_msg, set_date_msg] = useState<string>("Enter date above");
   const [groups, set_groups] = useState<ReactElement[]>([]);
+  const [update_LAG, set_update_LAG] = useState<boolean>(false);
+
+  function buildLAG() {
+    // === Collect data from all input fields ===
+    // LAG number
+    const lag_number: string = (document.getElementById(
+      "lag-number"
+    ) as HTMLInputElement).value;
+    // LAG date
+    let lag_date: string = (document.getElementById(
+      "lag-date"
+    ) as HTMLInputElement).value;
+    // LAG subheading 
+    const lag_subheading: string = (document.getElementById(
+      "subheading"
+    ) as HTMLInputElement).value.trim();
+    // Special Insights
+    const lag_special_insights: string = (document.getElementById(
+      "special-insights"
+    ) as HTMLInputElement).value.trim();
+    // Article Groups 
+    const article_group_container = document.getElementById(
+      "article-group-container"
+    )!;
+
+    try {
+      lag_date = formatDate(lag_date);
+    } catch (error: any) {
+      console.log(error.message);
+    }
+    
+    // Assign data values to new <LAG> object
+    const lag_new: LAG = {
+      heading: `Look at Gaming #${lag_number}`,
+      subheading: lag_subheading,
+      number: lag_number || "<undefined>", 
+      date: lag_date || "<undefined>",
+      special_insights: lag_special_insights,
+      content: [],
+    };
+
+    // Iterate through Article Groups and build content array
+    for (const article_group_node of Array.from(
+      article_group_container.childNodes
+    )) {
+      // Parse Articles 
+      const article_container: ChildNode = article_group_node.lastChild!;
+      const articles_nodes: ChildNode[] = Array.from(
+        article_container.childNodes
+      );
+      if (articles_nodes.length > 0) {
+        // Parse category
+        const category: string = article_group_node
+          .firstChild!
+          .firstChild!
+          .textContent!.trim();
+
+        // Instantiate new <ArticleGroup> object
+        const article_group: ArticleGroupType = {
+          category: category,
+          articles: [],
+        };
+
+        // Iterate through Articles, parsing caption + URL
+        for (const article_node of articles_nodes) {
+          // Parse caption + URL
+          let caption: string = (article_node
+            .firstChild!
+            .lastChild! as HTMLInputElement)
+            .value!.trim();
+          let url: string = (article_node
+            .lastChild!
+            .lastChild! as HTMLInputElement)
+            .value!.trim();
+
+          // If caption/URL are empty, then assign <empty_input> value
+          if (!caption || caption.replaceAll("\n", "").trim().length == 0) {
+            caption = "<empty_caption>";
+          }
+          if (!url || url.replaceAll("\n", "").trim().length == 0) {
+            url = "<empty_url>";
+          }
+
+          // Instantiate new <Article> object
+          const article: ArticleType = {
+            caption: `A look at ${caption}`, 
+            url: url, 
+          };
+
+          // Append Article to Articles array
+          article_group.articles.push(article);
+        }
+
+        // Append Article Group to content array
+        lag_new.content.push(article_group);
+      }
+    }
+
+    // Set LAG to update state (trigger Telegram Preview)
+    set_lag(lag_new);
+  }
 
   function handleNumChange() {
     // Read LAG number from input element
@@ -35,10 +140,13 @@ export default function CreateLAG({ set_lag }: any) {
 
     // Indicate if LAG number is valid/invalid
     if (isNaN(lag_number)) {
-      set_lag_num("Not a number!");
+      set_num_msg("Not a number!");
     } else {
-      set_lag_num("");
+      set_num_msg("");
     }
+
+    // (Re)try building LAG to include updated LAG number
+    buildLAG();
   }
 
   function handleDateChange() {
@@ -51,11 +159,14 @@ export default function CreateLAG({ set_lag }: any) {
     // Indicate if LAG date is valid/invalid
     try {
       const date_string: string = formatDate(lag_date, false);
-      set_lag_date(date_string)
+      set_date_msg(date_string)
     } catch (error: any) {
       console.log(error.message);
-      set_lag_date("Enter date above");
+      set_date_msg("Enter date above");
     }
+    
+    // (Re)try building LAG to include updated date
+    buildLAG();
   }
 
   useEffect(() => {
@@ -70,10 +181,17 @@ export default function CreateLAG({ set_lag }: any) {
       const group: ReactElement = <ArticleGroup 
         key={uuid()} 
         category={CATEGORY} 
+        set_update_LAG={set_update_LAG}
       />
       set_groups((groups: any) => [...groups, group]);
     }
+
+    buildLAG();
   }, []);
+
+  useEffect(() => {
+    buildLAG();
+  }, [update_LAG]);
 
   return (
     <CurveContainer heading="Create Daily LAG">
@@ -139,7 +257,7 @@ export default function CreateLAG({ set_lag }: any) {
             fontSize="14px"
             whiteSpace="nowrap"
           >
-            {lag_num}
+            {num_msg}
           </Flex>
         </Flex>
 
@@ -205,7 +323,7 @@ export default function CreateLAG({ set_lag }: any) {
             width="100%"
             whiteSpace="nowrap"
           >
-            "{lag_date}"
+            "{date_msg}"
           </Text>
         </Flex>
       </Flex>
@@ -240,6 +358,7 @@ export default function CreateLAG({ set_lag }: any) {
           height="90px"
           minHeight="30px"
           border="1px solid black"
+          resize="vertical"
           placeholder="GM.  Happy 100th Daily LAG ❤️"
           _placeholder={{
             "color": "rgba(0, 0, 0, 0.5)",
@@ -247,10 +366,10 @@ export default function CreateLAG({ set_lag }: any) {
           style={{
             "border": "1px solid black",
           }}
+          onChange={buildLAG}
           _focusVisible={{
             outline: "1px solid blue",
           }}
-          resize="vertical"
         />
       </Flex>
 
@@ -291,6 +410,7 @@ export default function CreateLAG({ set_lag }: any) {
           style={{
             "border": "1px solid black",
           }}
+          onChange={buildLAG}
           _focusVisible={{
             outline: "1px solid blue",
           }}
@@ -307,8 +427,6 @@ export default function CreateLAG({ set_lag }: any) {
       >
         {groups}
       </Flex>
-
-      <PreviewLAG set_lag={set_lag} />
     </CurveContainer>
   );
 }

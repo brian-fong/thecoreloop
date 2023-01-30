@@ -5,7 +5,7 @@ import {
 } from "@chakra-ui/react";
 import { ChatIcon, LinkIcon } from "@chakra-ui/icons";
 
-export default function Article() {
+export default function Article({ set_update_LAG }: any) {
   return (
     <Flex
       className="article-container"
@@ -24,14 +24,19 @@ export default function Article() {
           justify="center"
           align="center"
           p="5px"
+          minWidth="30px"
           height="100%"
           bg="category_bkg"
           borderRight="1px solid black"
         >
-          <ChatIcon color="white" boxSize="15px" userSelect="none" />
+          <ChatIcon 
+            boxSize="15px" 
+            color="white" 
+            userSelect="none" 
+          />
         </Flex>
         <Textarea
-          p="4px"
+          p="5px 10px"
           height="30px"
           minHeight="50px"
           bg="white"
@@ -42,6 +47,7 @@ export default function Article() {
             border: "none",
             borderRadius: "0px",
           }}
+          onChange={() => set_update_LAG((update_LAG: boolean) => !update_LAG)}
           _focusVisible={{
             outline: "1px solid blue",
           }}
@@ -59,15 +65,20 @@ export default function Article() {
           justify="center"
           align="center"
           p="5px"
+          minWidth="30px"
           height="100%"
           bg="category_bkg"
           borderRight="1px solid black"
         >
-          <LinkIcon color="white" boxSize="15px" userSelect="none" />
+          <LinkIcon 
+            boxSize="15px" 
+            color="white" 
+            userSelect="none" 
+          />
         </Flex>
         <Input
           type="url"
-          p="4px"
+          p="5px 10px"
           width="100%"
           height="100%"
           bg="white"
@@ -77,6 +88,7 @@ export default function Article() {
             border: "none",
             borderRadius: "0px",
           }}
+          onChange={() => set_update_LAG((update_LAG: boolean) => !update_LAG)}
           _focusVisible={{
             outline: "1px solid blue",
           }}

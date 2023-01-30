@@ -4,14 +4,14 @@ import { useState } from "react";
 import { Flex } from "@chakra-ui/react";
 import Logo from "../components/Core/Logo";
 import NavBar from "../components/Core/NavBar";
-import ScrollBtn from "../components/Misc/ScrollBtn";
-import CreateLAG from "../components/CreateLAG/CreateLAG";
+import InputLAG from "../components/CreateLAG/InputLAG";
 import TGramPreview from "../components/CreateLAG/TGramPreview";
 
 export default function create_lag() {
   const [lag, set_lag] = useState<LAG>({
     heading: "",
-    number: -1,
+    subheading: "",
+    number: "",
     date: "",
     special_insights: "",
     content: [],
@@ -52,19 +52,17 @@ export default function create_lag() {
           align="center" 
           m="0px"
           p="40px 40px 60px" 
-          minWidth="300px" 
           width="100%"
+          minWidth="300px" 
           maxWidth="800px"
           boxSizing="border-box"
         >
           <Logo />
-          <CreateLAG
+          <InputLAG
             set_lag={set_lag}
           />
-          {lag.heading ? <TGramPreview lag={lag} /> : ""}
-          <ScrollBtn 
-            elem_id="navbar"
-            text="Back to Top"
+          <TGramPreview 
+            lag={lag}
           />
         </Flex>
       </Flex>

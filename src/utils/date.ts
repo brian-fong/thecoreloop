@@ -27,11 +27,11 @@ export function getTodaysDate(verbose: boolean = true): string {
   const day: string = DAYS[date.getDate()-1];
   const month: string = MONTHS[date.getMonth()];
   const year: string = date.getFullYear().toString();
-    if (verbose) {
-      return `${weekday} ${month} ${day} ${year}`;
-    } else {
-      return `${weekday.slice(0, 3)} ${month.slice(0, 3)} ${day} ${year}`;
-    }
+  if (verbose) {
+    return `${weekday} ${month} ${day} ${year}`;
+  } else {
+    return `${weekday.slice(0, 3)} ${month.slice(0, 3)} ${day} ${year}`;
+  }
 }
 
 export function formatDate(_date: string, verbose: boolean = true): string {
@@ -45,9 +45,6 @@ export function formatDate(_date: string, verbose: boolean = true): string {
     const day: string = DAYS[Number(date[2])-1];
     const month: string = MONTHS[Number(date[1])-1];
     const year: string = date[0];
-    // const day: string = DAYS[date.getDate()];
-    // const month: string = MONTHS[date.getMonth()];
-    // const year: number = date.getFullYear();
     if (verbose) {
       return `${weekday} ${month} ${day} ${year}`;
     } else {

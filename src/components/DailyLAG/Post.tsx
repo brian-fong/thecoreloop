@@ -7,6 +7,7 @@ import uuid from 'react-uuid';
 import Gallery from "./Gallery";
 import { Post as PostProps } from "../../types";
 import { useState, useEffect, ReactElement } from "react";
+import CurveContainer from '../Core/CurveContainer';
 
 export default function Post({ lag }: PostProps) {
   // Initialize Special Insights text array 
@@ -38,101 +39,52 @@ export default function Post({ lag }: PostProps) {
   }, [lag]);
 
   return (
-    /* Outer Container */
-    <Flex 
-      flexDir="column" 
-      justify="start" 
-      align="center" 
-      m="0px" 
-      p="15px 15px 10px 15px" 
-      width="100%" 
-      minWidth="300px"
-      minHeight="300px"
-      bg="standard_bkg"
-      border="6px double white" 
-      boxShadow="0px 0px 0px 3px #c0c0c0, 
-                 20px 20px 2px rgba(0, 0, 0, 0.5)"
-      boxSizing="border-box"
-    >
-      { /* Inner Container */ }
+    <CurveContainer heading={lag.heading}>
+      { /* Date Container */ }
       <Flex 
+        flexDir="row" 
+        justify="right" 
+        align="center" 
+        width="100%"
+      >
+        <Text 
+          fontSize="14px"
+          color="black" 
+        >
+          {lag.date}
+        </Text>
+      </Flex>
+
+      { /* Special Insights Container */ }
+      <Flex 
+        display="none"
+        id="special_insights_container"
+        position="relative"
+        top="-20px"
         flexDir="column" 
         justify="start" 
-        align="start" 
-        m="10px" 
-        p="15px" 
-        width="100%" 
-        height="100%"
-        border="1px solid gray" 
+        align="start"
+        m="0px 0px 20px"
+        p="1px 2px"
+        width="100%"
+        // bg="tcl_pink"
+        transition="background-color 200ms ease" 
+        _hover={{ bg: "tcl_pink" }}
       >
-        { /* Heading Container */ }
-        <Flex 
-          position="relative" 
-          top="-15px"
-          flexDir="row" 
-          justify="center" 
-          align="center" 
-          width="100%"
+        <Heading 
+          fontWeight="800" 
+          fontSize="15px"
+          color="black"
         >
-          <Heading 
-            position="absolute"
-            fontFamily="JetBrains Mono"
-            fontWeight="400" 
-            fontSize="16px" 
-            p="0px 15px" 
-            color="black" 
-            bg="standard_bkg"
-          >
-            {lag.heading}
-          </Heading>
-        </Flex>
-
-        { /* Date Container */ }
-        <Flex 
-          flexDir="row" 
-          justify="right" 
-          align="center" 
-          width="100%"
-        >
-          <Text 
-            fontSize="14px"
-            color="black" 
-          >
-            {lag.date}
-          </Text>
-        </Flex>
-
-        { /* Special Insights Container */ }
-        <Flex 
-          display="none"
-          id="special_insights_container"
-          position="relative"
-          top="-20px"
-          flexDir="column" 
-          justify="start" 
-          align="start"
-          m="0px 0px 20px"
-          p="1px 2px"
-          width="100%"
-          // bg="tcl_pink"
-          transition="background-color 200ms ease" 
-          _hover={{ bg: "tcl_pink" }}
-        >
-          <Heading 
-            fontWeight="800" 
-            fontSize="15px"
-            color="black"
-          >
-            Special Insights
-          </Heading>
-          {special_insights}
-        </Flex>
-        
-        <Gallery 
-          lag={lag}
-        />
+          Special Insights
+        </Heading>
+        {special_insights}
       </Flex>
-    </Flex>
+      
+      <Gallery 
+        lag={lag}
+      />
+    </CurveContainer>
   );
 }
 

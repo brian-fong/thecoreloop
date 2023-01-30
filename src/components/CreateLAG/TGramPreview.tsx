@@ -3,7 +3,6 @@ import TGramSubmit from "./TGramSubmit";
 import { useState, useEffect } from "react";
 import { Flex, Text } from "@chakra-ui/react";
 import CurveContainer from "../Core/CurveContainer";
-import { getTodaysDate, formatDate } from "../../utils/date";
 
 export default function TGramPreview({ lag }: any) {
   const [tgram_msg, set_tgram_msg] = useState<string>("");
@@ -18,33 +17,23 @@ export default function TGramPreview({ lag }: any) {
   }
 
   useEffect(() => {
-    // On each lag state change, update Telegram message preview
-    
     // === Build Telegram message string ===
     let msg: string = "";
-    
-    // Date
-    let lag_date: string = getTodaysDate();
-    try {
-      lag_date = formatDate(lag.date);
-    } catch (error: any) {
-      console.log(error.message);
-    }
 
     // Heading
-    msg += `Look at Gaming #${lag.number} | ${lag_date}`;
+    msg += `Look at Gaming #${lag.number} | ${lag.date}`;
     msg += "\n\n";
 
     // Subheading
     if (lag.subheading) {
-      msg += lag.subheading; 
+      msg += lag.subheading + "\n"; 
       msg += "\n\n";
     }
 
     // Special Insights
     if (lag.special_insights) {
       msg += "‼️ SPECIAL INSIGHTS 👀" + "\n";
-      msg += lag.special_insights;
+      msg += lag.special_insights + "\n";
       msg += "\n\n";
     }
 
@@ -61,16 +50,8 @@ export default function TGramPreview({ lag }: any) {
       if (!last_group) msg += "\n\n";
     }
 
-    // Update state variable 
+    // Update Telegram preview
     set_tgram_msg(msg);
-
-    // Scroll down to view Telegram Preview
-    const tgram_preview: HTMLElement = document.getElementById(
-      "telegram-preview"
-    )!;
-    tgram_preview!.scrollIntoView({
-      behavior: "smooth",
-    });
   }, [lag]);
 
   return (
