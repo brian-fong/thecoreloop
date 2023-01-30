@@ -6,16 +6,72 @@ import { AddIcon, MinusIcon } from "@chakra-ui/icons";
 import { pressButton } from "../../styles/ButtonPress";
 
 export default function AddRemoveArticleBtns({ articles, set_articles }: any) {
+  function shorten(s: string) {
+    if (s.length > 50) {
+      return s.slice(0, 50) + "...";
+    } else return s;
+  }
+
   function addArticle() {
     // Append new article to Article Group
     const article: ReactElement = <Article key={uuid()} />;
     set_articles((articles: any) => [...articles, article]);
   }
 
-  function removeArticle() {
+  function removeArticle(event: any) {
     // Remove last article in Article Group
     if (articles.length > 0) {
-      set_articles((articles: any) => articles.slice(0, -1));
+      // Parse category, caption, and URL of article to be removed
+      const category: string = event 
+        .currentTarget
+        .parentElement 
+        .parentElement
+        .firstChild
+        .textContent;
+      const caption: string = event
+        .currentTarget
+        .parentElement
+        .parentElement
+        .parentElement
+        .lastChild
+        .lastChild
+        .firstChild
+        .lastChild
+        .value;
+      const url: string = event 
+        .currentTarget
+        .parentElement
+        .parentElement
+        .parentElement
+        .lastChild
+        .lastChild
+        .lastChild
+        .lastChild
+        .value;
+
+      if (
+        caption.replaceAll("\n", "").trim().length > 0 
+        || url.trim().length > 0
+      ) {
+        // If article contains non-empty caption/URL, then 
+        //  prompt user for confirmation
+        const conf_msg: string = 
+          `Non-empty article caption/URL detected!\n\n`
+          + `${category}\n`
+          + `  ﬌ '${shorten(caption)}'\n`
+          + `  ﬌ '${shorten(url)}'\n\n`
+          + `Are you sure you want to remove this article?`;
+        const confirmation: boolean = confirm(conf_msg);
+        if (confirmation) {
+          // Remove article
+          set_articles((articles: any) => articles.slice(0, -1));
+        } else {
+          // Do nothing
+        }
+      } else {
+        // If article contains empty caption/URL, then remove article
+        set_articles((articles: any) => articles.slice(0, -1));
+      }
     }
   }
 
@@ -97,13 +153,13 @@ export default function AddRemoveArticleBtns({ articles, set_articles }: any) {
         onClick={(event: any) => {
           event.preventDefault();
           pressButton(event.currentTarget);
-          removeArticle()
+          removeArticle(event);
         }}
         onKeyPress={(event: any) => {
           if (event.key == "Enter") {
             event.preventDefault();
             pressButton(event.currentTarget);
-            removeArticle();
+            removeArticle(event);
           }
         }}
       >
