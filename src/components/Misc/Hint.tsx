@@ -5,7 +5,7 @@ import {
   Image,
   Heading,
 } from '@chakra-ui/react'
-import CurveContainerAlt from './CurveContainerAlt'
+import CurveContainerAlt from '../Core/CurveContainerAlt'
 
 export default function Hint() {
   return (
