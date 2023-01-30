@@ -26,6 +26,7 @@ export default function AddRemoveArticleBtns({
       set_update_LAG={set_update_LAG}
     />;
     set_articles((articles: any) => [...articles, article]);
+    set_update_LAG((update_LAG: boolean) => !update_LAG);
   }
 
   function removeArticle(event: any) {
@@ -82,6 +83,7 @@ export default function AddRemoveArticleBtns({
         // If article contains empty caption/URL, then remove article
         set_articles((articles: any) => articles.slice(0, -1));
       }
+      set_update_LAG((update_LAG: boolean) => !update_LAG);
     }
   }
 
