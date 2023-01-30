@@ -20,7 +20,7 @@ export default function App() {
     heading: "",
     subheading: "",
     message_id: -1,
-    number: -1,
+    number: "",
     date: "",
     special_insights: "",
     content: [],
