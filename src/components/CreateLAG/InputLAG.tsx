@@ -37,7 +37,7 @@ export default function InputLAG({ set_lag }: any) {
     // LAG number
     const lag_number: string = (document.getElementById(
       "lag-number"
-    ) as HTMLInputElement).value;
+    ) as HTMLInputElement).value?.trim();
     // LAG date
     let lag_date: string = (document.getElementById(
       "lag-date"
@@ -45,11 +45,11 @@ export default function InputLAG({ set_lag }: any) {
     // LAG subheading 
     const lag_subheading: string = (document.getElementById(
       "subheading"
-    ) as HTMLInputElement).value.trim();
+    ) as HTMLInputElement).value?.trim();
     // Special Insights
     const lag_special_insights: string = (document.getElementById(
       "special-insights"
-    ) as HTMLInputElement).value.trim();
+    ) as HTMLInputElement).value?.trim();
     // Article Groups 
     const article_group_container = document.getElementById(
       "article-group-container"
@@ -85,7 +85,7 @@ export default function InputLAG({ set_lag }: any) {
         const category: string = article_group_node
           .firstChild!
           .firstChild!
-          .textContent!.trim();
+          .textContent!;
 
         // Instantiate new <ArticleGroup> object
         const article_group: ArticleGroupType = {
@@ -106,10 +106,10 @@ export default function InputLAG({ set_lag }: any) {
             .value!.trim();
 
           // If caption/URL are empty, then assign <empty_input> value
-          if (!caption || caption.replaceAll("\n", "").trim().length == 0) {
+          if (!caption) {
             caption = "<empty_caption>";
           }
-          if (!url || url.replaceAll("\n", "").trim().length == 0) {
+          if (!url) {
             url = "<empty_url>";
           }
 
@@ -224,7 +224,7 @@ export default function InputLAG({ set_lag }: any) {
               whiteSpace: "nowrap",
             }}
           >
-            LAG #
+            Look at Gaming #
           </label>
           <Input
             id="lag-number"

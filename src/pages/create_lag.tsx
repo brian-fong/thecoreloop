@@ -5,6 +5,7 @@ import { Flex } from "@chakra-ui/react";
 import Logo from "../components/Core/Logo";
 import NavBar from "../components/Core/NavBar";
 import InputLAG from "../components/CreateLAG/InputLAG";
+import useFetchMetadata from "../hooks/useFetchMetadata";
 import TGramPreview from "../components/CreateLAG/TGramPreview";
 
 export default function create_lag() {
@@ -16,6 +17,13 @@ export default function create_lag() {
     special_insights: "",
     content: [],
   });
+
+  const { 
+    fetching, 
+    start_fetching, 
+    end_fetching, 
+    lag_meta 
+  } = useFetchMetadata();
 
   return (
     <>
@@ -63,6 +71,9 @@ export default function create_lag() {
           />
           <TGramPreview 
             lag={lag}
+            fetching={fetching}
+            start_fetching={start_fetching}
+            end_fetching={end_fetching}
           />
         </Flex>
       </Flex>

@@ -2,8 +2,8 @@ import uuid from "react-uuid";
 import Article from "./Article";
 import { ReactElement } from "react";
 import { Flex } from "@chakra-ui/react";
+import { pressButton } from "../Misc/Buttons";
 import { AddIcon, MinusIcon } from "@chakra-ui/icons";
-import { pressButton } from "../../styles/ButtonActions";
 
 export default function AddRemoveArticleBtns({ 
   articles, 
@@ -74,10 +74,10 @@ export default function AddRemoveArticleBtns({
           + `Are you sure you want to remove this article?`;
         const confirmation: boolean = confirm(conf_msg);
         if (confirmation) {
-          // Remove article
+          // If confirmed, then remove article
           set_articles((articles: any) => articles.slice(0, -1));
         } else {
-          // Do nothing
+          // If cancelled, then do nothing
         }
       } else {
         // If article contains empty caption/URL, then remove article
@@ -106,7 +106,7 @@ export default function AddRemoveArticleBtns({
         color="black"
         background="tcl_green"
         border="1px solid black"
-        boxShadow="2px 2px 2px rgba(0, 0, 0, 0.5)"
+        boxShadow="3px 3px 2px rgba(0, 0, 0, 0.5)"
         transition="background-color 200ms ease" 
         tabIndex={0}
         userSelect="none"
@@ -148,7 +148,7 @@ export default function AddRemoveArticleBtns({
         color="black"
         background="tcl_red"
         border="1px solid black"
-        boxShadow="2px 2px 2px rgba(0, 0, 0, 0.5)"
+        boxShadow="3px 3px 2px rgba(0, 0, 0, 0.5)"
         transition="background-color 200ms ease"
         tabIndex={0}
         userSelect="none"
