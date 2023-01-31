@@ -60,10 +60,7 @@ export default function AddRemoveArticleBtns({
         .lastChild
         .value;
 
-      if (
-        caption.replaceAll("\n", "").trim().length > 0 
-        || url.trim().length > 0
-      ) {
+      if (caption.length > 0 || url.length > 0) {
         // If article contains non-empty caption/URL, then 
         //  prompt user for confirmation
         const conf_msg: string = 
