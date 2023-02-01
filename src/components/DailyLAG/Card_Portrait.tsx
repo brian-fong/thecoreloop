@@ -6,22 +6,17 @@ import {
 } from '@chakra-ui/react'
 import { useEffect, useState } from "react";
 
-export default function Card_Portrait(
-  { 
-    url="",
-    caption="A look at . . . ", 
-    title="Title not found (×﹏×)", 
-    description="Description not found", 
-    image="",
-    category="", 
-    source="???",
-  }: any) {
+export default function Card_Portrait({ article }: any) {
+  if (!article.title) article.title = "title not found (×﹏×)";
+  if (!article.description) article.description = "Description not found";
+  if (!article.image) article.image = "Image not found ╥﹏╥";
+  if (!article.source) article.source = "Unknown";
 
   const [image_bg, setImage_bg] = useState("black");
 
   useEffect(() => {
     // Change background color for images with default Twitter logo 
-    if (image.includes("https://assets.stickpng.com/images/580b57fcd9996e24bc43c53e.png")) {
+    if (article.image.includes("https://assets.stickpng.com/images/580b57fcd9996e24bc43c53e.png")) {
       setImage_bg("white");
     }
   }, []);
@@ -43,12 +38,12 @@ export default function Card_Portrait(
         color="black"  
         width="100%"
       >
-        {caption}
+        {article.caption}
       </Text>
 
       { /* Image */}
       <Link 
-        href={url} 
+        href={article.url} 
         target="_blank" 
         draggable="false"
         width="100%"
@@ -67,8 +62,8 @@ export default function Card_Portrait(
           overflow="hidden"
         >
           <Image 
-            src={image} 
-            alt={image || "Image not found"} 
+            src={article.image} 
+            alt={article.image || "Image not found"} 
             objectFit="contain" 
             width="100%"
             height="100%"
@@ -85,7 +80,7 @@ export default function Card_Portrait(
       { /* Title */}
       <Link 
         id="title"
-        href={url} 
+        href={article.url} 
         width="100%"
         fontSize="14px" 
         fontWeight="800" 
@@ -100,7 +95,7 @@ export default function Card_Portrait(
         }}
         draggable="false"
       >
-        {title}
+        {article.title}
       </Link>
 
       { /* Description */}
@@ -110,16 +105,18 @@ export default function Card_Portrait(
         lineHeight="1.2" 
         color="description_fg"
       >
-        {description}
+        {article.description}
       </Text>
 
-      { /* Category */}
+      { /* Container: Category + Source */}
       <Flex 
-        flexDir="row"
+        flexDir="column"
         justify="start" 
+        marginTop="5px"
         align="start" 
         width="100%"
       >
+        { /* Category */}
         <Text 
           fontSize="13px" 
           color="white" 
@@ -131,18 +128,17 @@ export default function Card_Portrait(
             textDecoration: "underline", 
           }}
         >
-          {category}
+          {article.category}
+        </Text>
+        { /* Source */}
+        <Text 
+          width="100%"
+          fontSize="13px" 
+          color="black" 
+        >
+          Source: {article.source}
         </Text>
       </Flex>
-
-      { /* Source */}
-      <Text 
-        width="100%"
-        fontSize="13px" 
-        color="black" 
-      >
-        Source: {source}
-      </Text>
     </Flex>
   );
 }

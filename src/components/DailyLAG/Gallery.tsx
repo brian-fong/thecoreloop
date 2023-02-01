@@ -53,27 +53,10 @@ export default function Gallery({ lag }: any) {
       const last_group: boolean = i == lag.content.length-1;
       for (const [j, article] of article_group.articles.entries()) {
         const last_article: boolean = j == article_group.articles.length-1;
+        article.category = article_group.category;
         const card: ReactElement = window_width <= min_pixel_limit
-          ? <Card_Portrait
-              key={uuid()}
-              url={article.url}
-              caption={article.caption}
-              title={article.title!}
-              description={article.description!}
-              image={article.image!}
-              category={article_group.category}
-              source={article.source!}
-            />
-          : <Card_Landscape
-              key={uuid()}
-              url={article.url}
-              caption={article.caption}
-              title={article.title!}
-              description={article.description!}
-              image={article.image!}
-              category={article_group.category}
-              source={article.source!}
-            />;
+          ? <Card_Portrait article={article} />
+          : <Card_Landscape article={article} />;
 
         // Append line between each article
         if (last_article && last_group) {

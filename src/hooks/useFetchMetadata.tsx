@@ -16,12 +16,15 @@ export default function useFetchMetadata(content: ArticleGroup[]) {
         // Reset cards
         set_cards([]);
 
+        console.log("Content", content);
+
         // Build cards
         for (const [i, article_group] of content.entries()) {
-          const last_group: boolean = i == content.entries.length-1;
+          const last_group: boolean = i == content.length-1;
 
           for (const [j, article] of article_group.articles.entries()) {
             const last_article: boolean = j == article_group.articles.length-1;
+            article.category = article_group.category;
 
             // Skip for empty URLs
             if (article.url.includes("<url>")) continue
@@ -54,11 +57,11 @@ export default function useFetchMetadata(content: ArticleGroup[]) {
             console.log("Last Group: ", last_group);
             console.log("Last Article: ", last_article);
 
-            if (!last_group && !last_article) {
+            if (last_group && last_article) {
+              set_cards((cards: any) => [...cards, card]);
+            } else {
               const line: ReactElement = <Line key={uuid()} />
               set_cards((cards: any) => [...cards, card, line]);
-            } else {
-              set_cards((cards: any) => [...cards, card]);
             }
           }
         }

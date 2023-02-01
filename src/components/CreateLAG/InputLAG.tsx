@@ -120,7 +120,10 @@ export default function InputLAG({
 
           // Instantiate new <Article> object
           const article: ArticleType = {
-            caption: `A look at ${caption}`, 
+            caption: `A look at ${caption}`.replace(
+              "A look at A look at", 
+              "A look at"
+            ), 
             url: url, 
           };
 
