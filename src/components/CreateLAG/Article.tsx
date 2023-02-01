@@ -36,6 +36,7 @@ export default function Article({ set_update_LAG }: any) {
           />
         </Flex>
         <Textarea
+          className="caption"
           p="5px 10px"
           height="30px"
           minHeight="50px"
@@ -77,6 +78,7 @@ export default function Article({ set_update_LAG }: any) {
           />
         </Flex>
         <Input
+          className="url"
           type="url"
           p="5px 10px"
           width="100%"

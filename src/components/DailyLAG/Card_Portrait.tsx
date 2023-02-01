@@ -1,16 +1,10 @@
-// ChakraUI
 import { 
   Flex,
   Text,
   Link,
   Image,
 } from '@chakra-ui/react'
-
-// React
 import { useEffect, useState } from "react";
-
-// Types
-import { Card as CardProps } from "../../types";
 
 export default function Card_Portrait(
   { 
@@ -21,7 +15,7 @@ export default function Card_Portrait(
     image="",
     category="", 
     source="???",
-  }: CardProps) {
+  }: any) {
 
   const [image_bg, setImage_bg] = useState("black");
 

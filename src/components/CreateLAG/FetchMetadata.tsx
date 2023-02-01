@@ -4,11 +4,11 @@ import {
 } from "../Misc/Buttons";
 import { Flex } from "@chakra-ui/react";
 
-export default function TGramSubmit({ 
+export default function FetchMetadata({ 
   fetching, 
-  start_fetching, 
-  end_fetching 
+  set_fetching
 }: any) {
+
   return (
     <Flex
       flexDir="row"
@@ -20,8 +20,8 @@ export default function TGramSubmit({
       {/* Show Fetch Button or Cancel Button */}
       {
         fetching 
-        ? <CancelBtn end_fetching={end_fetching} />
-        : <FetchBtn start_fetching={start_fetching} />
+        ? <CancelBtn set_fetching={set_fetching} />
+        : <FetchBtn set_fetching={set_fetching}/>
       }
     </Flex>
   );

@@ -5,24 +5,18 @@ import {
   Image,
 } from '@chakra-ui/react'
 import { useEffect, useState } from "react";
-import { Card as CardProps } from '../../types';
 
-export default function Card_Landscape(
-  { 
-    url="",
-    caption="A look at . . . ", 
-    title="Title not found (×﹏×)", 
-    description="Description not found", 
-    image="",
-    category="", 
-    source="???",
-  }: CardProps) {
+export default function Card_Landscape({ article }: any) {
+  if (!article.title) article.title = "title not found (×﹏×)";
+  if (!article.description) article.description = "Description not found";
+  if (!article.image) article.image = "Image not found ╥﹏╥";
+  if (!article.source) article.source = "Unknown";
 
   const [image_bg, setImage_bg] = useState("black");
 
   useEffect(() => {
     // Change background color for images with default Twitter logo 
-    if (image.includes(
+    if (article.image.includes(
       "https://assets.stickpng.com/images/580b57fcd9996e24bc43c53e.png"
     )) {
       setImage_bg("white");
@@ -45,7 +39,7 @@ export default function Card_Landscape(
         m="0px 0px 5px 0px" 
         width="100%"
       >
-        {caption}
+        {article.caption}
       </Text>
 
       { /* Container: Title, Description, Image, Source, Category */ }
@@ -58,7 +52,7 @@ export default function Card_Landscape(
       >
         { /* Thumbnail */ }
         <Link 
-          href={url} 
+          href={article.url} 
           target="_blank" 
           draggable="false"
           width="100%"
@@ -79,8 +73,8 @@ export default function Card_Landscape(
           >
             <Image 
               id="thumbnail"
-              src={image} 
-              alt={image || "Image not found"} 
+              src={article.image} 
+              alt={article.image || "Image not found ╥﹏╥"} 
               objectFit="cover" 
               color="white"
               fontSize="14px" 
@@ -114,7 +108,7 @@ export default function Card_Landscape(
               fontWeight="800" 
               color="blue"  
               width="100%"
-              href={url} 
+              href={article.url} 
               target="_blank" 
               transition="background-color 200ms ease" 
               _hover={{ 
@@ -125,7 +119,7 @@ export default function Card_Landscape(
               }}
               draggable="false"
             >
-              {title}
+              {article.title}
             </Link>
 
             { /* Description */ }
@@ -136,7 +130,7 @@ export default function Card_Landscape(
               color="description_fg"
               p="0px 0px 30px"
             >
-              {description}
+              {article.description}
             </Text>
           </Flex>
 
@@ -159,7 +153,7 @@ export default function Card_Landscape(
                 textDecoration: "underline", 
               }}
             >
-              {category}
+              {article.category}
             </Text>
 
             { /* Source */ }
@@ -168,7 +162,7 @@ export default function Card_Landscape(
               lineHeight="0.9"
               color="black" 
             >
-              Source: {source}
+              Source: {article.source}
             </Text>
           </Flex>
         </Flex>

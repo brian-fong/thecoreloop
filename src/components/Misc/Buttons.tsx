@@ -10,7 +10,7 @@ export async function pressButton(btn: any) {
   btn.style.boxShadow = "3px 3px 2px rgba(0, 0, 0, 0.5)";
 }
 
-export function FetchBtn({ start_fetching }: any) {
+export function FetchBtn({ set_fetching }: any) {
   return (
     <Flex
       id="preview-btn"
@@ -33,11 +33,11 @@ export function FetchBtn({ start_fetching }: any) {
       tabIndex={0}
       onClick={(event: any) => {
         pressButton(event.currentTarget);
-        start_fetching();
+        set_fetching(true);
       }}
       onKeyPress={(event: any) => {
         pressButton(event.currentTarget);
-        start_fetching();
+        set_fetching(true);
       }}
       _focusVisible={{
         color: "white",
@@ -54,7 +54,7 @@ export function FetchBtn({ start_fetching }: any) {
   );
 }
 
-export function CancelBtn({ end_fetching }: any) {
+export function CancelBtn({ set_fetching }: any) {
   return (
     <Flex
       id="preview-btn"
@@ -77,11 +77,11 @@ export function CancelBtn({ end_fetching }: any) {
       tabIndex={0}
       onClick={(event: any) => {
         pressButton(event.currentTarget);
-        end_fetching();
+        set_fetching(false);
       }}
       onKeyPress={(event: any) => {
         pressButton(event.currentTarget);
-        end_fetching();
+        set_fetching(false);
       }}
       _focusVisible={{
         color: "white",

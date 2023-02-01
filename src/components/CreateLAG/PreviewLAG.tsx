@@ -1,15 +1,9 @@
 import wait from "../../utils/wait";
-import TGramSubmit from "./TGramSubmit";
 import { useState, useEffect } from "react";
 import { Flex, Text } from "@chakra-ui/react";
 import CurveContainer from "../Core/CurveContainer";
 
-export default function TGramPreview({ 
-  lag, 
-  fetching, 
-  start_fetching, 
-  end_fetching 
-}: any) {
+export default function PreviewLAG({ lag }: any) {
   const [tgram_msg, set_tgram_msg] = useState<string>("");
 
   async function handleCopy() {
@@ -17,7 +11,7 @@ export default function TGramPreview({
     navigator.clipboard.writeText(tgram_preview.textContent);
     const copy_btn: any = document.getElementById("copy-btn");
     copy_btn.style.opacity = 0.5;
-    await wait(200);
+    await wait(100);
     copy_btn.style.opacity = 1.0;
   }
 
@@ -60,7 +54,7 @@ export default function TGramPreview({
   }, [lag]);
 
   return (
-    <CurveContainer heading="Telegram Message">
+    <CurveContainer heading="Telegram Preview">
       <Flex
         flexDir="column"
         gap="20px"
@@ -76,6 +70,7 @@ export default function TGramPreview({
           width="100%"
           height="100%"
           background="standard_bkg_alt"
+          borderRadius="5px"
         >
           <Text
             id="telegram-preview"
@@ -110,13 +105,6 @@ export default function TGramPreview({
             Copy
           </Flex>
         </Flex>
-
-        {/* Add Copy to Clipboard Button */}
-        <TGramSubmit 
-          fetching={fetching}
-          start_fetching={start_fetching}
-          end_fetching={end_fetching}
-        />
       </Flex>
     </CurveContainer>
   );

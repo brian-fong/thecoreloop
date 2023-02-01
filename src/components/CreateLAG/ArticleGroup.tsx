@@ -8,7 +8,7 @@ export default function ArticleGroup({ category, set_update_LAG }: any) {
   return (
     <Flex
       flexDir="column"
-      gap="5px"
+      gap="10px"
       justify="center"
       align="start"
       width="100%"
@@ -27,12 +27,13 @@ export default function ArticleGroup({ category, set_update_LAG }: any) {
           align="center"
           p="2px 10px"
           width="100%"
-          fontSize="16px"
+          fontSize="14px"
           fontWeight="800"
           color="white"
-          bg="#114dcf"
+          bg="tcl_blue"
           border="1px solid black"
           borderRadius="none"
+          boxShadow="3px 3px 2px rgba(0, 0, 0, 0.5)"
           whiteSpace="nowrap"
           userSelect="none"
         >
@@ -44,7 +45,8 @@ export default function ArticleGroup({ category, set_update_LAG }: any) {
           set_update_LAG={set_update_LAG}
         />
       </Flex>
-      {/* Article Group Container */}
+
+      {/* Articles Container */}
       <Flex
         flexDir="column"
         gap="20px"

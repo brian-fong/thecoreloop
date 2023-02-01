@@ -1,11 +1,5 @@
+import scrollTo from '../../utils/scroll';
 import { Flex, Text } from '@chakra-ui/react';
-
-function scrollTo(elem_id: string) {
-  const scroll_elem: HTMLElement = document.getElementById(elem_id)!;
-  scroll_elem.scrollIntoView({
-    behavior: "smooth",
-  });
-}
 
 export default function ScrollBtn({ elem_id, text }: any) {
 

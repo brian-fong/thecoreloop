@@ -2,7 +2,6 @@ import {
   Flex,
 } from '@chakra-ui/react';
 import uuid from 'react-uuid';
-import { Gallery as GalleryProps } from '../../types';
 import { useState, useEffect, useRef, ReactElement } from "react";
 
 // Components
@@ -10,7 +9,7 @@ import Line from "./Line";
 import Card_Portrait from "./Card_Portrait";
 import Card_Landscape from "./Card_Landscape";
 
-export default function Gallery({ lag }: GalleryProps) {
+export default function Gallery({ lag }: any) {
   // Initialize number to store current width of window
   const [window_width, set_window_width] = useState<Number>(
     (typeof window != "undefined")
@@ -20,9 +19,6 @@ export default function Gallery({ lag }: GalleryProps) {
 
   // Initialize boolean to store throttled status
   const throttled = useRef<boolean>(false);
-
-  // Initialize string to store card mode
-  const [card_mode, set_card_mode] = useState<String>("landscape");
 
   // Initialize array to store <Card> objects
   const [cards, set_cards] = useState<ReactElement[]>([]);
@@ -47,27 +43,17 @@ export default function Gallery({ lag }: GalleryProps) {
     }
     window.addEventListener("resize", handleResize);
 
-    // Toggle between Portrait vs Landscape card layout
+    // Set minimum pixel limit for screen width to switch between 
+    //   portrait and landscape cards
     const min_pixel_limit: number = 700;
-    if (
-      window_width < min_pixel_limit 
-      && card_mode == "landscape"
-    ) {
-      set_card_mode("portrait");
-    } else if (
-      window_width >= min_pixel_limit 
-      && card_mode == "portrait"
-    ) {
-      set_card_mode("landscape");
-    }
 
     // Build Cards array
     set_cards([]);
     for (const [i, article_group] of lag.content.entries()) {
       const last_group: boolean = i == lag.content.length-1;
       for (const [j, article] of article_group.articles.entries()) {
-        const last_article: boolean = j == article_group.articles.length;
-        const card: ReactElement = (card_mode == "portrait")
+        const last_article: boolean = j == article_group.articles.length-1;
+        const card: ReactElement = window_width <= min_pixel_limit
           ? <Card_Portrait
               key={uuid()}
               url={article.url}
@@ -88,18 +74,20 @@ export default function Gallery({ lag }: GalleryProps) {
               category={article_group.category}
               source={article.source!}
             />;
-        if (!last_group && !last_article) {
-          const line: ReactElement = <Line />;
-          set_cards(cards => [...cards, card, line]);
-        } else {
+
+        // Append line between each article
+        if (last_article && last_group) {
           set_cards(cards => [...cards, card]);
+        } else {
+          const line: ReactElement = <Line key={uuid()} />;
+          set_cards(cards => [...cards, card, line]);
         }
       }
     }
 
     // Clean up "resize" event listener
     return () => window.removeEventListener("resize", handleResize);
-  }, [lag, card_mode, window_width]);
+  }, [lag, window_width]);
 
   return (
     <Flex 

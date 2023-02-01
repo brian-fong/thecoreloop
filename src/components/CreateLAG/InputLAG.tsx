@@ -1,15 +1,16 @@
 import { 
+  LAG, 
+  ArticleGroup as ArticleGroupType,
+  Article as ArticleType,
+} from "../../types";
+import { 
   Flex,
   Text,
   Input,
   Textarea,
 } from "@chakra-ui/react";
 import uuid from "react-uuid";
-import { 
-  LAG, 
-  ArticleGroup as ArticleGroupType,
-  Article as ArticleType,
-} from "../../types";
+import FetchMetadata from "./FetchMetadata";
 import ArticleGroup from "./ArticleGroup";
 import { formatDate } from "../../utils/date";
 import CurveContainer from "../Core/CurveContainer";
@@ -26,7 +27,11 @@ export const CATEGORIES: string[] = [
   "👾 Game & Stats Releases 🎮",
 ];
 
-export default function InputLAG({ set_lag }: any) {
+export default function InputLAG({ 
+  fetching, 
+  set_fetching,
+  set_lag 
+}: any) {
   const [num_msg, set_num_msg] = useState<string>("");
   const [date_msg, set_date_msg] = useState<string>("Enter date above");
   const [groups, set_groups] = useState<ReactElement[]>([]);
@@ -35,13 +40,13 @@ export default function InputLAG({ set_lag }: any) {
   function buildLAG() {
     // === Collect data from all input fields ===
     // LAG number
-    const lag_number: string = (document.getElementById(
+    let lag_number: string = (document.getElementById(
       "lag-number"
-    ) as HTMLInputElement).value
+    ) as HTMLInputElement).value || "<number>";
     // LAG date
     let lag_date: string = (document.getElementById(
       "lag-date"
-    ) as HTMLInputElement).value;
+    ) as HTMLInputElement).value || "<date>";
     // LAG subheading 
     const lag_subheading: string = (document.getElementById(
       "subheading"
@@ -58,15 +63,15 @@ export default function InputLAG({ set_lag }: any) {
     try {
       lag_date = formatDate(lag_date);
     } catch (error: any) {
-      console.log(error.message);
+      // console.log(error.message);
     }
     
     // Assign data values to new <LAG> object
     const lag_new: LAG = {
       heading: `Look at Gaming #${lag_number}`,
       subheading: lag_subheading,
-      number: lag_number || "<undefined>", 
-      date: lag_date || "<undefined>",
+      number: lag_number, 
+      date: lag_date,
       special_insights: lag_special_insights,
       content: [],
     };
@@ -99,7 +104,7 @@ export default function InputLAG({ set_lag }: any) {
           let caption: string = (article_node
             .firstChild!
             .lastChild! as HTMLInputElement)
-            .value!;
+            .value;
           let url: string = (article_node
             .lastChild!
             .lastChild! as HTMLInputElement)
@@ -107,10 +112,10 @@ export default function InputLAG({ set_lag }: any) {
 
           // If caption/URL are empty, then assign <empty_input> value
           if (!caption) {
-            caption = "<empty_caption>";
+            caption = "<caption>";
           }
           if (!url) {
-            url = "<empty_url>";
+            url = "<url>";
           }
 
           // Instantiate new <Article> object
@@ -128,7 +133,7 @@ export default function InputLAG({ set_lag }: any) {
       }
     }
 
-    // Set LAG to update state (trigger Telegram Preview)
+    // Set LAG to update state
     set_lag(lag_new);
   }
 
@@ -161,7 +166,7 @@ export default function InputLAG({ set_lag }: any) {
       const date_string: string = formatDate(lag_date, false);
       set_date_msg(date_string)
     } catch (error: any) {
-      console.log(error.message);
+      // console.log(error.message);
       set_date_msg("Enter date above");
     }
     
@@ -196,236 +201,251 @@ export default function InputLAG({ set_lag }: any) {
   return (
     <CurveContainer heading="Create Daily LAG">
       <Flex
-        flexDir="row"
-        justify="space-between"
-        align="start"
+        flexDir="column"
+        gap="30px"
         width="100%"
+        height="100%"
       >
-        { /* LAG Number */ }
         <Flex
           flexDir="row"
-          justify="center"
-          align="center"
-          width="min-content"
-          height="100%"
-        >
-          <label 
-            htmlFor="lag-number"
-            style={{
-              padding: "10px 10px",
-              width: "min-content",
-              height: "100%",
-              color: "white",
-              fontSize: "16px",
-              fontWeight: "800",
-              background: "#114dcf",
-              border: "1px solid black",
-              borderRight: "none",
-              whiteSpace: "nowrap",
-            }}
-          >
-            Look at Gaming #
-          </label>
-          <Input
-            id="lag-number"
-            p="2px 10px"
-            fontSize="16px"
-            letterSpacing="3px"
-            width="65px"
-            height="100%"
-            color="black"
-            bg="white"
-            border="none"
-            placeholder="123"
-            minLength={1}
-            maxLength={3}
-            style={{
-              border: "1px solid black",
-              borderRadius: "0px",
-            }}
-            onChange={handleNumChange}
-            _focusVisible={{
-              outline: "1px solid blue",
-            }}
-          />
-          <Flex
-            flexDir="row"
-            justify="end"
-            align="end"
-            p="2px 10px"
-            color="description_fg"
-            fontSize="14px"
-            whiteSpace="nowrap"
-          >
-            {num_msg}
-          </Flex>
-        </Flex>
-
-        { /* LAG Date */ }
-        <Flex
-          position="relative"
-          flexDir="column"
-          justify="start"
+          justify="space-between"
           align="start"
+          width="100%"
         >
+          { /* LAG Number */ }
           <Flex
             flexDir="row"
             justify="center"
             align="center"
             width="min-content"
-            height="min-content"
-            color="black"
-            bg="#114dcf"
-            border="1px solid black"
+            height="100%"
           >
             <label 
-              htmlFor="lag-date"
+              htmlFor="lag-number"
               style={{
-                margin: "0px",
-                padding: "2px 10px",
+                padding: "10px 10px",
                 width: "min-content",
                 height: "100%",
                 color: "white",
-                fontSize: "16px",
+                fontSize: "14px",
                 fontWeight: "800",
+                background: "#114dcf",
+                border: "1px solid black",
+                borderRight: "none",
                 whiteSpace: "nowrap",
               }}
-              >
-              Date
+            >
+              Look at Gaming #
             </label>
             <Input
-              id="lag-date"
-              type="date"
-              m="0px"
-              p="0px 5px 0px 0px"
-              fontSize="16px"
-              textAlign="center"
+              id="lag-number"
+              p="2px 10px"
+              fontSize="14px"
+              letterSpacing="3px"
+              width="65px"
+              height="100%"
+              color="black"
               bg="white"
               border="none"
-              borderRadius="0px"
-              overflow="hidden"
-              onChange={handleDateChange}
+              placeholder="123"
+              minLength={1}
+              maxLength={3}
               style={{
-                "borderLeft": "1px solid black",
+                border: "1px solid black",
+                borderRadius: "0px",
               }}
+              onChange={handleNumChange}
               _focusVisible={{
                 outline: "1px solid blue",
               }}
             />
+            <Flex
+              flexDir="row"
+              justify="end"
+              align="end"
+              p="2px 10px"
+              color="description_fg"
+              fontSize="14px"
+              whiteSpace="nowrap"
+            >
+              {num_msg}
+            </Flex>
           </Flex>
-          <Text
-            position="absolute"
-            top="42px"
-            p="4px 0px"
-            fontSize="14px"
-            textAlign="center"
-            color="description_fg"
-            width="100%"
-            whiteSpace="nowrap"
+
+          { /* LAG Date */ }
+          <Flex
+            position="relative"
+            flexDir="column"
+            justify="start"
+            align="start"
           >
-            "{date_msg}"
-          </Text>
+            <Flex
+              flexDir="row"
+              justify="center"
+              align="center"
+              width="min-content"
+              height="min-content"
+              color="black"
+              bg="#114dcf"
+              border="1px solid black"
+            >
+              <label 
+                htmlFor="lag-date"
+                style={{
+                  margin: "0px",
+                  padding: "2px 10px",
+                  width: "min-content",
+                  height: "100%",
+                  color: "white",
+                  fontSize: "14px",
+                  fontWeight: "800",
+                  whiteSpace: "nowrap",
+                }}
+                >
+                Date
+              </label>
+              <Input
+                id="lag-date"
+                type="date"
+                m="0px"
+                p="0px 5px 0px 0px"
+                fontSize="14px"
+                textAlign="center"
+                bg="white"
+                border="none"
+                borderRadius="0px"
+                overflow="hidden"
+                onChange={handleDateChange}
+                style={{
+                  "borderLeft": "1px solid black",
+                }}
+                _focusVisible={{
+                  outline: "1px solid blue",
+                }}
+              />
+            </Flex>
+            <Text
+              position="absolute"
+              top="42px"
+              p="4px 0px"
+              fontSize="14px"
+              textAlign="center"
+              color="description_fg"
+              width="100%"
+              whiteSpace="nowrap"
+            >
+              "{date_msg}"
+            </Text>
+          </Flex>
         </Flex>
-      </Flex>
 
-      { /* LAG Subheading */ }
-      <Flex
-        flexDir="column"
-        width="100%"
-      >
-        <label 
-          htmlFor="subheading"
-          style={{
-            padding: "2px 10px",
-            width: "min-content",
-            fontSize: "16px",
-            fontWeight: "800",
-            color: "white",
-            background: "#114dcf",
-            border: "1px solid black",
-            borderBottom: "none",
-            whiteSpace: "nowrap",
-          }}
+        { /* LAG Subheading */ }
+        <Flex
+          flexDir="column"
+          width="100%"
         >
-          Subheading
-        </label>
-        <Textarea
-          id="subheading"
-          p="4px"
-          fontSize="14px"
-          bg="white"
-          borderRadius="0px"
-          height="90px"
-          minHeight="30px"
-          border="1px solid black"
-          resize="vertical"
-          placeholder="GM.  Happy 100th Daily LAG ❤️"
-          _placeholder={{
-            "color": "rgba(0, 0, 0, 0.5)",
-          }}
-          style={{
-            "border": "1px solid black",
-          }}
-          onChange={buildLAG}
-          _focusVisible={{
-            outline: "1px solid blue",
-          }}
-        />
-      </Flex>
+          <label 
+            htmlFor="subheading"
+            style={{
+              padding: "2px 10px",
+              width: "min-content",
+              fontSize: "14px",
+              fontWeight: "800",
+              color: "white",
+              background: "#114dcf",
+              border: "1px solid black",
+              borderBottom: "none",
+              boxShadow: "3px 3px 2px rgba(0, 0, 0, 0.5)",
+              whiteSpace: "nowrap",
+            }}
+          >
+            Subheading
+          </label>
+          <Textarea
+            id="subheading"
+            p="4px"
+            fontSize="14px"
+            bg="white"
+            borderRadius="0px"
+            height="90px"
+            minHeight="30px"
+            border="1px solid black"
+            resize="vertical"
+            placeholder="GM.  Happy 100th Daily LAG ❤️"
+            _placeholder={{
+              "color": "rgba(0, 0, 0, 0.5)",
+            }}
+            style={{
+              "border": "1px solid black",
+            }}
+            onChange={buildLAG}
+            _focusVisible={{
+              outline: "1px solid blue",
+            }}
+          />
+        </Flex>
 
-      { /* Special Insights */ }
-      <Flex
-        flexDir="column"
-        width="100%"
-      >
-        <label 
-          htmlFor="special-insights"
-          style={{
-            padding: "2px 10px",
-            width: "min-content",
-            fontSize: "16px",
-            fontWeight: "800",
-            color: "white",
-            background: "#114dcf",
-            border: "1px solid black",
-            borderBottom: "none",
-            whiteSpace: "nowrap",
-          }}
+        { /* Special Insights */ }
+        <Flex
+          flexDir="column"
+          width="100%"
         >
-          ‼️ SPECIAL INSIGHTS 👀
-        </label>
-        <Textarea
-          id="special-insights"
-          p="4px"
-          fontSize="14px"
-          bg="white"
-          borderRadius="0px"
-          height="90px"
-          minHeight="30px"
-          border="1px solid black"
-          placeholder="powered by AppMagic.rocks 😎"
-          _placeholder={{
-            "color": "rgba(0, 0, 0, 0.5)",
-          }}
-          style={{
-            "border": "1px solid black",
-          }}
-          onChange={buildLAG}
-          _focusVisible={{
-            outline: "1px solid blue",
-          }}
-          resize="vertical"
-        />
-      </Flex>
+          <label 
+            htmlFor="special-insights"
+            style={{
+              padding: "2px 10px",
+              width: "min-content",
+              fontSize: "14px",
+              fontWeight: "800",
+              color: "white",
+              background: "#114dcf",
+              border: "1px solid black",
+              borderBottom: "none",
+              boxShadow: "3px 3px 2px rgba(0, 0, 0, 0.5)",
+              whiteSpace: "nowrap",
+            }}
+          >
+            ‼️ SPECIAL INSIGHTS 👀
+          </label>
+          <Textarea
+            id="special-insights"
+            p="4px"
+            fontSize="14px"
+            bg="white"
+            borderRadius="0px"
+            height="90px"
+            minHeight="30px"
+            border="1px solid black"
+            placeholder="powered by AppMagic.rocks 😎"
+            _placeholder={{
+              "color": "rgba(0, 0, 0, 0.5)",
+            }}
+            style={{
+              "border": "1px solid black",
+            }}
+            onChange={buildLAG}
+            _focusVisible={{
+              outline: "1px solid blue",
+            }}
+            resize="vertical"
+          />
+        </Flex>
 
-      <Flex
-        id="article-group-container"
-        flexDir="column"
-        gap="10px"
-        width="100%"
-        height="100%"
-      >
-        {groups}
+        <Flex
+          id="article-group-container"
+          flexDir="column"
+          gap="10px"
+          width="100%"
+          height="100%"
+        >
+          {groups}
+        </Flex>
+
+        {/* Add Copy to Clipboard Button */}
+        <FetchMetadata 
+          fetching={fetching}
+          set_fetching={set_fetching}
+        />
       </Flex>
     </CurveContainer>
   );

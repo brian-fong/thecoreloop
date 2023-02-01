@@ -1,5 +1,3 @@
-// React
-
 // Look At Gaming
 export interface LAG {
   heading: string;
@@ -26,22 +24,14 @@ export interface Article {
   source?: string;
 }
 
-// React Components
-export type Post = {
-  lag: LAG;
-};
-
-export type Gallery = {
-  lag: LAG;
-};
-
-export type Card = {
-  url: string;
-  caption: string; 
+// Link Preview
+export interface LinkPreview {
+  [index: string]: string;
+  url: string; 
   title: string; 
-  description: string; 
+  description: string;
   image: string;
-  category: string; 
   source: string;
+  error: any;
 };
 

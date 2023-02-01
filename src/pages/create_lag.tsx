@@ -1,12 +1,13 @@
 import Head from "next/head";
 import { LAG } from "../types";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Flex } from "@chakra-ui/react";
 import Logo from "../components/Core/Logo";
 import NavBar from "../components/Core/NavBar";
+import ViewLAG from "../components/CreateLAG/ViewLAG";
 import InputLAG from "../components/CreateLAG/InputLAG";
+import PreviewLAG from "../components/CreateLAG/PreviewLAG";
 import useFetchMetadata from "../hooks/useFetchMetadata";
-import TGramPreview from "../components/CreateLAG/TGramPreview";
 
 export default function create_lag() {
   const [lag, set_lag] = useState<LAG>({
@@ -18,12 +19,11 @@ export default function create_lag() {
     content: [],
   });
 
-  const { 
-    fetching, 
-    start_fetching, 
-    end_fetching, 
-    lag_meta 
-  } = useFetchMetadata();
+  const {fetching, set_fetching, cards} = useFetchMetadata(lag.content);
+
+  useEffect(() => {
+    window.onbeforeunload = () => "";
+  }, [])
 
   return (
     <>
@@ -67,13 +67,16 @@ export default function create_lag() {
         >
           <Logo />
           <InputLAG
+            fetching={fetching}
+            set_fetching={set_fetching}
             set_lag={set_lag}
           />
-          <TGramPreview 
+          <PreviewLAG 
             lag={lag}
-            fetching={fetching}
-            start_fetching={start_fetching}
-            end_fetching={end_fetching}
+          />
+          <ViewLAG
+            lag={lag}
+            cards={cards}
           />
         </Flex>
       </Flex>

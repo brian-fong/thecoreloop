@@ -11,7 +11,7 @@ export default function CurveContainer({ children, heading }: any) {
       p="15px 15px 10px 15px" 
       width="100%" 
       minWidth="300px"
-      minHeight="300px"
+      minHeight="150px"
       bg="standard_bkg"
       border="6px double white" 
       boxShadow="0px 0px 0px 3px #c0c0c0, 
@@ -22,7 +22,6 @@ export default function CurveContainer({ children, heading }: any) {
         className="inner_container"
         position="relative"
         flexDir="column" 
-        gap="30px"
         justify="start" 
         align="start" 
         m="10px" 
@@ -45,8 +44,8 @@ export default function CurveContainer({ children, heading }: any) {
             position="relative"
             fontFamily="JetBrains Mono"
             fontWeight="400" 
-            fontSize="16px" 
-            p="0px 15px" 
+            fontSize="14px" 
+            p="0px 8px" 
             color="black" 
             bg="standard_bkg"
           >
