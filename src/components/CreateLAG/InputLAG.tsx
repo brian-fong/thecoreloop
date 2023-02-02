@@ -15,6 +15,8 @@ import ArticleGroup from "./ArticleGroup";
 import { formatDate } from "../../utils/date";
 import CurveContainer from "../Core/CurveContainer";
 import { useState, useEffect, ReactElement } from "react";
+import Translate from "../Misc/Translate";
+import { FetchBtn } from "../Misc/Buttons";
 
 export const CATEGORIES: string[] = [
   "🔦 Spotlight 🌟",
@@ -32,11 +34,26 @@ export default function InputLAG({
   set_lag,
   fetching, 
   set_fetching,
+  abort, 
 }: any) {
   const [num_msg, set_num_msg] = useState<string>("");
   const [date_msg, set_date_msg] = useState<string>("Enter date above");
   const [groups, set_groups] = useState<ReactElement[]>([]);
   const [update_LAG, set_update_LAG] = useState<boolean>(false);
+
+  function activateFetchBtn(): boolean {
+    let article_count: number = 0;
+    for (const article_group of lag.content) {
+      for (const article of article_group.articles) {
+        if (article.url.includes("<url>")) {
+          continue;
+        }
+        article_count++;
+      }
+    }
+    if (article_count > 0) return true; 
+    return false; 
+  }
 
   function buildLAG() {
     // === Collect data from all input fields ===
@@ -446,11 +463,14 @@ export default function InputLAG({
         </Flex>
 
         {/* Add Copy to Clipboard Button */}
-        <FetchMetadata 
-          lag={lag}
-          fetching={fetching}
-          set_fetching={set_fetching}
-        />
+        <Translate motion={activateFetchBtn()}>
+          <FetchMetadata 
+            lag={lag}
+            fetching={fetching}
+            set_fetching={set_fetching}
+            abort={abort}
+          />
+        </Translate>
       </Flex>
     </CurveContainer>
   );

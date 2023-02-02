@@ -2,11 +2,12 @@ import axios from "axios";
 import validURL from "../utils/url";
 import Line from "../components/DailyLAG/Line";
 import { ArticleGroup, Article } from "../types";
-import { useState, useEffect, ReactElement } from "react";
+import { useRef, useState, useEffect, ReactElement } from "react";
 import Card_Landscape from "../components/DailyLAG/Card_Landscape";
 import uuid from "react-uuid";
 
 export default function useFetchMetadata(content: ArticleGroup[]) {
+  const abort = useRef(false);
   const [fetching, set_fetching] = useState<boolean>(false);
   const [cards, set_cards] = useState<ReactElement[]>([]);
 
@@ -15,8 +16,6 @@ export default function useFetchMetadata(content: ArticleGroup[]) {
       if (fetching) {
         // Reset cards
         set_cards([]);
-
-        console.log("Content", content);
 
         // Build cards
         for (const [i, article_group] of content.entries()) {
@@ -48,15 +47,18 @@ export default function useFetchMetadata(content: ArticleGroup[]) {
               data: { article: article },
             });
             const article_meta: Article = response.data;
-            console.log("Article Meta: ", article_meta);
             const card: ReactElement = <Card_Landscape
               key={uuid()}
               article={article_meta}
             />
 
-            console.log("Last Group: ", last_group);
-            console.log("Last Article: ", last_article);
+            // Abort if fetching cancelled
+            if (abort.current) {
+              abort.current = false; 
+              return;
+            }
 
+            // Append card to gallery
             if (last_group && last_article) {
               set_cards((cards: any) => [...cards, card]);
             } else {
@@ -72,6 +74,6 @@ export default function useFetchMetadata(content: ArticleGroup[]) {
     fetch();
   }, [fetching]);
 
-  return { fetching, set_fetching, cards };
+  return { fetching, set_fetching, abort, cards };
 }
 

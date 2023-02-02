@@ -56,6 +56,7 @@ export default function PreviewLAG({ lag }: any) {
   return (
     <CurveContainer heading="Telegram Preview">
       <Flex
+        id="telegram-container"
         flexDir="column"
         gap="20px"
         justify="space-between"

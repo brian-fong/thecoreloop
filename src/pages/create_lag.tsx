@@ -19,7 +19,7 @@ export default function create_lag() {
     content: [],
   });
 
-  const {fetching, set_fetching, cards} = useFetchMetadata(lag.content);
+  const {fetching, set_fetching, abort, cards} = useFetchMetadata(lag.content);
 
   useEffect(() => {
     window.onbeforeunload = () => "";
@@ -71,6 +71,7 @@ export default function create_lag() {
             set_lag={set_lag}
             fetching={fetching}
             set_fetching={set_fetching}
+            abort={abort}
           />
           <PreviewLAG 
             lag={lag}

@@ -8,7 +8,8 @@ import { Flex } from "@chakra-ui/react";
 export default function FetchMetadata({ 
   lag,
   fetching, 
-  set_fetching
+  set_fetching,
+  abort,
 }: any) {
 
   function renderButton() {
@@ -27,13 +28,12 @@ export default function FetchMetadata({
       return <InactiveBtn />;
     } else {
       if (fetching) {
-        return <CancelBtn set_fetching={set_fetching} />;
+        return <CancelBtn set_fetching={set_fetching} abort={abort} />;
       } else {
         return <FetchBtn set_fetching={set_fetching} />;
       }
     }
   }
-
   return (
     <Flex
       flexDir="row"

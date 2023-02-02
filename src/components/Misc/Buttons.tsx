@@ -31,12 +31,14 @@ export function FetchBtn({ set_fetching }: any) {
       draggable="false" 
       userSelect="none"
       tabIndex={0}
-      onClick={(event: any) => {
+      onClick={async (event: any) => {
         pressButton(event.currentTarget);
+        await wait(100);
         set_fetching(true);
       }}
-      onKeyPress={(event: any) => {
+      onKeyPress={async (event: any) => {
         pressButton(event.currentTarget);
+        await wait(100);
         set_fetching(true);
       }}
       _focusVisible={{
@@ -54,7 +56,7 @@ export function FetchBtn({ set_fetching }: any) {
   );
 }
 
-export function CancelBtn({ set_fetching }: any) {
+export function CancelBtn({ set_fetching, abort }: any) {
   return (
     <Flex
       id="preview-btn"
@@ -75,12 +77,16 @@ export function CancelBtn({ set_fetching }: any) {
       draggable="false" 
       userSelect="none"
       tabIndex={0}
-      onClick={(event: any) => {
+      onClick={async (event: any) => {
         pressButton(event.currentTarget);
+        await wait(100);
+        abort.current = true;
         set_fetching(false);
       }}
-      onKeyPress={(event: any) => {
+      onKeyPress={async (event: any) => {
         pressButton(event.currentTarget);
+        await wait(100);
+        abort.current = true;
         set_fetching(false);
       }}
       _focusVisible={{
@@ -112,9 +118,11 @@ export function InactiveBtn() {
       color="black"
       background="category_bkg_hover"
       border="1px solid black" 
-      boxShadow="3px 3px 2px rgba(0, 0, 0, 0.5)"
+      boxShadow="-1px -1px 2px rgba(0, 0, 0, 0.5)"
       opacity="0.8"
-      transition="background-color 200ms ease" 
+      transition="background-color 200ms ease,
+                  translate 300ms ease" 
+      transform="translate(3px, 3px)"
       whiteSpace="nowrap"
       cursor="default"
       draggable="false" 

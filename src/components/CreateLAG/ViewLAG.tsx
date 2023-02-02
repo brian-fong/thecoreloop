@@ -15,11 +15,10 @@ export default function ViewLAG({ lag, cards }: any) {
         "card-gallery"
       )!;
       const last_card: HTMLElement = (card_gallery.lastChild as HTMLElement)!;
-      console.log("Last Card: ", last_card);
       if (last_card) last_card.scrollIntoView({ behavior: "smooth" })
     }
 
-    init();
+    // init();
   }, [cards])
 
   return (
