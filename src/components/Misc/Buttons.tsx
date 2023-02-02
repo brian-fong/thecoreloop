@@ -98,3 +98,31 @@ export function CancelBtn({ set_fetching }: any) {
   );
 }
 
+export function InactiveBtn() {
+  return (
+    <Flex
+      id="preview-btn"
+      flexDir="column" 
+      justify="center" 
+      align="center" 
+      width="min-content" 
+      padding="10px 15px"
+      fontSize="14px"
+      fontWeight="800"
+      color="black"
+      background="category_bkg_hover"
+      border="1px solid black" 
+      boxShadow="3px 3px 2px rgba(0, 0, 0, 0.5)"
+      opacity="0.8"
+      transition="background-color 200ms ease" 
+      whiteSpace="nowrap"
+      cursor="default"
+      draggable="false" 
+      userSelect="none"
+      tabIndex={0}
+    >
+      Fetch Metadata
+    </Flex>
+  );
+}
+

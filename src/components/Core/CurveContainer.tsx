@@ -38,7 +38,6 @@ export default function CurveContainer({ children, heading }: any) {
           justify="center" 
           align="center" 
           width="100%"
-          userSelect="none"
         >
           <Heading 
             position="relative"

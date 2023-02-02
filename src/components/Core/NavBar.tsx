@@ -1,4 +1,5 @@
-import { Flex, Link } from '@chakra-ui/react'
+import { Flex } from '@chakra-ui/react'
+import { NavBarItem, NavBarItemDropDown } from './NavBarItem';
 
 export default function NavBar() {
   return (
@@ -13,76 +14,16 @@ export default function NavBar() {
       minWidth="420px"
       bg="standard_bkg"
     >
-      <Link 
-        m="0px 30px" 
-        p="0px 10px"
-        fontSize="13px" 
-        fontWeight="800" 
-        color="white" 
-        bg="blue"
-        draggable="false" 
-        userSelect="none"
-        href="."
-      >
+      <NavBarItem link=".">
         Home
-      </Link>
-      <Link 
-        m="0px 30px" 
-        p="0px 10px"
-        fontSize="13px" 
-        fontWeight="800" 
-        color="black" 
-        bg="standard_bkg"
-        _hover={{ 
-          color: "white", 
-          bg: "rgba(0, 0, 0, 0.5)",
-        }}
-        transition="background-color 200ms ease" 
-        draggable="false" 
-        userSelect="none"
-        href="https://t.me/thecoreloop" 
-        target="_blank"
-      >
+      </NavBarItem>
+      <NavBarItem link="https://t.me/thecoreloop">
         Telegram
-      </Link>
-      <Link 
-        m="0px 30px" 
-        p="0px 10px"
-        fontSize="13px" 
-        fontWeight="800" 
-        color="black" 
-        bg="standard_bkg"
-        _hover={{ 
-          color: "white", 
-          bg: "rgba(0, 0, 0, 0.5)",
-        }}
-        transition="background-color 200ms ease" 
-        draggable="false" 
-        userSelect="none"
-        href="https://twitter.com/0xkapital_k" 
-        target="_blank"
-      >
+      </NavBarItem>
+      <NavBarItem link="https://twitter.com/0xkapital_k">
         Twitter
-      </Link>
-      <Link 
-        m="0px 30px" 
-        p="0px 10px"
-        fontSize="13px" 
-        fontWeight="800" 
-        color="black" 
-        bg="standard_bkg"
-        _hover={{ 
-          color: "white", 
-          bg: "rgba(0, 0, 0, 0.5)",
-        }}
-        transition="background-color 200ms ease" 
-        draggable="false" 
-        userSelect="none"
-        href="https://github.com/0xfrian/thecoreloop" 
-        target="_blank"
-      >
-        GitHub
-      </Link>
+      </NavBarItem>
+      <NavBarItemDropDown />
     </Flex>
   );
 }

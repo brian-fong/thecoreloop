@@ -28,9 +28,10 @@ export const CATEGORIES: string[] = [
 ];
 
 export default function InputLAG({ 
+  lag,
+  set_lag,
   fetching, 
   set_fetching,
-  set_lag 
 }: any) {
   const [num_msg, set_num_msg] = useState<string>("");
   const [date_msg, set_date_msg] = useState<string>("Enter date above");
@@ -446,6 +447,7 @@ export default function InputLAG({
 
         {/* Add Copy to Clipboard Button */}
         <FetchMetadata 
+          lag={lag}
           fetching={fetching}
           set_fetching={set_fetching}
         />

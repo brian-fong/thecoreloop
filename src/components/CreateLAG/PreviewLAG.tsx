@@ -96,6 +96,7 @@ export default function PreviewLAG({ lag }: any) {
             cursor="pointer"
             transition="background-color 200ms ease,
                         opacity 200ms ease" 
+            userSelect="none"
             onClick={handleCopy}
             _hover={{
               color: "white",

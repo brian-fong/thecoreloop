@@ -67,9 +67,10 @@ export default function create_lag() {
         >
           <Logo />
           <InputLAG
+            lag={lag}
+            set_lag={set_lag}
             fetching={fetching}
             set_fetching={set_fetching}
-            set_lag={set_lag}
           />
           <PreviewLAG 
             lag={lag}
