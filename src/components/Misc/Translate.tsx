@@ -1,5 +1,4 @@
 import { useRef } from "react";
-import { Flex } from "@chakra-ui/react";
 import { Transition } from "react-transition-group";
 
 const duration = 100;
@@ -10,10 +9,10 @@ const default_style = {
 };
 
 const transition_styles: any = {
-  entering: { 
+  entered: { 
     transform: "translate(0px, 0px)",
   },
-  entered: { 
+  entering: { 
     transform: "translate(0px, 0px)",
   },
   exiting: { 
@@ -24,27 +23,20 @@ const transition_styles: any = {
   },
 };
 
-export default function Translate({ children, motion }: any) {
+export default function Translate({ children, mounting }: any) {
   const node_ref = useRef(null);
 
   return (
-    <Flex 
-      flexDir="row"
-      justify="center"
-      align="center"
-      width="100%"
-    >
-      <Transition nodeRef={node_ref} in={motion} timeout={duration}>
-        {(state: string) => (
-          <div ref={node_ref} style={{
-            ...default_style, 
-            ...transition_styles[state]
-          }}>
-            {children}
-          </div>
-        )}
-      </Transition>
-    </Flex>
+    <Transition nodeRef={node_ref} in={mounting} timeout={duration}>
+      {(state: string) => (
+        <div ref={node_ref} style={{
+          ...default_style, 
+          ...transition_styles[state]
+        }}>
+          {children}
+        </div>
+      )}
+    </Transition>
   );
 }
 

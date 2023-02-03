@@ -35,8 +35,9 @@ export default function Card_Landscape({ article }: any) {
       <Text 
         fontSize="14px" 
         fontStyle="italic" 
-        color="black"  
+        color="tcl_purple"  
         m="0px 0px 5px 0px" 
+        padding="2px 5px"
         width="100%"
       >
         {article.caption}
@@ -106,6 +107,7 @@ export default function Card_Landscape({ article }: any) {
               id="title"
               fontSize="14px" 
               fontWeight="800" 
+              textAlign="justify" 
               color="blue"  
               width="100%"
               href={article.url} 
@@ -124,10 +126,10 @@ export default function Card_Landscape({ article }: any) {
 
             { /* Description */ }
             <Text 
-              fontSize="14px" 
-              textAlign="left" 
+              fontSize="13px" 
+              textAlign="justify" 
               lineHeight="1.2" 
-              color="description_fg"
+              color="black"
               p="0px 0px 30px"
             >
               {article.description}
@@ -138,6 +140,7 @@ export default function Card_Landscape({ article }: any) {
             flexDir="column"
             justify="space-between"
             align="start"
+            padding="2px 0px"
             width="100%"
           >
             { /* Category */ }

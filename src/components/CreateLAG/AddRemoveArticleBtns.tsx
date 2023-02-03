@@ -2,13 +2,13 @@ import uuid from "react-uuid";
 import Article from "./Article";
 import { ReactElement } from "react";
 import { Flex } from "@chakra-ui/react";
-import { pressButton } from "../Misc/Buttons";
+import { pressBtn } from "../Misc/Buttons";
 import { AddIcon, MinusIcon } from "@chakra-ui/icons";
 
 export default function AddRemoveArticleBtns({ 
   articles, 
-  set_articles, 
-  set_update_LAG 
+  setArticles, 
+  updateLAG 
 }: any) {
   function shorten(s: string) {
     const limit: number = 40;
@@ -23,10 +23,10 @@ export default function AddRemoveArticleBtns({
     // Append new article to Article Group
     const article: ReactElement = <Article 
       key={uuid()} 
-      set_update_LAG={set_update_LAG}
+      updateLAG={updateLAG}
     />;
-    set_articles((articles: any) => [...articles, article]);
-    set_update_LAG((update_LAG: boolean) => !update_LAG);
+    setArticles((articles: ReactElement[]) => [...articles, article]);
+    updateLAG((updated: boolean) => !updated);
   }
 
   function removeArticle(event: any) {
@@ -72,16 +72,16 @@ export default function AddRemoveArticleBtns({
         const confirmation: boolean = confirm(conf_msg);
         if (confirmation) {
           // If confirmed, then remove article
-          set_articles((articles: any) => articles.slice(0, -1));
+          setArticles((articles: ReactElement[]) => articles.slice(0, -1));
         } else {
           // If cancelled, then do nothing
         }
       } else {
         // If article contains empty caption/URL, then remove article
-        set_articles((articles: any) => articles.slice(0, -1));
+        setArticles((articles: ReactElement[]) => articles.slice(0, -1));
       }
-      set_update_LAG((update_LAG: boolean) => !update_LAG);
     }
+    updateLAG((updated: boolean) => !updated);
   }
 
   return (
@@ -104,7 +104,8 @@ export default function AddRemoveArticleBtns({
         background="tcl_green"
         border="1px solid black"
         boxShadow="3px 3px 2px rgba(0, 0, 0, 0.5)"
-        transition="background-color 200ms ease" 
+        transition="background-color 200ms ease,
+                    transform 10ms linear" 
         tabIndex={0}
         userSelect="none"
         cursor="pointer"
@@ -119,13 +120,13 @@ export default function AddRemoveArticleBtns({
         }}
         onClick={(event: any) => {
           event.preventDefault();
-          pressButton(event.currentTarget);
+          pressBtn(event.currentTarget);
           addArticle()
         }}
         onKeyPress={(event: any) => {
           if (event.key == "Enter") {
             event.preventDefault();
-            pressButton(event.currentTarget);
+            pressBtn(event.currentTarget);
             addArticle()
           }
         }}
@@ -146,7 +147,8 @@ export default function AddRemoveArticleBtns({
         background="tcl_red"
         border="1px solid black"
         boxShadow="3px 3px 2px rgba(0, 0, 0, 0.5)"
-        transition="background-color 200ms ease"
+        transition="background-color 200ms ease,
+                    transform 10ms linear" 
         tabIndex={0}
         userSelect="none"
         cursor="pointer"
@@ -161,13 +163,13 @@ export default function AddRemoveArticleBtns({
         }}
         onClick={(event: any) => {
           event.preventDefault();
-          pressButton(event.currentTarget);
+          pressBtn(event.currentTarget);
           removeArticle(event);
         }}
         onKeyPress={(event: any) => {
           if (event.key == "Enter") {
             event.preventDefault();
-            pressButton(event.currentTarget);
+            pressBtn(event.currentTarget);
             removeArticle(event);
           }
         }}

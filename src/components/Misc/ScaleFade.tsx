@@ -13,19 +13,19 @@ const default_style = {
 const transition_styles: any = {
   entering: { 
     opacity: 1,
-    transform: "scale(1.0)",
+    transform: "scaleX(1.0)",
   },
   entered: { 
     opacity: 1,
-    transform: "scale(1.0)",
+    transform: "scaleX(1.0)",
   },
   exiting: { 
     opacity: 0,
-    transform: "scale(0)",
+    transform: "scaleX(0)",
   },
   exited: { 
     opacity: 0,
-    transform: "scale(0)",
+    transform: "scaleX(0)",
   },
 };
 

@@ -2,8 +2,8 @@ import { Flex } from "@chakra-ui/react";
 import { useState, ReactElement } from "react";
 import AddRemoveArticleBtns from "./AddRemoveArticleBtns";
 
-export default function ArticleGroup({ category, set_update_LAG }: any) {
-  const [articles, set_articles] = useState<ReactElement[]>([]);
+export default function ArticleGroup({ category, updateLAG }: any) {
+  const [articles, setArticles] = useState<ReactElement[]>([]);
 
   return (
     <Flex
@@ -41,8 +41,8 @@ export default function ArticleGroup({ category, set_update_LAG }: any) {
         </Flex>
         <AddRemoveArticleBtns 
           articles={articles}
-          set_articles={set_articles}
-          set_update_LAG={set_update_LAG}
+          setArticles={setArticles}
+          updateLAG={updateLAG}
         />
       </Flex>
 

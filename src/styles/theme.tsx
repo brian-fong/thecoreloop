@@ -8,6 +8,8 @@ export default extendTheme({
     category_bkg: "#909090",
     category_bkg_hover: "#606060",
     description_fg: "rgba(0, 0, 0, 0.7)",
+    telegram: "#2193CE",
+    telegram_hover: "#186e99",
     tcl_purple: "#6711CF",
     tcl_yellow: "#FAFF2F",
     tcl_yellow_hover: "#BCC024",

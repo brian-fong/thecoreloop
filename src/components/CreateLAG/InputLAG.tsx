@@ -10,13 +10,11 @@ import {
   Textarea,
 } from "@chakra-ui/react";
 import uuid from "react-uuid";
-import FetchMetadata from "./FetchMetadata";
 import ArticleGroup from "./ArticleGroup";
+import { useState, useEffect, ReactElement } from "react";
+import FetchMetadata from "./FetchMetadata";
 import { formatDate } from "../../utils/date";
 import CurveContainer from "../Core/CurveContainer";
-import { useState, useEffect, ReactElement } from "react";
-import Translate from "../Misc/Translate";
-import { FetchBtn } from "../Misc/Buttons";
 
 export const CATEGORIES: string[] = [
   "🔦 Spotlight 🌟",
@@ -30,32 +28,27 @@ export const CATEGORIES: string[] = [
 ];
 
 export default function InputLAG({ 
-  lag,
-  set_lag,
-  fetching, 
-  set_fetching,
   abort, 
+  status, 
+  setStatus,
+  toggleFetch, 
+  lag, 
+  setLAG
 }: any) {
-  const [num_msg, set_num_msg] = useState<string>("");
-  const [date_msg, set_date_msg] = useState<string>("Enter date above");
-  const [groups, set_groups] = useState<ReactElement[]>([]);
-  const [update_LAG, set_update_LAG] = useState<boolean>(false);
-
-  function activateFetchBtn(): boolean {
-    let article_count: number = 0;
-    for (const article_group of lag.content) {
-      for (const article of article_group.articles) {
-        if (article.url.includes("<url>")) {
-          continue;
-        }
-        article_count++;
-      }
-    }
-    if (article_count > 0) return true; 
-    return false; 
-  }
+  const [num_msg, setNumMsg] = useState<string>("");
+  const [date_msg, setDateMsg] = useState<string>("Enter date above");
+  const [updated, updateLAG] = useState<boolean>(false);
+  const [article_groups, setArticleGroups] = useState<ReactElement[]>([]);
 
   function buildLAG() {
+    // Note: this function should run whenever the user: 
+    //  1. Clicks add/remove article button 
+    //  2. Enters something for LAG Number
+    //  3. Enters something for LAG Date
+    //  4. Enters something for LAG Subheading
+    //  5. Enters something for LAG Special Insights
+    //  6. Enters something for an article's caption/URL 
+
     // === Collect data from all input fields ===
     // LAG number
     let lag_number: string = (document.getElementById(
@@ -67,24 +60,24 @@ export default function InputLAG({
     ) as HTMLInputElement).value || "<date>";
     // LAG subheading 
     const lag_subheading: string = (document.getElementById(
-      "subheading"
+      "lag-subheading"
     ) as HTMLInputElement).value;
     // Special Insights
     const lag_special_insights: string = (document.getElementById(
-      "special-insights"
+      "lag-special-insights"
     ) as HTMLInputElement).value;
     // Article Groups 
     const article_group_container = document.getElementById(
-      "article-group-container"
+      "lag-articles"
     )!;
 
     try {
       lag_date = formatDate(lag_date);
     } catch (error: any) {
-      // console.log(error.message);
+      console.log(`Error with LAG Date: ${error.message}`);
     }
-    
-    // Assign data values to new <LAG> object
+
+    // === Build LAG without metadata ===
     const lag_new: LAG = {
       heading: `Look at Gaming #${lag_number}`,
       subheading: lag_subheading,
@@ -94,7 +87,6 @@ export default function InputLAG({
       content: [],
     };
 
-    // Iterate through Article Groups and build content array
     for (const article_group_node of Array.from(
       article_group_container.childNodes
     )) {
@@ -126,22 +118,11 @@ export default function InputLAG({
           let url: string = (article_node
             .lastChild!
             .lastChild! as HTMLInputElement)
-            .value!;
-
-          // If caption/URL are empty, then assign <empty_input> value
-          if (!caption) {
-            caption = "<caption>";
-          }
-          if (!url) {
-            url = "<url>";
-          }
+            .value;
 
           // Instantiate new <Article> object
           const article: ArticleType = {
-            caption: `A look at ${caption}`.replace(
-              "A look at A look at", 
-              "A look at"
-            ), 
+            caption: caption,
             url: url, 
           };
 
@@ -155,20 +136,18 @@ export default function InputLAG({
     }
 
     // Set LAG to update state
-    set_lag(lag_new);
+    setLAG(lag_new);
   }
 
   function handleNumChange() {
-    // Read LAG number from input element
+    // Indicate if LAG number is valid/invalid
     const lag_number: number = Number((document.getElementById(
       "lag-number"
     ) as HTMLInputElement).value);
-
-    // Indicate if LAG number is valid/invalid
     if (isNaN(lag_number)) {
-      set_num_msg("Not a number!");
+      setNumMsg("Not a number!");
     } else {
-      set_num_msg("");
+      setNumMsg("");
     }
 
     // (Re)try building LAG to include updated LAG number
@@ -180,15 +159,14 @@ export default function InputLAG({
     const lag_date: string = (document.getElementById(
       "lag-date"
     )! as HTMLInputElement).value;
-    console.log("LAG Date: ", lag_date);
 
     // Indicate if LAG date is valid/invalid
     try {
       const date_string: string = formatDate(lag_date, false);
-      set_date_msg(date_string)
+      setDateMsg(date_string)
     } catch (error: any) {
       // console.log(error.message);
-      set_date_msg("Enter date above");
+      setDateMsg("Enter date above");
     }
     
     // (Re)try building LAG to include updated date
@@ -196,28 +174,32 @@ export default function InputLAG({
   }
 
   useEffect(() => {
+    // === Initialization ===
+    
     // Focus on LAG number input on start-up
     const lag_number_input: HTMLElement = document.getElementById(
       "lag-number"
     )!;
     lag_number_input!.focus();
 
-    // Initialize <ArticleGroup> components for each CATEGORY
     for (const CATEGORY of CATEGORIES) {
-      const group: ReactElement = <ArticleGroup 
+      const article_group: ReactElement = <ArticleGroup 
         key={uuid()} 
         category={CATEGORY} 
-        set_update_LAG={set_update_LAG}
-      />
-      set_groups((groups: any) => [...groups, group]);
+        updateLAG={updateLAG}
+      />;
+      setArticleGroups((article_groups: ReactElement[]) => {
+        return [...article_groups, article_group];
+      });
     }
 
     buildLAG();
   }, []);
 
   useEffect(() => {
+    // Update LAG state
     buildLAG();
-  }, [update_LAG]);
+  }, [updated]);
 
   return (
     <CurveContainer heading="Create Daily LAG">
@@ -366,7 +348,7 @@ export default function InputLAG({
           width="100%"
         >
           <label 
-            htmlFor="subheading"
+            htmlFor="lag-subheading"
             style={{
               padding: "2px 10px",
               width: "min-content",
@@ -383,7 +365,7 @@ export default function InputLAG({
             Subheading
           </label>
           <Textarea
-            id="subheading"
+            id="lag-subheading"
             p="4px"
             fontSize="14px"
             bg="white"
@@ -412,7 +394,7 @@ export default function InputLAG({
           width="100%"
         >
           <label 
-            htmlFor="special-insights"
+            htmlFor="lag-special-insights"
             style={{
               padding: "2px 10px",
               width: "min-content",
@@ -429,7 +411,7 @@ export default function InputLAG({
             ‼️ SPECIAL INSIGHTS 👀
           </label>
           <Textarea
-            id="special-insights"
+            id="lag-special-insights"
             p="4px"
             fontSize="14px"
             bg="white"
@@ -452,25 +434,34 @@ export default function InputLAG({
           />
         </Flex>
 
+        {/* Article Groups Container */}
         <Flex
-          id="article-group-container"
+          id="lag-articles"
           flexDir="column"
           gap="10px"
           width="100%"
           height="100%"
         >
-          {groups}
+          {article_groups}
         </Flex>
 
-        {/* Add Copy to Clipboard Button */}
-        <Translate motion={activateFetchBtn()}>
+        {/* Fetch Button Container */}
+        <Flex
+          position="relative"
+          top="-10px"
+          flexDir="row"
+          justify="center"
+          align="center"
+          width="100%"
+        >
           <FetchMetadata 
-            lag={lag}
-            fetching={fetching}
-            set_fetching={set_fetching}
             abort={abort}
+            status={status}
+            setStatus={setStatus}
+            toggleFetch={toggleFetch}
+            lag={lag}
           />
-        </Translate>
+        </Flex>
       </Flex>
     </CurveContainer>
   );

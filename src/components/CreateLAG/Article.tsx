@@ -5,7 +5,7 @@ import {
 } from "@chakra-ui/react";
 import { ChatIcon, LinkIcon } from "@chakra-ui/icons";
 
-export default function Article({ set_update_LAG }: any) {
+export default function Article({ updateLAG }: any) {
   return (
     <Flex
       className="article-container"
@@ -48,7 +48,7 @@ export default function Article({ set_update_LAG }: any) {
             border: "none",
             borderRadius: "0px",
           }}
-          onChange={() => set_update_LAG((update_LAG: boolean) => !update_LAG)}
+          onChange={() => updateLAG((updated: boolean) => !updated)}
           _focusVisible={{
             outline: "1px solid blue",
           }}
@@ -90,7 +90,7 @@ export default function Article({ set_update_LAG }: any) {
             border: "none",
             borderRadius: "0px",
           }}
-          onChange={() => set_update_LAG((update_LAG: boolean) => !update_LAG)}
+          onChange={() => updateLAG((updated: boolean) => !updated)}
           _focusVisible={{
             outline: "1px solid blue",
           }}

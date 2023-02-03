@@ -9,7 +9,8 @@ import { useEffect } from "react";
 
 export default function ViewLAG({ lag, cards }: any) {
   useEffect(() => {
-    async function init() {
+    // Scroll down to newest Card component
+    async function scroll() {
       await wait(100);
       const card_gallery: HTMLElement = document.getElementById(
         "card-gallery"
@@ -18,17 +19,16 @@ export default function ViewLAG({ lag, cards }: any) {
       if (last_card) last_card.scrollIntoView({ behavior: "smooth" })
     }
 
-    // init();
+    // scroll();
   }, [cards])
 
   return (
     <CurveContainer heading={lag.heading}>
-        <Flex
-          id="lag-view"
-          flexDir="column"
-          gap="30px"
-          width="100%"
-        >
+      <Flex
+        id="lag-view"
+        flexDir="column"
+        width="100%"
+      >
         { /* Date */ }
         <Flex 
           flexDir="row" 
