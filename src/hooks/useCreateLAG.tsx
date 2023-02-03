@@ -81,11 +81,6 @@ export default function useCreateLAG() {
               source: link_preview.source,
             };
 
-            // If no caption present, then auto-generate caption
-            if (!article.caption) {
-              article_meta.caption = `A look at "${link_preview.title}"`;
-            }
-
             const card: ReactElement = <Card_Landscape 
               key={uuid()}
               article={article_meta}
