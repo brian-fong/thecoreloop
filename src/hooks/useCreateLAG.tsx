@@ -2,11 +2,8 @@ import axios from "axios";
 import uuid from "react-uuid";
 import wait from "../utils/wait";
 import validURL from "../utils/url";
-import Line from "../components/DailyLAG/Line";
-import Card from "../components/DailyLAG/Card";
-import { useDimensions } from "@chakra-ui/react";
-import { useRef, useState, useEffect, ReactElement } from "react";
-import { LAG, ArticleGroup, Article, LinkPreview } from "../types";
+import { useRef, useState, useEffect } from "react";
+import { LAG, Article, LinkPreview } from "../types";
 
 export default function useCreateLAG() {
   const abort = useRef(false);
@@ -29,51 +26,9 @@ export default function useCreateLAG() {
     content: [],
   });
 
-  const gallery_ref = useRef<any>();
-  const dimensions = useDimensions(gallery_ref, true);
-  const [landscape, setLandscape] = useState<boolean>(true);
-  const [cards, setCards] = useState<ReactElement[]>([]);
-
-  useEffect(() => {
-    const limit: number = 500;
-    if (dimensions?.contentBox?.width! > limit) {
-      if (!landscape) setLandscape(true);
-    } else {
-      if (landscape) setLandscape(false);
-    }
-  }, [dimensions]);
-
   useEffect(() => {
     setLAG_meta({...lag});
   }, [lag]);
-
-  useEffect(() => {
-    // Update cards state
-    setCards([]);
-    for (const [i, article_group] of lag_meta.content.entries()) {
-      const last_group: boolean = i == lag_meta.content.length-1;
-      for (const [j, article] of article_group.articles.entries()) {
-        const last_article: boolean = j == article_group.articles.length-1;
-        if (
-          !article.title 
-          && !article.description 
-          && !article.image 
-          && !article.source
-        ) continue;
-        const card: ReactElement = <Card 
-          key={uuid()}
-          orientation={landscape ? "landscape" : "portait"} 
-          article={article}
-        />
-        if (last_group && last_article) {
-          setCards((cards: ReactElement[]) => [...cards, card]);
-        } else {
-          const line: ReactElement = <Line key={uuid()} />;
-          setCards((cards: ReactElement[]) => [...cards, card, line]);
-        }
-      }
-    }
-  }, [status, lag_meta, landscape])
 
   useEffect(() => {
     async function fetch(): Promise<void> {
@@ -88,7 +43,7 @@ export default function useCreateLAG() {
             };
           }),
         };
-        setLAG_meta(lag_new);
+        setLAG_meta({...lag_new});
 
         for (const [i, article_group] of lag.content.entries()) {
           for (const [j, article] of article_group.articles.entries()) {
@@ -149,7 +104,7 @@ export default function useCreateLAG() {
     }
 
     fetch();
-  }, [status]);
+  }, [toggled]);
 
   return { 
     abort, 
@@ -159,9 +114,6 @@ export default function useCreateLAG() {
     lag, 
     lag_meta,
     setLAG,
-    setLAG_meta,
-    gallery_ref,
-    cards,
   };
 }
 

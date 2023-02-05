@@ -2,7 +2,7 @@ import wait from "../../utils/wait";import { Flex, Text } from "@chakra-ui/react
 import { useState, useEffect } from "react";
 import CurveContainer from "../Core/CurveContainer";
 
-export default function PreviewLAG({ status, lag }: any) {
+export default function PreviewLAG({ lag }: any) {
   const [msg, setMsg] = useState<string>("");
 
   async function handleCopy() {
@@ -58,7 +58,7 @@ export default function PreviewLAG({ status, lag }: any) {
     }
 
     setMsg(msg_new);
-  }, [status, lag]);
+  }, [lag]);
 
   return (
     <CurveContainer heading="Telegram Preview">

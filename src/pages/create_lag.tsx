@@ -17,8 +17,6 @@ export default function create_lag() {
     lag, 
     lag_meta,
     setLAG,
-    gallery_ref,
-    cards,
   }: any = useCreateLAG();
 
   useEffect(() => {
@@ -75,13 +73,10 @@ export default function create_lag() {
             setLAG={setLAG}
           />
           <PreviewLAG 
-            status={status}
             lag={lag_meta}
           />
           <ViewLAG
             lag={lag_meta}
-            gallery_ref={gallery_ref}
-            cards={cards}
           />
         </Flex>
       </Flex>

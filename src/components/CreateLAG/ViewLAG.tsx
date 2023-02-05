@@ -6,7 +6,7 @@ import Gallery from "../DailyLAG/Gallery";
 import CurveContainer from '../Core/CurveContainer';
 import CurveSubContainer from '../Core/CurveSubContainer';
 
-export default function ViewLAG({ lag, gallery_ref, cards }: any) {
+export default function ViewLAG({ lag }: any) {
   return (
     <CurveContainer heading={lag.heading}>
       <Flex
@@ -67,18 +67,9 @@ export default function ViewLAG({ lag, gallery_ref, cards }: any) {
         }
 
         {/* Card Gallery */}
-        <Flex
-          ref={gallery_ref}
-          id="card_gallery"
-          flexDir="column" 
-          gap="15px" 
-          justify="start" 
-          align="start" 
-          margin="10px 0px 0px"
-          width="100%"
-        >
-          {cards}
-        </Flex>
+        <Gallery 
+          lag={lag}
+        />
       </Flex>
     </CurveContainer>
   );
