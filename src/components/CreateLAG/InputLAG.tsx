@@ -33,7 +33,7 @@ export default function InputLAG({
   setStatus,
   toggleFetch, 
   lag, 
-  setLAG
+  setLAG,
 }: any) {
   const [num_msg, setNumMsg] = useState<string>("");
   const [date_msg, setDateMsg] = useState<string>("Enter date above");
@@ -202,8 +202,9 @@ export default function InputLAG({
   }, [updated]);
 
   return (
-    <CurveContainer heading="Create Daily LAG">
+    <CurveContainer heading="Create Daily LAG" minWidth="550px">
       <Flex
+        id="input-lag"
         flexDir="column"
         gap="30px"
         width="100%"
@@ -211,6 +212,7 @@ export default function InputLAG({
       >
         <Flex
           flexDir="row"
+          gap="10px"
           justify="space-between"
           align="start"
           width="100%"

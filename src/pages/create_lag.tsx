@@ -15,8 +15,10 @@ export default function create_lag() {
     setStatus,
     toggleFetch, 
     lag, 
+    lag_meta,
     setLAG,
-    cards, 
+    gallery_ref,
+    cards,
   }: any = useCreateLAG();
 
   useEffect(() => {
@@ -59,7 +61,7 @@ export default function create_lag() {
           m="0px"
           p="40px 40px 60px" 
           width="100%"
-          minWidth="300px" 
+          minWidth="550px" 
           maxWidth="800px"
           boxSizing="border-box"
         >
@@ -73,11 +75,12 @@ export default function create_lag() {
             setLAG={setLAG}
           />
           <PreviewLAG 
-            lag={lag}
+            status={status}
+            lag={lag_meta}
           />
           <ViewLAG
-            status={status}
-            lag={lag}
+            lag={lag_meta}
+            gallery_ref={gallery_ref}
             cards={cards}
           />
         </Flex>

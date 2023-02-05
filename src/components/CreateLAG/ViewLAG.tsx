@@ -2,26 +2,11 @@ import {
   Flex,
   Text,
 } from '@chakra-ui/react';
-import wait from '../../utils/wait';
+import Gallery from "../DailyLAG/Gallery";
 import CurveContainer from '../Core/CurveContainer';
 import CurveSubContainer from '../Core/CurveSubContainer';
-import { useEffect } from "react";
 
-export default function ViewLAG({ lag, cards }: any) {
-  useEffect(() => {
-    // Scroll down to newest Card component
-    async function scroll() {
-      await wait(100);
-      const card_gallery: HTMLElement = document.getElementById(
-        "card-gallery"
-      )!;
-      const last_card: HTMLElement = (card_gallery.lastChild as HTMLElement)!;
-      if (last_card) last_card.scrollIntoView({ behavior: "smooth" })
-    }
-
-    // scroll();
-  }, [cards])
-
+export default function ViewLAG({ lag, gallery_ref, cards }: any) {
   return (
     <CurveContainer heading={lag.heading}>
       <Flex
@@ -82,8 +67,9 @@ export default function ViewLAG({ lag, cards }: any) {
         }
 
         {/* Card Gallery */}
-        <Flex 
-          id="card-gallery"
+        <Flex
+          ref={gallery_ref}
+          id="card_gallery"
           flexDir="column" 
           gap="15px" 
           justify="start" 

@@ -35,7 +35,7 @@ export default function Card_Portrait({ article }: any) {
       <Text 
         fontSize="14px" 
         fontStyle="italic" 
-        color="black"  
+        color="tcl_purple"  
         width="100%"
       >
         {article.caption}
@@ -85,6 +85,7 @@ export default function Card_Portrait({ article }: any) {
         fontSize="14px" 
         fontWeight="800" 
         color="blue"  
+        textAlign="justify"
         target="_blank" 
         transition="background-color 200ms ease" 
         _hover={{ 
@@ -101,7 +102,7 @@ export default function Card_Portrait({ article }: any) {
       { /* Description */}
       <Text 
         fontSize="14px" 
-        textAlign="left" 
+        textAlign="justify" 
         lineHeight="1.2" 
         color="description_fg"
       >

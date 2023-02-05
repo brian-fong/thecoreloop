@@ -1,9 +1,8 @@
-import wait from "../../utils/wait";
-import { Flex, Text } from "@chakra-ui/react";
+import wait from "../../utils/wait";import { Flex, Text } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import CurveContainer from "../Core/CurveContainer";
 
-export default function PreviewLAG({ lag }: any) {
+export default function PreviewLAG({ status, lag }: any) {
   const [msg, setMsg] = useState<string>("");
 
   async function handleCopy() {
@@ -17,6 +16,8 @@ export default function PreviewLAG({ lag }: any) {
 
   useEffect(() => {
     // === Build Telegram message string ===
+    setMsg("");
+
     if (!lag.number) lag.number = "<number>";
     if (!lag.date) lag.date = "<date>";
     
@@ -56,9 +57,8 @@ export default function PreviewLAG({ lag }: any) {
       if (!last_group) msg_new += "\n\n";
     }
 
-    // Update Telegram preview
     setMsg(msg_new);
-  }, [lag]);
+  }, [status, lag]);
 
   return (
     <CurveContainer heading="Telegram Preview">

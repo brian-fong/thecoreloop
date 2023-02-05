@@ -1,9 +1,12 @@
 import axios from "axios";
 import uuid from "react-uuid";
+import wait from "../utils/wait";
 import validURL from "../utils/url";
+import Line from "../components/DailyLAG/Line";
+import Card from "../components/DailyLAG/Card";
+import { useDimensions } from "@chakra-ui/react";
 import { useRef, useState, useEffect, ReactElement } from "react";
 import { LAG, ArticleGroup, Article, LinkPreview } from "../types";
-import Card_Landscape from "../components/DailyLAG/Card_Landscape";
 
 export default function useCreateLAG() {
   const abort = useRef(false);
@@ -17,24 +20,78 @@ export default function useCreateLAG() {
     special_insights: "",
     content: [],
   });
+  const [lag_meta, setLAG_meta] = useState<LAG>({
+    heading: "",
+    subheading: "",
+    number: "",
+    date: "",
+    special_insights: "",
+    content: [],
+  });
+
+  const gallery_ref = useRef<any>();
+  const dimensions = useDimensions(gallery_ref, true);
+  const [landscape, setLandscape] = useState<boolean>(true);
   const [cards, setCards] = useState<ReactElement[]>([]);
+
+  useEffect(() => {
+    const limit: number = 500;
+    if (dimensions?.contentBox?.width! > limit) {
+      if (!landscape) setLandscape(true);
+    } else {
+      if (landscape) setLandscape(false);
+    }
+  }, [dimensions]);
+
+  useEffect(() => {
+    setLAG_meta({...lag});
+  }, [lag]);
+
+  useEffect(() => {
+    // Update cards state
+    setCards([]);
+    for (const [i, article_group] of lag_meta.content.entries()) {
+      const last_group: boolean = i == lag_meta.content.length-1;
+      for (const [j, article] of article_group.articles.entries()) {
+        const last_article: boolean = j == article_group.articles.length-1;
+        if (
+          !article.title 
+          && !article.description 
+          && !article.image 
+          && !article.source
+        ) continue;
+        const card: ReactElement = <Card 
+          key={uuid()}
+          orientation={landscape ? "landscape" : "portait"} 
+          article={article}
+        />
+        if (last_group && last_article) {
+          setCards((cards: ReactElement[]) => [...cards, card]);
+        } else {
+          const line: ReactElement = <Line key={uuid()} />;
+          setCards((cards: ReactElement[]) => [...cards, card, line]);
+        }
+      }
+    }
+  }, [status, lag_meta, landscape])
 
   useEffect(() => {
     async function fetch(): Promise<void> {
       if (status == "starting") {
         // === Build LAG with metadata ===
-        setCards([]);
         const lag_new: LAG = {
-          ...lag,
-          content: [],
+          ...lag, 
+          content: lag.content.map(article_group => {
+            return {
+              category: article_group.category, 
+              articles: [...article_group.articles],
+            };
+          }),
         };
+        setLAG_meta(lag_new);
 
-        for (const article_group of lag.content) {
-          const article_group_meta: ArticleGroup = {
-            category: article_group.category,
-            articles: [],
-          };
-          for (const article of article_group.articles) {
+        for (const [i, article_group] of lag.content.entries()) {
+          for (const [j, article] of article_group.articles.entries()) {
             article.category = article_group.category;
 
             // Skip empty URLs
@@ -64,6 +121,7 @@ export default function useCreateLAG() {
               url: "/api/fetch_metadata", 
               data: { url: article.url },
             });
+            await wait(100);
 
             // AFTER FETCH: Abort if fetching cancelled
             if (abort.current) {
@@ -81,30 +139,17 @@ export default function useCreateLAG() {
               source: link_preview.source,
             };
 
-            const card: ReactElement = <Card_Landscape 
-              key={uuid()}
-              article={article_meta}
-            />
-            setCards((cards: ReactElement[]) => [...cards, card]);
-
-            // Append Article to Articles array
-            article_group_meta.articles.push(article_meta)
+            // Update lag_meta state 
+            lag_new.content[i].articles[j] = article_meta;
+            setLAG_meta({...lag_new});
           }
-
-          // Append ArticleGroup to content array
-          lag_new.content.push(article_group_meta)
         }
-        
-        // Reset status back to idle
-        setStatus("idle")
-
-        // Update LAG state variable
-        setLAG(lag_new);
+        setStatus("idle");
       }
     }
 
     fetch();
-  }, [toggled]);
+  }, [status]);
 
   return { 
     abort, 
@@ -112,8 +157,11 @@ export default function useCreateLAG() {
     setStatus, 
     toggleFetch, 
     lag, 
-    setLAG, 
-    cards, 
+    lag_meta,
+    setLAG,
+    setLAG_meta,
+    gallery_ref,
+    cards,
   };
 }
 

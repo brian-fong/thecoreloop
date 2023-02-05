@@ -1,6 +1,6 @@
 import { Flex, Heading } from "@chakra-ui/react";
 
-export default function CurveContainer({ children, heading }: any) {
+export default function CurveContainer({ children, heading, minWidth }: any) {
   return (
     <Flex 
       className="outer_container"
@@ -10,7 +10,7 @@ export default function CurveContainer({ children, heading }: any) {
       m="0px" 
       p="15px 15px 10px 15px" 
       width="100%" 
-      minWidth="300px"
+      minWidth={minWidth ? minWidth : "300px"}
       minHeight="150px"
       bg="standard_bkg"
       border="6px double white" 
@@ -27,6 +27,7 @@ export default function CurveContainer({ children, heading }: any) {
         m="10px" 
         p="15px" 
         width="100%" 
+      minWidth={minWidth ? (minWidth-30) : "300px"}
         height="100%"
         border="1px solid gray" 
       >
