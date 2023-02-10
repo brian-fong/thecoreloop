@@ -8,7 +8,7 @@ import { ChatIcon, LinkIcon } from "@chakra-ui/icons";
 export default function Article({ updateLAG }: any) {
   return (
     <Flex
-      className="article-container"
+      className="article"
       flexDir="column"
       gap="5px"
     >

@@ -5,21 +5,26 @@ const duration = 100;
 
 const default_style = {
   transform: "translate(0px, 0px)",
-  transition: `transform ${duration}ms ease-in-out`,
+  opacity: "1.0",
+  transition: `all ${duration}ms ease-in-out`,
 };
 
 const transition_styles: any = {
   entered: { 
     transform: "translate(0px, 0px)",
+    opacity: "1.0",
   },
   entering: { 
     transform: "translate(0px, 0px)",
+    opacity: "1.0",
   },
   exiting: { 
     transform: "translate(3px, 3px)",
+    opacity: "0.8",
   },
   exited: { 
     transform: "translate(3px, 3px)",
+    opacity: "0.8",
   },
 };
 

@@ -70,6 +70,7 @@ export default function create_lag() {
             setStatus={setStatus}
             toggleFetch={toggleFetch}
             lag={lag}
+            lag_meta={lag_meta}
             setLAG={setLAG}
           />
           <PreviewLAG 

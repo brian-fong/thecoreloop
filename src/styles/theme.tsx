@@ -7,7 +7,8 @@ export default extendTheme({
     standard_bkg_alt: "#adadad",
     category_bkg: "#909090",
     category_bkg_hover: "#606060",
-    description_fg: "rgba(0, 0, 0, 0.7)",
+    text: "black",
+    text_alt: "rgba(0, 0, 0, 0.7)",
     telegram: "#2193CE",
     telegram_hover: "#186e99",
     tcl_purple: "#6711CF",
@@ -34,7 +35,7 @@ export default extendTheme({
       body: {
         margin: "0px", 
         padding: "0px",
-        fontSize: "20px",
+        fontSize: "14px",
         fontFamily: "Jetbrains Mono",
         scrollBehavior: "smooth",
       },

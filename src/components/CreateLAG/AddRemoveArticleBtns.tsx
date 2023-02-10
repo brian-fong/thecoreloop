@@ -21,10 +21,12 @@ export default function AddRemoveArticleBtns({
 
   function addArticle() {
     // Append new article to Article Group
-    const article: ReactElement = <Article 
-      key={uuid()} 
-      updateLAG={updateLAG}
-    />;
+    const article: ReactElement = (
+      <Article 
+        key={uuid()} 
+        updateLAG={updateLAG}
+      />
+    );
     setArticles((articles: ReactElement[]) => [...articles, article]);
     updateLAG((updated: boolean) => !updated);
   }

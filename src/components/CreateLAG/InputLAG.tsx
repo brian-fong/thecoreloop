@@ -12,7 +12,7 @@ import {
 import uuid from "react-uuid";
 import ArticleGroup from "./ArticleGroup";
 import { useState, useEffect, ReactElement } from "react";
-import FetchMetadata from "./FetchMetadata";
+import Controls from "./Controls";
 import { formatDate } from "../../utils/date";
 import CurveContainer from "../Core/CurveContainer";
 
@@ -32,7 +32,7 @@ export default function InputLAG({
   status, 
   setStatus,
   toggleFetch, 
-  lag, 
+  lag_meta,
   setLAG,
 }: any) {
   const [num_msg, setNumMsg] = useState<string>("");
@@ -269,7 +269,7 @@ export default function InputLAG({
               justify="end"
               align="end"
               p="2px 10px"
-              color="description_fg"
+              color="text_alt"
               fontSize="14px"
               whiteSpace="nowrap"
             >
@@ -335,7 +335,7 @@ export default function InputLAG({
               p="4px 0px"
               fontSize="14px"
               textAlign="center"
-              color="description_fg"
+              color="text_alt"
               width="100%"
               whiteSpace="nowrap"
             >
@@ -456,12 +456,12 @@ export default function InputLAG({
           align="center"
           width="100%"
         >
-          <FetchMetadata 
+          <Controls 
             abort={abort}
             status={status}
             setStatus={setStatus}
             toggleFetch={toggleFetch}
-            lag={lag}
+            lag={lag_meta}
           />
         </Flex>
       </Flex>

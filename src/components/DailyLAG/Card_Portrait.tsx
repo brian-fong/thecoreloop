@@ -57,6 +57,7 @@ export default function Card_Portrait({ article }: any) {
           align="center" 
           width="100%"
           height="100%"
+          color="white"
           bg={image_bg} 
           boxSizing="border-box" 
           overflow="hidden"
@@ -101,10 +102,11 @@ export default function Card_Portrait({ article }: any) {
 
       { /* Description */}
       <Text 
+        width="100%"
         fontSize="14px" 
         textAlign="justify" 
         lineHeight="1.2" 
-        color="description_fg"
+        color="black"
       >
         {article.description}
       </Text>
