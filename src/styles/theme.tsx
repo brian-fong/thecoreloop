@@ -2,6 +2,7 @@ import { extendTheme } from "@chakra-ui/react";
 
 export default extendTheme({
   colors: {
+    // Core
     bkg: "#313244",
     standard_bkg: "#C0C0C0",
     standard_bkg_alt: "#adadad",
@@ -9,8 +10,14 @@ export default extendTheme({
     category_bkg_hover: "#606060",
     text: "black",
     text_alt: "rgba(0, 0, 0, 0.7)",
+
+    // Socials
+    discord: "#7289da",
     telegram: "#2193CE",
     telegram_hover: "#186e99",
+    twitter: "#1DA1F2",
+
+    // thecoreloop colors
     tcl_purple: "#6711CF",
     tcl_yellow: "#FAFF2F",
     tcl_yellow_hover: "#BCC024",
