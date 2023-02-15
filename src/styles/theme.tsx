@@ -36,7 +36,7 @@ export default extendTheme({
         margin: "0px", 
         padding: "0px",
         fontSize: "14px",
-        fontFamily: "Jetbrains Mono",
+        fontFamily: `"Jetbrains Mono", sans-serif`,
         scrollBehavior: "smooth",
       },
     },

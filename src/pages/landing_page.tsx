@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { 
+import {
   Text,
   Flex,
   Image,
@@ -8,26 +8,17 @@ import {
 import Card from "../components/LandingPage/Card";
 
 export default function landing_page() {
+
   return (
     <>
-      <Head>
-        <title>thecoreloop</title>
-        <link 
-          rel="icon" 
-          type="image/x-icon" 
-          href="/thecoreloop-favicon.png" 
-        />
-        <meta name="viewport" content="viewport-fit=cover" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
-      <Flex 
+      <Flex
         id="root_container"
-        flexDirection="column" 
-        justifyContent="start" 
-        alignItems="center" 
-        margin="0px" 
+        flexDirection="column"
+        justifyContent="start"
+        alignItems="center"
+        margin="0px"
         padding="0px"
-        width="100vw" 
+        width="100vw"
         height="100vh"
         background="#CDE5EC"
         boxSizing="border-box"
@@ -47,8 +38,6 @@ export default function landing_page() {
           />
         </Flex>
 
-        <hr style={{ margin: "0px 0px 20px", width: "98%", borderColor: "white" }} />
-
         {/* Cards Gallery */}
         <Flex
           flexDirection="row"
@@ -57,24 +46,24 @@ export default function landing_page() {
           alignItems="center"
           width="100%"
         >
-          <Card 
+          <Card
             pfp="./mickking3020-pfp.png"
             handle="Mickking3020"
             subhandle="[Web3 Gaming Enthusiast]"
             text="I've been finding it a bit tedious to keep up with infos. It's been a pain in the ass hovering from Discord to Twitter down to Telegram and other platforms just to get infos."
           />
 
-          <Card 
+          <Card
             pfp="./_sugs-pfp.png"
             handle="_sugs"
             subhandle="[Investments @ Newman Capital]"
             text="As a VC investor, I’d like a discovery tool for finding new projects based on whatever categories I'm searching for (ex. fps, mmorpg, latest trending, building in stealth) - this could give me a sense of what's out there, who's seeking funding, etc"
           />
 
-          <Card 
+          <Card
             pfp="./shloked_-pfp.png"
             handle="shloked_"
-            subhandle="Partnerships Lead @ Glip.gg"
+            subhandle="[Partnerships Lead @ Glip.gg]"
             text="What would matter to me is learning about new high quality projects that isn’t often covered compared to the established ones. "
           />
         </Flex>
@@ -88,7 +77,7 @@ export default function landing_page() {
           maxWidth="800px"
         >
           <Text>
-            Say goodbye to scouring Twitter, Telegram &#38; Discord for gaming information!  
+            Say goodbye to scouring Twitter, Telegram &#38; Discord for gaming information! 
           </Text>
           <Text>
             thecoreloop is your go-to social discovery platform where community and web3 games intersect. Get ready to discover high-quality content on all things web3 gaming in one place!
@@ -115,8 +104,6 @@ export default function landing_page() {
           LFG, I’d love to join the core team!
         </Button>
 
-        <hr style={{ margin: "0px 0px 20px", width: "98%", borderColor: "white" }} />
-
         <Flex
           flexDir="column"
           gap="10px"
@@ -135,7 +122,7 @@ export default function landing_page() {
             <Text>Daily Gaming News Update on Telegram</Text>
           </Flex>
           <Flex flexDirection="row" gap="10px">
-            <Image src="./twitter-icon.png" width="24px" />
+          <Image src="./twitter-icon.png" width="24px" />
             <Text>Follow us on Twitter</Text>
           </Flex>
         </Flex>

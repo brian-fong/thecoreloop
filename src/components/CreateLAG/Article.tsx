@@ -42,7 +42,6 @@ export default function Article({ updateLAG }: any) {
           minHeight="50px"
           bg="white"
           fontSize="14px"
-          placeholder="A look at..."
           resize="vertical"
           style={{
             border: "none",

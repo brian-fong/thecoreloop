@@ -48,7 +48,7 @@ export default function PreviewLAG({ lag }: any) {
         const last_article: boolean = j == article_group.articles.length-1;
         if (article.caption) msg_new += article.caption + "\n";
         else if (!article.caption && article.title) {
-          msg_new += `A look at ${article.title}` + "\n";
+          msg_new += `${article.title}` + "\n";
         } else msg_new += "<caption>" + "\n";
         if (article.url) msg_new += article.url + "\n";
         else msg_new += "<url>" + "\n";

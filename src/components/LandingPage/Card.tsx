@@ -23,20 +23,23 @@ export default function Card({ pfp, handle, subhandle, text }: any) {
         <Image src={pfp} width="50px" />
         <Flex
           flexDirection="column"
+          justifyContent="center"
+          alignItems="start"
           gap="3px"
           width="100%"
           height="100%"
         >
           <Text
             color="rgba(0, 0, 0, 0.50)"
-            fontSize="12px"
+            fontSize="14px"
             fontWeight="800"
+            letterSpacing={1}
           >
             @{handle}
           </Text>
           <Text
             color="rgba(0, 0, 0, 0.50)"
-            fontSize="12px"
+            fontSize="14px"
             fontWeight="800"
           >
             {subhandle}
