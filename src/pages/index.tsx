@@ -5,27 +5,35 @@ import {
   Grid,
   Link,
   Image,
-  Button,
   Tooltip,
   useDimensions,
 } from "@chakra-ui/react";
 import Head from "next/head";
 import uuid from "react-uuid";
+import wait from "../utils/wait";
 import { useRef, useState, useEffect } from "react";
 import { REFERENCES } from "../utils/references";
 import Card from "../components/LandingPage/Card";
+import Gallery from "../components/LandingPage/Gallery";
 
 export default function landing_page() {
   const main_ref = useRef<any>();
-  const [columns, setColumns] = useState<number>(3);
+  const [card_cols, setCardCols] = useState<number>(3);
+  const [image_cols, setImageCols] = useState<number>(4);
   const dimensions = useDimensions(main_ref, true);
 
   useEffect(() => {
     const width: number = dimensions?.contentBox?.width!;
-    console.log("Gallery Width: ", width);
-    if (width > 1110) setColumns(3);
-    else if (width > 760) setColumns(2);
-    else setColumns(1);
+
+    // Set number of columns for card gallery
+    if (width > 1110) setCardCols(3);
+    else if (width > 760) setCardCols(2);
+    else setCardCols(1);
+    
+    // Set number of columns for image gallery
+    if (width > 1150) setImageCols(4);
+    else if (width > 590) setImageCols(2);
+    else setImageCols(1);
   }, [dimensions]);
 
   return (
@@ -95,7 +103,7 @@ export default function landing_page() {
         {/* Cards Gallery */}
         <Grid
           id="cards-gallery"
-          templateColumns={`repeat(${columns}, minmax(350px, 1fr))`}
+          templateColumns={`repeat(${card_cols}, minmax(350px, 1fr))`}
           gap="30px"
           padding="30px"
           height="min-content"
@@ -118,43 +126,61 @@ export default function landing_page() {
           gap="10px"
           justifyContent="center"
           alignItems="center"
-          padding="30px 0px"
-          width="100%"
+          padding="30px 0px 60px"
         >
           <Flex
             flexDirection="column"
             gap="20px"
             justifyContent="center"
             alignItems="center"
-            padding="0px 20px"
+            padding="0px 40px"
             maxWidth="1200px"
           >
             <Box fontSize="18px" textAlign="center">
-              Say goodbye 👋 to scouring <Text display="inline" color="twitter">Twitter</Text>, <Text display="inline" color="telegram">Telegram</Text>, &#38; <Text display="inline" color="discord">Discord</Text> for gaming information!
+              Say goodbye 👋 to scouring <Text display="inline" color="twitter">Twitter</Text>, <Text display="inline" color="white">Notion</Text>, <Text display="inline" color="telegram">Telegram</Text>, &#38; <Text display="inline" color="discord">Discord</Text> for gaming information!
             </Box>
             <Box fontSize="18px" textAlign="center">
               <Text display="inline" color="tcl_pink">thecoreloop</Text> is your go-to social discovery platform where community and web3 games intersect. Get ready to discover high-quality content on all things web3 gaming in one place!
             </Box>
           </Flex>
 
-          <Image
-            src="./player.png"
-            margin="20px 0px"
-            width="250px"
-            borderRadius="10px"
-          />
+          {/* Images Gallery */}
+          <Gallery image_cols={image_cols} />
 
           <Text fontSize="20px" textAlign="center">
             Want to take a sneak peek &#38; be the first to try the platform?
           </Text>
-
-          <Button
-            margin="20px 0px"
+          <Link 
+            id="typeform-btn"
+            href="https://pm6hpw3zasy.typeform.com/to/kOc7e3N7"
             padding="5px 10px"
-            colorScheme="blackAlpha"
+            color="black"
+            fontWeight="800"
+            background="tcl_teal"
+            border="2px solid black"
+            borderRadius="5px"
+            boxShadow="10px 10px 5px rgba(0, 0, 0, 0.5)"
+            transition="background-color 200ms ease-in"
+            _hover={{
+              background: "tcl_teal_hover",
+            }}
+            onClick={async () => {
+              const btn = document.getElementById("typeform-btn")!;
+              btn.style.transform = "translate(3px, 3px)";
+              btn.style.boxShadow = "none";
+              await wait(100);
+              btn.style.transform = "translate(0px, 0px)";
+              btn.style.boxShadow = "10px 10px 5px rgba(0, 0, 0, 0.5)";
+            }}
           >
-            LFG. I'd love to join the core team!
-          </Button>
+            <Flex
+              flexDirection="row"
+              justifyContent="align"
+              alignItems="center"
+            >
+              LFG. I'd love to join the core team!
+            </Flex>
+          </Link>
         </Flex>
       </Flex>
     </>

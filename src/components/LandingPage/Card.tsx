@@ -13,6 +13,7 @@ export default function Card({
   return (
     <Flex
       flexDirection="column"
+      maxWidth="400px"
       color="white"
       background={bkg_head}
       border="none"
