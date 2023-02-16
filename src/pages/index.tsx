@@ -7,28 +7,13 @@ import {
   Image,
   Button,
   Tooltip,
-  useDimensions,
 } from "@chakra-ui/react";
 import Head from "next/head";
 import uuid from "react-uuid";
-import { useRef, useState, useEffect } from "react";
 import { REFERENCES } from "../utils/references";
 import Card from "../components/LandingPage/Card";
 
 export default function landing_page() {
-  const gallery_ref = useRef<any>();
-  const dimensions = useDimensions(gallery_ref, true);
-  const [orientation, setOrientation] = useState<string>()
-
-  useEffect(() => {
-    const limit: number = 500;
-    if (dimensions?.contentBox?.width! > limit) {
-      setOrientation("landscape");
-    } else {
-      setOrientation("portrait");
-    }
-  }, [dimensions]);
-
   return (
     <>
       <Head>
@@ -94,7 +79,6 @@ export default function landing_page() {
 
         {/* Cards Gallery */}
         <Grid
-          ref={gallery_ref}
           id="cards-gallery"
           templateColumns="repeat(3, minmax(350px, 1fr))"
           gap="30px"
