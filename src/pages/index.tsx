@@ -7,13 +7,27 @@ import {
   Image,
   Button,
   Tooltip,
+  useDimensions,
 } from "@chakra-ui/react";
 import Head from "next/head";
 import uuid from "react-uuid";
+import { useRef, useState, useEffect } from "react";
 import { REFERENCES } from "../utils/references";
 import Card from "../components/LandingPage/Card";
 
 export default function landing_page() {
+  const main_ref = useRef<any>();
+  const [columns, setColumns] = useState<number>(3);
+  const dimensions = useDimensions(main_ref, true);
+
+  useEffect(() => {
+    const width: number = dimensions?.contentBox?.width!;
+    console.log("Gallery Width: ", width);
+    if (width > 1110) setColumns(3);
+    else if (width > 760) setColumns(2);
+    else setColumns(1);
+  }, [dimensions]);
+
   return (
     <>
       <Head>
@@ -27,14 +41,15 @@ export default function landing_page() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <Flex
-        id="root_container"
+        id="main_container"
+        ref={main_ref}
         flexDirection="column"
         justifyContent="start"
         alignItems="center"
-        width="100vw"
         minHeight="100vh"
         color="white"
         background="#282A36"
+        overflowX="hidden"
       >
         {/* Banner */}
         <Flex
@@ -80,9 +95,9 @@ export default function landing_page() {
         {/* Cards Gallery */}
         <Grid
           id="cards-gallery"
-          templateColumns="repeat(3, minmax(350px, 1fr))"
+          templateColumns={`repeat(${columns}, minmax(350px, 1fr))`}
           gap="30px"
-          padding="30px 80px"
+          padding="30px"
           height="min-content"
         >
           {REFERENCES.map(reference => (
@@ -103,7 +118,7 @@ export default function landing_page() {
           gap="10px"
           justifyContent="center"
           alignItems="center"
-          padding="30px 100px"
+          padding="30px 0px"
           width="100%"
         >
           <Flex
@@ -111,7 +126,8 @@ export default function landing_page() {
             gap="20px"
             justifyContent="center"
             alignItems="center"
-            maxWidth="1000px"
+            padding="0px 20px"
+            maxWidth="1200px"
           >
             <Box fontSize="18px" textAlign="center">
               Say goodbye 👋 to scouring <Text display="inline" color="twitter">Twitter</Text>, <Text display="inline" color="telegram">Telegram</Text>, &#38; <Text display="inline" color="discord">Discord</Text> for gaming information!
