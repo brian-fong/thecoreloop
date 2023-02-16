@@ -2,17 +2,33 @@ import {
   Box,
   Text,
   Flex,
+  Grid,
   Link,
   Image,
   Button,
   Tooltip,
+  useDimensions,
 } from "@chakra-ui/react";
 import Head from "next/head";
 import uuid from "react-uuid";
+import { useRef, useState, useEffect } from "react";
 import { REFERENCES } from "../utils/references";
 import Card from "../components/LandingPage/Card";
 
 export default function landing_page() {
+  const gallery_ref = useRef<any>();
+  const dimensions = useDimensions(gallery_ref, true);
+  const [orientation, setOrientation] = useState<string>()
+
+  useEffect(() => {
+    const limit: number = 500;
+    if (dimensions?.contentBox?.width! > limit) {
+      setOrientation("landscape");
+    } else {
+      setOrientation("portrait");
+    }
+  }, [dimensions]);
+
   return (
     <>
       <Head>
@@ -37,6 +53,7 @@ export default function landing_page() {
       >
         {/* Banner */}
         <Flex
+          id="banner"
           flexDirection="row"
           gap="10px"
           justifyContent="space-between"
@@ -76,16 +93,15 @@ export default function landing_page() {
         </Flex>
 
         {/* Cards Gallery */}
-        <Flex
-          flexDirection="row"
+        <Grid
+          ref={gallery_ref}
+          id="cards-gallery"
+          templateColumns="repeat(3, minmax(350px, 1fr))"
           gap="30px"
-          justifyContent="center"
-          alignItems="center"
-          padding="20px 10px 30px"
-          width="100%"
-          minWidth="100px"
+          padding="30px 80px"
+          height="min-content"
         >
-          {REFERENCES.slice(0, 3).map(reference => (
+          {REFERENCES.map(reference => (
             <Card
               key={uuid()}
               handle={reference.handle}
@@ -94,21 +110,32 @@ export default function landing_page() {
               bkg_head={reference.bkg_head}
             />
           ))}
-        </Flex>
+        </Grid>
 
         {/* Body */}
         <Flex
+          id="body"
           flexDirection="column"
           gap="10px"
           justifyContent="center"
           alignItems="center"
+          padding="30px 100px"
+          width="100%"
         >
-          <Box fontSize="18px" whiteSpace="nowrap">
-            Say goodbye 👋 to scouring <Text display="inline" color="twitter">Twitter</Text>, <Text display="inline" color="telegram">Telegram</Text>, &#38; <Text display="inline" color="discord">Discord</Text> for gaming information! 
-          </Box>
-          <Box fontSize="18px" textAlign="center" maxWidth="1200px">
-            <Text display="inline" color="tcl_pink">thecoreloop</Text> is your go-to social discovery platform where community and web3 games intersect. Get ready to discover high-quality content on all things web3 gaming in one place!
-          </Box>
+          <Flex
+            flexDirection="column"
+            gap="20px"
+            justifyContent="center"
+            alignItems="center"
+            maxWidth="1000px"
+          >
+            <Box fontSize="18px" textAlign="center">
+              Say goodbye 👋 to scouring <Text display="inline" color="twitter">Twitter</Text>, <Text display="inline" color="telegram">Telegram</Text>, &#38; <Text display="inline" color="discord">Discord</Text> for gaming information!
+            </Box>
+            <Box fontSize="18px" textAlign="center">
+              <Text display="inline" color="tcl_pink">thecoreloop</Text> is your go-to social discovery platform where community and web3 games intersect. Get ready to discover high-quality content on all things web3 gaming in one place!
+            </Box>
+          </Flex>
 
           <Image
             src="./player.png"
@@ -117,7 +144,7 @@ export default function landing_page() {
             borderRadius="10px"
           />
 
-          <Text fontSize="20px">
+          <Text fontSize="20px" textAlign="center">
             Want to take a sneak peek &#38; be the first to try the platform?
           </Text>
 
