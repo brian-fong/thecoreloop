@@ -1,94 +1,141 @@
 import {
+  Text,
   Flex,
   Button,
 } from "@chakra-ui/react";
 import {
-  ChevronLeftIcon,
-  ChevronRightIcon,
+  ChevronUpIcon,
+  ChevronDownIcon,
 } from "@chakra-ui/icons"
-import { useRef, useState, useEffect, ReactElement } from "react";
+import uuid from "react-uuid";
+import { useState } from "react";
+import wait from "../../utils/wait";
 import ReferenceCard from "./ReferenceCard";
-import CarouselMotion from "../Misc/CarouselMotion";
 import { REFERENCES } from "../../utils/references";
+import FadeTransition from "./Carousel/FadeTransition";
+import CarouselTransition_1 from "./Carousel/CarouselTransition_1";
+import CarouselTransition_2 from "./Carousel/CarouselTransition_2";
 
 export default function Carousel() {
-  const [shift, toggleShift] = useState<boolean>(true);
-  const [mode_left, setModeLeft] = useState<string>("fade");
-  const [mode_right, setModeRight] = useState<string>("shift");
-  const [direction, setDirection] = useState<string>("left");
-  const [ref_num, setRefNum] = useState<number>(1);
+  const [transition_1, toggleTransition_1] = useState<boolean>(true);
+  const [transition_2, toggleTransition_2] = useState<boolean>(false);
+  const [transition_3, toggleTransition_3] = useState<boolean>(true);
 
-  function handlePrev(): void {
-    if (ref_num > 1) {
-      toggleShift(!shift);
-      setDirection("right");
-      setModeLeft("shift");
-      setModeRight("fade");
-      setRefNum(ref_num-1);
-    }
+  async function handlePrev(): Promise<void> {
+    toggleTransition_2(false);
+    toggleTransition_3(true);
+    await wait(100);
+    toggleTransition_1(true);
   }
 
-  function handleNext(): void {
-    if (ref_num < 4) {
-      toggleShift(!shift);
-      setDirection("left");
-      setModeLeft("fade");
-      setModeRight("shift");
-      setRefNum(ref_num+1);
-    }
+  async function handleNext(): Promise<void> {
+    toggleTransition_1(false);
+    toggleTransition_3(false);
+    await wait(100);
+    toggleTransition_2(true);
   }
 
   return (
     <Flex
       id="carousel-container"
+      position="relative"
       flexDirection="row"
       justifyContent="space-between"
       alignItems="center"
-      marginTop="30px"
       padding="30px"
-      minHeight="200px"
-      border="1px solid white"
+      minHeight="220px"
     >
-      <Button 
-        id="left-btn"
-        colorScheme="blackAlpha"
-        margin="0px"
-        padding="0px"
-        width="min-content"
-        minWidth="min-content"
-        maxWidth="min-content"
-        height="min-content"
-        background="none"
-        onClick={handlePrev}
-      >
-        <ChevronLeftIcon color="white" boxSize="30px" />
-      </Button>
       <Flex
-        id="card-container"
+        id="references-container"
         flexDirection="row"
         gap="30px"
         justifyContent="center"
         alignItems="center"
-        padding="0px 30px"
+        width="1320px"
+        height="220px"
       >
-        <ReferenceCard reference={REFERENCES[ref_num-1]} />
-        <ReferenceCard reference={REFERENCES[ref_num]} />
-        <ReferenceCard reference={REFERENCES[ref_num+1]} />
+        {REFERENCES.slice(0, 3).map(reference => (
+          <CarouselTransition_1 _in={transition_1}>
+            <ReferenceCard
+              key={uuid()}
+              reference={reference}
+            />
+          </CarouselTransition_1>
+        ))}
       </Flex>
-      <Button
-        id="right-btn"
-        colorScheme="blackAlpha"
-        margin="0px"
-        padding="0px"
-        width="min-content"
-        minWidth="min-content"
-        maxWidth="min-content"
-        height="min-content"
-        background="none"
-        onClick={handleNext}
+      <Flex
+        id="references-container"
+        position="absolute"
+        flexDirection="row"
+        gap="30px"
+        justifyContent="center"
+        alignItems="center"
+        width="1320px"
+        height="220px"
       >
-        <ChevronRightIcon color="white" boxSize="30px" />
-      </Button>
+        {REFERENCES.slice(3).map(reference => (
+          <CarouselTransition_2 _in={transition_2}>
+            <ReferenceCard
+              key={uuid()}
+              reference={reference}
+            />
+          </CarouselTransition_2>
+        ))}
+      </Flex>
+      <Flex
+        id="btn-container"
+        flexDirection="column"
+        justifyContent="start"
+        alignItems="center"
+      >
+        <Button 
+          id="prev-btn"
+          colorScheme="blackAlpha"
+          margin="0px"
+          padding="0px"
+          width="min-content"
+          minWidth="min-content"
+          maxWidth="min-content"
+          height="min-content"
+          background="none"
+          opacity={transition_2 ? 1.0 : 0.5}
+          transition="opacity 100ms linear"
+          zIndex={2}
+          onClick={handlePrev}
+        >
+          <ChevronUpIcon color="white" boxSize="30px" />
+        </Button>
+        <Flex
+          flexDirection="row"
+          gap="5px"
+          justifyContent="center"
+          alignItems="center"
+          padding="5px"
+        >
+          <FadeTransition _in={transition_3}>
+            <Text fontSize="14px">{transition_3 ? 1 : 2}</Text>
+          </FadeTransition>
+          <Text fontSize="16px">/</Text>
+          <Text fontSize="14px">2</Text>
+        </Flex>
+        <Button
+          id="next-btn"
+          colorScheme="blackAlpha"
+          margin="0px"
+          padding="0px"
+          width="min-content"
+          minWidth="min-content"
+          maxWidth="min-content"
+          height="min-content"
+          background="none"
+          opacity={transition_1 ? 1.0 : 0.5}
+          transition="opacity 100ms linear"
+          zIndex={2}
+          onClick={handleNext}
+        >
+          <ChevronDownIcon color="white" boxSize="30px" />
+        </Button>
+      </Flex>
     </Flex>
   );
 }

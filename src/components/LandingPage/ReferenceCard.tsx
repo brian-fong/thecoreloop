@@ -9,11 +9,13 @@ export default function ReferenceCard({ reference }: any) {
     <Flex
       flexDirection="column"
       width="400px"
+      height="100%"
       color="white"
       background={reference.bkg_head}
       border="none"
       borderRadius="5px"
       boxShadow="10px 10px 5px rgba(0, 0, 0, 0.5)"
+      transition="transform 400ms ease-in-out, opacity 300ms linear"
       overflow="hidden"
     >
       <Flex

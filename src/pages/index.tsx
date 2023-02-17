@@ -50,7 +50,6 @@ export default function landing_page() {
         minHeight="100vh"
         color="white"
         background="#282A36"
-        overflowX="hidden"
       >
         {/* Banner */}
         <Flex
@@ -117,7 +116,7 @@ export default function landing_page() {
               Say goodbye 👋 to scouring <Text display="inline" color="twitter">Twitter</Text>, <Text display="inline" color="white">Notion</Text>, <Text display="inline" color="telegram">Telegram</Text>, &#38; <Text display="inline" color="discord">Discord</Text> for gaming information!
             </Box>
             <Box fontSize="18px" textAlign="center">
-              <Text display="inline" color="tcl_pink">thecoreloop</Text> is your go-to social discovery platform where community and web3 games intersect. Get ready to discover high-quality content on all things web3 gaming in one place!
+              <Text display="inline" color="tcl_pink">thecoreloop</Text> is your go-to social discovery platform where community and web3 games intersect.
             </Box>
           </Flex>
 
@@ -125,7 +124,7 @@ export default function landing_page() {
           <Gallery cols={cols} />
 
           <Text fontSize="20px" textAlign="center">
-            Want to take a sneak peek &#38; be the first to try the platform?
+            Select your class above and join the core team
           </Text>
           <Link 
             id="typeform-btn"
@@ -155,7 +154,7 @@ export default function landing_page() {
               justifyContent="align"
               alignItems="center"
             >
-              LFG. I'd love to join the core team!
+              LFG. Sign me up for the alpha
             </Flex>
           </Link>
         </Flex>
