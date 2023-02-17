@@ -59,11 +59,13 @@ export default function landing_page() {
           alignItems="center"
           width="100%"
           background="tcl_yellow"
+          draggable={false}
         >
           <Image
             src="./tcl-logo.png"
             objectFit="cover"
             height="50px"
+            draggable={false}
           />
           <Flex
             id="socials-container"
@@ -101,7 +103,7 @@ export default function landing_page() {
           gap="10px"
           justifyContent="center"
           alignItems="center"
-          padding="0px 0px 60px"
+          padding="0px 0px 30px"
           zIndex={3}
         >
           <Flex

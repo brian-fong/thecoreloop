@@ -9,30 +9,23 @@ import {
 } from "@chakra-ui/icons"
 import uuid from "react-uuid";
 import { useState } from "react";
-import wait from "../../../utils/wait";
 import ReferenceCard from "../ReferenceCard";
-import { REFERENCES } from "../../../utils/references";
 import FadeTransition from "./FadeTransition";
-import CarouselTransition_1 from "./CarouselTransition_1";
-import CarouselTransition_2 from "./CarouselTransition_2";
+import CarouselTransition from "./CarouselTransition";
+import { REFERENCES } from "../../../utils/references";
 
 export default function Carousel() {
-  const [transition_1, toggleTransition_1] = useState<boolean>(true);
-  const [transition_2, toggleTransition_2] = useState<boolean>(false);
-  const [transition_3, toggleTransition_3] = useState<boolean>(true);
+  const [shift, toggleShift] = useState<boolean>(true);
+  const [page_fade, togglePageFade] = useState<boolean>(true);
 
   async function handlePrev(): Promise<void> {
-    toggleTransition_2(false);
-    toggleTransition_3(true);
-    await wait(100);
-    toggleTransition_1(true);
+    toggleShift(true);
+    togglePageFade(true);
   }
 
   async function handleNext(): Promise<void> {
-    toggleTransition_1(false);
-    toggleTransition_3(false);
-    await wait(100);
-    toggleTransition_2(true);
+    toggleShift(false);
+    togglePageFade(false);
   }
 
   return (
@@ -58,15 +51,15 @@ export default function Carousel() {
             alignItems="center"
             width="1320px"
             height="220px"
-            zIndex={transition_1 ? 2 : 1}
+            zIndex={shift ? 2 : 1}
           >
             {REFERENCES.slice(0, 3).map(reference => (
-              <CarouselTransition_1 _in={transition_1}>
+              <CarouselTransition direction="up" _in={shift}>
                 <ReferenceCard
                   key={uuid()}
                   reference={reference}
                 />
-              </CarouselTransition_1>
+              </CarouselTransition>
             ))}
           </Flex>
           <Flex
@@ -78,15 +71,15 @@ export default function Carousel() {
             alignItems="center"
             width="1320px"
             height="220px"
-            zIndex={transition_1 ? 1 : 2}
+            zIndex={shift ? 1 : 2}
           >
             {REFERENCES.slice(3).map(reference => (
-              <CarouselTransition_2 _in={transition_2}>
+              <CarouselTransition direction="down"_in={!shift}>
                 <ReferenceCard
                   key={uuid()}
                   reference={reference}
                 />
-              </CarouselTransition_2>
+              </CarouselTransition>
             ))}
           </Flex>
       </Flex>
@@ -106,7 +99,7 @@ export default function Carousel() {
           maxWidth="min-content"
           height="min-content"
           background="none"
-          opacity={transition_2 ? 1.0 : 0.5}
+          opacity={!shift ? 1.0 : 0.5}
           transition="opacity 100ms linear"
           zIndex={2}
           onClick={handlePrev}
@@ -119,9 +112,11 @@ export default function Carousel() {
           justifyContent="center"
           alignItems="center"
           padding="5px"
+          userSelect="none"
+          draggable={false}
         >
-          <FadeTransition _in={transition_3}>
-            <Text fontSize="14px">{transition_3 ? 1 : 2}</Text>
+          <FadeTransition _in={page_fade}>
+            <Text fontSize="14px">{page_fade ? 1 : 2}</Text>
           </FadeTransition>
           <Text fontSize="16px">/</Text>
           <Text fontSize="14px">2</Text>
@@ -136,7 +131,7 @@ export default function Carousel() {
           maxWidth="min-content"
           height="min-content"
           background="none"
-          opacity={transition_1 ? 1.0 : 0.5}
+          opacity={shift ? 1.0 : 0.5}
           transition="opacity 100ms linear"
           zIndex={2}
           onClick={handleNext}
