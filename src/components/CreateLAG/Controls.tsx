@@ -1,6 +1,6 @@
 import wait from "../../utils/wait";
 import { Flex } from "@chakra-ui/react";
-import Translate from "../Misc/Translate";
+import ToggleBtn from "../Misc/ToggleBtn";
 import { pressBtn } from "../Misc/Buttons";
 import { useState, useEffect, ReactElement } from "react";
 import CurveSubContainer from "../Core/CurveSubContainer";
@@ -74,19 +74,19 @@ export default function Controls({
         width="100%"
       >
         {/* Show Fetch Button or Cancel Button */}
-        <Translate mounting={atLeast1URL()}>
+        <ToggleBtn mounting={atLeast1URL()}>
           {renderFetchBtn()}
-        </Translate>
+        </ToggleBtn>
 
         {/* Upload to Database Button */}
-        <Translate mounting={atLeast1Article()}>
+        <ToggleBtn mounting={atLeast1Article()}>
           {renderUploadBtn()}
-        </Translate>
+        </ToggleBtn>
 
         {/* Publish Message Button */}
-        <Translate mounting={atLeast1Article()}>
+        <ToggleBtn mounting={atLeast1Article()}>
           {renderPublishBtn()}
-        </Translate>
+        </ToggleBtn>
       </Flex>
     </CurveSubContainer>
   );

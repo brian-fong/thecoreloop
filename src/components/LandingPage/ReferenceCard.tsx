@@ -4,18 +4,13 @@ import {
   Image,
 } from "@chakra-ui/react";
 
-export default function Card({ 
-  handle, 
-  subhandle, 
-  text,
-  bkg_head,
-}: any) {
+export default function ReferenceCard({ reference }: any) {
   return (
     <Flex
       flexDirection="column"
-      maxWidth="400px"
+      width="400px"
       color="white"
-      background={bkg_head}
+      background={reference.bkg_head}
       border="none"
       borderRadius="5px"
       boxShadow="10px 10px 5px rgba(0, 0, 0, 0.5)"
@@ -27,11 +22,11 @@ export default function Card({
         justifyContent="center"
         alignItems="center"
         padding="10px"
-        background={bkg_head}
+        background={reference.bkg_head}
         border="none"
         borderRadius="5px 5px 0px 0px"
       >
-        <Image src={`./${handle.toLowerCase()}-pfp.png`} width="50px" />
+        <Image src={`./${reference.handle.toLowerCase()}-pfp.png`} width="50px" />
         <Flex
           flexDirection="column"
           justifyContent="center"
@@ -59,15 +54,15 @@ export default function Card({
               backgroundSize: "100% 1px",
             }}
           >
-            <a href={`https://twitter.com/${handle}`} target="_blank">
-              @{handle}
+            <a href={`https://twitter.com/${reference.handle}`} target="_blank">
+              @{reference.handle}
             </a>
           </Text>
           <Text
             color="white"
             fontSize="15px"
           >
-            {subhandle}
+            {reference.subhandle}
           </Text>
         </Flex>
       </Flex>
@@ -85,7 +80,7 @@ export default function Card({
           fontSize="14px"
           textIndent="30px"
         >
-          "{text}"
+          "{reference.text}"
         </Text>
       </Flex>
     </Flex>

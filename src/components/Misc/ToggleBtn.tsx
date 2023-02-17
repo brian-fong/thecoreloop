@@ -28,7 +28,7 @@ const transition_styles: any = {
   },
 };
 
-export default function Translate({ children, mounting }: any) {
+export default function ToggleBtn({ children, mounting }: any) {
   const node_ref = useRef(null);
 
   return (

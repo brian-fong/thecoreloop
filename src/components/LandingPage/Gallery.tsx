@@ -5,13 +5,13 @@ import {
 import uuid from "react-uuid";
 import { useState, useEffect, ReactElement } from "react";
 
-export default function Gallery({ image_cols }: any) {
+export default function Gallery({ cols }: any) {
   const [images, setImages] = useState<ReactElement[]>([]);
   const IMAGES: string[] = ["gamer", "builder", "investor", "creator"];
 
   useEffect(() => {
     setImages([]);
-    if (image_cols > 1) {
+    if (cols > 1) {
       for (const IMAGE of IMAGES) {
         setImages(images => [...images, <Image
           key={uuid()}
@@ -32,12 +32,12 @@ export default function Gallery({ image_cols }: any) {
           loading="lazy"
         />]);
     }
-  }, [image_cols]);
+  }, [cols]);
 
   return (
     <Grid
       id="images-gallery"
-      templateColumns={`repeat(${image_cols}, minmax(250px, 1fr))`}
+      templateColumns={`repeat(${cols}, minmax(250px, 1fr))`}
       gap="30px"
       padding="30px"
       height="min-content"

@@ -2,38 +2,29 @@ import {
   Box,
   Text,
   Flex,
-  Grid,
   Link,
   Image,
   Tooltip,
   useDimensions,
 } from "@chakra-ui/react";
 import Head from "next/head";
-import uuid from "react-uuid";
 import wait from "../utils/wait";
 import { useRef, useState, useEffect } from "react";
-import { REFERENCES } from "../utils/references";
-import Card from "../components/LandingPage/Card";
 import Gallery from "../components/LandingPage/Gallery";
+import Carousel from "../components/LandingPage/Carousel";
 
 export default function landing_page() {
   const main_ref = useRef<any>();
-  const [card_cols, setCardCols] = useState<number>(3);
-  const [image_cols, setImageCols] = useState<number>(4);
+  const [cols, setCols] = useState<number>(4);
   const dimensions = useDimensions(main_ref, true);
 
   useEffect(() => {
     const width: number = dimensions?.contentBox?.width!;
-
-    // Set number of columns for card gallery
-    if (width > 1110) setCardCols(3);
-    else if (width > 760) setCardCols(2);
-    else setCardCols(1);
     
     // Set number of columns for image gallery
-    if (width > 1150) setImageCols(4);
-    else if (width > 590) setImageCols(2);
-    else setImageCols(1);
+    if (width > 1150) setCols(4);
+    else if (width > 590) setCols(2);
+    else setCols(1);
   }, [dimensions]);
 
   return (
@@ -47,6 +38,8 @@ export default function landing_page() {
         />
         <meta name="viewport" content="viewport-fit=cover" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" type="text/css" charSet="UTF-8" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
       </Head>
       <Flex
         id="main_container"
@@ -100,24 +93,8 @@ export default function landing_page() {
           </Flex>
         </Flex>
 
-        {/* Cards Gallery */}
-        <Grid
-          id="cards-gallery"
-          templateColumns={`repeat(${card_cols}, minmax(350px, 1fr))`}
-          gap="30px"
-          padding="30px"
-          height="min-content"
-        >
-          {REFERENCES.map(reference => (
-            <Card
-              key={uuid()}
-              handle={reference.handle}
-              subhandle={reference.subhandle}
-              text={reference.text}
-              bkg_head={reference.bkg_head}
-            />
-          ))}
-        </Grid>
+        {/* References Carousel */}
+        <Carousel />
 
         {/* Body */}
         <Flex
@@ -144,8 +121,8 @@ export default function landing_page() {
             </Box>
           </Flex>
 
-          {/* Images Gallery */}
-          <Gallery image_cols={image_cols} />
+          {/* Player Gallery */}
+          <Gallery cols={cols} />
 
           <Text fontSize="20px" textAlign="center">
             Want to take a sneak peek &#38; be the first to try the platform?
@@ -160,7 +137,7 @@ export default function landing_page() {
             border="2px solid black"
             borderRadius="5px"
             boxShadow="10px 10px 5px rgba(0, 0, 0, 0.5)"
-            transition="background-color 200ms ease-in"
+            transition="background-color 200ms ease-in, translate 100ms linear"
             _hover={{
               background: "tcl_teal_hover",
             }}
