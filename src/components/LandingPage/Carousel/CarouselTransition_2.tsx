@@ -1,12 +1,13 @@
 import { useRef } from "react";
 import { Transition } from "react-transition-group";
+import uuid from "react-uuid";
 
 const duration = 300;
 
 const styles_default = {
   transform: "translate(0px, 0px)",
   opacity: "1.0",
-  transition: `all ${duration}ms ease-in-out,
+  transition: `transform ${duration}ms ease-in,
                opacity ${duration}ms linear`,
 };
 

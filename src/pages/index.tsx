@@ -8,10 +8,9 @@ import {
   useDimensions,
 } from "@chakra-ui/react";
 import Head from "next/head";
-import wait from "../utils/wait";
 import { useRef, useState, useEffect } from "react";
 import Gallery from "../components/LandingPage/Gallery";
-import Carousel from "../components/LandingPage/Carousel";
+import Carousel from "../components/LandingPage/Carousel/Carousel";
 
 export default function landing_page() {
   const main_ref = useRef<any>();
@@ -22,8 +21,8 @@ export default function landing_page() {
     const width: number = dimensions?.contentBox?.width!;
     
     // Set number of columns for image gallery
-    if (width > 1150) setCols(4);
-    else if (width > 590) setCols(2);
+    if (width > 1210) setCols(4);
+    else if (width > 610) setCols(2);
     else setCols(1);
   }, [dimensions]);
 
@@ -102,7 +101,8 @@ export default function landing_page() {
           gap="10px"
           justifyContent="center"
           alignItems="center"
-          padding="30px 0px 60px"
+          padding="0px 0px 60px"
+          zIndex={3}
         >
           <Flex
             flexDirection="column"
@@ -123,40 +123,9 @@ export default function landing_page() {
           {/* Player Gallery */}
           <Gallery cols={cols} />
 
-          <Text fontSize="20px" textAlign="center">
-            Select your class above and join the core team
+          <Text fontSize="20px" fontWeight="800" textAlign="center">
+            Select your class and join the core team!
           </Text>
-          <Link 
-            id="typeform-btn"
-            href="https://pm6hpw3zasy.typeform.com/to/kOc7e3N7"
-            padding="5px 10px"
-            color="black"
-            fontWeight="800"
-            background="tcl_teal"
-            border="2px solid black"
-            borderRadius="5px"
-            boxShadow="10px 10px 5px rgba(0, 0, 0, 0.5)"
-            transition="background-color 200ms ease-in, translate 100ms linear"
-            _hover={{
-              background: "tcl_teal_hover",
-            }}
-            onClick={async () => {
-              const btn = document.getElementById("typeform-btn")!;
-              btn.style.transform = "translate(3px, 3px)";
-              btn.style.boxShadow = "none";
-              await wait(100);
-              btn.style.transform = "translate(0px, 0px)";
-              btn.style.boxShadow = "10px 10px 5px rgba(0, 0, 0, 0.5)";
-            }}
-          >
-            <Flex
-              flexDirection="row"
-              justifyContent="align"
-              alignItems="center"
-            >
-              LFG. Sign me up for the alpha
-            </Flex>
-          </Link>
         </Flex>
       </Flex>
     </>

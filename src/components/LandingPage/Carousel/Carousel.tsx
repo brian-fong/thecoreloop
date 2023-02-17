@@ -9,12 +9,12 @@ import {
 } from "@chakra-ui/icons"
 import uuid from "react-uuid";
 import { useState } from "react";
-import wait from "../../utils/wait";
-import ReferenceCard from "./ReferenceCard";
-import { REFERENCES } from "../../utils/references";
-import FadeTransition from "./Carousel/FadeTransition";
-import CarouselTransition_1 from "./Carousel/CarouselTransition_1";
-import CarouselTransition_2 from "./Carousel/CarouselTransition_2";
+import wait from "../../../utils/wait";
+import ReferenceCard from "../ReferenceCard";
+import { REFERENCES } from "../../../utils/references";
+import FadeTransition from "./FadeTransition";
+import CarouselTransition_1 from "./CarouselTransition_1";
+import CarouselTransition_2 from "./CarouselTransition_2";
 
 export default function Carousel() {
   const [transition_1, toggleTransition_1] = useState<boolean>(true);
@@ -46,41 +46,49 @@ export default function Carousel() {
       minHeight="220px"
     >
       <Flex
-        id="references-container"
-        flexDirection="row"
-        gap="30px"
+        flexDirection="column"
         justifyContent="center"
         alignItems="center"
-        width="1320px"
-        height="220px"
       >
-        {REFERENCES.slice(0, 3).map(reference => (
-          <CarouselTransition_1 _in={transition_1}>
-            <ReferenceCard
-              key={uuid()}
-              reference={reference}
-            />
-          </CarouselTransition_1>
-        ))}
-      </Flex>
-      <Flex
-        id="references-container"
-        position="absolute"
-        flexDirection="row"
-        gap="30px"
-        justifyContent="center"
-        alignItems="center"
-        width="1320px"
-        height="220px"
-      >
-        {REFERENCES.slice(3).map(reference => (
-          <CarouselTransition_2 _in={transition_2}>
-            <ReferenceCard
-              key={uuid()}
-              reference={reference}
-            />
-          </CarouselTransition_2>
-        ))}
+          <Flex
+            id="references-container-1"
+            flexDirection="row"
+            gap="30px"
+            justifyContent="center"
+            alignItems="center"
+            width="1320px"
+            height="220px"
+            zIndex={transition_1 ? 2 : 1}
+          >
+            {REFERENCES.slice(0, 3).map(reference => (
+              <CarouselTransition_1 _in={transition_1}>
+                <ReferenceCard
+                  key={uuid()}
+                  reference={reference}
+                />
+              </CarouselTransition_1>
+            ))}
+          </Flex>
+          <Flex
+            id="references-container-2"
+            position="absolute"
+            flexDirection="row"
+            gap="30px"
+            justifyContent="center"
+            alignItems="center"
+            width="1320px"
+            height="220px"
+            zIndex={transition_1 ? 1 : 2}
+          >
+            {REFERENCES.slice(3).map(reference => (
+              <CarouselTransition_2 _in={transition_2}>
+                <ReferenceCard
+                  key={uuid()}
+                  reference={reference}
+                />
+              </CarouselTransition_2>
+            ))}
+          </Flex>
       </Flex>
       <Flex
         id="btn-container"

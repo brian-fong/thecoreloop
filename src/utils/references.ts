@@ -6,22 +6,22 @@ export const REFERENCES = [
     bkg_head: "#27303D",
   },
   {
-    handle: "Snek",
-    subhandle: "Web3 Gaming Enthusiast",
-    text: "As someone digging through games, it’s hard to filter through and get concrete info so a platform like TheCoreLoop’s would make it easier for new participants to go for information.",
-    bkg_head: "#323A53",
-  },
-  {
     handle: "BuxtonMatthew",
     subhandle: "Founder @ Mystic Games",
     text: "A platform like TheCoreLoop provides a trusted source for legitimate games to boost their reputation in the space. Moreover, it further allows us to scope out potential collaborators in the gaming sector.",
     bkg_head: "#45303F",
   },
   {
-    handle: "shloked_",
-    subhandle: "Partnerships Lead @ Glip.gg",
-    text: "What would matter to me is learning about new high quality projects that isn’t often covered compared to the established ones. I definitely see a lot of value here at TheCoreLoop.",
-    bkg_head: "#5D604A",
+    handle: "quichenpatel",
+    subhandle: "Investments @ BITKRAFT",
+    text: "Info on good web3 games is extremely scattered and frankly, there are many low quality games that crowd out quality. As an investor in web3 gaming, what TheCoreLoop is building would be awesome",
+    bkg_head: "#263670",
+  },
+  {
+    handle: "snake_chain",
+    subhandle: "Web3 Gaming Enthusiast",
+    text: "As someone digging through games, it’s hard to filter through and get concrete info so a platform like TheCoreLoop’s would make it easier for new participants to go for information.",
+    bkg_head: "#323A53",
   },
   {
     handle: "__sugs",
@@ -30,9 +30,9 @@ export const REFERENCES = [
     bkg_head: "#2E434D",
   },
   {
-    handle: "quichenpatel",
-    subhandle: "Investments @ BITKRAFT",
-    text: "Info on good web3 games is extremely scattered and frankly, there are many low quality games that crowd out quality. As an investor, what TheCoreLoop is building would be awesome.",
-    bkg_head: "#263670",
+    handle: "shloked_",
+    subhandle: "Partnerships Lead @ Glip.gg",
+    text: "What would matter to me is learning about new high quality projects that isn’t often covered compared to the established ones. I definitely see a lot of value here at TheCoreLoop.",
+    bkg_head: "#5D604A",
   },
 ];
