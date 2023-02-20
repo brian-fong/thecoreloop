@@ -6,7 +6,7 @@ import uuid from "react-uuid";
 import ReferenceCard from "./ReferenceCard";
 import CarouselTrack from "./CarouselTrack";
 import { REFERENCES } from "../../utils/references";
-import { useState, useEffect, ReactElement } from "react";
+import { useState, useEffect, ReactElement, TouchEvent } from "react";
 import { SwipeEventData, useSwipeable } from "react-swipeable";
 
 const min_card_width: number = 250;
@@ -17,21 +17,17 @@ export default function Carousel_Mobile({ screen_width }: any) {
 
   const [cards, setCards] = useState<ReactElement[]>([]); // reference cards
 
-  const handlers = useSwipeable({
+  const card_handlers = useSwipeable({
     onSwipedLeft: handleSwipeLeft,
     onSwipedRight: handleSwipeRight,
   });
 
   function handleSwipeLeft(event_data: SwipeEventData) {
-    console.log("Swiped Left: ", event_data);
     if (index < REFERENCES.length-1) setIndex((i: number) => i+1);
-    console.log("Index: ", index);
   }
 
   function handleSwipeRight(event_data: SwipeEventData) {
-    console.log("Swiped Right: ", event_data);
     if (index > 0) setIndex((i: number) => i-1);
-    console.log("Index: ", index);
   }
 
   useEffect(() => {
@@ -67,7 +63,6 @@ export default function Carousel_Mobile({ screen_width }: any) {
       alignItems="center"
       padding="30px 60px"
       width="100%"
-      {...handlers}
     >
       <Grid
         id="card-grid"
@@ -79,12 +74,14 @@ export default function Carousel_Mobile({ screen_width }: any) {
         justifyContent="center"
         alignItems="start"
         width="100%"
+        {...card_handlers}
       >
         {cards}
       </Grid>
 
       <CarouselTrack 
         index={index}
+        setIndex={setIndex}
         stages={stages}
       />
     </Flex>
