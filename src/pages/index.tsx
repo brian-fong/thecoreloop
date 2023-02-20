@@ -9,22 +9,12 @@ import {
 } from "@chakra-ui/react";
 import Head from "next/head";
 import { useRef, useState, useEffect } from "react";
+import Carousel from "../components/LandingPage/Carousel";
 import Gallery from "../components/LandingPage/Gallery";
-import Carousel from "../components/LandingPage/Carousel/Carousel";
 
 export default function landing_page() {
   const main_ref = useRef<any>();
-  const [cols, setCols] = useState<number>(4);
   const dimensions = useDimensions(main_ref, true);
-
-  useEffect(() => {
-    const width: number = dimensions?.contentBox?.width!;
-    
-    // Set number of columns for image gallery
-    if (width > 1210) setCols(4);
-    else if (width > 610) setCols(2);
-    else setCols(1);
-  }, [dimensions]);
 
   return (
     <>
@@ -37,8 +27,6 @@ export default function landing_page() {
         />
         <meta name="viewport" content="viewport-fit=cover" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="stylesheet" type="text/css" charSet="UTF-8" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
       </Head>
       <Flex
         id="main_container"
@@ -59,6 +47,7 @@ export default function landing_page() {
           alignItems="center"
           width="100%"
           background="tcl_yellow"
+          zIndex={10}
           draggable={false}
         >
           <Image
@@ -94,7 +83,7 @@ export default function landing_page() {
         </Flex>
 
         {/* References Carousel */}
-        <Carousel />
+        <Carousel screen_width={dimensions?.contentBox?.width!} />
 
         {/* Body */}
         <Flex
@@ -103,31 +92,59 @@ export default function landing_page() {
           gap="10px"
           justifyContent="center"
           alignItems="center"
-          padding="0px 0px 30px"
+          width="100%"
           zIndex={3}
         >
           <Flex
+            id="body-text"
             flexDirection="column"
             gap="20px"
             justifyContent="center"
             alignItems="center"
-            padding="0px 40px"
+            margin="30px"
             maxWidth="1200px"
           >
             <Box fontSize="18px" textAlign="center">
-              Say goodbye 👋 to scouring <Text display="inline" color="twitter">Twitter</Text>, <Text display="inline" color="white">Notion</Text>, <Text display="inline" color="telegram">Telegram</Text>, &#38; <Text display="inline" color="discord">Discord</Text> for gaming information!
+              Say goodbye 👋 to scouring Notion, 
+              <Text display="inline" color="twitter"> Twitter</Text>
+              , 
+              <Text display="inline" color="telegram"> Telegram</Text>
+              , & 
+              <Text display="inline" color="discord"> Discord </Text>
+              for gaming information!
             </Box>
             <Box fontSize="18px" textAlign="center">
-              <Text display="inline" color="tcl_pink">thecoreloop</Text> is your go-to social discovery platform where community and web3 games intersect.
+              <Text display="inline" color="tcl_pink">thecoreloop </Text>
+              is your go-to social discovery platform where 
+              <Text display="inline" fontStyle="italic" opacity="0.7"> community </Text> 
+              and 
+              <Text display="inline" fontStyle="italic" opacity="0.7"> web3 games </Text> 
+              intersect.
             </Box>
           </Flex>
 
           {/* Player Gallery */}
-          <Gallery cols={cols} />
+          <Gallery screen_width={dimensions?.contentBox?.width!} />
 
-          <Text fontSize="20px" fontWeight="800" textAlign="center">
-            Select your class and join the core team!
-          </Text>
+          <Flex
+            flexDirection="row"
+            justifyContent="center"
+            alignItems="center"
+            margin="30px"
+          >
+            <Text 
+              id="footer-text"
+              fontSize="20px" 
+              fontWeight="800" 
+              textAlign="center"
+              padding="4px 8px"
+              color="black"
+              background="white"
+              borderRadius="10px"
+            >
+              Select your class and join the core team!
+            </Text>
+          </Flex>
         </Flex>
       </Flex>
     </>
