@@ -10,13 +10,13 @@ const styles_default = {
 };
 
 const styles_transition: any = {
-  entered:  { scaleY: "1.0", opacity: "1.0" },
-  entering: { scaleY: "1.0", opacity: "1.0" },
-  exiting:  { scaleY: "0.0", opacity: "0.5" },
-  exited:   { scaleY: "0.0", opacity: "0.5" },
+  entered:  { opacity: "1.0" },
+  entering: { opacity: "0.5" },
+  exiting:  { opacity: "0.5" },
+  exited:   { opacity: "1.0" },
 };
 
-export default function WarpTransition({ children, _in }: any) {
+export default function Blink({ children, _in }: any) {
   const node_ref = useRef(null);
 
   return (
@@ -39,5 +39,4 @@ export default function WarpTransition({ children, _in }: any) {
     </Transition>
   );
 }
-
 

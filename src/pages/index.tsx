@@ -9,25 +9,12 @@ import {
 } from "@chakra-ui/react";
 import Head from "next/head";
 import { useRef, useState, useEffect } from "react";
-import Gallery, { GALLERY_MODES } from "../components/LandingPage/Gallery";
-import Carousel from "../components/LandingPage/Carousel/Carousel";
+import Carousel from "../components/LandingPage/Carousel";
+import Gallery from "../components/LandingPage/Gallery";
 
 export default function landing_page() {
   const main_ref = useRef<any>();
   const dimensions = useDimensions(main_ref, true);
-  const [gallery_mode, setGalleryMode] = useState<number>(0);
-
-  useEffect(() => {
-    const width: number = dimensions?.contentBox?.width!;
-
-    let _gallery_mode: number = 0;
-    for (let i = 0; i < GALLERY_MODES.length; i++) {
-      const min_width: number = GALLERY_MODES[i].min_width;
-      if (width > min_width) _gallery_mode = i;
-    }
-
-    setGalleryMode(_gallery_mode);
-  }, [dimensions]);
 
   return (
     <>
@@ -105,6 +92,7 @@ export default function landing_page() {
           gap="10px"
           justifyContent="center"
           alignItems="center"
+          width="100%"
           zIndex={3}
         >
           <Flex
@@ -113,33 +101,50 @@ export default function landing_page() {
             gap="20px"
             justifyContent="center"
             alignItems="center"
-            padding="30px"
+            margin="30px"
             maxWidth="1200px"
           >
             <Box fontSize="18px" textAlign="center">
-              Say goodbye 👋 to scouring <Text display="inline" color="twitter">Twitter</Text>, <Text display="inline" color="telegram">Telegram</Text>, &#38; <Text display="inline" color="discord">Discord</Text> for gaming information!
+              Say goodbye 👋 to scouring Notion, 
+              <Text display="inline" color="twitter"> Twitter</Text>
+              , 
+              <Text display="inline" color="telegram"> Telegram</Text>
+              , & 
+              <Text display="inline" color="discord"> Discord </Text>
+              for gaming information!
             </Box>
             <Box fontSize="18px" textAlign="center">
-              <Text display="inline" color="tcl_pink">thecoreloop</Text> is your go-to social discovery platform where <Text display="inline" fontStyle="italic">community</Text> and <Text display="inline" fontStyle="italic">web3 games</Text> intersect.
+              <Text display="inline" color="tcl_pink">thecoreloop </Text>
+              is your go-to social discovery platform where 
+              <Text display="inline" fontStyle="italic" opacity="0.7"> community </Text> 
+              and 
+              <Text display="inline" fontStyle="italic" opacity="0.7"> web3 games </Text> 
+              intersect.
             </Box>
           </Flex>
 
           {/* Player Gallery */}
-          <Gallery mode={gallery_mode} />
+          <Gallery screen_width={dimensions?.contentBox?.width!} />
 
-          <Text 
-            id="footer-text"
-            fontSize="20px" 
-            fontWeight="800" 
-            textAlign="center"
-            margin="10px 40px 30px"
-            padding="4px 8px"
-            color="black"
-            background="white"
-            borderRadius="10px"
+          <Flex
+            flexDirection="row"
+            justifyContent="center"
+            alignItems="center"
+            margin="30px"
           >
-            Select your class and join the core team!
-          </Text>
+            <Text 
+              id="footer-text"
+              fontSize="20px" 
+              fontWeight="800" 
+              textAlign="center"
+              padding="4px 8px"
+              color="black"
+              background="white"
+              borderRadius="10px"
+            >
+              Select your class and join the core team!
+            </Text>
+          </Flex>
         </Flex>
       </Flex>
     </>
