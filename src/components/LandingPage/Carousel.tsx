@@ -41,7 +41,8 @@ export default function Carousel({ screen_width }: any) {
       const min_width: number = min_card_width*i + 40*(i-1) + 120;
       if (screen_width >= min_width) columns = i;
     }
-    setStages(REFERENCES.length/columns);
+    const stages_new: number = REFERENCES.length/columns;
+    if (stages_new != stages) setStages(stages_new);
   }, [screen_width]);
 
   useEffect(() => {

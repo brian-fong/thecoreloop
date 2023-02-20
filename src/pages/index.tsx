@@ -40,7 +40,7 @@ export default function landing_page() {
       >
         {/* Banner */}
         <Flex
-          id="banner"
+          id="header-container"
           flexDirection="row"
           gap="10px"
           justifyContent="space-between"
@@ -87,7 +87,7 @@ export default function landing_page() {
 
         {/* Body */}
         <Flex
-          id="body"
+          id="body-container"
           flexDirection="column"
           gap="10px"
           justifyContent="center"
@@ -127,22 +127,20 @@ export default function landing_page() {
           <Gallery screen_width={dimensions?.contentBox?.width!} />
 
           <Flex
+            id="footer-container"
             flexDirection="row"
             justifyContent="center"
             alignItems="center"
             margin="30px"
           >
             <Text 
-              id="footer-text"
               fontSize="20px" 
+              fontStyle="italic"
               fontWeight="800" 
               textAlign="center"
               padding="4px 8px"
-              color="black"
-              background="white"
-              borderRadius="10px"
             >
-              Select your class and join the core team!
+              === SELECT YOUR CLASS AND JOIN THE CORE TEAM! ===
             </Text>
           </Flex>
         </Flex>

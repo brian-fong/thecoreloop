@@ -4,35 +4,26 @@ import {
   Link,
 } from "@chakra-ui/react";
 import uuid from "react-uuid";
+import PlayerImage from "./PlayerImage";
 import { useState, useEffect, ReactElement } from "react";
+
+const min_image_width: number = 150;
 
 export default function Gallery({ screen_width }: any) {
   const [columns, setColumns] = useState<number>(4);
   const [images, setImages] = useState<ReactElement[]>([]);
-  const IMAGES: string[] = ["gamer", "builder", "investor", "creator"];
+  const PLAYERS: string[] = ["gamer", "builder", "investor", "creator"];
 
   useEffect(() => {
-    if (screen_width < 750) setColumns(2);
+    if (screen_width < 4*min_image_width + 3*50 + 100) setColumns(2);
     else setColumns(4);
   }, [screen_width]);
 
   useEffect(() => {
     setImages([]);
-    for (const IMAGE of IMAGES) {
+    for (const player of PLAYERS) {
       setImages(images => [...images, 
-        <Link key={uuid()} href="https://pm6hpw3zasy.typeform.com/to/kOc7e3N7">
-          <Image
-            key={uuid()}
-            src={`${IMAGE}.png`}
-            borderRadius="10px"
-            boxShadow="5px 5px 5px rgba(0, 0, 0, 0.5)"
-            transition="all 200ms ease-in-out"
-            _hover={{
-              transform: "scale(1.1)",
-              boxShadow: "10px 10px 5px rgba(0, 0, 0, 0.5)"
-            }}
-          />
-        </Link>
+        <PlayerImage key={uuid()} player={player} />
       ]);
     }
   }, [columns]);
@@ -42,7 +33,7 @@ export default function Gallery({ screen_width }: any) {
       id="gallery-container"
       templateColumns={`repeat(
         ${columns}, 
-        minmax(100px, 300px)
+        minmax(${min_image_width}px, 300px)
       )`}
       gap="50px"
       justifyContent="center"
