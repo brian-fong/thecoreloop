@@ -2,21 +2,19 @@ import {
   Text,
   Flex,
   Image,
+  Link,
 } from "@chakra-ui/react";
 
-export default function ReferenceCard({ reference }: any) {
+export default function ReferenceCard({ reference, focusable }: any) {
   return (
     <Flex
       flexDirection="column"
-      width="400px"
-      height="100%"
       color="white"
       background={reference.bkg_head}
       border="none"
       borderRadius="5px"
       boxShadow="10px 10px 5px rgba(0, 0, 0, 0.5)"
       transition="transform 400ms ease-in-out, opacity 300ms linear"
-      overflow="hidden"
     >
       <Flex
         flexDirection="row"
@@ -28,7 +26,17 @@ export default function ReferenceCard({ reference }: any) {
         border="none"
         borderRadius="5px 5px 0px 0px"
       >
-        <Image src={`./${reference.handle.toLowerCase()}-pfp.png`} width="50px" />
+        <Link 
+          href={`https://twitter.com/${reference.handle}`} 
+          target="_blank"
+          tabIndex={-1}
+        >
+          <Image 
+            src={`./${reference.handle.toLowerCase()}-pfp.png`} 
+            width="50px" 
+            tabIndex={-1}
+          />
+        </Link>
         <Flex
           flexDirection="column"
           justifyContent="center"
@@ -56,13 +64,18 @@ export default function ReferenceCard({ reference }: any) {
               backgroundSize: "100% 1px",
             }}
           >
-            <a href={`https://twitter.com/${reference.handle}`} target="_blank">
+            <a 
+              href={`https://twitter.com/${reference.handle}`} 
+              target="_blank"
+              tabIndex={focusable ? 0 : -1}
+            >
               @{reference.handle}
             </a>
           </Text>
           <Text
             color="white"
             fontSize="15px"
+            fontStyle="italic"
           >
             {reference.subhandle}
           </Text>

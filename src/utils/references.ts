@@ -24,15 +24,15 @@ export const REFERENCES = [
     bkg_head: "#323A53",
   },
   {
-    handle: "__sugs",
-    subhandle: "Investments @ Newman Capital",
-    text: "As a VC investor, I’d like a discovery tool for finding new projects based on whatever categories I'm searching for (ex. fps, mmorpg, latest trending, building in stealth) - this could give me a sense of what's out there, who's seeking funding, etc",
-    bkg_head: "#2E434D",
-  },
-  {
     handle: "shloked_",
     subhandle: "Partnerships Lead @ Glip.gg",
     text: "What would matter to me is learning about new high quality projects that isn’t often covered compared to the established ones. I definitely see a lot of value here at TheCoreLoop.",
     bkg_head: "#5D604A",
+  },
+  {
+    handle: "__sugs",
+    subhandle: "Investments @ Newman Capital",
+    text: "As a VC investor, I’d like a discovery tool for finding new projects based on whatever categories I'm searching for (ex. fps, mmorpg, latest trending, building in stealth) - this could give me a sense of what's out there, who's seeking funding, etc",
+    bkg_head: "#2E434D",
   },
 ];

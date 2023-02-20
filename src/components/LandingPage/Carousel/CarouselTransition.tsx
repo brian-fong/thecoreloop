@@ -4,7 +4,8 @@ import { Transition } from "react-transition-group";
 const duration = 300;
 
 const transition = {
-  transition: `transform ${duration}ms ease-in,
+  transition: `
+               transform ${duration}ms ease-in,
                opacity ${duration}ms linear`,
 };
 
@@ -18,8 +19,8 @@ const shift_up: any = {
 const shift_down: any = {
   entered:  { transform: "translateY(0px)",   opacity: 1.0 },
   entering: { transform: "translateY(0px)",   opacity: 1.0 },
-  exiting:  { transform: "translateY(80px)", opacity: 0.0 },
-  exited:   { transform: "translateY(80px)", opacity: 0.0 },
+  exiting:  { transform: "translateY(80px)",  opacity: 0.0 },
+  exited:   { transform: "translateY(80px)",  opacity: 0.0 },
 };
 
 
