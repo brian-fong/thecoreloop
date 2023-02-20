@@ -5,11 +5,10 @@ import {
   Link,
 } from "@chakra-ui/react";
 
-export default function ReferenceCard({ reference, focusable }: any) {
+export default function ReferenceCard({ reference }: any) {
   return (
     <Flex
       flexDirection="column"
-      height="100%"
       color="white"
       background={reference.bkg_head}
       border="none"
@@ -68,13 +67,14 @@ export default function ReferenceCard({ reference, focusable }: any) {
             <a 
               href={`https://twitter.com/${reference.handle}`} 
               target="_blank"
-              tabIndex={focusable ? 0 : -1}
+              tabIndex={0}
             >
               @{reference.handle}
             </a>
           </Text>
           <Text
             color="white"
+            opacity="0.8"
             fontSize="15px"
             fontStyle="italic"
           >

@@ -9,12 +9,24 @@ import {
 } from "@chakra-ui/react";
 import Head from "next/head";
 import { useRef, useState, useEffect } from "react";
-import Carousel from "../components/LandingPage/Carousel";
 import Gallery from "../components/LandingPage/Gallery";
+import Carousel_Mobile from "../components/LandingPage/Carousel_Mobile";
+import Carousel_Desktop from "../components/LandingPage/Carousel_Desktop";
 
 export default function landing_page() {
   const main_ref = useRef<any>();
   const dimensions = useDimensions(main_ref, true);
+  const [touch_enabled, setTouch] = useState<boolean>(false);
+
+  useEffect(() => {
+    if ("ontouchstart" in window || navigator.maxTouchPoints > 0) {
+      setTouch(false);
+    } else {
+      setTouch(true);
+    }
+
+    console.log("Touch Enabled: ", touch_enabled);
+  }, []);
 
   return (
     <>
@@ -83,7 +95,15 @@ export default function landing_page() {
         </Flex>
 
         {/* References Carousel */}
-        <Carousel screen_width={dimensions?.contentBox?.width!} />
+        {
+          touch_enabled
+          ? <Carousel_Desktop 
+              screen_width={dimensions?.contentBox?.width!} 
+            />
+          : <Carousel_Mobile 
+            
+            />
+        }
 
         {/* Body */}
         <Flex
