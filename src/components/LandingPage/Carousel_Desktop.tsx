@@ -95,6 +95,7 @@ export default function Carousel_Desktop({ screen_width }: any) {
         justifyContent="center"
         alignItems="start"
         width="100%"
+        maxWidth="1200px"
       >
         {cards}
       </Grid>

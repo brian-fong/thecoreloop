@@ -56,14 +56,14 @@ export default function landing_page() {
         {/* Header */}
         <Header />
 
-        {/* Carousel */}
+        {/* Carousel Container */}
         <Flex
-          id="carousel"
           flexDirection="column"
           justifyContent="center"
           alignItems="center"
           width="100%"
         >
+          {/* Carousel Heading */}
           <Text 
             margin="30px 0px 0px"
             padding="4px 8px"
@@ -75,6 +75,8 @@ export default function landing_page() {
           >
             === WELCOME TO THECORELOOP ===
           </Text>
+
+          {/* Carousel */}
           {
             touch_enabled
               ? <Carousel_Desktop 
@@ -102,7 +104,7 @@ export default function landing_page() {
             gap="20px"
             justifyContent="center"
             alignItems="center"
-            padding="20px 10px"
+            padding="20px 10px 30px"
             width="100%"
             background="bkg"
           >
