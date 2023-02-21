@@ -39,7 +39,7 @@ export default function CarouselTrack({
             data-index={i}
             width="24px"
             height="24px"
-            backgroundColor="rgba(255, 255, 255, 0.5)"
+            backgroundColor="rgba(255, 255, 255, 0.2)"
             border="rgba(255, 255, 255, 0.5)"
             borderRadius="5px"
             onClick={() => handleClick(i)}

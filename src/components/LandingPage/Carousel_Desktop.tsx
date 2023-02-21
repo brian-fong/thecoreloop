@@ -1,6 +1,7 @@
 import {
   Flex,
   Grid,
+  Heading,
 } from "@chakra-ui/react";
 import uuid from "react-uuid";
 import ReferenceCard from "./ReferenceCard";
@@ -81,7 +82,7 @@ export default function Carousel_Desktop({ screen_width }: any) {
       gap="30px"
       justifyContent="center"
       alignItems="start"
-      margin="30px 60px"
+      padding="30px 60px"
       {...handlers}
     >
       <Grid

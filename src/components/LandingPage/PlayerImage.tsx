@@ -16,7 +16,7 @@ export default function PlayerImage({ player }: any) {
       ?.lastChild?.firstChild! as HTMLElement;
 
     target_element.style.transform = "scale(1.1)";
-    image.style.boxShadow = "10px 10px 5px rgba(0, 0, 0, 0.5)";
+    image.style.boxShadow = "10px 10px 5px rgba(0, 0, 0, 0.7)";
     image.style.borderRadius = "10px"
     caption.style.color="#4FD1C5";
   }
@@ -29,7 +29,7 @@ export default function PlayerImage({ player }: any) {
       ?.lastChild?.firstChild! as HTMLElement;
 
     target_element.style.transform = "scale(1.0)";
-    image.style.boxShadow = "5px 5px 5px rgba(0, 0, 0, 0.5)";
+    image.style.boxShadow = "5px 5px 5px rgba(0, 0, 0, 0.7)";
     image.style.borderRadius="10px"
     caption.style.color="white";
   }
@@ -47,10 +47,10 @@ export default function PlayerImage({ player }: any) {
       <Link key={uuid()} href="https://pm6hpw3zasy.typeform.com/to/kOc7e3N7">
         <Image
           key={uuid()}
-          src={`${player}.png`}
+          src={`./players/${player}.png`}
           alt={player}
           borderRadius="10px"
-          boxShadow="5px 5px 5px rgba(0, 0, 0, 0.5)"
+          boxShadow="5px 5px 5px rgba(0, 0, 0, 0.7)"
         />
       </Link>
       <Flex

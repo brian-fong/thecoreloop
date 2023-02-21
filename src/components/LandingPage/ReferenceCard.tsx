@@ -9,11 +9,12 @@ export default function ReferenceCard({ reference }: any) {
   return (
     <Flex
       flexDirection="column"
+      height="100%"
       color="white"
       background={reference.bkg_head}
       border="none"
       borderRadius="5px"
-      boxShadow="10px 10px 5px rgba(0, 0, 0, 0.5)"
+      boxShadow="10px 10px 5px rgba(0, 0, 0, 0.4)"
       transition="transform 400ms ease-in-out, opacity 300ms linear"
     >
       <Flex
@@ -32,7 +33,7 @@ export default function ReferenceCard({ reference }: any) {
           tabIndex={-1}
         >
           <Image 
-            src={`./${reference.handle.toLowerCase()}-pfp.png`} 
+            src={`./pfps/${reference.handle.toLowerCase()}-pfp.png`} 
             width="50px" 
             tabIndex={-1}
           />
@@ -84,7 +85,7 @@ export default function ReferenceCard({ reference }: any) {
       </Flex>
       <Flex
         flexDirection="column"
-        justifyContent="start"
+        justifyContent="center"
         alignItems="center"
         height="100%"
         background="#4A505A"
