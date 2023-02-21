@@ -3,7 +3,9 @@ import { extendTheme } from "@chakra-ui/react";
 export default extendTheme({
   colors: {
     // Core
-    bkg: "#313244",
+    carousel: "#252730",
+    body: "#282A36",
+    gallery: "#1d1e26",
     standard_bkg: "#C0C0C0",
     standard_bkg_alt: "#adadad",
     category_bkg: "#909090",
@@ -13,7 +15,7 @@ export default extendTheme({
 
     // Socials
     discord: "#7289da",
-    telegram: "#2193CE",
+    telegram: "#249DD9",
     telegram_hover: "#186e99",
     twitter: "#1DA1F2",
 

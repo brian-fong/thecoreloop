@@ -2,13 +2,14 @@ import {
   Box,
   Text,
   Flex,
-  Link,
+  Heading,
   Image,
-  Tooltip,
+  Link,
   useDimensions,
 } from "@chakra-ui/react";
 import Head from "next/head";
 import { useRef, useState, useEffect } from "react";
+import Header from "../components/LandingPage/Header";
 import Gallery from "../components/LandingPage/Gallery";
 import Carousel_Mobile from "../components/LandingPage/Carousel_Mobile";
 import Carousel_Desktop from "../components/LandingPage/Carousel_Desktop";
@@ -40,6 +41,8 @@ export default function landing_page() {
         <meta name="viewport" content="viewport-fit=cover" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
+
+      {/* Main Container */}
       <Flex
         id="main_container"
         ref={main_ref}
@@ -48,93 +51,96 @@ export default function landing_page() {
         alignItems="center"
         minHeight="100vh"
         color="white"
-        background="#282A36"
+        background="body"
       >
-        {/* Banner */}
+        {/* Header */}
+        <Header />
+
+        {/* Carousel */}
         <Flex
-          id="header-container"
-          flexDirection="row"
-          gap="10px"
-          justifyContent="space-between"
+          id="carousel"
+          flexDirection="column"
+          justifyContent="center"
           alignItems="center"
           width="100%"
-          background="tcl_yellow"
-          zIndex={10}
-          draggable={false}
         >
-          <Image
-            src="./tcl-logo.png"
-            objectFit="cover"
-            height="50px"
-            draggable={false}
-          />
-          <Flex
-            id="socials-container"
-            flexDirection="row"
-            gap="20px"
-            justifyContent="center"
-            alignItems="center"
-            padding="10px 30px 10px 10px"
+          <Text 
+            margin="30px 0px 0px"
+            padding="4px 8px"
+            fontSize="20px" 
+            fontStyle="italic"
+            fontWeight="800" 
+            textAlign="center"
+            width="100%"
           >
-            <Tooltip label="Subscribe to our newsletter">
-              <Link href="https://substack.com/" isExternal>
-                <Image src="./substack-icon.svg" height="24px" borderRadius="" />
-              </Link>
-            </Tooltip>
-            <Tooltip label="Follow us on Twitter">
-              <Link href="https://twitter.com/thecoreloop" isExternal>
-                <Image src="./twitter-icon.png" height="24px" />
-              </Link>
-            </Tooltip>
-            <Tooltip label="Daily updates on Telegram">
-              <Link href="https://t.me/thecoreloop" isExternal>
-                <Image src="./telegram-icon.png" height="24px" />
-              </Link>
-            </Tooltip>
-          </Flex>
-        </Flex>
+            === WELCOME TO THECORELOOP ===
+          </Text>
+          {
+            touch_enabled
+              ? <Carousel_Desktop 
+                screen_width={dimensions?.contentBox?.width!} 
+              />
+              : <Carousel_Mobile 
 
-        {/* References Carousel */}
-        {
-          touch_enabled
-          ? <Carousel_Desktop 
-              screen_width={dimensions?.contentBox?.width!} 
-            />
-          : <Carousel_Mobile 
-            
-            />
-        }
+              />
+          }
+        </Flex>
 
         {/* Body */}
         <Flex
           id="body-container"
           flexDirection="column"
-          gap="10px"
           justifyContent="center"
           alignItems="center"
           width="100%"
           zIndex={3}
         >
+          {/* Body Text */}
           <Flex
             id="body-text"
             flexDirection="column"
             gap="20px"
             justifyContent="center"
             alignItems="center"
-            margin="30px"
-            maxWidth="1200px"
+            padding="20px 10px"
+            width="100%"
+            background="bkg"
           >
-            <Box fontSize="18px" textAlign="center">
-              Say goodbye 👋 to scouring Notion, 
-              <Text display="inline" color="twitter"> Twitter</Text>
-              , 
-              <Text display="inline" color="telegram"> Telegram</Text>
-              , & 
-              <Text display="inline" color="discord"> Discord </Text>
+            <Box maxWidth="1200px" fontSize="18px" textAlign="center">
+              Say goodbye 👋 to scouring
+              {/* <Text display="inline" fontWeight="800"> Twitter </Text> */}
+              <Image
+                src="./icons/twitter-logo.png"
+                display="inline"
+                position="relative"
+                top="5px"
+                padding="0px 0px 0px 10px"
+                height="32px"
+              />
+              ,
+              {/* <Text display="inline" fontWeight="800"> Discord</Text> */}
+              <Image
+                src="./icons/discord-logo.png"
+                display="inline"
+                position="relative"
+                top="5px"
+                padding="0px 0px 0px 10px"
+                height="32px"
+              />
+              , &
+              {/* <Text display="inline" fontWeight="800"> Telegram</Text> */}
+              <Image
+                src="./icons/telegram-logo.png"
+                display="inline"
+                position="relative"
+                top="5px"
+                padding="0px 10px 0px 10px"
+                height="32px"
+              />
               for gaming information!
             </Box>
-            <Box fontSize="18px" textAlign="center">
-              <Text display="inline" color="tcl_pink">thecoreloop </Text>
+            <Box maxWidth="1200px" fontSize="18px" textAlign="center">
+              <Text display="inline" color="tcl_pink" fontStyle="italic" fontWeight="800">thecoreloop </Text>
               is your go-to social discovery platform where 
               <Text display="inline" fontStyle="italic" opacity="0.7"> community </Text> 
               and 
@@ -143,25 +149,34 @@ export default function landing_page() {
             </Box>
           </Flex>
 
-          {/* Player Gallery */}
-          <Gallery screen_width={dimensions?.contentBox?.width!} />
-
+          {/* Player Heading */}
           <Flex
-            id="footer-container"
-            flexDirection="row"
+            id="player-heading"
+            flexDirection="column"
             justifyContent="center"
             alignItems="center"
-            margin="30px"
+            padding="30px"
+            width="100%"
+            background="gallery"
           >
-            <Text 
-              fontSize="20px" 
-              fontStyle="italic"
-              fontWeight="800" 
-              textAlign="center"
-              padding="4px 8px"
+            {/* Player Gallery */}
+            <Gallery screen_width={dimensions?.contentBox?.width!} />
+
+            <Link
+              href="https://pm6hpw3zasy.typeform.com/to/kOc7e3N7"
             >
-              === SELECT YOUR CLASS AND JOIN THE CORE TEAM! ===
-            </Text>
+              <Text 
+                marginTop="20px"
+                padding="4px 8px"
+                fontSize="20px" 
+                fontStyle="italic"
+                fontWeight="800" 
+                textAlign="center"
+                width="100%"
+              >
+                === SELECT YOUR CLASS AND JOIN THE CORE TEAM! ===
+              </Text>
+            </Link>
           </Flex>
         </Flex>
       </Flex>
