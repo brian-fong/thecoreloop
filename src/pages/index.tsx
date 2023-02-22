@@ -2,7 +2,6 @@ import {
   Box,
   Text,
   Flex,
-  Heading,
   Image,
   Link,
   useDimensions,
@@ -17,16 +16,17 @@ import Carousel_Desktop from "../components/LandingPage/Carousel_Desktop";
 export default function landing_page() {
   const main_ref = useRef<any>();
   const dimensions = useDimensions(main_ref, true);
-  const [touch_enabled, setTouch] = useState<boolean>(false);
+  const [desktop_mode, setDesktopMode] = useState<boolean>(true);
 
   useEffect(() => {
-    if ("ontouchstart" in window || navigator.maxTouchPoints > 0) {
-      setTouch(false);
+    if (
+      ("ontouchstart" in window || navigator.maxTouchPoints > 0)
+      && dimensions?.contentBox?.width! <= 500
+    ) {
+      setDesktopMode(false);
     } else {
-      setTouch(true);
+      setDesktopMode(true);
     }
-
-    console.log("Touch Enabled: ", touch_enabled);
   }, []);
 
   return (
@@ -56,35 +56,28 @@ export default function landing_page() {
         {/* Header */}
         <Header />
 
-        {/* Carousel */}
-        <Flex
-          id="carousel"
-          flexDirection="column"
-          justifyContent="center"
-          alignItems="center"
+        {/* Heading */}
+        <Text 
+          padding="30px 0px"
           width="100%"
+          fontSize="20px" 
+          fontStyle="italic"
+          fontWeight="800" 
+          textAlign="center"
         >
-          <Text 
-            margin="30px 0px 0px"
-            padding="4px 8px"
-            fontSize="20px" 
-            fontStyle="italic"
-            fontWeight="800" 
-            textAlign="center"
-            width="100%"
-          >
-            === WELCOME TO THECORELOOP ===
-          </Text>
-          {
-            touch_enabled
-              ? <Carousel_Desktop 
-                screen_width={dimensions?.contentBox?.width!} 
-              />
-              : <Carousel_Mobile 
+          === WELCOME TO THECORELOOP ===
+        </Text>
 
-              />
-          }
-        </Flex>
+        {/* Carousel */}
+        {
+          desktop_mode
+            ? <Carousel_Desktop 
+              screen_width={dimensions?.contentBox?.width!} 
+            />
+            : <Carousel_Mobile 
+
+            />
+        }
 
         {/* Body */}
         <Flex
@@ -102,7 +95,7 @@ export default function landing_page() {
             gap="20px"
             justifyContent="center"
             alignItems="center"
-            padding="20px 10px"
+            padding="20px 10px 30px"
             width="100%"
             background="bkg"
           >

@@ -16,11 +16,11 @@ export default function Document() {
         />
         <meta 
           name="description" 
-          content="Gaming aggregator at the intersection of Web2 and Web3, curated by @0xkapital_k" 
+          content="next-gen media co-op delivering insights and curating content at the intersection of gaming, social, and consumer tech." 
         />
         <meta 
           name="og:description" 
-          content="Gaming aggregator at the intersection of Web2 and Web3, curated by @0xkapital_k" 
+          content="next-gen media co-op delivering insights and curating content at the intersection of gaming, social, and consumer tech." 
         />
         <meta 
           property="type" 
