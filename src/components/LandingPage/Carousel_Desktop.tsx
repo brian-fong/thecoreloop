@@ -13,8 +13,8 @@ import { SwipeEventData, useSwipeable } from "react-swipeable";
 const min_card_width: number = 250;
 
 export default function Carousel_Desktop({ screen_width }: any) {
-  const [index, setIndex] = useState<number>(0);          // carousel index
-  const [stages, setStages] = useState<number>(2);        // carousel stage
+  const [index, setIndex] = useState<number>(0);    // carousel index
+  const [stages, setStages] = useState<number>(2);  // carousel stage
 
   const [blinked, blink] = useState<boolean>(true); // stage number transition
 
