@@ -83,12 +83,8 @@ export default function landing_page() {
           >
             {
               desktop_mode
-                ? <Carousel_Desktop 
-                  screen_width={dimensions?.contentBox?.width!} 
-                />
-                : <Carousel_Mobile 
-
-                />
+                ? <Carousel_Desktop screen_width={dimensions?.contentBox?.width!} />
+                : <Carousel_Mobile />
             }
           </Flex>
 
