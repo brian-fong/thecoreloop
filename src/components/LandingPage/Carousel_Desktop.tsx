@@ -20,23 +20,6 @@ export default function Carousel_Desktop({ screen_width }: any) {
 
   const [cards, setCards] = useState<ReactElement[]>([]); // reference cards
 
-  const handlers = useSwipeable({
-    onSwipedLeft: handleSwipeLeft,
-    onSwipedRight: handleSwipeRight,
-  });
-
-  function handleSwipeLeft(event_data: SwipeEventData) {
-    console.log("Swiped Left: ", event_data);
-    if (index > 0) setIndex((i: number) => i-1);
-    blink((blinked: boolean) => !blinked);
-  }
-
-  function handleSwipeRight(event_data: SwipeEventData) {
-    console.log("Swiped Right: ", event_data);
-    if (index > 0) setIndex((i: number) => i-1);
-    blink((blinked: boolean) => !blinked);
-  }
-
   function handlePrev() {
     // Decrement carousel index
     if (index > 0) setIndex((i: number) => i-1);
@@ -48,8 +31,6 @@ export default function Carousel_Desktop({ screen_width }: any) {
     if (index < stages-1) setIndex((i: number) => i+1);
     blink((blinked: boolean) => !blinked);
   }
-
-
 
   useEffect(() => {
     let columns: number = 1;
@@ -82,8 +63,7 @@ export default function Carousel_Desktop({ screen_width }: any) {
       gap="30px"
       justifyContent="center"
       alignItems="start"
-      padding="0px 60px 20px"
-      {...handlers}
+      width="100%"
     >
       <Grid
         id="card-grid"

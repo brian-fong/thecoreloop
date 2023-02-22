@@ -35,7 +35,7 @@ export default function Gallery({ screen_width }: any) {
         ${columns}, 
         minmax(${min_image_width}px, 300px)
       )`}
-      gap="50px"
+      gap="40px"
       justifyContent="center"
       alignItems="center"
       padding="20px 50px"
