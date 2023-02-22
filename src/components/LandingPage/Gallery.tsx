@@ -38,7 +38,7 @@ export default function Gallery({ screen_width }: any) {
       gap="40px"
       justifyContent="center"
       alignItems="center"
-      padding="20px 50px"
+      padding="40px 50px 20px"
       width="100%"
     >
       {images}
