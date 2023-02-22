@@ -36,6 +36,7 @@ export default function ReferenceCard({ reference, desktop_mode }: any) {
             src={`./pfps/${reference.handle.toLowerCase()}-pfp.png`} 
             width="50px" 
             tabIndex={-1}
+            loading="lazy"
           />
         </Link>
         <Flex

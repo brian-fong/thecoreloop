@@ -97,8 +97,10 @@ export default function landing_page() {
             alignItems="center"
             padding="20px 10px 30px"
             width="100%"
+            fontSize="18px"
+            textAlign="center"
           >
-            <Box maxWidth="1200px" fontSize="18px" textAlign="center">
+            <Box>
               Say goodbye 👋 to scouring
               <Image
                 src="./icons/twitter-logo.png"
@@ -128,7 +130,7 @@ export default function landing_page() {
               />
               for gaming information!
             </Box>
-            <Box maxWidth="1200px" fontSize="18px" textAlign="center">
+            <Box>
               <Text 
                 display="inline" 
                 color="tcl_pink" 
@@ -147,7 +149,7 @@ export default function landing_page() {
                 fontStyle="italic" 
                 opacity="0.7"
               > web3 games </Text> 
-              intersect.
+              intersect
             </Box>
           </Flex>
         </Flex>

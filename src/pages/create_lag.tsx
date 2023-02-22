@@ -44,7 +44,7 @@ export default function create_lag() {
         p="0px"
         width="100vw" 
         height="100vh"
-        bg="bkg"
+        bg="body"
         boxSizing="border-box"
         overflowX="hidden"
       >
