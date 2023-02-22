@@ -56,7 +56,6 @@ export default function Gallery({ lag }: any) {
       gap="15px" 
       justify="start" 
       align="start" 
-      margin="10px 0px 0px"
       width="100%"
     >
       {cards}

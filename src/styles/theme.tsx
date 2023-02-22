@@ -3,7 +3,6 @@ import { extendTheme } from "@chakra-ui/react";
 export default extendTheme({
   colors: {
     // Core
-    carousel: "#252730",
     body: "#282A36",
     gallery: "#1d1e26",
     standard_bkg: "#C0C0C0",

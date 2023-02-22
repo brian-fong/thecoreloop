@@ -53,39 +53,46 @@ export default function landing_page() {
         {/* Header */}
         <Header />
 
-        {/* Heading */}
-        <Text 
-          padding="30px 0px"
-          width="100%"
-          fontSize="20px" 
-          fontStyle="italic"
-          fontWeight="800" 
-          textAlign="center"
-        >
-          === WELCOME TO THECORELOOP ===
-        </Text>
-
-        {/* Carousel */}
-        {
-          desktop_mode
-            ? <Carousel_Desktop 
-              screen_width={dimensions?.contentBox?.width!} 
-            />
-            : <Carousel_Mobile 
-
-            />
-        }
-
-        {/* Body */}
         <Flex
-          id="body-container"
+          id="top-container"
           flexDirection="column"
           justifyContent="center"
           alignItems="center"
           width="100%"
-          zIndex={3}
+          background="body"
         >
-          {/* Body Text */}
+          {/* Heading */}
+          <Text 
+            margin="20px 0px"
+            width="100%"
+            fontSize="20px" 
+            fontStyle="italic"
+            fontWeight="800" 
+            textAlign="center"
+          >
+            === WELCOME TO THECORELOOP ===
+          </Text>
+
+          {/* Carousel */}
+          <Flex
+            flexDirection="row"
+            justifyContent="center"
+            alignItems="center"
+            padding="20px"
+            width="100%"
+          >
+            {
+              desktop_mode
+                ? <Carousel_Desktop 
+                  screen_width={dimensions?.contentBox?.width!} 
+                />
+                : <Carousel_Mobile 
+
+                />
+            }
+          </Flex>
+
+          {/* Body */}
           <Flex
             id="body-text"
             flexDirection="column"
@@ -94,11 +101,9 @@ export default function landing_page() {
             alignItems="center"
             padding="20px 10px 30px"
             width="100%"
-            background="bkg"
           >
             <Box maxWidth="1200px" fontSize="18px" textAlign="center">
               Say goodbye 👋 to scouring
-              {/* <Text display="inline" fontWeight="800"> Twitter </Text> */}
               <Image
                 src="./icons/twitter-logo.png"
                 display="inline"
@@ -108,7 +113,6 @@ export default function landing_page() {
                 height="32px"
               />
               ,
-              {/* <Text display="inline" fontWeight="800"> Discord</Text> */}
               <Image
                 src="./icons/discord-logo.png"
                 display="inline"
@@ -117,8 +121,7 @@ export default function landing_page() {
                 padding="0px 0px 0px 10px"
                 height="32px"
               />
-              , &
-              {/* <Text display="inline" fontWeight="800"> Telegram</Text> */}
+              , and
               <Image
                 src="./icons/telegram-logo.png"
                 display="inline"
@@ -130,44 +133,56 @@ export default function landing_page() {
               for gaming information!
             </Box>
             <Box maxWidth="1200px" fontSize="18px" textAlign="center">
-              <Text display="inline" color="tcl_pink" fontStyle="italic" fontWeight="800">thecoreloop </Text>
+              <Text 
+                display="inline" 
+                color="tcl_pink" 
+                fontStyle="italic" 
+                fontWeight="800"
+              >thecoreloop </Text>
               is your go-to social discovery platform where 
-              <Text display="inline" fontStyle="italic" opacity="0.7"> community </Text> 
+              <Text 
+                display="inline" 
+                fontStyle="italic" 
+                opacity="0.7"
+              > community </Text> 
               and 
-              <Text display="inline" fontStyle="italic" opacity="0.7"> web3 games </Text> 
+              <Text 
+                display="inline" 
+                fontStyle="italic" 
+                opacity="0.7"
+              > web3 games </Text> 
               intersect.
             </Box>
           </Flex>
+        </Flex>
+
+        <Flex
+          id="bottom-container"
+          flexDirection="column"
+          justifyContent="center"
+          alignItems="center"
+          width="100%"
+          background="gallery"
+        >
+          {/* Player Gallery */}
+          <Gallery screen_width={dimensions?.contentBox?.width!} />
 
           {/* Player Heading */}
-          <Flex
-            id="player-heading"
-            flexDirection="column"
-            justifyContent="center"
-            alignItems="center"
-            padding="30px"
-            width="100%"
-            background="gallery"
+          <Link
+            href="https://pm6hpw3zasy.typeform.com/to/kOc7e3N7"
           >
-            {/* Player Gallery */}
-            <Gallery screen_width={dimensions?.contentBox?.width!} />
-
-            <Link
-              href="https://pm6hpw3zasy.typeform.com/to/kOc7e3N7"
+            <Text 
+              margin="20px 0px"
+              padding="4px 20px"
+              fontSize="20px" 
+              fontStyle="italic"
+              fontWeight="800" 
+              textAlign="center"
+              width="100%"
             >
-              <Text 
-                marginTop="20px"
-                padding="4px 8px"
-                fontSize="20px" 
-                fontStyle="italic"
-                fontWeight="800" 
-                textAlign="center"
-                width="100%"
-              >
-                === SELECT YOUR CLASS AND JOIN THE CORE TEAM! ===
-              </Text>
-            </Link>
-          </Flex>
+              === SELECT YOUR CLASS AND JOIN THE CORE TEAM! ===
+            </Text>
+          </Link>
         </Flex>
       </Flex>
     </>
