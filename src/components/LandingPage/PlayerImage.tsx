@@ -51,6 +51,7 @@ export default function PlayerImage({ player }: any) {
           alt={player}
           borderRadius="10px"
           boxShadow="5px 5px 5px rgba(0, 0, 0, 0.7)"
+          loading="lazy"
         />
       </Link>
       <Flex
