@@ -61,8 +61,9 @@ export default function Carousel_Mobile({ screen_width }: any) {
       gap="30px"
       justifyContent="center"
       alignItems="center"
-      padding="30px 60px"
+      padding="0px 30px 0px"
       width="100%"
+      height="100%"
     >
       <Grid
         id="card-grid"

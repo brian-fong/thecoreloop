@@ -82,7 +82,7 @@ export default function Carousel_Desktop({ screen_width }: any) {
       gap="30px"
       justifyContent="center"
       alignItems="start"
-      padding="30px 60px"
+      padding="0px 60px 20px"
       {...handlers}
     >
       <Grid
