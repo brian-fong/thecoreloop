@@ -22,11 +22,11 @@ export default function Carousel_Mobile({ screen_width }: any) {
     onSwipedRight: handleSwipeRight,
   });
 
-  function handleSwipeLeft(event_data: SwipeEventData) {
+  function handleSwipeLeft() {
     if (index < REFERENCES.length-1) setIndex((i: number) => i+1);
   }
 
-  function handleSwipeRight(event_data: SwipeEventData) {
+  function handleSwipeRight() {
     if (index > 0) setIndex((i: number) => i-1);
   }
 
