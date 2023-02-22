@@ -49,6 +49,7 @@ export default function Carousel_Mobile({ screen_width }: any) {
         <ReferenceCard 
           key={uuid()}
           reference={REFERENCES[i]}
+          desktop_mode={false}
         />
       ]);
     }
