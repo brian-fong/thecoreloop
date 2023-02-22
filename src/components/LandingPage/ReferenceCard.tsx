@@ -9,7 +9,6 @@ export default function ReferenceCard({ reference }: any) {
   return (
     <Flex
       flexDirection="column"
-      height="100%"
       color="white"
       background={reference.bkg_head}
       border="none"
