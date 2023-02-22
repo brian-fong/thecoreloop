@@ -49,6 +49,7 @@ export default function Carousel_Mobile({ screen_width }: any) {
         <ReferenceCard 
           key={uuid()}
           reference={REFERENCES[i]}
+          desktop_mode={false}
         />
       ]);
     }
@@ -73,7 +74,6 @@ export default function Carousel_Mobile({ screen_width }: any) {
         justifyContent="center"
         alignItems="start"
         width="100%"
-        height="min-content"
         {...card_handlers}
       >
         {cards}

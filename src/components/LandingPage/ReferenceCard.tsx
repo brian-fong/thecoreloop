@@ -5,11 +5,11 @@ import {
   Link,
 } from "@chakra-ui/react";
 
-export default function ReferenceCard({ reference }: any) {
+export default function ReferenceCard({ reference, desktop_mode }: any) {
   return (
     <Flex
       flexDirection="column"
-      height="100%"
+      height={desktop_mode ? "100%" : "min-content"}
       color="white"
       background={reference.bkg_head}
       border="none"

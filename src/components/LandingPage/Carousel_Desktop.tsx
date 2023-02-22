@@ -1,14 +1,12 @@
 import {
   Flex,
   Grid,
-  Heading,
 } from "@chakra-ui/react";
 import uuid from "react-uuid";
 import ReferenceCard from "./ReferenceCard";
 import CarouselCntrls from "./CarouselCtnrls";
 import { REFERENCES } from "../../utils/references";
 import { useState, useEffect, ReactElement } from "react";
-import { SwipeEventData, useSwipeable } from "react-swipeable";
 
 const min_card_width: number = 250;
 
@@ -51,6 +49,7 @@ export default function Carousel_Desktop({ screen_width }: any) {
         <ReferenceCard 
           key={uuid()}
           reference={REFERENCES[i]}
+          desktop_mode={true}
         />
       ]);
     }
