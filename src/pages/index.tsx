@@ -21,12 +21,15 @@ export default function landing_page() {
   useEffect(() => {
     const touch_enabled: boolean = "ontouchstart" in window || navigator.maxTouchPoints > 0;
     const screen_width: number = dimensions?.contentBox?.width!;
+
+    console.log("Screen Width: ", dimensions);
+
     if (touch_enabled && screen_width <= 400) {
       setDesktopMode(false);
     } else {
       setDesktopMode(true);
     }
-  }, []);
+  }, [dimensions]);
 
   return (
     <>
@@ -43,7 +46,7 @@ export default function landing_page() {
 
       {/* Main Container */}
       <Flex
-        id="main_container"
+        id="main-container"
         ref={main_ref}
         flexDirection="column"
         justifyContent="start"
