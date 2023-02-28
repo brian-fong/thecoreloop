@@ -12,7 +12,7 @@ const min_image_width: number = 150;
 export default function Gallery({ screen_width }: any) {
   const [columns, setColumns] = useState<number>(4);
   const [images, setImages] = useState<ReactElement[]>([]);
-  const PLAYERS: string[] = ["gamer", "builder", "investor", "creator"];
+  const PLAYERS: string[] = ["gamer", "builder", "investor", "content creator"];
 
   useEffect(() => {
     if (screen_width < 4*min_image_width + 3*50 + 100) setColumns(2);
