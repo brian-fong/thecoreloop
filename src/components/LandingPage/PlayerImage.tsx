@@ -69,6 +69,7 @@ export default function PlayerImage({ player }: any) {
         <Text
           fontWeight="800"
           letterSpacing="3px"
+          textAlign="center"
           textTransform="capitalize"
           transition="all 300ms linear"
         >
