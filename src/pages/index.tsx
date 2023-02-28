@@ -19,7 +19,9 @@ export default function landing_page() {
   const [desktop_mode, setDesktopMode] = useState<boolean>(true);
 
   useEffect(() => {
-    if ("ontouchstart" in window || navigator.maxTouchPoints > 0) {
+    const touch_enabled: boolean = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+    const screen_width: number = dimensions?.contentBox?.width!;
+    if (touch_enabled && screen_width <= 400) {
       setDesktopMode(false);
     } else {
       setDesktopMode(true);
