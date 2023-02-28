@@ -8,6 +8,13 @@ import { SyntheticEvent } from "react";
 import uuid from "react-uuid";
 
 export default function PlayerImage({ player }: any) {
+  const PLAYERS: any = {
+    gamer: "./players/gamer.png",
+    builder: "./players/builder.png",
+    investor: "./players/investor.png",
+    "content creator": "./players/content-creator.png",
+  }
+
   function handleEnter(event: SyntheticEvent) {
     const target_element: HTMLElement = event.currentTarget as HTMLElement;
     const image: HTMLElement = event.currentTarget
@@ -47,7 +54,7 @@ export default function PlayerImage({ player }: any) {
       <Link key={uuid()} href="https://pm6hpw3zasy.typeform.com/to/kOc7e3N7">
         <Image
           key={uuid()}
-          src={`./players/${player}.png`}
+          src={PLAYERS[player]}
           alt={player}
           borderRadius="10px"
           boxShadow="5px 5px 5px rgba(0, 0, 0, 0.7)"
