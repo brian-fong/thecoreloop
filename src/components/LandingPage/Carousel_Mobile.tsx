@@ -7,7 +7,7 @@ import ReferenceCard from "./ReferenceCard";
 import CarouselTrack from "./CarouselTrack";
 import { REFERENCES } from "../../utils/references";
 import { useState, useEffect, ReactElement, TouchEvent } from "react";
-import { SwipeEventData, useSwipeable } from "react-swipeable";
+import { useSwipeable } from "react-swipeable";
 
 const min_card_width: number = 250;
 

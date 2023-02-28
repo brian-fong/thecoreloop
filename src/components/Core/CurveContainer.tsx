@@ -27,7 +27,7 @@ export default function CurveContainer({ children, heading, minWidth }: any) {
         m="10px" 
         p="15px" 
         width="100%" 
-      minWidth={minWidth ? (minWidth-30) : "300px"}
+        minWidth={minWidth ? (minWidth-30) : "300px"}
         height="100%"
         border="1px solid gray" 
       >
