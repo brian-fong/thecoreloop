@@ -22,8 +22,6 @@ export default function landing_page() {
     const touch_enabled: boolean = "ontouchstart" in window || navigator.maxTouchPoints > 0;
     const screen_width: number = dimensions?.contentBox?.width!;
 
-    console.log("Screen Width: ", dimensions);
-
     if (touch_enabled && screen_width <= 400) {
       setDesktopMode(false);
     } else {
