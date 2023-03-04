@@ -1,0 +1,44 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  firstName String   @db.VarChar(255)
+  lastName  String   @db.VarChar(255)
+  birthday  DateTime @updatedAt
+  bio       String
+}
+
+model Game {
+  id              Int       @id @default(autoincrement())
+  title           String
+  description     String
+  stage           String 
+  genre           String
+  upvote_count    Int
+}
+
+enum Genre {
+  MMORPG
+  FPS
+  RPG
+}
+
+enum devStatus {
+  FUNDRAISING
+  INDEVELOPMENT
+  ALPHA
+  BETA
+  LAUNCHED
+}
