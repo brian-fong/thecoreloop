@@ -6,19 +6,19 @@ import uuid from "react-uuid";
 import MainCard from "./MainCard";
 import ContentModeBtn from "./ContentModeBtn";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, ReactElement } from "react";
 
 export default function MainColumn() {
   const [contentMode, setContentMode] = useState("POPULAR");
   const [data, setData] = useState([]);
-  const [cards, setCards] = useState([]);
+  const [cards, setCards] = useState<ReactElement[]>([]);
 
   useEffect(() => {
     setCards([]);
     for (let i = 0; i < data.length; i++) {
       const entry: any = data[i];
       console.log(entry);
-      setCards((cards: any) => [...cards, 
+      setCards(cards => [...cards, 
         <MainCard
           key={uuid()}
           image={entry.image}
