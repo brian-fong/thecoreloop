@@ -6,7 +6,7 @@ import { ChakraProvider } from '@chakra-ui/react'
 
 // Components
 import Logo from "../components/Core/Logo";
-import Hint from "../components/Misc/Hint";
+import Hint from "../components/DailyLAG/Hint";
 import ScrollBtn from "../components/Misc/ScrollBtn";
 import NavBar from "../components/Core/NavBar";
 import Post from "../components/DailyLAG/Post";

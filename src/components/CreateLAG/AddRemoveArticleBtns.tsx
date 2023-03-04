@@ -2,7 +2,7 @@ import uuid from "react-uuid";
 import Article from "./Article";
 import { ReactElement } from "react";
 import { Flex } from "@chakra-ui/react";
-import { pressBtn } from "../Misc/Buttons";
+import pressBtn from "../../utils/press-btn";
 import { AddIcon, MinusIcon } from "@chakra-ui/icons";
 
 export default function AddRemoveArticleBtns({ 
