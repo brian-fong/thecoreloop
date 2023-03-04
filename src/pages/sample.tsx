@@ -67,13 +67,19 @@ export default function sample_page() {
             Sign in using the following:
             <Flex
               flexDirection="row"
-              justifyContent="space-between"
+              justifyContent="start"
               alignItems="center"
+              gap="2rem"
               marginBottom="1rem"
               padding="1rem"
               width="100%"
             >
-              <AuthBtn />
+              <AuthBtn 
+                provider="google"
+              />
+              <AuthBtn 
+                provider="twitter"
+              />
             </Flex>
             <CurveSubContainer heading="User Credentials">
               <Flex
