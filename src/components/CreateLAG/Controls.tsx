@@ -1,7 +1,7 @@
 import wait from "../../utils/wait";
 import { Flex } from "@chakra-ui/react";
 import ToggleBtn from "../Misc/ToggleBtn";
-import { pressBtn } from "../Misc/Buttons";
+import pressBtn from "../../utils/press-btn";
 import { useState, useEffect, ReactElement } from "react";
 import CurveSubContainer from "../Core/CurveSubContainer";
 

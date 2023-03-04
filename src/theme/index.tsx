@@ -1,3 +1,5 @@
+import Button from "./components/Button";
+import Heading from "./components/Heading";
 import { extendTheme } from "@chakra-ui/react";
 
 export default extendTheme({
@@ -43,11 +45,16 @@ export default extendTheme({
       body: {
         margin: "0px", 
         padding: "0px",
+        color: "white",
         fontSize: "14px",
-        fontFamily: `"Jetbrains Mono", sans-serif`,
+        fontFamily: `"JetBrains Mono", sans-serif`,
         scrollBehavior: "smooth",
       },
     },
   },
+  components: {
+    Button,
+    Heading,
+  }
 });
 

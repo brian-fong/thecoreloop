@@ -2,7 +2,6 @@ import scrollTo from '../../utils/scroll';
 import { Flex, Text } from '@chakra-ui/react';
 
 export default function ScrollBtn({ elem_id, text }: any) {
-
   return (
     <Flex
       flexDir="column" 

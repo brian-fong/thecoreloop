@@ -1,12 +1,10 @@
 import axios from "axios";
-import theme from "../styles/theme";
 import { Flex } from '@chakra-ui/react'
 import { useEffect, useState } from "react";
-import { ChakraProvider } from '@chakra-ui/react'
 
 // Components
 import Logo from "../components/Core/Logo";
-import Hint from "../components/Misc/Hint";
+import Hint from "../components/DailyLAG/Hint";
 import ScrollBtn from "../components/Misc/ScrollBtn";
 import NavBar from "../components/Core/NavBar";
 import Post from "../components/DailyLAG/Post";
@@ -50,47 +48,45 @@ export default function daily_lag() {
   }, []);
 
   return (
-    <ChakraProvider theme={theme}>
+    <Flex 
+      id="root_container"
+      flexDir="column" 
+      justify="start" 
+      align="center" 
+      m="0px" 
+      p="0px"
+      width="100vw" 
+      height="100vh"
+      bg="body"
+      boxSizing="border-box"
+      overflowX="hidden"
+    >
+      <NavBar />
+
       <Flex 
-        id="root_container"
+        id="main_container"
         flexDir="column" 
+        gap="50px" 
         justify="start" 
         align="center" 
-        m="0px" 
-        p="0px"
-        width="100vw" 
-        height="100vh"
-        bg="body"
+        m="0px"
+        p="40px 40px 60px" 
+        minWidth="300px" 
+        width="100%"
+        maxWidth="800px"
         boxSizing="border-box"
-        overflowX="hidden"
       >
-        <NavBar />
-
-        <Flex 
-          id="main_container"
-          flexDir="column" 
-          gap="50px" 
-          justify="start" 
-          align="center" 
-          m="0px"
-          p="40px 40px 60px" 
-          minWidth="300px" 
-          width="100%"
-          maxWidth="800px"
-          boxSizing="border-box"
-        >
-          <Logo />
-          <Hint />
-          <Post 
-            lag={lag}
-          />
-          <ScrollBtn 
-            elem_id="navbar"
-            text="Back to Top"
-          />
-        </Flex>
+        <Logo />
+        <Hint />
+        <Post 
+          lag={lag}
+        />
+        <ScrollBtn 
+          elem_id="navbar"
+          text="Back to Top"
+        />
       </Flex>
-    </ChakraProvider>
+    </Flex>
   );
 }
 
