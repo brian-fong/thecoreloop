@@ -95,8 +95,16 @@ export default function Basics({ setStage }: any) {
             }}
           />
         </Box>
+      </Flex>
 
-        <hr style={{ borderTop: "1px solid white" }} />
+      <hr style={{ margin:"2rem 0", width: "100%", borderTop: "1px solid white" }} />
+
+      <Flex
+        flexDirection="column"
+        gap="1.5rem"
+        width="100%"
+        maxWidth="700px"
+      >
 
         <Heading fontSize="1.5rem" marginBottom="1rem">
           Images & Media
@@ -125,14 +133,13 @@ export default function Basics({ setStage }: any) {
 
         <Flex
           flexDirection="column"
-          gap="1rem"
         >
-          <FormLabel htmlFor="project-logo">
+          <FormLabel htmlFor="project-logo" marginBottom="1rem">
             Upload images related to the project!
           </FormLabel>
           <Flex
             flexDirection="column"
-            gap="1rem"
+            gap="1.5rem"
           >
             <Flex
               flexDirection="row"

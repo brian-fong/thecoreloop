@@ -1,11 +1,11 @@
 import {  
   Box,
   Button,
+  Checkbox,
   Flex,
   FormLabel,
   Heading,
   Input,
-  Select,
   Text,
   Textarea,
 } from "@chakra-ui/react";
@@ -23,9 +23,12 @@ export default function Story({ setStage }: any) {
       padding="3rem 5rem"
       width="100%"
     >
-      <Heading fontSize="1.5rem" marginBottom="1rem">
-        Help us understand it better
+      <Heading fontSize="1.5rem">
+        Are you from the founding team?
       </Heading>
+      <Text marginBottom="1rem" maxWidth="700px">
+        Note: If you are not from the founding team but submitting as a community member, you may ignore this section!
+      </Text>
 
       <Flex
         flexDirection="column"
@@ -34,32 +37,17 @@ export default function Story({ setStage }: any) {
         maxWidth="700px"
       >
         <Box>
-          <FormLabel htmlFor="project-genre" margin="0 0 0.25rem">
-            What genre best describes the project?
+          <FormLabel htmlFor="project-story" margin="0 0 0.25rem">
+            Share your founding story with the world! :D
           </FormLabel>
-          <Select 
-            id="project-genre" 
-            variant="thecoreloop" 
-            placeholder='Select genre'
-            autoFocus={true}
-          >
-            <option value="FPS">FPS</option>
-            <option value="RPG">RPG</option>
-            <option value="Simulation">Simulation</option>
-            <option value="TCG">TCG</option>
-          </Select>
-        </Box>
-        <Box>
-          <FormLabel htmlFor="project-website" margin="0 0 0.25rem">
-            What chain is the project built on? 
-          </FormLabel>
-          <Input
-            id="project-website"
+          <Textarea
+            id="project-twitter"
+            minHeight="100px"
             color="black"
             background="rgba(255, 255, 255, 0.5)"
             border="none"
             focusBorderColor="none"
-            placeholder="Ethereum"
+            placeholder="Please describe your startup/project in a few words. This will show up as the tagline on the discovery page"
             _placeholder={{
               color: "black",
               fontStyle: "italic",
@@ -70,9 +58,41 @@ export default function Story({ setStage }: any) {
             }}
           />
         </Box>
+
+        <Box maxWidth="550px">
+          <FormLabel htmlFor="project-website" margin="0 0 1rem">
+            Are you raising money for your project right now? 
+          </FormLabel>
+          <Flex
+            flexDirection="column"
+            gap="1.5rem"
+            marginLeft="1rem"
+          >
+            <Checkbox>
+              <Text lineHeight="none">
+                Yes, we would appreciate thecoreloop giving us a shoutout on our fundraising stage right now.
+              </Text>
+            </Checkbox>
+            <Checkbox>No, we’re not raising at the moment.</Checkbox>
+          </Flex>
+        </Box>
+      </Flex>
+
+        <hr style={{ width: "100%", margin: "2rem 0", borderTop: "1px solid white" }} />
+
+      <Flex
+        flexDirection="column"
+      >
+        <Heading fontSize="1.5rem">
+          Are you from the founding team?
+        </Heading>
+        <Text marginBottom="1rem" maxWidth="700px">
+          Note: If you are not from the founding team but submitting as a community member, you may ignore this section!
+        </Text>
+
         <Box>
           <FormLabel htmlFor="project-twitter" margin="0 0 0.25rem">
-            Description of the project
+            Share with us on your excitement/conviction on this project!
           </FormLabel>
           <Textarea
             id="project-twitter"
@@ -81,7 +101,7 @@ export default function Story({ setStage }: any) {
             background="rgba(255, 255, 255, 0.5)"
             border="none"
             focusBorderColor="none"
-            placeholder="Please describe your startup/project in a few words. This will show up as the tagline on the discovery page"
+            placeholder="Eg: I am bullish on XYZ because..........."
             _placeholder={{
               color: "black",
               fontStyle: "italic",
