@@ -57,7 +57,7 @@ export default function sample_page() {
           alignItems="center"
           gap="3rem"
           width="100%"
-          minWidth="550px"
+          minWidth="500px"
           maxWidth="800px"
           height="100%"
         >

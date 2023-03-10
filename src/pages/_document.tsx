@@ -39,7 +39,7 @@ export default function Document() {
           content="https://i.imgur.com/OXjCetQ.png"
         />
 
-        { /* Google Fonts */ }
+        { /* === Google Fonts === */ }
         <link 
           rel="preconnect" 
           href="https://fonts.googleapis.com" 
@@ -49,10 +49,12 @@ export default function Document() {
           href="https://fonts.gstatic.com" 
           crossOrigin="true" 
         />
+        {/* JetBrains */}
         <link 
           rel="stylesheet" 
-          href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,800;1,400&family=Urbanist&display=swap" 
+          href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,700;1,400;1,700&display=swap"
         />
+        {/* NotoSans */}
         <link 
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap"
