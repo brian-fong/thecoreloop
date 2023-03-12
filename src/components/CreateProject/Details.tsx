@@ -1,9 +1,10 @@
-import {  
+import {
   Box,
   Button,
   Flex,
   FormLabel,
   Heading,
+  Image,
   Input,
   Select,
   Text,
@@ -11,13 +12,32 @@ import {
 } from "@chakra-ui/react";
 import {
   HiOutlineArrowNarrowLeft as LeftArrow,
-  HiOutlineArrowNarrowRight as RightArrow
+  HiOutlineArrowNarrowRight as RightArrow,
 } from "react-icons/hi";
-import {
-  MdSubdirectoryArrowRight as IndentArrow,
-} from "react-icons/md";
+import React, { useState, useEffect } from "react";
+import { useDropzone } from "react-dropzone";
 
 export default function Basics({ setStage }: any) {
+  const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
+    accept: {
+      "image/*": [],
+    },
+    maxFiles: 1,
+    onDrop: (acceptedFiles) => {
+      setFile(
+        Object.assign(acceptedFiles[0], {
+          preview: URL.createObjectURL(acceptedFiles[0]),
+        })
+      );
+    },
+  });
+
+  const [file, setFile] = useState<any>();
+
+  useEffect(() => {
+    console.log("File: ", file);
+  }, [file]);
+
   return (
     <Flex
       flexDirection="column"
@@ -30,20 +50,15 @@ export default function Basics({ setStage }: any) {
         Help us understand it better
       </Heading>
 
-      <Flex
-        flexDirection="column"
-        gap="1.5rem"
-        width="100%"
-        maxWidth="700px"
-      >
+      <Flex flexDirection="column" gap="1.5rem" width="100%" maxWidth="550px">
         <Box>
           <FormLabel htmlFor="project-genre" margin="0 0 0.25rem">
             What genre best describes the project?
           </FormLabel>
-          <Select 
-            id="project-genre" 
-            variant="thecoreloop" 
-            placeholder='Select genre'
+          <Select
+            id="project-genre"
+            variant="thecoreloop"
+            placeholder="Select genre"
             autoFocus={true}
           >
             <option value="FPS">FPS</option>
@@ -54,7 +69,7 @@ export default function Basics({ setStage }: any) {
         </Box>
         <Box>
           <FormLabel htmlFor="project-website" margin="0 0 0.25rem">
-            What chain is the project built on? 
+            What chain is the project built on?
           </FormLabel>
           <Input
             id="project-website"
@@ -97,21 +112,24 @@ export default function Basics({ setStage }: any) {
         </Box>
       </Flex>
 
-      <hr style={{ margin:"2rem 0", width: "100%", borderTop: "1px solid white" }} />
+      <hr
+        style={{
+          position: "relative",
+          right: "2rem",
+          margin: "2rem 0",
+          width: "100%",
+          maxWidth: "700px",
+          borderTop: "1px solid white",
+        }}
+      />
 
-      <Flex
-        flexDirection="column"
-        gap="1.5rem"
-        width="100%"
-        maxWidth="700px"
-      >
-
+      <Flex flexDirection="column" gap="1.5rem" width="100%" maxWidth="550px">
         <Heading fontSize="1.5rem" marginBottom="1rem">
           Images & Media
         </Heading>
         <Box>
           <FormLabel htmlFor="project-website" margin="0 0 0.25rem">
-            YouTube link of the gameplay trailer? 
+            YouTube link of the gameplay trailer?
           </FormLabel>
           <Input
             id="project-website"
@@ -131,52 +149,44 @@ export default function Basics({ setStage }: any) {
           />
         </Box>
 
-        <Flex
-          flexDirection="column"
-        >
-          <FormLabel htmlFor="project-logo" marginBottom="1rem">
+        <Box>
+          <FormLabel htmlFor="project-logo">
             Upload images related to the project!
           </FormLabel>
           <Flex
-            flexDirection="column"
-            gap="1.5rem"
+            flexDirection="row"
+            justifyContent="center"
+            alignItems="center"
+            padding="3rem 1rem"
+            color="black"
+            background="rgba(255, 255, 255, 0.5)"
+            borderRadius="15px"
+            cursor="pointer"
+            {...getRootProps({ className: "dropzone" })}
           >
-            <Flex
-              flexDirection="row"
-              justifyContent="start"
-              alignItems="center"
-              marginLeft="2rem"
-            >
-              <FormLabel htmlFor="project-logo" width="150px">Project Logo:</FormLabel>
-              <Input
-                id="project-logo"
-                type="file"
-                width="min-content"
-                height="min-content"
-                color="white"
-                background="none"
-                border="none"
-              />
-            </Flex>
-            <Flex
-              flexDirection="row"
-              justifyContent="start"
-              alignItems="center"
-              marginLeft="2rem"
-            >
-              <FormLabel htmlFor="project-image" width="150px">Project Image:</FormLabel>
-              <Input
-                id="project-image"
-                type="file"
-                width="min-content"
-                height="min-content"
-                color="white"
-                background="none"
-                border="none"
-              />
-            </Flex>
+            <input id="project-logo" {...getInputProps()} />
+            <Text>Click to choose a file or drag here</Text>
           </Flex>
-        </Flex>
+          <Flex
+            flexDirection="row"
+            justifyContent="center"
+            alignItems="center"
+            marginTop="1rem"
+            width="100%"
+          >
+            {file?.preview ? (
+              <Image
+                src={file?.preview}
+                objectFit="cover"
+                width="100px"
+                height="100px"
+                padding="1rem"
+                border="1px solid white"
+                borderRadius="15px"
+              />
+            ) : null}
+          </Flex>
+        </Box>
 
         {/* Prev/Next Container */}
         <Flex
@@ -226,7 +236,3 @@ export default function Basics({ setStage }: any) {
     </Flex>
   );
 }
-
-
-
-

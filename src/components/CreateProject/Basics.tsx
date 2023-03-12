@@ -1,4 +1,4 @@
-import {  
+import {
   Box,
   Button,
   Flex,
@@ -7,9 +7,7 @@ import {
   Input,
   Text,
 } from "@chakra-ui/react";
-import {
-  HiOutlineArrowNarrowRight as RightArrow
-} from "react-icons/hi";
+import { HiOutlineArrowNarrowRight as RightArrow } from "react-icons/hi";
 
 export default function Basics({ setStage }: any) {
   return (
@@ -23,17 +21,15 @@ export default function Basics({ setStage }: any) {
       <Heading fontSize="1.5rem">
         Share your web3 gaming project with thecoreloop
       </Heading>
-      <Flex
-        flexDirection="column"
-        gap="1rem"
-        padding="1rem 0"
-        maxWidth="700px"
-      >
+      <Flex flexDirection="column" gap="1rem" padding="1rem 0" maxWidth="550px">
         <Text color="rgba(255, 255, 255, 0.7)">
-          Are you running your own web3 gaming startup and you want to share it with the world? Or maybe you have your favorite web3 gaming startup that’s not listed at thecoreloop yet?  
+          Are you running your own web3 gaming startup and you want to share it
+          with the world? Or maybe you have your favorite web3 gaming startup
+          that’s not listed at thecoreloop yet?  
         </Text>
         <Text color="rgba(255, 255, 255, 0.7)">
-          Well, you're in the right spot! Just follow these simple steps and let's make it happen!
+          Well, you're in the right spot! Just follow these simple steps and
+          let's make it happen!
         </Text>
       </Flex>
 
@@ -41,12 +37,7 @@ export default function Basics({ setStage }: any) {
         Let's start with some basics!
       </Heading>
 
-      <Flex
-        flexDirection="column"
-        gap="1.5rem"
-        width="100%"
-        maxWidth="700px"
-      >
+      <Flex flexDirection="column" gap="1.5rem" width="100%" maxWidth="550px">
         <Box>
           <FormLabel htmlFor="project-name" margin="0 0 0.25rem">
             Name of the Project
@@ -141,6 +132,3 @@ export default function Basics({ setStage }: any) {
     </Flex>
   );
 }
-
-
-

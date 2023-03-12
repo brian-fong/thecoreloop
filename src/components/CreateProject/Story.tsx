@@ -1,4 +1,4 @@
-import {  
+import {
   Box,
   Button,
   Checkbox,
@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 import {
   HiOutlineArrowNarrowLeft as LeftArrow,
-  HiOutlineArrowNarrowRight as RightArrow
+  HiOutlineArrowNarrowRight as RightArrow,
 } from "react-icons/hi";
 
 export default function Story({ setStage }: any) {
@@ -23,19 +23,13 @@ export default function Story({ setStage }: any) {
       padding="3rem 5rem"
       width="100%"
     >
-      <Heading fontSize="1.5rem">
-        Are you from the founding team?
-      </Heading>
-      <Text marginBottom="1rem" maxWidth="700px">
-        Note: If you are not from the founding team but submitting as a community member, you may ignore this section!
+      <Heading fontSize="1.5rem">Are you from the founding team?</Heading>
+      <Text marginBottom="1rem" maxWidth="550px">
+        Note: If you are not from the founding team but submitting as a
+        community member, you may ignore this section!
       </Text>
 
-      <Flex
-        flexDirection="column"
-        gap="1.5rem"
-        width="100%"
-        maxWidth="700px"
-      >
+      <Flex flexDirection="column" gap="1.5rem" width="100%" maxWidth="550px">
         <Box>
           <FormLabel htmlFor="project-story" margin="0 0 0.25rem">
             Share your founding story with the world! :D
@@ -61,16 +55,13 @@ export default function Story({ setStage }: any) {
 
         <Box maxWidth="550px">
           <FormLabel htmlFor="project-website" margin="0 0 1rem">
-            Are you raising money for your project right now? 
+            Are you raising money for your project right now?
           </FormLabel>
-          <Flex
-            flexDirection="column"
-            gap="1.5rem"
-            marginLeft="1rem"
-          >
+          <Flex flexDirection="column" gap="1.5rem" marginLeft="1rem">
             <Checkbox>
               <Text lineHeight="none">
-                Yes, we would appreciate thecoreloop giving us a shoutout on our fundraising stage right now.
+                Yes, we would appreciate thecoreloop giving us a shoutout on our
+                fundraising stage right now.
               </Text>
             </Checkbox>
             <Checkbox>No, we’re not raising at the moment.</Checkbox>
@@ -78,16 +69,19 @@ export default function Story({ setStage }: any) {
         </Box>
       </Flex>
 
-        <hr style={{ width: "100%", margin: "2rem 0", borderTop: "1px solid white" }} />
+      <hr
+        style={{
+          width: "100%",
+          margin: "2rem 0",
+          borderTop: "1px solid white",
+        }}
+      />
 
-      <Flex
-        flexDirection="column"
-      >
-        <Heading fontSize="1.5rem">
-          Are you from the founding team?
-        </Heading>
-        <Text marginBottom="1rem" maxWidth="700px">
-          Note: If you are not from the founding team but submitting as a community member, you may ignore this section!
+      <Flex flexDirection="column">
+        <Heading fontSize="1.5rem">Are you from the founding team?</Heading>
+        <Text marginBottom="1rem" maxWidth="550px">
+          Note: If you are not from the founding team but submitting as a
+          community member, you may ignore this section!
         </Text>
 
         <Box>
@@ -133,6 +127,7 @@ export default function Story({ setStage }: any) {
             _active={{
               filter: "brightness(0.5)",
             }}
+            onClick={() => setStage("Details")}
           >
             <LeftArrow size="1.5rem" />
           </Button>
@@ -157,4 +152,3 @@ export default function Story({ setStage }: any) {
     </Flex>
   );
 }
-
