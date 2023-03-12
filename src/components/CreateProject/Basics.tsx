@@ -66,6 +66,7 @@ export default function Basics({ setStage }: any) {
           </FormLabel>
           <Input
             id="project-website"
+            type="url"
             color="black"
             background="rgba(255, 255, 255, 0.5)"
             border="none"
@@ -87,6 +88,7 @@ export default function Basics({ setStage }: any) {
           </FormLabel>
           <Input
             id="project-twitter"
+            type="url"
             color="black"
             background="rgba(255, 255, 255, 0.5)"
             border="none"

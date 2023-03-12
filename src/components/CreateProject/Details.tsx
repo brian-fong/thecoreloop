@@ -68,11 +68,12 @@ export default function Basics({ setStage }: any) {
           </Select>
         </Box>
         <Box>
-          <FormLabel htmlFor="project-website" margin="0 0 0.25rem">
+          <FormLabel htmlFor="project-chain" margin="0 0 0.25rem">
             What chain is the project built on?
           </FormLabel>
           <Input
-            id="project-website"
+            id="project-chain"
+            type="url"
             color="black"
             background="rgba(255, 255, 255, 0.5)"
             border="none"
@@ -89,11 +90,11 @@ export default function Basics({ setStage }: any) {
           />
         </Box>
         <Box>
-          <FormLabel htmlFor="project-twitter" margin="0 0 0.25rem">
+          <FormLabel htmlFor="project-description" margin="0 0 0.25rem">
             Description of the project
           </FormLabel>
           <Textarea
-            id="project-twitter"
+            id="project-description"
             minHeight="100px"
             color="black"
             background="rgba(255, 255, 255, 0.5)"
@@ -128,11 +129,12 @@ export default function Basics({ setStage }: any) {
           Images & Media
         </Heading>
         <Box>
-          <FormLabel htmlFor="project-website" margin="0 0 0.25rem">
+          <FormLabel htmlFor="project-trailer" margin="0 0 0.25rem">
             YouTube link of the gameplay trailer?
           </FormLabel>
           <Input
-            id="project-website"
+            id="project-trailer"
+            type="url"
             color="black"
             background="rgba(255, 255, 255, 0.5)"
             border="none"

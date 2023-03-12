@@ -1,11 +1,11 @@
 import {
   Box,
   Button,
-  Checkbox,
+  Radio,
+  RadioGroup,
   Flex,
   FormLabel,
   Heading,
-  Input,
   Text,
   Textarea,
 } from "@chakra-ui/react";
@@ -14,7 +14,16 @@ import {
   HiOutlineArrowNarrowRight as RightArrow,
 } from "react-icons/hi";
 
+// React
+import { useState, useEffect } from "react";
+
 export default function Story({ setStage }: any) {
+  const [isRaising, setIsRaising] = useState<string>("undefined");
+
+  useEffect(() => {
+    console.log("Raising: ", isRaising);
+  }, [isRaising]);
+
   return (
     <Flex
       flexDirection="column"
@@ -41,6 +50,7 @@ export default function Story({ setStage }: any) {
             background="rgba(255, 255, 255, 0.5)"
             border="none"
             focusBorderColor="none"
+            autoFocus={true}
             placeholder="Please describe your startup/project in a few words. This will show up as the tagline on the discovery page"
             _placeholder={{
               color: "black",
@@ -57,15 +67,21 @@ export default function Story({ setStage }: any) {
           <FormLabel htmlFor="project-website" margin="0 0 1rem">
             Are you raising money for your project right now?
           </FormLabel>
-          <Flex flexDirection="column" gap="1.5rem" marginLeft="1rem">
-            <Checkbox>
-              <Text lineHeight="none">
-                Yes, we would appreciate thecoreloop giving us a shoutout on our
-                fundraising stage right now.
-              </Text>
-            </Checkbox>
-            <Checkbox>No, we’re not raising at the moment.</Checkbox>
-          </Flex>
+          <RadioGroup onChange={setIsRaising} value={isRaising}>
+            <Flex flexDirection="column" gap="1.5rem" marginLeft="1rem">
+              <Radio value="true">
+                <Text lineHeight="1.2rem">
+                  Yes, we would appreciate thecoreloop giving us a shoutout on
+                  our fundraising stage right now.
+                </Text>
+              </Radio>
+              <Radio value="false">
+                <Text lineHeight="none">
+                  No, we’re not raising at the moment.
+                </Text>
+              </Radio>
+            </Flex>
+          </RadioGroup>
         </Box>
       </Flex>
 
