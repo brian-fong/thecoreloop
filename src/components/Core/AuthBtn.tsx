@@ -6,7 +6,7 @@ import {
 import { signIn } from "next-auth/react";
 import { FcGoogle as GoogleIcon } from "react-icons/fc";
 import { FaTwitter as TwitterIcon } from "react-icons/fa";
-import pressBtn from "../../utils/press-btn";
+import { pressBtn } from "../../utils/animations";
 
 export default function AuthBtn({ provider }: any) {
   const PROVIDERS: any = {
