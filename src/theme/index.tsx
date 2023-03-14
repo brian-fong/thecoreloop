@@ -35,7 +35,7 @@ export default extendTheme({
     tcl_blue_hover: "#0c3999",
     tcl_teal: "#4FD1C5",
     tcl_teal_hover: "#40a89f",
-    tcl_green: "#47d685",
+    tcl_green: "#58bf85",
     tcl_green_hover: "#32995f",
     tcl_pink: "#F93CA3",
     tcl_pink_hover: "#b02c74",

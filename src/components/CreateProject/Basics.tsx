@@ -25,7 +25,7 @@ export default function Basics({ setStage }: any) {
         <Text color="rgba(255, 255, 255, 0.7)">
           Are you running your own web3 gaming startup and you want to share it
           with the world? Or maybe you have your favorite web3 gaming startup
-          that’s not listed at thecoreloop yet?  
+          that’s not listed at thecoreloop yet?
         </Text>
         <Text color="rgba(255, 255, 255, 0.7)">
           Well, you're in the right spot! Just follow these simple steps and

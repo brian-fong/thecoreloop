@@ -71,8 +71,7 @@ export default function Story({ setStage }: any) {
             <Flex flexDirection="column" gap="1.5rem" marginLeft="1rem">
               <Radio value="true">
                 <Text lineHeight="1.2rem">
-                  Yes, we would appreciate thecoreloop giving us a shoutout on
-                  our fundraising stage right now.
+                  Yes, we would appreciate thecoreloop giving us a shoutout on our fundraising stage right now.
                 </Text>
               </Radio>
               <Radio value="false">
