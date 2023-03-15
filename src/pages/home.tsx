@@ -1,19 +1,6 @@
 import {
-  Box,
-  Button,
   Flex,
-  FormControl,
-  FormLabel,
-  Input,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
   Text,
-  Textarea,
   useDisclosure,
 } from "@chakra-ui/react";
 import Head from "next/head";
@@ -22,8 +9,6 @@ import Card from "../components/Home/Card";
 import { useState, useEffect, ReactElement } from "react";
 
 export default function Home() {
-  const { isOpen, onOpen, onClose } = useDisclosure()
-
   const [projectData, setProjectData] = useState<any[]>([]);
 
   const [cards, setCards] = useState<ReactElement[]>([]);
@@ -106,137 +91,6 @@ export default function Home() {
       >
         {/* Header */}
         <Header />
-
-        {/* Modal */}
-        <Modal 
-          closeOnOverlayClick={false} 
-          isOpen={isOpen} 
-          onClose={onClose}
-          isCentered
-        >
-          <ModalOverlay />
-          <ModalContent
-            justifyContent="center"
-            alignItems="center"
-            background="#1d3a3e"
-          >
-            <ModalHeader>Share Web3 Gaming Project</ModalHeader>
-            <ModalCloseButton />
-            <ModalBody>
-              <FormControl>
-                <Flex
-                  flexDirection="column"
-                  justifyContent="center"
-                  alignItems="start"
-                  gap="20px"
-                >
-                  <Box width="100%">
-                    <FormLabel htmlFor="project-name" margin="0px">
-                      Name of the Project
-                    </FormLabel>
-                    <Input
-                      id="project-name"
-                      placeholder="What is it called?"
-                    />
-                  </Box>
-                  <Box width="100%">
-                    <FormLabel htmlFor="project-website" margin="0px">
-                      Website URL of the Project
-                    </FormLabel>
-                    <Input
-                      id="project-website"
-                      type="url"
-                      placeholder="https://"
-                    />
-                  </Box>
-                  <Box width="100%">
-                    <FormLabel htmlFor="project-twitter" margin="0px">
-                      Twitter Account of the Project
-                    </FormLabel>
-                    <Input
-                      id="project-twitter"
-                      type="url"
-                      placeholder="https://twitter.com/"
-                    />
-                  </Box>
-                  <Box width="100%">
-                    <FormLabel htmlFor="project-genre" margin="0px">
-                      What genre best describes your project?
-                    </FormLabel>
-                    <Input
-                      id="project-genre"
-                      placeholder="What is it called?"
-                    />
-                  </Box>
-                  <Box width="100%">
-                    <FormLabel htmlFor="project-stage" margin="0px">
-                      What development stage best describes your project?
-                    </FormLabel>
-                    <Input
-                      id="project-stage"
-                      placeholder="What is it called?"
-                    />
-                  </Box>
-                  <Box width="100%">
-                    <FormLabel htmlFor="project-chain" margin="0px">
-                      What chain is your project built on? 
-                    </FormLabel>
-                    <Input
-                      id="project-chain"
-                      placeholder="https://"
-                    />
-                  </Box>
-                  <Box width="100%">
-                    <FormLabel htmlFor="project-description" margin="0px">
-                      Short Description of the Project
-                    </FormLabel>
-                    <Textarea
-                      id="project-description"
-                      minHeight="100px"
-                      placeholder="Please describe your startup/project in a few words. This will show up as the tagline on the discovery page"
-                    />
-                  </Box>
-                  <Box width="100%">
-                    <FormLabel htmlFor="project-image" margin="0px">
-                      Image of the Project
-                    </FormLabel>
-                    <Input
-                      id="project-image"
-                      type="url"
-                      placeholder="https://"
-                    />
-                  </Box>
-                  <Box width="100%">
-                    <FormLabel htmlFor="project-trailer" margin="0px">
-                      YouTube Trailer for Project
-                    </FormLabel>
-                    <Input
-                      id="project-trailer"
-                      type="url"
-                      placeholder="This is optional but we highly recommend it!"
-                    />
-                  </Box>
-                </Flex>
-              </FormControl>
-            </ModalBody>
-
-            <ModalFooter>
-              <Flex
-                flexDirection="row"
-                justifyContent="center"
-                alignItems="center"
-                gap="30px"
-              >
-                <Button onClick={handleSubmit} >
-                  Submit
-                </Button>
-                <Button onClick={onClose} >
-                  Cancel
-                </Button>
-              </Flex>
-            </ModalFooter>
-          </ModalContent>
-        </Modal>
 
         <Flex
           id="body-container"
