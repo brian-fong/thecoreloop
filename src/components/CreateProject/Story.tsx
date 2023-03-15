@@ -93,10 +93,9 @@ export default function Story({ setStage }: any) {
       />
 
       <Flex flexDirection="column">
-        <Heading fontSize="1.5rem">Are you from the founding team?</Heading>
+        <Heading fontSize="1.5rem">I'm sharing as part of the community!</Heading>
         <Text marginBottom="1rem" maxWidth="550px">
-          Note: If you are not from the founding team but submitting as a
-          community member, you may ignore this section!
+          Note: This section is for the community sharing the project with thecoreloop. It is not a mandatory field if you’re from the founding team of a web3 gaming startup. 
         </Text>
 
         <Box>
