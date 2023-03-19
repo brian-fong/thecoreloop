@@ -51,7 +51,7 @@ export default function landing_page() {
         alignItems="center"
         minHeight="100vh"
         color="white"
-        background="body"
+        background="#1C1C28"
       >
         {/* Header */}
         <Header />
@@ -62,7 +62,6 @@ export default function landing_page() {
           justifyContent="center"
           alignItems="center"
           width="100%"
-          background="body"
         >
           {/* Heading */}
           <Text 
@@ -162,8 +161,9 @@ export default function landing_page() {
           flexDirection="column"
           justifyContent="center"
           alignItems="center"
+          paddingBottom="20px"
           width="100%"
-          background="gallery"
+          background="#12121a"
         >
           {/* Player Gallery */}
           <Gallery screen_width={dimensions?.contentBox?.width!} />
@@ -171,14 +171,15 @@ export default function landing_page() {
           {/* Player Heading */}
           <Link
             href="https://pm6hpw3zasy.typeform.com/to/kOc7e3N7"
+            margin="20px 0px"
           >
             <Text 
-              margin="20px 0px"
-              padding="4px 20px"
+              padding="0 20px"
               fontSize="20px" 
               fontStyle="italic"
               fontWeight="800" 
               textAlign="center"
+              textShadow="3px 3px black"
               width="100%"
             >
               === SELECT YOUR CLASS AND JOIN THE CORE TEAM! ===

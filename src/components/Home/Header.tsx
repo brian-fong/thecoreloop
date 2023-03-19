@@ -41,7 +41,7 @@ export default function Header() {
     >
       <Link href="/home">
         <Image
-          src="./tcl-logo-transparent.png"
+          src="./thecoreloop-logo.png"
           objectFit="cover"
           height="70px"
           draggable={false}

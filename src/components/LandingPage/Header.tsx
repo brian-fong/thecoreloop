@@ -4,6 +4,11 @@ import {
   Link, 
   Tooltip,
 } from "@chakra-ui/react";
+import {
+  SiSubstack as SubstackIcon,
+  SiTwitter as TwitterIcon,
+  SiTelegram as TelegramIcon,
+} from "react-icons/si";
 
 export default function Header() {
   return (
@@ -13,15 +18,18 @@ export default function Header() {
       gap="10px"
       justifyContent="space-between"
       alignItems="center"
+      position="sticky"
+      top="0"
       width="100%"
-      background="tcl_yellow"
-      zIndex={10}
+      backdropFilter="blur(12px)"
+      zIndex={1}
       draggable={false}
     >
       <Image
-        src="./tcl-logo.png"
+        src="./thecoreloop-logo-alt.png"
         objectFit="cover"
-        height="50px"
+        width="auto"
+        height="70px"
         draggable={false}
       />
       <Flex
@@ -33,42 +41,39 @@ export default function Header() {
         padding="10px 30px 10px 10px"
       >
         <Tooltip label="Subscribe to our newsletter">
-          <Link href="https://thecoreloop.substack.com/" isExternal>
-            <Image 
-              src="./icons/newsletter-icon.png" 
-              height="32px" 
-              borderRadius="50%"
-              transition="background-color 300ms linear"
-              _hover={{
-                backgroundColor: "white",
-              }}
-            />
+          <Link 
+            href="https://thecoreloop.substack.com/" 
+            isExternal
+            transition="color 200ms ease-in-out"
+            _hover={{
+              color: "substack",
+            }}
+          >
+            <SubstackIcon size={25}/>
           </Link>
         </Tooltip>
         <Tooltip label="Follow us on Twitter">
-          <Link href="https://twitter.com/thecoreloop" isExternal>
-            <Image 
-              src="./icons/twitter-icon.png" 
-              height="32px" 
-              borderRadius="50%"
-              transition="background-color 300ms linear"
-              _hover={{
-                backgroundColor: "twitter",
-              }}
-            />
+          <Link 
+            href="https://twitter.com/thecoreloop"
+            isExternal
+            transition="color 200ms ease-in-out"
+            _hover={{
+              color: "twitter",
+            }}
+          >
+            <TwitterIcon size={25}/>
           </Link>
         </Tooltip>
         <Tooltip label="Daily updates on Telegram">
-          <Link href="https://t.me/thecoreloop" isExternal>
-            <Image 
-              src="./icons/telegram-icon.png" 
-              height="32px" 
-              borderRadius="50%"
-              transition="background-color 300ms linear"
-              _hover={{
-                backgroundColor: "telegram",
-              }}
-            />
+          <Link 
+            href="https://t.me/thecoreloop" 
+            isExternal
+            transition="color 200ms ease-in-out"
+            _hover={{
+              color: "telegram",
+            }}
+          >
+            <TelegramIcon size={25}/>
           </Link>
         </Tooltip>
       </Flex>

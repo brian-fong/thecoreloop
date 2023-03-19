@@ -19,6 +19,7 @@ export default extendTheme({
 
     // Socials
     discord: "#7289da",
+    substack: "#FF5A00",
     telegram: "#249DD9",
     telegram_hover: "#186e99",
     twitter: "#1DA1F2",
@@ -42,9 +43,6 @@ export default extendTheme({
   },
   styles: {
     global: {
-      html: {
-        scrollBehavior: "smooth",
-      },
       body: {
         margin: "0px", 
         padding: "0px",
@@ -52,6 +50,13 @@ export default extendTheme({
         fontSize: "14px",
         fontFamily: `"JetBrains Mono", sans-serif`,
         scrollBehavior: "smooth",
+      },
+      "*::-webkit-scrollbar": {
+        backgroundColor: "rgba(0, 0, 0, 0.5)",
+        width: "5px",
+      },
+      "*::-webkit-scrollbar-thumb": {
+        backgroundColor: "rgba(255, 255, 255, 0.8)",
       },
     },
   },
