@@ -7,15 +7,9 @@ import { extendTheme } from "@chakra-ui/react";
 
 export default extendTheme({
   colors: {
-    // Core
-    body: "#282A36",
-    gallery: "#1d1e26",
-    standard_bkg: "#C0C0C0",
-    standard_bkg_alt: "#adadad",
-    category_bkg: "#909090",
-    category_bkg_hover: "#606060",
-    text: "black",
-    text_alt: "rgba(0, 0, 0, 0.7)",
+    // Curve Finance
+    curve: "#C0C0C0",
+    curve_alt: "#909090",
 
     // Socials
     discord: "#7289da",

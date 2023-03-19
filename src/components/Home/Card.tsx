@@ -1,5 +1,6 @@
 import {
   Flex,
+  Heading,
   Image,
   Link,
   Text,
@@ -9,9 +10,8 @@ import {
 } from "react-icons/ri";
 
 export default function Card({
+  title,
   image,
-  name,
-  website,
   description, 
   genre,
   stage,
@@ -38,17 +38,27 @@ export default function Card({
         flexDirection="column"
         justifyContent="space-between"
         alignItems="start"
-        padding="10px 0px"
+        gap="8px"
+        padding="10px 0"
         height="100%"
       >
-        <Link href={website}>{name}</Link>
-        <Text>{description}</Text>
+        <Heading 
+          fontSize="20px"
+          fontWeight="700"
+        >
+          {title}
+        </Heading>
+        <Text 
+          fontSize="16px"
+        >
+          {description}
+        </Text>
         <Flex
           flexDirection="row"
           justifyContent="center"
           alignItems="center"
-          gap="20px"
-          color="rgba(255, 255, 255, 0.7)"
+          gap="50px"
+          color="white"
         >
           <Text>{genre}</Text>
           <Text>{stage}</Text>
@@ -61,11 +71,15 @@ export default function Card({
         gap="0.5rem"
         marginLeft="auto"
         padding="1rem 1rem 0.5rem"
+        background="rgba(255, 255, 255, 0.1)"
         border="1px solid white"
         cursor="pointer"
       >
-        <RiArrowUpSFill size="28px" />
-        <Text>{upvote_count}</Text>
+        <RiArrowUpSFill 
+          size="28px" 
+          color="white"
+        />
+        <Text fontSize="14px">{upvote_count}</Text>
       </Flex>
     </Flex>
   );

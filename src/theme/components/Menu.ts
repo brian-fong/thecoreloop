@@ -12,7 +12,7 @@ const variants = {
       color: "black",
       fontSize: "14px",
       background: "none",
-      border: "1px solid black",
+      border: "2px solid white",
       borderRadius: "30px",
       _hover: {
         background: "rgba(0, 0, 0, 0.1)",
@@ -22,14 +22,15 @@ const variants = {
       }
     },
     list: {
-      background: "#1D203E",
+      background: "#2C2C2C",
       padding: "0px 30px",
     },
     item: {
       margin: "30px 0px",
       padding: "0px",
       color: "white",
-      background: "#3A3D57",
+      background: "black",
+      border: "2px solid white",
       borderRadius: "30px",
       transition: "filter 200ms",
       _hover: {

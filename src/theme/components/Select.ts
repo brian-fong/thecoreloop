@@ -7,10 +7,8 @@ const { definePartsStyle, defineMultiStyleConfig } =
 const thecoreloop = definePartsStyle({
   field: {
     color: "black",
-    background: "rgba(255, 255, 255, 0.5)",
-    _focus: {
-      background: "white",
-    }
+    background: "white",
+    border: "none",
   },
 })
 

@@ -3,68 +3,39 @@ import {
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
+import Card from "../components/Home/Card";
+import DATA from "../mock/mock-data";
 import Head from "next/head";
 import Header from "../components/Home/Header";
-import Card from "../components/Home/Card";
 import { useState, useEffect, ReactElement } from "react";
+import uuid from "react-uuid";
 
 export default function Home() {
-  const [projectData, setProjectData] = useState<any[]>([]);
-
   const [cards, setCards] = useState<ReactElement[]>([]);
 
-  function handleSubmit() {
-    const name: string = (document.getElementById("project-name") as HTMLInputElement).value;
-    const website: string = (document.getElementById("project-website") as HTMLInputElement).value;
-    const twitter: string = (document.getElementById("project-twitter") as HTMLInputElement).value;
-    const genre: string = (document.getElementById("project-genre") as HTMLInputElement).value;
-    const chain: string = (document.getElementById("project-chain") as HTMLInputElement).value;
-    const description: string = (document.getElementById("project-description") as HTMLInputElement).value;
-    const image: string = (document.getElementById("project-image") as HTMLInputElement).value;
-    const trailer: string = (document.getElementById("project-trailer") as HTMLInputElement).value;
-
-    const new_project: any = {
-      name, 
-      website, 
-      twitter, 
-      genre, 
-      chain, 
-      description, 
-      image, 
-      trailer, 
-    };
-
-    setProjectData(data => [...data, new_project]);
+  function compareUpvote(a: any, b: any): number {
+    if (a.upvote_count < b.upvote_count) return 1;
+    else if (a.upvote_count > b.upvote_count) return -1;
+    else return 0;
   }
 
   useEffect(() => {
     setCards([]);
-    for (let i = 0; i < projectData.length; i++) {
-      const {
-        name, 
-        website, 
-        twitter, 
-        genre, 
-        chain, 
-        description, 
-        image, 
-        trailer, 
-      }: any = projectData[i];
-
-      const new_card: ReactElement = <Card
-        name={name}
-        website={website}
-        twitter={twitter}
-        genre={genre}
-        chain={chain}
-        description={description}
-        image={image}
-        trailer={trailer}
-      />
-
-      setCards(cards => [...cards, new_card]);
+    DATA.gaming_startups.sort(compareUpvote);
+    for (let entry of DATA.gaming_startups) {
+      setCards(cards => [...cards, 
+        <Card
+          key={uuid()}
+          title={entry.title}
+          image={entry.image}
+          description={entry.description}
+          genre={entry.genre}
+          stage={entry.stage}
+          upvote_count={entry.upvote_count}
+        />
+      ]);
     }
-  }, [projectData]);
+  }, []);
 
   return (
     <>
@@ -78,6 +49,7 @@ export default function Home() {
         <meta name="viewport" content="viewport-fit=cover" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
+
       {/* Main Container */}
       <Flex
         id="main-container"
@@ -87,11 +59,12 @@ export default function Home() {
         position="relative"
         minHeight="100vh"
         color="white"
-        background="#1D203E"
+        background="black"
       >
         {/* Header */}
         <Header />
 
+        {/* Body Container */}
         <Flex
           id="body-container"
           flexDirection="column"
@@ -110,6 +83,7 @@ export default function Home() {
             maxWidth="800"
             height="100%"
           >
+            {/* Popular & Latest Container */}
             <Flex
               flexDirection="row"
               justifyContent="space-between"
@@ -151,6 +125,8 @@ export default function Home() {
                 </Text>
               </Flex>
             </Flex>
+
+            {/* Card Gallery */}
             <Flex
               id="card-container"
               flexDirection="column"
@@ -161,7 +137,6 @@ export default function Home() {
               width="100%"
               height="100%"
             >
-              {/* Sample Card Component */}
               {cards}
             </Flex>
           </Flex>

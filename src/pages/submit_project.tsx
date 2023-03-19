@@ -2,17 +2,17 @@
 import {
   Flex,
 } from "@chakra-ui/react";
+import Basics from "../components/SubmitProject/Basics";
+import Details from "../components/SubmitProject/Details";
 import Head from "next/head";
 import Header from "../components/Home/Header";
-import LeftColumn from "../components/CreateProject/LeftColumn";
-import Basics from "../components/CreateProject/Basics";
-import Details from "../components/CreateProject/Details";
-import Story from "../components/CreateProject/Story";
+import LeftColumn from "../components/SubmitProject/LeftColumn";
+import Story from "../components/SubmitProject/Story";
 
 // React
 import { ReactElement, useState, useEffect } from "react";
 
-export default function create_project() {
+export default function submit_project() {
   const [stage, setStage] = useState<string>("Basics");
 
   const [stageContent, setStageContent] = useState<ReactElement>();
@@ -49,7 +49,7 @@ export default function create_project() {
         position="relative"
         minHeight="100vh"
         color="white"
-        background="#1D203E"
+        background="black"
       >
         {/* Header */}
         <Header />
@@ -57,7 +57,8 @@ export default function create_project() {
         <Flex
           flexDirection="row"
           width="100%"
-          minHeight="100vh"
+          height="100%"
+          minHeight="90vh"
         >
           {/* Left Column */}
           <LeftColumn 
@@ -65,11 +66,13 @@ export default function create_project() {
             setStage={setStage}
           />
 
+          {/* Content Container */}
           <Flex
+            id="content-container"
             flexDirection="column"
             justifyContent="start"
             alignItems="start"
-            padding="3rem 5rem"
+            padding="40px 40px 40px 80px"
             width="100%"
           >
             {stageContent}

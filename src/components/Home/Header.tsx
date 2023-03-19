@@ -24,6 +24,11 @@ import {
 import {
   IoMdChatboxes
 } from "react-icons/io";
+import {
+  SiSubstack as SubstackIcon,
+  SiTwitter as TwitterIcon,
+  SiTelegram as TelegramIcon,
+} from "react-icons/si";
 
 export default function Header() {
   return (
@@ -35,18 +40,21 @@ export default function Header() {
       alignItems="center"
       width="100%"
       height="70px"
-      background="#EAF3F4"
+      background="black"
       zIndex={10}
       draggable={false}
     >
+      {/* Thumbnail */}
       <Link href="/home">
         <Image
-          src="./thecoreloop-logo.png"
+          src="./thecoreloop-logo-alt.png"
           objectFit="cover"
           height="70px"
           draggable={false}
         />
       </Link>
+
+      {/* Contribute Container */}
       <Flex
         flexDirection="row"
         justifyContent="center"
@@ -72,6 +80,7 @@ export default function Header() {
               >
                 <Text
                   margin="0px 5px 0px 20px"
+                  color="white"
                 >
                   Contribute
                 </Text>
@@ -82,6 +91,7 @@ export default function Header() {
                 >
                   <AiOutlineDown 
                     size="16px" 
+                    color="white"
                   />
                 </Box>
               </Flex>
@@ -89,7 +99,7 @@ export default function Header() {
             <MenuList>
               <MenuItem>
                 <Link 
-                  href="/create_project"
+                  href="/submit_project"
                   margin="0px"
                   padding="5px 20px 5px 10px"
                   width="100%"
@@ -158,6 +168,8 @@ export default function Header() {
             </MenuList>
           </Menu>
         </Flex>
+
+        {/* Explore Container */}
         <Flex
           id="explore-input-container"
           flexDirection="row"
@@ -172,71 +184,95 @@ export default function Header() {
             left="0"
             marginLeft="10px"
           >
-            <RxCrosshair2 color="black" size="16px" />
+            <RxCrosshair2 color="white" size="16px" />
           </Box>
           <Input 
             type="text"
             padding="0px 20px 0px 30px"
-            color="black"
+            color="white"
             fontSize="14px"
             width="min-content"
             maxWidth="180px"
-            height="100%"
-            placeholder="Explore..."
-            border="1px solid black"
+            height="35px"
+            border="2px solid white"
             borderRadius="30px"
             autoComplete="off"
+            placeholder="Explore..."
+            _hover={{}}
+            _placeholder={{
+              color: "rgba(255, 255, 255, 0.8)",
+            }}
+            _focusVisible={{}}
+            style={{
+              caretColor: "white",
+            }}
           />
         </Flex>
       </Flex>
+
+      {/* Socials Container */}
       <Flex
         id="socials-container"
         flexDirection="row"
         gap="20px"
         justifyContent="center"
         alignItems="center"
-        padding="10px 30px 10px 10px"
         marginLeft="auto"
+        padding="10px 30px 10px 10px"
       >
         <Tooltip label="Subscribe to our newsletter">
-          <Link href="https://thecoreloop.substack.com/" isExternal>
-            <Image 
-              src="./icons/newsletter-icon.png" 
-              height="32px" 
-              borderRadius="50%"
-              transition="background-color 300ms linear"
-              _hover={{
-                backgroundColor: "white",
-              }}
-            />
+          <Link 
+            href="https://thecoreloop.substack.com/" 
+            isExternal
+            transition="color 200ms ease-in-out"
+            _hover={{
+              color: "substack",
+            }}
+          >
+            <SubstackIcon size={25}/>
           </Link>
         </Tooltip>
         <Tooltip label="Follow us on Twitter">
-          <Link href="https://twitter.com/thecoreloop" isExternal>
-            <Image 
-              src="./icons/twitter-icon.png" 
-              height="32px" 
-              borderRadius="50%"
-              transition="background-color 300ms linear"
-              _hover={{
-                backgroundColor: "twitter",
-              }}
-            />
+          <Link 
+            href="https://twitter.com/thecoreloop"
+            isExternal
+            transition="color 200ms ease-in-out"
+            _hover={{
+              color: "twitter",
+            }}
+          >
+            <TwitterIcon size={25}/>
           </Link>
         </Tooltip>
         <Tooltip label="Daily updates on Telegram">
-          <Link href="https://t.me/thecoreloop" isExternal>
-            <Image 
-              src="./icons/telegram-icon.png" 
-              height="32px" 
-              borderRadius="50%"
-              transition="background-color 300ms linear"
-              _hover={{
-                backgroundColor: "telegram",
-              }}
-            />
+          <Link 
+            href="https://t.me/thecoreloop" 
+            isExternal
+            transition="color 200ms ease-in-out"
+            _hover={{
+              color: "telegram",
+            }}
+          >
+            <TelegramIcon size={25}/>
           </Link>
         </Tooltip>
+      </Flex>
+      
+      {/* Profile Picture Container */}
+      <Flex
+        flexDirection="row"
+        justifyContent="center"
+        alignItems="center"
+        height="100%"
+      >
+        <Image
+          src="https://pbs.twimg.com/profile_images/1635117890440695808/j3Ww7-z7_400x400.jpg"
+          objectFit="cover"
+          borderRadius="50%"
+          marginRight="20px"
+          width="auto"
+          height="50px"
+        />
       </Flex>
     </Flex>
   );
