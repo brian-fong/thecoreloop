@@ -58,7 +58,6 @@ export default function Story({ setStage }: any) {
             _placeholder={{
               color: "black",
               fontStyle: "italic",
-              opacity: "0.5",
             }}
             _focus={{
               background: "white",

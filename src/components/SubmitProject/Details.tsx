@@ -256,25 +256,6 @@ export default function Basics({ setStage }: any) {
             <input id="project-images" {...getInputProps()} />
             <Text>Click to choose a file or drag here</Text>
           </Flex>
-          <Flex
-            flexDirection="row"
-            justifyContent="center"
-            alignItems="center"
-            marginTop="1rem"
-            width="100%"
-          >
-            {file?.preview ? (
-              <Image
-                src={file?.preview}
-                objectFit="cover"
-                width="100px"
-                height="100px"
-                padding="1rem"
-                border="1px solid white"
-                borderRadius="15px"
-              />
-            ) : null}
-          </Flex>
         </Box>
 
         <Box>
