@@ -49,7 +49,10 @@ export default function Header() {
         <Image
           src="./thecoreloop-logo-alt.png"
           objectFit="cover"
+          width="auto"
+          minWidth="70px"
           height="70px"
+          loading="lazy"
           draggable={false}
         />
       </Link>
