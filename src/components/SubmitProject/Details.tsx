@@ -4,13 +4,21 @@ import {
   Flex,
   FormLabel,
   Heading,
-  Image,
   Input,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverHeader,
+  PopoverBody,
+  PopoverFooter,
+  PopoverArrow,
+  PopoverCloseButton,
+  PopoverAnchor,
   Radio,
   RadioGroup,
-  Select,
   Text,
   Textarea,
+  useDimensions,
 } from "@chakra-ui/react";
 import {
   HiOutlineArrowNarrowLeft as LeftArrow,
@@ -19,8 +27,9 @@ import {
 import {
   FaImages as ImageIcon
 } from "react-icons/fa";
-import React, { useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
+import GenrePopover from "./GenrePopover";
 
 export default function Basics({ setStage }: any) {
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
@@ -38,6 +47,14 @@ export default function Basics({ setStage }: any) {
   });
 
   const [file, setFile] = useState<any>();
+  const genre_node = useRef<any>();
+  const [genres, setGenres] = useState<string[]>([]);
+  const dimensions = useDimensions(genre_node, true);
+
+  useEffect(() => {
+    const genre_width: number = dimensions?.contentBox?.width! + 32;
+    console.log("Genre Node: ", genre_width);
+  }, [dimensions]);
 
   useEffect(() => {
     console.log("File: ", file);
@@ -62,28 +79,44 @@ export default function Basics({ setStage }: any) {
 
       <Flex flexDirection="column" gap="30px" width="100%">
         <Box>
-          <FormLabel htmlFor="project-genre" marginBottom="5px">
-            What genre best describes the project?
+          <FormLabel htmlFor="project-genres" marginBottom="5px">
+            Select 1-2 genres that best describe this project
           </FormLabel>
-          <Select
-            id="project-genre"
-            variant="thecoreloop"
+          <Flex
+            id="genre-container"
+            ref={genre_node}
+            flexDirection="row"
+            flexWrap="wrap"
+            alignItems="center"
+            columnGap="15px"
+            rowGap="10px"
+            marginBottom="15px"
+            padding="15px"
+            minWidth="100%"
             color="black"
-            background="white"
-            border="none"
-            focusBorderColor="none"
-            placeholder="Tower Defense"
-            _placeholder={{
-              color: "black",
-              fontStyle: "italic",
-            }}
-            autoFocus={true}
+            fontSize="16px"
+            border="1px solid white"
+            borderRadius="5px"
           >
-            <option value="FPS">FPS</option>
-            <option value="RPG">RPG</option>
-            <option value="Simulation">Simulation</option>
-            <option value="TCG">TCG</option>
-          </Select>
+            {genres.length == 0
+              ? <Text color="white">No genres selected</Text>
+              : genres.map(genre => (
+                  <Text 
+                    padding="2px 4px"
+                    color="black"
+                    background="white"
+                    borderRadius="8px"
+                  >
+                    {genre}
+                  </Text>
+                ))
+            }
+          </Flex>
+          <GenrePopover 
+            genres={genres}
+            setGenres={setGenres}
+            width={dimensions?.contentBox?.width! + 32}
+          />
         </Box>
 
         <Box>
