@@ -30,7 +30,7 @@ export default function submit_project() {
   return (
     <>
       <Head>
-        <title>thecoreloop</title>
+        <title>Submit Project</title>
         <link 
           rel="icon" 
           type="image/x-icon" 
