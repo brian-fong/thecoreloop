@@ -13,19 +13,28 @@ import Story from "../components/SubmitProject/Story";
 import { ReactElement, useState, useEffect } from "react";
 
 export default function submit_project() {
+  // Links to project website or Twitter
+  const [links, setLinks] = useState<string[]>([""]);
+
+  // Stages of Project-Submission form
   const [stage, setStage] = useState<string>("Basics");
 
+  // React Component for given Stage
   const [stageContent, setStageContent] = useState<ReactElement>();
   
   useEffect(() => {
     if (stage == "Basics") {
-      setStageContent(<Basics setStage={setStage} />);
+      setStageContent(<Basics 
+        links={links} 
+        setLinks={setLinks} 
+        setStage={setStage} 
+      />);
     } else if (stage == "Details") {
       setStageContent(<Details setStage={setStage} />);
     } else if (stage == "Story") {
       setStageContent(<Story setStage={setStage} />);
     }
-  }, [stage]);
+  }, [links, stage]);
 
   return (
     <>
@@ -72,7 +81,7 @@ export default function submit_project() {
             flexDirection="column"
             justifyContent="start"
             alignItems="start"
-            padding="40px 40px 40px 80px"
+            padding="40px 80px"
             width="100%"
           >
             {stageContent}

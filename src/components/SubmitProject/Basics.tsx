@@ -1,4 +1,4 @@
-import {
+import {  
   Box,
   Button,
   Flex,
@@ -9,9 +9,31 @@ import {
   RadioGroup,
   Text,
 } from "@chakra-ui/react";
+import { 
+  IoAddCircleOutline as AddIcon,
+  IoCloseCircleOutline as CloseIcon,
+} from "react-icons/io5";
 import { HiOutlineArrowNarrowRight as RightArrow } from "react-icons/hi";
 
-export default function Basics({ setStage }: any) {
+export default function Basics({ links, setLinks, setStage }: any) {
+
+  function handleAdd(): void {
+    console.log("Add detected");
+    setLinks((links: any) => [...links, ""]);
+  }
+
+  function handleRemove(index: number): void {
+    const new_links: string[] = [...links];
+    new_links.splice(index, 1);
+    setLinks(new_links);
+  }
+
+  function handleChange(event: any, index: number): void {
+    const new_links: string[] = [...links];
+    new_links[index] = event.currentTarget.value;
+    setLinks(new_links);
+  }
+
   return (
     <Flex
       flexDirection="column"
@@ -106,28 +128,102 @@ export default function Basics({ setStage }: any) {
               color: "black",
               fontStyle: "italic",
             }}
-            autoFocus={true}
           />
         </Box>
 
-        <Box>
+        {/* Websites & Twitter Links Container */}
+        <Flex flexDirection="column" width="100%">
           <FormLabel htmlFor="project-website" marginBottom="5px">
             Website/Twitter links to the project
           </FormLabel>
-          <Input
-            id="project-website"
-            type="url"
-            color="black"
-            background="white"
-            border="none"
-            focusBorderColor="none"
-            placeholder="https://"
-            _placeholder={{
-              color: "black",
-              fontStyle: "italic",
-            }}
-          />
-        </Box>
+          <Flex 
+            id="link-gallery"
+            flexDirection="column" 
+            gap="15px"
+            width="100%"
+            minHeight="100px"
+          >
+            {/* Project Links */}
+            {
+              links.map((link: any, index: number) => (index == 0
+                ? (
+                  <Flex 
+                    flexDirection="row" 
+                    alignItems="center" 
+                    position="relative"
+                  >
+                    <Input
+                      key={index}
+                      id="project-website"
+                      value={link}
+                      type="url"
+                      color="black"
+                      background="white"
+                      border="none"
+                      focusBorderColor="none"
+                      placeholder="https://"
+                      _placeholder={{
+                        color: "black",
+                        fontStyle: "italic",
+                      }}
+                      onChange={(event) => handleChange(event, index)}
+                    />
+                    <Box
+                      position="absolute"
+                      right="-45px"
+                      color="white"
+                      cursor="pointer"
+                      onClick={handleAdd}
+                      transition="filter 200ms ease-in-out"
+                      userSelect="none"
+                      _hover={{
+                        filter: "brightness(0.8)",
+                      }}
+                    >
+                      <AddIcon size="35px" />
+                    </Box>
+                  </Flex>
+                ) : (
+                  <Flex 
+                    flexDirection="row" 
+                    alignItems="center" 
+                    position="relative"
+                  >
+                    <Input
+                      key={index}
+                      value={link}
+                      type="url"
+                      color="black"
+                      background="white"
+                      border="none"
+                      focusBorderColor="none"
+                      placeholder="https://"
+                      _placeholder={{
+                        color: "black",
+                        fontStyle: "italic",
+                      }}
+                      onChange={(event) => handleChange(event, index)}
+                    />
+                    <Box
+                      position="absolute"
+                      right="-45px"
+                      color="white"
+                      cursor="pointer"
+                      onClick={() => handleRemove(index)}
+                      transition="filter 200ms ease-in-out"
+                      userSelect="none"
+                      _hover={{
+                        filter: "brightness(0.8)",
+                      }}
+                    >
+                      <CloseIcon size="35px" />
+                    </Box>
+                  </Flex>
+                )
+              ))
+            }
+          </Flex>
+        </Flex>
 
         {/* Next Button Container */}
         <Flex
