@@ -39,6 +39,7 @@ export default function Header() {
       justifyContent="start"
       alignItems="center"
       width="100%"
+      minWidth="800px"
       height="70px"
       background="black"
       zIndex={10}
@@ -273,8 +274,10 @@ export default function Header() {
           objectFit="cover"
           borderRadius="50%"
           marginRight="20px"
-          width="auto"
+          width="50px"
+          minWidth="50px"
           height="50px"
+          minHeight="50px"
         />
       </Flex>
     </Flex>
