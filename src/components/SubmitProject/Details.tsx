@@ -25,7 +25,7 @@ import {
 import React, { useRef, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import ChainPopover from "./ChainPopover";
-import GenrePopover from "./GenrePopover";
+import GenrePopover from "./GenrePopoverV2";
 
 export default function Details({ 
   genres, 
@@ -71,67 +71,54 @@ export default function Details({
         Help us understand it better
       </Heading>
 
+      {/* Details Form Container */}
       <Flex flexDirection="column" gap="30px" width="100%">
-        <Box>
-          <FormLabel htmlFor="project-genres" marginBottom="5px">
-            Select 1-2 genres that best describe this project
-          </FormLabel>
-          <Flex alignItems="center" position="relative">
-            <Flex
-              id="genre-container"
-              ref={genre_node}
-              flexDirection="row"
-              flexWrap="wrap"
-              alignItems="center"
-              columnGap="15px"
-              rowGap="10px"
-              marginBottom="15px"
-              padding="15px"
-              minWidth="100%"
-              color="black"
-              fontSize="16px"
-              border="1px solid white"
-              borderRadius="5px"
+
+        {/* Primary and Secondary Genres Container */}
+        <Flex flexDirection="column" gap="20px" width="100%">
+          <Box>
+            <FormLabel 
+              htmlFor="project-chain" 
+              margin="0"
+              marginRight="10px"
+              width="100%"
+              whiteSpace="nowrap"
             >
-              {genres.length == 0
-                ? <Text color="white">No genres selected</Text>
-                : genres.map((genre: any) => (
-                    <Text 
-                      padding="2px 6px"
-                      color="black"
-                      background="white"
-                      borderRadius="8px"
-                    >
-                      {genre}
-                    </Text>
-                  ))
-              }
-            </Flex>
-            <Box
-              position="absolute"
-              right="-45px"
-              top="10px"
-              color="white"
-              cursor="pointer"
-              onClick={() => setGenres([])}
-              transition="filter 200ms ease-in-out"
-              userSelect="none"
-              _hover={{
-                filter: "brightness(0.8)",
-              }}
-              _active={{
-                filter: "brightness(0.5)",
-              }}
+              What is the main genre of this project?
+            </FormLabel>
+            <GenrePopover
+              width={dimensions?.contentBox?.width! + 32}
+              genre={genres.main}
+              setGenre={(genre: any) => setGenres((genres: any) => {
+                return {
+                  ...genres, 
+                  main: genre
+                };
+              })}
+            />
+          </Box>
+          <Box>
+            <FormLabel 
+              htmlFor="project-chain" 
+              margin="0"
+              marginRight="10px"
+              width="100%"
+              whiteSpace="nowrap"
             >
-              <CloseIcon size="35px" />
-            </Box>
-          </Flex>
-          <GenrePopover 
-            genres={genres}
-            setGenres={setGenres}
-            width={dimensions?.contentBox?.width! + 32}
-          />
-        </Box>
+              What is the sub-genre of this project?
+            </FormLabel>
+            <GenrePopover
+              width={dimensions?.contentBox?.width! + 32}
+              genre={genres.sub}
+              setGenre={(genre: any) => setGenres((genres: any) => {
+                return {
+                  ...genres, 
+                  sub: genre
+                };
+              })}
+            />
+          </Box>
+        </Flex>
 
         <Flex flexDirection="column" gap="15px">
           <Box>
@@ -145,7 +132,6 @@ export default function Details({
               What chain is this project built on?
             </FormLabel>
             <ChainPopover
-              width={dimensions?.contentBox?.width! + 32}
               chain={chain}
               setChain={setChain}
             />
@@ -167,48 +153,6 @@ export default function Details({
               fontStyle: "italic",
             }}
           />
-        </Flex>
-
-        <Flex flexDirection="column" gap="15px">
-          <Box>
-            <FormLabel 
-              htmlFor="project-stage" 
-              margin="0"
-              marginRight="10px"
-              width="100%"
-              whiteSpace="nowrap"
-            >
-              What is the primary genre?
-            </FormLabel>
-            <Select variant="thecoreloop">
-              <option hidden>Select Stage</option>
-              <option>In Development</option>
-              <option>Demo Testing</option>
-              <option>Pre-Launch</option>
-              <option>Game Launch</option>
-            </Select>
-          </Box>
-        </Flex>
-
-        <Flex flexDirection="column" gap="15px">
-          <Box>
-            <FormLabel 
-              htmlFor="project-stage" 
-              margin="0"
-              marginRight="10px"
-              width="100%"
-              whiteSpace="nowrap"
-            >
-              What is the secondary genre?
-            </FormLabel>
-            <Select variant="thecoreloop">
-              <option hidden>Select Stage</option>
-              <option>In Development</option>
-              <option>Demo Testing</option>
-              <option>Pre-Launch</option>
-              <option>Game Launch</option>
-            </Select>
-          </Box>
         </Flex>
 
         <Flex flexDirection="column" gap="15px">

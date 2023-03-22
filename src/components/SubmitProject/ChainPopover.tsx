@@ -126,9 +126,9 @@ export default function ChainPopover({ chain, setChain }: any) {
           _active={{}}
         >
           {
-            chain.name == "Select Chain"
+            !chain.name
               ? (
-                <Text marginLeft="10px">{chain.name}</Text>
+                <Text marginLeft="10px">Select Chain</Text>
               ) : (
                 <Flex 
                   flexDirection="row" 

@@ -23,18 +23,18 @@ export default function submit_project() {
   const [links, setLinks] = useState<string[]>([""]);
 
   // Genres of project
-  const [genres, setGenres] = useState<string[]>([]);
+  const [genres, setGenres] = useState<any>({
+    main: "",
+    sub: "",
+  });
 
   // Chain of project
   const [chain, setChain] = useState<any>({ 
-    name: "Select Chain",
+    name: "",
     icon: "",
   });
   
   useEffect(() => {
-    // Sort genres by alphabetical order
-    genres.sort();
-
     // Update Stage Content
     if (stage == "Basics") {
       setStageContent(<Basics 
@@ -54,6 +54,10 @@ export default function submit_project() {
       setStageContent(<Story setStage={setStage} />);
     }
   }, [stage, links, genres, chain]);
+
+  useEffect(() => {
+    console.log("Genres: ", genres);
+  }, [genres]);
 
   useEffect(() => {
     // Remove empty website fields

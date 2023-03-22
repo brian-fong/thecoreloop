@@ -14,6 +14,7 @@ import {
   IoCloseCircleOutline as CloseIcon,
 } from "react-icons/io5";
 import { HiOutlineArrowNarrowRight as RightArrow } from "react-icons/hi";
+import { useEffect } from "react";
 
 export default function Basics({ links, setLinks, setStage }: any) {
 
@@ -173,7 +174,7 @@ export default function Basics({ links, setLinks, setStage }: any) {
                       right="-45px"
                       color="white"
                       cursor="pointer"
-                      onClick={handleAdd}
+                      onClick={handleAdd} // Add additional website field
                       transition="filter 200ms ease-in-out"
                       userSelect="none"
                       _hover={{
