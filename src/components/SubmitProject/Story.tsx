@@ -93,7 +93,7 @@ export default function Story({ setStage }: any) {
           background="white"
           border="none"
           focusBorderColor="none"
-          placeholder="Telegram/Twitter ID"
+          placeholder="@telegram_handle"
           _placeholder={{
             color: "black",
             fontStyle: "italic",

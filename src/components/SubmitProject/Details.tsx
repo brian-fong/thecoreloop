@@ -5,33 +5,35 @@ import {
   FormLabel,
   Heading,
   Input,
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-  PopoverHeader,
-  PopoverBody,
-  PopoverFooter,
-  PopoverArrow,
-  PopoverCloseButton,
-  PopoverAnchor,
   Radio,
   RadioGroup,
+  Select,
   Text,
   Textarea,
   useDimensions,
 } from "@chakra-ui/react";
 import {
-  HiOutlineArrowNarrowLeft as LeftArrow,
-  HiOutlineArrowNarrowRight as RightArrow,
+  IoCloseCircleOutline as CloseIcon,
+} from "react-icons/io5";
+import {
+  HiOutlineArrowNarrowLeft as LeftArrowIcon,
+  HiOutlineArrowNarrowRight as RightArrowIcon,
 } from "react-icons/hi";
 import {
   FaImages as ImageIcon
 } from "react-icons/fa";
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import { useDropzone } from "react-dropzone";
+import ChainPopover from "./ChainPopover";
 import GenrePopover from "./GenrePopover";
 
-export default function Basics({ setStage }: any) {
+export default function Details({ 
+  genres, 
+  setGenres, 
+  chain,
+  setChain,
+  setStage 
+}: any) {
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
     accept: {
       "image/*": [],
@@ -47,18 +49,10 @@ export default function Basics({ setStage }: any) {
   });
 
   const [file, setFile] = useState<any>();
+
+  // State variables for styling GenrePopover component
   const genre_node = useRef<any>();
-  const [genres, setGenres] = useState<string[]>([]);
   const dimensions = useDimensions(genre_node, true);
-
-  useEffect(() => {
-    const genre_width: number = dimensions?.contentBox?.width! + 32;
-    console.log("Genre Node: ", genre_width);
-  }, [dimensions]);
-
-  useEffect(() => {
-    console.log("File: ", file);
-  }, [file]);
 
   return (
     <Flex
@@ -82,35 +76,55 @@ export default function Basics({ setStage }: any) {
           <FormLabel htmlFor="project-genres" marginBottom="5px">
             Select 1-2 genres that best describe this project
           </FormLabel>
-          <Flex
-            id="genre-container"
-            ref={genre_node}
-            flexDirection="row"
-            flexWrap="wrap"
-            alignItems="center"
-            columnGap="15px"
-            rowGap="10px"
-            marginBottom="15px"
-            padding="15px"
-            minWidth="100%"
-            color="black"
-            fontSize="16px"
-            border="1px solid white"
-            borderRadius="5px"
-          >
-            {genres.length == 0
-              ? <Text color="white">No genres selected</Text>
-              : genres.map(genre => (
-                  <Text 
-                    padding="2px 4px"
-                    color="black"
-                    background="white"
-                    borderRadius="8px"
-                  >
-                    {genre}
-                  </Text>
-                ))
-            }
+          <Flex alignItems="center" position="relative">
+            <Flex
+              id="genre-container"
+              ref={genre_node}
+              flexDirection="row"
+              flexWrap="wrap"
+              alignItems="center"
+              columnGap="15px"
+              rowGap="10px"
+              marginBottom="15px"
+              padding="15px"
+              minWidth="100%"
+              color="black"
+              fontSize="16px"
+              border="1px solid white"
+              borderRadius="5px"
+            >
+              {genres.length == 0
+                ? <Text color="white">No genres selected</Text>
+                : genres.map((genre: any) => (
+                    <Text 
+                      padding="2px 6px"
+                      color="black"
+                      background="white"
+                      borderRadius="8px"
+                    >
+                      {genre}
+                    </Text>
+                  ))
+              }
+            </Flex>
+            <Box
+              position="absolute"
+              right="-45px"
+              top="10px"
+              color="white"
+              cursor="pointer"
+              onClick={() => setGenres([])}
+              transition="filter 200ms ease-in-out"
+              userSelect="none"
+              _hover={{
+                filter: "brightness(0.8)",
+              }}
+              _active={{
+                filter: "brightness(0.5)",
+              }}
+            >
+              <CloseIcon size="35px" />
+            </Box>
           </Flex>
           <GenrePopover 
             genres={genres}
@@ -119,43 +133,104 @@ export default function Basics({ setStage }: any) {
           />
         </Box>
 
-        <Box>
-          <FormLabel htmlFor="project-chain" marginBottom="5px">
-            What chain is your project built on?
-          </FormLabel>
+        <Flex flexDirection="column" gap="15px">
+          <Box>
+            <FormLabel 
+              htmlFor="project-chain" 
+              margin="0"
+              marginRight="10px"
+              width="100%"
+              whiteSpace="nowrap"
+            >
+              What chain is this project built on?
+            </FormLabel>
+            <ChainPopover
+              width={dimensions?.contentBox?.width! + 32}
+              chain={chain}
+              setChain={setChain}
+            />
+          </Box>
           <Input
             id="project-chain"
-            type="url"
+            display={chain.name == "Other" 
+              ? "flex"
+              : "none"
+            }
+            type="text"
             color="black"
             background="white"
             border="none"
             focusBorderColor="none"
-            placeholder="Polygon"
+            placeholder="e.g. BlockchainName"
             _placeholder={{
               color: "black",
               fontStyle: "italic",
             }}
           />
-        </Box>
+        </Flex>
 
-        <Box>
-          <FormLabel htmlFor="project-chain" marginBottom="5px">
-            What is the stage of development for this project?
-          </FormLabel>
-          <Input
-            id="project-chain"
-            type="url"
-            color="black"
-            background="white"
-            border="none"
-            focusBorderColor="none"
-            placeholder="In Development"
-            _placeholder={{
-              color: "black",
-              fontStyle: "italic",
-            }}
-          />
-        </Box>
+        <Flex flexDirection="column" gap="15px">
+          <Box>
+            <FormLabel 
+              htmlFor="project-stage" 
+              margin="0"
+              marginRight="10px"
+              width="100%"
+              whiteSpace="nowrap"
+            >
+              What is the primary genre?
+            </FormLabel>
+            <Select variant="thecoreloop">
+              <option hidden>Select Stage</option>
+              <option>In Development</option>
+              <option>Demo Testing</option>
+              <option>Pre-Launch</option>
+              <option>Game Launch</option>
+            </Select>
+          </Box>
+        </Flex>
+
+        <Flex flexDirection="column" gap="15px">
+          <Box>
+            <FormLabel 
+              htmlFor="project-stage" 
+              margin="0"
+              marginRight="10px"
+              width="100%"
+              whiteSpace="nowrap"
+            >
+              What is the secondary genre?
+            </FormLabel>
+            <Select variant="thecoreloop">
+              <option hidden>Select Stage</option>
+              <option>In Development</option>
+              <option>Demo Testing</option>
+              <option>Pre-Launch</option>
+              <option>Game Launch</option>
+            </Select>
+          </Box>
+        </Flex>
+
+        <Flex flexDirection="column" gap="15px">
+          <Box>
+            <FormLabel 
+              htmlFor="project-stage" 
+              margin="0"
+              marginRight="10px"
+              width="100%"
+              whiteSpace="nowrap"
+            >
+              What is the stage of development for this project?
+            </FormLabel>
+            <Select variant="thecoreloop">
+              <option hidden>Select Stage</option>
+              <option>In Development</option>
+              <option>Demo Testing</option>
+              <option>Pre-Launch</option>
+              <option>Game Launch</option>
+            </Select>
+          </Box>
+        </Flex>
 
         <Box>
           <FormLabel htmlFor="project-description" marginBottom="5px">
@@ -333,7 +408,7 @@ export default function Basics({ setStage }: any) {
             }}
             onClick={() => setStage("Basics")}
           >
-            <LeftArrow size="1.5rem" />
+            <LeftArrowIcon size="1.5rem" />
           </Button>
           <Button
             width="min-content"
@@ -349,7 +424,7 @@ export default function Basics({ setStage }: any) {
             }}
             onClick={() => setStage("Story")}
           >
-            <RightArrow size="1.5rem" />
+            <RightArrowIcon size="1.5rem" />
           </Button>
         </Flex>
       </Flex>

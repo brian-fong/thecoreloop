@@ -40,7 +40,7 @@ const DATA: any = {
       title: "Sipher",
       image: "https://pbs.twimg.com/profile_images/1630762842273247239/WUWeosk9_400x400.jpg",
       description: "Sipher is a multiplayer looter shooter ARPG, set in a dream-like universe of alien worlds, vibrant characters, and dangerous mysteries.",
-      genre: "Shooter,, Action-RPG",
+      genre: "Shooter, Action-RPG",
       stage: "Demo Soon",
       upvote_count: getRandInt(0, 999),
     },

@@ -9,6 +9,7 @@ const variants = {
   thecoreloop: {
     button: {
       padding: "5px 0px",
+      width: "100%",
       color: "black",
       fontSize: "14px",
       background: "none",
@@ -22,12 +23,14 @@ const variants = {
       }
     },
     list: {
-      background: "#2C2C2C",
       padding: "0px 30px",
+      width: "100%",
+      background: "#2C2C2C",
     },
     item: {
       margin: "30px 0px",
       padding: "0px",
+      width: "100%",
       color: "white",
       background: "black",
       border: "2px solid white",

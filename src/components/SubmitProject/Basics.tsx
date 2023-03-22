@@ -9,7 +9,7 @@ import {
   RadioGroup,
   Text,
 } from "@chakra-ui/react";
-import { 
+import {
   IoAddCircleOutline as AddIcon,
   IoCloseCircleOutline as CloseIcon,
 } from "react-icons/io5";
@@ -18,7 +18,6 @@ import { HiOutlineArrowNarrowRight as RightArrow } from "react-icons/hi";
 export default function Basics({ links, setLinks, setStage }: any) {
 
   function handleAdd(): void {
-    console.log("Add detected");
     setLinks((links: any) => [...links, ""]);
   }
 
@@ -161,6 +160,7 @@ export default function Basics({ links, setLinks, setStage }: any) {
                       background="white"
                       border="none"
                       focusBorderColor="none"
+                      autoComplete="off"
                       placeholder="https://"
                       _placeholder={{
                         color: "black",
@@ -178,6 +178,9 @@ export default function Basics({ links, setLinks, setStage }: any) {
                       userSelect="none"
                       _hover={{
                         filter: "brightness(0.8)",
+                      }}
+                      _active={{
+                        filter: "brightness(0.5)",
                       }}
                     >
                       <AddIcon size="35px" />
@@ -214,6 +217,9 @@ export default function Basics({ links, setLinks, setStage }: any) {
                       userSelect="none"
                       _hover={{
                         filter: "brightness(0.8)",
+                      }}
+                      _active={{
+                        filter: "brightness(0.5)",
                       }}
                     >
                       <CloseIcon size="35px" />

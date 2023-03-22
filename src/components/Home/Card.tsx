@@ -17,6 +17,13 @@ export default function Card({
   stage,
   upvote_count = 0,
 }: any) {
+
+  function shortenDesc(desc: string) {
+    const char_limit: number = 100;
+    if (desc.length > char_limit) return desc.slice(0, char_limit) + "...";
+    else return desc;
+  }
+
   return (
     <Flex
       flexDirection="row"
@@ -51,7 +58,7 @@ export default function Card({
         <Text 
           fontSize="16px"
         >
-          {description}
+          {shortenDesc(description)}
         </Text>
         <Flex
           flexDirection="row"
