@@ -1,5 +1,4 @@
 import {
-  Box,
   Button,
   Flex,
   Image,
@@ -11,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { useRef } from "react";
 import wait from "../../utils/wait";
+import blur from "../../utils/blur";
 
 export const CHAINS: any[] = [
   {
@@ -80,7 +80,7 @@ export default function ChainPopover({ chain, setChain }: any) {
 
     if (chain.name == "Other") {
       // Remove focus from popover window
-      blurAll();
+      blur();
 
       // Focus new input element for other chain
       const chain_field: HTMLElement = document.getElementById(
@@ -91,17 +91,8 @@ export default function ChainPopover({ chain, setChain }: any) {
     }
     else {
       // Remove focus from popover window
-      blurAll();
+      blur();
     }
-  }
-
-  function blurAll(){
-    // This function works to distract focus away
-    var tmp = document.createElement("input");  // Assign input element
-    tmp.style.position = "fixed";               // Prevent abrupt scrolling
-    document.body.appendChild(tmp);             // Create input element
-    tmp.focus();                                // Focus input element
-    document.body.removeChild(tmp);             // Remove input element
   }
 
   return (

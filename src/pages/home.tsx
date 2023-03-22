@@ -4,7 +4,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import Card from "../components/Home/Card";
-import DATA from "../mock/mock-data";
+import DATA from "../data/mock-data";
 import Head from "next/head";
 import Header from "../components/Home/Header";
 import { useState, useEffect, ReactElement } from "react";

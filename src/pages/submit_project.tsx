@@ -23,10 +23,8 @@ export default function submit_project() {
   const [links, setLinks] = useState<string[]>([""]);
 
   // Genres of project
-  const [genres, setGenres] = useState<any>({
-    main: "",
-    sub: "",
-  });
+  const [main_genre, setMainGenre] = useState<string>("");
+  const [sub_genre, setSubGenre] = useState<string>("");
 
   // Chain of project
   const [chain, setChain] = useState<any>({ 
@@ -44,8 +42,10 @@ export default function submit_project() {
       />);
     } else if (stage == "Details") {
       setStageContent(<Details 
-        genres={genres}
-        setGenres={setGenres}
+        main_genre={main_genre}
+        setMainGenre={setMainGenre}
+        sub_genre={sub_genre}
+        setSubGenre={setSubGenre}
         chain={chain}
         setChain={setChain}
         setStage={setStage}
@@ -53,11 +53,7 @@ export default function submit_project() {
     } else if (stage == "Story") {
       setStageContent(<Story setStage={setStage} />);
     }
-  }, [stage, links, genres, chain]);
-
-  useEffect(() => {
-    console.log("Genres: ", genres);
-  }, [genres]);
+  }, [stage, links, main_genre, sub_genre, chain]);
 
   useEffect(() => {
     // Remove empty website fields

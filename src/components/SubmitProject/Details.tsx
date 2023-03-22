@@ -28,12 +28,16 @@ import ChainPopover from "./ChainPopover";
 import GenrePopover from "./GenrePopoverV2";
 
 export default function Details({ 
-  genres, 
-  setGenres, 
+  main_genre, 
+  setMainGenre, 
+  sub_genre,
+  setSubGenre,
   chain,
   setChain,
   setStage 
 }: any) {
+
+  // DropZone variables
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
     accept: {
       "image/*": [],
@@ -48,14 +52,17 @@ export default function Details({
     },
   });
 
+  // State variable for image file
   const [file, setFile] = useState<any>();
 
   // State variables for styling GenrePopover component
-  const genre_node = useRef<any>();
-  const dimensions = useDimensions(genre_node, true);
+  const container_node = useRef<any>();
+  const dimensions = useDimensions(container_node, true);
 
   return (
     <Flex
+      id="details-container" 
+      ref={container_node}
       flexDirection="column"
       justifyContent="start"
       alignItems="center"
@@ -71,51 +78,50 @@ export default function Details({
         Help us understand it better
       </Heading>
 
-      {/* Details Form Container */}
-      <Flex flexDirection="column" gap="30px" width="100%">
+      {/* Form Container */}
+      <Flex 
+        flexDirection="column" 
+        gap="30px" 
+        width="100%"
+      >
 
-        {/* Primary and Secondary Genres Container */}
+        {/* Main Genre Container */}
         <Flex flexDirection="column" gap="20px" width="100%">
           <Box>
             <FormLabel 
-              htmlFor="project-chain" 
-              margin="0"
-              marginRight="10px"
+              htmlFor="project-main-genre" 
+              marginBottom="5px"
               width="100%"
               whiteSpace="nowrap"
             >
               What is the main genre of this project?
             </FormLabel>
             <GenrePopover
-              width={dimensions?.contentBox?.width! + 32}
-              genre={genres.main}
-              setGenre={(genre: any) => setGenres((genres: any) => {
-                return {
-                  ...genres, 
-                  main: genre
-                };
-              })}
+              width={dimensions?.contentBox?.width}
+              genre={main_genre}
+              setGenre={setMainGenre}
             />
           </Box>
           <Box>
             <FormLabel 
-              htmlFor="project-chain" 
-              margin="0"
-              marginRight="10px"
+              htmlFor="project-sub-genre" 
+              marginBottom="5px"
               width="100%"
               whiteSpace="nowrap"
             >
-              What is the sub-genre of this project?
+              What is the sub-genre of this project? (Optional)
             </FormLabel>
-            <GenrePopover
-              width={dimensions?.contentBox?.width! + 32}
-              genre={genres.sub}
-              setGenre={(genre: any) => setGenres((genres: any) => {
-                return {
-                  ...genres, 
-                  sub: genre
-                };
-              })}
+            <Input
+              type="text"
+              color="black"
+              background="white"
+              border="none"
+              focusBorderColor="none"
+              placeholder="Enter sub-genre"
+              _placeholder={{
+                color: "black",
+                fontStyle: "italic",
+              }}
             />
           </Box>
         </Flex>
@@ -168,10 +174,10 @@ export default function Details({
             </FormLabel>
             <Select variant="thecoreloop">
               <option hidden>Select Stage</option>
-              <option>In Development</option>
-              <option>Demo Testing</option>
-              <option>Pre-Launch</option>
-              <option>Game Launch</option>
+              <option>Pre-Production</option>
+              <option>Production</option>
+              <option>Demo Test</option>
+              <option>Live</option>
             </Select>
           </Box>
         </Flex>

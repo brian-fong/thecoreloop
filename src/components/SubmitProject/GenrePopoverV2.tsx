@@ -6,31 +6,14 @@ import {
   PopoverBody,
   Text,
 } from "@chakra-ui/react";
+import { MAIN_GENRES } from "../../data/genres";
+import blur from "../../utils/blur";
 
-export const GENRES: string[] = [
-  "Action",
-  "Adventure",
-  "Battle-Royale",
-  "Casino",
-  "FPS",
-  "Puzzle",
-  "MMORPG",
-  "MOBA",
-  "On-Chain",
-  "Racing",
-  "RPG",
-  "Sandbox",
-  "Shooter",
-  "Simulation",
-  "Strategy",
-  "Tower Defense",
-];
-
-export default function GenrePopover({ width, genres, setGenre }: any) {
-
+export default function GenrePopover({ width, genre, setGenre }: any) {
   function handleClick(event: any): void {
     const genre: string = event.currentTarget.innerHTML;
     setGenre(genre);
+    blur();
   }
 
   return (
@@ -42,6 +25,7 @@ export default function GenrePopover({ width, genres, setGenre }: any) {
           flexDirection="row"
           justifyContent="start"
           alignItems="center"
+          padding="2px"
           width="100%"
           color="black"
           backgroundColor="white"
@@ -53,7 +37,11 @@ export default function GenrePopover({ width, genres, setGenre }: any) {
           }}
           _active={{}}
         >
-          <Text marginLeft="10px">Select Genre</Text>
+          {
+            !genre
+              ? <Text marginLeft="10px">Select Genre</Text>
+              : <Text marginLeft="10px">{genre}</Text>
+          }
         </Button>
       </PopoverTrigger>
       <PopoverContent width={`${width}px`}>
@@ -88,7 +76,7 @@ export default function GenrePopover({ width, genres, setGenre }: any) {
             },
           }}
         >
-          {GENRES.map(genre => (
+          {MAIN_GENRES.map(genre => (
             <Text 
               key={genre}
               padding="0 4px"

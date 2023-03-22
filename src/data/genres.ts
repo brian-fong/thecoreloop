@@ -1,0 +1,20 @@
+export const MAIN_GENRES: string[] = [
+  "Action",
+  "Adventure",
+  "Board",
+  "Card",
+  "Casino",
+  "Casual",
+  "MMORPG",
+  "MOBA",
+  "On-Chain",
+  "Puzzle",
+  "Racing",
+  "RPG",
+  "Sandbox",
+  "Shooter",
+  "Simulation",
+  "Sports",
+  "Strategy",
+];
+
