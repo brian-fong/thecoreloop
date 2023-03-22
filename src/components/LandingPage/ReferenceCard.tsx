@@ -55,7 +55,7 @@ export default function ReferenceCard({ reference, desktop_mode }: any) {
               background-position 0ms 200ms, \
               filter 200ms ease-in
               `}
-            backgroundImage={`linear-gradient(#fff 0 0)`}
+            backgroundImage="linear-gradient(#fff 0 0)"
             backgroundPosition="0 100%"
             backgroundRepeat="no-repeat"
             backgroundSize="0% 1px"

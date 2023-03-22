@@ -23,7 +23,7 @@ export default function PlayerImage({ player }: any) {
       ?.lastChild?.firstChild! as HTMLElement;
 
     target_element.style.transform = "scale(1.1)";
-    image.style.boxShadow = "10px 10px 5px rgba(0, 0, 0, 0.7)";
+    image.style.boxShadow = "10px 10px 5px black";
     image.style.borderRadius = "10px"
     caption.style.color="#4FD1C5";
   }
@@ -36,7 +36,7 @@ export default function PlayerImage({ player }: any) {
       ?.lastChild?.firstChild! as HTMLElement;
 
     target_element.style.transform = "scale(1.0)";
-    image.style.boxShadow = "5px 5px 5px rgba(0, 0, 0, 0.7)";
+    image.style.boxShadow = "5px 5px 5px black";
     image.style.borderRadius="10px"
     caption.style.color="white";
   }
@@ -57,7 +57,7 @@ export default function PlayerImage({ player }: any) {
           src={PLAYERS[player]}
           alt={player}
           borderRadius="10px"
-          boxShadow="5px 5px 5px rgba(0, 0, 0, 0.7)"
+          boxShadow="5px 5px 5px black"
           loading="lazy"
         />
       </Link>

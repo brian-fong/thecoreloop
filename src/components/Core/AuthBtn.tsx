@@ -1,15 +1,28 @@
 import {
   Button,
   Flex,
+  Text,
 } from "@chakra-ui/react";
 import { signIn } from "next-auth/react";
-import { FcGoogle } from "react-icons/fc";
-import pressBtn from "../../utils/press-btn";
+import { FcGoogle as GoogleIcon } from "react-icons/fc";
+import { FaTwitter as TwitterIcon } from "react-icons/fa";
+import { pressBtn } from "../../utils/animations";
 
-export default function AuthBtn() {
+export default function AuthBtn({ provider }: any) {
+  const PROVIDERS: any = {
+    google: {
+      icon: <GoogleIcon size="1.2rem" />,
+      text: "Google",
+    },
+    twitter: {
+      icon: <TwitterIcon size="1.2rem" color="#1DA1F2" />,
+      text: "Twitter",
+    },
+  };
+
   async function handleClick(event: any): Promise<void> {
     await pressBtn(event.currentTarget);
-    signIn("google");
+    signIn(provider);
   }
 
   return (
@@ -29,8 +42,8 @@ export default function AuthBtn() {
         alignItems="center"
         gap="0.5rem"
       >
-        <FcGoogle size="1.2rem" />
-        Continue with Google
+        {PROVIDERS[provider].icon}
+        <Text>{PROVIDERS[provider].text}</Text>
       </Flex>
     </Button>
   );

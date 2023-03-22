@@ -1,8 +1,4 @@
-import {
-  Flex, 
-  Image,
-  Text,
-} from "@chakra-ui/react";
+import { Flex, Image, Text } from "@chakra-ui/react";
 import Head from "next/head";
 import Logo from "../components/Core/Logo";
 import AuthBtn from "../components/Core/AuthBtn";
@@ -22,21 +18,17 @@ export default function sample_page() {
     console.log("Session: ", session);
     console.log("Status: ", status);
 
-    setName(session?.user?.name!)
-    setEmail(session?.user?.email!)
-    setImage(session?.user?.image!)
+    setName(session?.user?.name!);
+    setEmail(session?.user?.email!);
+    setImage(session?.user?.image!);
     setExpiration(session?.expires!);
   }, [session, status]);
 
   return (
     <>
       <Head>
-        <title>thecoreloop</title>
-        <link 
-          rel="icon" 
-          type="image/x-icon" 
-          href="/thecoreloop-favicon.png" 
-        />
+        <title>tcl - authentication</title>
+        <link rel="icon" type="image/x-icon" href="/thecoreloop-favicon.png" />
         <meta name="viewport" content="viewport-fit=cover" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
@@ -57,7 +49,7 @@ export default function sample_page() {
           alignItems="center"
           gap="3rem"
           width="100%"
-          minWidth="550px"
+          minWidth="500px"
           maxWidth="800px"
           height="100%"
         >
@@ -67,13 +59,15 @@ export default function sample_page() {
             Sign in using the following:
             <Flex
               flexDirection="row"
-              justifyContent="space-between"
+              justifyContent="start"
               alignItems="center"
+              gap="2rem"
               marginBottom="1rem"
               padding="1rem"
               width="100%"
             >
-              <AuthBtn />
+              <AuthBtn provider="google" />
+              <AuthBtn provider="twitter" />
             </Flex>
             <CurveSubContainer heading="User Credentials">
               <Flex
@@ -82,22 +76,16 @@ export default function sample_page() {
                 alignItems="center"
                 gap="0.5rem"
               >
-                {
-                  (status == "authenticated")
-                  ? <Image 
-                      src={image}
-                      alt="Image"
-                      height="128px"
-                  />
-                  : <Flex
-                      flexDirection="column"
-                      width="128px"
-                      height="128px"
-                      border="1px solid black"
-                    >
-
-                  </Flex>
-                }
+                {status == "authenticated" ? (
+                  <Image src={image} alt="Image" height="128px" />
+                ) : (
+                  <Flex
+                    flexDirection="column"
+                    width="128px"
+                    height="128px"
+                    border="1px solid black"
+                  ></Flex>
+                )}
                 <Flex
                   flexDirection="column"
                   justifyContent="space-between"
@@ -108,12 +96,7 @@ export default function sample_page() {
                 >
                   <Flex gap="0.5rem">
                     <Text>Status: </Text>
-                    <Text
-                      color={(status == "authenticated")
-                        ? "green"
-                        : "red"
-                      }
-                    >
+                    <Text color={status == "authenticated" ? "green" : "red"}>
                       {status.toUpperCase()}
                     </Text>
                   </Flex>
@@ -138,4 +121,3 @@ export default function sample_page() {
     </>
   );
 }
-

@@ -34,14 +34,14 @@ export default function MainColumn() {
   }, [data]);
 
   useEffect(() => {
-    async function readData() {
-      const response: any = await axios.get("/api/prisma_test");
-      console.log("Data: ", response.data);
-      setData(response.data);
-      return response;
-    }
-
-    readData();
+    // async function readData() {
+    //   const response: any = await axios.get("/api/prisma_test");
+    //   console.log("Data: ", response.data);
+    //   setData(response.data);
+    //   return response;
+    // }
+    //
+    // readData();
   }, []);
 
   return (

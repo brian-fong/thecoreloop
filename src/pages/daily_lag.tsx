@@ -1,13 +1,16 @@
-import axios from "axios";
-import { Flex } from '@chakra-ui/react'
-import { useEffect, useState } from "react";
-
 // Components
+import { Flex } from '@chakra-ui/react'
 import Logo from "../components/Core/Logo";
 import Hint from "../components/DailyLAG/Hint";
-import ScrollBtn from "../components/Misc/ScrollBtn";
+import ScrollBtn from "../components/Core/ScrollBtn";
 import NavBar from "../components/Core/NavBar";
 import Post from "../components/DailyLAG/Post";
+
+// Hooks
+import { useEffect, useState } from "react";
+
+// Helper
+import axios from "axios";
 
 // Types
 import { LAG } from "../types";
