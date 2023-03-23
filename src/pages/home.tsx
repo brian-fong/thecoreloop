@@ -1,7 +1,6 @@
 import {
   Flex,
   Text,
-  useDisclosure,
 } from "@chakra-ui/react";
 import Card from "../components/Home/Card";
 import DATA from "../data/mock-data";

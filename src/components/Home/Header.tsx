@@ -38,10 +38,13 @@ export default function Header() {
       gap="10px"
       justifyContent="start"
       alignItems="center"
+      position="sticky"
+      top="0"
+      backdropFilter="blur(12px)"
       width="100%"
       minWidth="800px"
       height="70px"
-      background="black"
+      background="transparent"
       zIndex={10}
       draggable={false}
     >
