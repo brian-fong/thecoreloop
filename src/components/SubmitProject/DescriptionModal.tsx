@@ -3,12 +3,12 @@ import {
   Flex,
   FormLabel,
   Heading,
-  Input,
   Modal,
   ModalBody,
   ModalContent,
   ModalOverlay,
   Text,
+  Textarea,
 } from '@chakra-ui/react'
 
 // Hooks
@@ -19,18 +19,23 @@ import { useRef, useState } from 'react';
 import { FormikErrors, FormikValues } from "formik";
 
 // Formik validation
-const char_limit: number = 32;
+const char_limit: number = 150;
 function validate(values: any) {
   const errors: FormikErrors<FormikValues> = {};
 
-  if (values.name.length > char_limit) {
-    errors.name = "Name is too long!";
+  if (values.headline.length > char_limit) {
+    errors.headline = "Too long! (╯ರ ~ ರ）╯︵ ┻━┻ ";
   }
 
   return errors;
 }
 
-export default function NameModal({ name, setName, isOpen, onClose }: any) {
+export default function DescriptionModal({ 
+  headline,
+  setHeadline,
+  isOpen,
+  onClose
+}: any) {
   // Refs
   const input_ref = useRef<any>();
 
@@ -40,14 +45,17 @@ export default function NameModal({ name, setName, isOpen, onClose }: any) {
   // Formik props
   const formik = useFormik({
     initialValues: {
-      name: name,
+      headline: headline,
     },
     validate: validate,
     onSubmit: (values) => {
+      // Alert user input
+      // alert(JSON.stringify(values, null, 2));
+
       // Update state variables
-      values.name = values.name.trim(); // Remove surrounding whitespace
-      setName(values.name);
-      setCharCount(values.name.length);
+      values.headline = values.headline.trim(); // Remove surrounding whitespace
+      setHeadline(values.headline);
+      setCharCount(values.headline.length);
 
       // Close NameModal
       onClose();
@@ -57,15 +65,15 @@ export default function NameModal({ name, setName, isOpen, onClose }: any) {
   function handleChange(event: any) {
     const value: string = event.currentTarget.value.trim();
     setCharCount(value.length);
-    formik.values.name = value;
+    formik.values.headline = value;
     formik.handleChange(event);
   }
 
   function handleCancel() {
     // Reset values
-    formik.values.name = name;  // Reset input field value
+    formik.values.headline = headline;  // Reset input field value
     formik.setErrors({});       // Reset errors
-    setCharCount(name.length);  // Reset character count
+    setCharCount(headline.length);  // Reset character count
     onClose();                  // Close NameModal
   }
 
@@ -103,7 +111,7 @@ export default function NameModal({ name, setName, isOpen, onClose }: any) {
                 whiteSpace="nowrap"
                 background="#282a36"
               >
-                Project Name
+                Project Headline
               </Heading>
             </Flex>
 
@@ -116,11 +124,11 @@ export default function NameModal({ name, setName, isOpen, onClose }: any) {
             >
               <Flex justifyContent="space-between" width="100%">
                 <FormLabel 
-                  htmlFor="name" 
+                  htmlFor="headline" 
                   margin="0"
                   whiteSpace="nowrap"
                 >
-                  What is the project called?
+                  Provide a headline for this project
                 </FormLabel>
                 <Flex
                   flexDirection="row"
@@ -132,7 +140,7 @@ export default function NameModal({ name, setName, isOpen, onClose }: any) {
                   <Text 
                     color={char_count <= char_limit
                       ? "white"
-                      : "red.400"
+                      : "red"
                     } 
                     fontSize="16px"
                     transition="color 200ms ease-in-out"
@@ -143,19 +151,20 @@ export default function NameModal({ name, setName, isOpen, onClose }: any) {
                   <Text fontSize="16px">{char_limit}</Text>
                 </Flex>
               </Flex>
-              <Input
-                id="name"
+              <Textarea
+                id="headline"
                 ref={input_ref}
-                placeholder="thecoreloop"
+                placeholder="Social discovery platform at the intersection of gaming and web3."
                 _placeholder={{
                   fontStyle: "italic",
                 }}
-                background="rgba(0, 0, 0, 0.2)"
+                minHeight="64px"
+                background="rgba(0, 0, 0, 0.1)"
                 border="2px solid rgba(255, 255, 255, 0.7)"
-                value={formik.values.name}
+                value={formik.values.headline}
                 autoComplete="off"
                 spellCheck="false"
-                isInvalid={formik.errors.name ? true : false}
+                isInvalid={formik.errors.headline ? true : false}
                 onChange={handleChange}
                 onFocus={(event) => { event.currentTarget.select(); }}
                 transition="all 200ms ease-in-out"
@@ -174,11 +183,11 @@ export default function NameModal({ name, setName, isOpen, onClose }: any) {
             >
               <Text
                 marginRight="10px"
-                color="red.400"
-                opacity={formik.errors.name ? "100%" : "0%"}
-                transition="all 300ms ease-in-out"
+                color="red.300"
+                opacity={formik.errors.headline ? "100%" : "0%"}
+                transition="all 200ms ease-in-out"
               >
-                {formik.errors.name as string}
+                {formik.errors.headline as string}
               </Text>
             </Flex>
 

@@ -1,15 +1,15 @@
 // Hooks
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function useProjectState() {
   const [isTeamMember, setIsTeamMember] = useState<boolean>(false);
   const [isFundraising, setIsFundraising] = useState<boolean>(false);
-  const [isPartnerships, setIsPartnerships] = useState<boolean>(false);
 
   const [blockchain, setBlockchain] = useState<string>("");
   const [contributors, setContributors] = useState<any[]>([]);
   const [description, setDescription] = useState<string>("");
   const [genres, setGenres] = useState<string[]>([]);
+  const [headline, setHeadline] = useState<string>("");
   const [images, setImages] = useState<any[]>([]);
   const [links, setLinks] = useState<string[]>([]);
   const [name, setName] = useState<string>("");
@@ -20,11 +20,11 @@ export default function useProjectState() {
   const project: any = {
     isTeamMember, setIsTeamMember,
     isFundraising, setIsFundraising,
-    isPartnerships, setIsPartnerships,
     blockchain, setBlockchain,
     contributors, setContributors,
     description, setDescription,
     genres, setGenres,
+    headline, setHeadline,
     images, setImages,
     links, setLinks,
     name, setName,

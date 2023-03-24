@@ -1,5 +1,6 @@
 // Components
 import {
+  Box,
   Flex,
   Text,
   useDisclosure,
@@ -11,43 +12,39 @@ import { ReactElement } from "react";
 
 // Hooks
 import { useEffect, useState } from "react";
-import useProjectState from "../../hooks/useProjectState";
 
-export default function Name() {
-  // State Variables
-  const { name, setName } = useProjectState();
+export default function Name({ name, setName }: any) {
+  // State variables
   const [content, setContent] = useState<ReactElement>();
 
-  // Disclosure: Name Modal
+  // Disclosure: NameModal
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   useEffect(() => {
-    console.log("Name: ", name);
-
     if (!name) {
-      // Display placeholder for project name
+      // Display placeholder for name
       setContent(
         <Flex
           flexDirection="row"
-          justifyContent="start"
+          justifyContent="center"
           alignItems="center" 
           gap="10px" 
-          padding="5px 15px"
+          padding="2px 4px"
+          minWidth="320px"
           color="white" 
-          fontWeight="700"
-          letterSpacing="3px"
           border="1px solid white"
           borderRadius="5px"
           cursor="pointer"
           transition="background 200ms ease-in-out"
-          _hover={{ background: "rgba(255, 255, 255, 0.1)" }}
-          _active={{ background: "rgba(255, 255, 255, 0.3)" }}
+          _hover={{ 
+            background: "rgba(0, 0, 0, 0.4)" 
+          }}
           userSelect="none"
         >
-          <Text fontSize="24px">
+          <Text fontSize="24px" fontWeight="700">
             🏗️
           </Text>
-          <Text fontSize="24px">
+          <Text fontSize="24px" fontWeight="700">
             &lt;project_name&gt;
           </Text>
           <NameModal
@@ -57,20 +54,20 @@ export default function Name() {
         </Flex>
       );
     } else {
-      // Display user-inputted project name
+      // Display user-inputted name
       setContent(
         <Text
-          padding="5px 0"
+          padding="2px 4px"
+          minWidth="320px"
           color="white"
           fontSize="24px"
           fontWeight="700"
-          letterSpacing="wide"
+          border="1px solid transparent"
           cursor="pointer"
           whiteSpace="nowrap"
           transition="all 200ms ease-in-out"
           _hover={{ 
-            padding: "5px 15px",
-            letterSpacing: "3px",
+            background: "rgba(0, 0, 0, 0.4)",
             border: "1px solid white",
             borderRadius: "5px",
           }}
@@ -84,7 +81,7 @@ export default function Name() {
   }, [name]);
 
   return (
-    <Flex onClick={onOpen}>
+    <Box onClick={onOpen}>
       {content}
       <NameModal 
         name={name}
@@ -92,7 +89,7 @@ export default function Name() {
         isOpen={isOpen}
         onClose={onClose}
       />
-    </Flex>
+    </Box>
   );
 }
 

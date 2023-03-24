@@ -7,15 +7,16 @@ import {
   Switch,
   Text,
 } from "@chakra-ui/react";
-import Head from "next/head";
-import Header from "../components/Home/Header";
 import {
-  MdOutlineAddAPhoto as AddThumbnailIcon,
   MdOutlineAddPhotoAlternate as AddImageIcon,
   MdSubdirectoryArrowRight as IndentArrowIcon,
 } from "react-icons/md";
 import { VscTriangleUp as UpvoteIcon } from "react-icons/vsc";
+import Description from "../components/SubmitProject/Description";
+import Head from "next/head";
+import Header from "../components/Home/Header";
 import Name from "../components/SubmitProject/Name";
+import Thumbnail from "../components/SubmitProject/Thumbnail";
 
 // Hooks
 import { useFormik } from "formik";
@@ -24,7 +25,12 @@ import useProjectState from "../hooks/useProjectState";
 
 export default function submit_project() {
   // State Variable: Project
-  const { isTeamMember, setIsTeamMember } = useProjectState();
+  const {
+    isTeamMember, setIsTeamMember,
+    name, setName,
+    description, setDescription,
+    thumbnail, setThumbnail,
+  } = useProjectState();
 
   // Refs: Fundraising + Partnerships
   const raising_node = useRef<any>();
@@ -92,7 +98,7 @@ export default function submit_project() {
             padding="20px 50px 30px"
             width="100%"
             minWidth="800px"
-            maxWidth="1000px"
+            maxWidth="1200px"
             height="100%"
           >
             <Flex
@@ -177,127 +183,103 @@ export default function submit_project() {
               flexDirection="row"
               justifyContent="space-between"
               alignItems="center"
+              gap="15px"
               width="100%"
-              height="100px"
-              minHeight="100px"
+              height="120px"
+              minHeight="120px"
             >
+              {/* Thumbnail Image */}
+              <Thumbnail />
+
+              {/* Container: Name + Description */}
               <Flex
-                flexDirection="row"
-                justifyContent="start"
-                alignItems="center"
-                gap="30px"
+                flexDirection="column"
+                justifyContent="space-between"
+                alignItems="start"
+                gap={!name && !description ? "15px" : "0"}
+                width="100%"
                 height="100%"
               >
-                {/* Thumbnail Image */}
-                <Flex 
-                  flexDirection="row"
-                  justifyContent="center"
-                  alignItems="center"
-                  width="100px"
-                  minWidth="100px"
-                  height="100px"
-                  minHeight="100px"
-                  border="2px solid white"
-                  borderRadius="50%"
-                  cursor="pointer"
-                  userSelect="none"
-                  transition="background 200ms ease-in-out"
-                  _hover={{ background: "rgba(255, 255, 255, 0.1)" }}
-                >
-                  <AddThumbnailIcon color="white" size="28px" />
-                </Flex>
+                {/* Name */}
+                <Name name={name} setName={setName} />
 
-                {/* Name + Genre(s) */}
-                <Flex
-                  flexDirection="column"
-                  justifyContent="space-between"
-                  alignItems="start"
-                  height="100%"
-                >
-                  <Flex alignItems="center" gap="15px">
-                    {/* Project Name */}
-                    <Name />
-
-                    <Flex
-                      flexDirection="row"
-                      justifyContent="center"
-                      alignItems="center"
-                      padding="5px 10px"
-                      height="min-content"
-                      border="1px solid white"
-                      borderRadius="5px"
-                      cursor="pointer"
-                      transition="background 200ms ease-in-out"
-                      _hover={{ background: "rgba(255, 255, 255, 0.1)" }}
-                    >
-                      <Flex gap="10px" userSelect="none">
-                        <Text fontSize="16px">
-                          🌎
-                        </Text>
-                        <Text fontSize="16px">
-                          &lt;links&gt;
-                        </Text>
-                      </Flex>
+                <Flex gap="20px">
+                  <Flex
+                    padding="5px 10px"
+                    minHeight="32px"
+                    color="white" 
+                    border="1px solid white"
+                    borderRadius="5px"
+                    cursor="pointer"
+                    transition="background 200ms ease-in-out"
+                    _hover={{ background: "rgba(255, 255, 255, 0.1)" }}
+                  >
+                    <Flex alignItems="center" gap="10px" userSelect="none">
+                      <Text fontSize="14px">
+                        🏷️
+                      </Text>
+                      <Text fontSize="14px">
+                        &lt;genres&gt;
+                      </Text>
                     </Flex>
                   </Flex>
-
-                  <Flex gap="20px">
-                    <Flex
-                      padding="5px 10px"
-                      minHeight="32px"
-                      color="white" 
-                      border="1px solid white"
-                      borderRadius="5px"
-                      cursor="pointer"
-                      transition="background 200ms ease-in-out"
-                      _hover={{ background: "rgba(255, 255, 255, 0.1)" }}
-                    >
-                      <Flex alignItems="center" gap="10px" userSelect="none">
-                        <Text fontSize="14px">
-                          ⚙️
-                        </Text>
-                        <Text fontSize="14px">
-                          &lt;stage&gt;
-                        </Text>
-                      </Flex>
+                  <Flex
+                    flexDirection="row"
+                    justifyContent="center"
+                    alignItems="center"
+                    padding="5px 10px"
+                    height="min-content"
+                    border="1px solid white"
+                    borderRadius="5px"
+                    cursor="pointer"
+                    transition="background 200ms ease-in-out"
+                    _hover={{ background: "rgba(255, 255, 255, 0.1)" }}
+                  >
+                    <Flex gap="10px" userSelect="none">
+                      <Text fontSize="16px">
+                        🌎
+                      </Text>
+                      <Text fontSize="16px">
+                        &lt;links&gt;
+                      </Text>
                     </Flex>
-                    <Flex
-                      padding="5px 10px"
-                      minHeight="32px"
-                      color="white" 
-                      border="1px solid white"
-                      borderRadius="5px"
-                      cursor="pointer"
-                      transition="background 200ms ease-in-out"
-                      _hover={{ background: "rgba(255, 255, 255, 0.1)" }}
-                    >
-                      <Flex alignItems="center" gap="10px" userSelect="none">
-                        <Text fontSize="14px">
-                          🏷️
-                        </Text>
-                        <Text fontSize="14px">
-                          &lt;genres&gt;
-                        </Text>
-                      </Flex>
+                  </Flex>
+                  <Flex
+                    padding="5px 10px"
+                    minHeight="32px"
+                    color="white" 
+                    border="1px solid white"
+                    borderRadius="5px"
+                    cursor="pointer"
+                    transition="background 200ms ease-in-out"
+                    _hover={{ background: "rgba(255, 255, 255, 0.1)" }}
+                  >
+                    <Flex alignItems="center" gap="10px" userSelect="none">
+                      <Text fontSize="14px">
+                        ⚙️
+                      </Text>
+                      <Text fontSize="14px">
+                        &lt;stage&gt;
+                      </Text>
                     </Flex>
-                    <Flex
-                      padding="5px 10px"
-                      minHeight="32px"
-                      color="white" 
-                      border="1px solid white"
-                      borderRadius="5px"
-                      cursor="pointer"
-                      transition="background 200ms ease-in-out"
-                      _hover={{ background: "rgba(255, 255, 255, 0.1)" }}
-                    >
-                      <Flex alignItems="center" gap="10px" userSelect="none">
-                        <Text fontSize="14px">
-                          ⛓️
-                        </Text>
-                        <Text fontSize="14px">
-                          &lt;blockchain&gt;
-                        </Text>
-                      </Flex>
+                  </Flex>
+                  <Flex
+                    padding="5px 10px"
+                    minHeight="32px"
+                    color="white" 
+                    border="1px solid white"
+                    borderRadius="5px"
+                    cursor="pointer"
+                    transition="background 200ms ease-in-out"
+                    _hover={{ background: "rgba(255, 255, 255, 0.1)" }}
+                  >
+                    <Flex alignItems="center" gap="10px" userSelect="none">
+                      <Text fontSize="14px">
+                        ⛓️
+                      </Text>
+                      <Text fontSize="14px">
+                        &lt;blockchain&gt;
+                      </Text>
                     </Flex>
                   </Flex>
                 </Flex>
@@ -308,10 +290,9 @@ export default function submit_project() {
                 flexDirection="column"
                 justifyContent="space-between"
                 alignItems="center"
+                marginLeft="30px"
                 padding="20px 15px"
                 minWidth="60px"
-                height="100%"
-                minHeight="90px"
                 border="1px solid white"
                 borderRadius="10px"
                 userSelect="none"
@@ -336,29 +317,10 @@ export default function submit_project() {
             >
 
               {/* Description */}
-              <Flex
-                flexDirection="row"
-                justifyContent="center"
-                alignItems="center"
-                padding="10px"
-                width="100%"
-                minWidth="100%"
-                minHeight="64px"
-                border="1px solid white"
-                borderRadius="5px"
-                cursor="pointer"
-                transition="background 200ms ease-in-out"
-                _hover={{ background: "rgba(255, 255, 255, 0.1)" }}
-              >
-                <Flex alignItems="center" gap="10px" userSelect="none">
-                  <Text fontSize="16px">
-                    📝
-                  </Text>
-                  <Text fontSize="16px">
-                    &lt;description&gt;
-                  </Text>
-                </Flex>
-              </Flex>
+              <Description 
+                description={description} 
+                setDescription={setDescription} 
+              />
 
               {/* Gallery */}
               <Flex
