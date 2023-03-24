@@ -7,11 +7,11 @@ import {
 } from "@chakra-ui/react";
 import NameModal from "./NameModal";
 
-// Types
-import { ReactElement } from "react";
-
 // Hooks
 import { useEffect, useState } from "react";
+
+// Types
+import { ReactElement } from "react";
 
 export default function Name({ name, setName }: any) {
   // State variables

@@ -16,7 +16,12 @@ import { ReactElement } from "react";
 import { useDropzone } from "react-dropzone";
 import { useEffect, useRef, useState } from "react";
 
-export default function Thumbnail() {
+export default function Thumbnail({ 
+  width,
+  height,
+  thumbnail,
+  setThumbnail
+}: any) {
   // Ref
   const image_ref = useRef<any>();
   const icon_container_ref = useRef<any>();
@@ -50,7 +55,11 @@ export default function Thumbnail() {
   }
 
   useEffect(() => {
+
     if (files.length == 0) {
+      // Update state variable
+      setThumbnail();
+
       // Display placeholder for thumbnail
       setContent(
         <Flex
@@ -72,8 +81,8 @@ export default function Thumbnail() {
             flexDirection="row"
             justifyContent="center"
             alignItems="center"
-            width="120px"
-            height="120px"
+            width={width}
+            height={height}
             border="1px dashed white"
             borderRadius="50%"
           >
@@ -84,6 +93,9 @@ export default function Thumbnail() {
         </Flex>
       )
     } else {
+      // Update state variable
+      setThumbnail(files[0]);
+
       // Display user-uploaded image for thumbnail
       setContent(
         <Flex
@@ -116,10 +128,10 @@ export default function Thumbnail() {
             ref={image_ref}
             src={files[0].preview}
             padding="5px"
-            width="120px"
-            minWidth="120px"
-            height="120px"
-            minHeight="120px"
+            width={width}
+            minWidth={width}
+            height={height}
+            minHeight={height}
             borderRadius="5px"
             transition="filter 300ms ease-in-out"
             zIndex={0}
@@ -144,8 +156,8 @@ export default function Thumbnail() {
       id="thumbnail-dropzone" 
       {...getRootProps({ className: "dropzone" })}
       style={{
-        width: "120px",
-        height: "120px",
+        width: width,
+        height: height,
       }}
     >
       <input {...getInputProps()} />
