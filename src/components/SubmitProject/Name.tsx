@@ -26,12 +26,13 @@ export default function Name({ name, setName }: any) {
       setContent(
         <Flex
           flexDirection="row"
-          justifyContent="start"
+          justifyContent="center"
           alignItems="center"
           gap="10px"
-          padding="4px 8px"
+          padding="4px"
           minWidth="270px"
           color="white"
+          lineHeight="none"
           border="1px solid white"
           borderRadius="5px"
           cursor="pointer"
@@ -41,7 +42,7 @@ export default function Name({ name, setName }: any) {
           }}
           userSelect="none"
         >
-          <Text fontSize="24px" fontWeight="700">
+          <Text fontSize="18px" fontWeight="700">
             🏗️
           </Text>
           <Text fontSize="18px" fontWeight="700">
@@ -57,16 +58,17 @@ export default function Name({ name, setName }: any) {
       // Display user-inputted name
       setContent(
         <Text
+          padding="4px"
           minWidth="270px"
           color="white"
           fontSize="24px"
           fontWeight="700"
+          lineHeight="none"
           border="1px solid transparent"
           cursor="pointer"
           whiteSpace="nowrap"
           transition="all 200ms ease-in-out"
           _hover={{ 
-            padding: "4px 8px",
             background: "rgba(0, 0, 0, 0.4)",
             border: "1px solid white",
             borderRadius: "5px",
