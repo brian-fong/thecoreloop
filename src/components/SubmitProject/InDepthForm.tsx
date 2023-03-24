@@ -12,13 +12,9 @@ import Description from "./Description";
 import Name from "./Name";
 import Thumbnail from "./Thumbnail";
 
-// Hooks
-import useProjectState from "../../hooks/useProjectState";
-
 export default function InDepthForm({ 
   image_width,
   image_height,
-  submittedByTeam,
   name,
   setName,
   description,

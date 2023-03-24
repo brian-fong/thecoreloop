@@ -5,7 +5,7 @@ import {
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
-import DescriptionModal from "./DescriptionModal";
+import TaglineModal from "./TaglineModal";
 
 //Hooks
 import { useEffect, useState } from "react";
@@ -13,7 +13,7 @@ import { useEffect, useState } from "react";
 // Types
 import { ReactElement } from "react";
 
-export default function Description({ description, setDescription }: any) {
+export default function Tagline({ tagline, setTagline }: any) {
   // State variables
   const [content, setContent] = useState<ReactElement>();
 
@@ -21,8 +21,8 @@ export default function Description({ description, setDescription }: any) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   useEffect(() => {
-    if (!description) {
-      // Display placeholder for headline
+    if (!tagline) {
+      // Display placeholder for tagline
       setContent(
         <Flex
           flexDirection="row"
@@ -32,7 +32,6 @@ export default function Description({ description, setDescription }: any) {
           padding="2px 4px"
           width="100%"
           height="100%"
-          minHeight="72px"
           border="1px solid white"
           borderRadius="5px"
           cursor="pointer"
@@ -46,12 +45,12 @@ export default function Description({ description, setDescription }: any) {
             📰
           </Text>
           <Text fontSize="16px">
-            &lt;description&gt;
+            &lt;tagline&gt;
           </Text>
         </Flex>
       );
     } else {
-      // Display user-inputted headline
+      // Display user-inputted tagline
       setContent(
         <Flex
           flexDirection="row"
@@ -79,19 +78,19 @@ export default function Description({ description, setDescription }: any) {
             _active={{ background: "rgba(255, 255, 255, 0.3)" }}
             userSelect="none"
           >
-            {description}
+            {tagline}
           </Text>
         </Flex>
       )
     }
-  }, [description])
+  }, [tagline])
 
   return (
     <Box width="100%" height="100%" onClick={onOpen}>
       {content}
-      <DescriptionModal
-        headline={description}
-        setHeadline={setDescription}
+      <TaglineModal
+        tagline={tagline}
+        setTagline={setTagline}
         isOpen={isOpen}
         onClose={onClose}
       />

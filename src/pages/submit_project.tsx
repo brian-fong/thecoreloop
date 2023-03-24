@@ -27,6 +27,7 @@ export default function submit_project() {
     fundraising, setFundraising,
     name, setName,
     submittedByTeam, setSubmittedByTeam,
+    tagline, setTagline,
     thumbnail, setThumbnail,
   } = useProjectState();
   const [page, setPage] = useState<number>(1);
@@ -196,14 +197,14 @@ export default function submit_project() {
               <Part1
                 image_width={image_width}
                 image_height={image_height}
-                description={description}
-                setDescription={setDescription}
                 fundraising={fundraising}
                 setFundraising={setFundraising}
                 name={name}
                 setName={setName}
                 submittedByTeam={submittedByTeam}
                 setSubmittedByTeam={setSubmittedByTeam}
+                tagline={tagline}
+                setTagline={setTagline}
                 thumbnail={thumbnail}
                 setThumbnail={setThumbnail}
               />

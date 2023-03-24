@@ -5,18 +5,18 @@ import {
   Link,
   Text,
 } from "@chakra-ui/react";
-import Name from "./Name";
-import Thumbnail from "./Thumbnail";
 import { VscTriangleUp as UpvoteIcon } from "react-icons/vsc";
-import Description from "./Description";
+import Name from "./Name";
+import Tagline from "./Tagline";
+import Thumbnail from "./Thumbnail";
 
 export default function DiscoverForm({ 
   image_width,
   image_height,
-  description,
-  setDescription,
   name,
   setName,
+  tagline,
+  setTagline,
   thumbnail,
   setThumbnail,
 }: any) {
@@ -93,16 +93,16 @@ export default function DiscoverForm({
           flexDirection="column"
           justifyContent="space-between"
           alignItems="start"
-          gap="15px"
+          gap={(!name || !tagline) ? "15px" : "0"}
           width="100%"
           height={image_height}
           minHeight={image_height}
         >
           <Name name={name} setName={setName} />
 
-          <Description
-            description={description}
-            setDescription={setDescription}
+          <Tagline
+            tagline={tagline}
+            setTagline={setTagline}
           />
         </Flex>
 
@@ -113,7 +113,7 @@ export default function DiscoverForm({
           alignItems="center"
           padding="20px 15px"
           minWidth="60px"
-          height="90px"
+          height="100%"
           border="1px solid white"
           borderRadius="10px"
           userSelect="none"

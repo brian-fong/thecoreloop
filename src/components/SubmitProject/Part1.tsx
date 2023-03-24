@@ -5,14 +5,14 @@ import DiscoverForm from "./DiscoverForm";
 export default function Part1({
   image_width,
   image_height,
-  description,
-  setDescription,
   fundraising,
   setFundraising,
   name,
   setName,
   submittedByTeam,
   setSubmittedByTeam,
+  tagline,
+  setTagline,
   thumbnail,
   setThumbnail,
 }: any) {
@@ -38,8 +38,8 @@ export default function Part1({
       <DiscoverForm
         image_width={image_width}
         image_height={image_height}
-        description={description}
-        setDescription={setDescription}
+        tagline={tagline}
+        setTagline={setTagline}
         name={name}
         setName={setName}
         thumbnail={thumbnail}

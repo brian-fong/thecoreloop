@@ -20,22 +20,22 @@ import { useRef, useState } from 'react';
 import { FormikErrors, FormikValues } from "formik";
 
 // Formik validation
-const char_limit: number = 150;
+const char_limit: number = 60;
 function validate(values: any) {
   const errors: FormikErrors<FormikValues> = {};
 
-  if (values.description.length > char_limit) {
-    errors.description = "Description too long!";
+  if (values.tagline.length > char_limit) {
+    errors.tagline = "Tagline too long!";
   }
 
   return errors;
 }
 
-export default function DescriptionModal({ 
-  description,
-  setDescription,
+export default function TaglineModal({
+  tagline,
+  setTagline,
   isOpen,
-  onClose
+  onClose,
 }: any) {
   // Refs
   const input_ref = useRef<any>();
@@ -46,7 +46,7 @@ export default function DescriptionModal({
   // Formik props
   const formik = useFormik({
     initialValues: {
-      description: description,
+      tagline: tagline,
     },
     validate: validate,
     onSubmit: (values) => {
@@ -54,9 +54,9 @@ export default function DescriptionModal({
       // alert(JSON.stringify(values, null, 2));
 
       // Update state variables
-      values.description = values.description.trim(); // Remove surrounding whitespace
-      setDescription(values.description);
-      setCharCount(values.description.length);
+      values.tagline = values.tagline.trim(); // Remove surrounding whitespace
+      setTagline(values.tagline);
+      setCharCount(values.tagline.length);
 
       // Close NameModal
       onClose();
@@ -66,16 +66,16 @@ export default function DescriptionModal({
   function handleChange(event: any) {
     const value: string = event.currentTarget.value.trim();
     setCharCount(value.length);
-    formik.values.description = value;
+    formik.values.tagline = value;
     formik.handleChange(event);
   }
 
   function handleCancel() {
     // Reset values
-    formik.values.description = description;  // Reset input field value
-    formik.setErrors({});                     // Reset errors
-    setCharCount(description.length);         // Reset character count
-    onClose();                                // Close NameModal
+    formik.values.tagline = tagline;    // Reset input field value
+    formik.setErrors({});               // Reset errors
+    setCharCount(tagline.length);       // Reset character count
+    onClose();                          // Close NameModal
   }
 
   return (
@@ -112,7 +112,7 @@ export default function DescriptionModal({
                 whiteSpace="nowrap"
                 background="#282a36"
               >
-                Project Description
+                Project Tagline
               </Heading>
             </Flex>
 
@@ -125,11 +125,11 @@ export default function DescriptionModal({
             >
               <Flex justifyContent="space-between" width="100%">
                 <FormLabel 
-                  htmlFor="description" 
+                  htmlFor="tagline" 
                   margin="0"
                   whiteSpace="nowrap"
                 >
-                  Provide a description for this project
+                  Provide a tagline for this project
                 </FormLabel>
                 <Flex
                   flexDirection="row"
@@ -153,7 +153,7 @@ export default function DescriptionModal({
                 </Flex>
               </Flex>
               <Textarea
-                id="description"
+                id="tagline"
                 ref={input_ref}
                 placeholder="Social discovery platform at the intersection of gaming and web3."
                 _placeholder={{
@@ -162,10 +162,10 @@ export default function DescriptionModal({
                 minHeight="64px"
                 background="rgba(0, 0, 0, 0.1)"
                 border="2px solid rgba(255, 255, 255, 0.7)"
-                value={formik.values.description}
+                value={formik.values.tagline}
                 autoComplete="off"
                 spellCheck="false"
-                isInvalid={formik.errors.description ? true : false}
+                isInvalid={formik.errors.tagline ? true : false}
                 onChange={handleChange}
                 onFocus={(event) => { event.currentTarget.select(); }}
                 transition="all 200ms ease-in-out"
@@ -185,10 +185,10 @@ export default function DescriptionModal({
               <Text
                 marginRight="10px"
                 color="red.300"
-                opacity={formik.errors.description ? "100%" : "0%"}
+                opacity={formik.errors.tagline ? "100%" : "0%"}
                 transition="all 200ms ease-in-out"
               >
-                {formik.errors.description as string}
+                {formik.errors.tagline as string}
               </Text>
             </Flex>
 

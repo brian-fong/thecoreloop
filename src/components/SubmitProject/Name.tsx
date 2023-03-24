@@ -30,6 +30,7 @@ export default function Name({ name, setName }: any) {
           alignItems="center"
           gap="10px"
           padding="2px 4px"
+          minWidth="270px"
           color="white"
           border="1px solid white"
           borderRadius="5px"
@@ -57,6 +58,7 @@ export default function Name({ name, setName }: any) {
       setContent(
         <Text
           padding="2px 4px"
+          minWidth="270px"
           color="white"
           fontSize="24px"
           fontWeight="700"
