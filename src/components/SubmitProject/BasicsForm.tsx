@@ -13,6 +13,9 @@ import { InfoOutlineIcon as InfoIcon } from "@chakra-ui/icons";
 import {
   MdSubdirectoryArrowRight as IndentArrowIcon,
 } from "react-icons/md";
+import {
+  TbNumber1 as Number1Icon
+} from "react-icons/tb";
 import { useEffect, useRef } from "react";
 
 export default function BasicsForm({
@@ -54,6 +57,9 @@ export default function BasicsForm({
     if (!submittedByTeam) {
       // If user is not Team, then reset fundraising to undefined
       setFundraising("");
+    } else {
+      // Default to undisclosed
+      setFundraising("undisclosed");
     }
 
     const community_label: HTMLElement = document.getElementById(
@@ -77,7 +83,6 @@ export default function BasicsForm({
       flexDirection="column"
       justifyContent="start"
       alignItems="start"
-      marginBottom="40px"
       width="100%"
     >
       <Heading
@@ -93,7 +98,7 @@ export default function BasicsForm({
       <Flex
         flexDirection="row"
         justifyContent="start"
-        alignItems="start"
+        alignItems="center"
         gap="10px"
         width="100%"
       >
@@ -102,7 +107,7 @@ export default function BasicsForm({
           margin="0"
           fontSize="16px"
         >
-          I am submitting this project as part of the
+          1. I am submitting this project as part of the
         </FormLabel>
         <Flex 
           flexDirection="row"
@@ -218,7 +223,6 @@ export default function BasicsForm({
         </Flex>
       </Flex>
     </Flex>
-
   );
 }
 

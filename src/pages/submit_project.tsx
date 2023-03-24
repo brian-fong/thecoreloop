@@ -3,47 +3,62 @@ import {
   Button,
   Flex,
   Heading,
-  Text,
 } from "@chakra-ui/react";
 import {
-  MdOutlineAddPhotoAlternate as AddImageIcon,
-} from "react-icons/md";
-import { VscTriangleUp as UpvoteIcon } from "react-icons/vsc";
+  BsArrowLeft as LeftArrowIcon,
+  BsArrowRight as RightArrowIcon,
+} from "react-icons/bs";
 import BasicsForm from "../components/SubmitProject/BasicsForm";
-import Description from "../components/SubmitProject/Description";
+import DiscoverForm from "../components/SubmitProject/DiscoverForm";
 import Head from "next/head";
-import Header from "../components/Home/Header";
-import Name from "../components/SubmitProject/Name";
-import Thumbnail from "../components/SubmitProject/Thumbnail";
+import Header from "../components/Discover/Header";
+import Part1 from "../components/SubmitProject/Part1";
+import Part2 from "../components/SubmitProject/Part2";
 
 // Hooks
+import { useEffect, useState } from "react";
 import useProjectState from "../hooks/useProjectState";
+
+// Types
+import { ReactElement } from "react";
 
 export default function submit_project() {
   // Constants: Thumbnail Image Size 
-  const [height, width]: [string, string] = ["100px", "100px"];
+  const [ image_width, image_height]: [string, string] = ["90px", "90px"];
 
   // State variables
   const {
-    name, setName,
     description, setDescription,
     fundraising, setFundraising,
+    name, setName,
     submittedByTeam, setSubmittedByTeam,
     thumbnail, setThumbnail,
   } = useProjectState();
+  const [page, setPage] = useState<number>(1);
 
-  function handleSubmit() {
-    // Alert project submission form data
-    const message: string = (
-      "Project Details: \n"
-      + ` - Submitted By Team: "${submittedByTeam}" \n`
-      + ` - Fundraising: "${fundraising}" \n`
-      + ` - Name: "${name}" \n`
-      + ` - Thumbnail: "${thumbnail}" \n`
-      + ` - Description: "${description}" \n`
-    );
-    alert(message);
+  // Event Handler: Previous Button
+  function handleClick_Prev() {
+    setPage(1);
   }
+  function handleDisabled_Prev(): boolean {
+    return page == 1;
+  }
+
+  // Event Handler: Next Button
+  function handleClick_Next() {
+    setPage(2);
+  }
+  function handleDisabled_Next(): boolean {
+    if (name && thumbnail) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  useEffect(() => {
+    console.log(`Name: "${name}"`);
+  }, [name]);
 
   return (
     <>
@@ -79,280 +94,135 @@ export default function submit_project() {
           id="content-container"
           flexDirection="column"
           justifyContent="start"
-          alignItems="start"
-          padding="20px 50px 30px"
+          alignItems="center"
+          padding="20px 50px 60px"
           width="100%"
-          minWidth="800px"
-          maxWidth="1200px"
+          maxWidth="800px"
           height="100%"
         >
-          <Heading
-            marginBottom="20px"
-            width="100%"
-            color="white"
-            fontSize="32px"
-            fontWeight="700"
-            whiteSpace="nowrap"
-          >
-            Project Submission Form
-          </Heading>
-
-          {/* Basics */}
-          <BasicsForm 
-            fundraising={fundraising}
-            setFundraising={setFundraising}
-            submittedByTeam={submittedByTeam}
-            setSubmittedByTeam={setSubmittedByTeam}
-          />
-
-          {/* Container: Thumbnail + Title + Links + Genre + Upvote */}
           <Flex
             flexDirection="row"
             justifyContent="space-between"
             alignItems="center"
-            gap="15px"
+            marginBottom="30px"
             width="100%"
-            height={height}
-            minHeight={height}
           >
-            {/* Thumbnail Image */}
-            <Thumbnail
-              width={width}
-              height={height}
-              thumbnail={thumbnail} 
-              setThumbnail={setThumbnail} 
-            />
-
-            {/* Container: Name + Description */}
-            <Flex
-              flexDirection="column"
-              justifyContent="space-between"
-              alignItems="start"
-              gap={!name && !description ? "15px" : "0"}
-              height={height}
-              minHeight={height}
+            <Heading
+              width="100%"
+              color="white"
+              fontSize="32px"
+              fontWeight="700"
+              whiteSpace="nowrap"
             >
-              {/* Name */}
-              <Name name={name} setName={setName} />
+              Submitting a Project
+            </Heading>
 
-              <Flex gap="20px">
-                <Flex
-                  padding="5px 10px"
-                  minHeight="32px"
-                  color="white" 
-                  border="1px solid white"
-                  borderRadius="5px"
-                  cursor="pointer"
-                  transition="background 200ms ease-in-out"
-                  _hover={{ background: "rgba(255, 255, 255, 0.1)" }}
-                >
-                  <Flex alignItems="center" gap="10px" userSelect="none">
-                    <Text fontSize="14px">
-                      🏷️
-                    </Text>
-                    <Text fontSize="14px">
-                      &lt;genres&gt;
-                    </Text>
-                  </Flex>
-                </Flex>
-                <Flex
-                  flexDirection="row"
-                  justifyContent="center"
-                  alignItems="center"
-                  padding="5px 10px"
-                  height="min-content"
-                  border="1px solid white"
-                  borderRadius="5px"
-                  cursor="pointer"
-                  transition="background 200ms ease-in-out"
-                  _hover={{ background: "rgba(255, 255, 255, 0.1)" }}
-                >
-                  <Flex gap="10px" userSelect="none">
-                    <Text fontSize="16px">
-                      🌎
-                    </Text>
-                    <Text fontSize="16px">
-                      &lt;links&gt;
-                    </Text>
-                  </Flex>
-                </Flex>
-                <Flex
-                  padding="5px 10px"
-                  minHeight="32px"
-                  color="white" 
-                  border="1px solid white"
-                  borderRadius="5px"
-                  cursor="pointer"
-                  transition="background 200ms ease-in-out"
-                  _hover={{ background: "rgba(255, 255, 255, 0.1)" }}
-                >
-                  <Flex alignItems="center" gap="10px" userSelect="none">
-                    <Text fontSize="14px">
-                      ⚙️
-                    </Text>
-                    <Text fontSize="14px">
-                      &lt;stage&gt;
-                    </Text>
-                  </Flex>
-                </Flex>
-                <Flex
-                  padding="5px 10px"
-                  minHeight="32px"
-                  color="white" 
-                  border="1px solid white"
-                  borderRadius="5px"
-                  cursor="pointer"
-                  transition="background 200ms ease-in-out"
-                  _hover={{ background: "rgba(255, 255, 255, 0.1)" }}
-                >
-                  <Flex alignItems="center" gap="10px" userSelect="none">
-                    <Text fontSize="14px">
-                      ⛓️
-                    </Text>
-                    <Text fontSize="14px">
-                      &lt;blockchain&gt;
-                    </Text>
-                  </Flex>
-                </Flex>
-              </Flex>
-            </Flex>
-
-            {/* Upvote */}
-            <Flex
-              flexDirection="column"
-              justifyContent="space-between"
-              alignItems="center"
-              marginLeft="30px"
-              padding="20px 15px"
-              minWidth="60px"
-              height="100%"
-              border="1px solid white"
-              borderRadius="10px"
-              userSelect="none"
-              transition="background 200ms ease-in-out"
-              _hover={{ background: "rgba(255, 255, 255, 0.1)" }}
-            >
-              <UpvoteIcon color="white" size="25px" />
-              <Text fontSize="16px">0</Text>
-            </Flex>
-          </Flex>
-
-          {/* Container: Description + Gallery */}
-          <Flex
-            flexDirection="column"
-            justifyContent="start"
-            alignItems="center"
-            gap="40px"
-            padding="40px 0 20px"
-            width="100%"
-            maxWidth="700px"
-            height="100%"
-          >
-
-            {/* Description */}
-            <Description 
-              description={description} 
-              setDescription={setDescription} 
-            />
-
-            {/* Gallery */}
+            {/* Container: Prev + Next Buttons */}
             <Flex
               flexDirection="row"
-              justifyContent="center"
+              justifyContent="end"
               alignItems="center"
+              gap="30px"
               width="100%"
-              height="100%"
-              minHeight="400px"
-              maxHeight="400px"
-              border="1px solid white"
-              borderRadius="5px"
-              cursor="pointer"
-              transition="background 200ms ease-in-out"
-              _hover={{ background: "rgba(255, 255, 255, 0.1)" }}
             >
-              <Flex 
-                flexDirection="column"
+              {/* Prev Button */}
+              <Button
+                display="flex"
+                flexDirection="row"
                 justifyContent="center"
                 alignItems="center"
-                gap="20px"
+                padding="5px 10px"
+                letterSpacing="2px"
+                background="tcl_green"
+                boxShadow={`
+                  1px 1px 1px gray,
+                  2px 2px 1px gray,
+                  3px 3px 1px gray,
+                  4px 4px 1px gray
+                `}
+                transition="all 100ms ease-in-out"
+                _hover={{
+                  filter: "brightness(0.8)",
+                  boxShadow: `
+                    1px 1px 1px gray,
+                    2px 2px 1px gray
+                    `,
+                  }}
+                _active={{
+                  filter: "brightness(0.5)",
+                  boxShadow: "none",
+                  transform: "translate(3px, 3px)",
+                }}
+                onClick={handleClick_Prev}
+                isDisabled={handleDisabled_Prev()}
               >
-                <AddImageIcon size="50px" />
-                <Flex alignItems="center" gap="10px" userSelect="none">
-                  <Text fontSize="16px">
-                    🖼️
-                  </Text>
-                  <Text fontSize="16px">
-                    &lt;gallery_images&gt;
-                  </Text>
-                </Flex>
-              </Flex>
+                <LeftArrowIcon color="white" size="30px" />
+              </Button>
+
+              {/* Next Button */}
+              <Button
+                display="flex"
+                flexDirection="row"
+                justifyContent="center"
+                alignItems="center"
+                padding="5px 10px"
+                letterSpacing="2px"
+                background="tcl_green"
+                boxShadow={`
+                  1px 1px 1px gray,
+                  2px 2px 1px gray,
+                  3px 3px 1px gray,
+                  4px 4px 1px gray
+                `}
+                transition="all 100ms ease-in-out"
+                _hover={{
+                  filter: "brightness(0.8)",
+                  boxShadow: `
+                    1px 1px 1px gray,
+                    2px 2px 1px gray
+                    `,
+                  }}
+                _active={{
+                  filter: "brightness(0.5)",
+                  boxShadow: "none",
+                  transform: "translate(3px, 3px)",
+                }}
+                onClick={handleClick_Next}
+                isDisabled={handleDisabled_Next()}
+              >
+                <RightArrowIcon color="white" size="30px" />
+              </Button>
             </Flex>
-
-            <hr 
-              style={{
-                width: "100%",
-                borderTop: "2px solid white",
-              }}
-            />
-
-            {/* Story */}
-            <Flex
-              flexDirection="row"
-              justifyContent="center"
-              alignItems="center"
-              padding="10px"
-              width="100%"
-              minWidth="100%"
-              minHeight="150px"
-              border="1px solid white"
-              borderRadius="5px"
-              cursor="pointer"
-              transition="background 200ms ease-in-out"
-              _hover={{ background: "rgba(255, 255, 255, 0.1)" }}
-            >
-              <Flex alignItems="center" gap="10px" userSelect="none">
-                <Text fontSize="16px">
-                  📖
-                </Text>
-                <Text fontSize="16px">
-                  &lt;story&gt;
-                </Text>
-              </Flex>
-            </Flex>
-
-            <Button
-              display="flex"
-              flexDirection="row"
-              justifyContent="center"
-              alignItems="center"
-              marginTop="20px"
-              padding="5px 10px"
-              letterSpacing="2px"
-              background="tcl_green"
-              boxShadow={`
-1px 1px 1px gray,
-2px 2px 1px gray,
-3px 3px 1px gray,
-4px 4px 1px gray
-`}
-              transition="all 100ms ease-in-out"
-              _hover={{
-                filter: "brightness(0.8)",
-                boxShadow: `
-1px 1px 1px gray,
-2px 2px 1px gray
-`,
-              }}
-              _active={{
-                filter: "brightness(0.5)",
-                boxShadow: "none",
-                transform: "translate(3px, 3px)",
-              }}
-              onClick={handleSubmit}
-            >
-              SUBMIT
-            </Button>
           </Flex>
+
+          {/* Content */}
+          {page == 1 
+            ? (
+              <Part1
+                image_width={image_width}
+                image_height={image_height}
+                fundraising={fundraising}
+                setFundraising={setFundraising}
+                name={name}
+                setName={setName}
+                submittedByTeam={submittedByTeam}
+                setSubmittedByTeam={setSubmittedByTeam}
+                thumbnail={thumbnail}
+                setThumbnail={setThumbnail}
+              />
+            ) : (
+              <Part2
+                image_width={image_width}
+                image_height={image_height}
+                description={description}
+                setDescription={setDescription}
+                name={name}
+                setName={setName}
+                thumbnail={thumbnail}
+                setThumbnail={setThumbnail}
+              />
+            )
+          }
         </Flex>
       </Flex>
     </>

@@ -54,12 +54,16 @@ export default function Thumbnail({
     icon_container_ref.current.style.opacity = "0%";
   }
 
+  // For latest file upload
   useEffect(() => {
+    if (files.length > 0) setThumbnail(files[0].preview);
+  }, [files]);
 
-    if (files.length == 0) {
-      // Update state variable
-      setThumbnail();
+  // For latest thumbnail image
+  useEffect(() => {
+    console.log("Thumbnail: ", thumbnail);
 
+    if (!thumbnail) {
       // Display placeholder for thumbnail
       setContent(
         <Flex
@@ -93,9 +97,6 @@ export default function Thumbnail({
         </Flex>
       )
     } else {
-      // Update state variable
-      setThumbnail(files[0]);
-
       // Display user-uploaded image for thumbnail
       setContent(
         <Flex
@@ -126,7 +127,7 @@ export default function Thumbnail({
           </Box>
           <Image
             ref={image_ref}
-            src={files[0].preview}
+            src={thumbnail}
             padding="5px"
             width={width}
             minWidth={width}
@@ -135,21 +136,21 @@ export default function Thumbnail({
             borderRadius="5px"
             transition="filter 300ms ease-in-out"
             zIndex={0}
-            onLoad={() => { 
-              URL.revokeObjectURL(files[0].preview); 
-            }}
+            // onLoad={() => { 
+            //   URL.revokeObjectURL(files[0].preview); 
+            // }}
           />
         </Flex>
       );
     }
-  }, [files]);
+  }, [thumbnail]);
 
-  useEffect(() => {
-    // Executes on component unmount
-    return () => {
-      files.forEach(file => URL.revokeObjectURL(file.preview));
-    }
-  }, []);
+  // useEffect(() => {
+  //   // Executes on component unmount
+  //   return () => {
+  //     files.forEach(file => URL.revokeObjectURL(file.preview));
+  //   }
+  // }, []);
 
   return (
     <div 

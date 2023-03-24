@@ -26,18 +26,17 @@ export default function Name({ name, setName }: any) {
       setContent(
         <Flex
           flexDirection="row"
-          justifyContent="center"
-          alignItems="center" 
-          gap="10px" 
+          justifyContent="start"
+          alignItems="center"
+          gap="10px"
           padding="2px 4px"
-          minWidth="320px"
-          color="white" 
+          color="white"
           border="1px solid white"
           borderRadius="5px"
           cursor="pointer"
           transition="background 200ms ease-in-out"
-          _hover={{ 
-            background: "rgba(0, 0, 0, 0.4)" 
+          _hover={{
+            background: "rgba(0, 0, 0, 0.4)"
           }}
           userSelect="none"
         >
@@ -58,7 +57,6 @@ export default function Name({ name, setName }: any) {
       setContent(
         <Text
           padding="2px 4px"
-          minWidth="320px"
           color="white"
           fontSize="24px"
           fontWeight="700"

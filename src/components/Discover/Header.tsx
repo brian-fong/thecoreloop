@@ -49,7 +49,7 @@ export default function Header() {
       draggable={false}
     >
       {/* Thumbnail */}
-      <Link href="/home">
+      <Link href="/discover">
         <Image
           src="./thecoreloop-logo-alt.png"
           objectFit="cover"

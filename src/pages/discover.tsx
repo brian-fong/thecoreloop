@@ -2,14 +2,14 @@ import {
   Flex,
   Text,
 } from "@chakra-ui/react";
-import Card from "../components/Home/Card";
+import Card from "../components/Discover/Card";
 import DATA from "../data/mock-data";
 import Head from "next/head";
-import Header from "../components/Home/Header";
+import Header from "../components/Discover/Header";
 import { useState, useEffect, ReactElement } from "react";
 import uuid from "react-uuid";
 
-export default function Home() {
+export default function Discover() {
   const [cards, setCards] = useState<ReactElement[]>([]);
 
   function compareUpvote(a: any, b: any): number {
