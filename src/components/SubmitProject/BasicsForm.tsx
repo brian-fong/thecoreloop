@@ -13,9 +13,6 @@ import { InfoOutlineIcon as InfoIcon } from "@chakra-ui/icons";
 import {
   MdSubdirectoryArrowRight as IndentArrowIcon,
 } from "react-icons/md";
-import {
-  TbNumber1 as Number1Icon
-} from "react-icons/tb";
 import { useEffect, useRef } from "react";
 
 export default function BasicsForm({

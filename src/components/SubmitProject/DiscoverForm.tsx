@@ -8,10 +8,13 @@ import {
 import Name from "./Name";
 import Thumbnail from "./Thumbnail";
 import { VscTriangleUp as UpvoteIcon } from "react-icons/vsc";
+import Description from "./Description";
 
 export default function DiscoverForm({ 
   image_width,
   image_height,
+  description,
+  setDescription,
   name,
   setName,
   thumbnail,
@@ -91,106 +94,26 @@ export default function DiscoverForm({
           justifyContent="space-between"
           alignItems="start"
           gap="15px"
+          width="100%"
           height={image_height}
           minHeight={image_height}
         >
-          {/* Container: Name + Links */}
-          <Flex alignItems="center" gap="15px">
-            <Name name={name} setName={setName} />
+          <Name name={name} setName={setName} />
 
-            <Flex
-              flexDirection="row"
-              justifyContent="center"
-              alignItems="center"
-              padding="5px 10px"
-              height="min-content"
-              border="1px solid white"
-              borderRadius="5px"
-              cursor="pointer"
-              transition="background 200ms ease-in-out"
-              _hover={{ background: "rgba(255, 255, 255, 0.1)" }}
-            >
-              <Flex gap="10px" userSelect="none">
-                <Text fontSize="16px">
-                  🌎
-                </Text>
-                <Text fontSize="16px">
-                  &lt;links&gt;
-                </Text>
-              </Flex>
-            </Flex>
-          </Flex>
-
-          <Flex gap="15px">
-            <Flex
-              padding="5px 10px"
-              minHeight="32px"
-              color="white" 
-              border="1px solid white"
-              borderRadius="5px"
-              cursor="pointer"
-              transition="background 200ms ease-in-out"
-              _hover={{ background: "rgba(255, 255, 255, 0.1)" }}
-            >
-              <Flex alignItems="center" gap="10px" userSelect="none">
-                <Text fontSize="14px">
-                  ⛓️
-                </Text>
-                <Text fontSize="14px">
-                  &lt;blockchain&gt;
-                </Text>
-              </Flex>
-            </Flex>
-            <Flex
-              padding="5px 10px"
-              minHeight="32px"
-              color="white" 
-              border="1px solid white"
-              borderRadius="5px"
-              cursor="pointer"
-              transition="background 200ms ease-in-out"
-              _hover={{ background: "rgba(255, 255, 255, 0.1)" }}
-            >
-              <Flex alignItems="center" gap="10px" userSelect="none">
-                <Text fontSize="14px">
-                  🏷️
-                </Text>
-                <Text fontSize="14px">
-                  &lt;genres&gt;
-                </Text>
-              </Flex>
-            </Flex>
-            <Flex
-              padding="5px 10px"
-              minHeight="32px"
-              color="white" 
-              border="1px solid white"
-              borderRadius="5px"
-              cursor="pointer"
-              transition="background 200ms ease-in-out"
-              _hover={{ background: "rgba(255, 255, 255, 0.1)" }}
-            >
-              <Flex alignItems="center" gap="10px" userSelect="none">
-                <Text fontSize="14px">
-                  ⚙️
-                </Text>
-                <Text fontSize="14px">
-                  &lt;stage&gt;
-                </Text>
-              </Flex>
-            </Flex>
-          </Flex>
+          <Description
+            description={description}
+            setDescription={setDescription}
+          />
         </Flex>
 
         {/* Upvote */}
         <Flex
           flexDirection="column"
-          justifyContent="space-between"
+          justifyContent="center"
           alignItems="center"
-          marginLeft="auto"
           padding="20px 15px"
           minWidth="60px"
-          height="100%"
+          height="90px"
           border="1px solid white"
           borderRadius="10px"
           userSelect="none"

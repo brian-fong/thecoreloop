@@ -8,8 +8,6 @@ import {
   BsArrowLeft as LeftArrowIcon,
   BsArrowRight as RightArrowIcon,
 } from "react-icons/bs";
-import BasicsForm from "../components/SubmitProject/BasicsForm";
-import DiscoverForm from "../components/SubmitProject/DiscoverForm";
 import Head from "next/head";
 import Header from "../components/Discover/Header";
 import Part1 from "../components/SubmitProject/Part1";
@@ -18,9 +16,6 @@ import Part2 from "../components/SubmitProject/Part2";
 // Hooks
 import { useEffect, useState } from "react";
 import useProjectState from "../hooks/useProjectState";
-
-// Types
-import { ReactElement } from "react";
 
 export default function submit_project() {
   // Constants: Thumbnail Image Size 
@@ -154,7 +149,7 @@ export default function submit_project() {
                   transform: "translate(3px, 3px)",
                 }}
                 onClick={handleClick_Prev}
-                isDisabled={handleDisabled_Prev()}
+                // isDisabled={handleDisabled_Prev()}
               >
                 <LeftArrowIcon color="white" size="30px" />
               </Button>
@@ -188,7 +183,7 @@ export default function submit_project() {
                   transform: "translate(3px, 3px)",
                 }}
                 onClick={handleClick_Next}
-                isDisabled={handleDisabled_Next()}
+                // isDisabled={handleDisabled_Next()}
               >
                 <RightArrowIcon color="white" size="30px" />
               </Button>
@@ -201,6 +196,8 @@ export default function submit_project() {
               <Part1
                 image_width={image_width}
                 image_height={image_height}
+                description={description}
+                setDescription={setDescription}
                 fundraising={fundraising}
                 setFundraising={setFundraising}
                 name={name}

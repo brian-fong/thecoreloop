@@ -31,9 +31,7 @@ export default function Description({ description, setDescription }: any) {
           gap="10px"
           padding="2px 4px"
           width="100%"
-          minWidth="100%"
           height="100%"
-          minHeight="64px"
           border="1px solid white"
           borderRadius="5px"
           cursor="pointer"
@@ -47,7 +45,7 @@ export default function Description({ description, setDescription }: any) {
             📰
           </Text>
           <Text fontSize="16px">
-            &lt;description&gt;
+            &lt;tagline&gt;
           </Text>
         </Flex>
       );
