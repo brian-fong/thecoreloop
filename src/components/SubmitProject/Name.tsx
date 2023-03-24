@@ -29,7 +29,7 @@ export default function Name({ name, setName }: any) {
           justifyContent="start"
           alignItems="center"
           gap="10px"
-          padding="2px 4px"
+          padding="4px 8px"
           minWidth="270px"
           color="white"
           border="1px solid white"
@@ -44,7 +44,7 @@ export default function Name({ name, setName }: any) {
           <Text fontSize="24px" fontWeight="700">
             🏗️
           </Text>
-          <Text fontSize="24px" fontWeight="700">
+          <Text fontSize="18px" fontWeight="700">
             &lt;project_name&gt;
           </Text>
           <NameModal
@@ -57,7 +57,6 @@ export default function Name({ name, setName }: any) {
       // Display user-inputted name
       setContent(
         <Text
-          padding="2px 4px"
           minWidth="270px"
           color="white"
           fontSize="24px"
@@ -67,6 +66,7 @@ export default function Name({ name, setName }: any) {
           whiteSpace="nowrap"
           transition="all 200ms ease-in-out"
           _hover={{ 
+            padding: "4px 8px",
             background: "rgba(0, 0, 0, 0.4)",
             border: "1px solid white",
             borderRadius: "5px",

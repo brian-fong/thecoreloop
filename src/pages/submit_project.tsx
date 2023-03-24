@@ -18,8 +18,8 @@ import { useEffect, useState } from "react";
 import useProjectState from "../hooks/useProjectState";
 
 export default function submit_project() {
-  // Constants: Thumbnail Image Size 
-  const [ image_width, image_height]: [string, string] = ["90px", "90px"];
+  // Constants: Thumbnail Image Size
+  const [ image_width, image_height]: [string, string] = ["96px", "96px"];
 
   // State variables
   const {

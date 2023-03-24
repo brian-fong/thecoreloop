@@ -74,7 +74,7 @@ export default function DiscoverForm({
         flexDirection="row"
         justifyContent="start"
         alignItems="center"
-        gap="15px"
+        gap="10px"
         marginTop="30px"
         width="100%"
         height={image_height}
@@ -93,7 +93,7 @@ export default function DiscoverForm({
           flexDirection="column"
           justifyContent="space-between"
           alignItems="start"
-          gap={(!name || !tagline) ? "15px" : "0"}
+          gap={(!name && !tagline) ? "10px" : "0"}
           width="100%"
           height={image_height}
           minHeight={image_height}
@@ -112,7 +112,8 @@ export default function DiscoverForm({
           justifyContent="center"
           alignItems="center"
           padding="20px 15px"
-          minWidth="60px"
+          width="60px"
+          maxWidth="60px"
           height="100%"
           border="1px solid white"
           borderRadius="10px"

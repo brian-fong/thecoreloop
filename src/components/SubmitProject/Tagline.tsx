@@ -29,7 +29,7 @@ export default function Tagline({ tagline, setTagline }: any) {
           justifyContent="center"
           alignItems="center"
           gap="10px"
-          padding="2px 4px"
+          padding="4px 8px"
           width="100%"
           height="100%"
           border="1px solid white"
@@ -60,7 +60,6 @@ export default function Tagline({ tagline, setTagline }: any) {
           height="100%"
         >
           <Text
-            padding="2px 4px"
             width="100%"
             minWidth="320px"
             height="100%"
@@ -71,6 +70,7 @@ export default function Tagline({ tagline, setTagline }: any) {
             cursor="pointer"
             transition="all 200ms ease-in-out"
             _hover={{ 
+              padding: "4px 8px",
               background: "rgba(0, 0, 0, 0.4)",
               border: "1px solid white",
               borderRadius: "5px",

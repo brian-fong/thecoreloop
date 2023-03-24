@@ -20,7 +20,7 @@ import { useRef, useState } from 'react';
 import { FormikErrors, FormikValues } from "formik";
 
 // Formik validation
-const char_limit: number = 60;
+const char_limit: number = 108;
 function validate(values: any) {
   const errors: FormikErrors<FormikValues> = {};
 
@@ -65,6 +65,7 @@ export default function TaglineModal({
 
   function handleChange(event: any) {
     const value: string = event.currentTarget.value.trim();
+    console.log(`Tagline: "${value}"`);
     setCharCount(value.length);
     formik.values.tagline = value;
     formik.handleChange(event);
@@ -90,7 +91,6 @@ export default function TaglineModal({
         position="relative"
         width="100%"
         maxWidth="600px"
-        minHeight="200px"
         background="#282a36"
         borderRadius="10px"
       >
