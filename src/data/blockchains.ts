@@ -12,6 +12,6 @@ export const BLOCKCHAINS: any = {
   "Ronin"     : "https://pbs.twimg.com/profile_images/1483078570855571458/Ei_vW6GN_400x400.jpg",
   "Sui"       : "https://pbs.twimg.com/profile_images/1582380655027052544/dK8glmZ3_400x400.jpg",
   "Solana"    : "https://cryptologos.cc/logos/solana-sol-logo.png?v=024",
-  "Other"     : "./icons/blockchain-icon.png",
+  "Other"     : "https://em-content.zobj.net/thumbs/120/google/350/chains_26d3-fe0f.png",
 }
 

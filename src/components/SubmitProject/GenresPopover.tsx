@@ -1,8 +1,9 @@
 // Components
 import {
   Button,
+  Checkbox,
+  CheckboxGroup,
   Flex,
-  Image,
   Popover,
   PopoverTrigger,
   PopoverContent,
@@ -10,77 +11,59 @@ import {
   Text,
 } from "@chakra-ui/react";
 
-// Hooks
-import { useRef } from "react";
-
-// Helper Functions
-import uuid from "react-uuid";
-import wait from "../../utils/wait";
+// Helpful Constants and Functions
+import { GENRES } from "../../data/genres";
 import blur from "../../utils/blur";
 
-// Helpful Constants
-import { BLOCKCHAINS } from "../../data/blockchains";
-
 export default function GenresPopover({ 
+  formik,
   genres,
   genres_selected, setGenresSelected,
 }: any) {
-  // Refs
-  const blockchain_btn_ref = useRef<any>();
 
-  async function handleClick(blockchain_name: string) {
-    console.log("Selected Blockchain: ", blockchain_name);
+  async function handleChange(event: any) {
+    const genre: string = event.target.value;
+    const checked: boolean = event.target.checked;
 
-    // Update (selected) blockchain state variable
-    setGenresSelected(blockchain_name);
+    // Update (selected) genres state variable
+    if (checked) {
+      // Add new genre
+      setGenresSelected((genres: string[]) => [...genres, genre]);
 
-    if (blockchain_name == "Other") {
-      // Remove focus to close popover window
-      blur();
-
-      // Focus new input element for other chain
-      await wait(100);  // NOTE: Need to wait for input node to mount
-      const blockchain_input_node: HTMLElement = document.getElementById(
-        "other_blockchain"
-      )!;
-      blockchain_input_node.focus();
-
+      // Close GenrePopover once 3 genres have been selected
+      if (genres_selected.length == 2) blur();
     } else {
-      blur();
+      // Remove selected genre
+      setGenresSelected((genres: string[]) => genres.filter(
+        _genre => _genre != genre
+      ));
     }
+
+    formik.handleChange(event);
   }
 
   function renderPopoverBtn() {
-    if (!genres && !genres_selected) {
-      // Case: Blockchain state variable is not defined and user has not selected
-      // a blockchain yet.
+    if (genres.length == 0 && genres_selected.length == 0) {
+      // Case: Genres state variable is empty and user has not yet selected
+      // any genres
       return (
         // Display placeholder
-        <Text marginLeft="10px">Select Chain</Text>
+        <Text marginLeft="10px">Select 1-3 Genres</Text>
       );
-    } else if (genres_selected) {
-      // Case: Blockchain state variable is not defined but user has
-      // selected a blockchain
+    } else if (genres_selected.length > 0) {
       return (
-        // Display selected blockchain
-        <Flex alignItems="center" gap="10px" padding="2px">
-          <Image
-            src={BLOCKCHAINS[genres_selected]}
-            objectFit="cover"
-            padding="3px"
-            width="30px"
-            height="30px"
-            borderRadius="5px"
-          />
-          <Text
-            id="blockchain-name"
-            color="white"
-            fontSize="16px"
-            fontStyle="normal"
-            fontWeight="300"
-          >
-            {genres_selected}
-          </Text>
+        // Display selected genres
+        <Flex alignItems="center" gap="10px" padding="4px 8px">
+          {genres_selected.map((genre: string) => (
+            <Text
+              padding="2px 4px"
+              color="black"
+              background="gray.400"
+              borderRadius="5px"
+            >
+              {genre}
+            </Text>
+          ))}
         </Flex>
       );
     }
@@ -90,7 +73,6 @@ export default function GenresPopover({
     <Popover>
       <PopoverTrigger>
         <Button
-          ref={blockchain_btn_ref}
           display="flex"
           flexDirection="row"
           justifyContent="start"
@@ -112,8 +94,8 @@ export default function GenresPopover({
       </PopoverTrigger>
       <PopoverContent width="536px">
         <PopoverBody
-          display="flex"
-          flexDirection="column"
+          display="grid"
+          gridTemplateColumns="1fr 1fr"
           gap="5px"
           height="100%"
           maxHeight="200px"
@@ -143,44 +125,28 @@ export default function GenresPopover({
             },
           }}
         >
-          {Object.keys(BLOCKCHAINS).map((blockchain_name: string) => (
-            <Flex
-              key={uuid()}
-              flexDirection="row"
-              justifyContent="space-between"
-              alignItems="center"
-              gap="10px"
-              padding="2px"
-              color="grey.100"
-              border="1px solid transparent"
-              borderRadius="5px"
-              cursor="pointer"
-              userSelect="none"
-              tabIndex={0}
-              onClick={() => handleClick(blockchain_name)}
-              transition="all 100ms ease-in-out"
-              _focusVisible={{
-                background: "rgba(0, 0, 0, 0.4)",
-                border: "1px solid white",
-              }}
-              _hover={{
-                background: "rgba(0, 0, 0, 0.4)",
-                border: "1px solid white",
-              }}
-            >
-              <Image
-                src={BLOCKCHAINS[blockchain_name]}
-                objectFit="contain"
-                padding="3px"
-                width="40px"
-                height="40px"
-                borderRadius="5px"
-              />
-              <Text width="100%" fontSize="16px">
-                {blockchain_name}
-              </Text>
-            </Flex>
-          ))}
+          <CheckboxGroup  value={formik.values.genres_selected}>
+            {GENRES.map((genre: string) => (
+              <Checkbox 
+                id="genres_selected"
+                key={genre}
+                value={genre}
+                color="gray.400"
+                fontSize="16px"
+                transition="color 200ms ease-in-out"
+                _hover={{
+                  color: "white",
+                }}
+                onChange={handleChange}
+                isDisabled={
+                  genres_selected.length == 3
+                    && !genres_selected.includes(genre)
+                }
+              >
+                {genre}
+              </Checkbox>
+            ))}
+        </CheckboxGroup>
         </PopoverBody>
       </PopoverContent>
     </Popover>

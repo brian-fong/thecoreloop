@@ -71,7 +71,12 @@ export default function NameModal({ name, setName, isOpen, onClose }: any) {
   }
 
   return (
-    <Modal isOpen={isOpen} onClose={handleCancel} isCentered>
+    <Modal 
+      isOpen={isOpen} 
+      onClose={handleCancel} 
+      closeOnOverlayClick={false}
+      isCentered
+    >
       <ModalOverlay />
       <ModalContent
         display="flex"

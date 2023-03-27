@@ -4,79 +4,59 @@ import {
   Flex,
   FormLabel,
   Heading,
-  Input,
   Modal,
   ModalBody,
   ModalContent,
   ModalOverlay,
-  Text,
 } from '@chakra-ui/react'
 import GenresPopover from './GenresPopover';
 
 // Hooks
 import { useFormik } from "formik";
-import { useRef, useState } from 'react';
+import { useEffect } from 'react';
 
 // Types
 import { FormikErrors, FormikValues } from "formik";
 
 // Formik validation
-const char_limit: number = 30;
 function validate(values: any) {
   const errors: FormikErrors<FormikValues> = {};
 
-  if (values.other_blockchain.length > char_limit) {
-    errors.other_blockchain = "Genre is too long!";
+  if (values.genres_selected.length < 1 || values.genres_selected.length > 3) {
+    errors.genres_selected = "Please select 1-3 genres";
   }
 
   return errors;
 }
 
 export default function GenresModal({
-  blockchain, setBlockchain,
-  blockchain_selected, setBlockchainSelected,
+  genres, setGenres,
+  genres_selected, setGenresSelected,
   isOpen, onClose,
 }: any) {
-  // Refs
-  const input_ref = useRef<any>();
-
-  // State variables
-  const [char_count, setCharCount] = useState<number>(0);
-
   // Formik props
   const formik = useFormik({
     initialValues: {
-      other_blockchain: "",
+      genres_selected: genres_selected,
     },
     validate: validate,
     onSubmit: (values) => {
-      // If "Other" selected, then update blockchain state variable
-      if (blockchain_selected == "Other") {
-        values.other_blockchain = values.other_blockchain.trim(); // Remove surrounding whitespace
-        setBlockchain(values.other_blockchain);
-        setCharCount(values.other_blockchain.length);
-      } else {
-        setBlockchain(blockchain_selected);
-      }
+      console.log("Form Submitted", values.genres_selected);
+
+      // Update genres state variable
+      setGenres(values.genres_selected);
 
       // Close NameModal
       onClose();
     },
   });
 
-  function handleChange(event: any) {
-    const value: string = event.currentTarget.value.trim();
-    setCharCount(value.length);
-    formik.values.other_blockchain = value;
-    formik.handleChange(event);
-  }
-
   function handleCancel() {
     // Reset values
-    formik.values.other_blockchain = blockchain;  // Reset input field value
-    formik.setErrors({});                         // Reset errors
-    setCharCount(blockchain.length);              // Reset character count
-    onClose();                                    // Close NameModal
+    formik.setErrors({});               // Reset errors
+    formik.values.genres_selected = []  // Reset selected genres (formik)
+    setGenresSelected([]);              // Reset selected genres (state)
+    onClose();                          // Close NameModal
   }
 
   return (
@@ -129,98 +109,15 @@ export default function GenresModal({
                 margin="0"
                 whiteSpace="nowrap"
               >
-                What genre(s) apply to this project's game?
+                Which genre(s) best describes this project's game?
               </FormLabel>
 
               <GenresPopover
-                blockchain={blockchain}
-                setBlockchain={setBlockchain}
-                blockchain_selected={blockchain_selected}
-                setBlockchainSelected={setBlockchainSelected}
+                formik={formik}
+                genres={genres} setGenres={setGenres}
+                genres_selected={genres_selected} 
+                setGenresSelected={setGenresSelected}
               />
-
-              <Flex
-                id="other-blockchain-container"
-                flexDirection="column"
-                justifyContent="start"
-                alignItems="start"
-                width="100%"
-                maxHeight={blockchain_selected == "Other" ? "100px" : "0"}
-                overflow="hidden"
-                transition="max-height 300ms ease-in-out"
-              >
-                <Flex
-                  flexDirection="row"
-                  justifyContent="space-between"
-                  alignItems="center"
-                  marginTop="20px"
-                  width="100%"
-                >
-                  <FormLabel htmlFor="other_blockchain" fontSize="16px">
-                    Blockchain Name:
-                  </FormLabel>
-                  <Flex
-                    flexDirection="row"
-                    justifyContent="center"
-                    alignItems="center"
-                    gap="2px"
-                    paddingRight="10px"
-                  >
-                    <Text 
-                      color={char_count <= char_limit
-                        ? "white"
-                        : "red.400"
-                      } 
-                      fontSize="16px"
-                      transition="color 200ms ease-in-out"
-                    >
-                      {char_count}
-                    </Text>
-                    <Text fontSize="18px">/</Text>
-                    <Text fontSize="16px">{char_limit}</Text>
-                  </Flex>
-                </Flex>
-                <Input
-                  id="other_blockchain"
-                  name="other_blockchain"
-                  ref={input_ref}
-                  padding="4px 8px"
-                  width="100%"
-                  background="rgba(0, 0, 0, 0.2)"
-                  border="2px solid rgba(255, 255, 255, 0.7)"
-                  value={formik.values.other_blockchain}
-                  autoComplete="off"
-                  spellCheck="false"
-                  isInvalid={formik.errors.other_blockchain ? true : false}
-                  onChange={handleChange}
-                  onFocus={(event) => event.currentTarget.select()}
-                  transition="all 200ms ease-in-out"
-                  placeholder=""
-                  _placeholder={{
-                    fontStyle: "italic",
-                  }}
-                  _hover={{}}
-                  _focusVisible={{}}
-                />
-              </Flex>
-            </Flex>
-
-            <Flex
-              flexDirection="row"
-              justifyContent="end"
-              alignItems="center"
-              marginTop="10px"
-              width="100%"
-              minHeight="21px"
-            >
-              <Text
-                marginRight="10px"
-                color="red.400"
-                opacity={formik.errors.other_blockchain ? "100%" : "0%"}
-                transition="all 300ms ease-in-out"
-              >
-                {formik.errors.other_blockchain as string}
-              </Text>
             </Flex>
 
             <Flex
@@ -242,10 +139,6 @@ export default function GenresModal({
                 transition="all 100ms ease-in-out"
                 _hover={{
                   filter: "brightness(0.8)",
-                  boxShadow: `
-                    1px 1px 1px gray,
-                    2px 2px 1px gray
-                  `,
                 }}
                 _active={{
                   filter: "brightness(0.5)",
@@ -268,10 +161,6 @@ export default function GenresModal({
                 transition="all 100ms ease-in-out"
                 _hover={{
                   filter: "brightness(0.8)",
-                  boxShadow: `
-                    1px 1px 1px gray,
-                    2px 2px 1px gray
-                  `,
                 }}
                 _active={{
                   filter: "brightness(0.5)",

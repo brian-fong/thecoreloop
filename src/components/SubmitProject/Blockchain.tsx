@@ -55,8 +55,9 @@ export default function Blockchain({ blockchain, setBlockchain }: any) {
       setContent(
         <Tooltip 
           label={blockchain}
-          placement="right"
-          gutter={13}
+          placement="bottom"
+          offset={[10, 12]}
+          arrowSize={12}
           hasArrow
         >
           <Box 
@@ -70,20 +71,15 @@ export default function Blockchain({ blockchain, setBlockchain }: any) {
               filter: "brightness(0.8)",
             }}
           >
-            {blockchain_selected == "Other"
-              ? <Image
-                src="./icons/blockchain-icon.png"
-                width="25px"
-                height="25px"
-                borderRadius="5px"
-              />
-              : <Image
-                src={BLOCKCHAINS[blockchain]}
-                width="25px"
-                height="25px"
-                borderRadius="5px"
-              />
-            }
+            <Image
+              src={blockchain_selected == "Other" 
+                ? BLOCKCHAINS["Other"]
+                : BLOCKCHAINS[blockchain]
+              }
+              width="30px"
+              height="30px"
+              borderRadius="5px"
+            />
           </Box>
         </Tooltip>
       )

@@ -79,7 +79,6 @@ export default function TaglineModal({
 
   function handleChange(event: any) {
     const value: string = event.currentTarget.value.trim();
-    console.log(`Tagline: "${value}"`);
     setCharCount(value.length);
     formik.values.tagline = value;
     formik.handleChange(event);
@@ -229,10 +228,6 @@ export default function TaglineModal({
                 transition="all 100ms ease-in-out"
                 _hover={{
                   filter: "brightness(0.8)",
-                  boxShadow: `
-                    1px 1px 1px gray,
-                    2px 2px 1px gray
-                  `,
                 }}
                 _active={{
                   filter: "brightness(0.5)",
@@ -255,10 +250,6 @@ export default function TaglineModal({
                 transition="all 100ms ease-in-out"
                 _hover={{
                   filter: "brightness(0.8)",
-                  boxShadow: `
-                    1px 1px 1px gray,
-                    2px 2px 1px gray
-                  `,
                 }}
                 _active={{
                   filter: "brightness(0.5)",

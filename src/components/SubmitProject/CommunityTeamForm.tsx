@@ -78,7 +78,10 @@ export default function CommunityTeamForm({
       flexDirection="column"
       justifyContent="start"
       alignItems="start"
+      padding="10px"
       width="100%"
+      background="rgba(0, 0, 0, 0.3)"
+      borderRadius="10px"
     >
       {/* Part-of-the-team? */}
       <Heading
@@ -101,7 +104,7 @@ export default function CommunityTeamForm({
           margin="0"
           fontSize="16px"
         >
-          1. I am submitting this project as part of the
+          I am submitting this project as part of the
         </FormLabel>
         <Flex 
           flexDirection="row"

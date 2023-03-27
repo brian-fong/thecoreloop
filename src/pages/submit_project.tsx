@@ -189,6 +189,7 @@ export default function submit_project() {
                 image_width={image_width} image_height={image_height}
                 blockchain={blockchain} setBlockchain={setBlockchain}
                 fundraising={fundraising} setFundraising={setFundraising}
+                genres={genres} setGenres={setGenres}
                 name={name} setName={setName}
                 isTeam={isTeam} setIsTeam={setIsTeam}
                 tagline={tagline} setTagline={setTagline}

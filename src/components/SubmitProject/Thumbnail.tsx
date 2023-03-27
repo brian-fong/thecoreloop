@@ -18,10 +18,8 @@ import { useDropzone } from "react-dropzone";
 import { useEffect, useRef, useState } from "react";
 
 export default function Thumbnail({ 
-  width,
-  height,
-  thumbnail,
-  setThumbnail
+  image_width, image_height,
+  thumbnail, setThumbnail,
 }: any) {
   // Ref
   const image_ref = useRef<any>();
@@ -70,7 +68,6 @@ export default function Thumbnail({
       // Display placeholder for thumbnail
       setContent(
         <Flex
-          id="thumbnail-container"
           flexDirection="row"
           justifyContent="center"
           alignItems="center"
@@ -80,26 +77,30 @@ export default function Thumbnail({
           borderRadius="5px"
           cursor="pointer"
           userSelect="none"
-          transition="background 300ms ease-in-out"
+          transition="all 200ms ease-in-out"
           _hover={{ 
+            letterSpacing: "2px",
             background: "rgba(0, 0, 0, 0.4)",
           }}
         >
           <Flex
-            flexDirection="row"
+            flexDirection="column"
             justifyContent="center"
             alignItems="center"
-            width={width}
-            height={height}
+            width={image_width}
+            height={image_height}
             border="1px dashed white"
             borderRadius="50%"
           >
             <Text 
               ref={icon_container_ref} 
-              position="absolute"
               fontSize="25px"
+              textAlign="center"
             >
               📷
+            </Text>
+            <Text width="100%" fontSize="14px" textAlign="center">
+              &lt;image&gt;
             </Text>
           </Flex>
         </Flex>
@@ -108,7 +109,6 @@ export default function Thumbnail({
       // Display user-uploaded image for thumbnail
       setContent(
         <Flex
-          id="thumbnail-container"
           flexDirection="row"
           justifyContent="center"
           alignItems="center"
@@ -138,12 +138,11 @@ export default function Thumbnail({
             ref={image_ref}
             src={thumbnail}
             padding="1px"
-            width={width}
-            minWidth={width}
-            height={height}
-            minHeight={height}
+            width={image_width}
+            minWidth={image_width}
+            height={image_height}
+            minHeight={image_height}
             borderRadius="5px"
-            // borderRadius="50%"
             transition="all 300ms ease-in-out"
             zIndex={0}
             // onLoad={() => { 
@@ -167,8 +166,8 @@ export default function Thumbnail({
       id="thumbnail-dropzone" 
       {...getRootProps({ className: "dropzone" })}
       style={{
-        width: width,
-        height: height,
+        width: image_width,
+        height: image_height,
       }}
     >
       <input {...getInputProps()} />

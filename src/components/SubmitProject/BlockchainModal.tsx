@@ -73,8 +73,8 @@ export default function BlockchainModal({
 
   function handleCancel() {
     // Reset values
-    formik.values.other_blockchain = blockchain;  // Reset input field value
     formik.setErrors({});                         // Reset errors
+    formik.values.other_blockchain = blockchain;  // Reset input field value
     setCharCount(blockchain.length);              // Reset character count
     onClose();                                    // Close NameModal
   }

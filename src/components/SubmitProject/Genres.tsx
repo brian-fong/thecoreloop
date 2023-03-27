@@ -1,7 +1,7 @@
 // Components
 import {
   Box,
-  Image,
+  Flex,
   Text,
   Tooltip,
   useDisclosure,
@@ -14,19 +14,97 @@ import { useEffect, useState } from "react";
 // Types
 import { ReactElement } from "react";
 
-// Useful Constants
-import { BLOCKCHAINS } from "../../data/blockchains";
-
 export default function Genres({ genres, setGenres }: any) {
   // State variables
   const [content, setContent] = useState<ReactElement>();
-  const [genre_selected, setGenreSelected] = useState<string>("");
+  const [genres_selected, setGenresSelected] = useState<string[]>([]);
 
   // Disclosure: NameModal
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  function renderGenres(): ReactElement {
+    if (genres.length == 1) {
+      // Display only 1 genre
+      return (
+        <Text
+          padding="0 4px"
+          color="black"
+          fontSize="16px"
+          background="gray.400"
+          border="1px solid transparent"
+          borderRadius="10px"
+          cursor="pointer"
+          whiteSpace="nowrap"
+          transition="all 200ms ease-in-out"
+          _hover={{ 
+            padding: "4px 8px",
+            color: "white",
+            background: "rgba(0, 0, 0, 0.4)",
+            border: "1px solid white",
+            borderRadius: "5px",
+          }}
+          _active={{ background: "rgba(255, 255, 255, 0.3)" }}
+          userSelect="none"
+        >
+          {genres[0]}
+        </Text>
+      );
+    } else if (genres.length > 1) {
+      return (
+        // Display primary genre with tooltip to disclose the other genres
+          <Flex
+            flexDirection="row"
+            justifyContent="start"
+            alignItems="center"
+            gap="5px"
+            padding="2px 4px"
+            background="gray.400"
+            border="1px solid transparent"
+            borderRadius="10px"
+            cursor="pointer"
+          >
+            <Text
+              color="black"
+              fontSize="16px"
+              transition="all 200ms ease-in-out"
+              _hover={{ 
+                padding: "4px 8px",
+                color: "white",
+                background: "rgba(0, 0, 0, 0.4)",
+                border: "1px solid white",
+                borderRadius: "5px",
+              }}
+              _active={{ background: "rgba(255, 255, 255, 0.3)" }}
+              userSelect="none"
+            >
+              {genres[0]}
+            </Text>
+            <Tooltip
+              label={genres.slice(1).join(", ")}
+              placement="bottom-end"
+              offset={[10, 12]}
+              arrowSize={12}
+              hasArrow
+            >
+                <Text
+                  padding="2px 4px"
+                  color="black"
+                  fontSize="14px"
+                  background="gray.500"
+                  borderRadius="5px"
+                >
+                  +{genres.length-1}
+                </Text>
+            </Tooltip>
+          </Flex>
+      );
+    }
+  }
+
   useEffect(() => {
-    if (!genres) {
+    console.log("Genres: ", genres);
+
+    if (genres.length == 0) {
       // Display placeholder for name
       setContent(
         <Text
@@ -51,42 +129,8 @@ export default function Genres({ genres, setGenres }: any) {
         </Text>
       );
     } else {
-      // Display user-inputted name
-      setContent(
-        <Tooltip 
-          label={genres}
-          placement="right"
-          gutter={13}
-          hasArrow
-        >
-          <Box 
-            border="1px solid transparent"
-            cursor="pointer"
-            transition="all 200ms ease-in-out"
-            _hover={{
-              padding:"4px",
-              border: "1px solid white",
-              borderRadius: "5px",
-              filter: "brightness(0.8)",
-            }}
-          >
-            {genre_selected == "Other"
-              ? <Image
-                src="./icons/blockchain-icon.png"
-                width="25px"
-                height="25px"
-                borderRadius="5px"
-              />
-              : <Image
-                src={BLOCKCHAINS[genres]}
-                width="25px"
-                height="25px"
-                borderRadius="5px"
-              />
-            }
-          </Box>
-        </Tooltip>
-      )
+      // Display user-inputted genres
+      setContent(renderGenres())
     }
   }, [genres]);
 
@@ -94,12 +138,9 @@ export default function Genres({ genres, setGenres }: any) {
     <Box onClick={onOpen}>
       {content}
       <GenresModal 
-        blockchain={genres}
-        setBlockchain={setGenres}
-        blockchain_selected={genre_selected}
-        setBlockchainSelected={setGenreSelected}
-        isOpen={isOpen}
-        onClose={onClose}
+        genres={genres} setGenres={setGenres}
+        genres_selected={genres_selected} setGenresSelected={setGenresSelected}
+        isOpen={isOpen} onClose={onClose}
       />
     </Box>
   );

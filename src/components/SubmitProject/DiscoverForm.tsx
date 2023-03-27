@@ -14,8 +14,7 @@ import Tagline from "./Tagline";
 import Thumbnail from "./Thumbnail";
 
 export default function DiscoverForm({
-  image_width,
-  image_height,
+  image_width, image_height,
   blockchain, setBlockchain,
   fundraising,
   genres, setGenres,
@@ -61,10 +60,8 @@ export default function DiscoverForm({
       >
         {/* Thumbnail Image */}
         <Thumbnail
-          width={image_width}
-          height={image_height}
-          thumbnail={thumbnail} 
-          setThumbnail={setThumbnail} 
+          image_width={image_width} image_height={image_height}
+          thumbnail={thumbnail} setThumbnail={setThumbnail} 
         />
 
         {/* Container: Name + Links + Blockchain + Genres + Stage */}
@@ -91,8 +88,9 @@ export default function DiscoverForm({
               label="This project is currently fundraising" 
               whiteSpace="nowrap"
               placement="top-start"
-              gutter={15}
               visibility={fundraising == "yes" ? "visible" : "hidden"}
+              offset={[10, 12]}
+              arrowSize={15}
               hasArrow
             >
               <Image
@@ -104,6 +102,11 @@ export default function DiscoverForm({
               />
             </Tooltip>
           </Flex>
+
+          <Tagline
+            tagline={tagline}
+            setTagline={setTagline}
+          />
 
           <Flex flexDirection="row" alignItems="center" gap="10px">
             <Blockchain 
@@ -117,10 +120,6 @@ export default function DiscoverForm({
             />
           </Flex>
 
-          <Tagline
-            tagline={tagline}
-            setTagline={setTagline}
-          />
         </Flex>
 
         {/* Upvote */}
