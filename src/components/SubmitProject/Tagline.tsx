@@ -1,7 +1,6 @@
 // Components
 import {
   Box,
-  Flex,
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
@@ -24,65 +23,59 @@ export default function Tagline({ tagline, setTagline }: any) {
     if (!tagline) {
       // Display placeholder for tagline
       setContent(
-        <Flex
+        <Text
+          display="flex"
           flexDirection="row"
           justifyContent="center"
           alignItems="center"
-          gap="10px"
-          padding="2px"
+          padding="4px 8px"
           width="100%"
           height="100%"
+          minHeight="48px"
+          fontSize="16px"
           border="1px solid white"
           borderRadius="5px"
           cursor="pointer"
-          transition="background 200ms ease-in-out"
           userSelect="none"
+          transition="all 200ms ease-in-out"
           _hover={{
+            letterSpacing: "2px",
             background: "rgba(0, 0, 0, 0.4)",
           }}
         >
-          <Text fontSize="16px">
-            📰
-          </Text>
-          <Text fontSize="16px">
-            &lt;tagline&gt;
-          </Text>
-        </Flex>
+          📰  &lt;tagline&gt;
+        </Text>
       );
     } else {
       // Display user-inputted tagline
       setContent(
-        <Flex
-          flexDirection="row"
-          justifyContent="start"
-          alignItems="start"
+        <Text
+          padding="0"
           width="100%"
+          minWidth="320px"
           height="100%"
+          color="white"
+          fontSize="16px"
+          lineHeight="5"
+          border="1px solid transparent"
+          cursor="pointer"
+          wordBreak="break-all"
+          userSelect="none"
+          transition="all 200ms ease-in-out"
+          _hover={{ 
+            padding: "4px 8px",
+            fontSize: "15px",
+            background: "rgba(0, 0, 0, 0.4)",
+            border: "1px solid white",
+            borderRadius: "5px",
+          }}
+          _active={{ background: "rgba(255, 255, 255, 0.3)" }}
+          style={{
+            hyphens: "auto",
+          }}
         >
-          <Text
-            display="flex"
-            padding="4px"
-            width="100%"
-            minWidth="320px"
-            height="100%"
-            color="white"
-            fontSize="16px"
-            lineHeight="none"
-            fontWeight="700"
-            border="1px solid transparent"
-            cursor="pointer"
-            transition="all 200ms ease-in-out"
-            _hover={{ 
-              background: "rgba(0, 0, 0, 0.4)",
-              border: "1px solid white",
-              borderRadius: "5px",
-            }}
-            _active={{ background: "rgba(255, 255, 255, 0.3)" }}
-            userSelect="none"
-          >
-            {tagline}
-          </Text>
-        </Flex>
+          {tagline}
+        </Text>
       )
     }
   }, [tagline])

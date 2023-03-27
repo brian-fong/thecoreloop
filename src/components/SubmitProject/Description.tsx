@@ -90,8 +90,8 @@ export default function Description({ description, setDescription }: any) {
     <Box width="100%" height="100%" onClick={onOpen}>
       {content}
       <DescriptionModal
-        headline={description}
-        setHeadline={setDescription}
+        description={description}
+        setDescription={setDescription}
         isOpen={isOpen}
         onClose={onClose}
       />

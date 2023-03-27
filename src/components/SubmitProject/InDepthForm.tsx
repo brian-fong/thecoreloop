@@ -2,6 +2,7 @@
 import {
   Button,
   Flex,
+  Heading,
   Text,
 } from "@chakra-ui/react";
 import {
@@ -34,7 +35,6 @@ export default function InDepthForm({
     alert(message);
   }
 
-
   return (
     <Flex
       id="indepth-container"
@@ -43,13 +43,30 @@ export default function InDepthForm({
       alignItems="start"
       width="100%"
     >
+      <Heading
+        marginBottom="10px"
+        color="white"
+        fontSize="24px"
+        fontWeight="700"
+      >
+        Build <Text display="inline" fontStyle="italic">In-Depth</Text> Preview
+      </Heading>
+
+      <Heading marginBottom="20px" fontSize="16px" fontWeight="300">
+        The <Text display="inline" color="gray.300" fontSize="18px" fontStyle="italic" fontWeight="700">In-Depth</Text> page provides a deeper look for prospective gamers, investors, or creators.
+      </Heading>
+
+      <Heading marginBottom="30px" fontSize="16px" fontWeight="300">
+        Click on the fields below to input details about the project. The result is what readers will see in the <Text display="inline" fontSize="18px" color="gray.300" fontStyle="italic" fontWeight="700">In-Depth</Text> page.
+      </Heading>
+
       {/* Container: Thumbnail + Name + Links
 + Blockchain + Genre + Stage + Upvote */}
       <Flex
         flexDirection="row"
         justifyContent="start"
         alignItems="center"
-        gap="15px"
+        gap="10px"
         width="100%"
         height={image_height}
         minHeight={image_height}
@@ -65,14 +82,14 @@ export default function InDepthForm({
         {/* Container: Name + Links + Blockchain + Genres + Stage */}
         <Flex
           flexDirection="column"
-          justifyContent="space-between"
+          justifyContent="center"
           alignItems="start"
-          gap={!name && !description ? "15px" : "0"}
+          gap="10px"
           height={image_height}
           minHeight={image_height}
         >
           {/* Container: Name + Links */}
-          <Flex alignItems="center" gap="15px">
+          <Flex alignItems="center" gap="10px">
             <Name name={name} setName={setName} />
 
             <Flex
@@ -98,7 +115,7 @@ export default function InDepthForm({
             </Flex>
           </Flex>
 
-          <Flex gap="20px">
+          <Flex gap="10px">
             <Flex
               padding="5px 10px"
               minHeight="32px"
@@ -162,12 +179,12 @@ export default function InDepthForm({
         {/* Upvote */}
         <Flex
           flexDirection="column"
-          justifyContent="space-between"
+          justifyContent="center"
           alignItems="center"
-          marginLeft="auto"
-          padding="20px 15px"
-          minWidth="60px"
-          height="100%"
+          width="70px"
+          minWidth="70px"
+          height="80px"
+          maxHeight="80px"
           border="1px solid white"
           borderRadius="10px"
           userSelect="none"

@@ -2,23 +2,26 @@
 import {
   Flex,
   Heading,
-  Link,
+  Image,
   Text,
+  Tooltip,
 } from "@chakra-ui/react";
 import { VscTriangleUp as UpvoteIcon } from "react-icons/vsc";
+import Blockchain from "./Blockchain";
+import Genres from "./Genres";
 import Name from "./Name";
 import Tagline from "./Tagline";
 import Thumbnail from "./Thumbnail";
 
-export default function DiscoverForm({ 
+export default function DiscoverForm({
   image_width,
   image_height,
-  name,
-  setName,
-  tagline,
-  setTagline,
-  thumbnail,
-  setThumbnail,
+  blockchain, setBlockchain,
+  fundraising,
+  genres, setGenres,
+  name, setName,
+  tagline, setTagline,
+  thumbnail, setThumbnail,
 }: any) {
 
   return (
@@ -34,51 +37,27 @@ export default function DiscoverForm({
         fontSize="24px"
         fontWeight="700"
       >
-        Build Discover Preview
+        Build <Text display="inline" fontStyle="italic">Discover</Text> Preview
       </Heading>
 
-      <Text marginBottom="20px" fontSize="16px">
-        The{" "}
-        <Link
-          href="./discover" 
-          color="purple.400"
-          fontSize="18px"
-          fontStyle="italic"
-          fontWeight="700"
-          textDecoration="underline"
-          whiteSpace="pre-wrap"
-        >
-          Discover
-        </Link>
-        {" "}section showcases a collection of web3-gaming startups submitted by fellow members of the project's community or team.
-      </Text>
+      <Heading marginBottom="20px" fontSize="16px" fontWeight="300">
+        The <Text display="inline" color="gray.300" fontSize="18px" fontStyle="italic" fontWeight="700">Discover</Text> section showcases a collection of web3-gaming startups submitted by fellow members of the project's community or team.
+      </Heading>
 
-      <Text fontSize="16px">
-        2. Click on the fields below and fill in the corresponding information. The result is what users will see in the{" "}
-        <Link
-          href="./discover" 
-          color="purple.400"
-          fontSize="18px"
-          fontStyle="italic"
-          fontWeight="700"
-          textDecoration="underline"
-          whiteSpace="pre-wrap"
-        >
-          Discover
-        </Link>
-        {" "}section.
-      </Text>
+      <Heading marginBottom="40px" fontSize="16px" fontWeight="300">
+        2. Click on the fields below to input details about the project. The result is what readers will see in the <Text display="inline" fontSize="18px" color="gray.300" fontStyle="italic" fontWeight="700">Discover</Text> section.
+      </Heading>
 
       <Flex
         id="discover-container"
         flexDirection="row"
         justifyContent="start"
         alignItems="center"
-        gap="10px"
-        marginTop="30px"
+        gap="15px"
+        padding="10px"
         width="100%"
-        height={image_height}
-        minHeight={image_height}
+        background="rgba(0, 0, 0, 0.3)"
+        borderRadius="10px"
       >
         {/* Thumbnail Image */}
         <Thumbnail
@@ -90,15 +69,53 @@ export default function DiscoverForm({
 
         {/* Container: Name + Links + Blockchain + Genres + Stage */}
         <Flex
+          id="middle-container"
           flexDirection="column"
-          justifyContent="space-between"
+          justifyContent="center"
           alignItems="start"
-          gap={(!name && !tagline) ? "10px" : "0"}
+          gap="10px"
           width="100%"
-          height={image_height}
-          minHeight={image_height}
         >
-          <Name name={name} setName={setName} />
+          <Flex 
+            flexDirection="row"
+            justifyContent="space-between"
+            alignItems="center"
+            gap="10px" 
+            width="100%"
+          >
+            {/* Name */}
+            <Name name={name} setName={setName} />
+
+            {/* Fundraising Icon */}
+            <Tooltip 
+              label="This project is currently fundraising" 
+              whiteSpace="nowrap"
+              placement="top-start"
+              gutter={15}
+              visibility={fundraising == "yes" ? "visible" : "hidden"}
+              hasArrow
+            >
+              <Image
+                src="./piggy-bank-icon.png"
+                width="30px"
+                height="30px"
+                opacity={fundraising == "yes" ? "100%" : "0%"}
+                transition="all 300ms ease-in-out"
+              />
+            </Tooltip>
+          </Flex>
+
+          <Flex flexDirection="row" alignItems="center" gap="10px">
+            <Blockchain 
+              blockchain={blockchain}
+              setBlockchain={setBlockchain}
+            />
+
+            <Genres
+              genres={genres}
+              setGenres={setGenres}
+            />
+          </Flex>
 
           <Tagline
             tagline={tagline}
@@ -111,10 +128,12 @@ export default function DiscoverForm({
           flexDirection="column"
           justifyContent="center"
           alignItems="center"
-          padding="20px 15px"
-          width="60px"
-          maxWidth="60px"
+          padding="10px 0"
+          width="70px"
+          minWidth="70px"
+          maxWidth="70px"
           height="100%"
+          minHeight={image_height}
           border="1px solid white"
           borderRadius="10px"
           userSelect="none"

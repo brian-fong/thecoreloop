@@ -20,7 +20,7 @@ import { useRef, useState } from 'react';
 import { FormikErrors, FormikValues } from "formik";
 
 // Formik validation
-const char_limit: number = 108;
+const char_limit: number = 96;
 function validate(values: any) {
   const errors: FormikErrors<FormikValues> = {};
 
@@ -38,6 +38,7 @@ export default function TaglineModal({
   onClose,
 }: any) {
   // Refs
+  const form_ref = useRef<any>();
   const input_ref = useRef<any>();
 
   // State variables
@@ -62,6 +63,19 @@ export default function TaglineModal({
       onClose();
     },
   });
+
+  function handleKeyPress(event: any) {
+    // Submit form on "Enter" key
+    // NOTE: Users can still add a line by pressing Shift+Enter
+    if (event.which == 13 && !event.shiftKey) {
+      const submit_event = new Event(
+        "submit",
+        { cancelable: true, bubbles: true }
+      )
+      form_ref.current.dispatchEvent(submit_event);
+      event.preventDefault();
+    }
+  }
 
   function handleChange(event: any) {
     const value: string = event.currentTarget.value.trim();
@@ -100,7 +114,7 @@ export default function TaglineModal({
           border="2px solid rgba(255, 255, 255, 0.7)"
           borderRadius="5px"
         >
-          <form onSubmit={formik.handleSubmit}>
+          <form ref={form_ref} onSubmit={formik.handleSubmit}>
             {/* Container: Heading */}
             <Flex justifyContent="center" width="100%">
               <Heading
@@ -112,14 +126,14 @@ export default function TaglineModal({
                 whiteSpace="nowrap"
                 background="#282a36"
               >
-                Project Tagline
+                Tagline
               </Heading>
             </Flex>
 
             <Flex
               flexDirection="column"
               justifyContent="start"
-              alignItems="start"
+              alignItems="center"
               gap="10px"
               width="100%"
             >
@@ -155,20 +169,24 @@ export default function TaglineModal({
               <Textarea
                 id="tagline"
                 ref={input_ref}
-                placeholder="Social discovery platform at the intersection of gaming and web3."
-                _placeholder={{
-                  fontStyle: "italic",
-                }}
-                minHeight="64px"
+                padding="4px 8px"
+                width="100%"
+                minHeight="96px"
                 background="rgba(0, 0, 0, 0.1)"
                 border="2px solid rgba(255, 255, 255, 0.7)"
                 value={formik.values.tagline}
                 autoComplete="off"
                 spellCheck="false"
+                resize="none"
                 isInvalid={formik.errors.tagline ? true : false}
                 onChange={handleChange}
+                onKeyPress={handleKeyPress}
                 onFocus={(event) => { event.currentTarget.select(); }}
                 transition="all 200ms ease-in-out"
+                placeholder="Social discovery platform at the intersection of gaming and web3."
+                _placeholder={{
+                  fontStyle: "italic",
+                }}
                 _hover={{}}
                 _focusVisible={{}}
               />

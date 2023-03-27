@@ -3,6 +3,7 @@ import {
   Box,
   Flex,
   Image,
+  Text,
 } from "@chakra-ui/react";
 import {
   MdOutlineAddAPhoto as AddThumbnailIcon,
@@ -47,10 +48,14 @@ export default function Thumbnail({
   // Mouse Event Handlers
   function handleMouseOver() {
     image_ref.current.style.filter = "brightness(0.5)";
+    image_ref.current.style.borderRadius = "50%";
+    image_ref.current.style.border = "1px solid white";
     icon_container_ref.current.style.opacity = "100%";
   }
   function handleMouseLeave() {
     image_ref.current.style.filter = "brightness(1.0)";
+    image_ref.current.style.borderRadius = "5px";
+    image_ref.current.style.border = "none";
     icon_container_ref.current.style.opacity = "0%";
   }
 
@@ -61,12 +66,11 @@ export default function Thumbnail({
 
   // For latest thumbnail image
   useEffect(() => {
-    console.log("Thumbnail: ", thumbnail);
-
     if (!thumbnail) {
       // Display placeholder for thumbnail
       setContent(
         <Flex
+          id="thumbnail-container"
           flexDirection="row"
           justifyContent="center"
           alignItems="center"
@@ -90,9 +94,13 @@ export default function Thumbnail({
             border="1px dashed white"
             borderRadius="50%"
           >
-            <Box ref={icon_container_ref} position="absolute">
-              <AddThumbnailIcon color="white" size="28px" />
-            </Box>
+            <Text 
+              ref={icon_container_ref} 
+              position="absolute"
+              fontSize="25px"
+            >
+              📷
+            </Text>
           </Flex>
         </Flex>
       )
@@ -100,6 +108,7 @@ export default function Thumbnail({
       // Display user-uploaded image for thumbnail
       setContent(
         <Flex
+          id="thumbnail-container"
           flexDirection="row"
           justifyContent="center"
           alignItems="center"
@@ -128,13 +137,14 @@ export default function Thumbnail({
           <Image
             ref={image_ref}
             src={thumbnail}
-            padding="5px"
+            padding="1px"
             width={width}
             minWidth={width}
             height={height}
             minHeight={height}
             borderRadius="5px"
-            transition="filter 300ms ease-in-out"
+            // borderRadius="50%"
+            transition="all 300ms ease-in-out"
             zIndex={0}
             // onLoad={() => { 
             //   URL.revokeObjectURL(files[0].preview); 
@@ -145,12 +155,12 @@ export default function Thumbnail({
     }
   }, [thumbnail]);
 
-  // useEffect(() => {
-  //   // Executes on component unmount
-  //   return () => {
-  //     files.forEach(file => URL.revokeObjectURL(file.preview));
-  //   }
-  // }, []);
+  useEffect(() => {
+    // Executes on component unmount
+    return () => {
+      files.forEach(file => URL.revokeObjectURL(file.preview));
+    }
+  }, []);
 
   return (
     <div 

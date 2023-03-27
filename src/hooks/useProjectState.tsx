@@ -12,7 +12,7 @@ export default function useProjectState() {
   const [name, setName] = useState<string>("");
   const [stage, setStage] = useState<string>("");
   const [story, setStory] = useState<string>("");
-  const [submittedByTeam, setSubmittedByTeam] = useState<boolean>(false);
+  const [isTeam, setIsTeam] = useState<boolean>(false);
   const [tagline, setTagline] = useState<string>("");
   const [thumbnail, setThumbnail] = useState<string>("");
 
@@ -27,7 +27,7 @@ export default function useProjectState() {
     name, setName,
     stage, setStage,
     story, setStory,
-    submittedByTeam, setSubmittedByTeam,
+    isTeam, setIsTeam,
     tagline, setTagline,
     thumbnail, setThumbnail,
   };

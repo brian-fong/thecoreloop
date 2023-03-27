@@ -15,11 +15,9 @@ import {
 } from "react-icons/md";
 import { useEffect, useRef } from "react";
 
-export default function BasicsForm({
-  fundraising,
-  setFundraising,
-  submittedByTeam,
-  setSubmittedByTeam,
+export default function CommunityTeamForm({
+  fundraising, setFundraising,
+  isTeam, setIsTeam,
 }: any) {
 
   // Refs: Fundraising + Partnerships
@@ -27,16 +25,16 @@ export default function BasicsForm({
 
   async function handleClick_Team_Switch() {
     // Toggle submittedByTeam state variable
-    setSubmittedByTeam((value: boolean) => !value);
+    setIsTeam((value: boolean) => !value);
   }
 
   function handleClick_Team_SwitchLabel(event: any) {
     // Enable functionality to click label to toggle team
     const value: string = event.currentTarget.innerHTML;
-    if (value == "COMMUNITY" && submittedByTeam) {
+    if (value == "COMMUNITY" && isTeam) {
       // Case: Switching from Team ==> Community
       team_switch_ref.current.click();
-    } else if (value == "TEAM" && !submittedByTeam) {
+    } else if (value == "TEAM" && !isTeam) {
       // Case: Switching from Community ==> Team
       team_switch_ref.current.click();
     }
@@ -51,7 +49,7 @@ export default function BasicsForm({
   }
 
   useEffect(() => {
-    if (!submittedByTeam) {
+    if (!isTeam) {
       // If user is not Team, then reset fundraising to undefined
       setFundraising("");
     } else {
@@ -66,14 +64,14 @@ export default function BasicsForm({
       "team-label"
     )!;
 
-    if (!submittedByTeam) {
+    if (!isTeam) {
       community_label.style.filter = "brightness(1.0)";
       team_label.style.filter = "brightness(0.5)";
     } else {
       community_label.style.filter = "brightness(0.5)";
       team_label.style.filter = "brightness(1.0)";
     }
-  }, [submittedByTeam]);
+  }, [isTeam]);
 
   return (
     <Flex
@@ -82,16 +80,15 @@ export default function BasicsForm({
       alignItems="start"
       width="100%"
     >
+      {/* Part-of-the-team? */}
       <Heading
         marginBottom="10px"
         color="white"
-        fontSize="24px"
+        fontSize="18px"
         fontWeight="700"
       >
-        Let's start with some basics!
+        Are You Part of the <Text display="inline" color="yellow.400" fontWeight="700">Community</Text> or the <Text display="inline" color="blue.400" fontWeight="700">Team</Text> Behind This Project?
       </Heading>
-
-      {/* Part-of-the-team? */}
       <Flex
         flexDirection="row"
         justifyContent="start"
@@ -135,7 +132,7 @@ export default function BasicsForm({
             variant="CommunityTeam"
             size="md"
             cursor="pointer"
-            value={submittedByTeam.toString()}
+            value={isTeam.toString()}
             onChange={handleClick_Team_Switch}
           />
           <Text
@@ -160,7 +157,7 @@ export default function BasicsForm({
           alignItems="start"
           gap="10px"
           width="100%"
-          filter={submittedByTeam
+          filter={isTeam
             ? "brightness(1.0)"
             : "brightness(0.4)"
           }
@@ -202,7 +199,7 @@ export default function BasicsForm({
               gap="10px"
               marginLeft="40px"
               transition="all 300ms ease-in-out"
-              isDisabled={!submittedByTeam}
+              isDisabled={!isTeam}
               value={fundraising}
               onClick={handleClick_fundraising}
             >

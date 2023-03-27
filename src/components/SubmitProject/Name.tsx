@@ -1,7 +1,6 @@
 // Components
 import {
   Box,
-  Flex,
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
@@ -24,42 +23,35 @@ export default function Name({ name, setName }: any) {
     if (!name) {
       // Display placeholder for name
       setContent(
-        <Flex
+        <Text
+          display="flex"
           flexDirection="row"
           justifyContent="center"
           alignItems="center"
           gap="10px"
-          padding="4px"
-          minWidth="270px"
-          color="white"
-          lineHeight="none"
+          padding="4px 8px"
+          fontSize="24px"
+          fontWeight="700"
           border="1px solid white"
           borderRadius="5px"
           cursor="pointer"
-          transition="background 200ms ease-in-out"
-          _hover={{
-            background: "rgba(0, 0, 0, 0.4)"
-          }}
           userSelect="none"
+          transition="all 200ms ease-in-out"
+          _hover={{
+            padding: "4px 8px",
+            letterSpacing: "2px",
+            background: "rgba(0, 0, 0, 0.4)",
+          }}
         >
-          <Text fontSize="18px" fontWeight="700">
-            🏗️
-          </Text>
-          <Text fontSize="18px" fontWeight="700">
-            &lt;project_name&gt;
-          </Text>
-          <NameModal
-            isOpen={isOpen}
-            onClose={onClose}
-          />
-        </Flex>
+          🤖 &lt;project_name&gt;
+        </Text>
       );
     } else {
       // Display user-inputted name
       setContent(
         <Text
-          padding="4px"
-          minWidth="270px"
+          padding="0"
+          minWidth="200px"
           color="white"
           fontSize="24px"
           fontWeight="700"
@@ -69,6 +61,7 @@ export default function Name({ name, setName }: any) {
           whiteSpace="nowrap"
           transition="all 200ms ease-in-out"
           _hover={{ 
+            padding: "4px 8px",
             background: "rgba(0, 0, 0, 0.4)",
             border: "1px solid white",
             borderRadius: "5px",

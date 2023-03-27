@@ -1,49 +1,44 @@
 // Components
-import BasicsForm from "./BasicsForm";
+import {
+  Divider,
+  Text,
+} from "@chakra-ui/react";
+import CommunityTeamForm from "./CommunityTeamForm";
 import DiscoverForm from "./DiscoverForm";
 
 export default function Part1({
   image_width,
   image_height,
-  fundraising,
-  setFundraising,
-  name,
-  setName,
-  submittedByTeam,
-  setSubmittedByTeam,
-  tagline,
-  setTagline,
-  thumbnail,
-  setThumbnail,
+  blockchain, setBlockchain,
+  fundraising, setFundraising,
+  genres, setGenres,
+  name, setName,
+  isTeam, setIsTeam,
+  tagline, setTagline,
+  thumbnail, setThumbnail,
 }: any) {
 
   return (
     <>
-      {/* Basics Form */}
-      <BasicsForm
-        fundraising={fundraising}
-        setFundraising={setFundraising}
-        submittedByTeam={submittedByTeam}
-        setSubmittedByTeam={setSubmittedByTeam}
+      <Text marginBottom="30px" width="100%" fontSize="18px">
+        Have a web3 gaming project that you'd like to share with the world? Let's get it listed on thecoreloop!
+      </Text>
+
+      <CommunityTeamForm
+        fundraising={fundraising} setFundraising={setFundraising}
+        isTeam={isTeam} setIsTeam={setIsTeam}
       />
 
-      <hr
-        style={{
-          margin: "30px 0",
-          width: "100%",
-          borderTop: "2px solid white",
-        }}
-      />
+      <Divider margin="30px 0" width="100%" borderWidth="1px" />
 
       <DiscoverForm
-        image_width={image_width}
-        image_height={image_height}
-        tagline={tagline}
-        setTagline={setTagline}
-        name={name}
-        setName={setName}
-        thumbnail={thumbnail}
-        setThumbnail={setThumbnail}
+        image_width={image_width} image_height={image_height}
+        blockchain={blockchain} setBlockchain={setBlockchain}
+        fundraising={fundraising}
+        genres={genres} setGenres={setGenres}
+        name={name} setName={setName}
+        tagline={tagline} setTagline={setTagline}
+        thumbnail={thumbnail} setThumbnail={setThumbnail}
       />
     </>
   );

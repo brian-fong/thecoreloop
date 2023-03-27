@@ -3,6 +3,7 @@ import {
   Button,
   Flex,
   Heading,
+  Text,
 } from "@chakra-ui/react";
 import {
   BsArrowLeft as LeftArrowIcon,
@@ -14,19 +15,21 @@ import Part1 from "../components/SubmitProject/Part1";
 import Part2 from "../components/SubmitProject/Part2";
 
 // Hooks
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import useProjectState from "../hooks/useProjectState";
 
 export default function submit_project() {
   // Constants: Thumbnail Image Size
-  const [ image_width, image_height]: [string, string] = ["96px", "96px"];
+  const [ image_width, image_height]: [string, string] = ["115px", "115px"];
 
   // State variables
   const {
+    blockchain, setBlockchain,
     description, setDescription,
     fundraising, setFundraising,
+    genres, setGenres,
     name, setName,
-    submittedByTeam, setSubmittedByTeam,
+    isTeam, setIsTeam,
     tagline, setTagline,
     thumbnail, setThumbnail,
   } = useProjectState();
@@ -51,10 +54,6 @@ export default function submit_project() {
       return true;
     }
   }
-
-  useEffect(() => {
-    console.log(`Name: "${name}"`);
-  }, [name]);
 
   return (
     <>
@@ -110,7 +109,7 @@ export default function submit_project() {
               fontWeight="700"
               whiteSpace="nowrap"
             >
-              Submitting a Project
+              Submit a Project
             </Heading>
 
             {/* Container: Prev + Next Buttons */}
@@ -139,11 +138,7 @@ export default function submit_project() {
                 transition="all 100ms ease-in-out"
                 _hover={{
                   filter: "brightness(0.8)",
-                  boxShadow: `
-                    1px 1px 1px gray,
-                    2px 2px 1px gray
-                    `,
-                  }}
+                }}
                 _active={{
                   filter: "brightness(0.5)",
                   boxShadow: "none",
@@ -173,11 +168,7 @@ export default function submit_project() {
                 transition="all 100ms ease-in-out"
                 _hover={{
                   filter: "brightness(0.8)",
-                  boxShadow: `
-                    1px 1px 1px gray,
-                    2px 2px 1px gray
-                    `,
-                  }}
+                }}
                 _active={{
                   filter: "brightness(0.5)",
                   boxShadow: "none",
@@ -195,29 +186,20 @@ export default function submit_project() {
           {page == 1 
             ? (
               <Part1
-                image_width={image_width}
-                image_height={image_height}
-                fundraising={fundraising}
-                setFundraising={setFundraising}
-                name={name}
-                setName={setName}
-                submittedByTeam={submittedByTeam}
-                setSubmittedByTeam={setSubmittedByTeam}
-                tagline={tagline}
-                setTagline={setTagline}
-                thumbnail={thumbnail}
-                setThumbnail={setThumbnail}
+                image_width={image_width} image_height={image_height}
+                blockchain={blockchain} setBlockchain={setBlockchain}
+                fundraising={fundraising} setFundraising={setFundraising}
+                name={name} setName={setName}
+                isTeam={isTeam} setIsTeam={setIsTeam}
+                tagline={tagline} setTagline={setTagline}
+                thumbnail={thumbnail} setThumbnail={setThumbnail}
               />
             ) : (
               <Part2
-                image_width={image_width}
-                image_height={image_height}
-                description={description}
-                setDescription={setDescription}
-                name={name}
-                setName={setName}
-                thumbnail={thumbnail}
-                setThumbnail={setThumbnail}
+                image_width={image_width} image_height={image_height}
+                description={description} setDescription={setDescription}
+                name={name} setName={setName}
+                thumbnail={thumbnail} setThumbnail={setThumbnail}
               />
             )
           }

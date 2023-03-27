@@ -112,7 +112,7 @@ export default function DescriptionModal({
                 whiteSpace="nowrap"
                 background="#282a36"
               >
-                Project Description
+                Description
               </Heading>
             </Flex>
 
