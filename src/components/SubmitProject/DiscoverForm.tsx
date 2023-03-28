@@ -8,11 +8,15 @@ import {
 } from "@chakra-ui/react";
 import { VscTriangleUp as UpvoteIcon } from "react-icons/vsc";
 import Blockchain from "./Blockchain";
+import FundraisingIcon from "./FundraisingIcon";
 import Genres from "./Genres";
 import Name from "./Name";
 import Stage from "./Stage";
 import Tagline from "./Tagline";
 import Thumbnail from "./Thumbnail";
+
+// Hooks
+import { useState } from "react";
 
 export default function DiscoverForm({
   image_width, image_height,
@@ -24,6 +28,7 @@ export default function DiscoverForm({
   tagline, setTagline,
   thumbnail, setThumbnail,
 }: any) {
+  const [upvotes, setUpvotes] = useState<number>(0);
 
   return (
     <Flex
@@ -74,11 +79,11 @@ export default function DiscoverForm({
           <Flex
             flexDirection="row"
             justifyContent="space-between"
-            alignItems="center"
+            alignItems="end"
             gap="10px" 
             width="100%"
           >
-            <Flex alignItems="center" gap="10px">
+            <Flex alignItems="end" gap="10px">
               {/* Name */}
               <Name name={name} setName={setName} />
 
@@ -89,24 +94,8 @@ export default function DiscoverForm({
               />
             </Flex>
 
-            {/* Fundraising Icon */}
-            <Tooltip
-              label="This project is currently fundraising" 
-              whiteSpace="nowrap"
-              placement="top-start"
-              visibility={fundraising == "yes" ? "visible" : "hidden"}
-              offset={[10, 12]}
-              arrowSize={15}
-              hasArrow
-            >
-              <Image
-                src="https://cdn-icons-png.flaticon.com/512/3588/3588711.png"
-                width="30px"
-                height="30px"
-                opacity={fundraising == "yes" ? "100%" : "0%"}
-                transition="all 300ms ease-in-out"
-              />
-            </Tooltip>
+            {/* Fundraising */}
+            <FundraisingIcon fundraising={fundraising} />
           </Flex>
 
           <Tagline
@@ -124,7 +113,6 @@ export default function DiscoverForm({
               stage={stage} setStage={setStage}
             />
           </Flex>
-
         </Flex>
 
         {/* Upvote */}
@@ -133,22 +121,23 @@ export default function DiscoverForm({
           justifyContent="center"
           alignItems="center"
           padding="10px 0"
-          width="70px"
-          minWidth="70px"
-          maxWidth="70px"
+          width="80px"
+          minWidth="80px"
+          maxWidth="80px"
           height="100%"
           minHeight={image_height}
           border="1px solid white"
           borderRadius="10px"
           cursor="pointer"
           userSelect="none"
+          onClick={() => setUpvotes(upvotes => upvotes+1)}
           transition="background 200ms ease-in-out"
           _hover={{ background: "rgba(255, 255, 255, 0.1)" }}
           _active={{ background: "rgba(255, 255, 255, 0.2)" }}
         >
           <UpvoteIcon color="white" size="25px" />
           <Text fontSize="16px">
-            1234
+            {upvotes}
           </Text>
         </Flex>
       </Flex>
