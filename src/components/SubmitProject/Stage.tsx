@@ -4,38 +4,38 @@ import {
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
-import TaglineModal from "./TaglineModal";
+import StageModal from "./StageModal";
 
-//Hooks
+// Hooks
 import { useEffect, useState } from "react";
 
 // Types
 import { ReactElement } from "react";
 
-export default function Tagline({ tagline, setTagline }: any) {
+export default function Stage({ stage, setStage }: any) {
   // State variables
   const [content, setContent] = useState<ReactElement>();
+  const [stage_selected, setStageSelected] = useState<string>("");
 
-  // Disclosure: DescriptionModal
+  // Disclosure: NameModal
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   useEffect(() => {
-    if (!tagline) {
-      // Display placeholder for tagline
+    if (!stage) {
+      // Display placeholder for name
       setContent(
         <Text
           display="flex"
           flexDirection="row"
           justifyContent="center"
           alignItems="center"
+          gap="10px"
           padding="4px 8px"
-          width="100%"
-          height="100%"
-          minHeight="48px"
           fontSize="16px"
           border="1px solid white"
           borderRadius="5px"
           cursor="pointer"
+          whiteSpace="nowrap"
           userSelect="none"
           transition="all 200ms ease-in-out"
           _hover={{
@@ -43,52 +43,48 @@ export default function Tagline({ tagline, setTagline }: any) {
             background: "rgba(0, 0, 0, 0.4)",
           }}
         >
-          📰  &lt;tagline&gt;
+          🏗️  &lt;stage&gt;
         </Text>
       );
     } else {
-      // Display user-inputted tagline
+      // Display user-inputted name
       setContent(
         <Text
-          padding="0"
-          width="100%"
-          minWidth="320px"
-          height="100%"
+          padding="2px 4px"
           color="white"
           fontSize="16px"
-          lineHeight="5"
+          background="#424a54"
           border="1px solid transparent"
+          borderRadius="10px"
           cursor="pointer"
-          wordBreak="break-all"
+          whiteSpace="nowrap"
           userSelect="none"
           transition="all 200ms ease-in-out"
           _hover={{ 
             padding: "4px 8px",
-            fontSize: "15px",
+            color: "white",
             background: "rgba(0, 0, 0, 0.4)",
             border: "1px solid white",
             borderRadius: "5px",
           }}
-          style={{
-            hyphens: "auto",
-          }}
+          _active={{ background: "rgba(255, 255, 255, 0.3)" }}
         >
-          {tagline}
+          {stage}
         </Text>
       )
     }
-  }, [tagline])
+  }, [stage]);
 
   return (
-    <Box width="100%" height="100%" onClick={onOpen}>
+    <Box onClick={onOpen}>
       {content}
-      <TaglineModal
-        tagline={tagline}
-        setTagline={setTagline}
-        isOpen={isOpen}
-        onClose={onClose}
+      <StageModal
+        stage={stage} setStage={setStage}
+        stage_selected={stage_selected} setStageSelected={setStageSelected}
+        isOpen={isOpen} onClose={onClose}
       />
     </Box>
-  )
+  );
 }
+
 

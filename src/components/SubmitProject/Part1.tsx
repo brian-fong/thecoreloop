@@ -14,13 +14,14 @@ export default function Part1({
   genres, setGenres,
   name, setName,
   isTeam, setIsTeam,
+  stage, setStage,
   tagline, setTagline,
   thumbnail, setThumbnail,
 }: any) {
 
   return (
     <>
-      <Text marginBottom="30px" width="100%" fontSize="18px">
+      <Text marginBottom="30px" width="100%" fontSize="16px">
         Have a web3 gaming project that you'd like to share with the world? Let's get it listed on thecoreloop!
       </Text>
 
@@ -37,6 +38,7 @@ export default function Part1({
         fundraising={fundraising}
         genres={genres} setGenres={setGenres}
         name={name} setName={setName}
+        stage={stage} setStage={setStage}
         tagline={tagline} setTagline={setTagline}
         thumbnail={thumbnail} setThumbnail={setThumbnail}
       />

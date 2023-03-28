@@ -13,18 +13,15 @@ import GenresPopover from './GenresPopover';
 
 // Hooks
 import { useFormik } from "formik";
-import { useEffect } from 'react';
 
 // Types
 import { FormikErrors, FormikValues } from "formik";
 
 // Formik validation
-function validate(values: any) {
+function validate() {
   const errors: FormikErrors<FormikValues> = {};
 
-  if (values.genres_selected.length < 1 || values.genres_selected.length > 3) {
-    errors.genres_selected = "Please select 1-3 genres";
-  }
+  // No form validation
 
   return errors;
 }
@@ -37,12 +34,10 @@ export default function GenresModal({
   // Formik props
   const formik = useFormik({
     initialValues: {
-      genres_selected: genres_selected,
+      genres_selected: genres,
     },
     validate: validate,
     onSubmit: (values) => {
-      console.log("Form Submitted", values.genres_selected);
-
       // Update genres state variable
       setGenres(values.genres_selected);
 
@@ -54,8 +49,8 @@ export default function GenresModal({
   function handleCancel() {
     // Reset values
     formik.setErrors({});               // Reset errors
-    formik.values.genres_selected = []  // Reset selected genres (formik)
-    setGenresSelected([]);              // Reset selected genres (state)
+    formik.values.genres_selected = genres  // Reset selected genres (formik)
+    setGenresSelected(genres);              // Reset selected genres (state)
     onClose();                          // Close NameModal
   }
 

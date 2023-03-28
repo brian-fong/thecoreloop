@@ -19,7 +19,7 @@ export default function Genres({ genres, setGenres }: any) {
   const [content, setContent] = useState<ReactElement>();
   const [genres_selected, setGenresSelected] = useState<string[]>([]);
 
-  // Disclosure: NameModal
+  // Disclosure: GenresModal
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   function renderGenres(): ReactElement {
@@ -27,14 +27,15 @@ export default function Genres({ genres, setGenres }: any) {
       // Display only 1 genre
       return (
         <Text
-          padding="0 4px"
-          color="black"
+          padding="2px 4px"
+          color="white"
           fontSize="16px"
-          background="gray.400"
+          background="#424a54"
           border="1px solid transparent"
           borderRadius="10px"
           cursor="pointer"
           whiteSpace="nowrap"
+          userSelect="none"
           transition="all 200ms ease-in-out"
           _hover={{ 
             padding: "4px 8px",
@@ -44,7 +45,6 @@ export default function Genres({ genres, setGenres }: any) {
             borderRadius: "5px",
           }}
           _active={{ background: "rgba(255, 255, 255, 0.3)" }}
-          userSelect="none"
         >
           {genres[0]}
         </Text>
@@ -52,49 +52,50 @@ export default function Genres({ genres, setGenres }: any) {
     } else {
       return (
         // Display primary genre with tooltip to disclose the other genres
-          <Flex
-            flexDirection="row"
-            justifyContent="start"
-            alignItems="center"
-            gap="5px"
-            padding="2px 4px"
-            background="#424a54"
-            border="1px solid transparent"
-            borderRadius="10px"
-            cursor="pointer"
+        <Flex
+          flexDirection="row"
+          justifyContent="start"
+          alignItems="center"
+          gap="5px"
+          padding="2px 4px"
+          background="#424a54"
+          border="1px solid transparent"
+          borderRadius="10px"
+          cursor="pointer"
+        >
+          <Text
+            color="white"
+            fontSize="16px"
+            transition="all 200ms ease-in-out"
+            _hover={{ 
+              padding: "4px 8px",
+              background: "rgba(0, 0, 0, 0.4)",
+              border: "1px solid white",
+              borderRadius: "5px",
+            }}
+            userSelect="none"
+          >
+            {genres[0]}
+          </Text>
+          <Tooltip
+            label={genres.slice(1).join(", ")}
+            placement="bottom-end"
+            offset={[10, 12]}
+            arrowSize={12}
+            hasArrow
           >
             <Text
+              padding="2px 4px"
               color="white"
-              fontSize="16px"
-              transition="all 200ms ease-in-out"
-              _hover={{ 
-                padding: "4px 8px",
-                background: "rgba(0, 0, 0, 0.4)",
-                border: "1px solid white",
-                borderRadius: "5px",
-              }}
-              userSelect="none"
+              fontSize="14px"
+              fontWeight="700"
+              background="rgba(0, 0, 0, 0.2)"
+              borderRadius="7px"
             >
-              {genres[0]}
+              +{genres.length-1}
             </Text>
-            <Tooltip
-              label={genres.slice(1).join(", ")}
-              placement="bottom-end"
-              offset={[10, 12]}
-              arrowSize={12}
-              hasArrow
-            >
-                <Text
-                  padding="2px 4px"
-                  color="white"
-                  fontSize="14px"
-                  background="rgba(0, 0, 0, 0.2)"
-                  borderRadius="7px"
-                >
-                  +{genres.length-1}
-                </Text>
-            </Tooltip>
-          </Flex>
+          </Tooltip>
+        </Flex>
       );
     }
   }

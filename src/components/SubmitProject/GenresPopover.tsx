@@ -140,7 +140,7 @@ export default function GenresPopover({
                 onChange={handleChange}
                 isDisabled={
                   genres_selected.length == 3
-                    && !genres_selected.includes(genre)
+                  && !genres_selected.includes(genre)
                 }
               >
                 {genre}

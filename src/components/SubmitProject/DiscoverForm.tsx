@@ -10,6 +10,7 @@ import { VscTriangleUp as UpvoteIcon } from "react-icons/vsc";
 import Blockchain from "./Blockchain";
 import Genres from "./Genres";
 import Name from "./Name";
+import Stage from "./Stage";
 import Tagline from "./Tagline";
 import Thumbnail from "./Thumbnail";
 
@@ -19,6 +20,7 @@ export default function DiscoverForm({
   fundraising,
   genres, setGenres,
   name, setName,
+  stage, setStage,
   tagline, setTagline,
   thumbnail, setThumbnail,
 }: any) {
@@ -36,11 +38,11 @@ export default function DiscoverForm({
         fontSize="24px"
         fontWeight="700"
       >
-        Build <Text display="inline" fontStyle="italic">Discover</Text> Preview
+        Build Your Project's <Text display="inline" fontStyle="italic">Discovery</Text> Preview
       </Heading>
 
-      <Heading marginBottom="20px" fontSize="16px" fontWeight="300">
-        The <Text display="inline" color="gray.300" fontSize="18px" fontStyle="italic" fontWeight="700">Discover</Text> section showcases a collection of web3-gaming startups submitted by fellow members of the project's community or team.
+      <Heading marginBottom="30px" fontSize="16px" fontWeight="300">
+        The <Text display="inline" color="gray.300" fontSize="16px" fontStyle="italic" fontWeight="700">Discover</Text> section showcases a collection of web3-gaming startups submitted by fellow members of the project's community or team.
       </Heading>
 
       <Flex
@@ -76,11 +78,19 @@ export default function DiscoverForm({
             gap="10px" 
             width="100%"
           >
-            {/* Name */}
-            <Name name={name} setName={setName} />
+            <Flex alignItems="center" gap="10px">
+              {/* Name */}
+              <Name name={name} setName={setName} />
+
+              {/* Blockchain */}
+              <Blockchain 
+                blockchain={blockchain}
+                setBlockchain={setBlockchain}
+              />
+            </Flex>
 
             {/* Fundraising Icon */}
-            <Tooltip 
+            <Tooltip
               label="This project is currently fundraising" 
               whiteSpace="nowrap"
               placement="top-start"
@@ -90,7 +100,7 @@ export default function DiscoverForm({
               hasArrow
             >
               <Image
-                src="./piggy-bank-icon.png"
+                src="https://cdn-icons-png.flaticon.com/512/3588/3588711.png"
                 width="30px"
                 height="30px"
                 opacity={fundraising == "yes" ? "100%" : "0%"}
@@ -105,38 +115,14 @@ export default function DiscoverForm({
           />
 
           <Flex flexDirection="row" alignItems="center" gap="10px">
-            {/* Blockchain */}
-            <Blockchain 
-              blockchain={blockchain}
-              setBlockchain={setBlockchain}
-            />
-
             <Genres
               genres={genres}
               setGenres={setGenres}
             />
 
-            <Text
-              display="flex"
-              flexDirection="row"
-              justifyContent="center"
-              alignItems="center"
-              gap="10px"
-              padding="4px 8px"
-              fontSize="16px"
-              border="1px solid white"
-              borderRadius="5px"
-              cursor="pointer"
-              whiteSpace="nowrap"
-              userSelect="none"
-              transition="all 200ms ease-in-out"
-              _hover={{
-                letterSpacing: "2px",
-                background: "rgba(0, 0, 0, 0.4)",
-              }}
-            >
-              🏗️ &lt;stage&gt;
-            </Text>
+            <Stage 
+              stage={stage} setStage={setStage}
+            />
           </Flex>
 
         </Flex>
@@ -154,9 +140,11 @@ export default function DiscoverForm({
           minHeight={image_height}
           border="1px solid white"
           borderRadius="10px"
+          cursor="pointer"
           userSelect="none"
           transition="background 200ms ease-in-out"
           _hover={{ background: "rgba(255, 255, 255, 0.1)" }}
+          _active={{ background: "rgba(255, 255, 255, 0.2)" }}
         >
           <UpvoteIcon color="white" size="25px" />
           <Text fontSize="16px">

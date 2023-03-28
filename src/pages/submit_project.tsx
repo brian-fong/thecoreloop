@@ -30,6 +30,7 @@ export default function submit_project() {
     genres, setGenres,
     name, setName,
     isTeam, setIsTeam,
+    stage, setStage,
     tagline, setTagline,
     thumbnail, setThumbnail,
   } = useProjectState();
@@ -192,6 +193,7 @@ export default function submit_project() {
                 genres={genres} setGenres={setGenres}
                 name={name} setName={setName}
                 isTeam={isTeam} setIsTeam={setIsTeam}
+                stage={stage} setStage={setStage}
                 tagline={tagline} setTagline={setTagline}
                 thumbnail={thumbnail} setThumbnail={setThumbnail}
               />

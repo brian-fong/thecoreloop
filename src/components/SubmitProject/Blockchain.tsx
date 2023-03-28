@@ -56,7 +56,7 @@ export default function Blockchain({ blockchain, setBlockchain }: any) {
       setContent(
         <Tooltip 
           label={blockchain}
-          placement="bottom"
+          placement="top"
           offset={[10, 12]}
           arrowSize={12}
           hasArrow
@@ -66,7 +66,7 @@ export default function Blockchain({ blockchain, setBlockchain }: any) {
             cursor="pointer"
             transition="all 200ms ease-in-out"
             _hover={{
-              padding:"4px",
+              padding:"2px",
               border: "1px solid white",
               borderRadius: "5px",
               filter: "brightness(0.8)",

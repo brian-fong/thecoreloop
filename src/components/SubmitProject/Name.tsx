@@ -66,7 +66,6 @@ export default function Name({ name, setName }: any) {
             border: "1px solid white",
             borderRadius: "5px",
           }}
-          _active={{ background: "rgba(255, 255, 255, 0.3)" }}
           userSelect="none"
         >
           {name}

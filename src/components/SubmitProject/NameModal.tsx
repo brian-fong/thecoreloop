@@ -20,7 +20,7 @@ import { useRef, useState } from 'react';
 import { FormikErrors, FormikValues } from "formik";
 
 // Formik validation
-const char_limit: number = 24;
+const char_limit: number = 20;
 function validate(values: any) {
   const errors: FormikErrors<FormikValues> = {};
 
