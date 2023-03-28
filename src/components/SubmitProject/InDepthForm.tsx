@@ -73,10 +73,8 @@ export default function InDepthForm({
       >
         {/* Thumbnail Image */}
         <Thumbnail
-          width={image_width}
-          height={image_height}
-          thumbnail={thumbnail} 
-          setThumbnail={setThumbnail} 
+          image_width={image_width} image_height={image_height}
+          thumbnail={thumbnail} setThumbnail={setThumbnail} 
         />
 
         {/* Container: Name + Links + Blockchain + Genres + Stage */}

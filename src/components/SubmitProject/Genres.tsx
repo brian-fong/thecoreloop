@@ -58,23 +58,21 @@ export default function Genres({ genres, setGenres }: any) {
             alignItems="center"
             gap="5px"
             padding="2px 4px"
-            background="gray.400"
+            background="#424a54"
             border="1px solid transparent"
             borderRadius="10px"
             cursor="pointer"
           >
             <Text
-              color="black"
+              color="white"
               fontSize="16px"
               transition="all 200ms ease-in-out"
               _hover={{ 
                 padding: "4px 8px",
-                color: "white",
                 background: "rgba(0, 0, 0, 0.4)",
                 border: "1px solid white",
                 borderRadius: "5px",
               }}
-              _active={{ background: "rgba(255, 255, 255, 0.3)" }}
               userSelect="none"
             >
               {genres[0]}
@@ -88,10 +86,10 @@ export default function Genres({ genres, setGenres }: any) {
             >
                 <Text
                   padding="2px 4px"
-                  color="black"
+                  color="white"
                   fontSize="14px"
-                  background="gray.500"
-                  borderRadius="5px"
+                  background="rgba(0, 0, 0, 0.2)"
+                  borderRadius="7px"
                 >
                   +{genres.length-1}
                 </Text>
@@ -118,6 +116,7 @@ export default function Genres({ genres, setGenres }: any) {
           border="1px solid white"
           borderRadius="5px"
           cursor="pointer"
+          whiteSpace="nowrap"
           userSelect="none"
           transition="all 200ms ease-in-out"
           _hover={{

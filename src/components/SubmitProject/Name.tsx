@@ -35,6 +35,7 @@ export default function Name({ name, setName }: any) {
           border="1px solid white"
           borderRadius="5px"
           cursor="pointer"
+          whiteSpace="nowrap"
           userSelect="none"
           transition="all 200ms ease-in-out"
           _hover={{
@@ -51,7 +52,6 @@ export default function Name({ name, setName }: any) {
       setContent(
         <Text
           padding="0"
-          minWidth="200px"
           color="white"
           fontSize="24px"
           fontWeight="700"

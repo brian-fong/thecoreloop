@@ -40,6 +40,7 @@ export default function Blockchain({ blockchain, setBlockchain }: any) {
           border="1px solid white"
           borderRadius="5px"
           cursor="pointer"
+          whiteSpace="nowrap"
           userSelect="none"
           transition="all 200ms ease-in-out"
           _hover={{
@@ -47,7 +48,7 @@ export default function Blockchain({ blockchain, setBlockchain }: any) {
             background: "rgba(0, 0, 0, 0.4)",
           }}
         >
-          ⛓️  &lt;blockchain&gt;
+          ⛓️  &lt;chain&gt;
         </Text>
       );
     } else {

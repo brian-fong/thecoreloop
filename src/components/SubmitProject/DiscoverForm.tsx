@@ -43,10 +43,6 @@ export default function DiscoverForm({
         The <Text display="inline" color="gray.300" fontSize="18px" fontStyle="italic" fontWeight="700">Discover</Text> section showcases a collection of web3-gaming startups submitted by fellow members of the project's community or team.
       </Heading>
 
-      <Heading marginBottom="40px" fontSize="16px" fontWeight="300">
-        2. Click on the fields below to input details about the project. The result is what readers will see in the <Text display="inline" fontSize="18px" color="gray.300" fontStyle="italic" fontWeight="700">Discover</Text> section.
-      </Heading>
-
       <Flex
         id="discover-container"
         flexDirection="row"
@@ -73,7 +69,7 @@ export default function DiscoverForm({
           gap="10px"
           width="100%"
         >
-          <Flex 
+          <Flex
             flexDirection="row"
             justifyContent="space-between"
             alignItems="center"
@@ -109,6 +105,7 @@ export default function DiscoverForm({
           />
 
           <Flex flexDirection="row" alignItems="center" gap="10px">
+            {/* Blockchain */}
             <Blockchain 
               blockchain={blockchain}
               setBlockchain={setBlockchain}
@@ -118,6 +115,28 @@ export default function DiscoverForm({
               genres={genres}
               setGenres={setGenres}
             />
+
+            <Text
+              display="flex"
+              flexDirection="row"
+              justifyContent="center"
+              alignItems="center"
+              gap="10px"
+              padding="4px 8px"
+              fontSize="16px"
+              border="1px solid white"
+              borderRadius="5px"
+              cursor="pointer"
+              whiteSpace="nowrap"
+              userSelect="none"
+              transition="all 200ms ease-in-out"
+              _hover={{
+                letterSpacing: "2px",
+                background: "rgba(0, 0, 0, 0.4)",
+              }}
+            >
+              🏗️ &lt;stage&gt;
+            </Text>
           </Flex>
 
         </Flex>
@@ -140,7 +159,9 @@ export default function DiscoverForm({
           _hover={{ background: "rgba(255, 255, 255, 0.1)" }}
         >
           <UpvoteIcon color="white" size="25px" />
-          <Text fontSize="16px">0</Text>
+          <Text fontSize="16px">
+            1234
+          </Text>
         </Flex>
       </Flex>
     </Flex>
