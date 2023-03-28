@@ -49,7 +49,7 @@ export default function Genres({ genres, setGenres }: any) {
           {genres[0]}
         </Text>
       );
-    } else if (genres.length > 1) {
+    } else {
       return (
         // Display primary genre with tooltip to disclose the other genres
           <Flex
