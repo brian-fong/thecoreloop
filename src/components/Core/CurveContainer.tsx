@@ -1,53 +1,50 @@
 import { Flex, Heading } from "@chakra-ui/react";
 
-export default function CurveContainer({ children, heading, minWidth }: any) {
+export default function CurveContainer({ children, heading }: any) {
   return (
-    <Flex 
-      className="outer_container"
-      flexDir="column" 
-      justify="start" 
-      align="center" 
-      m="0px" 
-      p="15px 15px 10px 15px" 
+    <Flex
+      id="outer-container"
+      flexDirection="column" 
+      justifyContent="start" 
+      alignItems="center" 
+      margin="0px" 
+      padding="15px" 
       width="100%" 
-      minWidth={minWidth ? minWidth : "300px"}
+      height="100%"
       color="black"
-      background="standard_bkg"
+      background="curve"
       border="6px double white" 
-      boxShadow="0px 0px 0px 3px #c0c0c0, 
-                 20px 20px 2px rgba(0, 0, 0, 0.5)"
-      boxSizing="border-box"
+      boxShadow="0px 0px 0px 3px #C0C0C0, 
+                 20px 20px 2px black"
     >
       <Flex 
-        className="inner_container"
+        id="inner-container"
         position="relative"
-        flexDir="column" 
-        justify="start" 
-        align="start" 
-        m="10px" 
-        p="15px" 
-        width="100%" 
-        minWidth={minWidth ? (minWidth-30) : "300px"}
+        flexDirection="column"
+        justifyContent="start"
+        alignItems="start"
+        margin="10px"
+        padding="15px"
+        width="100%"
         height="100%"
-        border="1px solid gray" 
+        border="1px solid gray"
       >
         { /* Heading Container */ }
         <Flex 
           position="absolute" 
           top="-10px"
-          flexDir="row" 
-          justify="center" 
-          align="center" 
+          flexDirection="row" 
+          justifyContent="center" 
+          alignItems="center" 
           width="100%"
         >
           <Heading 
             position="relative"
-            fontFamily="JetBrains Mono"
             fontWeight="400" 
             fontSize="14px" 
-            p="0px 8px" 
+            padding="0px 8px" 
             color="black" 
-            bg="standard_bkg"
+            background="curve"
           >
             {heading}
           </Heading>

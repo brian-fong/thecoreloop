@@ -1,12 +1,16 @@
-import Head from "next/head";
-import { useEffect } from "react";
+// Components
 import { Flex } from "@chakra-ui/react";
+import Head from "next/head";
+import Header from "../components/CreateLAG/Header";
+import InputLAG from "../components/CreateLAG/InputLAG";
 import Logo from "../components/Core/Logo";
 import NavBar from "../components/Core/NavBar";
-import useCreateLAG from "../hooks/useCreateLAG";
-import ViewLAG from "../components/CreateLAG/ViewLAG";
-import InputLAG from "../components/CreateLAG/InputLAG";
 import PreviewLAG from "../components/CreateLAG/PreviewLAG";
+import ViewLAG from "../components/CreateLAG/ViewLAG";
+
+// Hooks
+import { useEffect } from "react";
+import useCreateLAG from "../hooks/useCreateLAG";
 
 export default function create_lag() {
   const { 
@@ -20,11 +24,13 @@ export default function create_lag() {
   }: any = useCreateLAG();
 
   useEffect(() => {
+    // Confirmation before closing browser tab/window
     window.onbeforeunload = () => "";
   }, [])
 
   return (
     <>
+      {/* Head */}
       <Head>
         <title>tcl - Create Daily LAG</title>
         <link 
@@ -35,23 +41,22 @@ export default function create_lag() {
         <meta name="viewport" content="viewport-fit=cover" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
+
+      {/* Body */}
       <Flex 
-        id="root_container"
+        id="root-container"
         flexDir="column" 
         justify="start" 
         align="center" 
         m="0px" 
         p="0px"
-        width="100vw" 
-        height="100vh"
-        bg="body"
-        boxSizing="border-box"
-        overflowX="hidden"
+        minHeight="100vh"
+        background="#282a36"
       >
-        <NavBar />
+        <Header />
 
         <Flex 
-          id="main_container"
+          id="main-container"
           flexDir="column" 
           gap="40px" 
           justify="start" 
@@ -63,7 +68,6 @@ export default function create_lag() {
           maxWidth="800px"
           boxSizing="border-box"
         >
-          <Logo />
           <InputLAG
             abort={abort}
             status={status}
