@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 
 module.exports = {
-  reactStrictMode: false,
+  reactStrictMode: true,
   async headers() {
     return [
       {

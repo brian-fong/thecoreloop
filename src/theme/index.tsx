@@ -1,8 +1,12 @@
+// Components
 import Button from "./components/Button";
 import Heading from "./components/Heading";
 import Link from "./components/Link";
 import { menuTheme as Menu } from './components/Menu'
 import { selectTheme as Select } from "./components/Select";
+import { switchTheme as Switch } from "./components/Switch";
+
+// Hooks
 import { extendTheme } from "@chakra-ui/react";
 
 export default extendTheme({
@@ -60,6 +64,7 @@ export default extendTheme({
     Link,
     Menu,
     Select,
+    Switch,
   }
 });
 

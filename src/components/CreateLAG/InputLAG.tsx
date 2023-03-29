@@ -1,21 +1,20 @@
-import { 
-  LAG, 
-  ArticleGroup as ArticleGroupType,
-  Article as ArticleType,
-} from "../../types";
+// Components
 import { 
   Flex,
   Text,
   Input,
   Textarea,
 } from "@chakra-ui/react";
-import uuid from "react-uuid";
 import ArticleGroup from "./ArticleGroup";
-import { useState, useEffect, ReactElement } from "react";
 import Controls from "./Controls";
-import { formatDate } from "../../utils/date";
 import CurveContainer from "../Core/CurveContainer";
 
+// Hooks
+import { useState, useEffect, ReactElement } from "react";
+
+// Helpful Constans & Functions
+import uuid from "react-uuid";
+import { formatDate } from "../../utils/date";
 export const CATEGORIES: string[] = [
   "🔦 Spotlight 🌟",
   "🌊 MARKET ☎️",
@@ -26,6 +25,13 @@ export const CATEGORIES: string[] = [
   "💰 Fundraising 🧧",
   "👾 Game & Stats Releases 🎮",
 ];
+
+// Types
+import { 
+  LAG, 
+  ArticleGroup as ArticleGroupType,
+  Article as ArticleType,
+} from "../../types";
 
 export default function InputLAG({ 
   abort, 
@@ -202,7 +208,7 @@ export default function InputLAG({
   }, [updated]);
 
   return (
-    <CurveContainer heading="Create Daily LAG" minWidth="550px">
+    <CurveContainer heading="Create Daily LAG">
       <Flex
         id="input-lag"
         flexDir="column"
@@ -249,6 +255,7 @@ export default function InputLAG({
               letterSpacing="3px"
               width="65px"
               height="100%"
+              minHeight="43px"
               color="black"
               bg="white"
               border="none"

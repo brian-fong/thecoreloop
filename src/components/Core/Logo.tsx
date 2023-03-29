@@ -1,3 +1,4 @@
+// Components
 import { 
   Flex,
   Link,
@@ -9,41 +10,46 @@ import CurveContainerAlt from './CurveContainerAlt';
 export default function Logo() {
   return (
     <CurveContainerAlt>
+      {/* Container: Image */}
       <Flex 
-        flexDir="row" 
-        gap="30px" 
-        justify="center" 
-        align="center" 
-        p="20px 20px 0px" 
+        flexDir="row"
+        justifyContent="center"
+        alignItems="center"
+        gap="30px"
+        padding="20px 20px 0"
         width="100%"
       >
         <Image 
-          src="./thecoreloop-logo.png"
-          objectFit="contain"
+          src="./thecoreloop-logo-alt.png"
+          objectFit="cover"
           height="100px"
         />
       </Flex>
-      <Flex 
-        flexDir="row" 
-        justify="end" 
-        align="center" 
-        p="0px 10px 10px 0px" 
+
+      {/* Container: Inspired by Curve Finance */}
+      <Flex
+        flexDirection="row"
+        justifyContent="end"
+        alignItems="center"
+        paddingBottom="10px"
+        paddingRight="10px"
         width="100%"
       >
         <Text 
-          fontSize="11px" 
-          fontStyle="italic" 
-          color="white" 
-          draggable="false" 
+          fontSize="12px"
+          fontStyle="italic"
+          color="white"
+          draggable="false"
           userSelect="none"
         >
           UI inspired by&nbsp;
           <Link 
-            color="tcl_yellow" 
-            textDecoration="underline" 
-            _hover={{ color: "tcl_yellow_hover" }}
             href="https://classic.curve.fi/" 
+            color="blue.300" 
+            textDecoration="underline" 
             target="_blank"
+            transition="filter 200ms ease-in-out"
+            _hover={{ filter: "brightness(0.8)" }}
           >
             Curve Finance
           </Link>

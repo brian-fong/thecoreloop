@@ -17,6 +17,7 @@ export default function Article({ updateLAG }: any) {
         flexDir="row"
         justify="center"
         align="center"
+        background="gray.500"
         border="1px solid black"
       >
         <Flex
@@ -26,21 +27,19 @@ export default function Article({ updateLAG }: any) {
           p="5px"
           minWidth="30px"
           height="100%"
-          bg="category_bkg"
-          borderRight="1px solid black"
         >
-          <ChatIcon 
-            boxSize="15px" 
-            color="white" 
-            userSelect="none" 
+          <ChatIcon
+            boxSize="15px"
+            color="white"
+            userSelect="none"
           />
         </Flex>
         <Textarea
           className="caption"
-          p="5px 10px"
+          p="10px"
           height="30px"
           minHeight="50px"
-          bg="white"
+          background="white"
           fontSize="14px"
           resize="vertical"
           style={{
@@ -53,22 +52,22 @@ export default function Article({ updateLAG }: any) {
           }}
         />
       </Flex>
+
       {/* URL Container */}
       <Flex
         flexDir="row"
         justify="center"
         align="center"
+        background="gray.500"
         border="1px solid black"
       >
         <Flex
           flexDir="row"
           justify="center"
           align="center"
-          p="5px"
+          p="10px 5px"
           minWidth="30px"
           height="100%"
-          bg="category_bkg"
-          borderRight="1px solid black"
         >
           <LinkIcon 
             boxSize="15px" 
@@ -79,10 +78,10 @@ export default function Article({ updateLAG }: any) {
         <Input
           className="url"
           type="url"
-          p="5px 10px"
+          p="10px"
           width="100%"
           height="100%"
-          bg="white"
+          background="white"
           fontSize="14px"
           placeholder="https://..."
           style={{

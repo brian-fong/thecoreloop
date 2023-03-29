@@ -1,79 +1,69 @@
 // Components
 import {
+  Button,
   Flex,
+  Heading,
+  Text,
 } from "@chakra-ui/react";
-import Basics from "../components/SubmitProject/Basics";
-import Details from "../components/SubmitProject/Details";
+import {
+  BsArrowLeft as LeftArrowIcon,
+  BsArrowRight as RightArrowIcon,
+} from "react-icons/bs";
 import Head from "next/head";
-import Header from "../components/Home/Header";
-import LeftColumn from "../components/SubmitProject/LeftColumn";
-import Story from "../components/SubmitProject/Story";
+import Header from "../components/Discover/Header";
+import Part1 from "../components/SubmitProject/Part1";
+import Part2 from "../components/SubmitProject/Part2";
 
-// React
-import { ReactElement, useState, useEffect } from "react";
+// Hooks
+import { useState } from "react";
+import useProjectState from "../hooks/useProjectState";
 
 export default function submit_project() {
-  // Stages of Project-Submission form
-  const [stage, setStage] = useState<string>("Basics");
+  // Constants: Thumbnail Image Size
+  const [ image_width, image_height]: [string, string] = ["125px", "125px"];
 
-  // React Component for given Stage
-  const [stageContent, setStageContent] = useState<ReactElement>();
+  // State variables
+  const {
+    blockchain, setBlockchain,
+    description, setDescription,
+    fundraising, setFundraising,
+    genres, setGenres,
+    name, setName,
+    isTeam, setIsTeam,
+    stage, setStage,
+    tagline, setTagline,
+    thumbnail, setThumbnail,
+  } = useProjectState();
+  const [page, setPage] = useState<number>(1);
 
-  // Links to project website or Twitter
-  const [links, setLinks] = useState<string[]>([""]);
+  // Event Handler: Previous Button
+  function handleClick_Prev() {
+    setPage(1);
+  }
+  function handleDisabled_Prev(): boolean {
+    return page == 1;
+  }
 
-  // Genres of project
-  const [main_genre, setMainGenre] = useState<string>("");
-  const [sub_genre, setSubGenre] = useState<string>("");
-
-  // Chain of project
-  const [chain, setChain] = useState<any>({ 
-    name: "",
-    icon: "",
-  });
-  
-  useEffect(() => {
-    // Update Stage Content
-    if (stage == "Basics") {
-      setStageContent(<Basics 
-        links={links} 
-        setLinks={setLinks} 
-        setStage={setStage} 
-      />);
-    } else if (stage == "Details") {
-      setStageContent(<Details 
-        main_genre={main_genre}
-        setMainGenre={setMainGenre}
-        sub_genre={sub_genre}
-        setSubGenre={setSubGenre}
-        chain={chain}
-        setChain={setChain}
-        setStage={setStage}
-      />);
-    } else if (stage == "Story") {
-      setStageContent(<Story setStage={setStage} />);
+  // Event Handler: Next Button
+  function handleClick_Next() {
+    setPage(2);
+  }
+  function handleDisabled_Next(): boolean {
+    if (name && thumbnail) {
+      return false;
+    } else {
+      return true;
     }
-  }, [stage, links, main_genre, sub_genre, chain]);
-
-  useEffect(() => {
-    // Remove empty website fields
-    if (links.length > 1) {
-      const links_filtered: string[] = [links[0]];
-      for (const link of links.slice(1)) {
-        if (link.trim().length > 0) links_filtered.push(link);
-      }
-      setLinks(links_filtered);
-    }
-  }, [stage]);
+  }
 
   return (
     <>
       <Head>
         <title>Submit Project</title>
-        <link 
-          rel="icon" 
-          type="image/x-icon" 
-          href="/thecoreloop-favicon.png" 
+        <link
+          rel="icon"
+          type="image/x-icon"
+          href="/thecoreloop-favicon.png"
         />
         <meta name="viewport" content="viewport-fit=cover" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -86,36 +76,145 @@ export default function submit_project() {
         justifyContent="start"
         alignItems="center"
         position="relative"
+        width="100%"
+        minWidth="800px"
         minHeight="100vh"
         color="white"
-        background="black"
+        background="#282a36"
       >
         {/* Header */}
         <Header />
 
+        {/* Content Container */}
         <Flex
-          flexDirection="row"
+          id="content-container"
+          flexDirection="column"
+          justifyContent="start"
+          alignItems="center"
+          padding="20px 50px 60px"
           width="100%"
+          maxWidth="800px"
           height="100%"
-          minHeight="90vh"
         >
-          {/* Left Column */}
-          <LeftColumn 
-            stage={stage}
-            setStage={setStage}
-          />
-
-          {/* Content Container */}
           <Flex
-            id="content-container"
-            flexDirection="column"
-            justifyContent="start"
-            alignItems="start"
-            padding="40px 80px"
+            flexDirection="row"
+            justifyContent="space-between"
+            alignItems="center"
+            marginBottom="30px"
             width="100%"
           >
-            {stageContent}
+            <Heading
+              width="100%"
+              color="white"
+              fontSize="24px"
+              fontWeight="700"
+              whiteSpace="nowrap"
+            >
+              {page == 1 
+                ? "Build Your Project's Discovery View"
+                : "Build Your Project's In-Depth View"
+              }
+            </Heading>
+
+            {/* Container: Prev + Next Buttons */}
+            <Flex
+              flexDirection="row"
+              justifyContent="end"
+              alignItems="center"
+              gap="30px"
+              width="100%"
+            >
+              {/* Prev Button */}
+              <Button
+                display="flex"
+                flexDirection="row"
+                justifyContent="center"
+                alignItems="center"
+                padding="5px 10px"
+                letterSpacing="2px"
+                background="tcl_green"
+                boxShadow={`
+                  1px 1px 1px gray,
+                  2px 2px 1px gray,
+                  3px 3px 1px gray,
+                  4px 4px 1px gray
+                `}
+                transition="all 100ms ease-in-out"
+                _hover={{
+                  filter: "brightness(0.8)",
+                }}
+                _active={{
+                  filter: "brightness(0.5)",
+                  boxShadow: "none",
+                  transform: "translate(3px, 3px)",
+                }}
+                onClick={handleClick_Prev}
+                // isDisabled={handleDisabled_Prev()}
+              >
+                <LeftArrowIcon color="white" size="30px" />
+              </Button>
+
+              {/* Next Button */}
+              <Button
+                display="flex"
+                flexDirection="row"
+                justifyContent="center"
+                alignItems="center"
+                padding="5px 10px"
+                letterSpacing="2px"
+                background="tcl_green"
+                boxShadow={`
+                  1px 1px 1px gray,
+                  2px 2px 1px gray,
+                  3px 3px 1px gray,
+                  4px 4px 1px gray
+                `}
+                transition="all 100ms ease-in-out"
+                _hover={{
+                  filter: "brightness(0.8)",
+                }}
+                _active={{
+                  filter: "brightness(0.5)",
+                  boxShadow: "none",
+                  transform: "translate(3px, 3px)",
+                }}
+                onClick={handleClick_Next}
+                // isDisabled={handleDisabled_Next()}
+              >
+                <RightArrowIcon color="white" size="30px" />
+              </Button>
+            </Flex>
           </Flex>
+
+          {/* Content */}
+          {page == 1 
+            ? (
+              <Part1
+                image_width={image_width} image_height={image_height}
+                blockchain={blockchain} setBlockchain={setBlockchain}
+                fundraising={fundraising} setFundraising={setFundraising}
+                genres={genres} setGenres={setGenres}
+                name={name} setName={setName}
+                isTeam={isTeam} setIsTeam={setIsTeam}
+                stage={stage} setStage={setStage}
+                tagline={tagline} setTagline={setTagline}
+                thumbnail={thumbnail} setThumbnail={setThumbnail}
+              />
+            ) : (
+              <Part2
+                image_width={image_width} image_height={image_height}
+                blockchain={blockchain} setBlockchain={setBlockchain}
+                description={description} setDescription={setDescription}
+                fundraising={fundraising} setFundraising={setFundraising}
+                genres={genres} setGenres={setGenres}
+                isTeam={isTeam}
+                name={name} setName={setName}
+                stage={stage} setStage={setStage}
+                tagline={tagline} setTagline={setTagline}
+                thumbnail={thumbnail} setThumbnail={setThumbnail}
+              />
+            )
+          }
         </Flex>
       </Flex>
     </>

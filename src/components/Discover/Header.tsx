@@ -38,14 +38,18 @@ export default function Header() {
       gap="10px"
       justifyContent="start"
       alignItems="center"
+      position="sticky"
+      top="0"
+      backdropFilter="blur(12px)"
       width="100%"
+      minWidth="800px"
       height="70px"
-      background="black"
+      background="transparent"
       zIndex={10}
       draggable={false}
     >
       {/* Thumbnail */}
-      <Link href="/home">
+      <Link href="/discover">
         <Image
           src="./thecoreloop-logo-alt.png"
           objectFit="cover"
@@ -267,14 +271,22 @@ export default function Header() {
         justifyContent="center"
         alignItems="center"
         height="100%"
+        cursor="pointer"
+        transition="filter 200ms ease-in-out"
+        _hover={{
+          filter: "brightness(0.8)",
+        }}
       >
         <Image
           src="https://pbs.twimg.com/profile_images/1635117890440695808/j3Ww7-z7_400x400.jpg"
           objectFit="cover"
           borderRadius="50%"
           marginRight="20px"
-          width="auto"
+          width="50px"
+          minWidth="50px"
           height="50px"
+          minHeight="50px"
+          boxShadow="3px 3px 3px black"
         />
       </Flex>
     </Flex>

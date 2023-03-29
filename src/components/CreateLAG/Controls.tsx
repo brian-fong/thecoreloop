@@ -104,10 +104,10 @@ export function FetchBtn({ setStatus, toggleFetch }: any) {
       fontSize="14px"
       fontWeight="800"
       color="black"
-      background="tcl_yellow"
+      background="yellow.200"
       border="1px solid black" 
       boxShadow="3px 3px 2px rgba(0, 0, 0, 0.5)"
-      transition="background-color 200ms ease"
+      transition="all 200ms ease-in-out"
       cursor="pointer"
       whiteSpace="nowrap"
       draggable="false" 
@@ -125,14 +125,8 @@ export function FetchBtn({ setStatus, toggleFetch }: any) {
         setStatus("starting");
         toggleFetch((toggled: boolean) => !toggled);
       }}
-      _focusVisible={{
-        color: "white",
-        bg: "tcl_yellow_hover",
-        outline: "1px solid blue",
-      }}
       _hover={{
-        color: "white",
-        bg: "tcl_yellow_hover",
+        filter: "brightness(0.8)",
       }}
     >
       Fetch Metadata
@@ -152,10 +146,10 @@ export function CancelFetchBtn({ abort, setStatus }: any) {
       fontSize="14px"
       fontWeight="800"
       color="black"
-      background="tcl_red"
+      background="red.400"
       border="1px solid black" 
       boxShadow="3px 3px 2px rgba(0, 0, 0, 0.5)"
-      transition="background-color 200ms ease"
+      transition="all 200ms ease-in-out"
       cursor="pointer"
       whiteSpace="nowrap"
       draggable="false" 
@@ -173,14 +167,8 @@ export function CancelFetchBtn({ abort, setStatus }: any) {
         setStatus("idle")
         abort.current = true;
       }}
-      _focusVisible={{
-        color: "white",
-        bg: "tcl_red_hover",
-        outline: "1px solid blue",
-      }}
       _hover={{
-        color: "white",
-        bg: "tcl_red_hover",
+        filter: "brightness(0.8)",
       }}
     >
       Cancel
@@ -200,10 +188,10 @@ export function InactiveFetchBtn() {
       fontSize="14px"
       fontWeight="800"
       color="black"
-      background="tcl_yellow"
+      background="yellow.200"
       border="1px solid black" 
-      opacity="0.6"
-      transition="background-color 200ms ease"
+      opacity="60%"
+      transition="all 200ms ease-in-out"
       whiteSpace="nowrap"
       cursor="default"
       draggable="false" 
@@ -227,10 +215,10 @@ export function UploadBtn() {
       fontSize="14px"
       fontWeight="800"
       color="black"
-      background="tcl_green"
+      background="green.300"
       border="1px solid black" 
       boxShadow="3px 3px 2px rgba(0, 0, 0, 0.5)"
-      transition="background-color 200ms ease"
+      transition="all 200ms ease-in-out"
       cursor="pointer"
       whiteSpace="nowrap"
       draggable="false" 
@@ -244,14 +232,8 @@ export function UploadBtn() {
         pressBtn(event.currentTarget);
         await wait(200);
       }}
-      _focusVisible={{
-        color: "white",
-        bg: "tcl_green_hover",
-        outline: "1px solid blue",
-      }}
       _hover={{
-        color: "white",
-        bg: "tcl_green_hover",
+        filter: "brightness(0.8)",
       }}
     >
       Upload to Database
@@ -271,9 +253,9 @@ export function InactiveUploadBtn() {
       fontSize="14px"
       fontWeight="800"
       color="black"
-      background="tcl_green"
+      background="green.300"
       border="1px solid black" 
-      opacity="0.6"
+      opacity="60%"
       transition="background-color 200ms ease"
       whiteSpace="nowrap"
       cursor="default"
@@ -301,7 +283,7 @@ function PublishBtn() {
       background="telegram"
       border="1px solid black" 
       boxShadow="3px 3px 2px rgba(0, 0, 0, 0.5)"
-      transition="background-color 200ms ease"
+      transition="all 200ms ease-in-out"
       cursor="pointer"
       whiteSpace="nowrap"
       draggable="false" 
@@ -315,14 +297,8 @@ function PublishBtn() {
         pressBtn(event.currentTarget);
         await wait(200);
       }}
-      _focusVisible={{
-        color: "white",
-        bg: "telegram_hover",
-        outline: "1px solid blue",
-      }}
       _hover={{
-        color: "white",
-        bg: "telegram_hover",
+        filter: "brightness(0.8)",
       }}
     >
       Publish Daily LAG

@@ -7,7 +7,7 @@ export default function CurveSubContainer({ children, heading }: any) {
   return (
     <Flex
       position="relative"
-      flexDir="column"
+      flexDirection="column"
       padding="10px"
       width="100%"
       border="1px solid gray"
@@ -16,9 +16,9 @@ export default function CurveSubContainer({ children, heading }: any) {
         <Flex 
           position="absolute" 
           top="-10px"
-          flexDir="row" 
-          justify="center" 
-          align="center" 
+          flexDirection="row" 
+          justifyContent="center" 
+          alignItems="center" 
           width="100%"
         >
           <Heading 
@@ -26,9 +26,9 @@ export default function CurveSubContainer({ children, heading }: any) {
             fontFamily="JetBrains Mono"
             fontWeight="400" 
             fontSize="14px" 
-            p="0px 8px" 
+            padding="0px 8px" 
             color="black" 
-            bg="standard_bkg"
+            background="curve"
           >
             {heading}
           </Heading>
