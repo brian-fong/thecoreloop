@@ -5,7 +5,7 @@ export default function useProjectState() {
   const [blockchain, setBlockchain] = useState<string>("");
   const [contributors, setContributors] = useState<any[]>([]);
   const [description, setDescription] = useState<string>("");
-  const [fundraising, setFundraising] = useState<string>("");
+  const [fundraising, setFundraising] = useState<string>("undisclosed");
   const [genres, setGenres] = useState<string[]>([]);
   const [images, setImages] = useState<any[]>([]);
   const [links, setLinks] = useState<string[]>([]);

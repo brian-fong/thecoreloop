@@ -106,11 +106,14 @@ export default function submit_project() {
             <Heading
               width="100%"
               color="white"
-              fontSize="32px"
+              fontSize="24px"
               fontWeight="700"
               whiteSpace="nowrap"
             >
-              Submit a Project
+              {page == 1 
+                ? "Build Your Project's Discovery View"
+                : "Build Your Project's In-Depth View"
+              }
             </Heading>
 
             {/* Container: Prev + Next Buttons */}
@@ -200,8 +203,14 @@ export default function submit_project() {
             ) : (
               <Part2
                 image_width={image_width} image_height={image_height}
+                blockchain={blockchain} setBlockchain={setBlockchain}
                 description={description} setDescription={setDescription}
+                fundraising={fundraising} setFundraising={setFundraising}
+                genres={genres} setGenres={setGenres}
+                isTeam={isTeam}
                 name={name} setName={setName}
+                stage={stage} setStage={setStage}
+                tagline={tagline} setTagline={setTagline}
                 thumbnail={thumbnail} setThumbnail={setThumbnail}
               />
             )

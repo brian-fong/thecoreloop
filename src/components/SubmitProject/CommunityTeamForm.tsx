@@ -52,7 +52,7 @@ export default function CommunityTeamForm({
     if (!isTeam) {
       // If user is not Team, then reset fundraising to undefined
       setFundraising("");
-    } else {
+    } else if (isTeam && !fundraising) {
       // Default to undisclosed
       setFundraising("undisclosed");
     }

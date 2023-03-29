@@ -2,9 +2,7 @@
 import {
   Flex,
   Heading,
-  Image,
   Text,
-  Tooltip,
 } from "@chakra-ui/react";
 import { VscTriangleUp as UpvoteIcon } from "react-icons/vsc";
 import Blockchain from "./Blockchain";
@@ -28,6 +26,7 @@ export default function DiscoverForm({
   tagline, setTagline,
   thumbnail, setThumbnail,
 }: any) {
+  // State Variables
   const [upvotes, setUpvotes] = useState<number>(0);
 
   return (
@@ -37,15 +36,6 @@ export default function DiscoverForm({
       alignItems="start"
       width="100%"
     >
-      <Heading
-        marginBottom="10px"
-        color="white"
-        fontSize="24px"
-        fontWeight="700"
-      >
-        Build Your Project's <Text display="inline" fontStyle="italic">Discovery</Text> Preview
-      </Heading>
-
       <Heading marginBottom="30px" fontSize="16px" fontWeight="300">
         The <Text display="inline" color="gray.300" fontSize="16px" fontStyle="italic" fontWeight="700">Discover</Text> section showcases a collection of web3-gaming startups submitted by fellow members of the project's community or team.
       </Heading>

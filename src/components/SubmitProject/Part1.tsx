@@ -7,8 +7,7 @@ import CommunityTeamForm from "./CommunityTeamForm";
 import DiscoverForm from "./DiscoverForm";
 
 export default function Part1({
-  image_width,
-  image_height,
+  image_width, image_height,
   blockchain, setBlockchain,
   fundraising, setFundraising,
   genres, setGenres,
