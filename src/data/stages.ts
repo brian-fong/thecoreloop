@@ -1,7 +1,7 @@
-export const STAGES: string[] = [
-  "Pre-Production",
-  "Production",
-  "Playable Demo",
-  "Live",
-];
+export const STAGES: any = {
+  "Pre-Production": "💡",
+  "Production": "🏗️",
+  "Playable Demo": "🕹️",
+  "Live": "❤️",
+};
 

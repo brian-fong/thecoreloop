@@ -30,7 +30,7 @@ export default function StagePopover({
   }
 
   function renderPopoverBtn() {
-    if (!stage && !stage_selected) {
+    if (!stage_selected) {
       return (
         // Display placeholder
         <Text marginLeft="10px">Select Development Stage</Text>
@@ -45,7 +45,21 @@ export default function StagePopover({
             fontWeight="300"
             fontStyle="normal"
           >
-            {stage_selected}
+            {STAGES[stage_selected]} {stage_selected}
+          </Text>
+        </Flex>
+      );
+    } else if (stage) {
+      return (
+        // Display selected stage
+        <Flex padding="4px 8px">
+          <Text
+            padding="2px 4px"
+            color="white"
+            fontWeight="300"
+            fontStyle="normal"
+          >
+            {STAGES[stage]} {stage}
           </Text>
         </Flex>
       );
@@ -109,7 +123,7 @@ export default function StagePopover({
             },
           }}
         >
-          {STAGES.map((stage: string) => (
+          {Object.keys(STAGES).map((stage: string) => (
             <Flex
               key={uuid()}
               flexDirection="row"
@@ -133,7 +147,7 @@ export default function StagePopover({
               }}
             >
               <Text width="100%" fontSize="16px">
-                {stage}
+                {STAGES[stage]} {stage}
               </Text>
             </Flex>
           ))}

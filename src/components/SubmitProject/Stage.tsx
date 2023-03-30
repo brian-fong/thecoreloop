@@ -12,10 +12,13 @@ import { useEffect, useState } from "react";
 // Types
 import { ReactElement } from "react";
 
+// Useful Functions & Constants
+import { STAGES } from "../../data/stages";
+
 export default function Stage({ stage, setStage }: any) {
   // State variables
   const [content, setContent] = useState<ReactElement>();
-  const [stage_selected, setStageSelected] = useState<string>("");
+  const [stage_selected, setStageSelected] = useState<string>(stage);
 
   // Disclosure: NameModal
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -50,10 +53,11 @@ export default function Stage({ stage, setStage }: any) {
       // Display user-inputted name
       setContent(
         <Text
-          padding="2px 4px"
+          padding="2px 8px"
           color="white"
           fontSize="16px"
-          background="#424a54"
+          fontWeight="700"
+          background="gray.700"
           border="1px solid transparent"
           borderRadius="10px"
           cursor="pointer"
@@ -61,7 +65,7 @@ export default function Stage({ stage, setStage }: any) {
           userSelect="none"
           transition="all 200ms ease-in-out"
           _hover={{ 
-            padding: "4px 8px",
+            padding: "2px 12px",
             color: "white",
             background: "rgba(0, 0, 0, 0.4)",
             border: "1px solid white",
@@ -69,7 +73,7 @@ export default function Stage({ stage, setStage }: any) {
           }}
           _active={{ background: "rgba(255, 255, 255, 0.3)" }}
         >
-          {stage}
+          {STAGES[stage]} {stage}
         </Text>
       )
     }

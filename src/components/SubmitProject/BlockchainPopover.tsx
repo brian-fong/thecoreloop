@@ -22,6 +22,8 @@ import blur from "../../utils/blur";
 import { BLOCKCHAINS } from "../../data/blockchains";
 
 export default function BlockchainPopover({ 
+  formik,
+  setCharCount,
   blockchain,
   blockchain_selected, setBlockchainSelected,
 }: any) {
@@ -29,14 +31,16 @@ export default function BlockchainPopover({
   const blockchain_btn_ref = useRef<any>();
 
   async function handleClick(blockchain_name: string) {
-    console.log("Selected Blockchain: ", blockchain_name);
-
     // Update (selected) blockchain state variable
     setBlockchainSelected(blockchain_name);
 
     if (blockchain_name == "Other") {
       // Remove focus to close popover window
       blur();
+
+      // Reset formik value to empty (to clear previous entries)
+      formik.values.other_blockchain = "";
+      setCharCount(0);  // Reset count back to zero
 
       // Focus new input element for other chain
       await wait(100);  // NOTE: Need to wait for input node to mount
@@ -46,12 +50,13 @@ export default function BlockchainPopover({
       blockchain_input_node.focus();
 
     } else {
+      // Remove focus to close popover window
       blur();
     }
   }
 
   function renderPopoverBtn() {
-    if (!blockchain && !blockchain_selected) {
+    if (!blockchain_selected) {
       // Case: Blockchain state variable is not defined and user has not selected
       // a blockchain yet.
       return (
@@ -70,7 +75,7 @@ export default function BlockchainPopover({
             padding="3px"
             width="30px"
             height="30px"
-            borderRadius="5px"
+            borderRadius="full"
           />
           <Text
             id="blockchain-name"
@@ -174,7 +179,7 @@ export default function BlockchainPopover({
                 padding="3px"
                 width="40px"
                 height="40px"
-                borderRadius="5px"
+                borderRadius="50%"
               />
               <Text width="100%" fontSize="16px">
                 {blockchain_name}

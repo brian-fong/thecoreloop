@@ -1,7 +1,5 @@
 // Components
 import {
-  Button,
-  Divider,
   Flex,
   Heading,
   Text,
@@ -14,6 +12,7 @@ import Blockchain from "./Blockchain";
 import Description from "./Description";
 import FundraisingIcon from "./FundraisingIcon";
 import Genres from "./Genres";
+import Links from "./Links";
 import Name from "./Name";
 import Stage from "./Stage";
 import Tagline from "./Tagline";
@@ -28,6 +27,7 @@ export default function InDepthForm({
   description, setDescription,
   fundraising,
   genres, setGenres,
+  links, setLinks,
   name, setName,
   stage, setStage,
   tagline, setTagline,
@@ -54,9 +54,9 @@ export default function InDepthForm({
         justifyContent="start"
         alignItems="start"
         width="100%"
-        background="rgba(0, 0, 0, 0.4)"
+        background="rgba(0, 0, 0, 0.2)"
         borderRadius="5px"
-        boxShadow="0 0 0 20px rgba(0, 0, 0, 0.4)"
+        boxShadow="0 0 0 20px rgba(0, 0, 0, 0.2)"
       >
         <Flex
           id="discover-container"
@@ -73,11 +73,10 @@ export default function InDepthForm({
             thumbnail={thumbnail} setThumbnail={setThumbnail} 
           />
 
-          {/* Container: Name + Links + Blockchain + Genres + Stage */}
           <Flex
             id="middle-container"
             flexDirection="column"
-            justifyContent="start"
+            justifyContent="space-between"
             alignItems="start"
             gap="10px"
             width="100%"
@@ -91,7 +90,7 @@ export default function InDepthForm({
               gap="10px" 
               width="100%"
             >
-              <Flex alignItems="end" gap="10px">
+              <Flex alignItems="center" gap="10px">
                 {/* Name */}
                 <Name name={name} setName={setName} />
 
@@ -106,17 +105,20 @@ export default function InDepthForm({
               <FundraisingIcon fundraising={fundraising} />
             </Flex>
 
-            <Flex flexDirection="row" alignItems="center" gap="10px">
-              {/* Genres */}
-              <Genres
-                genres={genres}
-                setGenres={setGenres}
-              />
+            {/* Genres */}
+            <Genres
+              format={"in-depth"}
+              genres={genres} setGenres={setGenres}
+            />
 
+            <Flex alignItems="center" gap="10px">
               {/* Stage */}
               <Stage 
                 stage={stage} setStage={setStage}
               />
+
+              {/* Links */}
+              <Links links={links} setLinks={setLinks} />
             </Flex>
           </Flex>
 

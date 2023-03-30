@@ -20,7 +20,7 @@ import { useRef, useState } from 'react';
 import { FormikErrors, FormikValues } from "formik";
 
 // Formik validation
-const char_limit: number = 90;
+const char_limit: number = 120;
 function validate(values: any) {
   const errors: FormikErrors<FormikValues> = {};
 
@@ -32,10 +32,8 @@ function validate(values: any) {
 }
 
 export default function TaglineModal({
-  tagline,
-  setTagline,
-  isOpen,
-  onClose,
+  tagline, setTagline,
+  isOpen, onClose,
 }: any) {
   // Refs
   const form_ref = useRef<any>();
@@ -93,7 +91,12 @@ export default function TaglineModal({
   }
 
   return (
-    <Modal isOpen={isOpen} onClose={handleCancel} isCentered>
+    <Modal 
+      isOpen={isOpen} 
+      onClose={handleCancel} 
+      closeOnOverlayClick={false}
+      isCentered
+    >
       <ModalOverlay />
       <ModalContent
         display="flex"

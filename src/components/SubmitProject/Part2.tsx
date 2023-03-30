@@ -6,8 +6,9 @@ export default function Part2({
   description, setDescription,
   fundraising, setFundraising,
   genres, setGenres,
-  name, setName,
   isTeam,
+  links, setLinks,
+  name, setName,
   stage, setStage,
   tagline, setTagline,
   thumbnail, setThumbnail,
@@ -21,6 +22,7 @@ export default function Part2({
         fundraising={fundraising} setFundraising={setFundraising}
         genres={genres} setGenres={setGenres}
         isTeam={isTeam}
+        links={links} setLinks={setLinks}
         name={name} setName={setName}
         stage={stage} setStage={setStage}
         tagline={tagline} setTagline={setTagline}

@@ -3,7 +3,6 @@ import {
   Button,
   Flex,
   Heading,
-  Text,
 } from "@chakra-ui/react";
 import {
   BsArrowLeft as LeftArrowIcon,
@@ -28,8 +27,9 @@ export default function submit_project() {
     description, setDescription,
     fundraising, setFundraising,
     genres, setGenres,
-    name, setName,
     isTeam, setIsTeam,
+    links, setLinks,
+    name, setName,
     stage, setStage,
     tagline, setTagline,
     thumbnail, setThumbnail,
@@ -99,7 +99,7 @@ export default function submit_project() {
           <Flex
             flexDirection="row"
             justifyContent="space-between"
-            alignItems="center"
+            alignItems="end"
             marginBottom="30px"
             width="100%"
           >
@@ -208,6 +208,7 @@ export default function submit_project() {
                 fundraising={fundraising} setFundraising={setFundraising}
                 genres={genres} setGenres={setGenres}
                 isTeam={isTeam}
+                links={links} setLinks={setLinks}
                 name={name} setName={setName}
                 stage={stage} setStage={setStage}
                 tagline={tagline} setTagline={setTagline}

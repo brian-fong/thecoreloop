@@ -14,68 +14,35 @@ import { useEffect, useState } from "react";
 // Types
 import { ReactElement } from "react";
 
-export default function Genres({ genres, setGenres }: any) {
+export default function Genres({
+  format = "discover",
+  genres, setGenres,
+}: any) {
   // State variables
   const [content, setContent] = useState<ReactElement>();
-  const [genres_selected, setGenresSelected] = useState<string[]>([]);
+  const [genres_selected, setGenresSelected] = useState<string[]>(genres);
 
   // Disclosure: GenresModal
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  function renderGenres(): ReactElement {
-    if (genres.length == 1) {
-      // Display only 1 genre
+  function renderAdditionalGenres() {
+    if (format == "discover") {
       return (
-        <Text
-          padding="2px 4px"
-          color="white"
-          fontSize="16px"
-          background="#424a54"
-          border="1px solid transparent"
-          borderRadius="10px"
-          cursor="pointer"
-          whiteSpace="nowrap"
-          userSelect="none"
-          transition="all 200ms ease-in-out"
-          _hover={{ 
-            padding: "4px 8px",
-            color: "white",
-            background: "rgba(0, 0, 0, 0.4)",
-            border: "1px solid white",
-            borderRadius: "5px",
-          }}
-          _active={{ background: "rgba(255, 255, 255, 0.3)" }}
-        >
-          {genres[0]}
-        </Text>
-      );
-    } else {
-      return (
-        // Display primary genre with tooltip to disclose the other genres
-        <Flex
-          flexDirection="row"
-          justifyContent="start"
-          alignItems="center"
-          gap="5px"
-          padding="2px 4px"
-          background="#424a54"
-          border="1px solid transparent"
-          borderRadius="10px"
-          cursor="pointer"
-        >
+        <>
           <Text
             color="white"
             fontSize="16px"
+            fontWeight="700"
             transition="all 200ms ease-in-out"
             _hover={{ 
-              padding: "4px 8px",
+              padding: "0 8px",
               background: "rgba(0, 0, 0, 0.4)",
               border: "1px solid white",
               borderRadius: "5px",
             }}
             userSelect="none"
           >
-            {genres[0]}
+            🏷️ {genres[0]}
           </Text>
           <Tooltip
             label={genres.slice(1).join(", ")}
@@ -85,24 +52,41 @@ export default function Genres({ genres, setGenres }: any) {
             hasArrow
           >
             <Text
+              marginLeft="5px"
               padding="2px 4px"
               color="white"
               fontSize="14px"
               fontWeight="700"
-              background="rgba(0, 0, 0, 0.2)"
+              background="rgba(0, 0, 0, 0.3)"
               borderRadius="7px"
             >
               +{genres.length-1}
             </Text>
           </Tooltip>
-        </Flex>
+        </>
+      );
+    } else if (format == "in-depth") {
+      return (
+        <Text
+          color="white"
+          fontSize="16px"
+          fontWeight="700"
+          transition="all 200ms ease-in-out"
+          _hover={{ 
+            padding: "4px 8px",
+            background: "rgba(0, 0, 0, 0.4)",
+            border: "1px solid white",
+            borderRadius: "5px",
+          }}
+          userSelect="none"
+        >
+          🏷️ {genres.join(" • ")}
+        </Text>
       );
     }
   }
 
   useEffect(() => {
-    console.log("Genres: ", genres);
-
     if (genres.length == 0) {
       // Display placeholder for name
       setContent(
@@ -130,7 +114,20 @@ export default function Genres({ genres, setGenres }: any) {
       );
     } else {
       // Display user-inputted genres
-      setContent(renderGenres())
+      setContent(
+        <Flex
+          flexDirection="row"
+          justifyContent="start"
+          alignItems="center"
+          padding="2px 8px"
+          background="gray.700"
+          border="1px solid transparent"
+          borderRadius="10px"
+          cursor="pointer"
+        >
+          {renderAdditionalGenres()}
+        </Flex>
+      )
     }
   }, [genres]);
 

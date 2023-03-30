@@ -22,11 +22,15 @@ import { FormikErrors, FormikValues } from "formik";
 
 // Formik validation
 const char_limit: number = 30;
-function validate(values: any) {
+function validate(values: any, blockchain_selected: string) {
   const errors: FormikErrors<FormikValues> = {};
 
-  if (values.other_blockchain.length > char_limit) {
-    errors.other_blockchain = "Blockchain name is too long!";
+  if (blockchain_selected == "Other") {
+    if (values.other_blockchain.trim().length == 0) {
+      errors.other_blockchain = "Blockchain name is required!";
+    } else if (values.other_blockchain.length > char_limit) {
+      errors.other_blockchain = "Blockchain name is too long!";
+    }
   }
 
   return errors;
@@ -48,7 +52,7 @@ export default function BlockchainModal({
     initialValues: {
       other_blockchain: "",
     },
-    validate: validate,
+    validate: (values) => validate(values, blockchain_selected),
     onSubmit: (values) => {
       // If "Other" selected, then update blockchain state variable
       if (blockchain_selected == "Other") {
@@ -76,11 +80,17 @@ export default function BlockchainModal({
     formik.setErrors({});                         // Reset errors
     formik.values.other_blockchain = blockchain;  // Reset input field value
     setCharCount(blockchain.length);              // Reset character count
+    setBlockchainSelected(blockchain); // Reset selected to official
     onClose();                                    // Close NameModal
   }
 
   return (
-    <Modal isOpen={isOpen} onClose={handleCancel} isCentered>
+    <Modal 
+      isOpen={isOpen} 
+      onClose={handleCancel} 
+      closeOnOverlayClick={false}
+      isCentered
+    >
       <ModalOverlay />
       <ModalContent
         display="flex"
@@ -133,8 +143,9 @@ export default function BlockchainModal({
               </FormLabel>
 
               <BlockchainPopover
+                formik={formik}
+                setCharCount={setCharCount}
                 blockchain={blockchain}
-                setBlockchain={setBlockchain}
                 blockchain_selected={blockchain_selected}
                 setBlockchainSelected={setBlockchainSelected}
               />

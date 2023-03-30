@@ -1,44 +1,43 @@
 // Components
 import {
   Box,
+  Flex,
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
-import TaglineModal from "./TaglineModal";
+import LinksModal from "./LinksModal";
 
-//Hooks
+// Hooks
 import { useEffect, useState } from "react";
 
 // Types
 import { ReactElement } from "react";
 
-export default function Tagline({ tagline, setTagline }: any) {
+export default function Links({
+  links, setLinks,
+}: any) {
   // State variables
   const [content, setContent] = useState<ReactElement>();
 
-  // Disclosure: DescriptionModal
+  // Disclosure: GenresModal
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  function shortenTagline(tagline: string): string {
-    return tagline.slice(0, 91);
-  }
-
   useEffect(() => {
-    if (!tagline) {
-      // Display placeholder for tagline
+    if (!links[0].length) {
+      // Display placeholder for name if first link is empty
       setContent(
         <Text
           display="flex"
           flexDirection="row"
           justifyContent="center"
           alignItems="center"
+          gap="10px"
           padding="4px 8px"
-          width="100%"
-          height="100%"
           fontSize="16px"
           border="1px solid white"
           borderRadius="5px"
           cursor="pointer"
+          whiteSpace="nowrap"
           userSelect="none"
           transition="all 200ms ease-in-out"
           _hover={{
@@ -46,57 +45,49 @@ export default function Tagline({ tagline, setTagline }: any) {
             background: "rgba(0, 0, 0, 0.4)",
           }}
         >
-          📰  &lt;tagline&gt;
+          🌐  &lt;links&gt;
         </Text>
       );
     } else {
-      // Display user-inputted tagline
+      // Display user-inputted genres
       setContent(
         <Text
-          padding="0"
-          width="100%"
-          height="100%"
+          padding="2px 8px"
           color="white"
           fontSize="16px"
-          lineHeight="5"
-          lang="en"
+          fontWeight="700"
+          background="gray.700"
           border="1px solid transparent"
-          overflow="hidden"
-          textOverflow="ellipsis"
+          borderRadius="10px"
           cursor="pointer"
+          whiteSpace="nowrap"
           userSelect="none"
           transition="all 200ms ease-in-out"
           _hover={{ 
-            margin: "10px 0",
-            padding: "4px 8px",
-            fontSize: "14px",
+            padding: "2px 12px",
+            color: "white",
             background: "rgba(0, 0, 0, 0.4)",
             border: "1px solid white",
             borderRadius: "5px",
           }}
-          style={{
-            display: "-webkit-box",
-            hyphens: "auto",
-            WebkitBoxOrient: "vertical",
-            WebkitLineClamp: 2,
-          }}
+          _active={{ background: "rgba(255, 255, 255, 0.3)" }}
         >
-          {shortenTagline(tagline)}
+          {links}
         </Text>
       )
     }
-  }, [tagline])
+  }, [links]);
 
   return (
-    <Box width="100%" height="100%" onClick={onOpen}>
+    <Box onClick={onOpen}>
       {content}
-      <TaglineModal
-        tagline={tagline}
-        setTagline={setTagline}
-        isOpen={isOpen}
-        onClose={onClose}
+      <LinksModal 
+        links={links} setLinks={setLinks}
+        isOpen={isOpen} onClose={onClose}
       />
     </Box>
-  )
+  );
 }
+
+
 
