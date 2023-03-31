@@ -62,7 +62,7 @@ export default function Genres({
                 background="rgba(0, 0, 0, 0.3)"
                 borderRadius="7px"
               >
-                `+${genres.length-1}`
+                +${genres.length-1}
               </Text>
             </Tooltip>
             : null
