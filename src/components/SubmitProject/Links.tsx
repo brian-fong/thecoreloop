@@ -2,9 +2,14 @@
 import {
   Box,
   Flex,
+  Link,
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
+import {
+  BsGlobe as WebIcon,
+} from "react-icons/bs";
+import LinkIcon from "./LinkIcon";
 import LinksModal from "./LinksModal";
 
 // Hooks
@@ -24,7 +29,7 @@ export default function Links({
 
   useEffect(() => {
     if (!links[0].length) {
-      // Display placeholder for name if first link is empty
+      // Display placeholder for name if first link (main website) is empty
       setContent(
         <Text
           display="flex"
@@ -49,31 +54,54 @@ export default function Links({
         </Text>
       );
     } else {
-      // Display user-inputted genres
+      // Display user-inputted links
       setContent(
-        <Text
-          padding="2px 8px"
-          color="white"
-          fontSize="16px"
-          fontWeight="700"
-          background="gray.700"
+        <Flex
+          flexDirection="row"
+          justifyContent="space-between"
+          alignItems="end"
+          gap="20px"
+          padding="4px 4px"
           border="1px solid transparent"
-          borderRadius="10px"
           cursor="pointer"
           whiteSpace="nowrap"
           userSelect="none"
           transition="all 200ms ease-in-out"
-          _hover={{ 
-            padding: "2px 12px",
+          _hover={{
+            gap: "25px",
+            padding: "4px 20px",
             color: "white",
             background: "rgba(0, 0, 0, 0.4)",
             border: "1px solid white",
-            borderRadius: "5px",
+            borderRadius: "10px",
           }}
           _active={{ background: "rgba(255, 255, 255, 0.3)" }}
         >
-          {links}
-        </Text>
+          {links.map((link: string, index: number) => {
+            if (index == 0) return (
+              <Link 
+                href={link}
+                target="_blank"
+                pointerEvents={link ? "all" : "none"}
+                transition="all 200ms ease-in-out"
+                _hover={{ filter: "brightness(0.7)" }}
+              >
+                <WebIcon size="25px" />
+              </Link>
+            );
+            else return (
+              <Link 
+                href={link}
+                target="_blank"
+                pointerEvents={link ? "all" : "none"}
+                transition="all 200ms ease-in-out"
+                _hover={{ filter: "brightness(0.7)" }}
+              >
+                <LinkIcon url={link} size="25px" />
+              </Link>
+            );
+          })}
+        </Flex>
       )
     }
   }, [links]);

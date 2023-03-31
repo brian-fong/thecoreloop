@@ -44,25 +44,29 @@ export default function Genres({
           >
             🏷️ {genres[0]}
           </Text>
-          <Tooltip
-            label={genres.slice(1).join(", ")}
-            placement="bottom-end"
-            offset={[10, 12]}
-            arrowSize={12}
-            hasArrow
-          >
-            <Text
-              marginLeft="5px"
-              padding="2px 4px"
-              color="white"
-              fontSize="14px"
-              fontWeight="700"
-              background="rgba(0, 0, 0, 0.3)"
-              borderRadius="7px"
+          {genres.length > 1
+            ?
+            <Tooltip
+              label={genres.slice(1).join(", ")}
+              placement="bottom-end"
+              offset={[10, 12]}
+              arrowSize={12}
+              hasArrow
             >
-              +{genres.length-1}
-            </Text>
-          </Tooltip>
+              <Text
+                marginLeft="5px"
+                padding="2px 4px"
+                color="white"
+                fontSize="14px"
+                fontWeight="700"
+                background="rgba(0, 0, 0, 0.3)"
+                borderRadius="7px"
+              >
+                `+${genres.length-1}`
+              </Text>
+            </Tooltip>
+            : null
+          }
         </>
       );
     } else if (format == "in-depth") {

@@ -1,10 +1,5 @@
 // Components
-import {
-  Flex,
-  Heading,
-  Text,
-} from "@chakra-ui/react";
-import { VscTriangleUp as UpvoteIcon } from "react-icons/vsc";
+import { Flex } from "@chakra-ui/react";
 import Blockchain from "./Blockchain";
 import FundraisingIcon from "./FundraisingIcon";
 import Genres from "./Genres";
@@ -12,6 +7,7 @@ import Name from "./Name";
 import Stage from "./Stage";
 import Tagline from "./Tagline";
 import Thumbnail from "./Thumbnail";
+import Upvote from "./Upvote";
 
 // Hooks
 import { useEffect, useState } from "react";
@@ -27,16 +23,15 @@ export default function DiscoverForm({
   thumbnail, setThumbnail,
 }: any) {
   // State Variables
-  const [upvotes, setUpvotes] = useState<number>(0);
   const [isFinished, setIsFinished] = useState<boolean>(true);
 
   useEffect(() => {
-    console.log("Blockchain: ", blockchain);
-    console.log("Fundraising: ", fundraising);
-    console.log("Name: ", name);
-    console.log("Stage: ", stage);
-    console.log("Tagline: ", tagline);
-    console.log("Thumbnail: ", thumbnail);
+    // console.log("Blockchain: ", blockchain);
+    // console.log("Fundraising: ", fundraising);
+    // console.log("Name: ", name);
+    // console.log("Stage: ", stage);
+    // console.log("Tagline: ", tagline);
+    // console.log("Thumbnail: ", thumbnail);
 
     if (
       blockchain
@@ -59,14 +54,14 @@ export default function DiscoverForm({
       justifyContent="start"
       alignItems="center"
       gap="10px"
-      padding="15px 20px"
       width="100%"
       height="100%"
       minHeight={image_height}
-      background="rgba(0, 0, 0, 0.2)"
-      // background={isFinished ? "transparent" : "rgba(0, 0, 0, 0.2)"}
-      border={isFinished ? "2px dashed transparent" : "2px dashed white"}
-      borderRadius="10px"
+      // background="rgba(0, 0, 0, 0.2)"
+      background={isFinished ? "transparent" : "rgba(0, 0, 0, 0.2)"}
+      // border={isFinished ? "2px dashed transparent" : "2px dashed white"}
+      borderRadius="5px"
+      boxShadow={isFinished ? "none" : "0 0 0 15px rgba(0, 0, 0, 0.2)"}
       transition="all 300ms ease-in-out 500ms"
     >
       {/* Thumbnail Image */}
@@ -89,7 +84,6 @@ export default function DiscoverForm({
           flexDirection="row"
           justifyContent="space-between"
           alignItems="start"
-          gap="10px" 
           width="100%"
         >
           <Flex alignItems={blockchain ? "center" : "end"} gap="10px">
@@ -126,28 +120,15 @@ export default function DiscoverForm({
 
       {/* Upvote */}
       <Flex
+        id="right-container"
         flexDirection="column"
-        justifyContent="center"
+        justifyContent="start"
         alignItems="center"
-        padding="10px 0"
-        width="80px"
-        minWidth="80px"
-        maxWidth="80px"
-        height="100%"
+        gap="10px"
+        height={image_height}
         minHeight={image_height}
-        border="1px solid white"
-        borderRadius="10px"
-        cursor="pointer"
-        userSelect="none"
-        onClick={() => setUpvotes(upvotes => upvotes+1)}
-        transition="background 200ms ease-in-out"
-        _hover={{ background: "rgba(255, 255, 255, 0.1)" }}
-        _active={{ background: "rgba(255, 255, 255, 0.2)" }}
       >
-        <UpvoteIcon color="white" size="25px" />
-        <Text fontSize="16px">
-          {upvotes}
-        </Text>
+        <Upvote />
       </Flex>
     </Flex>
   );
