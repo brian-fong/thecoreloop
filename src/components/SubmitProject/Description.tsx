@@ -39,6 +39,8 @@ export default function Description({ description, setDescription }: any) {
           transition="background 200ms ease-in-out"
           userSelect="none"
           _hover={{
+            padding: "4px 8px",
+            letterSpacing: "2px",
             background: "rgba(0, 0, 0, 0.4)",
           }}
         >
@@ -61,7 +63,7 @@ export default function Description({ description, setDescription }: any) {
           height="100%"
         >
           <Text
-            padding="2px 4px"
+            padding="0"
             width="100%"
             minWidth="320px"
             height="100%"
@@ -72,6 +74,8 @@ export default function Description({ description, setDescription }: any) {
             cursor="pointer"
             transition="all 200ms ease-in-out"
             _hover={{ 
+              padding: "4px 8px",
+              fontSize: "15px",
               background: "rgba(0, 0, 0, 0.4)",
               border: "1px solid white",
               borderRadius: "5px",

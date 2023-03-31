@@ -46,6 +46,7 @@ export default function InDepthForm({
         justifyContent="start"
         alignItems="center"
         gap="10px"
+        marginBottom="10px"
         width="100%"
       >
         {/* Thumbnail Image */}
@@ -127,7 +128,6 @@ export default function InDepthForm({
         justifyContent="start"
         alignItems="center"
         gap="40px"
-        padding="40px 0 20px"
         width="100%"
         height="100%"
       >

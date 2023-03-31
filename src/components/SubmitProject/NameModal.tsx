@@ -126,7 +126,7 @@ export default function NameModal({ name, setName, isOpen, onClose }: any) {
                   margin="0"
                   whiteSpace="nowrap"
                 >
-                  What is the project called?
+                  What is this project called?
                 </FormLabel>
                 <Flex
                   flexDirection="row"

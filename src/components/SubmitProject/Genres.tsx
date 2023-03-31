@@ -47,7 +47,7 @@ export default function Genres({
           {genres.length > 1
             ?
             <Tooltip
-              label={genres.slice(1).join(", ")}
+              label={[...genres].slice(1).sort().join(", ")}
               placement="bottom-end"
               offset={[10, 12]}
               arrowSize={12}
@@ -62,7 +62,7 @@ export default function Genres({
                 background="rgba(0, 0, 0, 0.3)"
                 borderRadius="7px"
               >
-                +${genres.length-1}
+                +{genres.length-1}
               </Text>
             </Tooltip>
             : null
@@ -84,7 +84,7 @@ export default function Genres({
           }}
           userSelect="none"
         >
-          🏷️ {genres.join(" • ")}
+          🏷️ {[...genres].sort().join(" • ")}
         </Text>
       );
     }
