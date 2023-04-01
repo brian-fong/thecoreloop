@@ -1,15 +1,29 @@
+// Components
 import {
   Flex,
+  Heading,
   Text,
 } from "@chakra-ui/react";
-import Card from "../components/Discover/Card";
+import Card from "../components/Discovery/Card";
 import DATA from "../data/mock-data";
 import Head from "next/head";
-import Header from "../components/Discover/Header";
-import { useState, useEffect, ReactElement } from "react";
-import uuid from "react-uuid";
+import Header from "../components/Core/Header";
 
-export default function Discover() {
+// Hooks
+import { useState, useEffect, ReactElement } from "react";
+
+// Useful Functions & Constants
+import uuid from "react-uuid";
+const [image_width, image_height]: [string, string] = ["100px", "100px"];
+function getRandInt(a: number, b: number): number {
+  return Math.round(Math.random() * (b-a)) + a;
+}
+function getRandBool(p: number): boolean {
+  return Math.random() > p;
+}
+
+export default function discovery() {
+  // State variables
   const [cards, setCards] = useState<ReactElement[]>([]);
 
   function compareUpvote(a: any, b: any): number {
@@ -25,12 +39,15 @@ export default function Discover() {
       setCards(cards => [...cards, 
         <Card
           key={uuid()}
-          title={entry.title}
-          image={entry.image}
-          description={entry.description}
-          genre={entry.genre}
+          image_width={image_width} image_height={image_height}
+          blockchain={entry.blockchain}
+          fundraising={getRandBool(0.75)}
+          genres={entry.genres}
+          name={entry.name}
           stage={entry.stage}
-          upvote_count={entry.upvote_count}
+          tagline={entry.description}
+          thumbnail={entry.thumbnail}
+          upvotes={getRandInt(0, 999)}
         />
       ]);
     }
@@ -56,9 +73,10 @@ export default function Discover() {
         justifyContent="start"
         alignItems="center"
         position="relative"
+        width="100%"
+        minWidth="800px"
         minHeight="100vh"
         color="white"
-        background="black"
       >
         {/* Header */}
         <Header />
@@ -69,7 +87,6 @@ export default function Discover() {
           flexDirection="column"
           justifyContent="start"
           alignItems="center"
-          padding="30px 0px"
           width="100%"
           height="100%"
         >
@@ -89,12 +106,12 @@ export default function Discover() {
               alignItems="center"
               width="100%"
             >
-              <Text
-                fontSize="1.2rem"
+              <Heading
+                fontSize="20px"
                 fontWeight="800"
               >
                 Discover tomorrow's gaming startups, today
-              </Text>
+              </Heading>
               <Flex
                 id="content-mode-container"
                 flexDirection="row"

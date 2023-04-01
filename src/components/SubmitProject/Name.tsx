@@ -30,7 +30,7 @@ export default function Name({ name, setName }: any) {
           alignItems="center"
           gap="10px"
           padding="4px 8px"
-          fontSize="24px"
+          fontSize="20px"
           fontWeight="700"
           border="1px solid white"
           borderRadius="5px"

@@ -43,12 +43,12 @@ export default function GenresPopover({
   }
 
   function renderPopoverBtn() {
-    if (genres.length == 0 && genres_selected.length == 0) {
+    if (genres_selected.length == 0) {
       // Case: Genres state variable is empty and user has not yet selected
       // any genres
       return (
         // Display placeholder
-        <Text marginLeft="10px">Select 1-3 Genres</Text>
+        <Text marginLeft="10px">Select Genres</Text>
       );
     } else if (genres_selected.length > 0) {
       return (

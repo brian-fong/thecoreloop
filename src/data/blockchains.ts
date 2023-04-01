@@ -1,5 +1,5 @@
 export const BLOCKCHAINS: any = {
-  "Open to blockchain partnerships": "https://em-content.zobj.net/thumbs/120/google/350/handshake_1f91d.png",
+  "Open to blockchain partnerships": "https://cdn-icons-png.flaticon.com/512/5371/5371017.png",
   "Aptos"     : "https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_170,w_170,f_auto,b_white,q_auto:eco,dpr_1/phrevidpux9pokmmvecr",
   "Arbitrum"  : "https://pbs.twimg.com/profile_images/1490751860461953029/046qIxwT_400x400.jpg",
   "Avalanche" : "https://cryptologos.cc/logos/avalanche-avax-logo.png?v=024",
@@ -8,10 +8,10 @@ export const BLOCKCHAINS: any = {
   "Ethereum"  : "https://cryptologos.cc/logos/ethereum-eth-logo.png?v=024",
   "Near"      : "https://pbs.twimg.com/profile_images/1631021064171196431/_ahCp9jR_400x400.jpg",
   "Oasys"     : "https://pbs.twimg.com/profile_images/1490610001936719876/VU9Bo7o__400x400.jpg",
-  "Polygon"   : "https://cryptologos.cc/logos/polygon-matic-logo.png?v=024",
+  "Polygon"   : "https://pbs.twimg.com/profile_images/1639270979288399876/3OT3Lsux_400x400.jpg",
   "Ronin"     : "https://pbs.twimg.com/profile_images/1483078570855571458/Ei_vW6GN_400x400.jpg",
   "Sui"       : "https://pbs.twimg.com/profile_images/1582380655027052544/dK8glmZ3_400x400.jpg",
-  "Solana"    : "https://cryptologos.cc/logos/solana-sol-logo.png?v=024",
+  "Solana"    : "https://pbs.twimg.com/profile_images/1472933274209107976/6u-LQfjG_400x400.jpg",
   "Other"     : "https://em-content.zobj.net/thumbs/120/google/350/chains_26d3-fe0f.png",
 }
 

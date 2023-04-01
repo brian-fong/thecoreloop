@@ -51,7 +51,6 @@ export default function create_lag() {
         m="0px" 
         p="0px"
         minHeight="100vh"
-        background="#282a36"
       >
         <Header />
 

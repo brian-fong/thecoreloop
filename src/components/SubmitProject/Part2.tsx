@@ -1,3 +1,9 @@
+// Components
+import {
+  Divider,
+  Heading,
+  Text,
+} from "@chakra-ui/react";
 import InDepthForm from "./InDepthForm";
 
 export default function Part2({
@@ -6,14 +12,19 @@ export default function Part2({
   description, setDescription,
   fundraising, setFundraising,
   genres, setGenres,
-  name, setName,
   isTeam,
+  links, setLinks,
+  name, setName,
   stage, setStage,
   tagline, setTagline,
   thumbnail, setThumbnail,
 }: any) {
   return (
     <>
+      <Heading marginBottom="50px" fontSize="16px" fontWeight="300">
+        Click on the fields below to input the corresponding information. The result is what readers will see on the <Text display="inline" color="gray.400" fontStyle="italic" fontWeight="700">In-Depth</Text> section.
+      </Heading>
+
       <InDepthForm 
         image_width={image_width} image_height={image_height}
         blockchain={blockchain} setBlockchain={setBlockchain}
@@ -21,6 +32,7 @@ export default function Part2({
         fundraising={fundraising} setFundraising={setFundraising}
         genres={genres} setGenres={setGenres}
         isTeam={isTeam}
+        links={links} setLinks={setLinks}
         name={name} setName={setName}
         stage={stage} setStage={setStage}
         tagline={tagline} setTagline={setTagline}

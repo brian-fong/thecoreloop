@@ -20,10 +20,19 @@ import { BLOCKCHAINS } from "../../data/blockchains";
 export default function Blockchain({ blockchain, setBlockchain }: any) {
   // State variables
   const [content, setContent] = useState<ReactElement>();
-  const [blockchain_selected, setBlockchainSelected] = useState<string>("");
+  const [blockchain_selected, setBlockchainSelected] = useState<string>(
+    blockchain
+  );
 
   // Disclosure: NameModal
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  useEffect(() => {
+    // Reset selected blockchain so BlockchainName input will be visible
+    if (blockchain && !Object.keys(BLOCKCHAINS).includes(blockchain)) {
+      setBlockchainSelected("Other");
+    }
+  }, []);
 
   useEffect(() => {
     if (!blockchain) {
@@ -73,13 +82,13 @@ export default function Blockchain({ blockchain, setBlockchain }: any) {
             }}
           >
             <Image
-              src={blockchain_selected == "Other" 
-                ? BLOCKCHAINS["Other"]
-                : BLOCKCHAINS[blockchain]
+              src={Object.keys(BLOCKCHAINS).includes(blockchain) 
+                ? BLOCKCHAINS[blockchain]
+                : BLOCKCHAINS["Other"]
               }
               width="30px"
               height="30px"
-              borderRadius="5px"
+              borderRadius="full"
             />
           </Box>
         </Tooltip>

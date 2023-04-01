@@ -1,6 +1,7 @@
 // Components
 import {
   Divider,
+  Heading,
   Text,
 } from "@chakra-ui/react";
 import CommunityTeamForm from "./CommunityTeamForm";
@@ -20,16 +21,9 @@ export default function Part1({
 
   return (
     <>
-      <Text marginBottom="30px" width="100%" fontSize="16px">
-        Have a web3 gaming project that you'd like to share with the world? Let's get it listed on thecoreloop!
-      </Text>
-
-      <CommunityTeamForm
-        fundraising={fundraising} setFundraising={setFundraising}
-        isTeam={isTeam} setIsTeam={setIsTeam}
-      />
-
-      <Divider margin="30px 0" width="100%" borderWidth="1px" />
+      <Heading marginBottom="30px" fontSize="16px" fontWeight="300">
+        Click on the fields below to input the corresponding information. The result is what readers will see on the <Text display="inline" color="gray.400" fontStyle="italic" fontWeight="700">Discovery</Text> section.
+      </Heading>
 
       <DiscoverForm
         image_width={image_width} image_height={image_height}
@@ -40,6 +34,13 @@ export default function Part1({
         stage={stage} setStage={setStage}
         tagline={tagline} setTagline={setTagline}
         thumbnail={thumbnail} setThumbnail={setThumbnail}
+      />
+
+      <Divider margin="50px 0 30px" width="100%" borderWidth="1px" />
+
+      <CommunityTeamForm
+        fundraising={fundraising} setFundraising={setFundraising}
+        isTeam={isTeam} setIsTeam={setIsTeam}
       />
     </>
   );

@@ -31,7 +31,6 @@ export default function Tagline({ tagline, setTagline }: any) {
           padding="4px 8px"
           width="100%"
           height="100%"
-          minHeight="48px"
           fontSize="16px"
           border="1px solid white"
           borderRadius="5px"
@@ -52,25 +51,30 @@ export default function Tagline({ tagline, setTagline }: any) {
         <Text
           padding="0"
           width="100%"
-          minWidth="320px"
           height="100%"
           color="white"
           fontSize="16px"
           lineHeight="5"
+          lang="en"
           border="1px solid transparent"
+          overflow="hidden"
+          textOverflow="ellipsis"
           cursor="pointer"
-          wordBreak="break-all"
           userSelect="none"
           transition="all 200ms ease-in-out"
           _hover={{ 
+            margin: "10px 0",
             padding: "4px 8px",
-            fontSize: "15px",
+            fontSize: "14px",
             background: "rgba(0, 0, 0, 0.4)",
             border: "1px solid white",
             borderRadius: "5px",
           }}
           style={{
+            display: "-webkit-box",
             hyphens: "auto",
+            WebkitBoxOrient: "vertical",
+            WebkitLineClamp: 2,
           }}
         >
           {tagline}

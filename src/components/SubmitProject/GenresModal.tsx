@@ -8,6 +8,7 @@ import {
   ModalBody,
   ModalContent,
   ModalOverlay,
+  Text,
 } from '@chakra-ui/react'
 import GenresPopover from './GenresPopover';
 
@@ -55,7 +56,12 @@ export default function GenresModal({
   }
 
   return (
-    <Modal isOpen={isOpen} onClose={handleCancel} isCentered>
+    <Modal 
+      isOpen={isOpen} 
+      onClose={handleCancel} 
+      closeOnOverlayClick={false}
+      isCentered
+    >
       <ModalOverlay />
       <ModalContent
         display="flex"
@@ -104,8 +110,14 @@ export default function GenresModal({
                 margin="0"
                 whiteSpace="nowrap"
               >
-                Which genre(s) best describes this project's game?
+                Select 1-3 genres to best describe this project's game
               </FormLabel>
+              <Text
+                color="gray.400"
+                lineHeight="5"
+              >
+                NOTE: Only the FIRST genre is displayed on the Discovery View
+              </Text>
 
               <GenresPopover
                 formik={formik}

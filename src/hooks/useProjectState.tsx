@@ -8,7 +8,7 @@ export default function useProjectState() {
   const [fundraising, setFundraising] = useState<string>("undisclosed");
   const [genres, setGenres] = useState<string[]>([]);
   const [images, setImages] = useState<any[]>([]);
-  const [links, setLinks] = useState<string[]>([]);
+  const [links, setLinks] = useState<string[]>([""]);
   const [name, setName] = useState<string>("");
   const [stage, setStage] = useState<string>("");
   const [story, setStory] = useState<string>("");

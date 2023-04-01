@@ -47,6 +47,7 @@ export default extendTheme({
         color: "white",
         fontSize: "14px",
         fontFamily: `"JetBrains Mono", sans-serif`,
+        background: "#282a36",
         scrollBehavior: "smooth",
       },
       "*::-webkit-scrollbar": {

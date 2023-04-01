@@ -10,7 +10,7 @@ import {
   BsArrowRight as RightArrowIcon,
 } from "react-icons/bs";
 import Head from "next/head";
-import Header from "../components/Discover/Header";
+import Header from "../components/Core/Header";
 import Part1 from "../components/SubmitProject/Part1";
 import Part2 from "../components/SubmitProject/Part2";
 
@@ -20,7 +20,7 @@ import useProjectState from "../hooks/useProjectState";
 
 export default function submit_project() {
   // Constants: Thumbnail Image Size
-  const [ image_width, image_height]: [string, string] = ["125px", "125px"];
+  const [image_width, image_height]: [string, string] = ["125px", "125px"];
 
   // State variables
   const {
@@ -28,8 +28,9 @@ export default function submit_project() {
     description, setDescription,
     fundraising, setFundraising,
     genres, setGenres,
-    name, setName,
     isTeam, setIsTeam,
+    links, setLinks,
+    name, setName,
     stage, setStage,
     tagline, setTagline,
     thumbnail, setThumbnail,
@@ -80,7 +81,6 @@ export default function submit_project() {
         minWidth="800px"
         minHeight="100vh"
         color="white"
-        background="#282a36"
       >
         {/* Header */}
         <Header />
@@ -99,22 +99,22 @@ export default function submit_project() {
           <Flex
             flexDirection="row"
             justifyContent="space-between"
-            alignItems="center"
+            alignItems="end"
             marginBottom="30px"
             width="100%"
           >
-            <Heading
-              width="100%"
-              color="white"
-              fontSize="24px"
-              fontWeight="700"
-              whiteSpace="nowrap"
-            >
-              {page == 1 
-                ? "Build Your Project's Discovery View"
-                : "Build Your Project's In-Depth View"
-              }
-            </Heading>
+            {
+              page == 1 
+                ? (
+                  <Heading fontSize="30px" whiteSpace="nowrap">
+                    Build <Text display="inline" color="gray.300" fontStyle="italic">Discovery</Text> View
+                  </Heading>
+                ) : (
+                  <Heading fontSize="30px" whiteSpace="nowrap">
+                    Build <Text display="inline" color="gray.300" fontStyle="italic">In-Depth</Text> View
+                  </Heading>
+                )
+            }
 
             {/* Container: Prev + Next Buttons */}
             <Flex
@@ -208,6 +208,7 @@ export default function submit_project() {
                 fundraising={fundraising} setFundraising={setFundraising}
                 genres={genres} setGenres={setGenres}
                 isTeam={isTeam}
+                links={links} setLinks={setLinks}
                 name={name} setName={setName}
                 stage={stage} setStage={setStage}
                 tagline={tagline} setTagline={setTagline}

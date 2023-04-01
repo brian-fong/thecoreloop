@@ -20,7 +20,7 @@ import { useRef, useState } from 'react';
 import { FormikErrors, FormikValues } from "formik";
 
 // Formik validation
-const char_limit: number = 150;
+const char_limit: number = 300;
 function validate(values: any) {
   const errors: FormikErrors<FormikValues> = {};
 
@@ -41,7 +41,7 @@ export default function DescriptionModal({
   const input_ref = useRef<any>();
 
   // State variables
-  const [char_count, setCharCount] = useState<number>(0);
+  const [char_count, setCharCount] = useState<number>(description.length);
 
   // Formik props
   const formik = useFormik({
@@ -159,7 +159,7 @@ export default function DescriptionModal({
                 _placeholder={{
                   fontStyle: "italic",
                 }}
-                minHeight="64px"
+                minHeight="150px"
                 background="rgba(0, 0, 0, 0.1)"
                 border="2px solid rgba(255, 255, 255, 0.7)"
                 value={formik.values.description}
