@@ -27,11 +27,8 @@ export default function Blockchain({ blockchain, setBlockchain }: any) {
   // Disclosure: NameModal
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  // Debug
   useEffect(() => {
-    console.log("Blockchain: ", blockchain);
-    console.log("Blockchain Selected: ", blockchain_selected);
-
+    // Reset selected blockchain so BlockchainName input will be visible
     if (blockchain && !Object.keys(BLOCKCHAINS).includes(blockchain)) {
       setBlockchainSelected("Other");
     }

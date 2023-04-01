@@ -8,18 +8,15 @@ const { defineMultiStyleConfig } =
 const variants = {
   thecoreloop: {
     button: {
-      padding: "5px 0px",
-      width: "100%",
-      color: "black",
-      fontSize: "14px",
-      background: "none",
-      border: "2px solid white",
-      borderRadius: "30px",
+      color: "white",
+      fontSize: "18px",
+      background: "transparent",
+      transition: "filter 200ms ease-in-out",
       _hover: {
-        background: "rgba(0, 0, 0, 0.1)",
+        filter: "brightness(0.8)",
       },
       _active: {
-        background: "rgba(0, 0, 0, 0.1)",
+        filter: "brightness(0.5)",
       }
     },
     list: {

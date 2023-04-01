@@ -13,7 +13,7 @@ import LinkIcon from "./LinkIcon";
 import LinksModal from "./LinksModal";
 
 // Hooks
-import { useEffect, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 
 // Types
 import { ReactElement } from "react";

@@ -25,6 +25,7 @@ export default function DiscoverForm({
   // State Variables
   const [isFinished, setIsFinished] = useState<boolean>(true);
 
+  // Update isFinished state variable
   useEffect(() => {
     // console.log("Blockchain: ", blockchain);
     // console.log("Fundraising: ", fundraising);
@@ -54,12 +55,9 @@ export default function DiscoverForm({
       justifyContent="start"
       alignItems="center"
       gap="10px"
-      padding="10px"
       width="100%"
       height="100%"
-      // background="rgba(0, 0, 0, 0.2)"
       background={isFinished ? "transparent" : "rgba(0, 0, 0, 0.2)"}
-      // border={isFinished ? "2px dashed transparent" : "2px dashed white"}
       borderRadius="5px"
       boxShadow={isFinished ? "none" : "0 0 0 15px rgba(0, 0, 0, 0.2)"}
       transition="all 300ms ease-in-out 500ms"

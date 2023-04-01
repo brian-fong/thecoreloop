@@ -9,7 +9,7 @@ import {
   BsArrowRight as RightArrowIcon,
 } from "react-icons/bs";
 import Head from "next/head";
-import Header from "../components/Discover/Header";
+import Header from "../components/Core/Header";
 import Part1 from "../components/SubmitProject/Part1";
 import Part2 from "../components/SubmitProject/Part2";
 
@@ -19,7 +19,7 @@ import useProjectState from "../hooks/useProjectState";
 
 export default function submit_project() {
   // Constants: Thumbnail Image Size
-  const [ image_width, image_height]: [string, string] = ["125px", "125px"];
+  const [image_width, image_height]: [string, string] = ["125px", "125px"];
 
   // State variables
   const {
@@ -80,7 +80,6 @@ export default function submit_project() {
         minWidth="800px"
         minHeight="100vh"
         color="white"
-        background="#282a36"
       >
         {/* Header */}
         <Header />

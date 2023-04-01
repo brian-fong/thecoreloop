@@ -28,7 +28,16 @@ export default function Genres({
   function renderAdditionalGenres() {
     if (format == "discover") {
       return (
-        <>
+        <Flex
+          flexDirection="row"
+          justifyContent="start"
+          alignItems="center"
+          padding="2px 8px"
+          background="gray.700"
+          border="1px solid transparent"
+          borderRadius="10px"
+          cursor="pointer"
+        >
           <Text
             color="white"
             fontSize="16px"
@@ -67,14 +76,19 @@ export default function Genres({
             </Tooltip>
             : null
           }
-        </>
+        </Flex>
       );
     } else if (format == "in-depth") {
       return (
         <Text
+          padding="2px 8px"
           color="white"
           fontSize="16px"
           fontWeight="700"
+          background="gray.700"
+          border="1px solid transparent"
+          borderRadius="10px"
+          cursor="pointer"
           transition="all 200ms ease-in-out"
           _hover={{ 
             padding: "4px 8px",
@@ -118,20 +132,7 @@ export default function Genres({
       );
     } else {
       // Display user-inputted genres
-      setContent(
-        <Flex
-          flexDirection="row"
-          justifyContent="start"
-          alignItems="center"
-          padding="2px 8px"
-          background="gray.700"
-          border="1px solid transparent"
-          borderRadius="10px"
-          cursor="pointer"
-        >
-          {renderAdditionalGenres()}
-        </Flex>
-      )
+      setContent(renderAdditionalGenres());
     }
   }, [genres]);
 

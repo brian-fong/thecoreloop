@@ -48,6 +48,7 @@ export default function InDepthForm({
         && description
         && genres.length > 0
         && name 
+        && links[0].length > 0
         && stage 
         && tagline 
         && thumbnail
@@ -56,7 +57,7 @@ export default function InDepthForm({
     } else {
       setIsFinished(false);
     }
-  }, [blockchain, description, genres, name, stage, tagline, thumbnail]);
+  }, [blockchain, description, genres, links, name, stage, tagline, thumbnail]);
 
   return (
     <Flex
