@@ -20,7 +20,7 @@ import { useRef, useState } from 'react';
 import { FormikErrors, FormikValues } from "formik";
 
 // Formik validation
-const char_limit: number = 120;
+const char_limit: number = 150;
 function validate(values: any) {
   const errors: FormikErrors<FormikValues> = {};
 
@@ -40,7 +40,7 @@ export default function TaglineModal({
   const input_ref = useRef<any>();
 
   // State variables
-  const [char_count, setCharCount] = useState<number>(0);
+  const [char_count, setCharCount] = useState<number>(tagline.length);
 
   // Formik props
   const formik = useFormik({

@@ -36,7 +36,7 @@ export default function Description({ description, setDescription }: any) {
           border="1px solid white"
           borderRadius="5px"
           cursor="pointer"
-          transition="background 200ms ease-in-out"
+          transition="all 200ms ease-in-out"
           userSelect="none"
           _hover={{
             padding: "4px 8px",

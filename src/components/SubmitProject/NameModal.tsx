@@ -36,7 +36,7 @@ export default function NameModal({ name, setName, isOpen, onClose }: any) {
   const input_ref = useRef<any>();
 
   // State variables
-  const [char_count, setCharCount] = useState<number>(0);
+  const [char_count, setCharCount] = useState<number>(name.length);
 
   // Formik props
   const formik = useFormik({

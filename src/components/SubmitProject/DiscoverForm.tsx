@@ -45,7 +45,7 @@ export default function DiscoverForm({
     } else {
       setIsFinished(false);
     }
-  }, [blockchain, fundraising, genres, name, stage, tagline, thumbnail]);
+  }, [blockchain, genres, name, stage, tagline, thumbnail]);
 
   return (
     <Flex
@@ -54,9 +54,9 @@ export default function DiscoverForm({
       justifyContent="start"
       alignItems="center"
       gap="10px"
+      padding="10px"
       width="100%"
       height="100%"
-      minHeight={image_height}
       // background="rgba(0, 0, 0, 0.2)"
       background={isFinished ? "transparent" : "rgba(0, 0, 0, 0.2)"}
       // border={isFinished ? "2px dashed transparent" : "2px dashed white"}
@@ -82,8 +82,10 @@ export default function DiscoverForm({
       >
         <Flex
           flexDirection="row"
-          justifyContent="space-between"
+          justifyContent="start"
+          // justifyContent="space-between"
           alignItems="start"
+          gap="20px"
           width="100%"
         >
           <Flex alignItems={blockchain ? "center" : "end"} gap="10px">

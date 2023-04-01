@@ -41,7 +41,7 @@ export default function DescriptionModal({
   const input_ref = useRef<any>();
 
   // State variables
-  const [char_count, setCharCount] = useState<number>(0);
+  const [char_count, setCharCount] = useState<number>(description.length);
 
   // Formik props
   const formik = useFormik({

@@ -20,6 +20,9 @@ import { useRef, useState } from 'react';
 // Types
 import { FormikErrors, FormikValues } from "formik";
 
+// Useful Constants
+import { BLOCKCHAINS } from "../../data/blockchains";
+
 // Formik validation
 const char_limit: number = 30;
 function validate(values: any, blockchain_selected: string) {
@@ -45,18 +48,18 @@ export default function BlockchainModal({
   const input_ref = useRef<any>();
 
   // State variables
-  const [char_count, setCharCount] = useState<number>(0);
+  const [char_count, setCharCount] = useState<number>(blockchain.length);
 
   // Formik props
   const formik = useFormik({
     initialValues: {
-      other_blockchain: "",
+      other_blockchain: blockchain,
     },
     validate: (values) => validate(values, blockchain_selected),
     onSubmit: (values) => {
       // If "Other" selected, then update blockchain state variable
       if (blockchain_selected == "Other") {
-        values.other_blockchain = values.other_blockchain.trim(); // Remove surrounding whitespace
+        values.other_blockchain = values.other_blockchain.trim();
         setBlockchain(values.other_blockchain);
         setCharCount(values.other_blockchain.length);
       } else {

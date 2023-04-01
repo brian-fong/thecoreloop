@@ -61,8 +61,10 @@ export default function Links({
           justifyContent="space-between"
           alignItems="end"
           gap="20px"
-          padding="4px 4px"
+          padding="4px 8px"
+          // background="gray.700"
           border="1px solid transparent"
+          borderRadius="10px"
           cursor="pointer"
           whiteSpace="nowrap"
           userSelect="none"
@@ -86,7 +88,7 @@ export default function Links({
                 transition="all 200ms ease-in-out"
                 _hover={{ filter: "brightness(0.7)" }}
               >
-                <WebIcon size="25px" />
+                <WebIcon size="22px" />
               </Link>
             );
             else return (

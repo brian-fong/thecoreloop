@@ -16,6 +16,9 @@ import Stage from "./Stage";
 import Thumbnail from "./Thumbnail";
 import Upvote from "./Upvote";
 
+// Hooks
+import { useEffect, useState } from "react";
+
 export default function InDepthForm({ 
   image_width, image_height,
   blockchain, setBlockchain,
@@ -29,6 +32,32 @@ export default function InDepthForm({
   thumbnail, setThumbnail,
 }: any) {
 
+  // State Variables
+  const [isFinished, setIsFinished] = useState<boolean>(true);
+
+  useEffect(() => {
+    // console.log("Blockchain: ", blockchain);
+    // console.log("Fundraising: ", fundraising);
+    // console.log("Name: ", name);
+    // console.log("Stage: ", stage);
+    // console.log("Tagline: ", tagline);
+    // console.log("Thumbnail: ", thumbnail);
+
+    if (
+      blockchain
+        && description
+        && genres.length > 0
+        && name 
+        && stage 
+        && tagline 
+        && thumbnail
+    ) {
+      setIsFinished(true);
+    } else {
+      setIsFinished(false);
+    }
+  }, [blockchain, description, genres, name, stage, tagline, thumbnail]);
+
   return (
     <Flex
       id="indepth-container"
@@ -36,9 +65,12 @@ export default function InDepthForm({
       justifyContent="start"
       alignItems="start"
       width="100%"
-      background="rgba(0, 0, 0, 0.2)"
-      boxShadow="0 0 0 15px rgba(0, 0, 0, 0.2)"
+      // background="rgba(0, 0, 0, 0.2)"
+      // boxShadow="0 0 0 15px rgba(0, 0, 0, 0.2)"
+      background={isFinished ? "transparent" : "rgba(0, 0, 0, 0.2)"}
+      boxShadow={isFinished ? "none" : "0 0 0 20px rgba(0, 0, 0, 0.2)"}
       borderRadius="5px"
+      transition="all 300ms ease-in-out 500ms"
     >
       <Flex
         id="discover-container"
@@ -67,12 +99,13 @@ export default function InDepthForm({
         >
           <Flex
             flexDirection="row"
-            justifyContent="space-between"
+            justifyContent="start"
+            // justifyContent="space-between"
             alignItems="end"
-            gap="10px" 
+            gap="20px" 
             width="100%"
           >
-            <Flex alignItems="center" gap="10px">
+            <Flex alignItems={blockchain ? "center" : "end"} gap="10px">
               {/* Name */}
               <Name name={name} setName={setName} />
 

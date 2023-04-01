@@ -1,6 +1,7 @@
 // Components
 import {
   BsGlobe as WebIcon,
+  BsFacebook as FacebookIcon,
   BsInstagram as InstagramIcon,
   BsLinkedin as LinkedinIcon,
   BsTwitter as TwitterIcon,
@@ -33,6 +34,10 @@ export default function LinkIcon({ url, size }: any) {
     case "discord":
       return (
         <DiscordIcon size={size} />
+      );
+    case "facebook":
+      return (
+        <FacebookIcon size={size} />
       );
     case "instagram":
       return (

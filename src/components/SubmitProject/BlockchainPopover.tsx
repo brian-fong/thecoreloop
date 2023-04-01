@@ -70,7 +70,10 @@ export default function BlockchainPopover({
         // Display selected blockchain
         <Flex alignItems="center" gap="10px" padding="2px">
           <Image
-            src={BLOCKCHAINS[blockchain_selected]}
+            src={Object.keys(BLOCKCHAINS).includes(blockchain_selected) 
+              ? BLOCKCHAINS[blockchain_selected]
+              : BLOCKCHAINS["Other"]
+            }
             objectFit="cover"
             padding="3px"
             width="30px"
@@ -84,7 +87,10 @@ export default function BlockchainPopover({
             fontStyle="normal"
             fontWeight="300"
           >
-            {blockchain_selected}
+            {Object.keys(BLOCKCHAINS).includes(blockchain_selected)
+              ? blockchain_selected
+              : "Other"
+            }
           </Text>
         </Flex>
       );

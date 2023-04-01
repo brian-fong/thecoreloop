@@ -19,10 +19,6 @@ export default function Tagline({ tagline, setTagline }: any) {
   // Disclosure: DescriptionModal
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  function shortenTagline(tagline: string): string {
-    return tagline.slice(0, 91);
-  }
-
   useEffect(() => {
     if (!tagline) {
       // Display placeholder for tagline
@@ -81,7 +77,7 @@ export default function Tagline({ tagline, setTagline }: any) {
             WebkitLineClamp: 2,
           }}
         >
-          {shortenTagline(tagline)}
+          {tagline}
         </Text>
       )
     }

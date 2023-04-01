@@ -68,13 +68,13 @@ export default function LinksModal({
   }
 
   function handleSubmit() {
-    setLinks(links_inputted)  // Set official to inputted links
+    const links_inputted_new: string[] = links_inputted.filter(
+      link => link.trim().length > 0
+    );
+    setLinksInputted(links_inputted_new); // Update inputted links
+    setLinks(links_inputted_new)  // Set official to inputted links
     onClose();  // Close LinkModal
   }
-
-  useEffect(() => {
-    console.log("Links Inputted: ", links_inputted);
-  }, [links_inputted]);
 
   return (
     <Modal 
