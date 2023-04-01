@@ -107,6 +107,7 @@ export default function Header() {
             <Link
               href="./submit_project"
               width="100%"
+              color="white"
               letterSpacing="1px"
               fontWeight="700"
               whiteSpace="nowrap"
@@ -125,6 +126,7 @@ export default function Header() {
             </Link>
             <Text
               width="100%"
+              color="white"
               letterSpacing="1px"
               fontWeight="700"
               whiteSpace="nowrap"
@@ -143,6 +145,7 @@ export default function Header() {
             </Text>
             <Text
               width="100%"
+              color="white"
               letterSpacing="1px"
               fontWeight="700"
               whiteSpace="nowrap"
@@ -180,10 +183,10 @@ export default function Header() {
           }}
           transition="all 300ms ease-in-out"
           _focusVisible={{
-            background: "rgba(0, 0, 0, 0.2)",
+            background: "rgba(0, 0, 0, 0.6)",
           }}
           _hover={{
-            background: "rgba(0, 0, 0, 0.2)",
+            background: "rgba(0, 0, 0, 0.6)",
           }}
           border="none"
         />

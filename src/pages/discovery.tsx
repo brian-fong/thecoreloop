@@ -14,7 +14,7 @@ import { useState, useEffect, ReactElement } from "react";
 
 // Useful Functions & Constants
 import uuid from "react-uuid";
-const [image_width, image_height]: [string, string] = ["110px", "110px"];
+const [image_width, image_height]: [string, string] = ["100px", "100px"];
 function getRandInt(a: number, b: number): number {
   return Math.round(Math.random() * (b-a)) + a;
 }

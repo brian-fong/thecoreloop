@@ -3,6 +3,7 @@ import {
   Button,
   Flex,
   Heading,
+  Text,
 } from "@chakra-ui/react";
 import {
   BsArrowLeft as LeftArrowIcon,
@@ -102,18 +103,18 @@ export default function submit_project() {
             marginBottom="30px"
             width="100%"
           >
-            <Heading
-              width="100%"
-              color="white"
-              fontSize="24px"
-              fontWeight="700"
-              whiteSpace="nowrap"
-            >
-              {page == 1 
-                ? "Build Your Project's Discovery View"
-                : "Build Your Project's In-Depth View"
-              }
-            </Heading>
+            {
+              page == 1 
+                ? (
+                  <Heading fontSize="30px" whiteSpace="nowrap">
+                    Build <Text display="inline" color="gray.300" fontStyle="italic">Discovery</Text> View
+                  </Heading>
+                ) : (
+                  <Heading fontSize="30px" whiteSpace="nowrap">
+                    Build <Text display="inline" color="gray.300" fontStyle="italic">In-Depth</Text> View
+                  </Heading>
+                )
+            }
 
             {/* Container: Prev + Next Buttons */}
             <Flex
