@@ -98,9 +98,7 @@ export default function DiscoveryCard({
                 ) : (
                   <Tooltip
                     label={blockchain}
-                    placement="top"
-                    offset={[10, 12]}
-                    arrowSize={12}
+                    placement="right-start"
                     hasArrow
                   >
                     <Image

@@ -9,7 +9,6 @@ export default function FundraisingIcon({ style = "icon-only" }: any) {
       padding="2px 8px"
       color="white"
       fontSize="16px"
-      fontWeight="700"
       background="gray.700"
       border="1px solid transparent"
       borderRadius="10px"

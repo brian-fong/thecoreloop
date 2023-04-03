@@ -135,7 +135,11 @@ export default function InDepthForm({
               <Stage stage={stage} setStage={setStage} />
 
               {/* Fundraising */}
-              <FundraisingIcon style="label" />
+              {
+                fundraising == "yes"
+                  ? <FundraisingIcon style="label" />
+                  : null
+              }
             </Flex>
 
             {/* Links */}
