@@ -29,8 +29,8 @@ export default function Name({ name, setName }: any) {
           justifyContent="center"
           alignItems="center"
           gap="10px"
-          padding="4px 8px"
-          fontSize="20px"
+          padding="2px 4px"
+          fontSize="18px"
           fontWeight="700"
           border="1px solid white"
           borderRadius="5px"
@@ -39,7 +39,6 @@ export default function Name({ name, setName }: any) {
           userSelect="none"
           transition="all 200ms ease-in-out"
           _hover={{
-            padding: "4px 8px",
             letterSpacing: "2px",
             background: "rgba(0, 0, 0, 0.4)",
           }}
@@ -53,7 +52,7 @@ export default function Name({ name, setName }: any) {
         <Text
           padding="0"
           color="white"
-          fontSize="24px"
+          fontSize="20px"
           fontWeight="700"
           lineHeight="none"
           border="1px solid transparent"

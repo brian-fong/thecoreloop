@@ -34,8 +34,9 @@ export default function Thumbnail({
     accept: {
       "image/*": [],
     },
-    onDrop: files => {
-      setFiles(files.map(file => Object.assign(file, {
+    onDrop: files_inputted => {
+      console.log("Files: ", files_inputted);
+      setFiles(files_inputted.map(file => Object.assign(file, {
         preview: URL.createObjectURL(file)
       })));
     },

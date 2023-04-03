@@ -93,7 +93,6 @@ export default function InDepthForm({
           flexDirection="column"
           justifyContent="space-between"
           alignItems="start"
-          gap="10px"
           width="100%"
           height={image_height}
           minHeight={image_height}
@@ -116,9 +115,6 @@ export default function InDepthForm({
                 setBlockchain={setBlockchain}
               />
             </Flex>
-
-            {/* Fundraising */}
-            <FundraisingIcon fundraising={fundraising} />
           </Flex>
 
           {/* Genres */}
@@ -134,8 +130,13 @@ export default function InDepthForm({
             gap="10px"
             width="100%"
           >
-            {/* Stage */}
-            <Stage stage={stage} setStage={setStage} />
+            <Flex gap="10px">
+              {/* Stage */}
+              <Stage stage={stage} setStage={setStage} />
+
+              {/* Fundraising */}
+              <FundraisingIcon style="label" />
+            </Flex>
 
             {/* Links */}
             <Links links={links} setLinks={setLinks} />

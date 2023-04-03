@@ -74,8 +74,7 @@ export default function Description({ description, setDescription }: any) {
             cursor="pointer"
             transition="all 200ms ease-in-out"
             _hover={{ 
-              padding: "4px 8px",
-              fontSize: "15px",
+              padding: "2px 4px",
               background: "rgba(0, 0, 0, 0.4)",
               border: "1px solid white",
               borderRadius: "5px",

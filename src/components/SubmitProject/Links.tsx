@@ -13,7 +13,7 @@ import LinkIcon from "./LinkIcon";
 import LinksModal from "./LinksModal";
 
 // Hooks
-import { useRef, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 // Types
 import { ReactElement } from "react";
@@ -37,7 +37,7 @@ export default function Links({
           justifyContent="center"
           alignItems="center"
           gap="10px"
-          padding="4px 8px"
+          padding="2px 4px"
           fontSize="16px"
           border="1px solid white"
           borderRadius="5px"
@@ -59,9 +59,8 @@ export default function Links({
         <Flex
           flexDirection="row"
           justifyContent="space-between"
-          alignItems="end"
+          alignItems="center"
           gap="20px"
-          padding="4px 8px"
           // background="gray.700"
           border="1px solid transparent"
           borderRadius="10px"
@@ -70,8 +69,8 @@ export default function Links({
           userSelect="none"
           transition="all 200ms ease-in-out"
           _hover={{
+            padding: "0 1px",
             gap: "25px",
-            padding: "4px 20px",
             color: "white",
             background: "rgba(0, 0, 0, 0.4)",
             border: "1px solid white",

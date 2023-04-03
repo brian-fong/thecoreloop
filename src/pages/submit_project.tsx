@@ -20,7 +20,7 @@ import useProjectState from "../hooks/useProjectState";
 
 export default function submit_project() {
   // Constants: Thumbnail Image Size
-  const [image_width, image_height]: [string, string] = ["125px", "125px"];
+  const [image_width, image_height]: [string, string] = ["115px", "115px"];
 
   // State variables
   const {

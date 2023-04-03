@@ -10,9 +10,6 @@ import {
   PopoverContent,
   Text,
 } from "@chakra-ui/react";
-import {
-  BsFillArrowRightSquareFill as RightArrow
-} from "react-icons/bs";
 
 // Hooks
 import { useDisclosure } from "@chakra-ui/react";

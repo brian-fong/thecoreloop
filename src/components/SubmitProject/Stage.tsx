@@ -50,7 +50,7 @@ export default function Stage({ stage, setStage }: any) {
         </Text>
       );
     } else {
-      // Display user-inputted name
+      // Display user-inputted stage
       setContent(
         <Text
           padding="2px 8px"

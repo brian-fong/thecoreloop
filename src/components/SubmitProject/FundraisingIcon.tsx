@@ -1,29 +1,24 @@
+// Components
 import {
-  Image,
-  Tooltip,
+  Text,
 } from "@chakra-ui/react";
 
-export default function FundraisingIcon({ fundraising }: any) {
-  const fundraising_icon: string = "https://cdn-icons-png.flaticon.com/512/3588/3588711.png";
-
+export default function FundraisingIcon({ style = "icon-only" }: any) {
   return (
-    <Tooltip
-      label="This project is currently fundraising" 
+    <Text
+      padding="2px 8px"
+      color="white"
+      fontSize="16px"
+      fontWeight="700"
+      background="gray.700"
+      border="1px solid transparent"
+      borderRadius="10px"
       whiteSpace="nowrap"
-      placement="top-start"
-      visibility={fundraising == "yes" ? "visible" : "hidden"}
-      offset={[10, 12]}
-      arrowSize={15}
-      hasArrow
+      userSelect="none"
+      transition="all 200ms ease-in-out"
     >
-      <Image
-        src={fundraising_icon}
-        width="30px"
-        height="30px"
-        opacity={fundraising == "yes" ? "100%" : "0%"}
-        transition="all 300ms ease-in-out"
-      />
-    </Tooltip>
+      👋 {style == "icon-only" ? null : "Raising"}
+    </Text>
   )
 }
 

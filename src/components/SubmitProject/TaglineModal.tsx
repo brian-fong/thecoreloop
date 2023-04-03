@@ -143,6 +143,7 @@ export default function TaglineModal({
                 <FormLabel 
                   htmlFor="tagline" 
                   margin="0"
+                  fontSize="16px"
                   whiteSpace="nowrap"
                 >
                   Provide a tagline for this project
@@ -174,6 +175,7 @@ export default function TaglineModal({
                 padding="4px 8px"
                 width="100%"
                 minHeight="96px"
+                fontSize="16px"
                 background="rgba(0, 0, 0, 0.1)"
                 border="2px solid rgba(255, 255, 255, 0.7)"
                 value={formik.values.tagline}
