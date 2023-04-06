@@ -64,7 +64,10 @@ export default function Blockchain({ blockchain, setBlockchain }: any) {
       // Display user-inputted blockchain
       setContent(
         <Tooltip 
-          label={blockchain}
+          label={blockchain == "TBA"
+            ? "Blockchain to be announced"
+            : blockchain
+          }
           placement="right-start"
           arrowSize={12}
           hasArrow
@@ -87,7 +90,7 @@ export default function Blockchain({ blockchain, setBlockchain }: any) {
               }
               width="30px"
               height="30px"
-              borderRadius="full"
+              borderRadius={blockchain == "TBA" ? "none" : "full"}
             />
           </Box>
         </Tooltip>

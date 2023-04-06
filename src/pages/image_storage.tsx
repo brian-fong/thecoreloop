@@ -1,14 +1,18 @@
 // Components
 import {
   Flex,
+  Image,
   Input,
 } from "@chakra-ui/react";
 import Head from "next/head";
-import { ChangeEvent } from "react";
 import Header from "../components/Core/Header";
+import CurveContainer from "../components/Core/CurveContainer";
 
 // Hooks
 import { useEffect, useState } from "react";
+
+// Types
+import { ChangeEvent } from "react";
 
 export default function test() {
   const [data, setData] = useState<string | ArrayBuffer>();
@@ -25,7 +29,8 @@ export default function test() {
   }
 
   useEffect(() => {
-    async function toBlob() {
+    async function convertToBlob() {
+      // Convert image file to blob data type
       if (data) {
         const b64string: Response  = await fetch(data as RequestInfo);
         const blob: Blob = await b64string.blob();
@@ -34,7 +39,6 @@ export default function test() {
     }
 
     if (data) console.log("Base64 String: ", data);
-    // toBlob();
   }, [data]);
 
   return (
@@ -75,16 +79,18 @@ export default function test() {
           maxWidth="800px"
           height="100%"
         >
-          <Input
-            type="file"
-            margin="0"
-            padding="0"
-            width="min-content"
-            height="min-content"
-            border="none"
-            multiple={false}
-            onChange={handleFiles}
-          />
+          <CurveContainer>
+            <Input
+              type="file"
+              margin="0"
+              padding="0"
+              width="min-content"
+              height="min-content"
+              border="none"
+              multiple={false}
+              onChange={handleFiles}
+            />
+          </CurveContainer>
         </Flex>
       </Flex>
     </>

@@ -65,6 +65,7 @@ export default function DiscoverForm({
       {/* Thumbnail Image */}
       <Thumbnail
         image_width={image_width} image_height={image_height}
+        fundraising={fundraising}
         thumbnail={thumbnail} setThumbnail={setThumbnail} 
       />
 
@@ -118,13 +119,6 @@ export default function DiscoverForm({
           <Stage 
             stage={stage} setStage={setStage}
           />
-
-          {/* Fundraising */}
-          {
-            fundraising == "yes"
-              ? <FundraisingIcon />
-              : null
-          }
         </Flex>
       </Flex>
 

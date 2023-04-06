@@ -53,6 +53,8 @@ export default function Genres({
           >
             🏷️ {genres[0]}
           </Text>
+
+          {/* Display +1 or +2 for additional genres */}
           {genres.length > 1
             ?
             <Tooltip
@@ -106,7 +108,7 @@ export default function Genres({
 
   useEffect(() => {
     if (genres.length == 0) {
-      // Display placeholder for name
+      // Display placeholder for genres
       setContent(
         <Text
           display="flex"

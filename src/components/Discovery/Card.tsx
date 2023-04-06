@@ -7,6 +7,7 @@ import {
   Tooltip,
 } from "@chakra-ui/react";
 import { VscTriangleUp as UpvoteIcon } from "react-icons/vsc";
+import FundraisingIcon from "../SubmitProject/FundraisingIcon";
 
 // Hooks
 import { useDisclosure } from "@chakra-ui/react";
@@ -47,15 +48,25 @@ export default function DiscoveryCard({
       transition="all 200ms ease-in-out"
     >
       {/* Thumbnail Image */}
-      <Box id="left-container">
+      <Box id="left-container" position="relative">
         <Image
           src={thumbnail}
           width={image_width}
           minWidth={image_width}
           height={image_height}
           minHeight={image_height}
-          borderRadius="5px"
+          borderRadius="full"
         />
+        <Box
+          visibility={fundraising == "yes" ? "visible" : "hidden"}
+          position="absolute"
+          top="-5px"
+          left="-5px"
+          opacity={fundraising == "yes" ? "100%" : "0%"}
+          transition="all 200ms ease-in-out"
+        >
+          <FundraisingIcon style="emoji" />
+        </Box>
       </Box>
 
       <Flex
@@ -91,28 +102,24 @@ export default function DiscoveryCard({
             </Text>
 
             {/* Blockchain */}
-            {
-              blockchain == "TBA"
-                ? (
-                  null
-                ) : (
-                  <Tooltip
-                    label={blockchain}
-                    placement="right-start"
-                    hasArrow
-                  >
-                    <Image
-                      src={Object.keys(BLOCKCHAINS).includes(blockchain) 
-                        ? BLOCKCHAINS[blockchain]
-                        : BLOCKCHAINS["Other"]
-                      }
-                      width="30px"
-                      height="30px"
-                      borderRadius="full"
-                    />
-                  </Tooltip>
-                )
-            }
+            <Tooltip
+              label={blockchain == "TBA"
+                ? "Blockchain to be announced"
+                : blockchain
+              }
+              placement="right-start"
+              hasArrow
+            >
+              <Image
+                src={Object.keys(BLOCKCHAINS).includes(blockchain) 
+                  ? BLOCKCHAINS[blockchain]
+                  : BLOCKCHAINS["Other"]
+                }
+                width="30px"
+                height="30px"
+                borderRadius={blockchain == "TBA" ? "none" : "full"}
+              />
+            </Tooltip>
           </Flex>
 
           {/* Tagline */}
@@ -204,28 +211,6 @@ export default function DiscoveryCard({
           >
             {STAGES[stage]} {stage}
           </Text>
-
-          {/* Fundraising */}
-          {
-            fundraising == "yes"
-              ? null
-              : (
-                <Text
-                  padding="2px 8px"
-                  color="white"
-                  fontSize="16px"
-                  fontWeight="700"
-                  background="gray.700"
-                  border="1px solid transparent"
-                  borderRadius="10px"
-                  whiteSpace="nowrap"
-                  userSelect="none"
-                  transition="all 200ms ease-in-out"
-                >
-                  👋 Raising
-                </Text>
-              )
-          }
         </Flex>
       </Flex>
 

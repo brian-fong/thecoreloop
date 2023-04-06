@@ -50,11 +50,8 @@ export default function submit_project() {
     setPage(2);
   }
   function handleDisabled_Next(): boolean {
-    if (name && thumbnail) {
-      return false;
-    } else {
-      return true;
-    }
+    if (name && thumbnail) return false;
+    else return true;
   }
 
   return (

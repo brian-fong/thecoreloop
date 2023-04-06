@@ -1,5 +1,5 @@
 export const BLOCKCHAINS: any = {
-  "Open to blockchain partnerships": "https://cdn-icons-png.flaticon.com/512/5371/5371017.png",
+  "Open to blockchain partnerships": "https://cdn-icons-png.flaticon.com/512/3790/3790110.png",
   "Aptos"     : "https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_170,w_170,f_auto,b_white,q_auto:eco,dpr_1/phrevidpux9pokmmvecr",
   "Arbitrum"  : "https://pbs.twimg.com/profile_images/1490751860461953029/046qIxwT_400x400.jpg",
   "Avalanche" : "https://cryptologos.cc/logos/avalanche-avax-logo.png?v=024",
@@ -13,6 +13,6 @@ export const BLOCKCHAINS: any = {
   "Solana"    : "https://pbs.twimg.com/profile_images/1472933274209107976/6u-LQfjG_400x400.jpg",
   "Sui"       : "https://pbs.twimg.com/profile_images/1582380655027052544/dK8glmZ3_400x400.jpg",
   "Other"     : "https://em-content.zobj.net/thumbs/120/google/350/chains_26d3-fe0f.png",
-  "TBA"       : "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=",
+  "TBA"       : "https://em-content.zobj.net/thumbs/120/google/350/megaphone_1f4e3.png",
 }
 
