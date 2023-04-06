@@ -1,7 +1,6 @@
 // Components
 import { Flex } from "@chakra-ui/react";
 import Blockchain from "./Blockchain";
-import FundraisingIcon from "./FundraisingIcon";
 import Genres from "./Genres";
 import Name from "./Name";
 import Stage from "./Stage";

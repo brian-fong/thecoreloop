@@ -168,16 +168,7 @@ export default function Thumbnail({
         height="100%"
       >
         {content}
-        <Box
-          visibility={fundraising == "yes" ? "visible" : "hidden"}
-          position="absolute"
-          top="-5px"
-          left="-5px"
-          opacity={fundraising == "yes" ? "100%" : "0%"}
-          transition="all 200ms ease-in-out"
-        >
-          <FundraisingIcon style="emoji" />
-        </Box>
+        <FundraisingIcon fundraising={fundraising} />
       </Flex>
     </Flex>
   );
