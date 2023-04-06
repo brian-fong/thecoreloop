@@ -7,7 +7,7 @@ import {
 } from "@chakra-ui/react";
 
 export default function FundraisingIcon({ fundraising }: any) {
-  const fundraising_icon: string = "https://cdn-icons-png.flaticon.com/512/5292/5292572.png";
+  const fundraising_icon: string = "https://cdn-icons-png.flaticon.com/512/3588/3588711.png";
 
   return (
     <Tooltip
@@ -19,18 +19,18 @@ export default function FundraisingIcon({ fundraising }: any) {
       <Box
         visibility={fundraising == "yes" ? "visible" : "hidden"}
         position="absolute"
-        top="-5px"
-        left="-5px"
+        top="-10px"
+        right="-5px"
         opacity={fundraising == "yes" ? "100%" : "0%"}
         transition="all 200ms ease-in-out"
       >
         <Image
           src={fundraising_icon}
-          padding="2px"
-          width="32px"
-          height="32px"
-          background="gray.500"
-          borderRadius="full"
+          // padding="5px"
+          width="36px"
+          height="36px"
+          // background="gray.600"
+          // borderRadius="15px"
           transition="all 200ms ease-in-out"
         />
       </Box>

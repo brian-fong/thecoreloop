@@ -79,7 +79,7 @@ export default function InDepthForm({
         justifyContent="start"
         alignItems="center"
         gap="10px"
-        marginBottom="10px"
+        marginBottom="15px"
         width="100%"
       >
         {/* Thumbnail Image */}
@@ -105,7 +105,7 @@ export default function InDepthForm({
             gap="20px" 
             width="100%"
           >
-            <Flex alignItems={blockchain ? "center" : "end"} gap="10px">
+            <Flex alignItems="center" gap="10px">
               {/* Name */}
               <Name name={name} setName={setName} />
 
@@ -166,7 +166,7 @@ export default function InDepthForm({
         flexDirection="column"
         justifyContent="start"
         alignItems="center"
-        gap="40px"
+        gap="20px"
         width="100%"
         height="100%"
       >

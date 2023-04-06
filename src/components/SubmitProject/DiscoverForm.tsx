@@ -84,13 +84,7 @@ export default function DiscoverForm({
           gap={(name && tagline && blockchain) ? "0" : "10px"}
           width="100%"
         >
-          <Flex
-            flexDirection="row"
-            justifyContent="start"
-            alignItems="center"
-            gap="10px"
-            width="100%"
-          >
+          <Flex alignItems="center" gap="10px">
             {/* Name */}
             <Name name={name} setName={setName} />
 
