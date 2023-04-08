@@ -11,6 +11,7 @@ export default function Part2({
   blockchain, setBlockchain,
   description, setDescription,
   fundraising, setFundraising,
+  gallery, setGallery,
   genres, setGenres,
   isTeam,
   links, setLinks,
@@ -30,6 +31,7 @@ export default function Part2({
         blockchain={blockchain} setBlockchain={setBlockchain}
         description={description} setDescription={setDescription}
         fundraising={fundraising} setFundraising={setFundraising}
+        gallery={gallery} setGallery={setGallery}
         genres={genres} setGenres={setGenres}
         isTeam={isTeam}
         links={links} setLinks={setLinks}

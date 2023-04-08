@@ -20,9 +20,6 @@ import { useRef, useState } from 'react';
 // Types
 import { FormikErrors, FormikValues } from "formik";
 
-// Useful Constants
-import { BLOCKCHAINS } from "../../data/blockchains";
-
 // Formik validation
 const char_limit: number = 30;
 function validate(values: any, blockchain_selected: string) {
@@ -109,7 +106,7 @@ export default function BlockchainModal({
         borderRadius="10px"
       >
         <ModalBody
-          padding="8px 20px 30px"
+          padding="8px 20px 20px"
           width="100%"
           border="2px solid rgba(255, 255, 255, 0.7)"
           borderRadius="5px"
@@ -223,7 +220,7 @@ export default function BlockchainModal({
               flexDirection="row"
               justifyContent="end"
               alignItems="center"
-              marginTop="10px"
+              marginBottom={blockchain_selected == "Other" ? "20px" : "0"}
               width="100%"
               minHeight="21px"
             >
@@ -242,56 +239,23 @@ export default function BlockchainModal({
               justifyContent="end"
               alignItems="center"
               gap="30px"
-              marginTop="20px"
               width="100%"
             >
               <Button
+                variant="standard"
+                color="white"
+                fontWeight="bold"
                 background="red.400"
-                boxShadow={`
-                  1px 1px 1px gray,
-                  2px 2px 1px gray,
-                  3px 3px 1px gray,
-                  4px 4px 1px gray
-                `}
-                transition="all 100ms ease-in-out"
-                _hover={{
-                  filter: "brightness(0.8)",
-                  boxShadow: `
-                    1px 1px 1px gray,
-                    2px 2px 1px gray
-                  `,
-                }}
-                _active={{
-                  filter: "brightness(0.5)",
-                  boxShadow: "none",
-                  transform: "translate(3px, 3px)",
-                }}
                 onClick={handleCancel}
               >
                 Cancel
               </Button>
               <Button
                 type="submit"
+                variant="standard"
+                color="white"
+                fontWeight="bold"
                 background="green.400"
-                boxShadow={`
-                  1px 1px 1px gray,
-                  2px 2px 1px gray,
-                  3px 3px 1px gray,
-                  4px 4px 1px gray
-                `}
-                transition="all 100ms ease-in-out"
-                _hover={{
-                  filter: "brightness(0.8)",
-                  boxShadow: `
-                    1px 1px 1px gray,
-                    2px 2px 1px gray
-                  `,
-                }}
-                _active={{
-                  filter: "brightness(0.5)",
-                  boxShadow: "none",
-                  transform: "translate(3px, 3px)",
-                }}
                 isDisabled={!formik.isValid}
               >
                 Save

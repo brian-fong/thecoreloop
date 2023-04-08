@@ -3,11 +3,11 @@ import {
   Box,
   Flex,
   Text,
-  useDisclosure,
 } from "@chakra-ui/react";
 import DescriptionModal from "./DescriptionModal";
 
 //Hooks
+import { useDisclosure } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
 // Types
@@ -69,7 +69,6 @@ export default function Description({ description, setDescription }: any) {
             height="100%"
             color="white"
             fontSize="16px"
-            fontWeight="700"
             border="1px solid transparent"
             cursor="pointer"
             transition="all 200ms ease-in-out"

@@ -1,6 +1,5 @@
 // Components
 import {
-  Box,
   Flex,
   Image,
   Text,

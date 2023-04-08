@@ -3,12 +3,10 @@ import {
   Flex,
   Text,
 } from "@chakra-ui/react";
-import {
-  MdOutlineAddPhotoAlternate as AddImageIcon,
-} from "react-icons/md";
 import Blockchain from "./Blockchain";
 import Description from "./Description";
 import FundraisingIcon from "./FundraisingIcon";
+import Gallery from "./Gallery";
 import Genres from "./Genres";
 import Links from "./Links";
 import Name from "./Name";
@@ -24,6 +22,7 @@ export default function InDepthForm({
   blockchain, setBlockchain,
   description, setDescription,
   fundraising,
+  gallery, setGallery,
   genres, setGenres,
   links, setLinks,
   name, setName,
@@ -178,37 +177,10 @@ export default function InDepthForm({
         />
 
         {/* Gallery */}
-        <Flex
-          flexDirection="row"
-          justifyContent="center"
-          alignItems="center"
-          width="100%"
-          height="100%"
-          minHeight="400px"
-          maxHeight="400px"
-          border="1px solid white"
-          borderRadius="5px"
-          cursor="pointer"
-          transition="background 200ms ease-in-out"
-          _hover={{ background: "rgba(255, 255, 255, 0.1)" }}
-        >
-          <Flex 
-            flexDirection="column"
-            justifyContent="center"
-            alignItems="center"
-            gap="20px"
-          >
-            <AddImageIcon size="50px" />
-            <Flex alignItems="center" gap="10px" userSelect="none">
-              <Text fontSize="16px">
-                🖼️
-              </Text>
-              <Text fontSize="16px">
-                &lt;gallery_images&gt;
-              </Text>
-            </Flex>
-          </Flex>
-        </Flex>
+        <Gallery
+          gallery={gallery}
+          setGallery={setGallery}
+        />
 
         <hr 
           style={{
