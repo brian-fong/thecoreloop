@@ -37,22 +37,24 @@ export default function Genres({
           border="1px solid transparent"
           borderRadius="10px"
           cursor="pointer"
+          userSelect="none"
+          transition="all 200ms ease-in-out"
+          _hover={{ 
+            padding: "2px 12px",
+            background: "rgba(0, 0, 0, 0.4)",
+            border: "1px solid white",
+            borderRadius: "5px",
+          }}
         >
           <Text
             color="white"
             fontSize="16px"
             fontWeight="700"
-            transition="all 200ms ease-in-out"
-            _hover={{ 
-              padding: "0 8px",
-              background: "rgba(0, 0, 0, 0.4)",
-              border: "1px solid white",
-              borderRadius: "5px",
-            }}
-            userSelect="none"
           >
             🏷️ {genres[0]}
           </Text>
+
+          {/* Display +1 or +2 for additional genres */}
           {genres.length > 1
             ?
             <Tooltip
@@ -64,9 +66,9 @@ export default function Genres({
             >
               <Text
                 marginLeft="5px"
-                padding="2px 4px"
+                padding="0 4px"
                 color="white"
-                fontSize="14px"
+                fontSize="16px"
                 fontWeight="700"
                 background="rgba(0, 0, 0, 0.3)"
                 borderRadius="7px"
@@ -91,7 +93,7 @@ export default function Genres({
           cursor="pointer"
           transition="all 200ms ease-in-out"
           _hover={{ 
-            padding: "4px 8px",
+            padding: "2px 12px",
             background: "rgba(0, 0, 0, 0.4)",
             border: "1px solid white",
             borderRadius: "5px",
@@ -106,7 +108,7 @@ export default function Genres({
 
   useEffect(() => {
     if (genres.length == 0) {
-      // Display placeholder for name
+      // Display placeholder for genres
       setContent(
         <Text
           display="flex"

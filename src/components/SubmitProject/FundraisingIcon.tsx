@@ -1,5 +1,8 @@
+// Components
 import {
+  Box,
   Image,
+  Text,
   Tooltip,
 } from "@chakra-ui/react";
 
@@ -8,22 +11,30 @@ export default function FundraisingIcon({ fundraising }: any) {
 
   return (
     <Tooltip
-      label="This project is currently fundraising" 
-      whiteSpace="nowrap"
+      label="Currently fundraising"
       placement="top-start"
-      visibility={fundraising == "yes" ? "visible" : "hidden"}
-      offset={[10, 12]}
-      arrowSize={15}
+      arrowSize={12}
       hasArrow
     >
-      <Image
-        src={fundraising_icon}
-        width="30px"
-        height="30px"
+      <Box
+        visibility={fundraising == "yes" ? "visible" : "hidden"}
+        position="absolute"
+        top="-10px"
+        right="-5px"
         opacity={fundraising == "yes" ? "100%" : "0%"}
-        transition="all 300ms ease-in-out"
-      />
+        transition="all 200ms ease-in-out"
+      >
+        <Image
+          src={fundraising_icon}
+          // padding="5px"
+          width="36px"
+          height="36px"
+          // background="gray.600"
+          // borderRadius="15px"
+          transition="all 200ms ease-in-out"
+        />
+      </Box>
     </Tooltip>
-  )
+  );
 }
 

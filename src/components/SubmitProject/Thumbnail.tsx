@@ -1,13 +1,11 @@
 // Components
 import {
-  Box,
   Flex,
   Image,
   Text,
 } from "@chakra-ui/react";
-import {
-  MdOutlineAddAPhoto as AddThumbnailIcon,
-} from "react-icons/md";
+import { MdOutlineAddAPhoto as AddThumbnailIcon } from "react-icons/md";
+import FundraisingIcon from "./FundraisingIcon";
 
 // Types
 import { DropzoneOptions } from "react-dropzone";
@@ -19,6 +17,7 @@ import { useEffect, useRef, useState } from "react";
 
 export default function Thumbnail({ 
   image_width, image_height,
+  fundraising,
   thumbnail, setThumbnail,
 }: any) {
   // Ref
@@ -34,8 +33,9 @@ export default function Thumbnail({
     accept: {
       "image/*": [],
     },
-    onDrop: files => {
-      setFiles(files.map(file => Object.assign(file, {
+    onDrop: files_inputted => {
+      console.log("Files: ", files_inputted);
+      setFiles(files_inputted.map(file => Object.assign(file, {
         preview: URL.createObjectURL(file)
       })));
     },
@@ -46,14 +46,14 @@ export default function Thumbnail({
   // Mouse Event Handlers
   function handleMouseOver() {
     image_ref.current.style.filter = "brightness(0.5)";
-    image_ref.current.style.borderRadius = "50%";
-    image_ref.current.style.border = "1px solid white";
+    // image_ref.current.style.borderRadius = "50%";
+    icon_container_ref.current.style.border = "1px solid white";
     icon_container_ref.current.style.opacity = "100%";
   }
   function handleMouseLeave() {
     image_ref.current.style.filter = "brightness(1.0)";
-    image_ref.current.style.borderRadius = "5px";
-    image_ref.current.style.border = "none";
+    // image_ref.current.style.borderRadius = "5px";
+    icon_container_ref.current.style.border = "1px solid transparent";
     icon_container_ref.current.style.opacity = "0%";
   }
 
@@ -68,13 +68,13 @@ export default function Thumbnail({
       // Display placeholder for thumbnail
       setContent(
         <Flex
-          flexDirection="row"
+          flexDirection="column"
           justifyContent="center"
           alignItems="center"
-          width="100%"
-          height="100%"
+          width={image_width}
+          height={image_height}
           border="1px solid white"
-          borderRadius="5px"
+          borderRadius="full"
           cursor="pointer"
           userSelect="none"
           transition="all 200ms ease-in-out"
@@ -83,26 +83,16 @@ export default function Thumbnail({
             background: "rgba(0, 0, 0, 0.4)",
           }}
         >
-          <Flex
-            flexDirection="column"
-            justifyContent="center"
-            alignItems="center"
-            width={image_width}
-            height={image_height}
-            border="1px dashed white"
-            borderRadius="50%"
+          <Text 
+            ref={icon_container_ref} 
+            fontSize="25px"
+            textAlign="center"
           >
-            <Text 
-              ref={icon_container_ref} 
-              fontSize="25px"
-              textAlign="center"
-            >
-              📷
-            </Text>
-            <Text width="100%" fontSize="14px" textAlign="center">
-              &lt;image&gt;
-            </Text>
-          </Flex>
+            📷
+          </Text>
+          <Text width="100%" fontSize="14px" textAlign="center">
+            &lt;image&gt;
+          </Text>
         </Flex>
       )
     } else {
@@ -112,28 +102,28 @@ export default function Thumbnail({
           flexDirection="row"
           justifyContent="center"
           alignItems="center"
-          border="1px solid transparent"
           cursor="pointer"
           userSelect="none"
           transition="all 300ms ease-in-out"
-          _hover={{
-            padding: "0",
-            background: "rgba(0, 0, 0, 0.4)",
-            border: "1px solid white",
-            borderRadius: "5px",
-          }}
           onMouseOver={handleMouseOver}
           onMouseLeave={handleMouseLeave}
         >
-          <Box 
+          <Flex 
             ref={icon_container_ref} 
+            flexDirection="column"
+            justifyContent="center"
+            alignItems="center"
             position="absolute" 
+            width="100%"
+            height="100%"
+            border="1px solid transparent"
+            borderRadius="100%"
             opacity="0%"
             transition="opacity 300ms ease-in-out"
             zIndex={1}
           >
             <AddThumbnailIcon color="white" size="28px" />
-          </Box>
+          </Flex>
           <Image
             ref={image_ref}
             src={thumbnail}
@@ -142,7 +132,7 @@ export default function Thumbnail({
             minWidth={image_width}
             height={image_height}
             minHeight={image_height}
-            borderRadius="5px"
+            borderRadius="full"
             transition="all 300ms ease-in-out"
             zIndex={0}
             // onLoad={() => { 
@@ -162,17 +152,24 @@ export default function Thumbnail({
   }, []);
 
   return (
-    <div 
+    <Flex
       id="thumbnail-dropzone" 
       {...getRootProps({ className: "dropzone" })}
-      style={{
-        width: image_width,
-        height: image_height,
-      }}
+      style={{ width: image_width, height: image_height }}
     >
       <input {...getInputProps()} />
-      {content}
-    </div>
+      <Flex
+        flexDirection="column"
+        justifyContent="center"
+        alignItems="center"
+        position="relative"
+        width="100%"
+        height="100%"
+      >
+        {content}
+        <FundraisingIcon fundraising={fundraising} />
+      </Flex>
+    </Flex>
   );
 }
 

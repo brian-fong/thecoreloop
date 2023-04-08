@@ -32,10 +32,8 @@ function validate(values: any) {
 }
 
 export default function DescriptionModal({ 
-  description,
-  setDescription,
-  isOpen,
-  onClose
+  isOpen, onClose,
+  description, setDescription,
 }: any) {
   // Refs
   const input_ref = useRef<any>();
@@ -79,7 +77,12 @@ export default function DescriptionModal({
   }
 
   return (
-    <Modal isOpen={isOpen} onClose={handleCancel} isCentered>
+    <Modal
+      isOpen={isOpen}
+      onClose={handleCancel}
+      closeOnOverlayClick={false}
+      isCentered
+    >
       <ModalOverlay />
       <ModalContent
         display="flex"
@@ -95,7 +98,7 @@ export default function DescriptionModal({
         borderRadius="10px"
       >
         <ModalBody
-          padding="8px 20px 30px"
+          padding="8px 20px 20px"
           width="100%"
           border="2px solid rgba(255, 255, 255, 0.7)"
           borderRadius="5px"
@@ -201,52 +204,20 @@ export default function DescriptionModal({
               width="100%"
             >
               <Button
+                variant="standard"
+                color="white"
+                fontWeight="bold"
                 background="red.400"
-                boxShadow={`
-                  1px 1px 1px gray,
-                  2px 2px 1px gray,
-                  3px 3px 1px gray,
-                  4px 4px 1px gray
-                `}
-                transition="all 100ms ease-in-out"
-                _hover={{
-                  filter: "brightness(0.8)",
-                  boxShadow: `
-                    1px 1px 1px gray,
-                    2px 2px 1px gray
-                  `,
-                }}
-                _active={{
-                  filter: "brightness(0.5)",
-                  boxShadow: "none",
-                  transform: "translate(3px, 3px)",
-                }}
                 onClick={handleCancel}
               >
                 Cancel
               </Button>
               <Button
                 type="submit"
+                variant="standard"
+                color="white"
+                fontWeight="bold"
                 background="green.400"
-                boxShadow={`
-                  1px 1px 1px gray,
-                  2px 2px 1px gray,
-                  3px 3px 1px gray,
-                  4px 4px 1px gray
-                `}
-                transition="all 100ms ease-in-out"
-                _hover={{
-                  filter: "brightness(0.8)",
-                  boxShadow: `
-                    1px 1px 1px gray,
-                    2px 2px 1px gray
-                  `,
-                }}
-                _active={{
-                  filter: "brightness(0.5)",
-                  boxShadow: "none",
-                  transform: "translate(3px, 3px)",
-                }}
                 isDisabled={!formik.isValid}
               >
                 Save

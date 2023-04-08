@@ -33,7 +33,7 @@ import {
 import LinkIcon from './LinkIcon';
 
 // Hooks
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function LinksModal({
   links, setLinks,
@@ -264,7 +264,8 @@ export default function LinksModal({
 
           {/* Add-Link Button */}
           <Flex justifyContent="center" width="100%">
-            <Flex
+            <Button
+              display="flex"
               flexDirection="row"
               justifyContent="center"
               alignItems="center"
@@ -276,6 +277,7 @@ export default function LinksModal({
               borderRadius="5px"
               cursor="pointer" 
               userSelect="none"
+              isDisabled={links_inputted.length == 5}
               onClick={addLink}
               transition="all 200ms ease-in-out"
               _hover={{
@@ -284,7 +286,7 @@ export default function LinksModal({
               }}
             >
               <PlusIcon size="30px" />
-            </Flex>
+            </Button>
           </Flex>
 
 

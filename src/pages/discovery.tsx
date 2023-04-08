@@ -14,7 +14,7 @@ import { useState, useEffect, ReactElement } from "react";
 
 // Useful Functions & Constants
 import uuid from "react-uuid";
-const [image_width, image_height]: [string, string] = ["100px", "100px"];
+const [image_width, image_height]: [string, string] = ["110px", "110px"];
 function getRandInt(a: number, b: number): number {
   return Math.round(Math.random() * (b-a)) + a;
 }
@@ -41,7 +41,7 @@ export default function discovery() {
           key={uuid()}
           image_width={image_width} image_height={image_height}
           blockchain={entry.blockchain}
-          fundraising={getRandBool(0.75)}
+          fundraising={getRandBool(0.40)}
           genres={entry.genres}
           name={entry.name}
           stage={entry.stage}
@@ -60,7 +60,7 @@ export default function discovery() {
         <link 
           rel="icon" 
           type="image/x-icon" 
-          href="/thecoreloop-favicon.png" 
+          href="/thecoreloop-favicon.png"
         />
         <meta name="viewport" content="viewport-fit=cover" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -74,7 +74,6 @@ export default function discovery() {
         alignItems="center"
         position="relative"
         width="100%"
-        minWidth="800px"
         minHeight="100vh"
         color="white"
       >
@@ -87,6 +86,7 @@ export default function discovery() {
           flexDirection="column"
           justifyContent="start"
           alignItems="center"
+          padding="0 30px 30px"
           width="100%"
           height="100%"
         >
@@ -99,48 +99,46 @@ export default function discovery() {
             maxWidth="800"
             height="100%"
           >
-            {/* Popular & Latest Container */}
+            {/* Popular | Latest Buttons */}
             <Flex
+              id="content-mode-container"
               flexDirection="row"
-              justifyContent="space-between"
+              justifyContent="center"
               alignItems="center"
-              width="100%"
+              gap="10px"
+              marginLeft="auto"
             >
-              <Heading
-                fontSize="20px"
+              <Text
+                fontSize="1.2rem"
                 fontWeight="800"
               >
-                Discover tomorrow's gaming startups, today
-              </Heading>
-              <Flex
-                id="content-mode-container"
-                flexDirection="row"
-                justifyContent="center"
-                alignItems="center"
-                gap="10px"
+                POPULAR
+              </Text>
+              <Text
+                color="rgba(255, 255, 255, 0.5)"
+                fontSize="2rem"
+                fontWeight="300"
               >
-                <Text
-                  fontSize="1.2rem"
-                  fontWeight="800"
-                >
-                  POPULAR
-                </Text>
-                <Text
-                  color="rgba(255, 255, 255, 0.5)"
-                  fontSize="2rem"
-                  fontWeight="300"
-                >
-                  |
-                </Text>
-                <Text
-                  color="rgba(255, 255, 255, 0.5)"
-                  fontSize="1.2rem"
-                  fontWeight="800"
-                >
-                  LATEST
-                </Text>
-              </Flex>
+                |
+              </Text>
+              <Text
+                color="rgba(255, 255, 255, 0.5)"
+                fontSize="1.2rem"
+                fontWeight="800"
+              >
+                LATEST
+              </Text>
             </Flex>
+
+            {/* Popular & Latest Container */}
+            <Heading
+              fontSize="20px"
+              fontWeight="800"
+              width="100%"
+            >
+              Discover tomorrow's gaming startups, today
+            </Heading>
+
 
             {/* Card Gallery */}
             <Flex

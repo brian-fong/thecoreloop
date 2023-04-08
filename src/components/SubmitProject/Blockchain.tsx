@@ -44,8 +44,8 @@ export default function Blockchain({ blockchain, setBlockchain }: any) {
           justifyContent="center"
           alignItems="center"
           gap="10px"
-          padding="4px 8px"
-          fontSize="16px"
+          padding="2px 4px"
+          fontSize="14px"
           border="1px solid white"
           borderRadius="5px"
           cursor="pointer"
@@ -61,12 +61,14 @@ export default function Blockchain({ blockchain, setBlockchain }: any) {
         </Text>
       );
     } else {
-      // Display user-inputted name
+      // Display user-inputted blockchain
       setContent(
         <Tooltip 
-          label={blockchain}
-          placement="top"
-          offset={[10, 12]}
+          label={blockchain == "TBA"
+            ? "Blockchain to be announced"
+            : blockchain
+          }
+          placement="right-start"
           arrowSize={12}
           hasArrow
         >
@@ -75,7 +77,7 @@ export default function Blockchain({ blockchain, setBlockchain }: any) {
             cursor="pointer"
             transition="all 200ms ease-in-out"
             _hover={{
-              padding:"2px",
+              padding:"0 8px",
               border: "1px solid white",
               borderRadius: "5px",
               filter: "brightness(0.8)",
@@ -88,7 +90,7 @@ export default function Blockchain({ blockchain, setBlockchain }: any) {
               }
               width="30px"
               height="30px"
-              borderRadius="full"
+              borderRadius={blockchain == "TBA" ? "none" : "full"}
             />
           </Box>
         </Tooltip>

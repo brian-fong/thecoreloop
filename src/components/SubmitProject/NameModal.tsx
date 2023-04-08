@@ -20,7 +20,7 @@ import { useRef, useState } from 'react';
 import { FormikErrors, FormikValues } from "formik";
 
 // Formik validation
-const char_limit: number = 20;
+const char_limit: number = 30;
 function validate(values: any) {
   const errors: FormikErrors<FormikValues> = {};
 
@@ -92,7 +92,7 @@ export default function NameModal({ name, setName, isOpen, onClose }: any) {
         borderRadius="10px"
       >
         <ModalBody
-          padding="8px 20px 30px"
+          padding="8px 20px 20px"
           width="100%"
           border="2px solid rgba(255, 255, 255, 0.7)"
           borderRadius="5px"
@@ -199,55 +199,23 @@ export default function NameModal({ name, setName, isOpen, onClose }: any) {
               width="100%"
             >
               <Button
+                variant="standard"
+                color="white"
+                fontWeight="bold"
                 background="red.400"
-                boxShadow={`
-                  1px 1px 1px gray,
-                  2px 2px 1px gray,
-                  3px 3px 1px gray,
-                  4px 4px 1px gray
-                `}
-                transition="all 100ms ease-in-out"
-                _hover={{
-                  filter: "brightness(0.8)",
-                  boxShadow: `
-                    1px 1px 1px gray,
-                    2px 2px 1px gray
-                  `,
-                }}
-                _active={{
-                  filter: "brightness(0.5)",
-                  boxShadow: "none",
-                  transform: "translate(3px, 3px)",
-                }}
                 onClick={handleCancel}
               >
-                Cancel
+                CANCEL
               </Button>
               <Button
                 type="submit"
+                variant="standard"
+                color="white"
+                fontWeight="bold"
                 background="green.400"
-                boxShadow={`
-                  1px 1px 1px gray,
-                  2px 2px 1px gray,
-                  3px 3px 1px gray,
-                  4px 4px 1px gray
-                `}
-                transition="all 100ms ease-in-out"
-                _hover={{
-                  filter: "brightness(0.8)",
-                  boxShadow: `
-                    1px 1px 1px gray,
-                    2px 2px 1px gray
-                  `,
-                }}
-                _active={{
-                  filter: "brightness(0.5)",
-                  boxShadow: "none",
-                  transform: "translate(3px, 3px)",
-                }}
                 isDisabled={!formik.isValid}
               >
-                Save
+                SAVE
               </Button>
             </Flex>
           </form>

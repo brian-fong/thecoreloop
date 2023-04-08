@@ -6,6 +6,7 @@ export default function useProjectState() {
   const [contributors, setContributors] = useState<any[]>([]);
   const [description, setDescription] = useState<string>("");
   const [fundraising, setFundraising] = useState<string>("undisclosed");
+  const [gallery, setGallery] = useState<any[]>([]);
   const [genres, setGenres] = useState<string[]>([]);
   const [images, setImages] = useState<any[]>([]);
   const [links, setLinks] = useState<string[]>([""]);
@@ -21,6 +22,7 @@ export default function useProjectState() {
     contributors, setContributors,
     description, setDescription,
     fundraising, setFundraising,
+    gallery, setGallery,
     genres, setGenres,
     images, setImages,
     links, setLinks,

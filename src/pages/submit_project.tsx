@@ -20,13 +20,14 @@ import useProjectState from "../hooks/useProjectState";
 
 export default function submit_project() {
   // Constants: Thumbnail Image Size
-  const [image_width, image_height]: [string, string] = ["125px", "125px"];
+  const [image_width, image_height]: [string, string] = ["115px", "115px"];
 
   // State variables
   const {
     blockchain, setBlockchain,
     description, setDescription,
     fundraising, setFundraising,
+    gallery, setGallery,
     genres, setGenres,
     isTeam, setIsTeam,
     links, setLinks,
@@ -50,11 +51,8 @@ export default function submit_project() {
     setPage(2);
   }
   function handleDisabled_Next(): boolean {
-    if (name && thumbnail) {
-      return false;
-    } else {
-      return true;
-    }
+    if (name && thumbnail) return false;
+    else return true;
   }
 
   return (
@@ -206,6 +204,7 @@ export default function submit_project() {
                 blockchain={blockchain} setBlockchain={setBlockchain}
                 description={description} setDescription={setDescription}
                 fundraising={fundraising} setFundraising={setFundraising}
+                gallery={gallery} setGallery={setGallery}
                 genres={genres} setGenres={setGenres}
                 isTeam={isTeam}
                 links={links} setLinks={setLinks}

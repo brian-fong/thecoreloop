@@ -1,7 +1,6 @@
 // Components
 import { Flex } from "@chakra-ui/react";
 import Blockchain from "./Blockchain";
-import FundraisingIcon from "./FundraisingIcon";
 import Genres from "./Genres";
 import Name from "./Name";
 import Stage from "./Stage";
@@ -65,6 +64,7 @@ export default function DiscoverForm({
       {/* Thumbnail Image */}
       <Thumbnail
         image_width={image_width} image_height={image_height}
+        fundraising={fundraising}
         thumbnail={thumbnail} setThumbnail={setThumbnail} 
       />
 
@@ -74,19 +74,17 @@ export default function DiscoverForm({
         flexDirection="column"
         justifyContent="space-between"
         alignItems="start"
+        gap={(name && tagline && blockchain) ? "0" : "10px"}
         width="100%"
         height="100%"
         minHeight={image_height}
       >
         <Flex
-          flexDirection="row"
-          justifyContent="start"
-          // justifyContent="space-between"
-          alignItems="start"
-          gap="20px"
+          flexDirection="column"
+          gap={(name && tagline && blockchain) ? "0" : "10px"}
           width="100%"
         >
-          <Flex alignItems={blockchain ? "center" : "end"} gap="10px">
+          <Flex alignItems="center" gap="10px">
             {/* Name */}
             <Name name={name} setName={setName} />
 
@@ -97,21 +95,20 @@ export default function DiscoverForm({
             />
           </Flex>
 
-          {/* Fundraising */}
-          <FundraisingIcon fundraising={fundraising} />
+          <Tagline
+            tagline={tagline}
+            setTagline={setTagline}
+          />
         </Flex>
 
-        <Tagline
-          tagline={tagline}
-          setTagline={setTagline}
-        />
-
-        <Flex flexDirection="row" alignItems="start" gap="10px">
+        <Flex gap="10px" width="100%">
+          {/* Genres */}
           <Genres
             genres={genres}
             setGenres={setGenres}
           />
 
+          {/* Stage */}
           <Stage 
             stage={stage} setStage={setStage}
           />

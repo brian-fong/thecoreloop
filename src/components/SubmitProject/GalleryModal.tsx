@@ -8,29 +8,23 @@ import {
   ModalBody,
   ModalContent,
   ModalOverlay,
+  Text,
+  Textarea,
 } from '@chakra-ui/react'
-import StagePopover from "./StagePopover";
 
-export default function StageModal({
-  stage, setStage,
-  stage_selected, setStageSelected,
+export default function GalleryModal({
   isOpen, onClose,
+  gallery, setGallery,
 }: any) {
 
   function handleCancel() {
-    setStageSelected(stage) // Reset selected state to official stage
-    onClose();              // Close NameModal
-  }
-
-  function handleSave() {
-    setStage(stage_selected); // Update official stage state variable
     onClose();
   }
 
   return (
-    <Modal 
-      isOpen={isOpen} 
-      onClose={handleCancel} 
+    <Modal
+      isOpen={isOpen}
+      onClose={handleCancel}
       closeOnOverlayClick={false}
       isCentered
     >
@@ -54,42 +48,22 @@ export default function StageModal({
           border="2px solid rgba(255, 255, 255, 0.7)"
           borderRadius="5px"
         >
-            {/* Container: Heading */}
-            <Flex justifyContent="center" width="100%">
-              <Heading
-                position="relative"
-                bottom="18px"
-                padding="0 20px"
-                fontSize="20px"
-                textAlign="center"
-                whiteSpace="nowrap"
-                background="#282a36"
-              >
-                Development Stage
-              </Heading>
-            </Flex>
-
-            <Flex
-              flexDirection="column"
-              justifyContent="start"
-              alignItems="start"
-              gap="10px"
-              width="100%"
+          {/* Container: Heading */}
+          <Flex justifyContent="center" width="100%">
+            <Heading
+              position="relative"
+              bottom="18px"
+              padding="0 20px"
+              fontSize="20px"
+              textAlign="center"
+              whiteSpace="nowrap"
+              background="#282a36"
             >
-              <FormLabel
-                htmlFor="blockchain-name"
-                margin="0"
-                whiteSpace="nowrap"
-              >
-                What stage of development is this project in?
-              </FormLabel>
+              Gallery
+            </Heading>
+          </Flex>
 
-              <StagePopover
-                stage={stage} setStage={setStage}
-                stage_selected={stage_selected}
-                setStageSelected={setStageSelected}
-              />
-            </Flex>
+
 
           <Flex
             flexDirection="row"
@@ -114,7 +88,6 @@ export default function StageModal({
               color="white"
               fontWeight="bold"
               background="green.400"
-              onClick={handleSave}
             >
               Save
             </Button>

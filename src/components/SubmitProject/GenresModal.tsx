@@ -77,7 +77,7 @@ export default function GenresModal({
         borderRadius="10px"
       >
         <ModalBody
-          padding="8px 20px 30px"
+          padding="8px 20px 20px"
           width="100%"
           border="2px solid rgba(255, 255, 255, 0.7)"
           borderRadius="5px"
@@ -132,51 +132,27 @@ export default function GenresModal({
               justifyContent="end"
               alignItems="center"
               gap="30px"
-              marginTop="20px"
+              marginTop="30px"
               width="100%"
             >
               <Button
+                variant="standard"
+                color="white"
+                fontWeight="bold"
                 background="red.400"
-                boxShadow={`
-                  1px 1px 1px gray,
-                  2px 2px 1px gray,
-                  3px 3px 1px gray,
-                  4px 4px 1px gray
-                `}
-                transition="all 100ms ease-in-out"
-                _hover={{
-                  filter: "brightness(0.8)",
-                }}
-                _active={{
-                  filter: "brightness(0.5)",
-                  boxShadow: "none",
-                  transform: "translate(3px, 3px)",
-                }}
                 onClick={handleCancel}
               >
-                Cancel
+                CANCEL
               </Button>
               <Button
                 type="submit"
+                variant="standard"
+                color="white"
+                fontWeight="bold"
                 background="green.400"
-                boxShadow={`
-                  1px 1px 1px gray,
-                  2px 2px 1px gray,
-                  3px 3px 1px gray,
-                  4px 4px 1px gray
-                `}
-                transition="all 100ms ease-in-out"
-                _hover={{
-                  filter: "brightness(0.8)",
-                }}
-                _active={{
-                  filter: "brightness(0.5)",
-                  boxShadow: "none",
-                  transform: "translate(3px, 3px)",
-                }}
                 isDisabled={!formik.isValid}
               >
-                Save
+                SAVE
               </Button>
             </Flex>
           </form>

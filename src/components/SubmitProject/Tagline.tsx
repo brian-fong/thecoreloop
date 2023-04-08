@@ -31,6 +31,7 @@ export default function Tagline({ tagline, setTagline }: any) {
           padding="4px 8px"
           width="100%"
           height="100%"
+          minHeight="42px"
           fontSize="16px"
           border="1px solid white"
           borderRadius="5px"
@@ -52,6 +53,7 @@ export default function Tagline({ tagline, setTagline }: any) {
           padding="0"
           width="100%"
           height="100%"
+          minHeight="42px"
           color="white"
           fontSize="16px"
           lineHeight="5"
@@ -62,10 +64,8 @@ export default function Tagline({ tagline, setTagline }: any) {
           cursor="pointer"
           userSelect="none"
           transition="all 200ms ease-in-out"
-          _hover={{ 
-            margin: "10px 0",
-            padding: "4px 8px",
-            fontSize: "14px",
+          _hover={{
+            padding: "2px 4px",
             background: "rgba(0, 0, 0, 0.4)",
             border: "1px solid white",
             borderRadius: "5px",

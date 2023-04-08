@@ -13,7 +13,11 @@ import {
   FaMediumM as MediumIcon,
 } from "react-icons/fa";
 import {
+  SiAppstore as AppstoreIcon,
+  SiGoogleplay as PlaystoreIcon,
+  SiLinktree as LinktreeIcon,
   SiSubstack as SubstackIcon,
+  SiTiktok as TiktokIcon,
 } from "react-icons/si";
 
 // Useful Constants
@@ -31,46 +35,34 @@ export default function LinkIcon({ url, size }: any) {
   }
 
   switch (website_found) {
+    case "appstore":
+      return <AppstoreIcon size={size} />;
     case "discord":
-      return (
-        <DiscordIcon size={size} />
-      );
+      return <DiscordIcon size={size} />;
     case "facebook":
-      return (
-        <FacebookIcon size={size} />
-      );
+      return <FacebookIcon size={size} />;
     case "instagram":
-      return (
-        <InstagramIcon size={size} />
-      );
+      return <InstagramIcon size={size} />;
     case "linkedin":
-      return (
-        <LinkedinIcon size={size} />
-      );
+      return <LinkedinIcon size={size} />;
+    case "linktree":
+      return <LinktreeIcon size={size} />;
     case "medium":
-      return (
-        <MediumIcon size={size} />
-      );
+      return <MediumIcon size={size} />;
+    case "playstore":
+      return <PlaystoreIcon size={size} />;
     case "substack":
-      return (
-        <SubstackIcon size={size} />
-      );
+      return <SubstackIcon size={size} />;
+    case "tiktok": 
+      return <TiktokIcon size={size} />;
     case "telegram":
-      return (
-        <TelegramIcon size={size} />
-      );
+      return <TelegramIcon size={size} />;
     case "twitter":
-      return (
-        <TwitterIcon size={size} />
-      );
+      return <TwitterIcon size={size} />;
     case "youtube":
-      return (
-        <YoutubeIcon size={size} />
-      );
+      return <YoutubeIcon size={size} />;
     default:
-      return (
-        <WebIcon size={size} />
-      );
+      return <WebIcon size={size} />;
   }
 }
 

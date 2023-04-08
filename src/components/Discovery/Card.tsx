@@ -7,6 +7,7 @@ import {
   Tooltip,
 } from "@chakra-ui/react";
 import { VscTriangleUp as UpvoteIcon } from "react-icons/vsc";
+import FundraisingIcon from "../SubmitProject/FundraisingIcon";
 
 // Hooks
 import { useDisclosure } from "@chakra-ui/react";
@@ -14,8 +15,6 @@ import { useDisclosure } from "@chakra-ui/react";
 // Useful Constants & Functions
 import { STAGES } from "../../data/stages";
 import { BLOCKCHAINS } from "../../data/blockchains";
-const fundraising_icon: string = "https://cdn-icons-png.flaticon.com/512/3588/3588711.png";
-
 
 export default function DiscoveryCard({
   image_width, image_height,
@@ -44,19 +43,21 @@ export default function DiscoveryCard({
       alignItems="center"
       gap="10px"
       width="100%"
+      minWidth="600px"
       height="100%"
       transition="all 200ms ease-in-out"
     >
       {/* Thumbnail Image */}
-      <Box id="left-container">
+      <Box id="left-container" position="relative">
         <Image
           src={thumbnail}
           width={image_width}
           minWidth={image_width}
           height={image_height}
           minHeight={image_height}
-          borderRadius="5px"
+          borderRadius="full"
         />
+        <FundraisingIcon fundraising={fundraising} />
       </Box>
 
       <Flex
@@ -68,65 +69,46 @@ export default function DiscoveryCard({
         height="100%"
         minHeight={image_height}
       >
-        <Flex flexDirection="column">
+        <Flex flexDirection="column" width="100%">
           <Flex
             flexDirection="row"
             justifyContent="start"
-            alignItems="end"
+            alignItems="center"
             gap="20px"
             width="100%"
+            minHeight="32px"
           >
-            <Flex alignItems="center" gap="10px">
-              {/* Name */}
-              <Text
-                padding="0"
-                color="white"
-                fontSize="20px"
-                fontWeight="700"
-                lineHeight="none"
-                border="1px solid transparent"
-                whiteSpace="nowrap"
-                transition="all 200ms ease-in-out"
-              >
-                {name}
-              </Text>
-
-              {/* Blockchain */}
-              <Tooltip 
-                label={blockchain}
-                placement="top"
-                offset={[10, 12]}
-                arrowSize={12}
-                hasArrow
-              >
-                <Image
-                  src={Object.keys(BLOCKCHAINS).includes(blockchain) 
-                    ? BLOCKCHAINS[blockchain]
-                    : BLOCKCHAINS["Other"]
-                  }
-                  width="30px"
-                  height="30px"
-                  borderRadius="full"
-                />
-              </Tooltip>
-            </Flex>
-
-            {/* Fundraising */}
-            <Tooltip
-              label="Currently fundraising" 
+            {/* Name */}
+            <Text
+              padding="0"
+              color="white"
+              fontSize="20px"
+              fontWeight="700"
+              lineHeight="none"
+              border="1px solid transparent"
               whiteSpace="nowrap"
-              placement="top-start"
-              visibility={fundraising == "yes" ? "visible" : "hidden"}
-              offset={[10, 12]}
-              arrowSize={15}
+              transition="all 200ms ease-in-out"
+            >
+              {name}
+            </Text>
+
+            {/* Blockchain */}
+            <Tooltip
+              label={blockchain == "TBA"
+                ? "Blockchain to be announced"
+                : blockchain
+              }
+              placement="right-start"
               hasArrow
             >
               <Image
-                src={fundraising_icon}
+                src={Object.keys(BLOCKCHAINS).includes(blockchain) 
+                  ? BLOCKCHAINS[blockchain]
+                  : BLOCKCHAINS["Other"]
+                }
                 width="30px"
                 height="30px"
-                opacity={fundraising == "yes" ? "100%" : "0%"}
-                transition="all 300ms ease-in-out"
+                borderRadius={blockchain == "TBA" ? "none" : "full"}
               />
             </Tooltip>
           </Flex>
@@ -137,6 +119,7 @@ export default function DiscoveryCard({
             width="100%"
             height="100%"
             color="white"
+            fontSize="16px"
             lineHeight="5"
             lang="en"
             border="1px solid transparent"
@@ -170,9 +153,11 @@ export default function DiscoveryCard({
           >
             <Text
               color="white"
+              fontSize="16px"
               fontWeight="700"
               transition="all 200ms ease-in-out"
               userSelect="none"
+              whiteSpace="nowrap"
             >
               🏷️ {genres[0]}
             </Text>
@@ -190,6 +175,7 @@ export default function DiscoveryCard({
                   marginLeft="5px"
                   padding="0 4px"
                   color="white"
+                  fontSize="16px"
                   fontWeight="700"
                   background="rgba(0, 0, 0, 0.3)"
                   borderRadius="7px"
@@ -205,6 +191,7 @@ export default function DiscoveryCard({
           <Text
             padding="2px 8px"
             color="white"
+            fontSize="16px"
             fontWeight="700"
             background="gray.700"
             border="1px solid transparent"
