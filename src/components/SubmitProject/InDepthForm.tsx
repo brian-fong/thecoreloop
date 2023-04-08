@@ -1,5 +1,6 @@
 // Components
 import {
+  Divider,
   Flex,
   Text,
 } from "@chakra-ui/react";
@@ -182,13 +183,6 @@ export default function InDepthForm({
           setGallery={setGallery}
         />
 
-        <hr 
-          style={{
-            width: "100%",
-            borderTop: "2px solid white",
-          }}
-        />
-
         {/* Story */}
         <Flex
           flexDirection="row"
@@ -200,7 +194,7 @@ export default function InDepthForm({
           minHeight="150px"
           border="1px solid white"
           borderRadius="5px"
-          cursor="pointer"
+          cursor="not-allowed"
           transition="background 200ms ease-in-out"
           _hover={{ background: "rgba(255, 255, 255, 0.1)" }}
         >

@@ -87,12 +87,14 @@ export default function DropzoneBox({
           cursor="pointer"
           border="1px solid white"
           borderRadius="5px"
-          transition="background 200ms ease-in-out"
+          transition="all 300ms ease-in-out"
           _focusVisible={{
-            background: "rgba(0, 0, 0, 0.3)",
+            letterSpacing: "2px",
+            background: "rgba(0, 0, 0, 0.4)",
           }}
           _hover={{
-            background: "rgba(0, 0, 0, 0.3)",
+            letterSpacing: "2px",
+            background: "rgba(0, 0, 0, 0.4)",
           }}
         >
           <Flex
