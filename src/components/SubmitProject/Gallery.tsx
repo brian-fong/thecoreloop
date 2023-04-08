@@ -17,6 +17,17 @@ export default function Gallery({ gallery, setGallery }: any) {
 
   // State variables
   const [page, setPage] = useState<number>(0);
+  
+  const max_pages: number = 5;
+  function handlePageShift(dir: string): void {
+    if (dir == "next") {
+      // Move to next page (limit: 5 pages)
+      if (page < (max_pages-1)) setPage(page + 1);
+    } else if (dir == "prev") {
+      // Move to previous page
+      if (page > 0) setPage(page - 1);
+    }
+  }
 
   useEffect(() => {
     console.log("Gallery: ", gallery);
@@ -36,7 +47,7 @@ export default function Gallery({ gallery, setGallery }: any) {
         id="prev-btn-container"
         cursor="pointer"
         userSelect="none"
-        onClick={() => setPage(page => page-1)}
+        onClick={() => handlePageShift("prev")}
         transition="filter 200ms ease-in-out"
         _hover={{ filter: "brightness(0.7)" }}
         _active={{ filter: "brightness(0.9)" }}
@@ -53,7 +64,7 @@ export default function Gallery({ gallery, setGallery }: any) {
         id="next-btn-container"
         cursor="pointer"
         userSelect="none"
-        onClick={() => setPage(page => page+1)}
+        onClick={() => handlePageShift("next")}
         transition="filter 200ms ease-in-out"
         _hover={{ filter: "brightness(0.7)" }}
         _active={{ filter: "brightness(0.9)" }}
@@ -82,7 +93,7 @@ export default function Gallery({ gallery, setGallery }: any) {
           /
         </Text>
         <Text fontSize="16px">
-          5
+          {max_pages}
         </Text>
       </Flex>
     </Flex>
