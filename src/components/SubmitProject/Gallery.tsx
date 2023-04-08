@@ -11,7 +11,7 @@ import {
 import DropzoneBox from "../Core/DropzoneBox";
 
 //Hooks
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function Gallery({ gallery, setGallery }: any) {
 
@@ -28,10 +28,6 @@ export default function Gallery({ gallery, setGallery }: any) {
       if (page > 0) setPage(page - 1);
     }
   }
-
-  useEffect(() => {
-    console.log("Gallery: ", gallery);
-  }, gallery);
 
   return (
     <Flex

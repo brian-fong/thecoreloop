@@ -81,7 +81,7 @@ export default function Links({
           {links.map((link: string, index: number) => {
             if (index == 0) return (
               <Link 
-                href={link}
+                // href={link}
                 target="_blank"
                 pointerEvents={link ? "all" : "none"}
                 transition="all 200ms ease-in-out"

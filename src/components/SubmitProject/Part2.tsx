@@ -17,6 +17,7 @@ export default function Part2({
   links, setLinks,
   name, setName,
   stage, setStage,
+  studio, setStudio,
   tagline, setTagline,
   thumbnail, setThumbnail,
 }: any) {
@@ -37,6 +38,7 @@ export default function Part2({
         links={links} setLinks={setLinks}
         name={name} setName={setName}
         stage={stage} setStage={setStage}
+        studio={studio} setStudio={setStudio}
         tagline={tagline} setTagline={setTagline}
         thumbnail={thumbnail} setThumbnail={setThumbnail}
       />
