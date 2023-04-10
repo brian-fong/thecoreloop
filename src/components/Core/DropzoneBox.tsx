@@ -1,9 +1,11 @@
 // Components
 import {
+  Box,
   Flex,
   Image,
   Text,
 } from "@chakra-ui/react";
+import { BsXCircleFill as MinusIcon } from "react-icons/bs";
 import { MdOutlineAddPhotoAlternate as ImageIcon } from "react-icons/md";
 
 // Dependencies
@@ -34,6 +36,8 @@ function readFile(file: File): Promise<string> {
 
 export default function DropzoneBox({
   index,
+  setPage,
+  pages, setPages,
   data, setData,
 }: any) {
 
@@ -73,6 +77,16 @@ export default function DropzoneBox({
   };
   const { getRootProps, getInputProps } = useDropzone(options);
 
+  function handleRemovePage(): void {
+    if (pages > 1) {
+      const data_new: any[] = [...data];
+      data_new.splice(index, 1);
+      setData(data_new);
+      setPages(pages-1);
+      if (index == pages-1) setPage((page: number) => page-1);
+    } else return;
+  }
+
   useEffect(() => {
     if (!data[index]?.preview) {
       // Display placeholder for DropzoneBox
@@ -87,12 +101,14 @@ export default function DropzoneBox({
           cursor="pointer"
           border="1px solid white"
           borderRadius="5px"
-          transition="background 200ms ease-in-out"
+          transition="all 300ms ease-in-out"
           _focusVisible={{
-            background: "rgba(0, 0, 0, 0.3)",
+            letterSpacing: "2px",
+            background: "rgba(0, 0, 0, 0.4)",
           }}
           _hover={{
-            background: "rgba(0, 0, 0, 0.3)",
+            letterSpacing: "2px",
+            background: "rgba(0, 0, 0, 0.4)",
           }}
         >
           <Flex
@@ -136,24 +152,46 @@ export default function DropzoneBox({
   }, [data, index]);
 
   return (
-    <Flex
-      {...getRootProps({ className: "dropzone" })}
-      // style={{
-      //   minHeight: "400px",
-      //   maxHeight: "400px",
-      // }}
-    >
-      <input
-        id="image-input"
-        {...getInputProps}
-        style={{
-          position: "absolute",
-          width: "0",
-          height: "0",
-          overflow: "hidden",
-        }} 
-      />
-      {content}
+    <Flex position="relative">
+      <Flex
+        {...getRootProps({ className: "dropzone" })}
+      >
+        <input
+          id="image-input"
+          {...getInputProps}
+          style={{
+            position: "absolute",
+            width: "0",
+            height: "0",
+            overflow: "hidden",
+          }} 
+        />
+        {content}
+      </Flex>
+      {
+        index > 0 
+          ? (
+            <Box
+              position="absolute"
+              top="-10px"
+              right="-10px"
+              color="dracula_bg"
+              backgroundColor="white"
+              border="2px solid transparent"
+              borderRadius="full"
+              cursor="pointer"
+              filter="brightness(0.6)"
+              onClick={handleRemovePage}
+              transition="filter 200ms ease-in-out"
+              _hover={{ filter: "brightness(1.0)" }}
+              _active={{ filter: "brightness(0.5)" }}
+            >
+            <MinusIcon size="25px" />
+          </Box>
+          ) : (
+            null
+          )
+      }
     </Flex>
   );
 }

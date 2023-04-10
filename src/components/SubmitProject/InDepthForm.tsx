@@ -1,5 +1,6 @@
 // Components
 import {
+  Divider,
   Flex,
   Text,
 } from "@chakra-ui/react";
@@ -11,6 +12,7 @@ import Genres from "./Genres";
 import Links from "./Links";
 import Name from "./Name";
 import Stage from "./Stage";
+import Studio from "./Studio";
 import Thumbnail from "./Thumbnail";
 import Upvote from "./Upvote";
 
@@ -45,6 +47,7 @@ export default function InDepthForm({
     if (
       blockchain
         && description
+        && gallery.length > 0
         && genres.length > 0
         && name 
         && links[0].length > 0
@@ -56,7 +59,7 @@ export default function InDepthForm({
     } else {
       setIsFinished(false);
     }
-  }, [blockchain, description, genres, links, name, stage, tagline, thumbnail]);
+  }, [blockchain, description, gallery, genres, links, name, stage, tagline, thumbnail]);
 
   return (
     <Flex
@@ -65,8 +68,6 @@ export default function InDepthForm({
       justifyContent="start"
       alignItems="start"
       width="100%"
-      // background="rgba(0, 0, 0, 0.2)"
-      // boxShadow="0 0 0 15px rgba(0, 0, 0, 0.2)"
       background={isFinished ? "transparent" : "rgba(0, 0, 0, 0.2)"}
       boxShadow={isFinished ? "none" : "0 0 0 20px rgba(0, 0, 0, 0.2)"}
       borderRadius="5px"
@@ -75,14 +76,16 @@ export default function InDepthForm({
       <Flex
         id="discover-container"
         flexDirection="row"
-        justifyContent="start"
-        alignItems="center"
+        justifyContent="space-between"
+        alignItems="start"
         gap="10px"
         marginBottom="15px"
         width="100%"
+        height="100%"
       >
         {/* Thumbnail Image */}
         <Thumbnail
+          fundraising={fundraising}
           image_width={image_width} image_height={image_height}
           thumbnail={thumbnail} setThumbnail={setThumbnail} 
         />
@@ -99,21 +102,18 @@ export default function InDepthForm({
           <Flex
             flexDirection="row"
             justifyContent="start"
-            // justifyContent="space-between"
-            alignItems="end"
-            gap="20px" 
+            alignItems="center"
+            gap="10px" 
             width="100%"
           >
-            <Flex alignItems="center" gap="10px">
-              {/* Name */}
-              <Name name={name} setName={setName} />
+            {/* Name */}
+            <Name name={name} setName={setName} />
 
-              {/* Blockchain */}
-              <Blockchain 
-                blockchain={blockchain}
-                setBlockchain={setBlockchain}
-              />
-            </Flex>
+            {/* Blockchain */}
+            <Blockchain 
+              blockchain={blockchain}
+              setBlockchain={setBlockchain}
+            />
           </Flex>
 
           {/* Genres */}
@@ -129,17 +129,8 @@ export default function InDepthForm({
             gap="10px"
             width="100%"
           >
-            <Flex gap="10px">
-              {/* Stage */}
-              <Stage stage={stage} setStage={setStage} />
-
-              {/* Fundraising */}
-              {
-                fundraising == "yes"
-                  ? <FundraisingIcon style="label" />
-                  : null
-              }
-            </Flex>
+            {/* Stage */}
+            <Stage stage={stage} setStage={setStage} />
 
             {/* Links */}
             <Links links={links} setLinks={setLinks} />
@@ -147,17 +138,6 @@ export default function InDepthForm({
         </Flex>
 
         {/* Upvote */}
-        <Flex
-          id="right-container"
-          flexDirection="column"
-          justifyContent="start"
-          alignItems="center"
-          gap="10px"
-          height={image_height}
-          minHeight={image_height}
-        >
-          <Upvote />
-        </Flex>
       </Flex>
 
       {/* Container: Description + Gallery */}
@@ -169,6 +149,8 @@ export default function InDepthForm({
         width="100%"
         height="100%"
       >
+        {/* Studio */}
+        <Studio />
 
         {/* Description */}
         <Description 
@@ -182,13 +164,6 @@ export default function InDepthForm({
           setGallery={setGallery}
         />
 
-        <hr 
-          style={{
-            width: "100%",
-            borderTop: "2px solid white",
-          }}
-        />
-
         {/* Story */}
         <Flex
           flexDirection="row"
@@ -200,9 +175,9 @@ export default function InDepthForm({
           minHeight="150px"
           border="1px solid white"
           borderRadius="5px"
-          cursor="pointer"
+          cursor="not-allowed"
           transition="background 200ms ease-in-out"
-          _hover={{ background: "rgba(255, 255, 255, 0.1)" }}
+          _hover={{ background: "rgba(0, 0, 0, 0.3)" }}
         >
           <Flex alignItems="center" gap="10px" userSelect="none">
             <Text fontSize="16px">

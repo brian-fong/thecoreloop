@@ -33,6 +33,7 @@ export default function submit_project() {
     links, setLinks,
     name, setName,
     stage, setStage,
+    studio, setStudio,
     tagline, setTagline,
     thumbnail, setThumbnail,
   } = useProjectState();
@@ -210,6 +211,7 @@ export default function submit_project() {
                 links={links} setLinks={setLinks}
                 name={name} setName={setName}
                 stage={stage} setStage={setStage}
+                studio={studio} setStudio={setStudio}
                 tagline={tagline} setTagline={setTagline}
                 thumbnail={thumbnail} setThumbnail={setThumbnail}
               />

@@ -28,6 +28,7 @@ export default function Links({
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   useEffect(() => {
+    if (links.length == 0) return;
     if (!links[0].length) {
       // Display placeholder for name if first link (main website) is empty
       setContent(
@@ -81,7 +82,7 @@ export default function Links({
           {links.map((link: string, index: number) => {
             if (index == 0) return (
               <Link 
-                href={link}
+                // href={link}
                 target="_blank"
                 pointerEvents={link ? "all" : "none"}
                 transition="all 200ms ease-in-out"

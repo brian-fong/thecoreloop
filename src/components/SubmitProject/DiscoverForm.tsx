@@ -102,15 +102,15 @@ export default function DiscoverForm({
         </Flex>
 
         <Flex gap="10px" width="100%">
+          {/* Stage */}
+          <Stage 
+            stage={stage} setStage={setStage}
+          />
+
           {/* Genres */}
           <Genres
             genres={genres}
             setGenres={setGenres}
-          />
-
-          {/* Stage */}
-          <Stage 
-            stage={stage} setStage={setStage}
           />
         </Flex>
       </Flex>
