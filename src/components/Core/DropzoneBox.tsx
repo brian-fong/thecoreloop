@@ -168,31 +168,24 @@ export default function DropzoneBox({
         />
         {content}
       </Flex>
-      {
-        index > 0 
-          ? (
-            <Box
-              position="absolute"
-              top="-10px"
-              right="-10px"
-              color="dracula_bg"
-              backgroundColor="white"
-              border="2px solid transparent"
-              borderRadius="full"
-              cursor="pointer"
-              userSelect="none"
-              filter="brightness(0.6)"
-              onClick={handleRemovePage}
-              transition="filter 200ms ease-in-out"
-              _hover={{ filter: "brightness(1.0)" }}
-              _active={{ filter: "brightness(0.5)" }}
-            >
-            <MinusIcon size="25px" />
-          </Box>
-          ) : (
-            null
-          )
-      }
+      <Box
+        position="absolute"
+        top="-10px"
+        right="-10px"
+        color="dracula_bg"
+        backgroundColor="white"
+        border="2px solid transparent"
+        borderRadius="full"
+        cursor="pointer"
+        userSelect="none"
+        filter="brightness(0.6)"
+        onClick={handleRemovePage}
+        transition="filter 200ms ease-in-out"
+        _hover={{ filter: "brightness(1.0)" }}
+        _active={{ filter: "brightness(0.5)" }}
+      >
+        <MinusIcon size="25px" />
+      </Box>
     </Flex>
   );
 }
