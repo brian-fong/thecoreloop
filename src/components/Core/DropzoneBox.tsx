@@ -180,6 +180,7 @@ export default function DropzoneBox({
               border="2px solid transparent"
               borderRadius="full"
               cursor="pointer"
+              userSelect="none"
               filter="brightness(0.6)"
               onClick={handleRemovePage}
               transition="filter 200ms ease-in-out"
