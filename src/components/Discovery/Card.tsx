@@ -139,6 +139,22 @@ export default function DiscoveryCard({
         </Flex>
 
         <Flex flexDirection="row" alignItems="start" gap="10px">
+          {/* Stage */}
+          <Text
+            padding="2px 8px"
+            color="white"
+            fontSize="16px"
+            fontWeight="700"
+            background="gray.700"
+            border="1px solid transparent"
+            borderRadius="10px"
+            whiteSpace="nowrap"
+            userSelect="none"
+            transition="all 200ms ease-in-out"
+          >
+            {STAGES[stage]} {stage}
+          </Text>
+
           {/* Genres */}
           <Flex
             flexDirection="row"
@@ -186,22 +202,6 @@ export default function DiscoveryCard({
               : null
             }
           </Flex>
-
-          {/* Stage */}
-          <Text
-            padding="2px 8px"
-            color="white"
-            fontSize="16px"
-            fontWeight="700"
-            background="gray.700"
-            border="1px solid transparent"
-            borderRadius="10px"
-            whiteSpace="nowrap"
-            userSelect="none"
-            transition="all 200ms ease-in-out"
-          >
-            {STAGES[stage]} {stage}
-          </Text>
         </Flex>
       </Flex>
 
