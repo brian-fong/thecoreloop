@@ -29,6 +29,7 @@ export default function InDepthForm({
   links, setLinks,
   name, setName,
   stage, setStage,
+  studio, setStudio,
   tagline,
   thumbnail, setThumbnail,
 }: any) {
@@ -150,7 +151,9 @@ export default function InDepthForm({
         height="100%"
       >
         {/* Studio */}
-        <Studio />
+        <Studio
+          studio={studio} setStudio={setStudio}
+        />
 
         {/* Description */}
         <Description 
