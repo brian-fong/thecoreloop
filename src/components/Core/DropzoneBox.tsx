@@ -134,6 +134,7 @@ export default function DropzoneBox({
           key={uuid()}
           src={data[index]?.preview}
           objectFit="contain"
+          minWidth="600px"
           height="100%"
           minHeight="400px"
           maxHeight="400px"
@@ -168,30 +169,24 @@ export default function DropzoneBox({
         />
         {content}
       </Flex>
-      {
-        index > 0 
-          ? (
-            <Box
-              position="absolute"
-              top="-10px"
-              right="-10px"
-              color="dracula_bg"
-              backgroundColor="white"
-              border="2px solid transparent"
-              borderRadius="full"
-              cursor="pointer"
-              filter="brightness(0.6)"
-              onClick={handleRemovePage}
-              transition="filter 200ms ease-in-out"
-              _hover={{ filter: "brightness(1.0)" }}
-              _active={{ filter: "brightness(0.5)" }}
-            >
-            <MinusIcon size="25px" />
-          </Box>
-          ) : (
-            null
-          )
-      }
+      <Box
+        position="absolute"
+        top="-10px"
+        right="-10px"
+        color="dracula_bg"
+        backgroundColor="white"
+        border="2px solid transparent"
+        borderRadius="full"
+        cursor="pointer"
+        userSelect="none"
+        filter="brightness(0.6)"
+        onClick={handleRemovePage}
+        transition="filter 200ms ease-in-out"
+        _hover={{ filter: "brightness(1.0)" }}
+        _active={{ filter: "brightness(0.5)" }}
+      >
+        <MinusIcon size="25px" />
+      </Box>
     </Flex>
   );
 }

@@ -2,7 +2,6 @@
 import {
   Box,
   Flex,
-  Text,
 } from "@chakra-ui/react";
 import {
   Bs1SquareFill as Square1Icon,
@@ -95,9 +94,17 @@ export default function Gallery({ gallery, setGallery }: any) {
           cursor="pointer"
           userSelect="none"
           onClick={() => handlePageShift("prev")}
+          filter={
+            page == 0
+              ? "brightness(0.5)"
+              : "brightness(1.0)"
+          }
           transition="filter 200ms ease-in-out"
-          _hover={{ filter: "brightness(0.7)" }}
-          _active={{ filter: "brightness(0.9)" }}
+          _hover={{ filter: 
+            page == 0
+              ? ""
+              : "brightness(0.5)"
+          }}
         >
           <LeftArrowIcon size="30px" color="white" />
         </Box>
@@ -114,9 +121,17 @@ export default function Gallery({ gallery, setGallery }: any) {
           cursor="pointer"
           userSelect="none"
           onClick={() => handlePageShift("next")}
+          filter={
+            page == (pages-1)
+              ? "brightness(0.5)"
+              : "brightness(1.0)"
+          }
           transition="filter 200ms ease-in-out"
-          _hover={{ filter: "brightness(0.7)" }}
-          _active={{ filter: "brightness(0.9)" }}
+          _hover={{ filter: 
+            page == (pages-1)
+              ? ""
+              : "brightness(0.5)"
+          }}
         >
           <RightArrowIcon size="30px" color="white" />
         </Box>
@@ -138,6 +153,7 @@ export default function Gallery({ gallery, setGallery }: any) {
           cursor="pointer"
           filter="brightness(0.6)"
           onClick={handleAddPage}
+          userSelect="none"
           transition="filter 200ms ease-in-out"
           _hover={{ filter: "brightness(1.0)" }}
           _active={{ filter: "brightness(0.5)" }}

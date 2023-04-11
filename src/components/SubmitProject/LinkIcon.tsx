@@ -24,17 +24,20 @@ import {
 import { LINKS } from "../../data/links";
 
 export default function LinkIcon({ url, size }: any) {
-  const WEBSITES: string[] = Object.keys(LINKS);
-  const DOMAINS: string[] = Object.values(LINKS);
+  const SOURCES: string[] = Object.keys(LINKS);
+  const DOMAINS: string[][] = Object.values(LINKS);
 
-  let website_found: string = "unknown";
-  for (let i = 0; i < WEBSITES.length; i++) {
-    const website: string = WEBSITES[i];
-    const domain: string = DOMAINS[i];
-    if (url.includes(domain)) website_found = website;
+  let source_found: string = "unknown";
+  for (let i = 0; i < SOURCES.length; i++) {
+    const source: string = SOURCES[i];
+    const domains: string[] = DOMAINS[i];
+  
+    for (let domain of domains) {
+      if (url.includes(domain)) source_found = source;
+    }
   }
 
-  switch (website_found) {
+  switch (source_found) {
     case "appstore":
       return <AppstoreIcon size={size} />;
     case "discord":

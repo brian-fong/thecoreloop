@@ -1,11 +1,13 @@
 // Components
 import {
+  Box,
   Flex,
-  Link,
   Text,
 } from "@chakra-ui/react";
+import StudioModal from "./StudioModal";
 
 // Hooks
+import { useDisclosure } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
 // Types
@@ -14,6 +16,9 @@ import type { ReactElement } from "react";
 export default function Studio({ studio, setStudio }: any) {
   // State variables
   const [content, setContent] = useState<ReactElement>();
+
+  // useDisclosure: StudioModal
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   useEffect(() => {
     if (!studio) {
@@ -38,7 +43,7 @@ export default function Studio({ studio, setStudio }: any) {
             background: "rgba(0, 0, 0, 0.4)",
           }}
         >
-          Created by  &lt;studio&gt;
+          🧠 &lt;studio&gt;
         </Text>
       )
     } else {
@@ -48,7 +53,6 @@ export default function Studio({ studio, setStudio }: any) {
           color="white"
           fontSize="16px"
           fontWeight="700"
-          background="gray.700"
           border="1px solid transparent"
           borderRadius="10px"
           cursor="pointer"
@@ -71,8 +75,14 @@ export default function Studio({ studio, setStudio }: any) {
   }, [studio]);
   
   return (
-    <Flex gap="10px" width="100%">
-      {content}
+    <Flex width="100%">
+      <Box onClick={onOpen}>
+        {content}
+        <StudioModal
+          isOpen={isOpen} onClose={onClose}
+          studio={studio} setStudio={setStudio}
+        />
+      </Box>
     </Flex>
   )
 }

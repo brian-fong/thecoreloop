@@ -1,7 +1,5 @@
 import {
   Grid,
-  Image,
-  Link,
 } from "@chakra-ui/react";
 import uuid from "react-uuid";
 import PlayerImage from "./PlayerImage";
