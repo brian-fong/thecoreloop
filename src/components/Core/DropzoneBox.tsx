@@ -134,6 +134,7 @@ export default function DropzoneBox({
           key={uuid()}
           src={data[index]?.preview}
           objectFit="contain"
+          minWidth="600px"
           height="100%"
           minHeight="400px"
           maxHeight="400px"
