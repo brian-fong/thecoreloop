@@ -290,57 +290,11 @@ export default function LinksModal({
           </Flex>
 
 
-          {/* Icon Gallery */}
-          <Flex justifyContent="center" width="100%" userSelect="none">
-            <Flex
-              flexDirection="column"
-              justifyContent="center"
-              alignItems="center"
-              padding="25px 20px 20px"
-              position="relative"
-              border="2px solid rgba(255, 255, 255, 0.7)"
-              borderRadius="10px"
-              width="400px"
-              minWidth="400px"
-              maxWidth="400px"
-            >
-              <Flex justifyContent="center" width="100%">
-                <Text
-                  position="absolute"
-                  top="-16px"
-                  padding="4px 8px"
-                  fontSize="16px"
-                  background="#282a36"
-                >
-                  Suggestions
-                </Text>
-              </Flex>
-              <Flex
-                id="icon-gallery"
-                flexDirection="row"
-                justifyContent="space-between"
-                alignItems="center"
-                width="100%"
-                userSelect="none"
-              >
-                <DiscordIcon size="25px" />
-                <InstagramIcon size="25px" />
-                <LinkedinIcon size="25px" />
-                <MediumIcon size="25px" />
-                <SubstackIcon size="25px" />
-                <TelegramIcon size="25px" />
-                <TwitterIcon size="25px" />
-                <YouTubeIcon size="25px" />
-              </Flex>
-            </Flex>
-          </Flex>
-
           <Flex
             flexDirection="row"
             justifyContent="end"
             alignItems="center"
             gap="30px"
-            marginTop="30px"
             width="100%"
           >
             <Button

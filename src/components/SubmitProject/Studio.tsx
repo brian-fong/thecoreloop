@@ -39,17 +39,16 @@ export default function Studio({ studio, setStudio }: any) {
           userSelect="none"
           transition="all 200ms ease-in-out"
           _hover={{
-            letterSpacing: "2px",
+            letterSpacing: "1px",
             background: "rgba(0, 0, 0, 0.4)",
           }}
         >
-          🧠 &lt;studio&gt;
+          🧠 Created by &lt;studio&gt;
         </Text>
       )
     } else {
       setContent(
         <Text
-          padding="2px 8px"
           color="white"
           fontSize="16px"
           fontWeight="700"
@@ -60,7 +59,7 @@ export default function Studio({ studio, setStudio }: any) {
           userSelect="none"
           transition="all 200ms ease-in-out"
           _hover={{ 
-            padding: "2px 12px",
+            padding: "2px 8px",
             color: "white",
             background: "rgba(0, 0, 0, 0.4)",
             border: "1px solid white",

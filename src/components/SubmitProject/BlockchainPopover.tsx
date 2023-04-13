@@ -127,7 +127,7 @@ export default function BlockchainPopover({
           flexDirection="column"
           gap="5px"
           height="100%"
-          maxHeight="200px"
+          maxHeight="333px"
           background="#282a36"
           backgroundColor="#282a36"
           border="1px solid rgba(147, 147, 147, 0.5)"

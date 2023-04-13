@@ -125,7 +125,7 @@ export default function DiscoverForm({
         height={image_height}
         minHeight={image_height}
       >
-        <Upvote />
+        {/* <Upvote /> */}
       </Flex>
     </Flex>
   );

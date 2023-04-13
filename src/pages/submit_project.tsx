@@ -125,28 +125,8 @@ export default function submit_project() {
             >
               {/* Prev Button */}
               <Button
-                display="flex"
-                flexDirection="row"
-                justifyContent="center"
-                alignItems="center"
-                padding="5px 10px"
-                letterSpacing="2px"
-                background="tcl_green"
-                boxShadow={`
-                  1px 1px 1px gray,
-                  2px 2px 1px gray,
-                  3px 3px 1px gray,
-                  4px 4px 1px gray
-                `}
-                transition="all 100ms ease-in-out"
-                _hover={{
-                  filter: "brightness(0.8)",
-                }}
-                _active={{
-                  filter: "brightness(0.5)",
-                  boxShadow: "none",
-                  transform: "translate(3px, 3px)",
-                }}
+                variant="standard"
+                background="green.400"
                 onClick={handleClick_Prev}
                 // isDisabled={handleDisabled_Prev()}
               >
@@ -155,28 +135,8 @@ export default function submit_project() {
 
               {/* Next Button */}
               <Button
-                display="flex"
-                flexDirection="row"
-                justifyContent="center"
-                alignItems="center"
-                padding="5px 10px"
-                letterSpacing="2px"
-                background="tcl_green"
-                boxShadow={`
-                  1px 1px 1px gray,
-                  2px 2px 1px gray,
-                  3px 3px 1px gray,
-                  4px 4px 1px gray
-                `}
-                transition="all 100ms ease-in-out"
-                _hover={{
-                  filter: "brightness(0.8)",
-                }}
-                _active={{
-                  filter: "brightness(0.5)",
-                  boxShadow: "none",
-                  transform: "translate(3px, 3px)",
-                }}
+                variant="standard"
+                background="green.400"
                 onClick={handleClick_Next}
                 // isDisabled={handleDisabled_Next()}
               >

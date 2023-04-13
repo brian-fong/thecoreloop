@@ -12,7 +12,7 @@ import { extendTheme } from "@chakra-ui/react";
 export default extendTheme({
   colors: {
     // Dracula
-    dracula_bg: "#282a36",
+    dracula_bg: "#282A36",
 
     // Curve Finance
     curve: "#C0C0C0",
