@@ -52,6 +52,7 @@ export default function Tagline({ tagline, setTagline }: any) {
         <Text
           padding="0"
           width="100%"
+          maxWidth="480px"
           height="100%"
           minHeight="42px"
           color="white"

@@ -1,5 +1,6 @@
 // Components
 import {
+  Box,
   Flex,
   Image,
   Text,
@@ -79,20 +80,29 @@ export default function Thumbnail({
           userSelect="none"
           transition="all 200ms ease-in-out"
           _hover={{ 
-            letterSpacing: "2px",
+            letterSpacing: "1px",
             background: "rgba(0, 0, 0, 0.4)",
           }}
         >
-          <Text 
-            ref={icon_container_ref} 
-            fontSize="25px"
-            textAlign="center"
+          <Flex
+            flexDirection="column"
+            justifyContent="center"
+            alignItems="center"
+            gap="5px"
+            position="relative"
+            bottom="5px"
           >
-            📷
-          </Text>
-          <Text width="100%" fontSize="14px" textAlign="center">
-            &lt;image&gt;
-          </Text>
+            <Text 
+              ref={icon_container_ref} 
+              fontSize="16px"
+              textAlign="center"
+            >
+              📷
+            </Text>
+            <Text fontSize="16px">
+              &lt;icon&gt;
+            </Text>
+          </Flex>
         </Flex>
       )
     } else {

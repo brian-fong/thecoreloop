@@ -22,20 +22,20 @@ function readFile(file: File): Promise<string> {
   });
 }
 
-export default function DropzoneBox({
+export default function DropzoneBoxAlt({
   children,
-  setGallery,
+  gallery, setGallery,
 }: any) {
 
   // react-dropzone
   const options: DropzoneOptions = {
-    maxFiles: 5,
+    maxFiles: 5-gallery.length,
     accept: {
       "image/*": [],
     },
     onDrop: (acceptedFiles: File[]) => {
       async function init() {
-        const gallery_new: any[] = [];
+        const gallery_new: any[] = [...gallery];
         for (let i = 0; i < acceptedFiles.length; i++) {
           const file: any = acceptedFiles[i];
           const file_new: any = {
