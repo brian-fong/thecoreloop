@@ -49,11 +49,10 @@ export default function Gallery({ gallery, setGallery }: any) {
       gallery_new.push(file_new);
     }
     setGallery(gallery_new);
-    if (gallery.length == 0) {
-      setPage(0);
-    } else {
-      setPage(gallery.length);
-    }
+
+    // Shift page focus
+    if (gallery.length == 0) setPage(0);  // to 1st page if gallery was empty
+    else setPage(gallery.length); // to first of latest set of uploaded images
   }
   
   function navigatePage(dir: string): void {

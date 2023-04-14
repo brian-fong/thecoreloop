@@ -37,7 +37,7 @@ export default function DescriptionModal({
   tagline,
 }: any) {
   // Refs
-  const input_ref = useRef<HTMLTextAreaElement>();
+  const input_ref = useRef<any>();
 
   // State variables
   const [char_count, setCharCount] = useState<number>(description.length);
