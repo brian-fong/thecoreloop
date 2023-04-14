@@ -8,9 +8,6 @@ import { BsXSquare as CloseIcon } from "react-icons/bs";
 import { TfiPencilAlt as EditIcon } from "react-icons/tfi";
 import DropzoneBoxV2 from "../Core/DropzoneBoxV2";
 
-// Hooks
-import { useEffect, useState } from "react";
-
 // Types
 import type { ReactElement } from "react";
 
@@ -42,7 +39,7 @@ export default function GalleryIndex({
     setGallery(gallery_new);
 
     // Navigate to nearest, latest page 
-    if (index+1 >= gallery.length) setPage(index-1);
+    if (index == gallery.length) setPage(index-1);
 
     // If gallery is empty, then navigate back to 1st image
     if (gallery.length == 0) setPage(0);
@@ -62,6 +59,7 @@ export default function GalleryIndex({
         height="64px"
         borderRadius="5px"
         boxShadow="5px 5px 3px black"
+        filter={page == index ? "none" : "brightness(75%)"}
         transform={
           page == index
             ? "scale(1.1)"
@@ -71,8 +69,7 @@ export default function GalleryIndex({
         onClick={() => setPage(index)}
         transition="all 300ms ease-in-out"
         _hover={{
-          filter: "brightness(0.8)",
-          transform: "scale(1.1)",
+          filter: "brightness(100%)",
         }}
       />
       <Flex
