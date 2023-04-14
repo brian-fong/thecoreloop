@@ -162,30 +162,6 @@ export default function InDepthForm({
           setDescription={setDescription} 
         />
 
-        <Flex
-          flexDirection="row"
-          justifyContent="start"
-          alignItems="center"
-          padding="10px"
-          paddingLeft="15px"
-          position="relative"
-          width="100%"
-          background="rgba(255, 255, 255, 0.1)"
-          borderRadius="5px"
-        >
-          <Box
-            position="absolute"
-            left="0"
-            width="6px"
-            height="40px"
-            background="yellow.200"
-            borderRadius="5px 0 0 5px"
-          ></Box>
-          <Text>
-            ⚠️ Please upload at least 1 image related to this project
-          </Text>
-        </Flex>
-
         {/* Gallery */}
         <Gallery
           gallery={gallery}

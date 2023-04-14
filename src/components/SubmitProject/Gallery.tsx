@@ -1,5 +1,6 @@
 // Components
 import {
+  Box,
   Button,
   Flex,
   Text,
@@ -20,7 +21,7 @@ import { useEffect, useState } from "react";
 import type { ReactElement } from "react";
 
 // Helper functions
-import uuid from "react-uuid";
+// import uuid from "react-uuid";
 import readFile from "../../utils/read-file";
 
 async function uploadGallery(files: any, gallery: any, setGallery: any) {
@@ -75,6 +76,7 @@ export default function Gallery({ gallery, setGallery }: any) {
             alignItems="center"
             gap='10px'
             padding="20px"
+            position="relative"
             width={image_width}
             height={image_height}
             border="1px dashed white"
@@ -86,6 +88,30 @@ export default function Gallery({ gallery, setGallery }: any) {
           >
             <Text>{"🖼️ <gallery>"}</Text>
             <Text opacity="50%">(click or drag'n'drop to upload images)</Text>
+            <Flex
+              flexDirection="row"
+              justifyContent="start"
+              alignItems="center"
+              position="absolute"
+              bottom="20px"
+              padding="10px"
+              paddingLeft="15px"
+              background="rgba(255, 255, 143, 0.1)"
+              borderRadius="5px"
+            >
+              <Box
+                position="absolute"
+                left="0"
+                width="6px"
+                height="40px"
+                background="rgba(255, 255, 143, 0.8)"
+                borderRadius="5px 0 0 5px"
+              ></Box>
+              <Text>
+                ⚠️ Please upload at least 1 image related to this project
+              </Text>
+            </Flex>
+
           </Flex>
         </DropzoneBoxV2>  
       );
@@ -183,7 +209,7 @@ export default function Gallery({ gallery, setGallery }: any) {
           cursor="pointer"
           userSelect="none"
           zIndex={1}
-          isDisabled={page == 0}
+          isDisabled={page == 0 || gallery.length == 0}
           _disabled={{
             opacity: "0%",
             cursor: "default",
@@ -214,7 +240,7 @@ export default function Gallery({ gallery, setGallery }: any) {
           cursor="pointer"
           userSelect="none"
           zIndex={1}
-          isDisabled={page == gallery.length-1}
+          isDisabled={page == gallery.length-1 || gallery.length == 0}
           _disabled={{
             opacity: "0%",
             cursor: "default",
