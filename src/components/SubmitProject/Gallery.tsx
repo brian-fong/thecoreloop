@@ -22,6 +22,7 @@ import type { ReactElement } from "react";
 
 // Helper functions
 // import uuid from "react-uuid";
+import wait from "../../utils/wait";
 import readFile from "../../utils/read-file";
 
 async function uploadGallery(files: any, gallery: any, setGallery: any) {
@@ -40,12 +41,10 @@ async function uploadGallery(files: any, gallery: any, setGallery: any) {
 }
 
 export default function Gallery({ gallery, setGallery }: any) {
-  // Gallery image dimensions (in pixels)
+  // Constans
+  const max_pages: number = 5;
   const image_width: number = 600;
   const image_height: number = Math.ceil(image_width * 9/16)
-
-  // Maximum number of pages in Gallery
-  const max_pages: number = 5;
 
   // State variables
   const [page, setPage] = useState<number>(0);
@@ -63,110 +62,119 @@ export default function Gallery({ gallery, setGallery }: any) {
   }
 
   useEffect(() => {
-    if (gallery.length == 0) {
-      setGalleryContent(
-        <DropzoneBoxV2
-          gallery={gallery} setGallery={setGallery}
-          handleOnDrop={uploadGallery}
-          maxFiles={5}
-        >
-          <Flex
-            flexDirection="column"
-            justifyContent="center"
-            alignItems="center"
-            gap='10px'
-            padding="20px"
-            position="relative"
-            width={image_width}
-            height={image_height}
-            border="1px dashed white"
-            borderRadius="5px"
-            transition="all 200ms ease-in-out"
-            _hover={{
-              letterSpacing: "2px",
-              background: "rgba(0, 0, 0, 0.4)"
-            }}
-          >
-            <Text>{"🖼️ <gallery>"}</Text>
-            <Text letterSpacing="normal" opacity="50%">
-              (click or drag'n'drop to upload images)
-            </Text>
-            <Flex
-              flexDirection="row"
-              justifyContent="start"
-              alignItems="center"
-              position="absolute"
-              bottom="20px"
-              padding="10px"
-              paddingLeft="15px"
-              background="rgba(255, 255, 143, 0.1)"
-              borderRadius="5px"
-            >
-              <Box
-                position="absolute"
-                left="0"
-                width="6px"
-                height="40px"
-                background="rgba(255, 255, 143, 0.8)"
-                borderRadius="5px 0 0 5px"
-              ></Box>
-              <Text letterSpacing="normal">
-                ⚠️ Please upload at least 1 image related to this project
-              </Text>
-            </Flex>
-
-          </Flex>
-        </DropzoneBoxV2>  
-      );
-      setGalleryIndices([]);
-    } else {
-      setGalleryContent(
-        <GalleryImage
-          index={page}
-          gallery={gallery}
-          image_width={image_width} image_height={image_height}
-        />
-      );
-
-      // Build GalleryIndices array
-      const gallery_indices_new: ReactElement[] = [];
-      for (let i = 0; i < gallery.length; i++) {
-        gallery_indices_new.push(
-          <GalleryIndex
-            // key={uuid()} uncommenting would remove transition
-            index={i}
-            gallery={gallery} setGallery={setGallery}
-            page={page} setPage={setPage}
-          />
-        );
-      }
-
-      if (gallery.length < max_pages) {
-        gallery_indices_new.push(
+    async function init() {
+      if (gallery.length == 0) {
+        setGalleryContent(
           <DropzoneBoxV2
             gallery={gallery} setGallery={setGallery}
             handleOnDrop={uploadGallery}
             maxFiles={5}
           >
             <Flex
-              flexDirection="row"
+              flexDirection="column"
               justifyContent="center"
               alignItems="center"
-              width="64px"
-              height="64px"
-              border="1px solid white"
+              gap='10px'
+              padding="20px"
+              position="relative"
+              width={image_width}
+              height={image_height}
+              border="1px dashed white"
               borderRadius="5px"
-              transition="filter 200ms ease-in-out"
-              _hover={{ filter: "brightness(0.8)" }}
+              transition="all 200ms ease-in-out"
+              _hover={{
+                letterSpacing: "2px",
+                background: "rgba(0, 0, 0, 0.4)"
+              }}
             >
-              <AddImageIcon size="32px" />
-            </Flex>
-          </DropzoneBoxV2>
-        )
-      }
+              <Text>{"🖼️ <gallery>"}</Text>
+              <Text letterSpacing="normal" opacity="50%">
+                (click or drag'n'drop to upload images)
+              </Text>
+              <Flex
+                flexDirection="row"
+                justifyContent="start"
+                alignItems="center"
+                position="absolute"
+                bottom="20px"
+                padding="10px"
+                paddingLeft="15px"
+                background="rgba(255, 255, 143, 0.1)"
+                borderRadius="5px"
+              >
+                <Box
+                  position="absolute"
+                  left="0"
+                  width="6px"
+                  height="40px"
+                  background="rgba(255, 255, 143, 0.8)"
+                  borderRadius="5px 0 0 5px"
+                ></Box>
+                <Text letterSpacing="normal">
+                  ⚠️ Please upload at least 1 image related to this project
+                </Text>
+              </Flex>
 
-      setGalleryIndices(gallery_indices_new);
+            </Flex>
+          </DropzoneBoxV2>  
+          );
+        setGalleryIndices([]);
+      } else {
+        setGalleryContent(
+          <GalleryImage
+            index={page}
+            gallery={gallery}
+            image_width={image_width} image_height={image_height}
+          />
+        );
+
+        // Build GalleryIndices array
+        const gallery_indices_new: ReactElement[] = [];
+        for (let i = 0; i < gallery.length; i++) {
+          gallery_indices_new.push(
+            <GalleryIndex
+              // key={uuid()} uncommenting would remove transition
+              index={i}
+              gallery={gallery} setGallery={setGallery}
+              page={page} setPage={setPage}
+            />
+          );
+        }
+
+        if (gallery.length < max_pages) {
+          gallery_indices_new.push(
+            <DropzoneBoxV2
+              gallery={gallery} setGallery={setGallery}
+              handleOnDrop={uploadGallery}
+              maxFiles={5}
+            >
+              <Flex
+                flexDirection="row"
+                justifyContent="center"
+                alignItems="center"
+                width="64px"
+                height="64px"
+                border="1px solid white"
+                borderRadius="5px"
+                transition="filter 200ms ease-in-out"
+                _hover={{ filter: "brightness(0.8)" }}
+              >
+                <AddImageIcon size="32px" />
+              </Flex>
+            </DropzoneBoxV2>
+          )
+        }
+
+        if (gallery_indices?.length == 0) {
+          // Wait for container to expand and then display images
+          await wait(320);
+        }
+
+        setGalleryIndices(gallery_indices_new);
+      }
     }
+
+    init();
   }, [gallery, page]);
 
   return (
@@ -244,7 +252,7 @@ export default function Gallery({ gallery, setGallery }: any) {
         </Button>
       </Flex>
 
-      {/* Page Indices Container */}
+      {/* Gallery Indices Container */}
       <Flex
         flexDirection="row"
         justifyContent="center"
@@ -252,11 +260,7 @@ export default function Gallery({ gallery, setGallery }: any) {
         position="relative"
         width="100%"
       >
-        <Flex
-          flexDirection="row"
-          justifyContent="start"
-          alignItems="center"
-          gap="30px"
+        <Box
           padding={gallery.length == 0
             ? "0"
             : "20px"
@@ -269,13 +273,18 @@ export default function Gallery({ gallery, setGallery }: any) {
           }
           background="rgba(0, 0, 0, 0.3)"
           borderRadius="5px"
-          transition={gallery.length == 0
-            ? "all 300ms ease-in-out 300ms"
-            : "all 300ms ease-in-out"
-          }
+          transition="all 300ms ease-in-out"
         >
-          {gallery_indices}
-        </Flex>
+          <Flex
+            flexDirection="row"
+            justifyContent="start"
+            alignItems="center"
+            gap="30px"
+            transition="opacity 300ms ease-in-out"
+          >
+            {gallery_indices}
+          </Flex>
+        </Box>
       </Flex>
     </Flex>
   );

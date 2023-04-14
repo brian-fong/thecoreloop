@@ -60,21 +60,15 @@ export default function GalleryIndex({
         borderRadius="5px"
         boxShadow="5px 5px 3px black"
         filter={page == index ? "none" : "brightness(75%)"}
-        opacity={gallery.length == 0
-          ? "0%"
-          : "100%"
-        }
         transform={
           page == index
             ? "scale(1.1)"
             : "scale(1.0)"
         }
         cursor="pointer"
+        draggable={false}
         onClick={() => setPage(index)}
-        transition={gallery.length == 0
-          ? "all 300ms ease-in-out 320ms"
-          : "all 300ms ease-in-out"
-        }
+        transition="all 300ms ease-in-out"
         _hover={{
           filter: "brightness(100%)",
         }}
