@@ -25,23 +25,8 @@ import type { ReactElement } from "react";
 import wait from "../../utils/wait";
 import readFile from "../../utils/read-file";
 
-async function uploadGallery(files: any, gallery: any, setGallery: any) {
-  const gallery_new: any[] = [...gallery];
-  for (let i = 0; i < files.length; i++) {
-    const file: any = files[i];
-    const file_new: any = {
-      name: file.path,
-      preview: URL.createObjectURL(file),
-      data: await readFile(file),
-      type: file.type,
-    };
-    gallery_new.push(file_new);
-  }
-  setGallery(gallery_new);
-}
-
 export default function Gallery({ gallery, setGallery }: any) {
-  // Constans
+  // Constants
   const max_pages: number = 5;
   const image_width: number = 600;
   const image_height: number = Math.ceil(image_width * 9/16)
@@ -50,6 +35,26 @@ export default function Gallery({ gallery, setGallery }: any) {
   const [page, setPage] = useState<number>(0);
   const [gallery_content, setGalleryContent] = useState<ReactElement>();
   const [gallery_indices, setGalleryIndices] = useState<ReactElement[]>();
+
+  async function uploadImages(files: any) {
+    const gallery_new: any[] = [...gallery];
+    for (let i = 0; i < files.length; i++) {
+      const file: any = files[i];
+      const file_new: any = {
+        name: file.path,
+        preview: URL.createObjectURL(file),
+        data: await readFile(file),
+        type: file.type,
+      };
+      gallery_new.push(file_new);
+    }
+    setGallery(gallery_new);
+    if (gallery.length == 0) {
+      setPage(0);
+    } else {
+      setPage(gallery.length);
+    }
+  }
   
   function navigatePage(dir: string): void {
     if (dir == "next") {
@@ -67,7 +72,7 @@ export default function Gallery({ gallery, setGallery }: any) {
         setGalleryContent(
           <DropzoneBoxV2
             gallery={gallery} setGallery={setGallery}
-            handleOnDrop={uploadGallery}
+            handleOnDrop={uploadImages}
             maxFiles={5}
           >
             <Flex
@@ -145,7 +150,7 @@ export default function Gallery({ gallery, setGallery }: any) {
           gallery_indices_new.push(
             <DropzoneBoxV2
               gallery={gallery} setGallery={setGallery}
-              handleOnDrop={uploadGallery}
+              handleOnDrop={uploadImages}
               maxFiles={5}
             >
               <Flex

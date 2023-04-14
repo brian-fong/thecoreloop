@@ -14,13 +14,17 @@ import type { ReactElement } from "react";
 // Helper Functions
 import readFile from "../../utils/read-file";
 
+
 export default function GalleryIndex({
   index,
   gallery, setGallery,
   page, setPage,
 }: any): ReactElement {
 
-  async function editImage(files: any[], gallery: any, setGallery: any) {
+
+  async function editImage(
+    files: any[],
+  ) {
     const gallery_new: any[] = [...gallery];
     const file_new: any = {
       name: files[0].path,
@@ -30,6 +34,7 @@ export default function GalleryIndex({
     };
     gallery_new.splice(index, 1, file_new);
     setGallery(gallery_new);
+    setPage(index);
   }
 
   function deleteImage() {
