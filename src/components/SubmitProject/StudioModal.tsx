@@ -24,8 +24,8 @@ const char_limit: number = 30;
 function validate(values: any) {
   const errors: FormikErrors<FormikValues> = {};
 
-  if (values.studio.length > char_limit) {
-    errors.studio = "Studio name too long!";
+  if (values.studio_name.length > char_limit) {
+    errors.studio_name = "Studio name too long!";
   }
 
   return errors;
@@ -39,12 +39,17 @@ export default function StudioModal({
   const input_ref = useRef<any>();
 
   // State variables
-  const [char_count, setCharCount] = useState<number>(studio.length);
+  const [char_count, setCharCount] = useState<number>(
+    studio.name?.length
+      ? studio.name?.length
+      : 0
+  );
 
   // Formik props
   const formik = useFormik({
     initialValues: {
-      studio: studio,
+      studio_name: studio.name,
+      studio_link: studio.link,
     },
     validate: validate,
     onSubmit: (values) => {
@@ -52,27 +57,38 @@ export default function StudioModal({
       // alert(JSON.stringify(values, null, 2));
 
       // Update state variables
-      values.studio = values.studio.trim(); // Remove surrounding whitespace
-      setStudio(values.studio);
-      setCharCount(values.studio.length);
+      values.studio_name = values.studio_name.trim();
+      values.studio_link = values.studio_link.trim();
+      setStudio({
+        name: values.studio_name,
+        link: values.studio_link,
+      });
+      setCharCount(values.studio_name.length);
 
       // Close NameModal
       onClose();
     },
   });
 
-  function handleChange(event: any) {
-    const value: string = event.currentTarget.value.trim();
+  function handleChange_Name(event: any) {
+    const value: string = event.currentTarget.value;
     setCharCount(value.length);
-    formik.values.studio = value;
+    formik.values.studio_name = value;
+    formik.handleChange(event);
+  }
+
+  function handleChange_Link(event: any) {
+    const value: string = event.currentTarget.value.trim();
+    formik.values.studio_link = value;
     formik.handleChange(event);
   }
 
   function handleCancel() {
     // Reset values
-    formik.values.studio = studio;  // Reset input field value
+    formik.values.studio_name = studio.name;  // Reset name input value
+    formik.values.studio_link = studio.link;  // Reset link input value
     formik.setErrors({});                     // Reset errors
-    setCharCount(studio.length);         // Reset character count
+    setCharCount(studio.name.length);         // Reset character count
     onClose();                                // Close NameModal
   }
 
@@ -128,7 +144,7 @@ export default function StudioModal({
             >
               <Flex justifyContent="space-between" width="100%">
                 <FormLabel 
-                  htmlFor="studio" 
+                  htmlFor="studio_name"
                   margin="0"
                   whiteSpace="nowrap"
                 >
@@ -156,17 +172,18 @@ export default function StudioModal({
                 </Flex>
               </Flex>
               <Input
-                id="studio"
+                id="studio_name"
                 ref={input_ref}
+                type="text"
                 padding="4px 8px"
                 width="100%"
                 background="rgba(0, 0, 0, 0.2)"
                 border="2px solid rgba(255, 255, 255, 0.7)"
-                value={formik.values.studio}
+                value={formik.values.studio_name}
                 autoComplete="off"
                 spellCheck="false"
-                isInvalid={formik.errors.studio ? true : false}
-                onChange={handleChange}
+                isInvalid={formik.errors.studio_name ? true : false}
+                onChange={handleChange_Name}
                 onFocus={(event: any) => { event.currentTarget.select(); }}
                 transition="all 200ms ease-in-out"
                 placeholder="thecoreloop labs"
@@ -188,7 +205,7 @@ export default function StudioModal({
             >
               <Flex justifyContent="space-between" width="100%">
                 <FormLabel 
-                  htmlFor="studio" 
+                  htmlFor="studio_link"
                   margin="0"
                   whiteSpace="nowrap"
                 >
@@ -196,20 +213,20 @@ export default function StudioModal({
                 </FormLabel>
               </Flex>
               <Input
-                id="studio"
-                ref={input_ref}
+                id="studio_link"
+                type="url"
                 padding="4px 8px"
                 width="100%"
                 background="rgba(0, 0, 0, 0.2)"
                 border="2px solid rgba(255, 255, 255, 0.7)"
-                value={formik.values.studio}
+                value={formik.values.studio_link}
                 autoComplete="off"
                 spellCheck="false"
-                isInvalid={formik.errors.studio ? true : false}
-                onChange={handleChange}
+                isInvalid={formik.errors.studio_link ? true : false}
+                onChange={handleChange_Link}
                 onFocus={(event: any) => { event.currentTarget.select(); }}
                 transition="all 200ms ease-in-out"
-                placeholder="thecoreloop labs"
+                placeholder="https://thecoreloop.gg/"
                 _placeholder={{
                   fontStyle: "italic",
                 }}
@@ -229,10 +246,10 @@ export default function StudioModal({
               <Text
                 marginRight="10px"
                 color="red.300"
-                opacity={formik.errors.studio ? "100%" : "0%"}
+                opacity={formik.errors.studio_name ? "100%" : "0%"}
                 transition="all 200ms ease-in-out"
               >
-                {formik.errors.studio as string}
+                {formik.errors.studio_name as string}
               </Text>
             </Flex>
 

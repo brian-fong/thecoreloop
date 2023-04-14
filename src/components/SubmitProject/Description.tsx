@@ -13,7 +13,10 @@ import { useEffect, useState } from "react";
 // Types
 import { ReactElement } from "react";
 
-export default function Description({ description, setDescription }: any) {
+export default function Description({
+  description, setDescription,
+  tagline,
+}: any) {
   // State variables
   const [content, setContent] = useState<ReactElement>();
 
@@ -92,10 +95,10 @@ export default function Description({ description, setDescription }: any) {
     <Box width="100%" height="100%" onClick={onOpen}>
       {content}
       <DescriptionModal
+        isOpen={isOpen} onClose={onClose}
         description={description}
         setDescription={setDescription}
-        isOpen={isOpen}
-        onClose={onClose}
+        tagline={tagline}
       />
     </Box>
   )

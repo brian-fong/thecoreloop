@@ -49,8 +49,8 @@ export default function Gallery({ gallery, setGallery }: any) {
 
   // State variables
   const [page, setPage] = useState<number>(0);
-  const [gallery_indices, setGalleryIndices] = useState<ReactElement>();
   const [gallery_content, setGalleryContent] = useState<ReactElement>();
+  const [gallery_indices, setGalleryIndices] = useState<ReactElement[]>();
   
   function navigatePage(dir: string): void {
     if (dir == "next") {
@@ -81,13 +81,16 @@ export default function Gallery({ gallery, setGallery }: any) {
             height={image_height}
             border="1px dashed white"
             borderRadius="5px"
-            transition="background 200ms ease-in-out"
+            transition="all 200ms ease-in-out"
             _hover={{
+              letterSpacing: "2px",
               background: "rgba(0, 0, 0, 0.4)"
             }}
           >
             <Text>{"🖼️ <gallery>"}</Text>
-            <Text opacity="50%">(click or drag'n'drop to upload images)</Text>
+            <Text letterSpacing="normal" opacity="50%">
+              (click or drag'n'drop to upload images)
+            </Text>
             <Flex
               flexDirection="row"
               justifyContent="start"
@@ -107,7 +110,7 @@ export default function Gallery({ gallery, setGallery }: any) {
                 background="rgba(255, 255, 143, 0.8)"
                 borderRadius="5px 0 0 5px"
               ></Box>
-              <Text>
+              <Text letterSpacing="normal">
                 ⚠️ Please upload at least 1 image related to this project
               </Text>
             </Flex>
@@ -115,7 +118,7 @@ export default function Gallery({ gallery, setGallery }: any) {
           </Flex>
         </DropzoneBoxV2>  
       );
-      setGalleryIndices(<div></div>);
+      setGalleryIndices([]);
     } else {
       setGalleryContent(
         <GalleryImage
@@ -137,47 +140,32 @@ export default function Gallery({ gallery, setGallery }: any) {
           />
         );
       }
-      setGalleryIndices(
-        <Flex
-          flexDirection="row"
-          justifyContent="start"
-          alignItems="center"
-          gap="30px"
-          padding="20px"
-          minWidth="480px"
-          minHeight="104px"
-          background="rgba(0, 0, 0, 0.3)"
-          borderRadius="5px"
-        >
-          {gallery_indices_new}
-          {
-            gallery.length < max_pages
-              ? (
-                <DropzoneBoxV2
-                  gallery={gallery} setGallery={setGallery}
-                  handleOnDrop={uploadGallery}
-                  maxFiles={5}
-                >
-                  <Flex
-                    flexDirection="row"
-                    justifyContent="center"
-                    alignItems="center"
-                    width="64px"
-                    height="64px"
-                    border="1px solid white"
-                    borderRadius="5px"
-                    transition="filter 200ms ease-in-out"
-                    _hover={{ filter: "brightness(0.8)" }}
-                  >
-                    <AddImageIcon size="32px" />
-                  </Flex>
-                </DropzoneBoxV2>
-              ) : (
-                null
-              )
-          }
-        </Flex>
-      );
+
+      if (gallery.length < max_pages) {
+        gallery_indices_new.push(
+          <DropzoneBoxV2
+            gallery={gallery} setGallery={setGallery}
+            handleOnDrop={uploadGallery}
+            maxFiles={5}
+          >
+            <Flex
+              flexDirection="row"
+              justifyContent="center"
+              alignItems="center"
+              width="64px"
+              height="64px"
+              border="1px solid white"
+              borderRadius="5px"
+              transition="filter 200ms ease-in-out"
+              _hover={{ filter: "brightness(0.8)" }}
+            >
+              <AddImageIcon size="32px" />
+            </Flex>
+          </DropzoneBoxV2>
+        )
+      }
+
+      setGalleryIndices(gallery_indices_new);
     }
   }, [gallery, page]);
 
@@ -264,7 +252,30 @@ export default function Gallery({ gallery, setGallery }: any) {
         position="relative"
         width="100%"
       >
-        {gallery_indices}
+        <Flex
+          flexDirection="row"
+          justifyContent="start"
+          alignItems="center"
+          gap="30px"
+          padding={gallery.length == 0
+            ? "0"
+            : "20px"
+          }
+          minWidth="480px"
+          height="104px"
+          maxHeight={gallery.length == 0
+            ? "0"
+            : "104px"
+          }
+          background="rgba(0, 0, 0, 0.3)"
+          borderRadius="5px"
+          transition={gallery.length == 0
+            ? "all 300ms ease-in-out 300ms"
+            : "all 300ms ease-in-out"
+          }
+        >
+          {gallery_indices}
+        </Flex>
       </Flex>
     </Flex>
   );

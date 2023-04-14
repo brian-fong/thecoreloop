@@ -60,6 +60,10 @@ export default function GalleryIndex({
         borderRadius="5px"
         boxShadow="5px 5px 3px black"
         filter={page == index ? "none" : "brightness(75%)"}
+        opacity={gallery.length == 0
+          ? "0%"
+          : "100%"
+        }
         transform={
           page == index
             ? "scale(1.1)"
@@ -67,7 +71,10 @@ export default function GalleryIndex({
         }
         cursor="pointer"
         onClick={() => setPage(index)}
-        transition="all 300ms ease-in-out"
+        transition={gallery.length == 0
+          ? "all 300ms ease-in-out 320ms"
+          : "all 300ms ease-in-out"
+        }
         _hover={{
           filter: "brightness(100%)",
         }}
@@ -90,6 +97,7 @@ export default function GalleryIndex({
             background="gray.300"
             borderRadius="5px 0 0 5px"
             cursor="pointer"
+            userSelect="none"
             transition="filter 200ms ease-in-out"
             _hover={{ filter: "brightness(0.8)" }}
           >
@@ -102,6 +110,7 @@ export default function GalleryIndex({
           borderRadius="0 5px 5px 0"
           cursor="pointer"
           onClick={deleteImage}
+          userSelect="none"
           transition="filter 200ms ease-in-out"
           _hover={{ filter: "brightness(0.8)" }}
         >

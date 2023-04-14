@@ -16,20 +16,8 @@ import {
 import {
   BsXCircle as MinusIcon,
   BsGlobe as WebIcon,
-  BsInstagram as InstagramIcon,
-  BsLinkedin as LinkedinIcon,
   BsPlus as PlusIcon,
-  BsTwitter as TwitterIcon,
-  BsTelegram as TelegramIcon,
-  BsYoutube as YouTubeIcon,
 } from "react-icons/bs";
-import { 
-  FaDiscord as DiscordIcon,
-  FaMediumM as MediumIcon,
-} from "react-icons/fa";
-import {
-  SiSubstack as SubstackIcon,
-} from "react-icons/si";
 import LinkIcon from './LinkIcon';
 
 // Hooks
