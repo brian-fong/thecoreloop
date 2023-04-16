@@ -5,17 +5,13 @@ import {
   Heading,
   Text,
 } from "@chakra-ui/react";
-import {
-  BsArrowLeft as LeftArrowIcon,
-  BsArrowRight as RightArrowIcon,
-} from "react-icons/bs";
 import Head from "next/head";
 import Header from "../components/Core/Header";
 import Part1 from "../components/SubmitProject/Part1";
 import Part2 from "../components/SubmitProject/Part2";
 
 // Hooks
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useProjectState from "../hooks/useProjectState";
 
 export default function submit_project() {
@@ -29,32 +25,15 @@ export default function submit_project() {
     fundraising, setFundraising,
     gallery, setGallery,
     genres, setGenres,
-    isTeam, setIsTeam,
     links, setLinks,
     name, setName,
     stage, setStage,
     studio, setStudio,
+    submittedAs, setSubmittedAs,
     tagline, setTagline,
     thumbnail, setThumbnail,
   } = useProjectState();
-  const [page, setPage] = useState<number>(1);
-
-  // Event Handler: Previous Button
-  function handleClick_Prev() {
-    setPage(1);
-  }
-  function handleDisabled_Prev(): boolean {
-    return page == 1;
-  }
-
-  // Event Handler: Next Button
-  function handleClick_Next() {
-    setPage(2);
-  }
-  function handleDisabled_Next(): boolean {
-    if (name && thumbnail) return false;
-    else return true;
-  }
+  const [part, setPart] = useState<number>(1);
 
   return (
     <>
@@ -102,51 +81,35 @@ export default function submit_project() {
             marginBottom="30px"
             width="100%"
           >
-            {
-              page == 1 
-                ? (
-                  <Heading fontSize="30px" whiteSpace="nowrap">
-                    Build <Text display="inline" color="gray.300" fontStyle="italic">Discovery</Text> View
-                  </Heading>
-                ) : (
-                  <Heading fontSize="30px" whiteSpace="nowrap">
-                    Build <Text display="inline" color="gray.300" fontStyle="italic">In-Depth</Text> View
-                  </Heading>
-                )
-            }
+            <Heading fontSize="30px" whiteSpace="nowrap">
+              Build{" "}
+              <Text
+                display="inline"
+                color="gray.300"
+                fontStyle="italic"
+              >
+                {part == 1 ? "Discovery" : "In-Depth"}
+              </Text>
+              {" "}View
+            </Heading>
 
-            {/* Container: Prev + Next Buttons */}
             <Flex
               flexDirection="row"
-              justifyContent="end"
+              justifyContent="center"
               alignItems="center"
               gap="30px"
-              width="100%"
             >
-              {/* Prev Button */}
-              <Button
-                variant="standard"
-                background="green.400"
-                onClick={handleClick_Prev}
-                // isDisabled={handleDisabled_Prev()}
+              <Text
+                fontSize="16px"
+                whiteSpace="nowrap"
               >
-                <LeftArrowIcon color="white" size="30px" />
-              </Button>
-
-              {/* Next Button */}
-              <Button
-                variant="standard"
-                background="green.400"
-                onClick={handleClick_Next}
-                // isDisabled={handleDisabled_Next()}
-              >
-                <RightArrowIcon color="white" size="30px" />
-              </Button>
+                Part {part} of 3
+              </Text>
             </Flex>
           </Flex>
 
           {/* Content */}
-          {page == 1 
+          {part == 1 
             ? (
               <Part1
                 image_width={image_width} image_height={image_height}
@@ -154,10 +117,11 @@ export default function submit_project() {
                 fundraising={fundraising} setFundraising={setFundraising}
                 genres={genres} setGenres={setGenres}
                 name={name} setName={setName}
-                isTeam={isTeam} setIsTeam={setIsTeam}
                 stage={stage} setStage={setStage}
+                submittedAs={submittedAs} setSubmittedAs={setSubmittedAs}
                 tagline={tagline} setTagline={setTagline}
                 thumbnail={thumbnail} setThumbnail={setThumbnail}
+                setPart={setPart}
               />
             ) : (
               <Part2
@@ -167,16 +131,17 @@ export default function submit_project() {
                 fundraising={fundraising} setFundraising={setFundraising}
                 gallery={gallery} setGallery={setGallery}
                 genres={genres} setGenres={setGenres}
-                isTeam={isTeam}
                 links={links} setLinks={setLinks}
                 name={name} setName={setName}
                 stage={stage} setStage={setStage}
                 studio={studio} setStudio={setStudio}
+                submittedAs={submittedAs}
                 tagline={tagline} setTagline={setTagline}
                 thumbnail={thumbnail} setThumbnail={setThumbnail}
               />
             )
           }
+
         </Flex>
       </Flex>
     </>

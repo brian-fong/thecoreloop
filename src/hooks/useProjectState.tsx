@@ -12,12 +12,9 @@ export default function useProjectState() {
   const [links, setLinks] = useState<string[]>([""]);
   const [name, setName] = useState<string>("");
   const [stage, setStage] = useState<string>("");
-  const [studio, setStudio] = useState<any>({
-    name: "",
-    link: "",
-  });
   const [story, setStory] = useState<string>("");
-  const [isTeam, setIsTeam] = useState<boolean>(false);
+  const [studio, setStudio] = useState<any>({ name: "", link: "" });
+  const [submittedAs, setSubmittedAs] = useState<string>("");
   const [tagline, setTagline] = useState<string>("");
   const [thumbnail, setThumbnail] = useState<string>("");
 
@@ -32,9 +29,9 @@ export default function useProjectState() {
     links, setLinks,
     name, setName,
     stage, setStage,
-    studio, setStudio,
     story, setStory,
-    isTeam, setIsTeam,
+    studio, setStudio,
+    submittedAs, setSubmittedAs,
     tagline, setTagline,
     thumbnail, setThumbnail,
   };

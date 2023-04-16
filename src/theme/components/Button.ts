@@ -20,7 +20,7 @@ const standard = defineStyle({
     boxShadow: "none",
     filter: "brightness(1.0)",
     transform: "translate(5px, 5px)",
-  }
+  },
 })
 
 const Button = defineStyleConfig({

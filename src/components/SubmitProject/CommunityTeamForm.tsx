@@ -6,7 +6,6 @@ import {
   Heading,
   Radio,
   RadioGroup,
-  Switch,
   Text,
   Tooltip,
 } from "@chakra-ui/react";
@@ -14,34 +13,22 @@ import { InfoOutlineIcon as InfoIcon } from "@chakra-ui/icons";
 import { MdSubdirectoryArrowRight as IndentArrowIcon } from "react-icons/md";
 
 // Hooks
-import { useEffect, useRef } from "react";
+import { LegacyRef, useEffect, useRef } from "react";
 
 export default function CommunityTeamForm({
   fundraising, setFundraising,
-  isTeam, setIsTeam,
+  submittedAs, setSubmittedAs,
 }: any) {
 
-  // Refs: Fundraising + Partnerships
-  const team_switch_ref = useRef<any>();
+  // Refs
+  const switch_ref = useRef<HTMLDivElement>();
 
-  async function handleClick_Team_Switch() {
-    // Toggle submittedByTeam state variable
-    setIsTeam((value: boolean) => !value);
+  function switchSides() {
+    if (submittedAs == "community") setSubmittedAs("team");
+    if (submittedAs == "team") setSubmittedAs("community");
   }
 
-  function handleClick_Team_SwitchLabel(event: any) {
-    // Enable functionality to click label to toggle team
-    const value: string = event.currentTarget.innerHTML;
-    if (value == "COMMUNITY" && isTeam) {
-      // Case: Switching from Team ==> Community
-      team_switch_ref.current.click();
-    } else if (value == "TEAM" && !isTeam) {
-      // Case: Switching from Community ==> Team
-      team_switch_ref.current.click();
-    }
-  }
-
-  function handleClick_fundraising(event: any) {
+  function handleClick_Fundraising(event: any) {
     // Update fundraising state variable
     const radio_group = event.currentTarget;
     for (const { firstChild: choice } of radio_group.children) {
@@ -50,35 +37,21 @@ export default function CommunityTeamForm({
   }
 
   useEffect(() => {
-    // Switch does not save state between mounting/unmounting so we
-    // need to "manually" click it to set it to the right state
-    if (isTeam) team_switch_ref.current.click();
-  }, []);
-
-  useEffect(() => {
-    if (!isTeam) {
-      // If user is not Team, then reset fundraising to undefined
+    // Update fundraising status every time submittedAs changes
+    if (submittedAs == "community") {
+      // If user is party of community, then reset fundraising to undefined
       setFundraising("");
-    } else if (isTeam && !fundraising) {
-      // Default to undisclosed
-      setFundraising("undisclosed");
-    }
 
-    const community_label: HTMLElement = document.getElementById(
-      "community-label"
-    )!;
-    const team_label: HTMLElement = document.getElementById(
-      "team-label"
-    )!;
+      // Shift (translate) switch towards Community side
+      switch_ref.current!.style.transform = "translateX(-10px)";
+    } else if (submittedAs == "team") {
+      // If fundraising is undefined, then default to "undisclosed"
+      if (!fundraising) setFundraising("undisclosed");
 
-    if (!isTeam) {
-      community_label.style.filter = "brightness(1.0)";
-      team_label.style.filter = "brightness(0.5)";
-    } else {
-      community_label.style.filter = "brightness(0.5)";
-      team_label.style.filter = "brightness(1.0)";
+      // Shift (translate) switch towards Team side
+      switch_ref.current!.style.transform = "translateX(10px)";
     }
-  }, [isTeam]);
+  }, [submittedAs]);
 
   return (
     <Flex
@@ -128,29 +101,48 @@ export default function CommunityTeamForm({
             fontSize="18px"
             fontWeight="700"
             cursor="pointer"
-            transition="all 200ms ease-in-out"
-            onClick={handleClick_Team_SwitchLabel}
+            filter={submittedAs == "community"
+              ? "brightness(100%)"
+              : "brightness(40%)"
+            }
+            transition="filter 200ms ease-in-out"
+            onClick={() => setSubmittedAs("community")}
           >
             COMMUNITY
           </Text>
-          <Switch
-            id="submittedByTeam"
-            name="submittedByTeam"
-            ref={team_switch_ref}
-            variant="CommunityTeam"
-            size="md"
-            cursor="pointer"
-            value={isTeam.toString()}
-            onChange={handleClick_Team_Switch}
-          />
+          <Flex
+            id="switch-container"
+            flexDirection="row"
+            justifyContent="center"
+            alignItems="center"
+            padding="0 14px"
+            height="25px"
+            background="gray.600"
+            borderRadius="5px"
+            onClick={switchSides}
+          >
+            <Box
+              ref={switch_ref as LegacyRef<HTMLDivElement>}
+              id="switch"
+              width="20px"
+              height="20px"
+              background="white"
+              borderRadius="5px"
+              transition="transform 200ms ease-in-out"
+            ></Box>
+          </Flex>
           <Text
             id="team-label"
             color="blue.400"
             fontSize="18px"
             fontWeight="700"
             cursor="pointer"
-            transition="all 200ms ease-in-out"
-            onClick={handleClick_Team_SwitchLabel}
+            filter={submittedAs == "team"
+              ? "brightness(100%)"
+              : "brightness(40%)"
+            }
+            transition="filter 200ms ease-in-out"
+            onClick={() => setSubmittedAs("team")}
           >
             TEAM
           </Text>
@@ -158,72 +150,75 @@ export default function CommunityTeamForm({
       </Flex>
 
       {/* Fundraising-at-the-moment? */}
-      <Flex flexDirection="column">
-        <Flex
+      <Flex
+        id="fundraising-container"
+        flexDirection="column"
+        justifyContent="start"
+        alignItems="start"
+        gap="5px"
+        width="100%"
+        maxHeight={submittedAs != "team"
+          ? "0"
+          : "130px"
+        }
+        overflow="hidden"
+        transition="max-height 300ms ease-in-out"
+      >
+        <Flex 
+          flexDirection="row" 
+          justifyContent="start"
+          alignItems="center"
+          gap="10px" 
+          marginBottom="5px"
+          opacity={submittedAs != "team"
+            ? "40%"
+            : "100%"
+          }
+          transition="opacity 200ms ease-in-out"
+        >
+          <IndentArrowIcon fontSize="16px" />
+          <FormLabel
+            htmlFor="fundraising"
+            margin="0"
+            fontSize="16px"
+          >
+            Is your project fundraising at the moment?
+          </FormLabel>
+          <Tooltip 
+            label="This field can be changed later"
+            placement="right"
+            hasArrow
+          >
+            <Box position="relative" bottom="1px">
+              <InfoIcon boxSize="15px" />
+            </Box>
+          </Tooltip>
+        </Flex>
+        <RadioGroup 
+          id="fundraising"
+          name="fundraising"
+          display="flex"
           flexDirection="column"
           justifyContent="start"
           alignItems="start"
           gap="10px"
-          width="100%"
-          filter={isTeam
-            ? "brightness(1.0)"
-            : "brightness(0.4)"
-          }
-          transition="filter 300ms ease-in-out"
+          marginLeft="40px"
+          isDisabled={submittedAs != "team"}
+          cursor={submittedAs ? "auto" : "not-allowed"}
+          value={fundraising}
+          onClick={handleClick_Fundraising}
+          transition="opacity 300ms ease-in-out"
         >
-          <Flex flexDirection="column" marginLeft="5px">
-            <Flex 
-              flexDirection="row" 
-              justifyContent="start"
-              alignItems="center"
-              gap="10px" 
-              marginBottom="5px"
-            >
-              <IndentArrowIcon fontSize="16px" />
-              <FormLabel
-                htmlFor="fundraising"
-                margin="0"
-                fontSize="16px"
-              >
-                Is your project fundraising at the moment?
-              </FormLabel>
-              <Tooltip 
-                label="This field can be changed later"
-                placement="right"
-                hasArrow
-              >
-                <Box position="relative" bottom="1px">
-                  <InfoIcon boxSize="15px" />
-                </Box>
-              </Tooltip>
-            </Flex>
-            <RadioGroup 
-              id="fundraising"
-              name="fundraising"
-              display="flex"
-              flexDirection="column"
-              justifyContent="start"
-              alignItems="start"
-              gap="10px"
-              marginLeft="40px"
-              isDisabled={!isTeam}
-              cursor={isTeam ? "auto" : "not-allowed"}
-              value={fundraising}
-              onClick={handleClick_fundraising}
-              transition="all 300ms ease-in-out"
-            >
-              <Radio value="yes">
-                Yes, we're raising and we'd appreciate  a shout-out! ❤️
-              </Radio>
-              <Radio value="no">
-                No, we're not raising
-              </Radio>
-              <Radio value="undisclosed">
-                Undisclosed
-              </Radio>
-            </RadioGroup>
-          </Flex>
-        </Flex>
+          <Radio value="yes">
+            Yes, we're raising and we'd appreciate  a shout-out! ❤️
+          </Radio>
+          <Radio value="no">
+            No, we're not raising
+          </Radio>
+          <Radio value="undisclosed">
+            Undisclosed
+          </Radio>
+        </RadioGroup>
       </Flex>
     </Flex>
   );

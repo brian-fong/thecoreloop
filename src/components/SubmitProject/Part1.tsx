@@ -1,5 +1,7 @@
 // Components
 import {
+  Button,
+  Flex,
   Divider,
   Heading,
   Text,
@@ -7,17 +9,41 @@ import {
 import CommunityTeamForm from "./CommunityTeamForm";
 import DiscoverForm from "./DiscoverForm";
 
+// Hooks
+import { useEffect, useState } from "react";
+
 export default function Part1({
   image_width, image_height,
   blockchain, setBlockchain,
   fundraising, setFundraising,
   genres, setGenres,
   name, setName,
-  isTeam, setIsTeam,
   stage, setStage,
+  submittedAs, setSubmittedAs,
   tagline, setTagline,
   thumbnail, setThumbnail,
+  setPart,
 }: any) {
+
+  // State variables
+  const [isFinished, setIsFinished] = useState<boolean>(true);
+
+  // Update isFinished state variable
+  // useEffect(() => {
+  //   if (
+  //     blockchain
+  //       && genres.length > 0
+  //       && name
+  //       && stage
+  //       && submittedAs
+  //       && tagline
+  //       && thumbnail
+  //   ) {
+  //     setIsFinished(true);
+  //   } else {
+  //     setIsFinished(false);
+  //   }
+  // }, [blockchain, genres, name, stage, submittedAs, tagline, thumbnail]);
 
   return (
     <>
@@ -40,8 +66,42 @@ export default function Part1({
 
       <CommunityTeamForm
         fundraising={fundraising} setFundraising={setFundraising}
-        isTeam={isTeam} setIsTeam={setIsTeam}
+        submittedAs={submittedAs} setSubmittedAs={setSubmittedAs}
       />
+      
+      <Flex
+        id="proceed-btn-container"
+        flexDirection="row"
+        justifyContent="center"
+        alignItems="center"
+        marginTop="30px"
+        width="100%"
+      >
+        <Button
+          variant="standard"
+          padding="8px 16px"
+          color="white"
+          background="purple.600"
+          onClick={() => setPart(2)}
+          isDisabled={!isFinished}
+          _disabled={{
+            background: "green.400",
+            boxShadow: "none",
+            filter: "brightness(50%) grayscale(100%)",
+            cursor: "not-allowed",
+            _hover: {
+              boxShadow: "none",
+              background: "green.400",
+            },
+            _active: {
+              boxShadow: "none",
+              transform: "none",
+            },
+          }}
+        >
+          Proceed to In-Depth View
+        </Button>
+      </Flex>
     </>
   );
 }
