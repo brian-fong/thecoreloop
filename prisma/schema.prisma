@@ -19,6 +19,13 @@ model User {
   birthday  DateTime @updatedAt
   bio       String
 }
+model Users {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  twitterHandle String   @db.VarChar(255)
+  googleHandle  String   @db.VarChar(255)
+  username  String   @db.VarChar(255)
+}
 
 model Game {
   id              Int       @id @default(autoincrement())
