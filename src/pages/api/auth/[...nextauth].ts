@@ -1,5 +1,8 @@
+// dotenv
 import * as dotenv from "dotenv";
 dotenv.config()
+
+// NextAuth.js
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import TwitterProvider from "next-auth/providers/twitter";
@@ -16,7 +19,6 @@ export const auth_options = {
       version: "2.0",
     }),
   ],
-  secret: process.env.NEXTAUTH_SECRET,
 }
 
 export default NextAuth(auth_options)
