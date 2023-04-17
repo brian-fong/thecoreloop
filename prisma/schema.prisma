@@ -1,13 +1,15 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-generator client {
-  provider = "prisma-client-js"
-}
 
 datasource db {
   provider = "mysql"
-  url      = env("DATABASE_URL")
+  url      = "mysql://root@localhost:3306/thecoreloop"
+}
+
+
+generator client {
+  provider = "prisma-client-js"
 }
 
 model User {
@@ -19,12 +21,16 @@ model User {
   birthday  DateTime @updatedAt
   bio       String
 }
+
 model Users {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
-  twitterHandle String   @db.VarChar(255)
-  googleHandle  String   @db.VarChar(255)
+  twitterHandle String?   @db.VarChar(255)
+  googleHandle  String?  @db.VarChar(255)
   username  String   @db.VarChar(255)
+
+  @@unique([twitterHandle, googleHandle])
+  @@check((twitterHandle IS NOT NULL) OR (googleHandle IS NOT NULL))
 }
 
 model Game {
@@ -34,6 +40,7 @@ model Game {
   stage           String 
   genre           String
   upvote_count    Int
+  owner           Users
 }
 
 enum Genre {

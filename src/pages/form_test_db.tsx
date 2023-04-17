@@ -16,7 +16,7 @@ export default function TestForm() {
     e.preventDefault();
     console.log("formData on frontend",formData);
     const resp = await axios.post("/api/prisma_user", formData)
-    console.log(resp)
+    console.log("response received! haha successfully added user to db!",resp)
   };
 
   return (
