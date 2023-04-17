@@ -28,6 +28,7 @@ model Users {
   twitterHandle String?   @db.VarChar(255)
   googleHandle  String?  @db.VarChar(255)
   username  String   @db.VarChar(255)
+  games Game[]
 
   @@unique([twitterHandle, googleHandle])
   @@check((twitterHandle IS NOT NULL) OR (googleHandle IS NOT NULL))
@@ -36,11 +37,14 @@ model Users {
 model Game {
   id              Int       @id @default(autoincrement())
   title           String
+  //blockchain and thumbnail?
   description     String
-  stage           String 
-  genre           String
-  upvote_count    Int
-  owner           Users
+  stage           String
+  devStatus       DevStatus  
+  genre           Genre
+  upvote_count    Int @default(0)
+  ownerId         Int?
+  owner           User @relation(fields:[UserId], references: [id])
 }
 
 enum Genre {
@@ -49,10 +53,23 @@ enum Genre {
   RPG
 }
 
-enum devStatus {
+enum DevStatus {
   FUNDRAISING
   INDEVELOPMENT
   ALPHA
   BETA
   LAUNCHED
 }
+
+/* future implementation to many-to-many relation
+model GameGenre {
+
+}
+
+enum blockchain{
+
+}
+
+maybe thumbnail? i dont know yet
+*/
+
