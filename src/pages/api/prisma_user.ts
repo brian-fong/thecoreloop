@@ -9,6 +9,7 @@ type FormData = {
   username: string;
 };
 
+//I can make this into a case
 export default async function createUser(
   request: NextApiRequest,
   response: NextApiResponse
@@ -30,6 +31,11 @@ export default async function createUser(
   }
 }
 
+//DEV: how many users should we retrieve? and what do we even need this for? haha
+/* OPTION: we would use this for maybe showing all of the users that are affiliated
+           with something like donations list, or list of developers 
+              - It would help the company if a renowed developer is on the team
+              - It would help developers with getting scouted by bigger comapnies */
 async function getUsers(request: NextApiRequest, response: NextApiResponse) {
   if (request.method == "GET") {
     try {
@@ -66,11 +72,30 @@ async function getUser(request: NextApiRequest, response: NextApiResponse) {
 //maybe deliver payload such as req.data = {updateQueue : [twitter_handle, username], username, twitter_handle, googleHandle}
 async function updateUser(request: NextApiRequest, response: NextApiResponse) {
   const { id, twitterHandle, googleHandle, username } = request.body;
-  const updatedUser = await prisma.users.update({
-    where: { id: 1 },
-    data: { username: username },
-  });
+  try {
+    const updatedUser = await prisma.users.update({
+      where: { id: 1 },
+      data: { username: username },
+    });
+  } catch (error) {
+    response.status(500).json({ error: "unsuccessful in updating user" });
+  }
 }
 
-// :')
-async function deleteUser(request: NextApiRequest, response: NextApiResponse) {}
+// authorization first and then execute this line. :')
+async function deleteUser(request: NextApiRequest, response: NextApiResponse) {
+  const { id, twitterHandle, googleHandle, username } = request.body;
+  const user = await prisma.user.findUnique({
+    where: {
+      id: id,
+    },
+  });
+  if (user) {
+    const res = await prisma.users.delete({
+      where: { id: id },
+    });
+    response.status(200).json({ sucess: "sucessfully deleted user" });
+  } else {
+    response.status(400).json({ error: "user not found" });
+  }
+}
