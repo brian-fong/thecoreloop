@@ -1,9 +1,11 @@
 // Components
 import {
-  Divider,
+  Button,
+  Flex,
   Heading,
   Text,
 } from "@chakra-ui/react";
+import { BsArrowLeft as LeftArrowIcon } from "react-icons/bs";
 import InDepthForm from "./InDepthForm";
 
 export default function Part2({
@@ -16,6 +18,7 @@ export default function Part2({
   isTeam,
   links, setLinks,
   name, setName,
+  part, setPart,
   stage, setStage,
   studio, setStudio,
   tagline, setTagline,
@@ -42,6 +45,47 @@ export default function Part2({
         tagline={tagline} setTagline={setTagline}
         thumbnail={thumbnail} setThumbnail={setThumbnail}
       />
+
+      <Flex
+        id="proceed-btn-container"
+        flexDirection="row"
+        justifyContent="space-between"
+        alignItems="center"
+        marginTop="50px"
+        width="100%"
+      >
+        <Flex
+          display={part == 1
+            ? "none"
+            : "flex"
+          }
+          flexDirection="row"
+          justifyContent="start"
+          alignItems="center"
+          marginTop="5px"
+          gap="5px"
+          onClick={() => setPart(1)}
+          _hover={{
+            cursor: "pointer",
+            textDecoration: "underline",
+            filter: "brightness(70%)",
+          }}
+        >
+          <LeftArrowIcon size="18px" />
+          <Text>
+            Back to Discovery View
+          </Text>
+        </Flex>
+        <Button
+          variant="standard"
+          padding="8px 16px"
+          color="white"
+          background="purple.600"
+          onClick={() => setPart(3)}
+        >
+          Preview
+        </Button>
+      </Flex>
     </>
   );
 }

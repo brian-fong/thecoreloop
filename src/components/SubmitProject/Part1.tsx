@@ -28,16 +28,16 @@ export default function Part1({
   // State variables
   const [isFinished, setIsFinished] = useState<boolean>(true);
 
-  // Update isFinished state variable
   // useEffect(() => {
+  //   // Update isFinished state variable as Discovery fields change
   //   if (
-  //     blockchain
-  //       && genres.length > 0
-  //       && name
-  //       && stage
-  //       && submittedAs
-  //       && tagline
-  //       && thumbnail
+  //     blockchain              // Blockchain: non-empty
+  //     && genres.length > 0    // Genres: at least 1 genre selected
+  //     && name                 // Name: non-empty
+  //     && stage                // Stage: non-empty
+  //     && submittedAs          // Submitted As (Community/Team): non-empty
+  //     && tagline              // Tagline: non-empty
+  //     && thumbnail            // Thumbnail: non-empty
   //   ) {
   //     setIsFinished(true);
   //   } else {
@@ -72,7 +72,7 @@ export default function Part1({
       <Flex
         id="proceed-btn-container"
         flexDirection="row"
-        justifyContent="center"
+        justifyContent="end"
         alignItems="center"
         marginTop="30px"
         width="100%"
@@ -85,13 +85,13 @@ export default function Part1({
           onClick={() => setPart(2)}
           isDisabled={!isFinished}
           _disabled={{
-            background: "green.400",
+            backgroundColor: "purple.600",
             boxShadow: "none",
-            filter: "brightness(50%) grayscale(100%)",
+            filter: "brightness(50%)",
             cursor: "not-allowed",
             _hover: {
               boxShadow: "none",
-              background: "green.400",
+              background: "purple.600",
             },
             _active: {
               boxShadow: "none",

@@ -1,17 +1,17 @@
 // Components
 import {
-  Button,
   Flex,
   Heading,
   Text,
 } from "@chakra-ui/react";
+import { BsArrowLeftShort as LeftArrowIcon } from "react-icons/bs";
 import Head from "next/head";
 import Header from "../components/Core/Header";
 import Part1 from "../components/SubmitProject/Part1";
 import Part2 from "../components/SubmitProject/Part2";
 
 // Hooks
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import useProjectState from "../hooks/useProjectState";
 
 export default function submit_project() {
@@ -77,21 +77,45 @@ export default function submit_project() {
           <Flex
             flexDirection="row"
             justifyContent="space-between"
-            alignItems="end"
+            alignItems="start"
             marginBottom="30px"
             width="100%"
           >
-            <Heading fontSize="30px" whiteSpace="nowrap">
-              Build{" "}
-              <Text
-                display="inline"
-                color="gray.300"
-                fontStyle="italic"
+            <Flex flexDirection="column">
+              <Heading fontSize="30px" whiteSpace="nowrap">
+                Build{" "}
+                <Text
+                  display="inline"
+                  color="gray.300"
+                  fontStyle="italic"
+                >
+                  {part == 1 ? "Discovery" : "In-Depth"}
+                </Text>
+                {" "}View
+              </Heading>
+
+              <Flex
+                display={part == 1
+                  ? "none"
+                  : "flex"
+                }
+                flexDirection="row"
+                justifyContent="start"
+                alignItems="center"
+                marginTop="5px"
+                onClick={() => setPart(1)}
+                _hover={{
+                  cursor: "pointer",
+                  textDecoration: "underline",
+                  filter: "brightness(80%)",
+                }}
               >
-                {part == 1 ? "Discovery" : "In-Depth"}
-              </Text>
-              {" "}View
-            </Heading>
+                <LeftArrowIcon size="18px" />
+                <Text>
+                  Back to Discovery View
+                </Text>
+              </Flex>
+            </Flex>
 
             <Flex
               flexDirection="row"
@@ -133,6 +157,7 @@ export default function submit_project() {
                 genres={genres} setGenres={setGenres}
                 links={links} setLinks={setLinks}
                 name={name} setName={setName}
+                part={part} setPart={setPart}
                 stage={stage} setStage={setStage}
                 studio={studio} setStudio={setStudio}
                 submittedAs={submittedAs}
