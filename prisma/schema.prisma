@@ -38,27 +38,31 @@ model Users {
 
 model Game {
   id              Int       @id @default(autoincrement())
-  title           String
-  //blockchain and thumbnail?
-  description     String
-  stage           String
-  devStatus       DevStatus  
-  genres           Genre[] @relation("GameGenre")
   upvote_count    Int @default(0)
+  title           String
+  studio          String?
+  thumbnail       String?
+  blockchain      String?
+  description     String?
+  tagline         String?
+  isTeam          Boolean @default(true)
+  fundraising     String?
+  links          String?
+  genres          Genre[] @relation("GameGenre")
+  gallery         String?
+  stage           DevStatus  
   ownerId         Int?
   owner           Users? @relation(fields:[ownerId], references: [id])
 }
 
 model Genre {
-  id Int @id @default(autoincrement())
-  genre    Genre
-  games Game[] @relation("GameGenre")
-  @@id([games, genre])
-  @@unique([games, genre])
+  id       Int @id @default(autoincrement())
+  genre    Genres
+  games    Game[] @relation("GameGenre")
 }
 
 
-enum Genre {
+enum Genres {
   MMORPG
   FPS
   RPG
