@@ -86,7 +86,7 @@ export default function LinksModal({
         borderRadius="10px"
       >
         <ModalBody
-          padding="8px 20px 30px"
+          padding="8px 20px 20px"
           width="100%"
           border="2px solid rgba(255, 255, 255, 0.7)"
           borderRadius="5px"
