@@ -29,6 +29,10 @@ export default function DiscoveryCard({
 }: any) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  function handleClick() {
+
+  }
+
   // Split genres into string array
   genres = genres.split(",");
 
@@ -56,6 +60,11 @@ export default function DiscoveryCard({
           height={image_height}
           minHeight={image_height}
           borderRadius="full"
+          cursor="pointer"
+          transition="all 200ms ease-in-out"
+          _hover={{
+            filter: "brightness(75%)",
+          }}
         />
         <FundraisingIcon fundraising={fundraising} />
       </Box>
@@ -86,8 +95,12 @@ export default function DiscoveryCard({
               fontWeight="700"
               lineHeight="none"
               border="1px solid transparent"
+              cursor="pointer"
               whiteSpace="nowrap"
               transition="all 200ms ease-in-out"
+              _hover={{
+                filter: "brightness(75%)",
+              }}
             >
               {name}
             </Text>
@@ -231,6 +244,7 @@ export default function DiscoveryCard({
           transition="all 200ms ease-in-out"
           _hover={{ background: "rgba(255, 255, 255, 0.1)" }}
           _active={{ background: "rgba(255, 255, 255, 0.2)" }}
+          onClick={handleClick}
         >
           <UpvoteIcon color="white" size="25px" />
           <Text fontSize="16px">

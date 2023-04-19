@@ -27,6 +27,7 @@ const Button = defineStyleConfig({
   baseStyle: {
     margin: "0",
     padding: "0",
+    fontSize: "16px",
     background: "transparent",
     backgroundColor: "transparent",
     _hover: {},

@@ -9,6 +9,7 @@ import {
   PopoverContent,
   Text,
 } from "@chakra-ui/react";
+import ContributeButton from "../Header/ContributeButton";
 import Link from "next/link";
 import ProfileDisplay from "../User/ProfileDisplay";
 
@@ -51,113 +52,8 @@ export default function Header() {
         marginLeft="30px"
         height="100%"
       >
-        <Popover gutter={0}>
-          <PopoverTrigger>
-            <Button
-              display="flex"
-              flexDirection="row"
-              justifyContent="start"
-              alignItems="center"
-              margin="0"
-              padding="5px 10px"
-              height="min-content"
-              color="gray.400"
-              fontSize="18px"
-              background="transparent"
-              borderRadius="5px"
-              transition="all 200ms ease-in-out"
-              _focusVisible={{
-                color: "gray.300",
-                background: "rgba(0, 0, 0, 0.3)",
-              }}
-              _hover={{
-                color: "gray.200",
-              }}
-              _active={{}}
-            >
-              CONTRIBUTE
-            </Button>
-          </PopoverTrigger>
-          <PopoverContent 
-            display="flex"
-            flexDirection="column"
-            justifyContent="center"
-            alignItems="start"
-            gap="10px"
-            padding="5px 10px"
-            maxWidth="140px"
-            color="white"
-            background="#1A1B23"
-            border="none"
-            borderRadius="10px"
-            _focusVisible={{
-              outline: "none",
-              border: "none"
-            }}
-            zIndex={10}
-          >
-            <Link href="./submit_project">
-              <Text
-                width="100%"
-                color="white"
-                letterSpacing="1px"
-                fontWeight="700"
-                fontStyle="normal"
-                whiteSpace="nowrap"
-                cursor="pointer"
-                transition="all 200ms ease-in-out"
-                _focusVisible={{
-                  letterSpacing: "3px",
-                  filter: "brightness(0.8)",
-                }}
-                _hover={{
-                  letterSpacing: "3px",
-                  filter: "brightness(0.8)",
-                }}
-              >
-                PROJECT
-              </Text>
-            </Link>
-            <Text
-              width="100%"
-              color="white"
-              letterSpacing="1px"
-              fontWeight="700"
-              whiteSpace="nowrap"
-              cursor="not-allowed"
-              transition="all 200ms ease-in-out"
-              _focusVisible={{
-                letterSpacing: "3px",
-                filter: "brightness(0.8)",
-              }}
-              _hover={{
-                letterSpacing: "3px",
-                filter: "brightness(0.8)",
-              }}
-            >
-              EVENT
-            </Text>
-            <Text
-              width="100%"
-              color="white"
-              letterSpacing="1px"
-              fontWeight="700"
-              whiteSpace="nowrap"
-              cursor="not-allowed"
-              transition="all 200ms ease-in-out"
-              _focusVisible={{
-                letterSpacing: "3px",
-                filter: "brightness(0.8)",
-              }}
-              _hover={{
-                letterSpacing: "3px",
-                filter: "brightness(0.8)",
-              }}
-            >
-              DISCUSSION
-            </Text>
-          </PopoverContent>
-        </Popover>
+        {/* Contribute */}
+        <ContributeButton />
 
         {/* Explore */}
         <Input

@@ -5,11 +5,12 @@ import {
   Image,
   Text,
 } from "@chakra-ui/react";
+import StartButton from "./StartButton";
 
 // Hooks
 import { useEffect, useState } from "react";
 import { useDisclosure } from "@chakra-ui/react";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 
 // Types
 import type { ReactElement } from "react";
@@ -20,40 +21,13 @@ export default function ProfileDisplay() {
   const { data: session, status } = useSession();
   const [content, setContent] = useState<ReactElement>();
 
-  // useDisclosure: SignUp Modal
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
   useEffect(() => {
     console.log("Status: ", status);
     console.log("OAuth Data: ", session);
 
     if (status.toLowerCase() != "authenticated") {
       setContent(
-        <Button
-          display="flex"
-          flexDirection="row"
-          justifyContent="start"
-          alignItems="center"
-          marginRight="20px"
-          padding="5px 10px"
-          height="min-content"
-          color="gray.400"
-          fontSize="18px"
-          background="transparent"
-          onClick={() => signIn("google")}
-          transition="all 200ms ease-in-out"
-          _focusVisible={{ 
-            color: "gray.300",
-            background: "rgba(0, 0, 0, 0.3)",
-            borderRadius: "10px",
-          }}
-          _hover={{
-            color: "gray.200",
-          }}
-          _active={{}}
-        >
-          START
-        </Button>
+        <StartButton />
       );
     } else if (status == "authenticated") {
       setContent(
