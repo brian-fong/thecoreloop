@@ -8,9 +8,11 @@ import {
 import Card from "../components/Discovery/Card";
 import DATA from "../data/mock-data";
 import Head from "next/head";
-import Header from "../components/Core/Header";
+import Header from "../components/Header/Header";
+import SignInModal from "../components/User/SignInModal";
 
 // Hooks
+import { useDisclosure } from "@chakra-ui/react";
 import { useState, useEffect, ReactElement } from "react";
 
 // Useful Functions & Constants
@@ -28,6 +30,13 @@ export default function discovery() {
   const [sortBy, setSortBy] = useState<string>("popular"); // or "latest"
   const [cards, setCards] = useState<ReactElement[]>([]);
 
+  // useDisclosure: SignIn Modal
+  const {
+    isOpen: isOpen_SignIn, 
+    onOpen: onOpen_SignIn,
+    onClose: onClose_SignIn,
+  } = useDisclosure();
+
   function compareUpvote(a: any, b: any): number {
     if (a.upvote_count < b.upvote_count) return 1;
     else if (a.upvote_count > b.upvote_count) return -1;
@@ -41,6 +50,7 @@ export default function discovery() {
       setCards(cards => [...cards, 
         <Card
           key={uuid()}
+          onOpen_SignIn={onOpen_SignIn}
           image_width={image_width} image_height={image_height}
           blockchain={entry.blockchain}
           fundraising={getRandBool(0.20)}
@@ -113,6 +123,7 @@ export default function discovery() {
                 fontSize="20px"
                 fontWeight="800"
                 width="100%"
+                userSelect="none"
               >
                 Discover tomorrow's gaming startups, today
               </Heading>
@@ -159,7 +170,6 @@ export default function discovery() {
               </Flex>
             </Flex>
 
-
             {/* Card Gallery */}
             <Flex
               id="card-container"
@@ -173,6 +183,12 @@ export default function discovery() {
             >
               {cards}
             </Flex>
+
+            {/* SignIn Modal */}
+            <SignInModal
+              isOpen={isOpen_SignIn}
+              onClose={onClose_SignIn}
+            />
           </Flex>
         </Flex>
       </Flex>

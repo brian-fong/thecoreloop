@@ -9,14 +9,12 @@ import {
 import { VscTriangleUp as UpvoteIcon } from "react-icons/vsc";
 import FundraisingIcon from "../SubmitProject/FundraisingIcon";
 
-// Hooks
-import { useDisclosure } from "@chakra-ui/react";
-
 // Useful Constants & Functions
 import { STAGES } from "../../data/stages";
 import { BLOCKCHAINS } from "../../data/blockchains";
 
 export default function DiscoveryCard({
+  onOpen_SignIn,
   image_width, image_height,
   blockchain,
   fundraising,
@@ -27,11 +25,6 @@ export default function DiscoveryCard({
   thumbnail,
   upvotes,
 }: any) {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
-  function handleClick() {
-
-  }
 
   // Split genres into string array
   genres = genres.split(",");
@@ -177,8 +170,6 @@ export default function DiscoveryCard({
             background="gray.700"
             border="1px solid transparent"
             borderRadius="10px"
-            onMouseEnter={onOpen}
-            onMouseLeave={onClose}
           >
             <Text
               color="white"
@@ -193,7 +184,6 @@ export default function DiscoveryCard({
             {genres.length > 1
               ?
               <Tooltip
-                isOpen={isOpen}
                 label={[...genres].slice(1).sort().join(", ")}
                 placement="bottom-end"
                 offset={[10, 10]}
@@ -244,7 +234,7 @@ export default function DiscoveryCard({
           transition="all 200ms ease-in-out"
           _hover={{ background: "rgba(255, 255, 255, 0.1)" }}
           _active={{ background: "rgba(255, 255, 255, 0.2)" }}
-          onClick={handleClick}
+          onClick={onOpen_SignIn}
         >
           <UpvoteIcon color="white" size="25px" />
           <Text fontSize="16px">

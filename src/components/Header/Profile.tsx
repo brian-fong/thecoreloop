@@ -1,21 +1,18 @@
 // Components
 import {
-  Button,
   Flex,
   Image,
-  Text,
 } from "@chakra-ui/react";
-import StartButton from "./StartButton";
+import StartButton from "../Header/StartButton";
 
 // Hooks
 import { useEffect, useState } from "react";
-import { useDisclosure } from "@chakra-ui/react";
 import { useSession, signOut } from "next-auth/react";
 
 // Types
 import type { ReactElement } from "react";
 
-export default function ProfileDisplay() {
+export default function Profile() {
 
   // State variables
   const { data: session, status } = useSession();

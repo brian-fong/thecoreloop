@@ -1,7 +1,6 @@
 // Components
 import {
   Button,
-  Flex,
   Popover,
   PopoverTrigger,
   PopoverContent,
@@ -26,29 +25,7 @@ export default function StartButton() {
   return (
     <Popover offset={[-40, 0]}>
       <PopoverTrigger>
-        <Button
-          display="flex"
-          flexDirection="row"
-          justifyContent="start"
-          alignItems="center"
-          marginRight="20px"
-          padding="5px 10px"
-          height="min-content"
-          color="gray.400"
-          fontSize="18px"
-          background="transparent"
-          // onClick={() => signIn("google")}
-          transition="all 200ms ease-in-out"
-          _focusVisible={{ 
-            color: "gray.300",
-            background: "rgba(0, 0, 0, 0.3)",
-            borderRadius: "10px",
-          }}
-          _hover={{
-            color: "gray.200",
-          }}
-          _active={{}}
-        >
+        <Button variant="header_base">
           START
         </Button>
       </PopoverTrigger>
@@ -63,12 +40,7 @@ export default function StartButton() {
         borderRadius="5px"
       >
         <Button
-          display="flex"
-          flexDirection="row"
-          justifyContent="start"
-          alignItems="center"
-          gap="15px"
-          width="100%"
+          variant="header_popover"
           borderRadius="5px 5px 0 0"
           onClick={() => handleStart("google")}
         >
@@ -76,12 +48,7 @@ export default function StartButton() {
           <Text>GOOGLE</Text>
         </Button>
         <Button
-          display="flex"
-          flexDirection="row"
-          justifyContent="start"
-          alignItems="center"
-          gap="15px"
-          width="100%"
+          variant="header_popover"
           borderRadius="0 0 5px 5px"
           onClick={() => handleStart("twitter")}
         >

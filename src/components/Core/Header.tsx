@@ -1,17 +1,13 @@
 // Components
 import {
-  Button,
   Flex,
   Image,
   Input,
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
   Text,
 } from "@chakra-ui/react";
 import ContributeButton from "../Header/ContributeButton";
 import Link from "next/link";
-import ProfileDisplay from "../User/ProfileDisplay";
+import Profile from "../User/Profile";
 
 export default function Header() {
   return (
@@ -87,7 +83,7 @@ export default function Header() {
       </Flex>
 
       {/* Profile Picture Container */}
-      <ProfileDisplay />
+      <Profile />
     </Flex>
   );
 }
