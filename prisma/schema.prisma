@@ -1,15 +1,16 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
-//helpful commands npx prisma update
-
+// helpful commands npx prisma update
+// if you are in dev and do not care about permanent db changes you can use
+  // $ npx prisma db push
+    // This will update the schema of the tables in the db you are connected to
 
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
-  referentialIntegrity = "prisma"
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+  relationMode = "prisma"
 }
-
-  //url      = "mysql://root@localhost:3306/thecoreloop"
 
 generator client {
   provider = "prisma-client-js"
@@ -18,7 +19,7 @@ generator client {
 model User {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  updatedAt DateTime @updatedAt @default(now())
   firstName String   @db.VarChar(255)
   lastName  String   @db.VarChar(255)
   birthday  DateTime @updatedAt
@@ -26,54 +27,48 @@ model User {
 }
 
 model Users {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
+  id            Int       @id @default(autoincrement())
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt @default(now())
   twitterHandle String?   @db.VarChar(255)
-  googleHandle  String?  @db.VarChar(255)
-  username  String   @db.VarChar(255)
-  games Game[]
-
-  @@unique([twitterHandle, googleHandle])
+  googleHandle  String?   @db.VarChar(255)
+  username      String    @db.VarChar(255)
+  games         Game[]
 }
 
 model Game {
   id              Int       @id @default(autoincrement())
-  upvote_count    Int @default(0)
+  upvote_count    Int       @default(0)
   title           String
   studio          String?
   thumbnail       String?
   blockchain      String?
   description     String?
   tagline         String?
-  isTeam          Boolean @default(true)
+  isTeam          Boolean   @default(true)
   fundraising     String?
-  links          String?
-  genres          Genre[] @relation("GameGenre")
+  links           String?
+  genres          Genre[]   @relation("GameGenre")
   gallery         String?
   stage           DevStatus  
   ownerId         Int?
-  owner           Users? @relation(fields:[ownerId], references: [id])
+  owner           Users?    @relation(fields:[ownerId], references: [id])
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  @@unique([title, studio])
 }
 
 model Genre {
-  id       Int @id @default(autoincrement())
-  genre    Genres
-  games    Game[] @relation("GameGenre")
-}
-
-
-enum Genres {
-  MMORPG
-  FPS
-  RPG
+  genre       String  @id @unique
+  description String
+  games       Game[]  @relation("GameGenre")
 }
 
 enum DevStatus {
-  FUNDRAISING
-  INDEVELOPMENT
-  ALPHA
-  BETA
-  LAUNCHED
+  preProduction
+  production
+  playableDemo
+  live
 }
 
 // future implementation to many-to-many relation

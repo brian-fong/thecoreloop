@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+
 export default function TestForm() {
   const [userFormData, setUserFormData] = useState({
     twitterHandle: "twitter_sample",
@@ -17,9 +18,9 @@ export default function TestForm() {
     isTeam: "test boolean",
     fundraising: "test fundraising need clarification on this",
     links: "https://www.andrewchoi.dev",
-    genres: "grinding for diamond",
+    genres: "FPS",
     gallery: "Test gallery, I'm guessing this is a list of keys for S3",
-    stage: "LAUNCHED",
+    stage: "ALPHA",
   });
   /***************************** USER FUNCTIONS *******************************/
   function handleChangeUser(e: React.ChangeEvent<HTMLInputElement>) {
@@ -48,8 +49,8 @@ export default function TestForm() {
 
   async function handleSubmitGame(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    console.log("UserFormData on frontend", gameFormData);
-    const resp = await axios.post("/api/prisma_game", gameFormData);
+    console.log("GameFormData on frontend", gameFormData);
+    const resp = await axios.post("/api/prisma_games", gameFormData);
     console.log("response received! haha successfully added user to db!", resp);
   }
 

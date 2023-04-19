@@ -24,6 +24,7 @@ export default async function createGame(
   response: NextApiResponse
 ) {
   try {
+    console.log("prisma_game reached");
     const formData: FormData = request.body;
     console.log("formdata", formData);
     const newGame = await prisma.game.create({
@@ -34,10 +35,16 @@ export default async function createGame(
         description: formData.description,
         blockchain: formData.blockchain,
         tagline: formData.tagline,
-        isTeam: formData.isTeam,
+        isTeam: true,
         fundraising: formData.fundraising,
         links: formData.links,
-        genres: formData.genres,
+        genres: {
+          connect: [
+            {
+              genres: "FPS",
+            },
+          ],
+        },
         gallery: formData.gallery,
         stage: formData.stage,
       },
