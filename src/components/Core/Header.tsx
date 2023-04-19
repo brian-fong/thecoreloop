@@ -4,19 +4,16 @@ import {
   Flex,
   Image,
   Input,
-  Link,
   Popover,
   PopoverTrigger,
   PopoverContent,
   Text,
 } from "@chakra-ui/react";
-
-// Hooks
-import { useDisclosure } from "@chakra-ui/react";
+import ContributeButton from "../Header/ContributeButton";
+import Link from "next/link";
+import ProfileDisplay from "../User/ProfileDisplay";
 
 export default function Header() {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
   return (
     <Flex
       id="header-container"
@@ -34,7 +31,7 @@ export default function Header() {
       draggable={false}
     >
       {/* Thumbnail */}
-      <Link href="/discovery" _focusVisible={{}} tabIndex={-1}>
+      <Link href="/discovery">
         <Image
           src="./thecoreloop-logo-alt.png"
           objectFit="cover"
@@ -46,121 +43,17 @@ export default function Header() {
         />
       </Link>
 
-      {/* Contribute Container */}
+      {/* Container: Contribute + Explore */}
       <Flex
         flexDirection="row"
         justifyContent="center"
         alignItems="center"
         gap="30px"
-        marginTop="15px"
         marginLeft="30px"
+        height="100%"
       >
-        <Popover gutter={0}>
-          <PopoverTrigger>
-            <Button
-              display="flex"
-              flexDirection="row"
-              justifyContent="start"
-              alignItems="center"
-              margin="0"
-              padding="5px 10px"
-              height="min-content"
-              color={!isOpen ? "gray.400" : "gray.300"}
-              fontSize="18px"
-              background={!isOpen ? "transparent" : "rgba(0, 0, 0, 0.3)"}
-              borderRadius={!isOpen ? "0" : "10px"}
-              transition="all 200ms ease-in-out"
-              _focusVisible={{ 
-                color: "gray.300",
-                background: "rgba(0, 0, 0, 0.3)",
-                borderRadius: "10px",
-              }}
-              _hover={{
-                color: "gray.200",
-              }}
-              _active={{}}
-            >
-              CONTRIBUTE
-            </Button>
-          </PopoverTrigger>
-          <PopoverContent 
-            display="flex"
-            flexDirection="column"
-            justifyContent="center"
-            alignItems="start"
-            gap="10px"
-            padding="5px 10px"
-            maxWidth="140px"
-            color="white"
-            background="#1A1B23"
-            border="none"
-            borderRadius="10px"
-            _focusVisible={{
-              outline: "none",
-              border: "none"
-            }}
-            zIndex={10}
-          >
-            <Link
-              href="./submit_project"
-              width="100%"
-              color="white"
-              letterSpacing="1px"
-              fontWeight="700"
-              whiteSpace="nowrap"
-              cursor="pointer"
-              transition="all 200ms ease-in-out"
-              _focusVisible={{
-                letterSpacing: "3px",
-                filter: "brightness(0.8)",
-              }}
-              _hover={{
-                letterSpacing: "3px",
-                filter: "brightness(0.8)",
-              }}
-            >
-              PROJECT
-            </Link>
-            <Text
-              width="100%"
-              color="white"
-              letterSpacing="1px"
-              fontWeight="700"
-              whiteSpace="nowrap"
-              cursor="not-allowed"
-              transition="all 200ms ease-in-out"
-              _focusVisible={{
-                letterSpacing: "3px",
-                filter: "brightness(0.8)",
-              }}
-              _hover={{
-                letterSpacing: "3px",
-                filter: "brightness(0.8)",
-              }}
-            >
-              EVENT
-            </Text>
-            <Text
-              width="100%"
-              color="white"
-              letterSpacing="1px"
-              fontWeight="700"
-              whiteSpace="nowrap"
-              cursor="not-allowed"
-              transition="all 200ms ease-in-out"
-              _focusVisible={{
-                letterSpacing: "3px",
-                filter: "brightness(0.8)",
-              }}
-              _hover={{
-                letterSpacing: "3px",
-                filter: "brightness(0.8)",
-              }}
-            >
-              DISCUSSION
-            </Text>
-          </PopoverContent>
-        </Popover>
+        {/* Contribute */}
+        <ContributeButton />
 
         {/* Explore */}
         <Input
@@ -172,6 +65,7 @@ export default function Header() {
           height="min-content"
           fontSize="18px"
           background="transparent"
+          borderRadius="5px"
           placeholder="EXPLORE"
           _placeholder={{
             color: "gray.400",
@@ -184,36 +78,16 @@ export default function Header() {
           }}
           _hover={{
             background: "rgba(0, 0, 0, 0.6)",
+            _placeholder: {
+              color: "gray.200",
+            }
           }}
           border="none"
         />
       </Flex>
 
       {/* Profile Picture Container */}
-      <Flex
-        flexDirection="row"
-        justifyContent="center"
-        alignItems="center"
-        marginLeft="auto"
-        height="100%"
-        cursor="pointer"
-        transition="filter 200ms ease-in-out"
-        _hover={{
-          filter: "brightness(0.8)",
-        }}
-      >
-        <Image
-          src="https://pbs.twimg.com/profile_images/1635117890440695808/j3Ww7-z7_400x400.jpg"
-          objectFit="cover"
-          borderRadius="50%"
-          marginRight="20px"
-          width="50px"
-          minWidth="50px"
-          height="50px"
-          minHeight="50px"
-          boxShadow="3px 3px 3px black"
-        />
-      </Flex>
+      <ProfileDisplay />
     </Flex>
   );
 }

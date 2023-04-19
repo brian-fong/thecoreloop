@@ -9,7 +9,6 @@ import type { DropzoneOptions } from "react-dropzone";
 
 export default function DropzoneBoxV2({
   children,
-  gallery, setGallery,
   handleOnDrop,
   maxFiles,
 }: any) {
@@ -21,7 +20,7 @@ export default function DropzoneBoxV2({
       "image/*": [],
     },
     onDrop: (files: File[]) => {
-      if (files.length > 0) handleOnDrop(files, gallery, setGallery);
+      if (files.length > 0) handleOnDrop(files);
       else console.error("Error with Gallery input: exceeded 5-image maximum!")
     },
   };

@@ -34,6 +34,7 @@ function validate(values: any) {
 export default function DescriptionModal({ 
   isOpen, onClose,
   description, setDescription,
+  tagline,
 }: any) {
   // Refs
   const input_ref = useRef<any>();
@@ -60,6 +61,11 @@ export default function DescriptionModal({
       onClose();
     },
   });
+
+  function handleCopy() {
+    // Copy tagline to description
+    input_ref.current!.value = tagline;
+  }
 
   function handleChange(event: any) {
     const value: string = event.currentTarget.value.trim();
@@ -201,8 +207,20 @@ export default function DescriptionModal({
               alignItems="center"
               gap="30px"
               marginTop="20px"
+              position="relative"
               width="100%"
             >
+              <Button
+                variant="standard"
+                position="absolute"
+                left="0"
+                color="white"
+                fontWeight="bold"
+                background="blue.400"
+                onClick={handleCopy}
+              >
+                Copy Tagline
+              </Button>
               <Button
                 variant="standard"
                 color="white"

@@ -7,7 +7,6 @@ import {
 } from "@chakra-ui/react";
 import Blockchain from "./Blockchain";
 import Description from "./Description";
-import FundraisingIcon from "./FundraisingIcon";
 import Gallery from "./Gallery";
 import Genres from "./Genres";
 import Links from "./Links";
@@ -15,7 +14,7 @@ import Name from "./Name";
 import Stage from "./Stage";
 import Studio from "./Studio";
 import Thumbnail from "./Thumbnail";
-import Upvote from "./Upvote";
+// import Upvote from "./Upvote";
 
 // Hooks
 import { useEffect, useState } from "react";
@@ -158,38 +157,13 @@ export default function InDepthForm({
 
         {/* Description */}
         <Description 
-          description={description} 
-          setDescription={setDescription} 
+          description={description}  setDescription={setDescription} 
+          tagline={tagline}
         />
-
-        <Flex
-          flexDirection="row"
-          justifyContent="start"
-          alignItems="center"
-          padding="10px"
-          paddingLeft="15px"
-          position="relative"
-          width="100%"
-          background="rgba(255, 255, 255, 0.1)"
-          borderRadius="5px"
-        >
-          <Box
-            position="absolute"
-            left="0"
-            width="6px"
-            height="40px"
-            background="yellow.200"
-            borderRadius="5px 0 0 5px"
-          ></Box>
-          <Text>
-            ⚠️ Please upload at least 1 image related to this project
-          </Text>
-        </Flex>
 
         {/* Gallery */}
         <Gallery
-          gallery={gallery}
-          setGallery={setGallery}
+          gallery={gallery} setGallery={setGallery}
         />
 
         {/* Story */}

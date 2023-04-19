@@ -26,13 +26,6 @@ export default function DiscoverForm({
 
   // Update isFinished state variable
   useEffect(() => {
-    // console.log("Blockchain: ", blockchain);
-    // console.log("Fundraising: ", fundraising);
-    // console.log("Name: ", name);
-    // console.log("Stage: ", stage);
-    // console.log("Tagline: ", tagline);
-    // console.log("Thumbnail: ", thumbnail);
-
     if (
       blockchain
         && genres.length > 0

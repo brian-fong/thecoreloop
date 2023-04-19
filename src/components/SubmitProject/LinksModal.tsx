@@ -16,20 +16,8 @@ import {
 import {
   BsXCircle as MinusIcon,
   BsGlobe as WebIcon,
-  BsInstagram as InstagramIcon,
-  BsLinkedin as LinkedinIcon,
   BsPlus as PlusIcon,
-  BsTwitter as TwitterIcon,
-  BsTelegram as TelegramIcon,
-  BsYoutube as YouTubeIcon,
 } from "react-icons/bs";
-import { 
-  FaDiscord as DiscordIcon,
-  FaMediumM as MediumIcon,
-} from "react-icons/fa";
-import {
-  SiSubstack as SubstackIcon,
-} from "react-icons/si";
 import LinkIcon from './LinkIcon';
 
 // Hooks
@@ -98,7 +86,7 @@ export default function LinksModal({
         borderRadius="10px"
       >
         <ModalBody
-          padding="8px 20px 30px"
+          padding="8px 20px 20px"
           width="100%"
           border="2px solid rgba(255, 255, 255, 0.7)"
           borderRadius="5px"

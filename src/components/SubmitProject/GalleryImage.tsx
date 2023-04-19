@@ -48,12 +48,9 @@ export default function GalleryImage({
         <Image
           src={gallery[index]?.preview}
           objectFit="contain"
-          width="100%"
-          minWidth={`${image_width}px`}
-          maxWidth={`${image_width}px`}
-          height="100%"
-          minHeight={`${image_height}px`}
-          maxHeight={`${image_height}px`}
+          padding="1px"
+          width={`${image_width}px`}
+          height={`${image_height}px`}
           borderRadius="5px"
         />
       );
@@ -71,6 +68,7 @@ export default function GalleryImage({
       height="100%"
       minHeight={`${image_height}px`}
       maxHeight={`${image_height}px`}
+      borderRadius="5px"
     >
       {content}
     </Flex>

@@ -2,6 +2,7 @@
 import {
   Box,
   Flex,
+  Link,
   Text,
 } from "@chakra-ui/react";
 import StudioModal from "./StudioModal";
@@ -21,7 +22,7 @@ export default function Studio({ studio, setStudio }: any) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   useEffect(() => {
-    if (!studio) {
+    if (!studio.name) {
       // Display placeholder for studio
       setContent(
         <Text
@@ -67,7 +68,12 @@ export default function Studio({ studio, setStudio }: any) {
           }}
           _active={{ background: "rgba(255, 255, 255, 0.3)" }}
         >
-          Created by {studio}
+          Created by{" "}
+          <Link
+            fontStyle="italic"
+          >
+            {studio.name}
+          </Link>
         </Text>
       )
     }

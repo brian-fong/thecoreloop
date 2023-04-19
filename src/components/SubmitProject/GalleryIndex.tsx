@@ -8,14 +8,12 @@ import { BsXSquare as CloseIcon } from "react-icons/bs";
 import { TfiPencilAlt as EditIcon } from "react-icons/tfi";
 import DropzoneBoxV2 from "../Core/DropzoneBoxV2";
 
-// Hooks
-import { useEffect, useState } from "react";
-
 // Types
 import type { ReactElement } from "react";
 
 // Helper Functions
 import readFile from "../../utils/read-file";
+
 
 export default function GalleryIndex({
   index,
@@ -23,7 +21,10 @@ export default function GalleryIndex({
   page, setPage,
 }: any): ReactElement {
 
-  async function editImage(files: any[], gallery: any, setGallery: any) {
+
+  async function editImage(
+    files: any[],
+  ) {
     const gallery_new: any[] = [...gallery];
     const file_new: any = {
       name: files[0].path,
@@ -33,6 +34,7 @@ export default function GalleryIndex({
     };
     gallery_new.splice(index, 1, file_new);
     setGallery(gallery_new);
+    setPage(index);
   }
 
   function deleteImage() {
@@ -42,7 +44,7 @@ export default function GalleryIndex({
     setGallery(gallery_new);
 
     // Navigate to nearest, latest page 
-    if (index+1 >= gallery.length) setPage(index-1);
+    if (index == gallery.length) setPage(index-1);
 
     // If gallery is empty, then navigate back to 1st image
     if (gallery.length == 0) setPage(0);
@@ -62,17 +64,18 @@ export default function GalleryIndex({
         height="64px"
         borderRadius="5px"
         boxShadow="5px 5px 3px black"
+        filter={page == index ? "none" : "brightness(75%)"}
         transform={
           page == index
             ? "scale(1.1)"
             : "scale(1.0)"
         }
         cursor="pointer"
+        draggable={false}
         onClick={() => setPage(index)}
         transition="all 300ms ease-in-out"
         _hover={{
-          filter: "brightness(0.8)",
-          transform: "scale(1.1)",
+          filter: "brightness(100%)",
         }}
       />
       <Flex
@@ -93,6 +96,7 @@ export default function GalleryIndex({
             background="gray.300"
             borderRadius="5px 0 0 5px"
             cursor="pointer"
+            userSelect="none"
             transition="filter 200ms ease-in-out"
             _hover={{ filter: "brightness(0.8)" }}
           >
@@ -105,6 +109,7 @@ export default function GalleryIndex({
           borderRadius="0 5px 5px 0"
           cursor="pointer"
           onClick={deleteImage}
+          userSelect="none"
           transition="filter 200ms ease-in-out"
           _hover={{ filter: "brightness(0.8)" }}
         >

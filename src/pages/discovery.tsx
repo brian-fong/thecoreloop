@@ -1,5 +1,6 @@
 // Components
 import {
+  Divider,
   Flex,
   Heading,
   Text,
@@ -19,11 +20,12 @@ function getRandInt(a: number, b: number): number {
   return Math.round(Math.random() * (b-a)) + a;
 }
 function getRandBool(p: number): boolean {
-  return Math.random() > p;
+  return Math.random() > (1-p);
 }
 
 export default function discovery() {
   // State variables
+  const [sortBy, setSortBy] = useState<string>("popular"); // or "latest"
   const [cards, setCards] = useState<ReactElement[]>([]);
 
   function compareUpvote(a: any, b: any): number {
@@ -41,7 +43,7 @@ export default function discovery() {
           key={uuid()}
           image_width={image_width} image_height={image_height}
           blockchain={entry.blockchain}
-          fundraising={getRandBool(0.40)}
+          fundraising={getRandBool(0.20)}
           genres={entry.genres}
           name={entry.name}
           stage={entry.stage}
@@ -86,6 +88,7 @@ export default function discovery() {
           flexDirection="column"
           justifyContent="start"
           alignItems="center"
+          marginTop="20px"
           padding="0 30px 30px"
           width="100%"
           height="100%"
@@ -99,45 +102,62 @@ export default function discovery() {
             maxWidth="800"
             height="100%"
           >
-            {/* Popular | Latest Buttons */}
+            {/* Heading + Popular & Latest Container */}
             <Flex
-              id="content-mode-container"
               flexDirection="row"
-              justifyContent="center"
+              justifyContent="space-between"
               alignItems="center"
-              gap="10px"
-              marginLeft="auto"
-            >
-              <Text
-                fontSize="1.2rem"
-                fontWeight="800"
-              >
-                POPULAR
-              </Text>
-              <Text
-                color="rgba(255, 255, 255, 0.5)"
-                fontSize="2rem"
-                fontWeight="300"
-              >
-                |
-              </Text>
-              <Text
-                color="rgba(255, 255, 255, 0.5)"
-                fontSize="1.2rem"
-                fontWeight="800"
-              >
-                LATEST
-              </Text>
-            </Flex>
-
-            {/* Popular & Latest Container */}
-            <Heading
-              fontSize="20px"
-              fontWeight="800"
               width="100%"
             >
-              Discover tomorrow's gaming startups, today
-            </Heading>
+              <Heading
+                fontSize="20px"
+                fontWeight="800"
+                width="100%"
+              >
+                Discover tomorrow's gaming startups, today
+              </Heading>
+
+              <Flex
+                flexDirection="row"
+                justifyContent="center"
+                alignItems="center"
+                gap="10px"
+                marginLeft="auto"
+                userSelect="none"
+              >
+                <Text
+                  fontSize="16px"
+                  fontWeight="800"
+                  filter={sortBy == "popular"
+                    ? "brightness(100%)"
+                    : "brightness(70%)"
+                  }
+                  cursor="pointer"
+                  onClick={() => setSortBy("popular")}
+                  transition="filter 200ms ease-in-out"
+                >
+                  POPULAR
+                </Text>
+                <Divider
+                  orientation="vertical"
+                  height="24px"
+                  border="1px solid white"
+                />
+                <Text
+                  fontSize="16px"
+                  fontWeight="800"
+                  filter={sortBy == "latest"
+                    ? "brightness(100%)"
+                    : "brightness(70%)"
+                  }
+                  cursor="pointer"
+                  onClick={() => setSortBy("latest")}
+                  transition="filter 200ms ease-in-out"
+                >
+                  LATEST
+                </Text>
+              </Flex>
+            </Flex>
 
 
             {/* Card Gallery */}
