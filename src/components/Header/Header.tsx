@@ -5,12 +5,12 @@ import {
   Input,
   Text,
 } from "@chakra-ui/react";
-import ContributeButton from "../Header/ContributeButton";
+import SubmitButton from "./SubmitButton";
 import ExploreInput from "./ExploreInput";
 import Link from "next/link";
 import Profile from "./Profile";
 
-export default function Header() {
+export default function Header({ setAction, onOpen_SignIn }: any) {
   return (
     <Flex
       id="header-container"
@@ -51,7 +51,10 @@ export default function Header() {
         height="100%"
       >
         {/* Contribute */}
-        <ContributeButton />
+        <SubmitButton
+          setAction={setAction}
+          onOpen_SignIn={onOpen_SignIn}
+        />
 
         {/* Explore */}
         <ExploreInput />

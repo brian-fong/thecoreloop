@@ -5,18 +5,40 @@ import {
   PopoverTrigger,
   PopoverContent,
 } from "@chakra-ui/react";
-import Link from "next/link";
 
-export default function ContributeButton() {
+// Hooks
+import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
-  // Popover dimensions (in pixels)
-  const popover_width: number = 150;
+// Types
+import type { AppRouterInstance } from "next/dist/shared/lib/app-router-context";
+
+export default function SubmitButton({ setAction, onOpen_SignIn }: any) {
+
+  const router: AppRouterInstance= useRouter();
+
+  // State variables
+  const { status } = useSession();
+
+  function handleContribute(action: string) {
+    if (status.toLowerCase() != "authenticated") {
+      if (action == "submit_project") {
+        setAction("submit_project");
+        onOpen_SignIn();
+      }
+    } else {
+      if (action == "submit_project") {
+        setAction("submit_project");
+        router.push("/submit_project");
+      }
+    }
+  }
 
   return (
     <Popover offset={[0, 0]}>
       <PopoverTrigger>
         <Button variant="header_base">
-          CONTRIBUTE
+          SUBMIT
         </Button>
       </PopoverTrigger>
       <PopoverContent 
@@ -25,7 +47,7 @@ export default function ContributeButton() {
         justifyContent="center"
         alignItems="start"
         gap="10px"
-        width={popover_width}
+        width="min-content"
         color="white"
         background="#1A1B23"
         border="none"
@@ -36,14 +58,13 @@ export default function ContributeButton() {
         }}
         zIndex={10}
       >
-        <Link href="./submit_project" style={{ width: "100%" }}>
-          <Button
-            variant="header_popover"
-            borderRadius="5px 5px 0 0"
-          >
-            🤖 PROJECT
-          </Button>
-        </Link>
+        <Button
+          variant="header_popover"
+          borderRadius="5px 5px 0 0"
+          onClick={() => handleContribute("submit_project")}
+        >
+          🤖 PROJECT
+        </Button>
         <Button
           variant="header_popover"
           borderRadius="0"

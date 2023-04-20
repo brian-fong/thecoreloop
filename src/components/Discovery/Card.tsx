@@ -1,6 +1,7 @@
 // Components
 import {
   Box,
+  Button,
   Flex,
   Image,
   Text,
@@ -9,12 +10,16 @@ import {
 import { VscTriangleUp as UpvoteIcon } from "react-icons/vsc";
 import FundraisingIcon from "../SubmitProject/FundraisingIcon";
 
-// Useful Constants & Functions
+// Hooks
+import { useSession } from "next-auth/react";
+
+// Useful Constants
 import { STAGES } from "../../data/stages";
 import { BLOCKCHAINS } from "../../data/blockchains";
 
 export default function DiscoveryCard({
   onOpen_SignIn,
+  setAction,
   image_width, image_height,
   blockchain,
   fundraising,
@@ -26,12 +31,22 @@ export default function DiscoveryCard({
   upvotes,
 }: any) {
 
+  // State variables
+  const { status } = useSession();
+
   // Split genres into string array
   genres = genres.split(",");
 
   // Assign fundraising
   if (fundraising) fundraising = "yes";
   else fundraising = "undisclosed"
+  
+  function handleUpvote() {
+    if (status.toLowerCase() != "authenticated") {
+      setAction("upvote");
+      onOpen_SignIn();
+    }
+  }
 
   return (
     <Flex
@@ -93,6 +108,7 @@ export default function DiscoveryCard({
               transition="all 200ms ease-in-out"
               _hover={{
                 filter: "brightness(75%)",
+                textDecoration: "underline",
               }}
             >
               {name}
@@ -129,9 +145,9 @@ export default function DiscoveryCard({
             lineHeight="5"
             lang="en"
             border="1px solid transparent"
+            cursor="default"
             overflow="hidden"
             textOverflow="ellipsis"
-            userSelect="none"
             transition="all 200ms ease-in-out"
             style={{
               display: "-webkit-box",
@@ -155,7 +171,6 @@ export default function DiscoveryCard({
             border="1px solid transparent"
             borderRadius="10px"
             whiteSpace="nowrap"
-            userSelect="none"
             transition="all 200ms ease-in-out"
           >
             {STAGES[stage]} {stage}
@@ -176,7 +191,7 @@ export default function DiscoveryCard({
               fontSize="16px"
               fontWeight="700"
               transition="all 200ms ease-in-out"
-              userSelect="none"
+              cursor="default"
               whiteSpace="nowrap"
             >
               🏷️ {genres[0]}
@@ -198,6 +213,7 @@ export default function DiscoveryCard({
                   fontWeight="700"
                   background="rgba(0, 0, 0, 0.3)"
                   borderRadius="7px"
+                  cursor="default"
                 >
                   +{genres.length-1}
                 </Text>
@@ -218,7 +234,8 @@ export default function DiscoveryCard({
         height={image_height}
         minHeight={image_height}
       >
-        <Flex
+        <Button
+          display="flex"
           flexDirection="column"
           justifyContent="center"
           alignItems="center"
@@ -234,13 +251,13 @@ export default function DiscoveryCard({
           transition="all 200ms ease-in-out"
           _hover={{ background: "rgba(255, 255, 255, 0.1)" }}
           _active={{ background: "rgba(255, 255, 255, 0.2)" }}
-          onClick={onOpen_SignIn}
+          onClick={handleUpvote}
         >
           <UpvoteIcon color="white" size="25px" />
           <Text fontSize="16px">
             {upvotes}
           </Text>
-        </Flex>
+        </Button>
       </Flex>
     </Flex>
   );

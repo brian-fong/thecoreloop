@@ -64,6 +64,7 @@ const Button = defineStyleConfig({
     fontSize: "16px",
     background: "transparent",
     backgroundColor: "transparent",
+    userSelect: "none",
     _hover: {},
     _active: {},
   },

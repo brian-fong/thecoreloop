@@ -27,6 +27,7 @@ function getRandBool(p: number): boolean {
 
 export default function discovery() {
   // State variables
+  const [action, setAction] = useState<string>("");
   const [sortBy, setSortBy] = useState<string>("popular"); // or "latest"
   const [cards, setCards] = useState<ReactElement[]>([]);
 
@@ -51,6 +52,7 @@ export default function discovery() {
         <Card
           key={uuid()}
           onOpen_SignIn={onOpen_SignIn}
+          setAction={setAction}
           image_width={image_width} image_height={image_height}
           blockchain={entry.blockchain}
           fundraising={getRandBool(0.20)}
@@ -90,7 +92,10 @@ export default function discovery() {
         color="white"
       >
         {/* Header */}
-        <Header />
+        <Header
+          setAction={setAction}
+          onOpen_SignIn={onOpen_SignIn}
+        />
 
         {/* Body Container */}
         <Flex
@@ -186,8 +191,8 @@ export default function discovery() {
 
             {/* SignIn Modal */}
             <SignInModal
-              isOpen={isOpen_SignIn}
-              onClose={onClose_SignIn}
+              isOpen={isOpen_SignIn} onClose={onClose_SignIn}
+              action={action}
             />
           </Flex>
         </Flex>

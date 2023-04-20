@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "backend": "ts-node ./backend/index.ts",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "ts-node ./src/scripts/test.tsx"
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.0.13",

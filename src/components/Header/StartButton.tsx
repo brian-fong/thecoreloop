@@ -14,16 +14,13 @@ import { signIn } from "next-auth/react";
 
 export default function StartButton() {
 
-  // Popover dimensions (in pixels)
-  const popover_width: number = 130;
-
   function handleStart(provider: string): void {
     // Prompt user to sign in
     signIn(provider);
   }
 
   return (
-    <Popover offset={[-40, 0]}>
+    <Popover offset={[-35, 0]}>
       <PopoverTrigger>
         <Button variant="header_base">
           START
@@ -34,7 +31,7 @@ export default function StartButton() {
         flexDirection="column"
         justifyContent="start"
         alignItems="start"
-        width={`${popover_width}px`}
+        width="min-content"
         background="#1A1B23"
         border="none"
         borderRadius="5px"

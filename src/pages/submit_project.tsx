@@ -6,7 +6,7 @@ import {
 } from "@chakra-ui/react";
 import { BsArrowLeftShort as LeftArrowIcon } from "react-icons/bs";
 import Head from "next/head";
-import Header from "../components/Core/Header";
+import Header from "../components/Header/Header";
 import Part1 from "../components/SubmitProject/Part1";
 import Part2 from "../components/SubmitProject/Part2";
 
@@ -34,6 +34,7 @@ export default function submit_project() {
     thumbnail, setThumbnail,
   } = useProjectState();
   const [part, setPart] = useState<number>(1);
+  const [action, setAction] = useState<string>("");
 
   return (
     <>
@@ -61,7 +62,7 @@ export default function submit_project() {
         color="white"
       >
         {/* Header */}
-        <Header />
+        <Header setAction={setAction} />
 
         {/* Content Container */}
         <Flex
