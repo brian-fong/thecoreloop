@@ -9,8 +9,10 @@ import Head from "next/head";
 import Header from "../components/Header/Header";
 import Part1 from "../components/SubmitProject/Part1";
 import Part2 from "../components/SubmitProject/Part2";
+import SignInModal from "../components/User/SignInModal";
 
 // Hooks
+import { useDisclosure } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import useProjectState from "../hooks/useProjectState";
@@ -37,6 +39,13 @@ export default function submit_project() {
   const [part, setPart] = useState<number>(1);
   const [action, setAction] = useState<string>("");
   const { data: session, status } = useSession();
+
+  // useDisclosure: SignIn Modal
+  const {
+    isOpen: isOpen_SignIn, 
+    onOpen: onOpen_SignIn,
+    onClose: onClose_SignIn,
+  } = useDisclosure();
 
   useEffect(() => {
     if (status == "authenticated") {
@@ -75,6 +84,7 @@ export default function submit_project() {
         {/* Header */}
         <Header
           setAction={setAction}
+          onOpen_SignIn={onOpen_SignIn}
         />
 
         {/* Content Container */}
@@ -181,6 +191,12 @@ export default function submit_project() {
             )
           }
         </Flex>
+
+        {/* SignIn Modal */}
+        <SignInModal
+          isOpen={isOpen_SignIn} onClose={onClose_SignIn}
+          action={action}
+        />
       </Flex>
     </>
   );
