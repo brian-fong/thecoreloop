@@ -12,6 +12,7 @@ const standard = defineStyle({
   border: "none",
   borderRadius: "0",
   boxShadow: "5px 5px 1px black",
+  userSelect: "none",
   transition: "all 100ms ease-in-out",
   _hover: {
     filter: "brightness(0.8)",
@@ -35,6 +36,7 @@ const header_base = defineStyle({
   fontSize: "18px",
   background: "transparent",
   borderRadius: "5px",
+  userSelect: "none",
   transition: "all 200ms ease-in-out",
   _focusVisible: {
     color: "gray.300",
@@ -53,6 +55,7 @@ const header_popover = defineStyle({
   width: "100%",
   background: "gray.800",
   borderRadius: "5px",
+  userSelect: "none",
   transition: "all 200ms ease-in-out",
   _hover: { background: "gray.700" }
 });

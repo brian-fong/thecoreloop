@@ -90,6 +90,7 @@ export default function discovery() {
         width="100%"
         minHeight="100vh"
         color="white"
+        userSelect="none"
       >
         {/* Header */}
         <Header

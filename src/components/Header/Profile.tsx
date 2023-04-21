@@ -1,7 +1,12 @@
 // Components
 import {
+  Button,
   Flex,
   Image,
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+  Text,
 } from "@chakra-ui/react";
 import StartButton from "../Header/StartButton";
 
@@ -13,6 +18,9 @@ import { useSession, signOut } from "next-auth/react";
 import type { ReactElement } from "react";
 
 export default function Profile() {
+
+  // Generic profile picture: thecoreloop icon
+  const thecoreloop_icon: string = "https://i.imgur.com/2px36wp.png";
 
   // State variables
   const { data: session, status } = useSession();
@@ -28,26 +36,56 @@ export default function Profile() {
       );
     } else if (status == "authenticated") {
       setContent(
-        <Image
-          src={session?.user?.image!}
-          objectFit="cover"
-          borderRadius="50%"
-          marginRight="20px"
-          width="50px"
-          minWidth="50px"
-          height="50px"
-          minHeight="50px"
-          boxShadow="3px 3px 3px black"
-          cursor="pointer"
-          onClick={() => signOut()}
-          transition="filter 200ms ease-in-out"
-          _hover={{
-            filter: "brightness(80%)",
-          }}
-        />
+        <Popover placement="bottom-start">
+          <PopoverTrigger>
+            <Button
+              margin="0"
+              padding="0"
+              transition="all 200ms ease-in-out"
+              _hover={{
+                filter: "brightness(75%)",
+              }}
+            >
+              <Image
+                // src={session?.user?.image!}
+                src={thecoreloop_icon}
+                objectFit="cover"
+                width="60px"
+                height="60px"
+                background="gray.700"
+                borderRadius="full"
+                boxShadow="3px 3px 3px black"
+              />
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent
+            display="flex"
+            flexDirection="column"
+            justifyContent="start"
+            alignItems="start"
+            width="min-content"
+            background="#1A1B23"
+            border="none"
+            borderRadius="5px"
+          >
+            <Button
+              variant="header_popover"
+              borderRadius="5px 5px 0 0"
+            >
+              <Text>PROFILE</Text>
+            </Button>
+            <Button
+              variant="header_popover"
+              borderRadius="0 0 5px 5px"
+              onClick={() => signOut()}
+            >
+              <Text>LOG OUT</Text>
+            </Button>
+          </PopoverContent>
+        </Popover>
       );
     }
-  }, [session]);
+  }, [session, status]);
 
   return (
     <Flex

@@ -11,7 +11,8 @@ import Part1 from "../components/SubmitProject/Part1";
 import Part2 from "../components/SubmitProject/Part2";
 
 // Hooks
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
 import useProjectState from "../hooks/useProjectState";
 
 export default function submit_project() {
@@ -35,6 +36,15 @@ export default function submit_project() {
   } = useProjectState();
   const [part, setPart] = useState<number>(1);
   const [action, setAction] = useState<string>("");
+  const { data: session, status } = useSession();
+
+  useEffect(() => {
+    if (status == "authenticated") {
+
+    } else if (status =="unauthenticated") {
+
+    }
+  }, [status]);
 
   return (
     <>
@@ -60,9 +70,12 @@ export default function submit_project() {
         minWidth="800px"
         minHeight="100vh"
         color="white"
+        userSelect="none"
       >
         {/* Header */}
-        <Header setAction={setAction} />
+        <Header
+          setAction={setAction}
+        />
 
         {/* Content Container */}
         <Flex
