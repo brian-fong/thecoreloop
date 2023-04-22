@@ -42,9 +42,9 @@ export default function Profile() {
               margin="0"
               padding="0"
               transition="all 200ms ease-in-out"
-              _hover={{
-                filter: "brightness(75%)",
-              }}
+              draggable={false}
+              _hover={{ filter: "brightness(75%)" }}
+              _active={{}}
             >
               <Image
                 // src={session?.user?.image!}
@@ -55,6 +55,7 @@ export default function Profile() {
                 background="gray.700"
                 borderRadius="full"
                 boxShadow="3px 3px 3px black"
+                draggable={false}
               />
             </Button>
           </PopoverTrigger>

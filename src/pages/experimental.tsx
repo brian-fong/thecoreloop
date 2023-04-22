@@ -11,7 +11,7 @@ import axios from "axios";
 
 export default function experimental() {
   async function sendRequest() {
-    await axios.post("/api/login")
+    await axios.post("/api/login");
   }
 
   return (
