@@ -18,3 +18,4 @@
         if it does, try/catch connect to that parent comment and create comment
     }
 } */
+export default function createComment() {}
