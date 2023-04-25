@@ -6,16 +6,16 @@ import {
 } from "@chakra-ui/react";
 import { BsArrowLeftShort as LeftArrowIcon } from "react-icons/bs";
 import Head from "next/head";
-import Header from "../components/Header/Header";
-import Part1 from "../components/SubmitProject/Part1";
-import Part2 from "../components/SubmitProject/Part2";
-import SignInModal from "../components/User/SignInModal";
+import Header from "../../components/Header/Header";
+import Part1 from "../../components/SubmitProject/Part1";
+import Part2 from "../../components/SubmitProject/Part2";
+import SignInModal from "../../components/User/SignInModal";
 
 // Hooks
 import { useDisclosure } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
-import useProjectState from "../hooks/useProjectState";
+import useProjectState from "../../hooks/useProjectState";
 
 export default function submit_project() {
   // Constants: Thumbnail Image Size
@@ -201,4 +201,5 @@ export default function submit_project() {
     </>
   );
 }
+
 

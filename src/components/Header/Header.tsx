@@ -2,8 +2,6 @@
 import {
   Flex,
   Image,
-  Input,
-  Text,
 } from "@chakra-ui/react";
 import SubmitButton from "./SubmitButton";
 import ExploreInput from "./ExploreInput";
@@ -29,9 +27,9 @@ export default function Header({ setAction, onOpen_SignIn }: any) {
       draggable={false}
     >
       {/* Thumbnail */}
-      <Link href="/discovery">
+      <Link href="/discover">
         <Image
-          src="./thecoreloop-logo-alt.png"
+          src="/thecoreloop-logo-alt.png"
           objectFit="cover"
           width="auto"
           minWidth="70px"

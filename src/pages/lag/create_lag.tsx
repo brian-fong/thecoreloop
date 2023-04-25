@@ -1,16 +1,15 @@
 // Components
 import { Flex } from "@chakra-ui/react";
 import Head from "next/head";
-import Header from "../components/CreateLAG/Header";
-import InputLAG from "../components/CreateLAG/InputLAG";
-import Logo from "../components/Core/Logo";
-import NavBar from "../components/Core/NavBar";
-import PreviewLAG from "../components/CreateLAG/PreviewLAG";
-import ViewLAG from "../components/CreateLAG/ViewLAG";
+import Header from "../../components/Header/Header";
+import InputLAG from "../../components/CreateLAG/InputLAG";
+import Logo from "../../components/Core/Logo";
+import PreviewLAG from "../../components/CreateLAG/PreviewLAG";
+import ViewLAG from "../../components/CreateLAG/ViewLAG";
 
 // Hooks
 import { useEffect } from "react";
-import useCreateLAG from "../hooks/useCreateLAG";
+import useCreateLAG from "../../hooks/useCreateLAG";
 
 export default function create_lag() {
   const { 
@@ -67,6 +66,9 @@ export default function create_lag() {
           maxWidth="800px"
           boxSizing="border-box"
         >
+
+          <Logo />
+
           <InputLAG
             abort={abort}
             status={status}

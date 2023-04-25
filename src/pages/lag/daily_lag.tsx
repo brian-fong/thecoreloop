@@ -1,19 +1,19 @@
 // Components
-import { Flex } from '@chakra-ui/react'
-import Logo from "../components/Core/Logo";
-import Hint from "../components/DailyLAG/Hint";
-import ScrollBtn from "../components/Core/ScrollBtn";
-import NavBar from "../components/Core/NavBar";
-import Post from "../components/DailyLAG/Post";
+import { Flex, Text } from '@chakra-ui/react'
+import Logo from '../../components/Core/Logo';
+import Hint from '../../components/DailyLAG/Hint';
+import NavBar from '../../components/Core/NavBar';
+import Post from "../../components/DailyLAG/Post";
 
 // Hooks
 import { useEffect, useState } from "react";
 
 // Helper
 import axios from "axios";
+import scrollTo from '../../utils/scroll';
 
 // Types
-import { LAG } from "../types";
+import { LAG } from '../../types';
 
 export default function daily_lag() {
   // Initialize latest LAG state variable
@@ -80,14 +80,45 @@ export default function daily_lag() {
         boxSizing="border-box"
       >
         <Logo />
+
         <Hint />
-        <Post 
-          lag={lag}
-        />
-        <ScrollBtn 
-          elem_id="navbar"
-          text="Back to Top"
-        />
+
+        <Post lag={lag} />
+
+        <Flex
+          flexDir="column" 
+          justify="center" 
+          align="center" 
+          width="min-content" 
+          padding="10px 15px"
+          color="black"
+          bg="tcl_teal"
+          border="1px solid black" 
+          boxShadow="10px 10px 2px rgba(0, 0, 0, 0.5)"
+          boxSizing="border-box"
+          cursor="pointer"
+          transition="background-color 200ms ease" 
+          _focusVisible={{
+            color: "white",
+            bg: "tcl_teal_hover",
+            outline: "1px solid blue",
+          }}
+          _hover={{
+            color: "white",
+            bg: "tcl_teal_hover",
+          }}
+          draggable="false" 
+          userSelect="none"
+          onClick={() => scrollTo("navbar")}
+        >
+          <Text
+            fontSize="14px"
+            fontWeight="800"
+            whiteSpace="nowrap"
+          >
+            Back to Top
+          </Text>
+        </Flex>
       </Flex>
     </Flex>
   );

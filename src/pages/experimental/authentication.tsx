@@ -1,9 +1,9 @@
 import { Flex, Image, Text } from "@chakra-ui/react";
 import Head from "next/head";
-import Logo from "../components/Core/Logo";
-import AuthBtn from "../components/Core/AuthBtn";
-import CurveContainer from "../components/Core/CurveContainer";
-import CurveSubContainer from "../components/Core/CurveSubContainer";
+import Logo from "../../components/Core/Logo";
+import AuthBtn from "../../components/Core/AuthBtn";
+import CurveContainer from "../../components/Core/CurveContainer";
+import CurveSubContainer from "../../components/Core/CurveSubContainer";
 import { useSession } from "next-auth/react";
 import { useState, useEffect } from "react";
 
