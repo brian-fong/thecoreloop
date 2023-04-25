@@ -19,8 +19,11 @@
 
 datasource db {
   provider = "mysql"
+  
   url      = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
   relationMode = "prisma"
+  
 }
 
 generator client {
@@ -39,7 +42,9 @@ model User {
   updatedAt     DateTime  @updatedAt @default(now())
   handle        String?   @unique @db.VarChar(255)
   username      String?   @db.VarChar(255)
-  admins        Project[]
+  admins        Project[] @relation("ProjectOwner")
+  hunter        Project[]
+  comments      Comment[]
 }
 
 
@@ -63,28 +68,32 @@ model Project {
   studio          String
   thumbnail       String?
   blockchain      String?
-  description     String?
+  description     String?   @db.VarChar(3000)
   tagline         String?
   fundraising     Boolean
   links           String?
   genres          Genre[]   @relation("ProjectGenre")
   gallery         String?   
   stage           String?  
-  ownerId         Int?
-  owner           User?    @relation(fields:[ownerId], references: [id])
+  owner           User[]    @relation("ProjectOwner")
+  hunter          User?      @relation(fields:[hunterId], references:[id])
+  hunterId        Int?    
   createdAt       DateTime  @default(now())
   updatedAt       DateTime  @updatedAt
   @@unique([name, studio], name:"name_studio")
+  approval        Boolean?
 }
 
-//model Comment {
-//  id Int @unique @id @default(autoincrement())
-//  userId Int?
-//  user User? @relation(fields:[userId], references:[id])
-//  content String?
-//  comments Comment[]
-//  date DateTime  @default(now())
-//}
+model Comment {
+  id Int        @unique  @id @default(autoincrement())
+  userId        Int?
+  user          User?    @relation(fields:[userId], references:[id])
+  content       String?
+  comments      Comment[] @relation("ChildComment", fields: [parentId], references: [id])
+  parentId      Int?
+  parentComment Comment? @relation("ChildComment", fields: [parentId], references: [id])
+  createdAt     DateTime @default(now())
+}
 
 model Genre {
   genre       String  @id @unique
@@ -98,6 +107,7 @@ enum DevStatus {
   playableDemo
   live
 }
+
 
 // future implementation to many-to-many relation
 
