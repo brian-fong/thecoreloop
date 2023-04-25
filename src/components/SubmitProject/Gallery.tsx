@@ -10,7 +10,7 @@ import {
   BsChevronRight as RightArrowIcon,
 } from "react-icons/bs";
 import { MdOutlineAddPhotoAlternate as AddImageIcon } from "react-icons/md";
-import DropzoneBoxV2 from "../Core/DropzoneBoxV2";
+import DropzoneBox from "../Core/DropzoneBox";
 import GalleryImage from "./GalleryImage";
 import GalleryIndex from "./GalleryIndex";
 
@@ -69,7 +69,7 @@ export default function Gallery({ gallery, setGallery }: any) {
     async function init() {
       if (gallery.length == 0) {
         setGalleryContent(
-          <DropzoneBoxV2
+          <DropzoneBox
             gallery={gallery} setGallery={setGallery}
             handleOnDrop={uploadImages}
             maxFiles={5}
@@ -120,7 +120,7 @@ export default function Gallery({ gallery, setGallery }: any) {
               </Flex>
 
             </Flex>
-          </DropzoneBoxV2>  
+          </DropzoneBox>  
           );
         setGalleryIndices([]);
       } else {
@@ -147,7 +147,7 @@ export default function Gallery({ gallery, setGallery }: any) {
 
         if (gallery.length < max_pages) {
           gallery_indices_new.push(
-            <DropzoneBoxV2
+            <DropzoneBox
               gallery={gallery} setGallery={setGallery}
               handleOnDrop={uploadImages}
               maxFiles={5}
@@ -165,7 +165,7 @@ export default function Gallery({ gallery, setGallery }: any) {
               >
                 <AddImageIcon size="32px" />
               </Flex>
-            </DropzoneBoxV2>
+            </DropzoneBox>
           )
         }
 

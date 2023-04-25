@@ -44,7 +44,7 @@ export default function Blockchain({ blockchain, setBlockchain }: any) {
           justifyContent="center"
           alignItems="center"
           gap="10px"
-          padding="2px 4px"
+          padding="4px 8px"
           fontSize="14px"
           border="1px solid white"
           borderRadius="5px"
@@ -113,4 +113,4 @@ export default function Blockchain({ blockchain, setBlockchain }: any) {
   );
 }
 
-
+ 

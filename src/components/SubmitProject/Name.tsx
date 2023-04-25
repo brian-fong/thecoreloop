@@ -29,7 +29,7 @@ export default function Name({ name, setName }: any) {
           justifyContent="center"
           alignItems="center"
           gap="10px"
-          padding="2px 4px"
+          padding="4px 8px"
           fontSize="16px"
           border="1px solid white"
           borderRadius="5px"
