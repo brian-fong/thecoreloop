@@ -1,0 +1,114 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+
+
+// TIP: helpful commands after changes in schema.prisma 
+  // $ npx prisma update
+  // $ npx prisma generate
+  // $ npx prisma migrate dev
+  // $ npx prisma migrate 
+  // if you are in dev and do not care about permanent db changes you can use
+    // $ npx prisma db push
+    // This will update the schema of the tables in the db you are connected to
+    // but may delete every row
+
+
+//shadowDatabaseUrl will be your local machine's db_url as some db services like planet scale will not grant you permissions to make one
+//relationMode: planetscale will not manage relations for you so you need to write this out for prisma to manage it for you in planetscale
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+  relationMode = "prisma"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+
+
+
+//possible future columns discord telegram twitter
+
+
+model User {
+  id            Int       @id @default(autoincrement())
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt @default(now())
+  handle        String?   @unique @db.VarChar(255)
+  username      String?   @db.VarChar(255)
+  admins        Project[]
+}
+
+
+// when project is submitted, we check to see if in the team or not, if they say that they are -> investigation, if correct, we want to show that they are infact part of the team else -> they would get credit for posting the project
+//s3_bucket folders
+//example s3 filename: studio-name-thumbnail, studio-name-gallery-1,2,3
+// gallery = ["s3links","s3link", "s3link"] -> db = ["","",""]
+//add team?
+
+ // profile project: 
+ // admins: profiles
+
+ // community members: upvoted
+
+ // people involved:
+
+model Project {
+  id              Int       @unique @id @default(autoincrement())
+  upvote_count    Int       @default(0)
+  name            String
+  studio          String
+  thumbnail       String?
+  blockchain      String?
+  description     String?
+  tagline         String?
+  fundraising     Boolean
+  links           String?
+  genres          Genre[]   @relation("ProjectGenre")
+  gallery         String?   
+  stage           String?  
+  ownerId         Int?
+  owner           User?    @relation(fields:[ownerId], references: [id])
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  @@unique([name, studio], name:"name_studio")
+}
+
+//model Comment {
+//  id Int @unique @id @default(autoincrement())
+//  userId Int?
+//  user User? @relation(fields:[userId], references:[id])
+//  content String?
+//  comments Comment[]
+//  date DateTime  @default(now())
+//}
+
+model Genre {
+  genre       String  @id @unique
+  description String? @db.VarChar(255)
+  games       Project[]  @relation("ProjectGenre") 
+}
+
+enum DevStatus {
+ preProduction
+  production
+  playableDemo
+  live
+}
+
+// future implementation to many-to-many relation
+
+
+//enum blockchain{}
+
+//enum platform{}
+
+
+
+//maybe thumbnail? i dont know yet
+
+
