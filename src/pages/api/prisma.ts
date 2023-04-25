@@ -8,7 +8,7 @@ export default async function handler(
   response: NextApiResponse
 ) {
   try {
-    const games = await prisma.game.findMany();
+    const games = await prisma.project.findMany();
     console.log(JSON.stringify(games));
 
     response.json(games);
