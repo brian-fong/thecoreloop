@@ -5,7 +5,7 @@ import {
   Heading,
   Text,
 } from "@chakra-ui/react";
-import Card from "../components/Discovery/Card";
+import Card from "../components/Discover/Card";
 import DATA from "../data/mock-data";
 import Head from "next/head";
 import Header from "../components/Header/Header";

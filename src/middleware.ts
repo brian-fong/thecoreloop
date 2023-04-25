@@ -8,6 +8,6 @@ export default async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: "/discovery",
+  matcher: "/discover",
 }
 
