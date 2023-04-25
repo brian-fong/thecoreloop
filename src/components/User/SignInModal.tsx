@@ -71,46 +71,6 @@ export default function SignInModal({ isOpen, onClose, action }: any) {
           width="100%"
           background="rgba(255, 255, 255, 0.04)"
         >
-          <Flex
-            flexDirection="row"
-            alignItems="center"
-            gap="15px"
-          >
-            <Text fontSize="16px">
-              ACTION:
-            </Text>
-            <Text
-              padding="0 8px"
-              color="white"
-              fontSize="16px"
-              fontWeight="bold"
-              background="tcl_blue"
-              borderRadius="5px"
-            >
-              {`<${action}>`}
-            </Text>
-          </Flex>
-
-          <Flex
-            flexDirection="row"
-            alignItems="center"
-            gap="15px"
-          >
-            <Text fontSize="16px">
-              ERR:
-            </Text>
-            <Text
-              padding="0 8px"
-              color="white"
-              fontSize="16px"
-              fontWeight="bold"
-              background="tcl_pink"
-              borderRadius="5px"
-            >
-              {`<unknown_user> detected`}
-            </Text>
-          </Flex>
-
           <Text fontSize="16px">
             {`Please identify yourself using the following options:`}
           </Text>
