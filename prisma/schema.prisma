@@ -21,7 +21,6 @@ datasource db {
   provider = "mysql"
   
   url      = env("DATABASE_URL")
-  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
   relationMode = "prisma"
   
 }
@@ -85,14 +84,14 @@ model Project {
 }
 
 model Comment {
-  id Int        @unique  @id @default(autoincrement())
+  id Int        @unique   @id @default(autoincrement())
   userId        Int?
-  user          User?    @relation(fields:[userId], references:[id])
+  user          User?     @relation(fields:[userId], references:[id])
   content       String?
-  comments      Comment[] @relation("ChildComment", fields: [parentId], references: [id])
   parentId      Int?
-  parentComment Comment? @relation("ChildComment", fields: [parentId], references: [id])
-  createdAt     DateTime @default(now())
+  parentComment Comment?  @relation("ParentChildComment",fields: [parentId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  comments      Comment[] @relation("ParentChildComment")
+  createdAt     DateTime  @default(now())
 }
 
 model Genre {
@@ -109,7 +108,7 @@ enum DevStatus {
 }
 
 
-// future implementation to many-to-many relation
+///////////// future implementation to many-to-many relation ///////////////////
 
 
 //enum blockchain{}
