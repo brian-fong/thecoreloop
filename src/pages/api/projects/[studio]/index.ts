@@ -24,6 +24,13 @@ export default async function getAllProjects(
   try {
     const games = await prisma.project.findMany({
       where: { studio: studio },
+      include: {
+        genres: {
+          select: {
+            genre: true,
+          },
+        },
+      },
     });
     response.status(200).json(games);
   } catch (error) {
