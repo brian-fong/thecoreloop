@@ -67,7 +67,7 @@ export default function GalleryIndex({
         filter={page == index ? "none" : "brightness(75%)"}
         transform={
           page == index
-            ? "scale(1.1)"
+            ? "scale(1.15)"
             : "scale(1.0)"
         }
         cursor="pointer"

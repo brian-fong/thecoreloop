@@ -13,23 +13,19 @@ import { useSession } from "next-auth/react";
 // Types
 import type { AppRouterInstance } from "next/dist/shared/lib/app-router-context";
 
-export default function SubmitButton({ setAction, onOpen_SignIn }: any) {
+export default function SubmitButton({ onOpen_SignIn }: any) {
 
   const router: AppRouterInstance= useRouter();
 
   // State variables
   const { status } = useSession();
 
-  function handleContribute(action: string) {
+  function handleSubmit(action: string) {
     if (status.toLowerCase() != "authenticated") {
-      if (action == "submit_project") {
-        setAction("submit_project");
-        onOpen_SignIn();
-      }
+      onOpen_SignIn();
     } else {
       if (action == "submit_project") {
-        setAction("submit_project");
-        router.push("/submit_project");
+        router.push("/projects/submit/");
       }
     }
   }
@@ -61,7 +57,7 @@ export default function SubmitButton({ setAction, onOpen_SignIn }: any) {
         <Button
           variant="header_popover"
           borderRadius="5px 5px 0 0"
-          onClick={() => handleContribute("submit_project")}
+          onClick={() => handleSubmit("submit_project")}
         >
           🤖 PROJECT
         </Button>

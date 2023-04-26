@@ -145,6 +145,7 @@ export default function Gallery({ gallery, setGallery }: any) {
           );
         }
 
+        // Add DropzoneBox (if there is space for more images)
         if (gallery.length < max_pages) {
           gallery_indices_new.push(
             <DropzoneBox
@@ -197,10 +198,12 @@ export default function Gallery({ gallery, setGallery }: any) {
       >
         <Button
           display="flex"
+          flexShrink={4}
           flexDirection="column"
           justifyContent="center"
           alignItems="center"
           padding="0 10px"
+          width="100%"
           height="100%"
           minHeight={`${image_height-20}px`}
           maxHeight={`${image_height-20}px`}
@@ -228,10 +231,12 @@ export default function Gallery({ gallery, setGallery }: any) {
 
         <Button
           display="flex"
+          flexShrink={4}
           flexDirection="column"
           justifyContent="center"
           alignItems="center"
           padding="0 10px"
+          width="100%"
           height="100%"
           minHeight={`${image_height-20}px`}
           maxHeight={`${image_height-20}px`}

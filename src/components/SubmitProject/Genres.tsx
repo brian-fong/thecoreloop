@@ -80,7 +80,7 @@ export default function Genres({
           }
         </Flex>
       );
-    } else if (format == "in-depth") {
+    } else if (format == "profile") {
       return (
         <Text
           padding="2px 8px"

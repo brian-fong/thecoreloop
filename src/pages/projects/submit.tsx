@@ -17,7 +17,7 @@ import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import useProjectState from "../../hooks/useProjectState";
 
-export default function submit_project() {
+export default function submit() {
   // Constants: Thumbnail Image Size
   const [image_width, image_height]: [string, string] = ["115px", "115px"];
 
@@ -38,7 +38,6 @@ export default function submit_project() {
   } = useProjectState();
   const [part, setPart] = useState<number>(1);
   const [action, setAction] = useState<string>("");
-  const { data: session, status } = useSession();
 
   // useDisclosure: SignIn Modal
   const {
@@ -46,14 +45,6 @@ export default function submit_project() {
     onOpen: onOpen_SignIn,
     onClose: onClose_SignIn,
   } = useDisclosure();
-
-  useEffect(() => {
-    if (status == "authenticated") {
-
-    } else if (status =="unauthenticated") {
-
-    }
-  }, [status]);
 
   return (
     <>
@@ -113,7 +104,7 @@ export default function submit_project() {
                   color="gray.300"
                   fontStyle="italic"
                 >
-                  {part == 1 ? "Discovery" : "In-Depth"}
+                  {part == 1 ? "Discover" : "Profile"}
                 </Text>
                 {" "}View
               </Heading>
@@ -136,7 +127,7 @@ export default function submit_project() {
               >
                 <LeftArrowIcon size="18px" />
                 <Text>
-                  Back to Discovery View
+                  Back to Discover View
                 </Text>
               </Flex>
             </Flex>

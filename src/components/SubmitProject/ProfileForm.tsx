@@ -14,12 +14,12 @@ import Name from "./Name";
 import Stage from "./Stage";
 import Studio from "./Studio";
 import Thumbnail from "./Thumbnail";
-// import Upvote from "./Upvote";
+import Upvote from "./Upvote";
 
 // Hooks
 import { useEffect, useState } from "react";
 
-export default function InDepthForm({ 
+export default function ProfileForm({
   image_width, image_height,
   blockchain, setBlockchain,
   description, setDescription,
@@ -64,7 +64,7 @@ export default function InDepthForm({
 
   return (
     <Flex
-      id="indepth-container"
+      id="profile-container"
       flexDirection="column"
       justifyContent="start"
       alignItems="start"
@@ -75,7 +75,6 @@ export default function InDepthForm({
       transition="all 300ms ease-in-out 500ms"
     >
       <Flex
-        id="discover-container"
         flexDirection="row"
         justifyContent="space-between"
         alignItems="start"
@@ -119,7 +118,7 @@ export default function InDepthForm({
 
           {/* Genres */}
           <Genres
-            format={"in-depth"}
+            format={"profile"}
             genres={genres} setGenres={setGenres}
           />
 
@@ -139,6 +138,7 @@ export default function InDepthForm({
         </Flex>
 
         {/* Upvote */}
+        <Upvote />
       </Flex>
 
       {/* Container: Description + Gallery */}

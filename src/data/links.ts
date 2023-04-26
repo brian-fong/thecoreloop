@@ -7,6 +7,7 @@ export const LINKS: any = {
   "linkedin":   ["https://www.linkedin.com/"],
   "linktree":   ["https://linktr.ee/"],
   "medium":     ["https://medium.com/"],
+  "opensea":    ["https://opensea.io/"],
   "playstore":  ["https://play.google.com/store/apps/"],
   "substack":   ["substack.com/"],
   "telegram":   ["https://t.me/"],
