@@ -25,3 +25,6 @@ archived/
 practice.ts
 notes.md
 scripts/
+
+form_test_db.tsx
+seed.ts

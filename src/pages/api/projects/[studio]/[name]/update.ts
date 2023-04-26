@@ -19,7 +19,7 @@ export default async function updateUser(
     //   where: { id: 1 },
     //   data: { username: username },
     // });
-
+    // exclude admin power. so they cannot be updated.
     const updatedGame = await prisma.project.update({
       where: { name_studio: { name, studio } },
       data,

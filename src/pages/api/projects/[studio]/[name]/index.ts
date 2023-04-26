@@ -30,6 +30,13 @@ export default async function getByStudioAndProject(
         where: {
           name_studio: { name: sanitizedName, studio: sanitizedStudio },
         },
+        include: {
+          genres: {
+            select: {
+              genre: true,
+            },
+          },
+        },
       });
       console.log(project);
       response.status(200).json(project);

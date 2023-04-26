@@ -1,7 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import { genres } from "./data/genres";
 const prisma = new PrismaClient();
-import DATA from "../src/data/mock-data";
+import DATA from "./data/projects";
 import { Project, DevStatus } from "../src/types";
 /*To run this from scratch 
     1. add to package.json   

@@ -28,16 +28,12 @@ export default async function getUser(
       where: {
         handle: handle,
       },
+      include: {
+        admins: true,
+      },
     });
     await prisma.$disconnect();
     response.status(200).json(user);
-    if (user) {
-      response.status(200).json(user);
-    } else {
-      const formData = { handle: handle };
-      const newUser = await axios.post("/api/users/createNewUser", formData);
-      response.status(200).json(newUser);
-    }
   } catch (error) {
     console.error(
       `unable to find user with the twitterHandle or googlHandle with ${handle}`,

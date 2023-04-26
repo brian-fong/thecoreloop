@@ -15,7 +15,17 @@ export default async function getAllProjects(
 ) {
   if (request.method == "GET") {
     try {
-      const games = await prisma.project.findMany();
+      //include: includes one to many relationships
+      //genres: select: picks one or many rows from genres table by targetting the column genre
+      const games = await prisma.project.findMany({
+        include: {
+          genres: {
+            select: {
+              genre: true,
+            },
+          },
+        },
+      });
       response.status(200).json(games);
     } catch (error) {
       console.log(error);
