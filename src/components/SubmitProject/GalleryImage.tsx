@@ -65,6 +65,8 @@ export default function GalleryImage({
       height="100%"
       minHeight={`${image_height}px`}
       maxHeight={`${image_height}px`}
+      background="rgba(0, 0, 0, 0.4)"
+      borderRadius="5px"
     >
       {content}
     </Flex>

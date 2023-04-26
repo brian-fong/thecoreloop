@@ -1,5 +1,5 @@
 // Components
-import { Flex, Heading, Image, Text } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 import Blockchain from "./Blockchain";
 import Description from "./Description";
 import Gallery from "./Gallery";
@@ -10,6 +10,7 @@ import Links from "./Links";
 import Name from "./Name";
 import SignInModal from "../../components/User/SignInModal";
 import Stage from "./Stage";
+import Story from "./Story";
 import Studio from "./Studio";
 import Thumbnail from "./Thumbnail";
 import Upvote from "../../components/SubmitProject/Upvote";
@@ -33,7 +34,7 @@ export default function Project({ project }: any) {
   return (
     <>
       <Head>
-        <title>Submit Project</title>
+        <title>{project.name}</title>
         <link
           rel="icon"
           type="image/x-icon"
@@ -140,7 +141,17 @@ export default function Project({ project }: any) {
             height="100%"
           >
             {/* Studio */}
-            <Studio studio={project.studio} />
+            <Flex
+              justifyContent="space-between"
+              alignItems="start"
+              width="100%"
+            >
+              <Studio studio={project.studio} />
+
+              <Text whiteSpace="nowrap">
+                Submitted on {project.date}
+              </Text>
+            </Flex>
 
             {/* Description */}
             <Description description={project.description} />
@@ -149,26 +160,7 @@ export default function Project({ project }: any) {
             <Gallery gallery={project.gallery} />
 
             {/* Story Container */}
-            <Flex flexDirection="column" gap="10px" width="100%">
-              {/* Submitter Info */}
-              <Flex alignItems="center" gap="10px" width="100%">
-                <Image
-                  src={project.submitter.image}
-                  width="48px"
-                  borderRadius="full"
-                />
-                <Heading
-                  fontSize="15px"
-                >
-                  @{project.submitter.username}
-                </Heading>
-              </Flex>
-
-              {/* Story Content */}
-              <Text whiteSpace="pre-line">
-                {project.story}
-              </Text>
-            </Flex>
+            <Story story={project.story} submitter={project.submitter} />
           </Flex>
         </Flex>
 

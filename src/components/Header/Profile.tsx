@@ -27,8 +27,8 @@ export default function Profile() {
   const [content, setContent] = useState<ReactElement>();
 
   useEffect(() => {
-    console.log("Status: ", status);
-    console.log("OAuth Data: ", session);
+    // console.log("Status: ", status);
+    // console.log("OAuth Data: ", session);
 
     if (status.toLowerCase() != "authenticated") {
       setContent(

@@ -41,13 +41,15 @@ export default function Gallery({ gallery }: any) {
         alignItems="center"
         width="100%"
         height="100%"
-        minHeight={`${image_height}px`}
-        maxHeight={`${image_height}px`}
+        background="rgba(0, 0, 0, 0.4)"
+        borderRadius="5px"
       >
         <Image
           src={gallery[page]}
           objectFit="contain"
+          // objectFit="cover"
           padding="1px"
+          maxWidth={`${image_width}px`}
           maxHeight={`${image_height}px`}
           borderRadius="5px"
         />
@@ -97,9 +99,11 @@ export default function Gallery({ gallery }: any) {
         flexDirection="row"
         justifyContent="space-between"
         alignItems="center"
+        gap="10px"
         width="100%"
         minWidth="100%"
         height="100%"
+        minHeight={`${image_height}px`}
       >
         <Button
           display="flex"
@@ -107,27 +111,27 @@ export default function Gallery({ gallery }: any) {
           flexDirection="column"
           justifyContent="center"
           alignItems="center"
-          padding="0 10px"
-          width="100%"
-          height="100%"
-          minHeight={`${image_height-20}px`}
-          maxHeight={`${image_height-20}px`}
-          border="1px solid transparent"
+          width="40px"
+          height="50px"
+          background="rgba(0, 0, 0 ,0.2)"
           borderRadius="5px"
-          cursor="pointer"
+          cursor={page == 0
+            ? "default"
+            : "pointer"
+          }
           userSelect="none"
           zIndex={1}
-          isDisabled={page == 0 || gallery.length == 0}
-          _disabled={{
-            opacity: "0%",
-            cursor: "default",
-            _hover: {},
-          }}
           onClick={() => navigatePage("prev")}
           transition="all 200ms ease-in-out"
-          _hover={{
-            background: "rgba(0, 0, 0, 0.4)",
+          isDisabled={page == 0}
+          _disabled={{
+            filter: "brightness(25%)",
+            _hover: { filter: "brightness(25%)" },
           }}
+          _hover={{
+            filter: "brightness(75%)"
+          }}
+          _active={{}}
         >
           <LeftArrowIcon size="25px" />
         </Button>
@@ -140,29 +144,29 @@ export default function Gallery({ gallery }: any) {
           flexDirection="column"
           justifyContent="center"
           alignItems="center"
-          padding="0 10px"
-          width="100%"
-          height="100%"
-          minHeight={`${image_height-20}px`}
-          maxHeight={`${image_height-20}px`}
-          border="1px solid transparent"
+          width="40px"
+          height="50px"
+          background="rgba(0, 0, 0 ,0.2)"
           borderRadius="5px"
-          cursor="pointer"
+          cursor={page == gallery.length-1
+            ? "default"
+            : "pointer"
+          }
           userSelect="none"
           zIndex={1}
+          onClick={() => navigatePage("next")}
+          transition="all 200ms ease-in-out"
           isDisabled={
             page == gallery.length-1
               || gallery.length == 0}
           _disabled={{
-            opacity: "0%",
-            cursor: "default",
-            _hover: {},
+            filter: "brightness(25%)",
+            _hover: { filter: "brightness(25%)" },
           }}
-          onClick={() => navigatePage("next")}
-          transition="all 200ms ease-in-out"
           _hover={{
-            background: "rgba(0, 0, 0, 0.4)",
+            filter: "brightness(75%)"
           }}
+          _active={{}}
         >
           <RightArrowIcon size="25px" />
         </Button>
@@ -175,22 +179,18 @@ export default function Gallery({ gallery }: any) {
         alignItems="center"
         width="100%"
       >
-        <Box
+        <Flex
+          flexDirection="row"
+          justifyContent="start"
+          alignItems="center"
+          gap="30px"
           padding="20px"
           background="rgba(0, 0, 0, 0.3)"
           borderRadius="5px"
-          transition="all 300ms ease-in-out"
+          transition="opacity 300ms ease-in-out"
         >
-          <Flex
-            flexDirection="row"
-            justifyContent="start"
-            alignItems="center"
-            gap="30px"
-            transition="opacity 300ms ease-in-out"
-          >
-            {gallery_indices}
-          </Flex>
-        </Box>
+          {gallery_indices}
+        </Flex>
       </Flex>
     </Flex>
   )

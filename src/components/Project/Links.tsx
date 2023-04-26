@@ -3,6 +3,9 @@ import { Flex, Link } from "@chakra-ui/react";
 import { BsGlobe as WebIcon } from "react-icons/bs";
 import LinkIcon from "../SubmitProject/LinkIcon";
 
+// uuid
+import uuid from "react-uuid";
+
 export default function Links({ links }: any) {
   return (
     <Flex
@@ -16,6 +19,7 @@ export default function Links({ links }: any) {
       {links.map((link: string, index: number) => {
         if (index == 0) return (
           <Link 
+            key={uuid()}
             href={link}
             target="_blank"
             transition="all 200ms ease-in-out"
@@ -26,6 +30,7 @@ export default function Links({ links }: any) {
         );
         else return (
           <Link 
+            key={uuid()}
             href={link}
             target="_blank"
             transition="all 200ms ease-in-out"

@@ -78,7 +78,7 @@ export default function Gallery({ gallery, setGallery }: any) {
               flexDirection="column"
               justifyContent="center"
               alignItems="center"
-              gap='10px'
+              gap="10px"
               padding="20px"
               position="relative"
               width={image_width}
@@ -190,6 +190,7 @@ export default function Gallery({ gallery, setGallery }: any) {
         flexDirection="row"
         justifyContent="space-between"
         alignItems="center"
+        gap="10px"
         marginBottom="10px"
         position="relative"
         width="100%"
@@ -202,27 +203,25 @@ export default function Gallery({ gallery, setGallery }: any) {
           flexDirection="column"
           justifyContent="center"
           alignItems="center"
-          padding="0 10px"
-          width="100%"
-          height="100%"
-          minHeight={`${image_height-20}px`}
-          maxHeight={`${image_height-20}px`}
-          border="1px solid transparent"
+          height="50px"
+          background="rgba(0, 0, 0 ,0.2)"
           borderRadius="5px"
-          cursor="pointer"
+          cursor={page == 0 || gallery.length == 0
+            ? "default"
+            : "pointer"}
           userSelect="none"
           zIndex={1}
-          isDisabled={page == 0 || gallery.length == 0}
-          _disabled={{
-            opacity: "0%",
-            cursor: "default",
-            _hover: {},
-          }}
           onClick={() => navigatePage("prev")}
           transition="all 200ms ease-in-out"
-          _hover={{
-            background: "rgba(0, 0, 0, 0.4)",
+          isDisabled={page == 0 || gallery.length == 0}
+          _disabled={{
+            filter: "brightness(25%)",
+            _hover: { filter: "brightness(25%)" },
           }}
+          _hover={{
+            filter: "brightness(75%)"
+          }}
+          _active={{}}
         >
           <LeftArrowIcon size="25px" />
         </Button>
@@ -236,26 +235,28 @@ export default function Gallery({ gallery, setGallery }: any) {
           justifyContent="center"
           alignItems="center"
           padding="0 10px"
-          width="100%"
-          height="100%"
-          minHeight={`${image_height-20}px`}
-          maxHeight={`${image_height-20}px`}
-          border="1px solid transparent"
+          height="50px"
+          background="rgba(0, 0, 0 ,0.2)"
           borderRadius="5px"
-          cursor="pointer"
+          cursor={page == gallery.length-1 || gallery.length == 0
+            ? "default"
+            : "pointer"
+          }
           userSelect="none"
           zIndex={1}
-          isDisabled={page == gallery.length-1 || gallery.length == 0}
-          _disabled={{
-            opacity: "0%",
-            cursor: "default",
-            _hover: {},
-          }}
           onClick={() => navigatePage("next")}
           transition="all 200ms ease-in-out"
-          _hover={{
-            background: "rgba(0, 0, 0, 0.4)",
+          isDisabled={
+            page == gallery.length-1
+              || gallery.length == 0}
+          _disabled={{
+            filter: "brightness(25%)",
+            _hover: { filter: "brightness(25%)" },
           }}
+          _hover={{
+            filter: "brightness(75%)"
+          }}
+          _active={{}}
         >
           <RightArrowIcon size="25px" />
         </Button>
