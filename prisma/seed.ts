@@ -1,4 +1,4 @@
-// import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 // import { genres } from "./data/genres";
 // const prisma = new PrismaClient();
 // import DATA from "./data/projects";
