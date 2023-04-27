@@ -19,26 +19,26 @@ export default async function deleteUser(
     handle: string;
   }
   const { handle } = request.query as ParsedUrlQuery & queryParams;
-  try {
-    console.log("getting to users/delete");
-    const { userHandle } = request.body;
-    const user = await prisma.user.findUnique({
-      where: {
-        handle: userHandle,
-      },
-    });
-    if (user) {
-      const res = await prisma.user.delete({
-        where: { id: user.id },
-      });
-      response.status(200).json({ sucess: "sucessfully deleted user" });
-      await prisma.$disconnect();
-      return;
-    } else {
-      response.status(400).json({ error: "user not found" });
-    }
-  } catch (err) {
-    console.error(err);
-    response.status(500).json({ error: err });
-  }
+  // try {
+  //   console.log("getting to users/delete");
+  //   const { userHandle } = request.body;
+  //   const user = await prisma.user.findUnique({
+  //     where: {
+  //       handle: userHandle,
+  //     },
+  //   });
+  //   if (user) {
+  //     const res = await prisma.user.delete({
+  //       where: { id: user.id },
+  //     });
+  //     response.status(200).json({ sucess: "sucessfully deleted user" });
+  //     await prisma.$disconnect();
+  //     return;
+  //   } else {
+  //     response.status(400).json({ error: "user not found" });
+  //   }
+  // } catch (err) {
+  //   console.error(err);
+  //   response.status(500).json({ error: err });
+  // }
 }
