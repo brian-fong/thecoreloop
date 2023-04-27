@@ -4,7 +4,7 @@ import {
   Flex,
 } from "@chakra-ui/react";
 import Head from "next/head";
-import Header from "../components/Header/Header";
+import Header from "../../components/Header/Header";
 
 // Axios
 import axios from "axios";

@@ -1,24 +1,23 @@
 // Components
-import { 
+import {
+  Button,
   Flex,
   FormLabel,
   Input,
   Select,
-  Text,
   Textarea,
 } from "@chakra-ui/react";
 import Head from "next/head";
-import Logo from "../components/Core/Logo";
-import CurveContainer from "../components/Core/CurveContainer";
-import CurveSubContainer from "../components/Core/CurveSubContainer";
-import SubmitBtn from "../components/Core/SubmitBtn";
+import CurveContainer from "../../components/Core/CurveContainer";
+import CurveSubContainer from "../../components/Core/CurveSubContainer";
+import Logo from "../../components/Core/Logo";
 
 // Hooks
 import { useFormik } from "formik";
 import React, { useState } from "react";
 
 // Helpers 
-import { pressBtn } from "../utils/animations";
+import { pressBtn } from "../../utils/animations";
 
 function validate(values: any) {
   const errors: any = {};
@@ -57,8 +56,6 @@ function validate(values: any) {
 }
 
 export default function formik() {
-  const [submittedOnce, setSubmittedOnce] = useState<boolean>(false);
-
   const formik = useFormik({
     initialValues: {
       username: "",
@@ -72,7 +69,6 @@ export default function formik() {
       console.log("Submitted");
       const submit_btn: HTMLElement = document.getElementById("submit-btn")!;
       await pressBtn(submit_btn);
-      setSubmittedOnce(true);
       alert(JSON.stringify(values, null, 2));
     },
   });
@@ -372,7 +368,30 @@ export default function formik() {
                     alignItems="center"
                     width="100%"
                   >
-                    <SubmitBtn />
+                    <Button
+                      id="submit-btn"
+                      type="submit"
+                      color="white"
+                      backgroundColor="tcl_green"
+                      boxShadow="3px 3px 2px rgba(0, 0, 0, 0.5)"
+                      transition={`
+                        background-color 200ms ease-in,
+                        transform 100ms ease-in,
+                        box-shadow 100ms 0 ease-in
+                      `}
+                      _hover={{
+                        backgroundColor: "tcl_green_hover",
+                      }}
+                    >
+                      <Flex
+                        flexDirection="row"
+                        justifyContent="center"
+                        alignItems="center"
+                        gap="0.5rem"
+                      >
+                        SUBMIT
+                      </Flex>
+                    </Button>
                   </Flex>
 
                 </Flex>
