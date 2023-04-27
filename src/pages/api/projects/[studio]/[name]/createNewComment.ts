@@ -32,13 +32,13 @@ export default async function createCommentForProject(
     studio: string;
     name: string;
   }
-  const authorId = "getId from session";
-  const { studio, name } = request.query as ParsedUrlQuery & queryParams;
-  const sanitizedStudio = studio.replace(/-/g, " ");
-  const sanitizedName = name.replace(/-/g, " ");
-  const project = await prisma.project.findUnique({
-    where: {
-      name_studio: { name: sanitizedName, studio: sanitizedStudio },
-    },
-  });
+  //   const authorId = "getId from session";
+  //   const { studio, name } = request.query as ParsedUrlQuery & queryParams;
+  //   const sanitizedStudio = studio.replace(/-/g, " ");
+  //   const sanitizedName = name.replace(/-/g, " ");
+  //   const project = await prisma.project.findUnique({
+  //     where: {
+  //       name_studio: { name: sanitizedName, studio: sanitizedStudio },
+  //     },
+  //   });
 }

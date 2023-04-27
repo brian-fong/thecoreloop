@@ -13,14 +13,14 @@ async function updateUser(request: NextApiRequest, response: NextApiResponse) {
   }
   const { handle } = request.query as ParsedUrlQuery & queryParams;
   const { username } = request.body;
-  try {
-    const updatedUser = await prisma.user.update({
-      where: { id: 1 },
-      data: { username: username },
-    });
-    await prisma.$disconnect();
-    response.status(200).json(updateUser);
-  } catch (error) {
-    response.status(500).json({ error: "unsuccessful in updating user" });
-  }
+  // try {
+  //   const updatedUser = await prisma.user.update({
+  //     where: { id: 1 },
+  //     data: { username: username },
+  //   });
+  //   await prisma.$disconnect();
+  //   response.status(200).json(updateUser);
+  // } catch (error) {
+  //   response.status(500).json({ error: "unsuccessful in updating user" });
+  // }
 }
