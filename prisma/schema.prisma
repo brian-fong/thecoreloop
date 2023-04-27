@@ -1,44 +1,128 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-generator client {
-  provider = "prisma-client-js"
-}
+
+
+// TIP: helpful commands after changes in schema.prisma 
+  // $ npx prisma update
+  // $ npx prisma generate
+  // $ npx prisma migrate dev
+  // $ npx prisma migrate 
+  // if you are in dev and do not care about permanent db changes you can use
+    // $ npx prisma db push
+    // This will update the schema of the tables in the db you are connected to
+    // but may delete every row
+
+
+//shadowDatabaseUrl will be your local machine's db_url as some db services like planet scale will not grant you permissions to make one
+//relationMode: planetscale will not manage relations for you so you need to write this out for prisma to manage it for you in planetscale
 
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
+  relationMode = "prisma"
+  
 }
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+
+
+
+//possible future columns discord telegram twitter
+
 
 model User {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  firstName String   @db.VarChar(255)
-  lastName  String   @db.VarChar(255)
-  birthday  DateTime @updatedAt
-  bio       String
+  id            Int       @id @default(autoincrement())
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt @default(now())
+  handle        String?   @unique @db.VarChar(255)
+  username      String?   @db.VarChar(255)
+  admins        Project[] @relation("ProjectOwner")
+  hunter        Project[]
+  comments      Comment[]
 }
 
-model Game {
-  id              Int       @id @default(autoincrement())
-  title           String
-  description     String
-  stage           String 
-  genre           String
-  upvote_count    Int
+
+// when project is submitted, we check to see if in the team or not, if they say that they are -> investigation, if correct, we want to show that they are infact part of the team else -> they would get credit for posting the project
+//s3_bucket folders
+//example s3 filename: studio-name-thumbnail, studio-name-gallery-1,2,3
+// gallery = ["s3links","s3link", "s3link"] -> db = ["","",""]
+//add team?
+
+ // profile project: 
+ // admins: profiles
+
+ // community members: upvoted
+  //upvote count can be changed into User[] and upvote count can be user.length
+  //but this will have delays on the front end so it will take ~2 seconds to show the upvote click
+    //in order to optimize this, useState and ++ it.
+ // people involved:
+
+model Project {
+  id              Int       @unique @id @default(autoincrement())
+  upvote_count    Int       @default(0)
+  name            String
+  studio          String
+  thumbnail       String?
+  blockchain      String?
+  description     String?   @db.Text
+  tagline         String?
+  fundraising     Boolean
+  links           String?
+  genres          Genre[]   @relation("ProjectGenre")
+  gallery         String?  
+  stage           String?  
+  owner           User[]    @relation("ProjectOwner")
+  hunter          User?      @relation(fields:[hunterId], references:[id])
+  hunterId        Int?    
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  @@unique([name, studio], name:"name_studio")
+  approval        Boolean?
 }
 
-enum Genre {
-  MMORPG
-  FPS
-  RPG
+//DEV NOTES: scalar lists are only supported in postgresql and cockroachdb so we need to create a new model relating to gallery. but with this, we need to discuss if we want two tables, gallery for users, and galler for projects. as projects grow, the binary search will start to take more time to gather relevant data.
+ //Solution: I suggest we start with one gallery table for now, before launch, we will create mock-data with at least 500 gallery insertions and see how long it will take to render them.
+//model Gallery {
+//
+//}
+model Comment {
+  id Int        @unique   @id @default(autoincrement())
+  userId        Int?
+  user          User?     @relation(fields:[userId], references:[id])
+  content       String?
+  parentId      Int?
+  parentComment Comment?  @relation("ParentChildComment",fields: [parentId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  comments      Comment[] @relation("ParentChildComment")
+  createdAt     DateTime  @default(now())
 }
 
-enum devStatus {
-  FUNDRAISING
-  INDEVELOPMENT
-  ALPHA
-  BETA
-  LAUNCHED
+model Genre {
+  genre       String  @id @unique
+  description String? @db.VarChar(255)
+  games       Project[]  @relation("ProjectGenre") 
 }
+
+enum DevStatus {
+ preProduction
+  production
+  playableDemo
+  live
+}
+
+
+///////////// future implementation to many-to-many relation ///////////////////
+
+
+//enum blockchain{}
+
+//enum platform{}
+
+
+
+//maybe thumbnail? i dont know yet
+
+

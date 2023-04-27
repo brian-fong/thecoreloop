@@ -27,7 +27,7 @@ export default function AuthBtn({ provider }: any) {
 
   return (
     <Button
-      backgroundColor="category_bkg"
+      backgroundColor="curve_alt"
       boxShadow="3px 3px 2px rgba(0, 0, 0, 0.5)"
       transition="filter 200ms ease-in"
       _hover={{
