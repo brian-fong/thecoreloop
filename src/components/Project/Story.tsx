@@ -16,7 +16,7 @@ export default function Story({ story, submitter}: any) {
         justifyContent="start"
         alignItems="center"
         gap="10px"
-        padding="15px"
+        padding="10px"
         width="100%"
         background="gray.700"
         borderRadius="5px 5px 0 0 "
@@ -24,7 +24,9 @@ export default function Story({ story, submitter}: any) {
         <Image
           src={submitter.image}
           width="48px"
+          height="48px"
           borderRadius="full"
+          draggable={false}
         />
         <Heading
           fontSize="15px"
@@ -35,9 +37,10 @@ export default function Story({ story, submitter}: any) {
 
       {/* Story Content */}
       <Text
-        marginTop="-5px"
-        marginLeft="48px"
+        margin="-5px 28px 0 34px"
+        padding="10px"
         textAlign="justify"
+        borderLeft="1px solid white"
         whiteSpace="pre-line"
         userSelect="text"
       >

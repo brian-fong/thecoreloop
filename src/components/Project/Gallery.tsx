@@ -40,7 +40,9 @@ export default function Gallery({ gallery }: any) {
         justifyContent="center"
         alignItems="center"
         width="100%"
+        minWidth={`${image_width}px`}
         height="100%"
+        minHeight={`${image_height}px`}
         background="rgba(0, 0, 0, 0.4)"
         borderRadius="5px"
       >
@@ -51,7 +53,7 @@ export default function Gallery({ gallery }: any) {
           padding="1px"
           maxWidth={`${image_width}px`}
           maxHeight={`${image_height}px`}
-          borderRadius="5px"
+          draggable={false}
         />
       </Flex>
     );
@@ -113,7 +115,7 @@ export default function Gallery({ gallery }: any) {
           alignItems="center"
           width="40px"
           height="50px"
-          background="rgba(0, 0, 0 ,0.2)"
+          background="rgba(0, 0, 0 ,0.4)"
           borderRadius="5px"
           cursor={page == 0
             ? "default"
@@ -131,7 +133,7 @@ export default function Gallery({ gallery }: any) {
           _hover={{
             filter: "brightness(75%)"
           }}
-          _active={{}}
+          _active={{ filter: "brightness(50%) "}}
         >
           <LeftArrowIcon size="25px" />
         </Button>
@@ -146,7 +148,7 @@ export default function Gallery({ gallery }: any) {
           alignItems="center"
           width="40px"
           height="50px"
-          background="rgba(0, 0, 0 ,0.2)"
+          background="rgba(0, 0, 0 ,0.4)"
           borderRadius="5px"
           cursor={page == gallery.length-1
             ? "default"
@@ -166,7 +168,7 @@ export default function Gallery({ gallery }: any) {
           _hover={{
             filter: "brightness(75%)"
           }}
-          _active={{}}
+          _active={{ filter: "brightness(50%) "}}
         >
           <RightArrowIcon size="25px" />
         </Button>

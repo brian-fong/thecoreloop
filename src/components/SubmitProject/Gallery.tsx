@@ -204,7 +204,7 @@ export default function Gallery({ gallery, setGallery }: any) {
           justifyContent="center"
           alignItems="center"
           height="50px"
-          background="rgba(0, 0, 0 ,0.2)"
+          background="rgba(0, 0, 0 ,0.4)"
           borderRadius="5px"
           cursor={page == 0 || gallery.length == 0
             ? "default"
@@ -236,7 +236,7 @@ export default function Gallery({ gallery, setGallery }: any) {
           alignItems="center"
           padding="0 10px"
           height="50px"
-          background="rgba(0, 0, 0 ,0.2)"
+          background="rgba(0, 0, 0 ,0.4)"
           borderRadius="5px"
           cursor={page == gallery.length-1 || gallery.length == 0
             ? "default"

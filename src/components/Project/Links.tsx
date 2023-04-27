@@ -22,6 +22,7 @@ export default function Links({ links }: any) {
             key={uuid()}
             href={link}
             target="_blank"
+            draggable={false}
             transition="all 200ms ease-in-out"
             _hover={{ filter: "brightness(0.7)" }}
           >
@@ -33,6 +34,7 @@ export default function Links({ links }: any) {
             key={uuid()}
             href={link}
             target="_blank"
+            draggable={false}
             transition="all 200ms ease-in-out"
             _hover={{ filter: "brightness(0.7)" }}
           >
