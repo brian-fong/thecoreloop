@@ -22,6 +22,4 @@ archived/
 .vercel
 
 # Local test files and notes
-practice.ts
-notes.md
-scripts/
+experimental/
