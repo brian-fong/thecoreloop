@@ -10,7 +10,7 @@ import {
   BsChevronRight as RightArrowIcon,
 } from "react-icons/bs";
 import { MdOutlineAddPhotoAlternate as AddImageIcon } from "react-icons/md";
-import DropzoneBoxV2 from "../Core/DropzoneBoxV2";
+import DropzoneBox from "../Core/DropzoneBox";
 import GalleryImage from "./GalleryImage";
 import GalleryIndex from "./GalleryIndex";
 
@@ -69,7 +69,7 @@ export default function Gallery({ gallery, setGallery }: any) {
     async function init() {
       if (gallery.length == 0) {
         setGalleryContent(
-          <DropzoneBoxV2
+          <DropzoneBox
             gallery={gallery} setGallery={setGallery}
             handleOnDrop={uploadImages}
             maxFiles={5}
@@ -78,7 +78,7 @@ export default function Gallery({ gallery, setGallery }: any) {
               flexDirection="column"
               justifyContent="center"
               alignItems="center"
-              gap='10px'
+              gap="10px"
               padding="20px"
               position="relative"
               width={image_width}
@@ -120,7 +120,7 @@ export default function Gallery({ gallery, setGallery }: any) {
               </Flex>
 
             </Flex>
-          </DropzoneBoxV2>  
+          </DropzoneBox>  
           );
         setGalleryIndices([]);
       } else {
@@ -145,9 +145,10 @@ export default function Gallery({ gallery, setGallery }: any) {
           );
         }
 
+        // Add DropzoneBox (if there is space for more images)
         if (gallery.length < max_pages) {
           gallery_indices_new.push(
-            <DropzoneBoxV2
+            <DropzoneBox
               gallery={gallery} setGallery={setGallery}
               handleOnDrop={uploadImages}
               maxFiles={5}
@@ -165,7 +166,7 @@ export default function Gallery({ gallery, setGallery }: any) {
               >
                 <AddImageIcon size="32px" />
               </Flex>
-            </DropzoneBoxV2>
+            </DropzoneBox>
           )
         }
 
@@ -189,6 +190,7 @@ export default function Gallery({ gallery, setGallery }: any) {
         flexDirection="row"
         justifyContent="space-between"
         alignItems="center"
+        gap="10px"
         marginBottom="10px"
         position="relative"
         width="100%"
@@ -197,29 +199,29 @@ export default function Gallery({ gallery, setGallery }: any) {
       >
         <Button
           display="flex"
+          flexShrink={4}
           flexDirection="column"
           justifyContent="center"
           alignItems="center"
-          padding="0 10px"
-          height="100%"
-          minHeight={`${image_height-20}px`}
-          maxHeight={`${image_height-20}px`}
-          border="1px solid transparent"
+          height="50px"
+          background="rgba(0, 0, 0 ,0.4)"
           borderRadius="5px"
-          cursor="pointer"
+          cursor={page == 0 || gallery.length == 0
+            ? "default"
+            : "pointer"}
           userSelect="none"
           zIndex={1}
-          isDisabled={page == 0 || gallery.length == 0}
-          _disabled={{
-            opacity: "0%",
-            cursor: "default",
-            _hover: {},
-          }}
           onClick={() => navigatePage("prev")}
           transition="all 200ms ease-in-out"
-          _hover={{
-            background: "rgba(0, 0, 0, 0.4)",
+          isDisabled={page == 0 || gallery.length == 0}
+          _disabled={{
+            filter: "brightness(25%)",
+            _hover: { filter: "brightness(25%)" },
           }}
+          _hover={{
+            filter: "brightness(75%)"
+          }}
+          _active={{}}
         >
           <LeftArrowIcon size="25px" />
         </Button>
@@ -228,29 +230,33 @@ export default function Gallery({ gallery, setGallery }: any) {
 
         <Button
           display="flex"
+          flexShrink={4}
           flexDirection="column"
           justifyContent="center"
           alignItems="center"
           padding="0 10px"
-          height="100%"
-          minHeight={`${image_height-20}px`}
-          maxHeight={`${image_height-20}px`}
-          border="1px solid transparent"
+          height="50px"
+          background="rgba(0, 0, 0 ,0.4)"
           borderRadius="5px"
-          cursor="pointer"
+          cursor={page == gallery.length-1 || gallery.length == 0
+            ? "default"
+            : "pointer"
+          }
           userSelect="none"
           zIndex={1}
-          isDisabled={page == gallery.length-1 || gallery.length == 0}
-          _disabled={{
-            opacity: "0%",
-            cursor: "default",
-            _hover: {},
-          }}
           onClick={() => navigatePage("next")}
           transition="all 200ms ease-in-out"
-          _hover={{
-            background: "rgba(0, 0, 0, 0.4)",
+          isDisabled={
+            page == gallery.length-1
+              || gallery.length == 0}
+          _disabled={{
+            filter: "brightness(25%)",
+            _hover: { filter: "brightness(25%)" },
           }}
+          _hover={{
+            filter: "brightness(75%)"
+          }}
+          _active={{}}
         >
           <RightArrowIcon size="25px" />
         </Button>

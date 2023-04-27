@@ -65,6 +65,7 @@ export default function DescriptionModal({
   function handleCopy() {
     // Copy tagline to description
     input_ref.current!.value = tagline;
+    formik.values.description = tagline;
   }
 
   function handleChange(event: any) {

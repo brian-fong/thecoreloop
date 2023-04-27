@@ -6,7 +6,7 @@ import {
 } from "@chakra-ui/react";
 import { BsXSquare as CloseIcon } from "react-icons/bs";
 import { TfiPencilAlt as EditIcon } from "react-icons/tfi";
-import DropzoneBoxV2 from "../Core/DropzoneBoxV2";
+import DropzoneBox from "../Core/DropzoneBox";
 
 // Types
 import type { ReactElement } from "react";
@@ -67,7 +67,7 @@ export default function GalleryIndex({
         filter={page == index ? "none" : "brightness(75%)"}
         transform={
           page == index
-            ? "scale(1.1)"
+            ? "scale(1.15)"
             : "scale(1.0)"
         }
         cursor="pointer"
@@ -86,7 +86,7 @@ export default function GalleryIndex({
         top="-10px"
         right="-10px"
       >
-        <DropzoneBoxV2
+        <DropzoneBox
           gallery={gallery} setGallery={setGallery}
           handleOnDrop={editImage}
           maxFiles={1}
@@ -102,7 +102,7 @@ export default function GalleryIndex({
           >
             <EditIcon color="black" size="15px" />
           </Box>
-        </DropzoneBoxV2>
+        </DropzoneBox>
         <Box
           padding="2px"
           background="gray.300"

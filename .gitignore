@@ -28,4 +28,6 @@ practice.ts
 notes.md
 scripts/
 
-/prisma/seed.ts
+form_test_db.tsx
+seed.ts
+
