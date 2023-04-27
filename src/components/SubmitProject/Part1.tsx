@@ -29,7 +29,7 @@ export default function Part1({
   const [isFinished, setIsFinished] = useState<boolean>(true);
 
   // useEffect(() => {
-  //   // Update isFinished state variable as Discovery fields change
+  //   // Update isFinished state variable as Discover fields change
   //   if (
   //     blockchain              // Blockchain: non-empty
   //     && genres.length > 0    // Genres: at least 1 genre selected
@@ -48,7 +48,7 @@ export default function Part1({
   return (
     <>
       <Heading marginBottom="30px" fontSize="16px" fontWeight="300">
-        Click on the fields below to input the corresponding information. The result is what readers will see on the <Text display="inline" color="gray.400" fontStyle="italic" fontWeight="700">Discovery</Text> section.
+        Click on the fields below to input the corresponding information. The result is what readers will see on the <Text display="inline" color="gray.400" fontStyle="italic" fontWeight="700">Discover</Text> section.
       </Heading>
 
       <DiscoverForm

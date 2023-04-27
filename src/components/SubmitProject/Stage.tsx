@@ -84,7 +84,8 @@ export default function Stage({ stage, setStage }: any) {
       {content}
       <StageModal
         stage={stage} setStage={setStage}
-        stage_selected={stage_selected} setStageSelected={setStageSelected}
+        stage_selected={stage_selected}
+        setStageSelected={setStageSelected}
         isOpen={isOpen} onClose={onClose}
       />
     </Box>

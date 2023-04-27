@@ -18,6 +18,7 @@ import {
   SiLinktree as LinktreeIcon,
   SiSubstack as SubstackIcon,
   SiTiktok as TiktokIcon,
+  SiOpensea as OpenseaIcon,
 } from "react-icons/si";
 
 // Useful Constants
@@ -52,6 +53,8 @@ export default function LinkIcon({ url, size }: any) {
       return <LinktreeIcon size={size} />;
     case "medium":
       return <MediumIcon size={size} />;
+    case "opensea":
+      return <OpenseaIcon size={size} />;
     case "playstore":
       return <PlaystoreIcon size={size} />;
     case "substack":

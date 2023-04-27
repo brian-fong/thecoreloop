@@ -102,6 +102,7 @@ export default function DiscoverForm({
 
           {/* Genres */}
           <Genres
+            format={"discover"}
             genres={genres}
             setGenres={setGenres}
           />
