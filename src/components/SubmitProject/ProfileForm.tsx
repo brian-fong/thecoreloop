@@ -1,10 +1,5 @@
 // Components
-import {
-  Box,
-  Flex,
-  Input,
-  Text,
-} from "@chakra-ui/react";
+import { Box, Flex, Input, Text } from "@chakra-ui/react";
 import Blockchain from "./Blockchain";
 import Description from "./Description";
 import Gallery from "./Gallery";
@@ -20,20 +15,29 @@ import Upvote from "./Upvote";
 import { useEffect, useState } from "react";
 
 export default function ProfileForm({
-  image_width, image_height,
-  blockchain, setBlockchain,
-  description, setDescription,
+  image_width,
+  image_height,
+  blockchain,
+  setBlockchain,
+  description,
+  setDescription,
   fundraising,
-  gallery, setGallery,
-  genres, setGenres,
-  links, setLinks,
-  name, setName,
-  stage, setStage,
-  studio, setStudio,
+  gallery,
+  setGallery,
+  genres,
+  setGenres,
+  links,
+  setLinks,
+  name,
+  setName,
+  stage,
+  setStage,
+  studio,
+  setStudio,
   tagline,
-  thumbnail, setThumbnail,
+  thumbnail,
+  setThumbnail,
 }: any) {
-
   // State Variables
   const [isFinished, setIsFinished] = useState<boolean>(true);
 
@@ -46,21 +50,31 @@ export default function ProfileForm({
     // console.log("Thumbnail: ", thumbnail);
 
     if (
-      blockchain
-        && description
-        && gallery.length > 0
-        && genres.length > 0
-        && name 
-        && links[0].length > 0
-        && stage 
-        && tagline 
-        && thumbnail
+      blockchain &&
+      description &&
+      gallery.length > 0 &&
+      genres.length > 0 &&
+      name &&
+      links[0].length > 0 &&
+      stage &&
+      tagline &&
+      thumbnail
     ) {
       setIsFinished(true);
     } else {
       setIsFinished(false);
     }
-  }, [blockchain, description, gallery, genres, links, name, stage, tagline, thumbnail]);
+  }, [
+    blockchain,
+    description,
+    gallery,
+    genres,
+    links,
+    name,
+    stage,
+    tagline,
+    thumbnail,
+  ]);
 
   return (
     <Flex
@@ -86,8 +100,10 @@ export default function ProfileForm({
         {/* Thumbnail Image */}
         <Thumbnail
           fundraising={fundraising}
-          image_width={image_width} image_height={image_height}
-          thumbnail={thumbnail} setThumbnail={setThumbnail} 
+          image_width={image_width}
+          image_height={image_height}
+          thumbnail={thumbnail}
+          setThumbnail={setThumbnail}
         />
 
         <Flex
@@ -103,24 +119,18 @@ export default function ProfileForm({
             flexDirection="row"
             justifyContent="start"
             alignItems="center"
-            gap="10px" 
+            gap="10px"
             width="100%"
           >
             {/* Name */}
             <Name name={name} setName={setName} />
 
             {/* Blockchain */}
-            <Blockchain 
-              blockchain={blockchain}
-              setBlockchain={setBlockchain}
-            />
+            <Blockchain blockchain={blockchain} setBlockchain={setBlockchain} />
           </Flex>
 
           {/* Genres */}
-          <Genres
-            format={"profile"}
-            genres={genres} setGenres={setGenres}
-          />
+          <Genres format={"profile"} genres={genres} setGenres={setGenres} />
 
           <Flex
             flexDirection="row"
@@ -151,20 +161,17 @@ export default function ProfileForm({
         height="100%"
       >
         {/* Studio */}
-        <Studio
-          studio={studio} setStudio={setStudio}
-        />
+        <Studio studio={studio} setStudio={setStudio} />
 
         {/* Description */}
-        <Description 
-          description={description}  setDescription={setDescription} 
+        <Description
+          description={description}
+          setDescription={setDescription}
           tagline={tagline}
         />
 
         {/* Gallery */}
-        <Gallery
-          gallery={gallery} setGallery={setGallery}
-        />
+        <Gallery gallery={gallery} setGallery={setGallery} />
 
         {/* Story */}
         <Flex
@@ -182,16 +189,11 @@ export default function ProfileForm({
           _hover={{ background: "rgba(0, 0, 0, 0.3)" }}
         >
           <Flex alignItems="center" gap="10px" userSelect="none">
-            <Text fontSize="16px">
-              📖
-            </Text>
-            <Text fontSize="16px">
-              &lt;story&gt;
-            </Text>
+            <Text fontSize="16px">📖</Text>
+            <Text fontSize="16px">&lt;story&gt;</Text>
           </Flex>
         </Flex>
       </Flex>
     </Flex>
-  )
+  );
 }
-

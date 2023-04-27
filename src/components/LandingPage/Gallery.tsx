@@ -1,6 +1,4 @@
-import {
-  Grid,
-} from "@chakra-ui/react";
+import { Grid } from "@chakra-ui/react";
 import uuid from "react-uuid";
 import PlayerImage from "./PlayerImage";
 import { useState, useEffect, ReactElement } from "react";
@@ -13,15 +11,16 @@ export default function Gallery({ screen_width }: any) {
   const PLAYERS: string[] = ["gamer", "builder", "investor", "content creator"];
 
   useEffect(() => {
-    if (screen_width < 4*min_image_width + 3*50 + 100) setColumns(2);
+    if (screen_width < 4 * min_image_width + 3 * 50 + 100) setColumns(2);
     else setColumns(4);
   }, [screen_width]);
 
   useEffect(() => {
     setImages([]);
     for (const player of PLAYERS) {
-      setImages(images => [...images, 
-        <PlayerImage key={uuid()} player={player} />
+      setImages((images) => [
+        ...images,
+        <PlayerImage key={uuid()} player={player} />,
       ]);
     }
   }, [columns]);
@@ -43,4 +42,3 @@ export default function Gallery({ screen_width }: any) {
     </Grid>
   );
 }
-

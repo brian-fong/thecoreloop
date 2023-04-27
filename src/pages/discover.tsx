@@ -1,10 +1,5 @@
 // Components
-import {
-  Divider,
-  Flex,
-  Heading,
-  Text,
-} from "@chakra-ui/react";
+import { Divider, Flex, Heading, Text } from "@chakra-ui/react";
 import Card from "../components/Discover/Card";
 import DATA from "../data/mock-data";
 import Head from "next/head";
@@ -19,10 +14,10 @@ import { useState, useEffect, ReactElement } from "react";
 import uuid from "react-uuid";
 const [image_width, image_height]: [string, string] = ["110px", "110px"];
 function getRandInt(a: number, b: number): number {
-  return Math.round(Math.random() * (b-a)) + a;
+  return Math.round(Math.random() * (b - a)) + a;
 }
 function getRandBool(p: number): boolean {
-  return Math.random() > (1-p);
+  return Math.random() > 1 - p;
 }
 
 export default function discovery() {
@@ -33,7 +28,7 @@ export default function discovery() {
 
   // useDisclosure: SignIn Modal
   const {
-    isOpen: isOpen_SignIn, 
+    isOpen: isOpen_SignIn,
     onOpen: onOpen_SignIn,
     onClose: onClose_SignIn,
   } = useDisclosure();
@@ -48,21 +43,23 @@ export default function discovery() {
     setCards([]);
     DATA.gaming_startups.sort(compareUpvote);
     for (let entry of DATA.gaming_startups) {
-      setCards(cards => [...cards, 
+      setCards((cards) => [
+        ...cards,
         <Card
           key={uuid()}
           onOpen_SignIn={onOpen_SignIn}
           setAction={setAction}
-          image_width={image_width} image_height={image_height}
+          image_width={image_width}
+          image_height={image_height}
           blockchain={entry.blockchain}
-          fundraising={getRandBool(0.20)}
+          fundraising={getRandBool(0.2)}
           genres={entry.genres}
           name={entry.name}
           stage={entry.stage}
           tagline={entry.description}
           thumbnail={entry.thumbnail}
           upvotes={getRandInt(0, 999)}
-        />
+        />,
       ]);
     }
   }, []);
@@ -71,11 +68,7 @@ export default function discovery() {
     <>
       <Head>
         <title>thecoreloop</title>
-        <link 
-          rel="icon" 
-          type="image/x-icon" 
-          href="/thecoreloop-favicon.png"
-        />
+        <link rel="icon" type="image/x-icon" href="/thecoreloop-favicon.png" />
         <meta name="viewport" content="viewport-fit=cover" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
@@ -93,10 +86,7 @@ export default function discovery() {
         userSelect="none"
       >
         {/* Header */}
-        <Header
-          setAction={setAction}
-          onOpen_SignIn={onOpen_SignIn}
-        />
+        <Header setAction={setAction} onOpen_SignIn={onOpen_SignIn} />
 
         {/* Body Container */}
         <Flex
@@ -145,9 +135,8 @@ export default function discovery() {
                 <Text
                   fontSize="16px"
                   fontWeight="800"
-                  filter={sortBy == "popular"
-                    ? "brightness(100%)"
-                    : "brightness(70%)"
+                  filter={
+                    sortBy == "popular" ? "brightness(100%)" : "brightness(70%)"
                   }
                   cursor="pointer"
                   onClick={() => setSortBy("popular")}
@@ -163,9 +152,8 @@ export default function discovery() {
                 <Text
                   fontSize="16px"
                   fontWeight="800"
-                  filter={sortBy == "latest"
-                    ? "brightness(100%)"
-                    : "brightness(70%)"
+                  filter={
+                    sortBy == "latest" ? "brightness(100%)" : "brightness(70%)"
                   }
                   cursor="pointer"
                   onClick={() => setSortBy("latest")}
@@ -192,7 +180,8 @@ export default function discovery() {
 
             {/* SignIn Modal */}
             <SignInModal
-              isOpen={isOpen_SignIn} onClose={onClose_SignIn}
+              isOpen={isOpen_SignIn}
+              onClose={onClose_SignIn}
               action={action}
             />
           </Flex>

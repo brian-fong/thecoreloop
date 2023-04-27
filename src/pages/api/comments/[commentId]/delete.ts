@@ -27,21 +27,21 @@ export default async function deleteCommentContent(
   const validationUserId = 1;
   const commentId = request.query.commentId;
 
-  const parsedCommentId =
-    typeof commentId === "string" ? parseInt(commentId) : undefined;
-  if (parsedCommentId && !NaN) {
-    try {
-      const newComment = await prisma.comment.update({
-        where: { id: parsedCommentId },
-        data: {
-          authorId: "deleted",
-          content: "[deleted]",
-        },
-      });
-    } catch (error) {
-      response
-        .status(404)
-        .json({ error: "sorry, something went wrong in the database" });
-    }
-  }
+  //   const parsedCommentId =
+  //     typeof commentId === "string" ? parseInt(commentId) : undefined;
+  //   if (parsedCommentId && !NaN) {
+  //     try {
+  //       const newComment = await prisma.comment.update({
+  //         where: { id: parsedCommentId },
+  //         data: {
+  //           authorId: "deleted",
+  //           content: "[deleted]",
+  //         },
+  //       });
+  //     } catch (error) {
+  //       response
+  //         .status(404)
+  //         .json({ error: "sorry, something went wrong in the database" });
+  //     }
+  //   }
 }

@@ -1,3 +1,5 @@
+
+
 # NextJS
 /.next/
 /out/
@@ -26,5 +28,4 @@ practice.ts
 notes.md
 scripts/
 
-form_test_db.tsx
-seed.ts
+/prisma/seed.ts

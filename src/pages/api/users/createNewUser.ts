@@ -12,6 +12,7 @@ export default async function createUser(
   request: NextApiRequest,
   response: NextApiResponse
 ) {
+  console.log("received request from authentication");
   try {
     const formData: FormData = request.body;
     const newUser = await prisma.user.create({
