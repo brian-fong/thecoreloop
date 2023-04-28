@@ -27,7 +27,7 @@ export const auth_options: AuthOptions = {
       if (account) {
         // Send POST request to Next.js API endpoint
         const response: any = await axios.post(
-          "http://localhost:3000/api/login",
+          "https://tcl-cloud.vercel.app/api/login",
           {
             data: account.provider,
           }
