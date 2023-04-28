@@ -9,9 +9,11 @@ export default async function login(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  const session = await getServerSession(req, res, auth_options);
-  console.log("Request received: ", req.url);
-  console.log("Session: ", session);
+  // const session = await getServerSession(req, res, auth_options);
+  // console.log("Session: ", JSON.stringify(session, null, 2));
+  
+  console.log("Request Body: ", req.body);
+
   res.end();
 }
 
