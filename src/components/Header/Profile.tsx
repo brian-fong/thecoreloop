@@ -16,25 +16,27 @@ import { useSession, signOut } from "next-auth/react";
 
 // Types
 import type { ReactElement } from "react";
+import axios, { AxiosRequestConfig } from "axios";
 
 export default function Profile() {
-
   // Generic profile picture: thecoreloop icon
   const thecoreloop_icon: string = "https://i.imgur.com/2px36wp.png";
 
   // State variables
   const { data: session, status } = useSession();
-  const [content, setContent] = useState<ReactElement>();
+  const [content, setContent] = useState<ReactElement>(<StartButton />);
+  async function getOrCreateUser() {
+    await axios.post("api/users");
+  }
 
   useEffect(() => {
     // console.log("Status: ", status);
-    // console.log("OAuth Data: ", session);
-
-    if (status.toLowerCase() != "authenticated") {
-      setContent(
-        <StartButton />
-      );
-    } else if (status == "authenticated") {
+    if (!session) {
+      setContent(<StartButton />);
+    } else if (session) {
+      // if (status.toLowerCase() != "authenticated") {
+      console.log("sesison after authentication", session);
+      // } else if (status == "authenticated") {
       setContent(
         <Popover placement="bottom-start">
           <PopoverTrigger>
@@ -69,10 +71,7 @@ export default function Profile() {
             border="none"
             borderRadius="5px"
           >
-            <Button
-              variant="header_popover"
-              borderRadius="5px 5px 0 0"
-            >
+            <Button variant="header_popover" borderRadius="5px 5px 0 0">
               <Text>PROFILE</Text>
             </Button>
             <Button
@@ -86,7 +85,7 @@ export default function Profile() {
         </Popover>
       );
     }
-  }, [session, status]);
+  }, [session]);
 
   return (
     <Flex
@@ -100,4 +99,3 @@ export default function Profile() {
     </Flex>
   );
 }
-

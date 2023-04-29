@@ -1,6 +1,7 @@
 // dotenv
+import axios from "axios";
 import * as dotenv from "dotenv";
-dotenv.config()
+dotenv.config();
 
 // NextAuth.js
 import NextAuth from "next-auth";
@@ -19,7 +20,23 @@ export const auth_options = {
       version: "2.0",
     }),
   ],
-}
+  callbacks: {
+    async jwt({ token, account }) {
+      console.log("account during callback", account);
+      if (account) {
+        token.provider = account.provider;
+      }
 
-export default NextAuth(auth_options)
+      return token;
+    },
+    async session({ session, token, user }) {
+      // Add the provider to the session
+      session.user.provider = token.provider;
+      return session;
+    },
+  },
+};
 
+// console.log("\n",JSON.stringify(token, null, 2));
+
+export default NextAuth(auth_options);

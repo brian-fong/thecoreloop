@@ -1,9 +1,5 @@
 // Components
-import {
-  Flex,
-  Heading,
-  Text,
-} from "@chakra-ui/react";
+import { Flex, Heading, Text } from "@chakra-ui/react";
 import { BsArrowLeftShort as LeftArrowIcon } from "react-icons/bs";
 import Head from "next/head";
 import Header from "../../components/Header/Header";
@@ -23,25 +19,37 @@ export default function submit() {
 
   // State variables
   const {
-    blockchain, setBlockchain,
-    description, setDescription,
-    fundraising, setFundraising,
-    gallery, setGallery,
-    genres, setGenres,
-    links, setLinks,
-    name, setName,
-    stage, setStage,
-    studio, setStudio,
-    submittedAs, setSubmittedAs,
-    tagline, setTagline,
-    thumbnail, setThumbnail,
+    blockchain,
+    setBlockchain,
+    description,
+    setDescription,
+    fundraising,
+    setFundraising,
+    gallery,
+    setGallery,
+    genres,
+    setGenres,
+    links,
+    setLinks,
+    name,
+    setName,
+    stage,
+    setStage,
+    studio,
+    setStudio,
+    submittedAs,
+    setSubmittedAs,
+    tagline,
+    setTagline,
+    thumbnail,
+    setThumbnail,
   } = useProjectState();
   const [part, setPart] = useState<number>(1);
   const [action, setAction] = useState<string>("");
 
   // useDisclosure: SignIn Modal
   const {
-    isOpen: isOpen_SignIn, 
+    isOpen: isOpen_SignIn,
     onOpen: onOpen_SignIn,
     onClose: onClose_SignIn,
   } = useDisclosure();
@@ -50,11 +58,7 @@ export default function submit() {
     <>
       <Head>
         <title>Submit Project</title>
-        <link
-          rel="icon"
-          type="image/x-icon"
-          href="/thecoreloop-favicon.png"
-        />
+        <link rel="icon" type="image/x-icon" href="/thecoreloop-favicon.png" />
         <meta name="viewport" content="viewport-fit=cover" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
@@ -73,10 +77,7 @@ export default function submit() {
         userSelect="none"
       >
         {/* Header */}
-        <Header
-          setAction={setAction}
-          onOpen_SignIn={onOpen_SignIn}
-        />
+        <Header setAction={setAction} onOpen_SignIn={onOpen_SignIn} />
 
         {/* Content Container */}
         <Flex
@@ -99,21 +100,14 @@ export default function submit() {
             <Flex flexDirection="column">
               <Heading fontSize="30px" whiteSpace="nowrap">
                 Build{" "}
-                <Text
-                  display="inline"
-                  color="gray.300"
-                  fontStyle="italic"
-                >
+                <Text display="inline" color="gray.300" fontStyle="italic">
                   {part == 1 ? "Discover" : "Profile"}
-                </Text>
-                {" "}View
+                </Text>{" "}
+                View
               </Heading>
 
               <Flex
-                display={part == 1
-                  ? "none"
-                  : "flex"
-                }
+                display={part == 1 ? "none" : "flex"}
                 flexDirection="row"
                 justifyContent="start"
                 alignItems="center"
@@ -126,9 +120,7 @@ export default function submit() {
                 }}
               >
                 <LeftArrowIcon size="18px" />
-                <Text>
-                  Back to Discover View
-                </Text>
+                <Text>Back to Discover View</Text>
               </Flex>
             </Flex>
 
@@ -138,59 +130,75 @@ export default function submit() {
               alignItems="center"
               gap="30px"
             >
-              <Text
-                fontSize="16px"
-                whiteSpace="nowrap"
-              >
+              <Text fontSize="16px" whiteSpace="nowrap">
                 Part {part} of 3
               </Text>
             </Flex>
           </Flex>
 
           {/* Content */}
-          {part == 1 
-            ? (
-              <Part1
-                image_width={image_width} image_height={image_height}
-                blockchain={blockchain} setBlockchain={setBlockchain}
-                fundraising={fundraising} setFundraising={setFundraising}
-                genres={genres} setGenres={setGenres}
-                name={name} setName={setName}
-                stage={stage} setStage={setStage}
-                submittedAs={submittedAs} setSubmittedAs={setSubmittedAs}
-                tagline={tagline} setTagline={setTagline}
-                thumbnail={thumbnail} setThumbnail={setThumbnail}
-                setPart={setPart}
-              />
-            ) : (
-              <Part2
-                image_width={image_width} image_height={image_height}
-                blockchain={blockchain} setBlockchain={setBlockchain}
-                description={description} setDescription={setDescription}
-                fundraising={fundraising} setFundraising={setFundraising}
-                gallery={gallery} setGallery={setGallery}
-                genres={genres} setGenres={setGenres}
-                links={links} setLinks={setLinks}
-                name={name} setName={setName}
-                part={part} setPart={setPart}
-                stage={stage} setStage={setStage}
-                studio={studio} setStudio={setStudio}
-                submittedAs={submittedAs}
-                tagline={tagline} setTagline={setTagline}
-                thumbnail={thumbnail} setThumbnail={setThumbnail}
-              />
-            )
-          }
+          {part == 1 ? (
+            <Part1
+              image_width={image_width}
+              image_height={image_height}
+              blockchain={blockchain}
+              setBlockchain={setBlockchain}
+              fundraising={fundraising}
+              setFundraising={setFundraising}
+              genres={genres}
+              setGenres={setGenres}
+              name={name}
+              setName={setName}
+              stage={stage}
+              setStage={setStage}
+              submittedAs={submittedAs}
+              setSubmittedAs={setSubmittedAs}
+              tagline={tagline}
+              setTagline={setTagline}
+              thumbnail={thumbnail}
+              setThumbnail={setThumbnail}
+              setPart={setPart}
+            />
+          ) : (
+            <Part2
+              image_width={image_width}
+              image_height={image_height}
+              blockchain={blockchain}
+              setBlockchain={setBlockchain}
+              description={description}
+              setDescription={setDescription}
+              fundraising={fundraising}
+              setFundraising={setFundraising}
+              gallery={gallery}
+              setGallery={setGallery}
+              genres={genres}
+              setGenres={setGenres}
+              links={links}
+              setLinks={setLinks}
+              name={name}
+              setName={setName}
+              part={part}
+              setPart={setPart}
+              stage={stage}
+              setStage={setStage}
+              studio={studio}
+              setStudio={setStudio}
+              submittedAs={submittedAs}
+              tagline={tagline}
+              setTagline={setTagline}
+              thumbnail={thumbnail}
+              setThumbnail={setThumbnail}
+            />
+          )}
         </Flex>
 
         {/* SignIn Modal */}
         <SignInModal
-          isOpen={isOpen_SignIn} onClose={onClose_SignIn}
+          isOpen={isOpen_SignIn}
+          onClose={onClose_SignIn}
           action={action}
         />
       </Flex>
     </>
   );
 }
-
-

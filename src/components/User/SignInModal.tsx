@@ -17,7 +17,6 @@ import { ImEyeBlocked as HiddenIcon } from "react-icons/im";
 import { signIn } from "next-auth/react";
 
 export default function SignInModal({ isOpen, onClose, action }: any) {
-
   function handleStart(provider: string): void {
     // Prompt user to sign in
     signIn(provider);
@@ -25,7 +24,8 @@ export default function SignInModal({ isOpen, onClose, action }: any) {
 
   return (
     <Modal
-      isOpen={isOpen} onClose={onClose}
+      isOpen={isOpen}
+      onClose={onClose}
       motionPreset="slideInRight"
       size="lg"
       isCentered
@@ -129,4 +129,3 @@ export default function SignInModal({ isOpen, onClose, action }: any) {
     </Modal>
   );
 }
-

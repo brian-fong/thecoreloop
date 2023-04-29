@@ -14,8 +14,7 @@ import { useSession } from "next-auth/react";
 import type { AppRouterInstance } from "next/dist/shared/lib/app-router-context";
 
 export default function SubmitButton({ onOpen_SignIn }: any) {
-
-  const router: AppRouterInstance= useRouter();
+  const router: AppRouterInstance = useRouter();
 
   // State variables
   const { status } = useSession();
@@ -33,11 +32,9 @@ export default function SubmitButton({ onOpen_SignIn }: any) {
   return (
     <Popover offset={[0, 0]}>
       <PopoverTrigger>
-        <Button variant="header_base">
-          SUBMIT
-        </Button>
+        <Button variant="header_base">SUBMIT</Button>
       </PopoverTrigger>
-      <PopoverContent 
+      <PopoverContent
         display="flex"
         flexDirection="column"
         justifyContent="center"
@@ -50,7 +47,7 @@ export default function SubmitButton({ onOpen_SignIn }: any) {
         borderRadius="5px"
         _focusVisible={{
           outline: "none",
-          border: "none"
+          border: "none",
         }}
         zIndex={10}
       >
@@ -61,11 +58,7 @@ export default function SubmitButton({ onOpen_SignIn }: any) {
         >
           🤖 PROJECT
         </Button>
-        <Button
-          variant="header_popover"
-          borderRadius="0"
-          isDisabled={true}
-        >
+        <Button variant="header_popover" borderRadius="0" isDisabled={true}>
           📅 EVENT
         </Button>
         <Button
@@ -79,4 +72,3 @@ export default function SubmitButton({ onOpen_SignIn }: any) {
     </Popover>
   );
 }
-
