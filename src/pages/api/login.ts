@@ -14,6 +14,13 @@ export default async function login(
   
   console.log("Request Body: ", req.body);
 
+  // if req.body == twitter
+  //    get Twitter ID
+  //    create user
+
+  // else if req.body == google
+  //    create user
+
   res.end();
 }
 
