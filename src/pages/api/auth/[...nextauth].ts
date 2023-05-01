@@ -24,15 +24,7 @@ export const auth_options: AuthOptions = {
   ],
   callbacks: {
     async jwt({ token, account }) {
-      if (account) {
-        // Send POST request to Next.js API endpoint
-        const response: any = await axios.post(
-          "https://tcl-cloud.vercel.app/api/login",
-          {
-            data: account.provider,
-          }
-        );
-      }
+      console.log("account: ", JSON.stringify(account, null, 2));
 
       return token;
     },

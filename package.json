@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "ts-node ./src/scripts/test.tsx"
+    "test": "ts-node ./src/scripts/practice.ts"
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.0.13",
