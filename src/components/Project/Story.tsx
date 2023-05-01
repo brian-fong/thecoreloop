@@ -39,7 +39,6 @@ export default function Story({ story, submitter}: any) {
       <Text
         margin="-5px 28px 0 34px"
         padding="10px"
-        textAlign="justify"
         borderLeft="1px solid white"
         whiteSpace="pre-line"
         userSelect="text"

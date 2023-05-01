@@ -9,8 +9,10 @@ const PROJECTS: any[] = [
     tagline: "Sipher is a multiplayer looter shooter ARPG, set in a dream-like universe of alien worlds, vibrant characters, and dangerous mysteries.",
     description: "Sipherian Odyssey lets players buy, trade, acquire, and sell commodities and items as a core element of its gameplay. Each of Sipheria's multiple worlds has a unique distribution of limited resources, all of which can be gathered and utilized in deep crafting systems.",
     stage: "Production",
+    fundraising: "undisclosed",
+    upvotes: 123,
     submitter: {
-      username: "malaysian_daddy99",
+      username: "cloud",
       image: "https://pbs.twimg.com/profile_images/1635117890440695808/j3Ww7-z7_400x400.jpg",
     },
     genres: ["Action", "Shooter"],
@@ -44,6 +46,8 @@ From the top-quality game graphics, and deep world lore to the community managem
     tagline: "A New Sci-fi / Fantasy Action RPG from the Creators of Star Wars: Galaxy of Heroes",
     description: "Legions & Legends is a collectible and combat RPG, set in an uncharted galaxy where magic and technology collide. Here, powerful civilizations, as yet unknown to Earth, are embroiled in an eternal war.",
     stage: "Production",
+    fundraising: "no",
+    upvotes: 51,
     submitter: {
       username: "0xKapitalK",
       image: "https://pbs.twimg.com/profile_images/1551347350618025984/Ica0XNb-_400x400.jpg",
@@ -72,6 +76,47 @@ From the top-quality game graphics, and deep world lore to the community managem
     **Narrative & Storytelling**.  The key element to a game is the story.  Neel Upadhye is a world builder who was written & directed award-winning short films with world-class IPs like StarWars and Apex Legends.  He was also the Narrative lead for Battlefield 2042 and lead writer for Need for Speed.
     
     With all that being said, Legions & Legends is certainly one to look out for in the next era of web3 games`
+  },
+  {
+    name: "Paradise Tycoon",
+    studio: "Empires Not Vampires",
+    submittedAs: "Community",
+    date: "April 21 2023",
+    thumbnail: "https://pbs.twimg.com/profile_images/1493583534157611010/_FJb-Rg6_400x400.png",
+    blockchain: "Avalanche",
+    tagline: "Build your Paradise, Have fun with your Friends and Compete to become the Ultimate Tycoon in our immersive Multiplayer",
+    description: "Collaborate with your neighboring landowners in events and create a lush utopian community. Invite friends across the metaverse for a visit to unwind in the harmonious environment of your paradise or hang out with the diverse cast of amazing characters at Port Ohana! Experience your very own paradise in the most exciting web3 game of 2023.",
+    stage: "Playable Demo",
+    fundraising: "undisclosed",
+    upvotes: 17,
+    submitter: {
+      username: "conglo",
+      image: "https://pbs.twimg.com/profile_images/1638051849394868224/xBWabna5_400x400.jpg",
+    },
+    genres: ["Sandbox", "Simulation"],
+    links: [
+      "https://paradisetycoon.com/",
+      "https://paradisetycoon.com/play/",
+      "https://twitter.com/ParadiseTycoon",
+      "https://discord.com/invite/paradisetycoon",
+    ],
+    gallery: [
+      "https://i.imgur.com/ym1zWJ2.jpg",
+      "https://i.imgur.com/iv3hYf5.jpg",
+      "https://i.imgur.com/fIlmZKE.jpg",
+      "https://i.imgur.com/PTdGolp.jpg",
+    ],
+    story: `
+      Hey everyone, NN here! We invested in Paradise Tycoon early on and wanted to share more with the TCL community more about Paradise Tycoon!
+
+      In short, Paradise Tycoon is a web3 social simulation game in an MMO world. Players can gather resources, explore, build & craft items for their own use or trade. Players can buy land & upgrade them.
+
+      The strong feature here imo is that people can explore the paradise & uninhabited island solo or with friends. They can travel across the metaverse and level up their avatars. Haven’t seen many web3 games implementing this.
+
+      It can be compared to [@animalcrossing](https://twitter.com/animalcrossing) which had over 38M downloads. In general, I’m a fan of social simulation games cuz its for all ages. In general, it’s a trending game genre (3rd most popular).
+
+      To try out the game urself, head over to  [https://paradisetycoon.com/play](https://paradisetycoon.com/play)
+    `,
   }
 ];
 

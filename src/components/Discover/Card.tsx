@@ -4,10 +4,12 @@ import {
   Button,
   Flex,
   Image,
+  // Link,
   Text,
   Tooltip,
 } from "@chakra-ui/react";
 import { VscTriangleUp as UpvoteIcon } from "react-icons/vsc";
+import Link from "next/link";
 import FundraisingIcon from "../SubmitProject/FundraisingIcon";
 
 // Hooks
@@ -26,6 +28,7 @@ export default function DiscoveryCard({
   genres,
   name,
   stage,
+  studio,
   tagline,
   thumbnail,
   upvotes,
@@ -34,12 +37,17 @@ export default function DiscoveryCard({
   // State variables
   const { status } = useSession();
 
-  // Split genres into string array
-  genres = genres.split(",");
-
-  // Assign fundraising
-  if (fundraising) fundraising = "yes";
-  else fundraising = "undisclosed"
+  function getProfileRoute() {
+    const studio_route: string = studio
+      .toLowerCase()
+      .replaceAll("&", "and")
+      .replaceAll(" ", "-");
+    const project_route: string = name
+      .toLowerCase()
+      .replaceAll("&", "and")
+      .replaceAll(" ", "-");
+    return "/projects/" + studio_route + "/" + project_route;
+  }
   
   function handleUpvote() {
     if (status.toLowerCase() != "authenticated") {
@@ -96,23 +104,25 @@ export default function DiscoveryCard({
             minHeight="32px"
           >
             {/* Name */}
-            <Text
-              padding="0"
-              color="white"
-              fontSize="20px"
-              fontWeight="700"
-              lineHeight="none"
-              border="1px solid transparent"
-              cursor="pointer"
-              whiteSpace="nowrap"
-              transition="all 200ms ease-in-out"
-              _hover={{
-                filter: "brightness(75%)",
-                textDecoration: "underline",
-              }}
-            >
-              {name}
-            </Text>
+            <Link href={getProfileRoute()}>
+              <Text
+                padding="0"
+                color="white"
+                fontSize="20px"
+                fontWeight="700"
+                lineHeight="none"
+                border="1px solid transparent"
+                cursor="pointer"
+                whiteSpace="nowrap"
+                transition="all 200ms ease-in-out"
+                _hover={{
+                  filter: "brightness(75%)",
+                  textDecoration: "underline",
+                }}
+              >
+                {name}
+              </Text>
+            </Link>
 
             {/* Blockchain */}
             <Tooltip
