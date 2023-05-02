@@ -18,7 +18,11 @@ async function updateUser(request: NextApiRequest, response: NextApiResponse) {
   //check if session.user.id === request.body.user.id
   //true => update with request.body prisma.user.update({where:{id: session.user.id}, data:{sanitized userdata}})
   const session = await getServerSession(request, response, auth_options);
-  if (handle === userId && handle === session.user.providerAccountId) {
+  if (
+    session &&
+    handle === userId &&
+    handle === session.user.providerAccountId
+  ) {
     try {
       const updatedUser = await prisma.user.update({
         where: { handle: handle },

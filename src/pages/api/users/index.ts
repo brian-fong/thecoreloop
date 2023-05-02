@@ -40,62 +40,63 @@ export default async function getUser(
   //When user tries to manipulate state by saying they own a project,
   //we validate in the backend with the session to see if the user actually owns the comment
   console.log("Request received", session);
-  interface user {
-    name: string;
-    email: string | undefined;
-    image: string;
-    provider: string;
-    providerAccountId: string;
-    newinfo?: string;
-  }
-  const user: user = session.user;
-  let handle;
-  if (user && user.provider === "twitter") {
-    handle = session.user.providerAccountId;
-  } else handle = session.user.email;
-  try {
-    const userFromDB = await prisma.user.findUnique({
-      where: {
-        handle: handle,
-      },
-      include: {
-        admins: true,
-      },
-    });
-    await prisma.$disconnect();
-    if (!userFromDB) {
-      console.log(
-        "no user was found. please prompt user to create new account"
-      );
-      const newUser = await prisma.user.create({
-        data: {
+
+  if (!session) {
+    response.status(500).json("usernotfound");
+  } else {
+    const user = session.user;
+    let handle;
+    if (user && user.provider === "twitter") {
+      handle = session?.user?.providerAccountId;
+    } else handle = session?.user?.email;
+    try {
+      const userFromDB = await prisma.user.findUnique({
+        where: {
           handle: handle,
-          profilePicture: user.image,
-          username: user.name,
+        },
+        include: {
+          admins: true,
         },
       });
-      // response.status(404).json({
-      //   "User Not found": "Would you like us to create a new account?",
-      // });
-      console.log(newUser);
-      response.status(200).json({
-        Success: `new user has been created logged in through ${session.user.provider}`,
-        newUser: newUser,
-      });
-    } else {
-      response
-        .status(200)
-        .json({ Success: "user has been successfully logged in", userFromDB });
-      //
+      await prisma.$disconnect();
+      if (!userFromDB) {
+        console.log(
+          "no user was found. please prompt user to create new account"
+        );
+        const newUser = await prisma.user.create({
+          data: {
+            handle: handle,
+            profilePicture: user.image,
+            username: user.name,
+          },
+        });
+        // response.status(404).json({
+        //   "User Not found": "Would you like us to create a new account?",
+        // });
+        console.log(newUser);
+        response.status(200).json({
+          Success: `new user has been created logged in through ${session.user.provider}`,
+          newUser: newUser,
+        });
+      } else {
+        response.status(200).json({
+          Success: "user has been successfully logged in",
+          userFromDB,
+        });
+        //
+      }
+      //   } catch (error) {
+      //     console.error(
+      //       `unable to find user with the twitterHandle or googlHandle with ${handle}`,
+      //       error
+      //     );
+      //     response.status(500).json({ error: "Unable to retrieve Users" });
+      //   }
+    } catch (error) {
+      console.log(
+        "something went wrong when trying to connect to prisma",
+        error
+      );
     }
-    //   } catch (error) {
-    //     console.error(
-    //       `unable to find user with the twitterHandle or googlHandle with ${handle}`,
-    //       error
-    //     );
-    //     response.status(500).json({ error: "Unable to retrieve Users" });
-    //   }
-  } catch (error) {
-    console.log("something went wrong when trying to connect to prisma", error);
   }
 }
