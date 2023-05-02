@@ -67,7 +67,15 @@ export const auth_options = {
 
       return token;
     },
-    async session({ session, token }: { session: Session; token: Token }) {
+    async session({
+      session,
+      token,
+      user,
+    }: {
+      session: Session;
+      token: Token;
+      user: User;
+    }) {
       // Add the provider to the session;
       session.user.provider = token.provider;
       session.user.providerAccountId = token.providerAccountId;
