@@ -4,7 +4,7 @@ import * as dotenv from "dotenv";
 dotenv.config();
 
 // NextAuth.js
-import NextAuth from "next-auth";
+import NextAuth, { Awaitable } from "next-auth";
 import { AdapterUser } from "next-auth/adapters";
 import { JWT } from "next-auth/jwt";
 import GoogleProvider from "next-auth/providers/google";
@@ -102,7 +102,7 @@ export const auth_options = {
       session: Session;
       user: User | AdapterUser;
       token: Token;
-    }) {
+    }): Promise<Session> {
       // Add the provider to the session;
       session.user.provider = token.provider;
       session.user.providerAccountId = token.providerAccountId;
