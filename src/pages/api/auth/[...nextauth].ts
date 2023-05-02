@@ -9,39 +9,39 @@ import GoogleProvider from "next-auth/providers/google";
 import TwitterProvider from "next-auth/providers/twitter";
 
 interface Token {
-  name?: string;
-  email?: string;
-  picture?: string;
-  sub?: string;
-  provider?: string;
-  providerAccountId?: string;
-  iat?: number;
-  exp?: number;
-  jti?: string;
+  name?: string | undefined;
+  email?: string | undefined;
+  picture?: string | undefined;
+  sub?: string | undefined;
+  provider?: string | undefined;
+  providerAccountId?: string | undefined;
+  iat?: number | undefined;
+  exp?: number | undefined;
+  jti?: string | undefined;
 }
 
 interface Account {
-  provider?: string;
-  type?: string;
-  providerAccountId?: string;
-  access_token?: string;
-  expires_at?: number;
-  scope?: string;
-  token_type?: string;
-  id_token?: string;
+  provider?: string | undefined;
+  type?: string | undefined;
+  providerAccountId?: string | undefined;
+  access_token?: string | undefined;
+  expires_at?: number | undefined;
+  scope?: string | undefined;
+  token_type?: string | undefined;
+  id_token?: string | undefined;
 }
 
 interface Session {
-  user: User;
-  expires?: string;
+  user?: User | undefined;
+  expires?: string | undefined;
 }
 
 interface User {
-  name?: string;
-  email?: string;
-  image?: string;
-  provider?: string;
-  providerAccountId?: string;
+  name?: string | undefined;
+  email?: string | undefined;
+  image?: string | undefined;
+  provider?: string | undefined;
+  providerAccountId?: string | undefined;
 }
 
 export const auth_options = {
@@ -74,10 +74,9 @@ export const auth_options = {
     }: {
       session: Session;
       token: Token;
-      user: User;
+      account: Account;
     }) {
       // Add the provider to the session;
-      session.user = user;
       session.user.provider = token.provider;
       session.user.providerAccountId = token.providerAccountId;
       return session;

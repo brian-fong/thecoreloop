@@ -28,7 +28,6 @@ export default function Profile() {
   const { currUser, setCurrUser } = useContext(UserData);
   // State variables
   const { data: session, status } = useSession();
-
   const [content, setContent] = useState<ReactElement>(<StartButton />);
   async function getOrCreateUser() {
     const user = await axios.get("api/users");
@@ -70,6 +69,7 @@ export default function Profile() {
         setCurrUser(undefined);
         setContent(<StartButton />);
       } else if (session) {
+        console.log("SESSION:::", session);
         const user = await getOrCreateUser();
         if (user) {
           setCurrUser(user);
