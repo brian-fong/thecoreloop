@@ -80,8 +80,8 @@ export const auth_options = {
     }) {
       if (session && session.user) {
         // Add the provider to the session;
-        session.user.provider = token.provider;
-        session.user.providerAccountId = token.providerAccountId;
+        session.user.provider = token.provider as string;
+        session.user.providerAccountId = token.providerAccountId as string;
       }
       session.user = user as User;
       return session;
