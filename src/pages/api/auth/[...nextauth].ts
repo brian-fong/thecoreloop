@@ -94,7 +94,7 @@ export const auth_options = {
 
       return token;
     },
-    async session({ session, token, user }) {
+    async session({ session, token }: { session: Session; token: JWT }) {
       // Add the provider to the session;
       session.user.provider = token.provider as string;
       session.user.providerAccountId = token.providerAccountId as string;
