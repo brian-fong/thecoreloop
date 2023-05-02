@@ -77,6 +77,7 @@ export const auth_options = {
       user: User;
     }) {
       // Add the provider to the session;
+      session.user = user;
       session.user.provider = token.provider;
       session.user.providerAccountId = token.providerAccountId;
       return session;
