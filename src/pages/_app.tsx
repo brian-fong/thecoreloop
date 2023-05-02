@@ -1,7 +1,9 @@
 import theme from "../theme";
 import { AppProps } from "next/app";
-import { SessionProvider } from "next-auth/react";
+import { SessionProvider, useSession } from "next-auth/react";
 import { ChakraProvider } from "@chakra-ui/react";
+import Context from "../context/context";
+import { useState } from "react";
 
 export default function MyApp({
   Component,
@@ -9,9 +11,11 @@ export default function MyApp({
 }: AppProps) {
   return (
     <SessionProvider session={session}>
-      <ChakraProvider theme={theme}>
-        <Component {...pageProps} />
-      </ChakraProvider>
+      <Context>
+        <ChakraProvider theme={theme}>
+          <Component {...pageProps} />
+        </ChakraProvider>
+      </Context>
     </SessionProvider>
   );
 }

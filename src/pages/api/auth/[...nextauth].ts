@@ -22,9 +22,10 @@ export const auth_options = {
   ],
   callbacks: {
     async jwt({ token, account }) {
-      console.log("account during callback", account);
+      console.log(JSON.stringify(token, null, 2));
       if (account) {
         token.provider = account.provider;
+        token.providerAccountId = account.providerAccountId;
       }
 
       return token;
@@ -32,6 +33,7 @@ export const auth_options = {
     async session({ session, token, user }) {
       // Add the provider to the session
       session.user.provider = token.provider;
+      session.user.providerAccountId = token.providerAccountId;
       return session;
     },
   },
