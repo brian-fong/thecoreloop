@@ -101,7 +101,7 @@ export const auth_options = {
     }: {
       session: Session;
       user: User | AdapterUser;
-      token: Token;
+      token: JWT;
     }): Promise<Session> {
       // Add the provider to the session;
       session.user.provider = token.provider;
