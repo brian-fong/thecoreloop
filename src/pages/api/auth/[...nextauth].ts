@@ -15,8 +15,8 @@ interface Token {
   email?: string | undefined;
   picture?: string | undefined;
   sub?: string | undefined;
-  provider?: string | undefined;
-  providerAccountId?: string | undefined;
+  provider?: string | null | undefined;
+  providerAccountId?: string | null | undefined;
   iat?: number | undefined;
   exp?: number | undefined;
   jti?: string | undefined;
