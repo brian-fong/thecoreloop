@@ -63,21 +63,21 @@ export default async function getUser(
         console.log(
           "no user was found. please prompt user to create new account"
         );
-        const newUser = await prisma.user.create({
-          data: {
-            handle: handle,
-            profilePicture: user.image,
-            username: user.name,
-          },
-        });
+        // const newUser = await prisma.user.create({
+        //   data: {
+        //     handle: handle,
+        //     profilePicture: user.image,
+        //     username: user.name,
+        //   },
+        // });
         // response.status(404).json({
         //   "User Not found": "Would you like us to create a new account?",
         // });
-        console.log(newUser);
-        response.status(200).json({
-          Success: `new user has been created logged in through ${session.user.provider}`,
-          newUser: newUser,
-        });
+        // console.log(newUser);
+        // response.status(200).json({
+        //   Success: `new user has been created logged in through ${session.user.provider}`,
+        //   newUser: newUser,
+        // });
       } else {
         response.status(200).json({
           Success: "user has been successfully logged in",
