@@ -4,7 +4,7 @@ import * as dotenv from "dotenv";
 dotenv.config();
 
 // NextAuth.js
-import NextAuth, { Awaitable } from "next-auth";
+import NextAuth, { AuthOptions, Awaitable } from "next-auth";
 import { AdapterUser } from "next-auth/adapters";
 import { JWT } from "next-auth/jwt";
 import GoogleProvider from "next-auth/providers/google";
@@ -113,4 +113,4 @@ export const auth_options = {
 
 // console.log("\n",JSON.stringify(token, null, 2));
 
-export default NextAuth(auth_options);
+export default NextAuth(auth_options as AuthOptions);
