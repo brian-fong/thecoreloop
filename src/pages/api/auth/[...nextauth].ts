@@ -86,7 +86,7 @@ export const auth_options = {
   callbacks: {
     //I can call prisma to get account, then add it into token,
     //update?
-    async jwt({ token, account }) {
+    async jwt({ token, account }: { token: JWT; account: Account }) {
       if (account) {
         token.provider = account.provider;
         token.providerAccountId = account.providerAccountId;
