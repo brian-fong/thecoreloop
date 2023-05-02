@@ -39,11 +39,9 @@ interface Session {
 }
 
 interface User {
-  name?: string | undefined;
-  email?: string | undefined;
-  image?: string | undefined;
-  provider?: string | undefined;
-  providerAccountId?: string | undefined;
+  name?: string | null | undefined;
+  email?: string | null | undefined;
+  image?: string | null | undefined;
 }
 
 export const auth_options = {
