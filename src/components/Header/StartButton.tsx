@@ -9,10 +9,7 @@ import {
 import { BsTwitter as TwitterIcon } from "react-icons/bs";
 import { FcGoogle as GoogleIcon } from "react-icons/fc";
 // NextAuth
-import { signIn, useSession } from "next-auth/react";
-import { Props } from "next/script";
-import LogInContext from "../../pages/userConext";
-import { useContext } from "react";
+import { signIn } from "next-auth/react";
 
 export default function StartButton() {
   async function handleStart(provider: string): void {
