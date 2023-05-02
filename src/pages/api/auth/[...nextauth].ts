@@ -22,29 +22,54 @@ interface Token {
   jti?: string | undefined;
 }
 
+// interface Account {
+//   provider?: string | undefined;
+//   type?: string | undefined;
+//   providerAccountId?: string | undefined;
+//   access_token?: string | undefined;
+//   expires_at?: number | undefined;
+//   scope?: string | undefined;
+//   token_type?: string | undefined;
+//   id_token?: string | undefined;
+// }
 interface Account {
-  provider?: string | undefined;
-  type?: string | undefined;
-  providerAccountId?: string | undefined;
-  access_token?: string | undefined;
-  expires_at?: number | undefined;
-  scope?: string | undefined;
-  token_type?: string | undefined;
-  id_token?: string | undefined;
+  provider?: string;
+  type?: string;
+  providerAccountId?: string;
+  access_token?: string;
+  expires_at?: number;
+  scope?: string;
+  token_type?: string;
+  id_token?: string;
 }
 
+// interface Session {
+//   user?: User;
+//   expires?: string | undefined;
+// }
 interface Session {
-  user?: User;
+  user: User;
   expires?: string | undefined;
 }
+// interface Session {
+//   user?: User | null | undefined;
+//   expires?: string | undefined;
+// }
 
 interface User {
-  name?: string | null | undefined;
-  email?: string | null | undefined;
-  image?: string | null | undefined;
-  provider?: string | null | undefined;
-  providerAccountId?: string | null | undefined;
+  name?: string | null;
+  email?: string | null;
+  image?: string | null;
+  provider?: string | null;
+  providerAccountId?: string | null;
 }
+// interface User {
+//   name?: string | null | undefined;
+//   email?: string | null | undefined;
+//   image?: string | null | undefined;
+//   provider?: string | null | undefined;
+//   providerAccountId?: string | null | undefined;
+// }
 
 export const auth_options = {
   providers: [
@@ -76,14 +101,12 @@ export const auth_options = {
     }: {
       session: Session;
       user: User | AdapterUser;
-      token: JWT;
-    }): Promise<Session> {
-      if (session && session.user) {
-        // Add the provider to the session;
-        session.user.provider = token.provider as string;
-        session.user.providerAccountId = token.providerAccountId as string;
-      }
-      session.user = user as User;
+      token: Token;
+    }) {
+      // Add the provider to the session;
+      session.user.provider = token.provider;
+      session.user.providerAccountId = token.providerAccountId;
+
       return session;
     },
   },
