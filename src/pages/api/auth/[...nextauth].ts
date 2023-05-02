@@ -74,7 +74,7 @@ export const auth_options = {
     }: {
       session: Session;
       token: Token;
-      account: Account;
+      user: User;
     }) {
       // Add the provider to the session;
       session.user.provider = token.provider;
