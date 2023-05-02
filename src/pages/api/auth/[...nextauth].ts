@@ -5,6 +5,8 @@ dotenv.config();
 
 // NextAuth.js
 import NextAuth from "next-auth";
+import { AdapterUser } from "next-auth/adapters";
+import { JWT } from "next-auth/jwt";
 import GoogleProvider from "next-auth/providers/google";
 import TwitterProvider from "next-auth/providers/twitter";
 
@@ -73,8 +75,8 @@ export const auth_options = {
       user,
     }: {
       session: Session;
-      token: Token;
-      user: User;
+      user: User | AdapterUser;
+      token: JWT;
     }) {
       if (session && session.user) {
         // Add the provider to the session;
