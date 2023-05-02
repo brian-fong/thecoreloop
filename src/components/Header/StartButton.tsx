@@ -11,7 +11,7 @@ import { FcGoogle as GoogleIcon } from "react-icons/fc";
 // NextAuth
 import { signIn, useSession } from "next-auth/react";
 import { Props } from "next/script";
-import LogInContext from "../../pages/AppContext";
+import LogInContext from "../../pages/userConext";
 import { useContext } from "react";
 
 export default function StartButton() {
