@@ -33,6 +33,7 @@ export default function Profile() {
     const user = await axios.get("api/users");
     return user.data;
   }
+
   /* Example sesison:
 
   session:  {

@@ -4,23 +4,23 @@ import * as dotenv from "dotenv";
 dotenv.config();
 
 // NextAuth.js
-import NextAuth, { AuthOptions, Awaitable } from "next-auth";
+import NextAuth, { Account, AuthOptions, Awaitable, Session } from "next-auth";
 import { AdapterUser } from "next-auth/adapters";
 import { JWT } from "next-auth/jwt";
 import GoogleProvider from "next-auth/providers/google";
 import TwitterProvider from "next-auth/providers/twitter";
 
-interface Token {
-  name?: string | undefined;
-  email?: string | undefined;
-  picture?: string | undefined;
-  sub?: string | undefined;
-  provider?: string | null | undefined;
-  providerAccountId?: string | null | undefined;
-  iat?: number | undefined;
-  exp?: number | undefined;
-  jti?: string | undefined;
-}
+// interface Token {
+//   name?: string | undefined;
+//   email?: string | undefined;
+//   picture?: string | undefined;
+//   sub?: string | undefined;
+//   provider?: string | null | undefined;
+//   providerAccountId?: string | null | undefined;
+//   iat?: number | undefined;
+//   exp?: number | undefined;
+//   jti?: string | undefined;
+// }
 
 // interface Account {
 //   provider?: string | undefined;
@@ -32,25 +32,21 @@ interface Token {
 //   token_type?: string | undefined;
 //   id_token?: string | undefined;
 // }
-interface Account {
-  provider?: string;
-  type?: string;
-  providerAccountId?: string;
-  access_token?: string;
-  expires_at?: number;
-  scope?: string;
-  token_type?: string;
-  id_token?: string;
-}
+// interface Account {
+//   provider?: string;
+//   type?: string;
+//   providerAccountId?: string;
+//   access_token?: string;
+//   expires_at?: number;
+//   scope?: string;
+//   token_type?: string;
+//   id_token?: string;
+// }
 
 // interface Session {
 //   user?: User;
 //   expires?: string | undefined;
 // }
-interface Session {
-  user: User;
-  expires?: string | undefined;
-}
 // interface Session {
 //   user?: User | null | undefined;
 //   expires?: string | undefined;
@@ -86,7 +82,7 @@ export const auth_options = {
   callbacks: {
     //I can call prisma to get account, then add it into token,
     //update?
-    async jwt({ token, account }: { token: JWT; account: Account }) {
+    async jwt({ token, account }: { token: JWT; account?: Account }) {
       if (account) {
         token.provider = account.provider;
         token.providerAccountId = account.providerAccountId;
@@ -100,9 +96,9 @@ export const auth_options = {
       user,
     }: {
       session: Session;
-      user: User | AdapterUser;
       token: JWT;
-    }) {
+      user: User | AdapterUser;
+    }): Promise<Session> {
       // Add the provider to the session;
       session.user.provider = token.provider as string;
       session.user.providerAccountId = token.providerAccountId as string;
@@ -113,4 +109,4 @@ export const auth_options = {
 
 // console.log("\n",JSON.stringify(token, null, 2));
 
-export default NextAuth(auth_options as AuthOptions);
+export default NextAuth(auth_options);
