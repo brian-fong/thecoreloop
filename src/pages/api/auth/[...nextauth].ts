@@ -76,9 +76,11 @@ export const auth_options = {
       token: Token;
       user: User;
     }) {
-      // Add the provider to the session;
-      session.user.provider = token.provider;
-      session.user.providerAccountId = token.providerAccountId;
+      if (session && session.user) {
+        // Add the provider to the session;
+        session.user.provider = token.provider;
+        session.user.providerAccountId = token.providerAccountId;
+      }
       return session;
     },
   },
