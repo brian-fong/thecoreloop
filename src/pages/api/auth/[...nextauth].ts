@@ -42,6 +42,8 @@ interface User {
   name?: string | null | undefined;
   email?: string | null | undefined;
   image?: string | null | undefined;
+  provider?: string | null | undefined;
+  providerAccountId?: string | null | undefined;
 }
 
 export const auth_options = {
