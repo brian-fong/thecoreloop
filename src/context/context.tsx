@@ -22,7 +22,7 @@ function Context({ children }: Props) {
   const [currUser, setCurrUser] = useState();
   const [gameData, setGameData] = useState();
   return (
-    <UserData.Provider value={{ currUser, setCurrUser }}>
+    <UserData.Provider value={{ currUser, setCurrUser, gameData, setGameData }}>
       {children}
     </UserData.Provider>
   );
