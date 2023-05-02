@@ -8,6 +8,42 @@ import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import TwitterProvider from "next-auth/providers/twitter";
 
+interface Token {
+  name?: string;
+  email?: string;
+  picture?: string;
+  sub?: string;
+  provider?: string;
+  providerAccountId?: string;
+  iat?: number;
+  exp?: number;
+  jti?: string;
+}
+
+interface Account {
+  provider?: string;
+  type?: string;
+  providerAccountId?: string;
+  access_token?: string;
+  expires_at?: number;
+  scope?: string;
+  token_type?: string;
+  id_token?: string;
+}
+
+interface Session {
+  user: User;
+  expires?: string;
+}
+
+interface User {
+  name?: string;
+  email?: string;
+  image?: string;
+  provider?: string;
+  providerAccountId?: string;
+}
+
 export const auth_options = {
   providers: [
     GoogleProvider({
@@ -23,8 +59,7 @@ export const auth_options = {
   callbacks: {
     //I can call prisma to get account, then add it into token,
     //update?
-    async jwt({ token, account }) {
-      console.log(JSON.stringify(token, null, 2));
+    async jwt({ token, account }: { token: Token; account: Account }) {
       if (account) {
         token.provider = account.provider;
         token.providerAccountId = account.providerAccountId;
@@ -32,8 +67,8 @@ export const auth_options = {
 
       return token;
     },
-    async session({ session, token, user }) {
-      // Add the provider to the session
+    async session({ session, token }: { session: Session; token: Token }) {
+      // Add the provider to the session;
       session.user.provider = token.provider;
       session.user.providerAccountId = token.providerAccountId;
       return session;
