@@ -7,6 +7,10 @@ type UserDataProps = {
   setGameData: (gameData: any) => void;
 };
 
+interface Props {
+  children: React.ReactNode;
+}
+
 export const UserData = createContext<UserDataProps>({
   currUser: null,
   setCurrUser: () => {},
@@ -14,7 +18,7 @@ export const UserData = createContext<UserDataProps>({
   setGameData: () => {},
 });
 
-function Context({ children }) {
+function Context({ children }: Props) {
   const [currUser, setCurrUser] = useState();
   const [gameData, setGameData] = useState();
   return (
