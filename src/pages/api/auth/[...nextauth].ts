@@ -32,7 +32,7 @@ interface Account {
 }
 
 interface Session {
-  user?: User | undefined;
+  user?: User;
   expires?: string | undefined;
 }
 
