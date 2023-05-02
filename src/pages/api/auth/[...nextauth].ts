@@ -21,6 +21,8 @@ export const auth_options = {
     }),
   ],
   callbacks: {
+    //I can call prisma to get account, then add it into token,
+    //update?
     async jwt({ token, account }) {
       console.log(JSON.stringify(token, null, 2));
       if (account) {

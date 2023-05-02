@@ -1,6 +1,8 @@
 import { PrismaClient } from "@prisma/client";
 import type { NextApiRequest, NextApiResponse } from "next";
+import { getServerSession } from "next-auth";
 import { ParsedUrlQuery } from "querystring";
+import { auth_options } from "../../auth/[...nextauth]";
 
 const prisma = new PrismaClient();
 
@@ -12,15 +14,20 @@ async function updateUser(request: NextApiRequest, response: NextApiResponse) {
     handle: string;
   }
   const { handle } = request.query as ParsedUrlQuery & queryParams;
-  const { username } = request.body;
-  // try {
-  //   const updatedUser = await prisma.user.update({
-  //     where: { id: 1 },
-  //     data: { username: username },
-  //   });
-  //   await prisma.$disconnect();
-  //   response.status(200).json(updateUser);
-  // } catch (error) {
-  //   response.status(500).json({ error: "unsuccessful in updating user" });
-  // }
+  const { userId } = request.body;
+  //check if session.user.id === request.body.user.id
+  //true => update with request.body prisma.user.update({where:{id: session.user.id}, data:{sanitized userdata}})
+  const session = await getServerSession(request, response, auth_options);
+  if (handle === userId && handle === session.user.providerAccountId) {
+    try {
+      const updatedUser = await prisma.user.update({
+        where: { handle: handle },
+        data: {}, //???
+      });
+      await prisma.$disconnect();
+      response.status(200).json(updateUser);
+    } catch (error) {
+      response.status(500).json({ error: "unsuccessful in updating user" });
+    }
+  }
 }

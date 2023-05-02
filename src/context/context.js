@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 
-export const UserData = createContext(null);
+export const UserData = createContext(undefined, undefined);
 
 function Context({ children }) {
   const [currUser, setCurrUser] = useState();
