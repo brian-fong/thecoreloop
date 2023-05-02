@@ -82,7 +82,7 @@ export const auth_options = {
   callbacks: {
     //I can call prisma to get account, then add it into token,
     //update?
-    async jwt({ token, account }: { token: JWT; account: Account }) {
+    async jwt({ token, account }: any) {
       if (account) {
         token.provider = account.provider;
         token.providerAccountId = account.providerAccountId;
@@ -98,7 +98,7 @@ export const auth_options = {
       session: Session;
       token: JWT;
       user: User | AdapterUser;
-    }): Promise<Session> {
+    }) {
       // Add the provider to the session;
       session.user.provider = token.provider as string;
       session.user.providerAccountId = token.providerAccountId as string;
