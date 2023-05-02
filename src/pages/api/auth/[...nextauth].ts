@@ -103,11 +103,9 @@ export const auth_options = {
       user: User | AdapterUser;
       token: JWT;
     }): Promise<Session> {
-      if (session && session.user) {
-        // Add the provider to the session;
-        session.user.provider = token.provider as string;
-        session.user.providerAccountId = token.providerAccountId as string;
-      }
+      // Add the provider to the session;
+      session.user.provider = token.provider as string;
+      session.user.providerAccountId = token.providerAccountId as string;
       return session;
     },
   },
