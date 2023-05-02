@@ -83,6 +83,7 @@ export const auth_options = {
         session.user.provider = token.provider;
         session.user.providerAccountId = token.providerAccountId;
       }
+      session.user = user as User;
       return session;
     },
   },
