@@ -12,7 +12,7 @@ import { FcGoogle as GoogleIcon } from "react-icons/fc";
 import { signIn } from "next-auth/react";
 
 export default function StartButton() {
-  async function handleStart(provider: string): void {
+  function handleStart(provider: string): void {
     // Prompt user to sign in
     signIn(provider);
   }
