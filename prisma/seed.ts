@@ -19,37 +19,37 @@ import { PrismaClient } from "@prisma/client";
 //   description?: string;
 // }
 
-async function seedGenres() {
-  const data: Genres[] = genres.map((genre: string) => {
-    const genreDesc = genre.split(": ");
-    return { genre: genreDesc[0], description: genreDesc[1] };
-  });
+// async function seedGenres() {
+//   const data: Genres[] = genres.map((genre: string) => {
+//     const genreDesc = genre.split(": ");
+//     return { genre: genreDesc[0], description: genreDesc[1] };
+//   });
 
-  for (const row of data) {
-    const existingRow = await prisma.genre.findUnique({
-      where: { genre: row.genre },
-    });
-    if (!existingRow) {
-      try {
-        const resp = await prisma.genre.create({
-          data: row,
-        });
-      } catch (error) {
-        console.log(
-          "Caught error when attempting to create a row in db",
-          error
-        );
-      }
-    } else {
-      console.log(
-        `Skipping creation of ${JSON.stringify(
-          row
-        )}, already exists in database.`
-      );
-    }
-  }
-  prisma.$disconnect();
-}
+//   for (const row of data) {
+//     const existingRow = await prisma.genre.findUnique({
+//       where: { genre: row.genre },
+//     });
+//     if (!existingRow) {
+//       try {
+//         const resp = await prisma.genre.create({
+//           data: row,
+//         });
+//       } catch (error) {
+//         console.log(
+//           "Caught error when attempting to create a row in db",
+//           error
+//         );
+//       }
+//     } else {
+//       console.log(
+//         `Skipping creation of ${JSON.stringify(
+//           row
+//         )}, already exists in database.`
+//       );
+//     }
+//   }
+//   prisma.$disconnect();
+// }
 
 // //DEV note: you cannot findunique for composite keys. please use <model>.findMany() and then findOne() instead
 // async function seedProjects() {
