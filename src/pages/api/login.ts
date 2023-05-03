@@ -21,7 +21,7 @@ export default async function login(req: NextApiRequest, res: NextApiResponse) {
         select: {
           handle: true,
           createdAt: true,
-          profilePicture: true,
+          // profilePicture: true,
           admins: true,
           hunter: true,
           comments_created: true,
