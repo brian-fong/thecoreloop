@@ -14,7 +14,7 @@ export default async function login(req: NextApiRequest, res: NextApiResponse) {
   } else if (session?.user?.handle) {
     // const user = session.user;
     try {
-      const user = await prisma.user.findUnique({
+      const user: any = await prisma.user.findUnique({
         where: {
           handle: session.user.handle,
         },
