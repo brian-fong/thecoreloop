@@ -24,9 +24,9 @@ export default async function login(req: NextApiRequest, res: NextApiResponse) {
           // profilePicture: true,
           admins: true,
           hunter: true,
-          comments_created: true,
-          comments_liked: true,
-          liked_projects: true,
+          // comments_created: true,
+          // comments_liked: true,
+          // liked_projects: true,
         },
       });
       await prisma.$disconnect();
