@@ -22,7 +22,7 @@ import {
 } from "react-icons/si";
 
 // Useful Constants
-import { LINKS } from "../../data/links";
+import { LINKS } from "../../utils/data/project-form-options";
 
 export default function LinkIcon({ url, size }: any) {
   const SOURCES: string[] = Object.keys(LINKS);

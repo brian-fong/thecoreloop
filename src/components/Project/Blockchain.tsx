@@ -2,7 +2,7 @@
 import { Box, Image, Tooltip } from "@chakra-ui/react";
 
 // Blockchain icons
-import { BLOCKCHAINS } from "../../data/blockchains";
+import { BLOCKCHAINS } from "../../utils/data/project-form-options";
 
 export default function Blockchain({ blockchain }: any) {
   return (

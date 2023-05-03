@@ -2,7 +2,7 @@
 import Project from "../../../components/Project/Project";
 
 // Mock data for project submissions
-import PROJECTS from "../../../data/project-submissions";
+import PROJECTS from "../../../utils/data/project-submissions";
 
 export default function index() {
   return (

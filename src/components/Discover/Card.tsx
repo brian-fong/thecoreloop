@@ -4,7 +4,6 @@ import {
   Button,
   Flex,
   Image,
-  // Link,
   Text,
   Tooltip,
 } from "@chakra-ui/react";
@@ -16,8 +15,7 @@ import FundraisingIcon from "../SubmitProject/FundraisingIcon";
 import { useSession } from "next-auth/react";
 
 // Useful Constants
-import { STAGES } from "../../data/stages";
-import { BLOCKCHAINS } from "../../data/blockchains";
+import { BLOCKCHAINS, STAGES } from "../../utils/data/project-form-options";
 
 export default function DiscoveryCard({
   onOpen_SignIn,
@@ -75,7 +73,8 @@ export default function DiscoveryCard({
           minWidth={image_width}
           height={image_height}
           minHeight={image_height}
-          borderRadius="full"
+          borderRadius="10px"
+          // borderRadius="full"
           cursor="pointer"
           transition="all 200ms ease-in-out"
           _hover={{

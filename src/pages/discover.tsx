@@ -17,7 +17,7 @@ import { useState, useEffect, ReactElement } from "react";
 // Useful Functions & Constants
 import uuid from "react-uuid";
 const [image_width, image_height]: [string, string] = ["110px", "110px"];
-import PROJECTS from "../data/project-submissions";
+import PROJECTS from "../utils/data/project-submissions";
 
 export default function discovery() {
   // State variables
