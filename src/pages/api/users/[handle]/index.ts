@@ -49,17 +49,15 @@ export default async function getUser(
           createdAt: true,
           hunter: true,
           username: true,
-          liked_projects: true,
+          // liked_projects: true,
           admins: true,
         },
       });
       await prisma.$disconnect();
       if (!user) {
-        response
-          .status(400)
-          .json({
-            message: "user not found. maybe there is a typo on the user?",
-          });
+        response.status(400).json({
+          message: "user not found. maybe there is a typo on the user?",
+        });
       } else {
         response.status(200).json({ status: "Unauthorized", user });
       }
