@@ -24,7 +24,6 @@ import { getServerSession } from "next-auth";
 //Get information about one user
 /*usecase : Login: when logging in, retrieve data such as username, profile pic, etc
 Search: when clicked on the profile, it will get more information on the user */
-const prisma = new PrismaClient();
 
 export default async function getUser(
   request: NextApiRequest,
@@ -39,26 +38,23 @@ export default async function getUser(
   //RETURN USER OBJECT WITH Admins, hunter, comments_created, comments_liked
   //When user tries to manipulate state by saying they own a project,
   //we validate in the backend with the session to see if the user actually owns the comment
-  console.log("Request received", session);
 
   if (!session) {
     response.status(500).json("usernotfound");
-  } else {
-    const user = session.user;
-    let handle;
-    if (user && user.provider === "twitter") {
-      handle = session?.user?.providerAccountId;
-    } else handle = session?.user?.email;
+  } else if (
+    session.user &&
+    session.user.provider &&
+    session.user.providerAccountId
+  ) {
+    // const user = session.user;
+    const handle =
+      session.user.provider === "twitter"
+        ? session.user.providerAccountId
+        : session.user.email;
     try {
-      const userFromDB = await prisma.user.findUnique({
-        where: {
-          handle: handle,
-        },
-        include: {
-          admins: true,
-        },
-      });
-      await prisma.$disconnect();
+      const userFromDB = await axios.get(
+        `http://localhost:3000/api/users/${handle}`
+      );
       if (!userFromDB) {
         console.log(
           "no user was found. please prompt user to create new account"

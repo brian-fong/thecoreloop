@@ -11,6 +11,7 @@ declare module "next-auth" {
       image: string;
 
       // Custom fields
+      handle: string;
       provider: string;
       providerAccountId: string;
     } & DefaultSession["user"];
@@ -18,5 +19,6 @@ declare module "next-auth" {
   interface JWT {
     provider?: string;
     providerAccountId?: string;
+    handle?: string;
   }
 }

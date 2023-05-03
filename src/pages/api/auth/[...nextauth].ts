@@ -99,7 +99,12 @@ export const auth_options = {
       token: JWT;
       user: User | AdapterUser;
     }) {
+      console.log(token);
       // Add the provider to the session;
+      session.user.handle =
+        token.provider === "twitter"
+          ? (token.providerAccountId as string)
+          : (token.email as string);
       session.user.provider = token.provider as string;
       session.user.providerAccountId = token.providerAccountId as string;
       return session;
