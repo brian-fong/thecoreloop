@@ -7,11 +7,8 @@ import {
 
 // utils
 import { faker } from "@faker-js/faker";
-import { generateComment } from "../../utils/data/mock";
 
 export default function Comments() {
-  const story: any = generateComment();
-
   const FOUNDER_QUOTE: string = "    Motivation: There is an element of the unknown, Otero also points to. “I haven’t personally, and I don’t think any of us here, have seen a game that we’re satisfied with where its longterm economics are going to sustain the game.” He goes so far as to say there may not be one, and it may just be about the collection of NFTs. “We simply don’t know, but what we do know is that the NFTs are going to play a very key role in our game,” he says. One of these ways is that players will be able to collect NFTs, but the other is that they’ll be able to create their own content to share and trade amongst other players. “There’s an interesting ecosystem that we’re building within the game, where people are going to be able to share and have different roles together. That’s a big part of our aspiration in building this.” Source: THR\n\n"
   + "    Vision: “As a kid, I spent countless hours role playing with all of my different toys,” said Otero. “At Azra, we are making a game to recreate this joy, to re-engage adults’ imaginations once again with the ultimate collectibles fantasy, combined with the ultimate fast-paced mix-and-match combat that is accessible yet deeply strategic. Imagine role playing giant monsters, robots and creatures, and leading your favorite heroes and villains to battle – and on top of satisfying game sessions, a vibrant marketplace and a sustainable economy based on real value that only web3 can unlock to deliver the most compelling and complete play experience.” Source: Venture beat";
 
@@ -62,7 +59,7 @@ export default function Comments() {
             padding="12px 16px"
             width="100%"
             fontSize="16px"
-            whiteSpace="pre-wrap"
+            whiteSpace="pre-line"
             backgroundColor="#171923"
           >
             {FOUNDER_QUOTE}
@@ -136,7 +133,7 @@ export default function Comments() {
             padding="12px 16px"
             width="100%"
             fontSize="16px"
-            whiteSpace="pre-wrap"
+            whiteSpace="pre-line"
             backgroundColor="#171923"
           >
             {SUBMITTER_QUOTE}
