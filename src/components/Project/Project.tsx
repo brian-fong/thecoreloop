@@ -1,8 +1,6 @@
 // Components
 import { Flex, Link, Text } from "@chakra-ui/react";
 import Blockchain from "./Blockchain";
-import Comment from "./Comment";
-import Comments from "./Comments";
 import Description from "./Description";
 import Gallery from "./Gallery";
 import Genres from "./Genres";
@@ -192,8 +190,6 @@ export default function Project({ project }: any) {
               gallery={project.gallery}
             />
 
-            {/* Comments */}
-            <Comments />
           </Flex>
         </Flex>
 
