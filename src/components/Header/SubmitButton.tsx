@@ -57,7 +57,7 @@ export default function SubmitButton({ onOpen_SignIn }: any) {
         <Button
           variant="header_popover"
           borderRadius="5px 5px 0 0"
-          onClick={() => handleSubmit("submit_project")}
+          onClick={() => handleSubmit()}
         >
           🤖 PROJECT
         </Button>

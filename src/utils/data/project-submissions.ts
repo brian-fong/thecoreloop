@@ -69,7 +69,7 @@ From the top-quality game graphics, and deep world lore to the community managem
     
     High Probability for Success. This is Otero’s 9th Collect & Combat RPG — this signals low execution risk in terms of game development and delivery.   As an ex-hedge fund professional, he understands markets — more particularly the unrelenting and brutal nature of markets.   Additionally, the team has worked together successfully before in the past.  This is a key element that a lot of other projects lack.
     
-    Founder-Genre Fit. Mark grew up playing the correct games and therefore was influenced by the appropriate ideals and values that align perfectly with crypto.  As a D&D cult player, he not only understood but experienced the power of true ownership through physically — and emotionally — holding onto his own character sheet.  
+    Founder-Genre Fit. Mark grew up playing the correct games and therefore was influenced by the appropriate ideals and values that align perfectly with crypto.  As a D&D cult player, he not only understood but experienced the power of true ownership through physically — and emotionally — holding onto his own character sheet.
     
     Genre fit. Azra Games operates in a unique sliver of the RPG genre game design that matches the best with blockchain. Ownership is part of the product and gameplay experience.
     

@@ -2,6 +2,7 @@
 import { Flex, Link, Text } from "@chakra-ui/react";
 import Blockchain from "./Blockchain";
 import Comment from "./Comment";
+import Comments from "./Comments";
 import Description from "./Description";
 import Gallery from "./Gallery";
 import Genres from "./Genres";
@@ -16,15 +17,7 @@ import Thumbnail from "./Thumbnail";
 import Upvote from "../../components/SubmitProject/Upvote";
 
 // Hooks
-import { useDisclosure, useDimensions } from "@chakra-ui/react";
-import { useEffect, useRef, useState } from "react";
-
-// Helper functions
-import { generateCommentsUnique } from "../../utils/data/mock";
-
-// Types
-import type { ReactElement } from "react";
-import uuid from "react-uuid";
+import { useDisclosure } from "@chakra-ui/react";
 
 export default function Project({ project }: any) {
 
@@ -33,13 +26,8 @@ export default function Project({ project }: any) {
   const thumbnail_height: number = thumbnail_width;
 
   // Refs
-  const container_ref = useRef<any>();
-  const dimensions = useDimensions(container_ref, true);
   const min_container_width: number = 700;
   const max_container_width: number = 1000;
-
-  // State variables
-  const [comments, setComments] = useState<any[]>([]);
 
   // useDisclosure: SignIn Modal
   const {
@@ -47,37 +35,6 @@ export default function Project({ project }: any) {
     onOpen: onOpen_SignIn,
     onClose: onClose_SignIn,
   } = useDisclosure();
-
-  useEffect(() => {
-    // console.log("Dimensions: ", dimensions);
-    console.log("Content Width: ", dimensions?.contentBox?.width);
-  }, [dimensions]);
-
-  useEffect(() => {
-    // Build comments
-    setComments([
-      {
-        user: project.submitter,
-        content: project.story,
-        data: project.date,
-        upvotes: project.upvotes,
-      }
-    ]);
-    const comment_count: number = 20;
-    const comments: any[] = generateCommentsUnique(comment_count);
-    comments.sort((a, b) => b.upvotes - a.upvotes);
-    comments.forEach(comment => (
-      setComments(comments => [...comments,
-        {
-          user: comment.user,
-          content: comment.content,
-          date: comment.date,
-          upvotes: comment.upvotes,
-        }
-      ])
-    ));
-
-  }, []);
 
   return (
     <>
@@ -113,7 +70,6 @@ export default function Project({ project }: any) {
 
         {/* Content Container */}
         <Flex
-          ref={container_ref}
           id="content-container"
           flexDirection="column"
           justifyContent="start"
@@ -237,15 +193,7 @@ export default function Project({ project }: any) {
             />
 
             {/* Comments */}
-            {comments.map(comment => (
-              <Comment
-                key={uuid()}
-                user={comment.user}
-                content={comment.content}
-                date={comment.date}
-                upvotes={comment.upvotes}
-              />
-            ))}
+            <Comments />
           </Flex>
         </Flex>
 

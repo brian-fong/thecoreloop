@@ -53,7 +53,7 @@ export default function Gallery({ min_width, gallery }: any) {
           objectFit="contain"
           width="100%"
           height="100%"
-          maxWidth={`${image_width}px`}
+          // maxWidth={`${image_width}px`}
           maxHeight={`${image_height}px`}
           borderRadius="5px"
           draggable={false}

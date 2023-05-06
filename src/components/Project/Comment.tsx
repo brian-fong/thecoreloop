@@ -4,76 +4,57 @@ import {
   Flex,
   Image,
   Link,
-  Text
+  Text,
 } from "@chakra-ui/react";
-import {
-  IoMdThumbsUp as UpvoteIcon,
-} from "react-icons/io";
+import { BsReplyFill as ReplyIcon } from "react-icons/bs";
+import { IoMdThumbsUp as UpvoteIcon } from "react-icons/io";
+import { GoAlert as ReportIcon } from "react-icons/go";
+import CommentOptionsPopover from "./CommentOptionsPopover";
 
 export default function Comment({
   user = { name: "", image: "" },
   date = "",
   content = "",
+  level = 0,
   upvotes = 0,
 }: any) {
   return (
     <Flex
-      flexDirection="column"
-      width="100%"
-      background="rgba(0, 0, 0, 0.4)"
+      flexDirection="row"
+      justifyContent="start"
+      alignItems="start"
+      gap="10px"
+      marginLeft={`${level * 30}px`}
+      padding="10px"
+      background="gray.700"
       borderRadius="5px"
     >
-      {/* Story Header */}
-      <Flex
-        flexDirection="row"
-        justifyContent="start"
-        alignItems="center"
-        gap="10px"
-        padding="5px"
-        width="100%"
-        background="gray.600"
-        borderRadius="5px 5px 0 0 "
-      >
-        <Image
-          // Profile Picture
-          src={user.image}
-          width="48px"
-          height="48px"
-          borderRadius="5px"
-          // borderRadius="full"
-          cursor="pointer"
-          draggable={false}
-        />
+      <Image
+        // Profile Picture
+        src={user.image}
+        width="48px"
+        height="48px"
+        borderRadius="5px"
+        // borderRadius="full"
+        cursor="pointer"
+        draggable={false}
+      />
 
-        <Flex
-          flexDirection="column"
-          justifyContent="space-between"
-          height="48px"
+      <Flex flexDirection="column">
+        <Link
+          // Username
+          variant="underline"
+          width="min-content"
+          color="white"
+          backgroundImage="linear-gradient(#FFFFFF 0 0)"
         >
-          <Link
-            // Username
-            variant="underline"
-            color="white"
-            backgroundImage="linear-gradient(#FFFFFF 0 0)"
-          >
-            {user.name}
-          </Link>
-        </Flex>
-      </Flex>
+          {user.name}
+        </Link>
 
-      {/* Story Body */}
-      <Flex
-        flexDirection="column"
-        justifyContent="start"
-        padding="5px 0 10px"
-        width="100%"
-      >
+        {/* Story Body */}
         <Flex
           flexDirection="column"
-          marginLeft="15px"
-          padding="10px 10px 10px 15px"
-          gap="10px"
-          borderLeft="1px solid white"
+          padding="10px"
         >
           <Text
             whiteSpace="pre-line"
@@ -86,19 +67,17 @@ export default function Comment({
 
           {/* Story Footer */}
           <Flex
+            alignItems="center"
             gap="15px"
+            marginTop="10px"
           >
             <Flex
               // Upvote container
-              justifyContent="space-between"
               alignItems="center"
               gap="5px"
               background="gray.700"
               borderRadius="5px"
               cursor="pointer"
-              transition="all 200ms ease-in-out"
-              _hover={{
-              }}
             >
               <Box
                 padding="4px"
@@ -106,12 +85,35 @@ export default function Comment({
                 backgroundColor="gray.600"
                 borderRadius="5px 0 0 5px"
               >
-                <UpvoteIcon size="18px" />
+                <UpvoteIcon size="16px" />
               </Box>
               <Text padding="0 6px 0 2px">
                 {upvotes}
               </Text>
             </Flex>
+
+            <Flex
+              // Reply Container
+              alignItems="center"
+              gap="5px"
+              background="gray.700"
+              borderRadius="5px"
+              cursor="pointer"
+            >
+              <Box
+                padding="4px"
+                height="100%"
+                backgroundColor="gray.600"
+                borderRadius="5px 0 0 5px"
+              >
+                <ReplyIcon size="16px" />
+              </Box>
+              <Text padding="0 6px 0 2px">
+                Reply
+              </Text>
+            </Flex>
+
+            <CommentOptionsPopover />
           </Flex>
         </Flex>
       </Flex>

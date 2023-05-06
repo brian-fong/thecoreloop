@@ -18,9 +18,9 @@ export default function Header({ min_width, onOpen_SignIn }: any) {
       alignItems="start"
       position="sticky"
       top="0"
-      paddingRight="30px"
+      paddingRight="20px"
       width="100%"
-      minWidth={`${min_width}px`}
+      minWidth={`${min_width+100}px`}
       height="70px"
       backdropFilter="blur(5px)"
       zIndex={10}
