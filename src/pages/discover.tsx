@@ -12,16 +12,7 @@ import { useState, useEffect, ReactElement } from "react";
 // Useful Functions & Constants
 import uuid from "react-uuid";
 const [image_width, image_height]: [string, string] = ["110px", "110px"];
-<<<<<<< HEAD
 import PROJECTS from "../utils/data/project-submissions";
-=======
-function getRandInt(a: number, b: number): number {
-  return Math.round(Math.random() * (b - a)) + a;
-}
-function getRandBool(p: number): boolean {
-  return Math.random() > 1 - p;
-}
->>>>>>> origin/dev
 
 export default function discovery() {
   // State variables
@@ -38,20 +29,12 @@ export default function discovery() {
 
   useEffect(() => {
     setCards([]);
-<<<<<<< HEAD
     for (let project of PROJECTS) {
       setCards(cards => [...cards, 
-=======
-    DATA.gaming_startups.sort(compareUpvote);
-    for (let entry of DATA.gaming_startups) {
-      setCards((cards) => [
-        ...cards,
->>>>>>> origin/dev
         <Card
           key={uuid()}
           onOpen_SignIn={onOpen_SignIn}
           setAction={setAction}
-<<<<<<< HEAD
           image_width={image_width} image_height={image_height}
           blockchain={project.blockchain}
           fundraising={project.fundraising}
@@ -62,20 +45,7 @@ export default function discovery() {
           tagline={project.description}
           thumbnail={project.thumbnail}
           upvotes={project.upvotes}
-        />
-=======
-          image_width={image_width}
-          image_height={image_height}
-          blockchain={entry.blockchain}
-          fundraising={getRandBool(0.2)}
-          genres={entry.genres}
-          name={entry.name}
-          stage={entry.stage}
-          tagline={entry.description}
-          thumbnail={entry.thumbnail}
-          upvotes={getRandInt(0, 999)}
         />,
->>>>>>> origin/dev
       ]);
     }
   }, []);

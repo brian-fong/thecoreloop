@@ -14,14 +14,9 @@ import uuid from "react-uuid";
 
 export default function Gallery({ min_width, gallery }: any) {
   // Image dimensions (in pixels)
-<<<<<<< HEAD
   const image_width: number = min_width-100;
   const image_height: number = Math.ceil(image_width * 9/16);
 
-=======
-  const image_width: number = 600;
-  const image_height: number = Math.ceil((image_width * 9) / 16);
->>>>>>> origin/dev
   // State variables
   const [page, setPage] = useState<number>(0);
   const [gallery_content, setGalleryContent] = useState<ReactElement>();

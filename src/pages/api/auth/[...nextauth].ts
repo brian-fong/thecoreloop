@@ -3,17 +3,7 @@ import axios from "axios";
 import * as dotenv from "dotenv";
 dotenv.config();
 
-// Axios
-import axios from "axios";
-
 // NextAuth.js
-<<<<<<< HEAD
-import NextAuth, { AuthOptions } from "next-auth";
-import GoogleProvider from "next-auth/providers/google";
-import TwitterProvider from "next-auth/providers/twitter";
-
-export const auth_options: AuthOptions = {
-=======
 import NextAuth, { Account, AuthOptions, Awaitable, Session } from "next-auth";
 import { AdapterUser } from "next-auth/adapters";
 import { JWT } from "next-auth/jwt";
@@ -78,7 +68,6 @@ interface User {
 // }
 
 export const auth_options = {
->>>>>>> origin/dev
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
@@ -91,15 +80,6 @@ export const auth_options = {
     }),
   ],
   callbacks: {
-<<<<<<< HEAD
-    async jwt({ token, account }) {
-      console.log("account: ", JSON.stringify(account, null, 2));
-
-      return token;
-    },
-  },
-}
-=======
     //I can call prisma to get account, then add it into token,
     //update?
     async jwt({ token, account }: any) {
@@ -107,7 +87,6 @@ export const auth_options = {
         token.provider = account.provider;
         token.providerAccountId = account.providerAccountId;
       }
->>>>>>> origin/dev
 
       return token;
     },
