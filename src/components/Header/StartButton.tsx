@@ -8,7 +8,6 @@ import {
 } from "@chakra-ui/react";
 import { BsTwitter as TwitterIcon } from "react-icons/bs";
 import { FcGoogle as GoogleIcon } from "react-icons/fc";
-
 // NextAuth
 import { signIn, useSession } from "next-auth/react";
 
@@ -16,10 +15,13 @@ import { signIn, useSession } from "next-auth/react";
 import { useEffect } from "react";
 
 export default function StartButton() {
+<<<<<<< HEAD
 
   // State variables
   const { data: session, status } = useSession();
 
+=======
+>>>>>>> origin/dev
   function handleStart(provider: string): void {
     // Prompt user to sign in
     signIn(provider);
@@ -33,9 +35,7 @@ export default function StartButton() {
   return (
     <Popover offset={[-35, 0]}>
       <PopoverTrigger>
-        <Button variant="header_base">
-          START
-        </Button>
+        <Button variant="header_base">START</Button>
       </PopoverTrigger>
       <PopoverContent
         display="flex"
@@ -67,4 +67,3 @@ export default function StartButton() {
     </Popover>
   );
 }
-

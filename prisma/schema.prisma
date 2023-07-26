@@ -21,7 +21,6 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
   relationMode = "prisma"
-  
 }
 
 generator client {
@@ -35,14 +34,16 @@ generator client {
 
 
 model User {
-  id            Int       @id @default(autoincrement())
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt @default(now())
-  handle        String?   @unique @db.VarChar(255)
-  username      String?   @db.VarChar(255)
-  admins        Project[] @relation("ProjectOwner")
-  hunter        Project[]
-  comments      Comment[]
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt @default(now())
+  handle            String    @id @unique @db.VarChar(255)
+  username          String?   @db.VarChar(255)
+  admins            Project[] @relation("ProjectOwner")
+  hunter            Project[] 
+  comments_created  Comment[] 
+  comments_liked    Comment[] @relation("LikedComments")
+  liked_projects    Project[] @relation("Community")
+  profilePicture    String    @default("https://i.imgur.com/nM6hUst.png")
 }
 
 
@@ -59,7 +60,6 @@ model User {
   //upvote count can be changed into User[] and upvote count can be user.length
   //but this will have delays on the front end so it will take ~2 seconds to show the upvote click
     //in order to optimize this, useState and ++ it.
- // people involved:
 
 model Project {
   id              Int       @unique @id @default(autoincrement())
@@ -69,35 +69,37 @@ model Project {
   thumbnail       String?
   blockchain      String?
   description     String?   @db.Text
-  tagline         String?
+  tagline         String?   @db.Text
   fundraising     Boolean
   links           String?
   genres          Genre[]   @relation("ProjectGenre")
   gallery         String?  
-  stage           String?  
+  stage           Stage?    
   owner           User[]    @relation("ProjectOwner")
-  hunter          User?      @relation(fields:[hunterId], references:[id])
-  hunterId        Int?    
+  hunter          User?     @relation(fields:[hunterId], references:[handle])
+  hunterId        String?    
   createdAt       DateTime  @default(now())
-  updatedAt       DateTime  @updatedAt
+  updatedAt       DateTime  @updatedAt @default(now())
+  community       User[]   @relation("Community")
+  platform        String?
   @@unique([name, studio], name:"name_studio")
-  approval        Boolean?
+  approval        Boolean @default(false)
+  youtubeUrl      String?
+  founderStory    String @default("No Founder Story yet")
 }
 
-//DEV NOTES: scalar lists are only supported in postgresql and cockroachdb so we need to create a new model relating to gallery. but with this, we need to discuss if we want two tables, gallery for users, and galler for projects. as projects grow, the binary search will start to take more time to gather relevant data.
- //Solution: I suggest we start with one gallery table for now, before launch, we will create mock-data with at least 500 gallery insertions and see how long it will take to render them.
-//model Gallery {
-//
-//}
+
 model Comment {
   id Int        @unique   @id @default(autoincrement())
-  userId        Int?
-  user          User?     @relation(fields:[userId], references:[id])
+  authorId      String?      
+  author        User?     @relation(fields:[authorId], references:[handle])
   content       String?
   parentId      Int?
   parentComment Comment?  @relation("ParentChildComment",fields: [parentId], references: [id], onDelete: NoAction, onUpdate: NoAction)
   comments      Comment[] @relation("ParentChildComment")
   createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt @default(now())
+  likes         User[]    @relation("LikedComments")
 }
 
 model Genre {
@@ -106,23 +108,21 @@ model Genre {
   games       Project[]  @relation("ProjectGenre") 
 }
 
-enum DevStatus {
- preProduction
+enum Stage {
+  preProduction
   production
   playableDemo
   live
 }
 
+enum Platform{
+  PlayStation
+  PC
+  MacOS
+  Andriod
+  Iphone
 
-///////////// future implementation to many-to-many relation ///////////////////
+}
 
-
-//enum blockchain{}
-
-//enum platform{}
-
-
-
-//maybe thumbnail? i dont know yet
 
 

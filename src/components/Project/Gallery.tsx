@@ -14,9 +14,14 @@ import uuid from "react-uuid";
 
 export default function Gallery({ min_width, gallery }: any) {
   // Image dimensions (in pixels)
+<<<<<<< HEAD
   const image_width: number = min_width-100;
   const image_height: number = Math.ceil(image_width * 9/16);
 
+=======
+  const image_width: number = 600;
+  const image_height: number = Math.ceil((image_width * 9) / 16);
+>>>>>>> origin/dev
   // State variables
   const [page, setPage] = useState<number>(0);
   const [gallery_content, setGalleryContent] = useState<ReactElement>();
@@ -26,7 +31,7 @@ export default function Gallery({ min_width, gallery }: any) {
   function navigatePage(dir: string): void {
     if (dir == "next") {
       // Move to next page (limit: 5 pages)
-      if (page < (gallery.length-1)) setPage(page + 1);
+      if (page < gallery.length - 1) setPage(page + 1);
     } else if (dir == "prev") {
       // Move to previous page
       if (page > 0) setPage(page - 1);
@@ -74,11 +79,7 @@ export default function Gallery({ min_width, gallery }: any) {
           borderRadius="5px"
           boxShadow="5px 5px 3px black"
           filter={page == i ? "none" : "brightness(75%)"}
-          transform={
-            page == i
-              ? "scale(1.15)"
-              : "scale(1.0)"
-          }
+          transform={page == i ? "scale(1.15)" : "scale(1.0)"}
           cursor="pointer"
           draggable={false}
           onClick={() => setPage(i)}
@@ -121,10 +122,7 @@ export default function Gallery({ min_width, gallery }: any) {
           height="50px"
           background="rgba(0, 0, 0 ,0.4)"
           borderRadius="5px"
-          cursor={page == 0
-            ? "default"
-            : "pointer"
-          }
+          cursor={page == 0 ? "default" : "pointer"}
           userSelect="none"
           zIndex={1}
           onClick={() => navigatePage("prev")}
@@ -135,9 +133,9 @@ export default function Gallery({ min_width, gallery }: any) {
             _hover: { filter: "brightness(25%)" },
           }}
           _hover={{
-            filter: "brightness(75%)"
+            filter: "brightness(75%)",
           }}
-          _active={{ filter: "brightness(50%) "}}
+          _active={{ filter: "brightness(50%) " }}
         >
           <LeftArrowIcon size="25px" />
         </Button>
@@ -154,25 +152,20 @@ export default function Gallery({ min_width, gallery }: any) {
           height="50px"
           background="rgba(0, 0, 0 ,0.4)"
           borderRadius="5px"
-          cursor={page == gallery.length-1
-            ? "default"
-            : "pointer"
-          }
+          cursor={page == gallery.length - 1 ? "default" : "pointer"}
           userSelect="none"
           zIndex={1}
           onClick={() => navigatePage("next")}
           transition="all 200ms ease-in-out"
-          isDisabled={
-            page == gallery.length-1
-              || gallery.length == 0}
+          isDisabled={page == gallery.length - 1 || gallery.length == 0}
           _disabled={{
             filter: "brightness(25%)",
             _hover: { filter: "brightness(25%)" },
           }}
           _hover={{
-            filter: "brightness(75%)"
+            filter: "brightness(75%)",
           }}
-          _active={{ filter: "brightness(50%) "}}
+          _active={{ filter: "brightness(50%) " }}
         >
           <RightArrowIcon size="25px" />
         </Button>
@@ -199,6 +192,5 @@ export default function Gallery({ min_width, gallery }: any) {
         </Flex>
       </Flex>
     </Flex>
-  )
+  );
 }
-

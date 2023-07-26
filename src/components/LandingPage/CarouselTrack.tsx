@@ -1,17 +1,10 @@
-import {
-  Box,
-  Flex,
-} from "@chakra-ui/react";
+import { Box, Flex } from "@chakra-ui/react";
 import uuid from "react-uuid";
 import { useState, useEffect, ReactElement, SyntheticEvent } from "react";
 
-export default function CarouselTrack({
-  index,
-  setIndex,
-  stages,
-}: any) {
+export default function CarouselTrack({ index, setIndex, stages }: any) {
   const [track, setTrack] = useState<ReactElement[]>([]);
-
+  console.log("carousel in carouseltrack");
   function handleClick(i: number) {
     setIndex(i);
   }
@@ -20,7 +13,8 @@ export default function CarouselTrack({
     setTrack([]);
     for (let i = 0; i < stages; i++) {
       if (i == index) {
-        setTrack(track => [...track,
+        setTrack((track) => [
+          ...track,
           <Box
             key={uuid()}
             data-index={i}
@@ -30,10 +24,11 @@ export default function CarouselTrack({
             border="rgba(255, 255, 255, 0.5)"
             borderRadius="5px"
             onClick={() => handleClick(i)}
-          ></Box>
+          ></Box>,
         ]);
       } else {
-        setTrack(track => [...track,
+        setTrack((track) => [
+          ...track,
           <Box
             key={uuid()}
             data-index={i}
@@ -43,11 +38,11 @@ export default function CarouselTrack({
             border="rgba(255, 255, 255, 0.5)"
             borderRadius="5px"
             onClick={() => handleClick(i)}
-          ></Box>
+          ></Box>,
         ]);
       }
     }
-  }, [index, stages])
+  }, [index, stages]);
 
   return (
     <Flex
@@ -60,4 +55,3 @@ export default function CarouselTrack({
     </Flex>
   );
 }
-

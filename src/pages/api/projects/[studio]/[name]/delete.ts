@@ -24,11 +24,11 @@ export default async function deleteGame(
   //   include: { owner: true },
   // });
   // if (user && user.owner.includes === projectId) {
-  const res = await prisma.project.delete({
-    where: { name_studio: { name: sanitizedName, studio: sanitizedStudio } },
-  });
-  console.log(res);
-  response.status(200).json({ sucess: "sucessfully deleted user", res });
+  // const res = await prisma.project.delete({
+  //   where: { name_studio: { name: sanitizedName, studio: sanitizedStudio } },
+  // });
+  // console.log(res);
+  // response.status(200).json({ sucess: "sucessfully deleted user", res });
 }
 // else {
 //   response.status(400).json({ error: "user not found" });
