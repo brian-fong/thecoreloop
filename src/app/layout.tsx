@@ -19,6 +19,11 @@ export const metadata: Metadata = {
         width: 1920,
         height: 400,
       },
+      {
+        url: "https://raw.githubusercontent.com/0xfrian/thecoreloop/dev/public/thecoreloop-favicon.png",
+        width: 500,
+        height: 500,
+      },
     ],
   },
 }
