@@ -19,13 +19,13 @@ export default function SubmitButton({ onOpen_SignIn }: any) {
   // State variables
   const { status } = useSession();
 
-  function handleSubmit(action: string) {
+  function handleSubmit() {
     if (status.toLowerCase() != "authenticated") {
+      // If NOT authenticated, then open SignIn Modal
       onOpen_SignIn();
     } else {
-      if (action == "submit_project") {
-        router.push("/projects/submit/");
-      }
+      // Else, redirect to Submit-Project page
+      router.push("/projects/submit/");
     }
   }
 
@@ -54,7 +54,7 @@ export default function SubmitButton({ onOpen_SignIn }: any) {
         <Button
           variant="header_popover"
           borderRadius="5px 5px 0 0"
-          onClick={() => handleSubmit("submit_project")}
+          onClick={() => handleSubmit()}
         >
           🤖 PROJECT
         </Button>

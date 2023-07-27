@@ -1,11 +1,13 @@
 // Components
 import Project from "../../../components/Project/Project";
 
-// Mock data for project submissions
+// Mock data for project submission
 import PROJECTS from "../../../utils/data/project-submissions";
 
 export default function index() {
   return (
-    <Project project={PROJECTS[0]} />
+    <Project project={PROJECTS[2]} />
   );
 }
+
+

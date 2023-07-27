@@ -12,7 +12,11 @@ export default function Studio({ studio }: any) {
       userSelect="none"
     >
       Created by{" "}
-      <Link fontStyle="italic">
+      <Link
+        variant="underline"
+        color="gray.400"
+        backgroundImage="linear-gradient(#A0AEC0 0 0)"
+      >
         {studio}
       </Link>
     </Text>

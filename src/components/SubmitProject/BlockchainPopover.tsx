@@ -19,7 +19,7 @@ import wait from "../../utils/wait";
 import blur from "../../utils/blur";
 
 // Helpful Constants
-import { BLOCKCHAINS } from "../../data/blockchains";
+import { BLOCKCHAINS } from "../../utils/data/project-form-options";
 
 export default function BlockchainPopover({ 
   formik,

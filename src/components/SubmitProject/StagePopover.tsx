@@ -14,7 +14,7 @@ import uuid from "react-uuid";
 import blur from "../../utils/blur";
 
 // Helpful Constants
-import { STAGES } from "../../data/stages";
+import { STAGES } from "../../utils/data/project-form-options";
 
 export default function StagePopover({
   stage,

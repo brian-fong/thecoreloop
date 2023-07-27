@@ -1,5 +1,5 @@
 // Components
-import { Box, Button, Flex, Image } from "@chakra-ui/react";
+import { Button, Flex, Image } from "@chakra-ui/react";
 import {
   BsChevronLeft as LeftArrowIcon,
   BsChevronRight as RightArrowIcon,
@@ -10,11 +10,13 @@ import { useEffect, useState } from "react";
 
 // Types
 import type { ReactElement } from "react";
+import uuid from "react-uuid";
 
-export default function Gallery({ gallery }: any) {
+export default function Gallery({ min_width, gallery }: any) {
   // Image dimensions (in pixels)
-  const image_width: number = 600;
-  const image_height: number = Math.ceil((image_width * 9) / 16);
+  const image_width: number = min_width-100;
+  const image_height: number = Math.ceil(image_width * 9/16);
+
   // State variables
   const [page, setPage] = useState<number>(0);
   const [gallery_content, setGalleryContent] = useState<ReactElement>();
@@ -35,6 +37,7 @@ export default function Gallery({ gallery }: any) {
     // Build Gallery Content
     setGalleryContent(
       <Flex
+        key={uuid()}
         flexDirection="row"
         justifyContent="center"
         alignItems="center"
@@ -48,10 +51,11 @@ export default function Gallery({ gallery }: any) {
         <Image
           src={gallery[page]}
           objectFit="contain"
-          // objectFit="cover"
-          padding="1px"
-          maxWidth={`${image_width}px`}
+          width="100%"
+          height="100%"
+          // maxWidth={`${image_width}px`}
           maxHeight={`${image_height}px`}
+          borderRadius="5px"
           draggable={false}
         />
       </Flex>
@@ -62,6 +66,7 @@ export default function Gallery({ gallery }: any) {
     for (let i = 0; i < gallery.length; i++) {
       gallery_indices_new.push(
         <Image
+          key={uuid()}
           src={gallery[i]}
           objectFit="cover"
           width="64px"

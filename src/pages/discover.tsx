@@ -1,7 +1,6 @@
 // Components
 import { Divider, Flex, Heading, Text } from "@chakra-ui/react";
 import Card from "../components/Discover/Card";
-import DATA from "../data/mock-data";
 import Head from "next/head";
 import Header from "../components/Header/Header";
 import SignInModal from "../components/User/SignInModal";
@@ -13,12 +12,7 @@ import { useState, useEffect, ReactElement } from "react";
 // Useful Functions & Constants
 import uuid from "react-uuid";
 const [image_width, image_height]: [string, string] = ["110px", "110px"];
-function getRandInt(a: number, b: number): number {
-  return Math.round(Math.random() * (b - a)) + a;
-}
-function getRandBool(p: number): boolean {
-  return Math.random() > 1 - p;
-}
+import PROJECTS from "../utils/data/project-submissions";
 
 export default function discovery() {
   // State variables
@@ -33,32 +27,24 @@ export default function discovery() {
     onClose: onClose_SignIn,
   } = useDisclosure();
 
-  function compareUpvote(a: any, b: any): number {
-    if (a.upvote_count < b.upvote_count) return 1;
-    else if (a.upvote_count > b.upvote_count) return -1;
-    else return 0;
-  }
-
   useEffect(() => {
     setCards([]);
-    DATA.gaming_startups.sort(compareUpvote);
-    for (let entry of DATA.gaming_startups) {
-      setCards((cards) => [
-        ...cards,
+    for (let project of PROJECTS) {
+      setCards(cards => [...cards, 
         <Card
           key={uuid()}
           onOpen_SignIn={onOpen_SignIn}
           setAction={setAction}
-          image_width={image_width}
-          image_height={image_height}
-          blockchain={entry.blockchain}
-          fundraising={getRandBool(0.2)}
-          genres={entry.genres}
-          name={entry.name}
-          stage={entry.stage}
-          tagline={entry.description}
-          thumbnail={entry.thumbnail}
-          upvotes={getRandInt(0, 999)}
+          image_width={image_width} image_height={image_height}
+          blockchain={project.blockchain}
+          fundraising={project.fundraising}
+          genres={project.genres}
+          name={project.name}
+          stage={project.stage}
+          studio={project.studio}
+          tagline={project.description}
+          thumbnail={project.thumbnail}
+          upvotes={project.upvotes}
         />,
       ]);
     }

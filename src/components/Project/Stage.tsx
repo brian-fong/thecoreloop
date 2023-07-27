@@ -2,7 +2,12 @@
 import { Text } from "@chakra-ui/react";
 
 // Stages of development
-import { STAGES } from "../../data/stages";
+const STAGES: any = {
+  "Pre-Production": "💡",
+  "Production": "🏗️",
+  "Playable Demo": "🕹️",
+  "Live": "❤️",
+};
 
 export default function Stage({ stage }: any) {
   return (

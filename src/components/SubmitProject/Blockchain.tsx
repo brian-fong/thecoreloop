@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import { ReactElement } from "react";
 
 // Useful Constants
-import { BLOCKCHAINS } from "../../data/blockchains";
+import { BLOCKCHAINS } from "../../utils/data/project-form-options";
 
 export default function Blockchain({ blockchain, setBlockchain }: any) {
   // State variables

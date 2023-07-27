@@ -11,13 +11,13 @@ import axios from "axios";
 
 export default function experimental() {
   async function sendRequest() {
-    await axios.post("/api/login");
+    await axios.get("/api/login");
   }
 
   return (
     <>
       <Head>
-        <title>thecoreloop</title>
+        <title>Authentication</title>
         <link 
           rel="icon" 
           type="image/x-icon" 

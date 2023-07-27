@@ -26,7 +26,7 @@ export default function Links({ links }: any) {
             transition="all 200ms ease-in-out"
             _hover={{ filter: "brightness(0.7)" }}
           >
-            <WebIcon size="22px" />
+            <WebIcon size="25px" />
           </Link>
         );
         else return (

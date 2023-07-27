@@ -8,7 +8,7 @@ import ExploreInput from "./ExploreInput";
 import Link from "next/link";
 import Profile from "./Profile";
 
-export default function Header({ setAction, onOpen_SignIn }: any) {
+export default function Header({ min_width, onOpen_SignIn }: any) {
   return (
     <Flex
       id="header-container"
@@ -18,9 +18,9 @@ export default function Header({ setAction, onOpen_SignIn }: any) {
       alignItems="start"
       position="sticky"
       top="0"
-      paddingRight="30px"
+      paddingRight="20px"
       width="100%"
-      minWidth="800px"
+      minWidth={`${min_width+100}px`}
       height="70px"
       backdropFilter="blur(5px)"
       zIndex={10}
@@ -50,7 +50,6 @@ export default function Header({ setAction, onOpen_SignIn }: any) {
       >
         {/* Contribute */}
         <SubmitButton
-          setAction={setAction}
           onOpen_SignIn={onOpen_SignIn}
         />
 

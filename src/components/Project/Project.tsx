@@ -1,5 +1,5 @@
 // Components
-import { Flex, Text } from "@chakra-ui/react";
+import { Flex, Link, Text } from "@chakra-ui/react";
 import Blockchain from "./Blockchain";
 import Description from "./Description";
 import Gallery from "./Gallery";
@@ -10,7 +10,6 @@ import Links from "./Links";
 import Name from "./Name";
 import SignInModal from "../../components/User/SignInModal";
 import Stage from "./Stage";
-import Story from "./Story";
 import Studio from "./Studio";
 import Thumbnail from "./Thumbnail";
 import Upvote from "../../components/SubmitProject/Upvote";
@@ -23,6 +22,10 @@ export default function Project({ project }: any) {
   // Thumbnail dimensions (in pixels)
   const thumbnail_width: number = 115;
   const thumbnail_height: number = thumbnail_width;
+
+  // Refs
+  const min_container_width: number = 700;
+  const max_container_width: number = 1000;
 
   // useDisclosure: SignIn Modal
   const {
@@ -52,13 +55,14 @@ export default function Project({ project }: any) {
         alignItems="center"
         position="relative"
         width="100%"
-        minWidth="800px"
+        minWidth={`${min_container_width}px`}
         minHeight="100vh"
         color="white"
         userSelect="none"
       >
         {/* Header */}
         <Header
+          min_width={min_container_width}
           onOpen_SignIn={onOpen_SignIn}
         />
 
@@ -68,11 +72,14 @@ export default function Project({ project }: any) {
           flexDirection="column"
           justifyContent="start"
           alignItems="center"
+          margin="0 auto"
           padding="20px 50px 60px"
           width="100%"
-          maxWidth="800px"
+          minWidth={`${min_container_width+100}px`}
+          maxWidth={`${max_container_width}px`}
           height="100%"
         >
+          {/* Top Section */}
           <Flex
             flexDirection="row"
             justifyContent="space-between"
@@ -80,6 +87,8 @@ export default function Project({ project }: any) {
             gap="10px"
             marginBottom="15px"
             width="100%"
+            minWidth={`${min_container_width}px`}
+            maxWidth={`${max_container_width}px`}
             height="100%"
           >
             {/* Thumbnail Image */}
@@ -132,12 +141,15 @@ export default function Project({ project }: any) {
             <Upvote />
           </Flex>
 
+          {/* Body Section */}
           <Flex
             flexDirection="column"
             justifyContent="start"
             alignItems="center"
             gap="20px"
             width="100%"
+            minWidth={`${min_container_width}px`}
+            maxWidth={`${max_container_width}px`}
             height="100%"
           >
             {/* Studio */}
@@ -149,7 +161,23 @@ export default function Project({ project }: any) {
               <Studio studio={project.studio} />
 
               <Text whiteSpace="nowrap">
-                Submitted on {project.date}
+                Submitted on{" "}
+                <Link
+                  variant="underline"
+                  color="gray.400"
+                  fontStyle="normal"
+                  backgroundImage="linear-gradient(#A0AEC0 0 0)"
+                >
+                  {project.date}
+                </Link>
+                {" "}by{" "}
+                <Link
+                  variant="underline"
+                  color="gray.400"
+                  backgroundImage="linear-gradient(#A0AEC0 0 0)"
+                >
+                  {project.submitter.name}
+                </Link>
               </Text>
             </Flex>
 
@@ -157,10 +185,11 @@ export default function Project({ project }: any) {
             <Description description={project.description} />
 
             {/* Gallery */}
-            <Gallery gallery={project.gallery} />
+            <Gallery
+              min_width={min_container_width}
+              gallery={project.gallery}
+            />
 
-            {/* Story Container */}
-            <Story story={project.story} submitter={project.submitter} />
           </Flex>
         </Flex>
 

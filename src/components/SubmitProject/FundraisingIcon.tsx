@@ -26,12 +26,8 @@ export default function FundraisingIcon({ fundraising }: any) {
       >
         <Image
           src={fundraising_icon}
-          // padding="5px"
           width="36px"
           height="36px"
-          // background="gray.600"
-          // borderRadius="15px"
-          transition="all 200ms ease-in-out"
         />
       </Box>
     </Tooltip>

@@ -16,3 +16,48 @@ export const BLOCKCHAINS: any = {
   "TBA"       : "https://em-content.zobj.net/thumbs/120/google/350/megaphone_1f4e3.png",
 }
 
+export const LINKS: any = {
+  "appstore":   ["https://apps.apple.com/"],
+  "discord":    ["https://discord.com/", "https://discord.gg/"],
+  "facebook":   ["https://www.facebook.com/"],
+  "instagram":  ["https://www.instagram.com/"],
+  "linkedin":   ["https://www.linkedin.com/"],
+  "linktree":   ["https://linktr.ee/"],
+  "medium":     ["https://medium.com/"],
+  "opensea":    ["https://opensea.io/"],
+  "playstore":  ["https://play.google.com/store/apps/"],
+  "substack":   ["substack.com/"],
+  "telegram":   ["https://t.me/"],
+  "tiktok":     ["https://www.tiktok.com/"],
+  "twitter":    ["https://twitter.com/"],
+  "youtube":    ["https://www.youtube.com/"],
+};
+
+
+export const GENRES: string[] = [
+  "Action",
+  "Adventure",
+  "Board",
+  "Card",
+  "Casino",
+  "Casual",
+  "MMORPG",
+  "MOBA",
+  "On-Chain",
+  "Puzzle",
+  "Racing",
+  "RPG",
+  "Sandbox",
+  "Shooter",
+  "Simulation",
+  "Sports",
+  "Strategy",
+];
+
+export const STAGES: any = {
+  "Pre-Production": "💡",
+  "Production": "🏗️",
+  "Playable Demo": "🕹️",
+  "Live": "❤️",
+};
+

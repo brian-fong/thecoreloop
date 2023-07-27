@@ -9,13 +9,24 @@ import {
 import { BsTwitter as TwitterIcon } from "react-icons/bs";
 import { FcGoogle as GoogleIcon } from "react-icons/fc";
 // NextAuth
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
+
+// React
+import { useEffect } from "react";
 
 export default function StartButton() {
+  // State variables
+  const { data: session, status } = useSession();
+
   function handleStart(provider: string): void {
     // Prompt user to sign in
     signIn(provider);
   }
+
+  useEffect(() => {
+    console.log("Status: ", status);
+    console.log("Session: ", session);
+  }, [session])
 
   return (
     <Popover offset={[-35, 0]}>
