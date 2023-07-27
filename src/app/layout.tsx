@@ -16,8 +16,6 @@ export const metadata: Metadata = {
     images: [
       {
         url: "https://raw.githubusercontent.com/0xfrian/thecoreloop/dev/public/thecoreloop-logo.png",
-        width: 1920,
-        height: 400,
       },
       {
         url: "https://raw.githubusercontent.com/0xfrian/thecoreloop/dev/public/thecoreloop-favicon.png",
