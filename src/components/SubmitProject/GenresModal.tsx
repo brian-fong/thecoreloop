@@ -116,7 +116,7 @@ export default function GenresModal({
                 color="gray.400"
                 lineHeight="5"
               >
-                NOTE: Only the FIRST genre is displayed on the Discovery View
+                NOTE: Only the <span style={{ color: "#F6E05E" }}>first genre</span> is displayed on the Discover page.
               </Text>
 
               <GenresPopover

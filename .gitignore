@@ -1,3 +1,5 @@
+
+
 # NextJS
 /.next/
 /out/
@@ -25,3 +27,5 @@ archived/
 practice.ts
 notes.md
 scripts/
+
+/prisma/seed.ts

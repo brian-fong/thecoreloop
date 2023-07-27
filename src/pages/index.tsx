@@ -1,11 +1,4 @@
-import {
-  Box,
-  Text,
-  Flex,
-  Image,
-  Link,
-  useDimensions,
-} from "@chakra-ui/react";
+import { Box, Text, Flex, Image, Link, useDimensions } from "@chakra-ui/react";
 import Head from "next/head";
 import { useRef, useState, useEffect } from "react";
 import Header from "../components/LandingPage/Header";
@@ -19,7 +12,8 @@ export default function landing_page() {
   const [desktop_mode, setDesktopMode] = useState<boolean>(true);
 
   useEffect(() => {
-    const touch_enabled: boolean = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+    const touch_enabled: boolean =
+      "ontouchstart" in window || navigator.maxTouchPoints > 0;
     const screen_width: number = dimensions?.contentBox?.width!;
 
     if (touch_enabled && screen_width <= 400) {
@@ -33,11 +27,7 @@ export default function landing_page() {
     <>
       <Head>
         <title>thecoreloop</title>
-        <link 
-          rel="icon" 
-          type="image/x-icon" 
-          href="/thecoreloop-favicon.png" 
-        />
+        <link rel="icon" type="image/x-icon" href="/thecoreloop-favicon.png" />
         <meta name="viewport" content="viewport-fit=cover" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
@@ -64,12 +54,12 @@ export default function landing_page() {
           width="100%"
         >
           {/* Heading */}
-          <Text 
+          <Text
             margin="20px 0px"
             width="100%"
-            fontSize="20px" 
+            fontSize="20px"
             fontStyle="italic"
-            fontWeight="800" 
+            fontWeight="800"
             textAlign="center"
           >
             === WELCOME TO THECORELOOP ===
@@ -83,11 +73,11 @@ export default function landing_page() {
             padding="20px"
             width="100%"
           >
-            {
-              desktop_mode
-                ? <Carousel_Desktop screen_width={dimensions?.contentBox?.width!} />
-                : <Carousel_Mobile />
-            }
+            {desktop_mode ? (
+              <Carousel_Desktop screen_width={dimensions?.contentBox?.width!} />
+            ) : (
+              <Carousel_Mobile />
+            )}
           </Flex>
 
           {/* Body */}
@@ -133,24 +123,24 @@ export default function landing_page() {
               for gaming information!
             </Box>
             <Box>
-              <Text 
-                display="inline" 
-                color="tcl_pink" 
-                fontStyle="italic" 
+              <Text
+                display="inline"
+                color="tcl_pink"
+                fontStyle="italic"
                 fontWeight="800"
-              >thecoreloop </Text>
-              is your go-to social discovery platform where 
-              <Text 
-                display="inline" 
-                fontStyle="italic" 
-                opacity="0.7"
-              > community </Text> 
-              and 
-              <Text 
-                display="inline" 
-                fontStyle="italic" 
-                opacity="0.7"
-              > web3 games </Text> 
+              >
+                thecoreloop{" "}
+              </Text>
+              is your go-to social discovery platform where
+              <Text display="inline" fontStyle="italic" opacity="0.7">
+                {" "}
+                community{" "}
+              </Text>
+              and
+              <Text display="inline" fontStyle="italic" opacity="0.7">
+                {" "}
+                web3 games{" "}
+              </Text>
               intersect
             </Box>
           </Flex>
@@ -173,11 +163,11 @@ export default function landing_page() {
             href="https://pm6hpw3zasy.typeform.com/to/kOc7e3N7"
             margin="20px 0px"
           >
-            <Text 
+            <Text
               padding="0 20px"
-              fontSize="20px" 
+              fontSize="20px"
               fontStyle="italic"
-              fontWeight="800" 
+              fontWeight="800"
               textAlign="center"
               textShadow="3px 3px black"
               width="100%"
@@ -190,5 +180,3 @@ export default function landing_page() {
     </>
   );
 }
-
-

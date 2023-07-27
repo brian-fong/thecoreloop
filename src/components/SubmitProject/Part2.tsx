@@ -6,7 +6,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { BsArrowLeft as LeftArrowIcon } from "react-icons/bs";
-import InDepthForm from "./InDepthForm";
+import ProfileForm from "./ProfileForm";
 
 export default function Part2({
   image_width, image_height,
@@ -27,10 +27,10 @@ export default function Part2({
   return (
     <>
       <Heading marginBottom="50px" fontSize="16px" fontWeight="300">
-        Click on the fields below to input the corresponding information. The result is what readers will see on the <Text display="inline" color="gray.400" fontStyle="italic" fontWeight="700">In-Depth</Text> section.
+        Click on the fields below to input the corresponding information. The result is what readers will see on <Text display="inline" color="gray.400" fontStyle="italic" fontWeight="700">Profile</Text> page for this project.
       </Heading>
 
-      <InDepthForm 
+      <ProfileForm 
         image_width={image_width} image_height={image_height}
         blockchain={blockchain} setBlockchain={setBlockchain}
         description={description} setDescription={setDescription}

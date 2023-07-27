@@ -12,7 +12,7 @@ import {
 } from "@chakra-ui/react";
 
 // Helpful Constants and Functions
-import { GENRES } from "../../data/genres";
+import { GENRES } from "../../utils/data/project-form-options";
 import blur from "../../utils/blur";
 
 export default function GenresPopover({ 

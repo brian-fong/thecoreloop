@@ -26,6 +26,7 @@ export default extendTheme({
     twitter: "#1DA1F2",
 
     // thecoreloop colors
+    tcl_black: "#212331",
     tcl_purple: "#6711CF",
     tcl_yellow: "#FAFF2F",
     tcl_yellow_hover: "#BCC024",
@@ -39,7 +40,7 @@ export default extendTheme({
     tcl_teal_hover: "#40a89f",
     tcl_green: "#58bf85",
     tcl_green_hover: "#32995f",
-    tcl_pink: "#F93CA3",
+    tcl_pink: "#cf1179",
     tcl_pink_hover: "#b02c74",
   },
   styles: {

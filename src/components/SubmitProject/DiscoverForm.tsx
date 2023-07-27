@@ -12,14 +12,21 @@ import Upvote from "./Upvote";
 import { useEffect, useState } from "react";
 
 export default function DiscoverForm({
-  image_width, image_height,
-  blockchain, setBlockchain,
+  image_width,
+  image_height,
+  blockchain,
+  setBlockchain,
   fundraising,
-  genres, setGenres,
-  name, setName,
-  stage, setStage,
-  tagline, setTagline,
-  thumbnail, setThumbnail,
+  genres,
+  setGenres,
+  name,
+  setName,
+  stage,
+  setStage,
+  tagline,
+  setTagline,
+  thumbnail,
+  setThumbnail,
 }: any) {
   // State Variables
   const [isFinished, setIsFinished] = useState<boolean>(true);
@@ -27,12 +34,12 @@ export default function DiscoverForm({
   // Update isFinished state variable
   useEffect(() => {
     if (
-      blockchain
-        && genres.length > 0
-        && name 
-        && stage 
-        && tagline 
-        && thumbnail
+      blockchain &&
+      genres.length > 0 &&
+      name &&
+      stage &&
+      tagline &&
+      thumbnail
     ) {
       setIsFinished(true);
     } else {
@@ -56,9 +63,11 @@ export default function DiscoverForm({
     >
       {/* Thumbnail Image */}
       <Thumbnail
-        image_width={image_width} image_height={image_height}
+        image_width={image_width}
+        image_height={image_height}
         fundraising={fundraising}
-        thumbnail={thumbnail} setThumbnail={setThumbnail} 
+        thumbnail={thumbnail}
+        setThumbnail={setThumbnail}
       />
 
       {/* Container: Name + Links + Blockchain + Genres + Stage */}
@@ -67,14 +76,14 @@ export default function DiscoverForm({
         flexDirection="column"
         justifyContent="space-between"
         alignItems="start"
-        gap={(name && tagline && blockchain) ? "0" : "10px"}
+        gap={name && tagline && blockchain ? "0" : "10px"}
         width="100%"
         height="100%"
         minHeight={image_height}
       >
         <Flex
           flexDirection="column"
-          gap={(name && tagline && blockchain) ? "0" : "10px"}
+          gap={name && tagline && blockchain ? "0" : "10px"}
           width="100%"
         >
           <Flex alignItems="center" gap="10px">
@@ -82,29 +91,18 @@ export default function DiscoverForm({
             <Name name={name} setName={setName} />
 
             {/* Blockchain */}
-            <Blockchain 
-              blockchain={blockchain}
-              setBlockchain={setBlockchain}
-            />
+            <Blockchain blockchain={blockchain} setBlockchain={setBlockchain} />
           </Flex>
 
-          <Tagline
-            tagline={tagline}
-            setTagline={setTagline}
-          />
+          <Tagline tagline={tagline} setTagline={setTagline} />
         </Flex>
 
         <Flex gap="10px" width="100%">
           {/* Stage */}
-          <Stage 
-            stage={stage} setStage={setStage}
-          />
+          <Stage stage={stage} setStage={setStage} />
 
           {/* Genres */}
-          <Genres
-            genres={genres}
-            setGenres={setGenres}
-          />
+          <Genres format={"discover"} genres={genres} setGenres={setGenres} />
         </Flex>
       </Flex>
 
@@ -123,4 +121,3 @@ export default function DiscoverForm({
     </Flex>
   );
 }
-

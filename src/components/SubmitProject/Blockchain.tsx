@@ -1,11 +1,5 @@
 // Components
-import {
-  Box,
-  Image,
-  Text,
-  Tooltip,
-  useDisclosure,
-} from "@chakra-ui/react";
+import { Box, Image, Text, Tooltip, useDisclosure } from "@chakra-ui/react";
 import BlockchainModal from "./BlockchainModal";
 
 // Hooks
@@ -15,14 +9,13 @@ import { useEffect, useState } from "react";
 import { ReactElement } from "react";
 
 // Useful Constants
-import { BLOCKCHAINS } from "../../data/blockchains";
+import { BLOCKCHAINS } from "../../utils/data/project-form-options";
 
 export default function Blockchain({ blockchain, setBlockchain }: any) {
   // State variables
   const [content, setContent] = useState<ReactElement>();
-  const [blockchain_selected, setBlockchainSelected] = useState<string>(
-    blockchain
-  );
+  const [blockchain_selected, setBlockchainSelected] =
+    useState<string>(blockchain);
 
   // Disclosure: NameModal
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -44,7 +37,7 @@ export default function Blockchain({ blockchain, setBlockchain }: any) {
           justifyContent="center"
           alignItems="center"
           gap="10px"
-          padding="2px 4px"
+          padding="4px 8px"
           fontSize="14px"
           border="1px solid white"
           borderRadius="5px"
@@ -57,36 +50,36 @@ export default function Blockchain({ blockchain, setBlockchain }: any) {
             background: "rgba(0, 0, 0, 0.4)",
           }}
         >
-          ⛓️  &lt;chain&gt;
+          ⛓️ &lt;chain&gt;
         </Text>
       );
     } else {
       // Display user-inputted blockchain
       setContent(
-        <Tooltip 
-          label={blockchain == "TBA"
-            ? "Blockchain to be announced"
-            : blockchain
+        <Tooltip
+          label={
+            blockchain == "TBA" ? "Blockchain to be announced" : blockchain
           }
           placement="right-start"
           arrowSize={12}
           hasArrow
         >
-          <Box 
+          <Box
             border="1px solid transparent"
             cursor="pointer"
             transition="all 200ms ease-in-out"
             _hover={{
-              padding:"0 8px",
+              padding: "0 8px",
               border: "1px solid white",
               borderRadius: "5px",
               filter: "brightness(0.8)",
             }}
           >
             <Image
-              src={Object.keys(BLOCKCHAINS).includes(blockchain) 
-                ? BLOCKCHAINS[blockchain]
-                : BLOCKCHAINS["Other"]
+              src={
+                Object.keys(BLOCKCHAINS).includes(blockchain)
+                  ? BLOCKCHAINS[blockchain]
+                  : BLOCKCHAINS["Other"]
               }
               width="30px"
               height="30px"
@@ -94,14 +87,14 @@ export default function Blockchain({ blockchain, setBlockchain }: any) {
             />
           </Box>
         </Tooltip>
-      )
+      );
     }
   }, [blockchain]);
 
   return (
     <Box onClick={onOpen}>
       {content}
-      <BlockchainModal 
+      <BlockchainModal
         blockchain={blockchain}
         setBlockchain={setBlockchain}
         blockchain_selected={blockchain_selected}
@@ -112,5 +105,3 @@ export default function Blockchain({ blockchain, setBlockchain }: any) {
     </Box>
   );
 }
-
-

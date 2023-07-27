@@ -10,15 +10,15 @@ export interface LAG {
 }
 
 export interface ArticleGroup {
-  category: string; 
+  category: string;
   articles: Article[];
 }
 
 export interface Article {
   [index: string]: string | undefined;
-  caption: string; 
+  caption: string;
   url: string;
-  title?: string; 
+  title?: string;
   description?: string;
   image?: string;
   category?: string;
@@ -28,11 +28,33 @@ export interface Article {
 // Link Preview
 export interface LinkPreview {
   [index: string]: string;
-  url: string; 
-  title: string; 
+  url: string;
+  title: string;
   description: string;
   image: string;
   source: string;
   error: any;
-};
+}
 
+export interface Project {
+  name: string;
+  studio: string;
+  thumbnail?: string;
+  blockchain?: string;
+  description?: string;
+  tagline?: string;
+  isTeam?: boolean;
+  fundraising?: boolean;
+  links?: string;
+  genres?: string[];
+  gallery?: string;
+  stage?: DevStatus | undefined;
+  owner?: number;
+}
+
+export enum DevStatus {
+  production = "production",
+  playableDemo = "playableDemo",
+  live = "live",
+  preProduction = "preProduction",
+}

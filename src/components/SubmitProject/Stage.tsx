@@ -13,7 +13,7 @@ import { useEffect, useState } from "react";
 import { ReactElement } from "react";
 
 // Useful Functions & Constants
-import { STAGES } from "../../data/stages";
+import { STAGES } from "../../utils/data/project-form-options";
 
 export default function Stage({ stage, setStage }: any) {
   // State variables
@@ -84,7 +84,8 @@ export default function Stage({ stage, setStage }: any) {
       {content}
       <StageModal
         stage={stage} setStage={setStage}
-        stage_selected={stage_selected} setStageSelected={setStageSelected}
+        stage_selected={stage_selected}
+        setStageSelected={setStageSelected}
         isOpen={isOpen} onClose={onClose}
       />
     </Box>

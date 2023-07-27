@@ -20,7 +20,7 @@ export default function Logo() {
         width="100%"
       >
         <Image 
-          src="./thecoreloop-logo-alt.png"
+          src="/thecoreloop-logo-alt.png"
           objectFit="cover"
           height="100px"
         />
