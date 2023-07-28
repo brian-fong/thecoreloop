@@ -7,9 +7,7 @@ const font = JetBrains_Mono({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: "thecoreloop",
   description: "Next-gen media co-op delivering insights and curating content at the intersection of gaming, social, and consumer tech.",
-  icons: {
-    icon: "/thecoreloop-favicon.png",
-  },
+  icons: { icon: "/thecoreloop-favicon.png" },
   openGraph: {
     title: "thecoreloop",
     description: "Next-gen media co-op delivering insights and curating content at the intersection of gaming, social, and consumer tech.",
