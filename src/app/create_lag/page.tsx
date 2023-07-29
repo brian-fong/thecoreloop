@@ -1,78 +1,232 @@
-export default function Create_LAG() {
+"use client";   // Next.js: enable Client component
+
+// Packages
+import React, { createContext, useEffect, useState } from "react";
+import { BsPlusLg as PlusIcon } from "react-icons/bs";
+
+// thecoreloop Components
+import Article from "@/components/create_lag/Article";
+import CategoryHeading from "@/components/create_lag/CategoryHeading";
+
+// utils
+import LAG_CATEGORIES from "@/utils/lag-categories";
+import { ILAG, ICategoryGroup } from "@/utils/types";
+
+// LAG Context
+const LookAtGaming = createContext({});
+
+
+export default function Create_LAG(): React.ReactElement {
+
+  const [LAG, setLAG] = useState<ILAG>({
+    num: -1,
+    date: "",
+    subheading: "",
+    content: LAG_CATEGORIES.map((category: string) => ({
+      category,
+      articles: [],
+    })),
+  });
+
+  useEffect(() => {
+    console.log("LAG: ", LAG);
+  }, [LAG]);
+
+  function renderCategories(): React.ReactElement[] {
+    let result: React.ReactElement[] = [];
+
+    for (let i = 0; i < LAG.content.length; i++) {
+      const category_group: ICategoryGroup = LAG.content[i];
+
+      const Articles: React.ReactElement[] = [];
+      for (let j = 0; j < category_group.articles.length; j++) {
+        // const article: IArticle = category_group.articles[j];
+        Articles.push(<Article key={j} />);
+      }
+
+      result.push(
+        <div className="category-container">
+          <CategoryHeading
+            key={i}
+            category={category_group.category}
+          />
+          <div className="article-list">
+            {Articles}
+          </div>
+          <button
+            key={"a" + i}
+            className="btn add-entry"
+            onClick={() => addArticle(category_group.category)}
+          >
+            <PlusIcon color="white" size="24px" />
+          </button>
+        </div>
+      );
+    }
+
+    return result;
+  }
+
+  function handleChange(LAG_param: string): void {
+    switch (LAG_param) {
+      case "num": {
+        const lag_num: HTMLInputElement = document.getElementById(
+          "lag-number"
+        ) as HTMLInputElement;
+
+        try {
+          const num: number = Number(lag_num.value);
+          setLAG({ ...LAG, num });
+        } catch (err) {
+          console.log(err);
+        }
+      } case "date": {
+        const lag_date: HTMLInputElement = document.getElementById(
+          "lag-date"
+        ) as HTMLInputElement;
+
+        try {
+          const date: string = lag_date.value;
+          setLAG({ ...LAG, date });
+        } catch (err) {
+          console.log(err);
+        }
+      } case "subheading": {
+        const lag_subheading: HTMLInputElement = document.getElementById(
+          "lag-subheading"
+        ) as HTMLInputElement;
+
+        try {
+          const subheading: string = lag_subheading.value;
+          setLAG({ ...LAG, subheading });
+        } catch (err) {
+          console.log(err);
+        }
+      } case "content": {
+        // let content: ICategoryGroup[] = [];
+        const cat_cont: HTMLDivElement = document.getElementById(
+          "category-container"
+        ) as HTMLDivElement;
+        console.log("Children: ", cat_cont.children);
+      }
+    }
+  }
+
+  function handleSubmit(): void {
+    console.log("LAG: ", LAG);
+  }
+
+  function addArticle(category: string): void {
+    const content: ICategoryGroup[] = LAG.content;
+    const category_group: ICategoryGroup = content.filter(category_group => (
+      category_group.category == category
+    ))[0];
+    category_group.articles.push({
+      caption: "",
+      link: "",
+      alt_text: "",
+    });
+    setLAG({ ...LAG, content });
+  }
+
   return (
-    <main>
-      <div className="column-container">
+    <LookAtGaming.Provider value={{LAG, setLAG}}>
+      <main>
+        <div className="column-container">
 
-        {/* TCL Logo Container */}
-        <div className="tcl-container black">
-          <div className="logo-img-container">
-            <img
-              src="/thecoreloop-logo-transparent.png"
-              className="logo-img"
-            />
+          {/* TCL Logo Container */}
+          <div className="tcl-container purple">
+            <div className="logo-img-container">
+              <img
+                src="/thecoreloop-logo-transparent.png"
+                className="logo-img"
+              />
+            </div>
+
+            <p className="quote">
+              UI Inspired by{" "}
+              <a
+                href="https://classic.curve.fi/"
+                className="curve-link"
+                tabIndex={-1}
+              >
+                Curve Finance (Classic)
+              </a>
+            </p>
           </div>
 
-          <p className="quote">
-            UI Inspired by{" "}
-            <a
-              href="https://classic.curve.fi/"
-              className="curve-link"
-              tabIndex={-1}
+          {/* Create LAG Container */}
+          <div className="tcl-container gray">
+            <h2 className="lag-heading">
+              Create Look at Gaming
+            </h2>
+
+            <div className="num-date-container">
+              <div className="input-container small row">
+                <label
+                  className="row"
+                  htmlFor="lag-number"
+                >
+                  Look at Gaming #:
+                </label>
+                <input
+                  id="lag-number"
+                  className="input lag-number"
+                  type="text"
+                  maxLength={3}
+                  placeholder="123"
+                  autoFocus={true}
+                  autoComplete="off"
+                  onChange={(event) => {
+                    event.target.value = event.target.value.trim();
+                    handleChange("num");
+                  }}
+                />
+              </div>
+
+              <div className="input-container small row">
+                <label
+                  className="row"
+                  htmlFor="lag-date"
+                >
+                  Date:
+                </label>
+                <input
+                  id="lag-date"
+                  className="input lag-date"
+                  type="date"
+                  onChange={() => handleChange("date")}
+                />
+              </div>
+            </div>
+
+            <div className="input-container column">
+              <label
+                className="column"
+                htmlFor="lag-subheading"
+              >
+                Subheading:
+              </label>
+              <textarea
+                id="lag-subheading"
+                className="input lag-textarea"
+                placeholder="gm gm"
+              />
+            </div>
+
+            <div id="category-group-container">
+              {renderCategories()}
+            </div>
+
+            <button
+              className="btn lag-submit"
+              onClick={handleSubmit}
             >
-              Curve Finance (Classic)
-            </a>
-          </p>
-        </div>
-
-        <div className="tcl-container gray">
-          <h2 className="lag-heading">
-            Create Look at Gaming
-          </h2>
-
-          <div className="num-date-container">
-            <div className="input-container small row">
-              <label className="lag-label row">
-                Look at Gaming #
-              </label>
-              <input
-                className="input lag-number"
-                type="text"
-                maxLength={3}
-                placeholder="000"
-                autoFocus={true}
-              />
-            </div>
-
-            <div className="input-container small row">
-              <label className="lag-label row">
-                Date
-              </label>
-              <input
-                className="input lag-date"
-                type="date"
-              />
-            </div>
-          </div>
-
-          <div className="input-container column">
-            <label className="lag-label column">
-              Subheading
-            </label>
-            <textarea
-              className="input lag-subheading"
-            />
-          </div>
-
-          <div className="input-container column">
-            <label className="lag-label column">
-              Special Insights
-            </label>
-            <textarea
-              className="input lag-subheading"
-            />
+              Submit
+            </button>
           </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </LookAtGaming.Provider>
   );
 }
