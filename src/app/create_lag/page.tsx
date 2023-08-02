@@ -19,7 +19,7 @@ const LookAtGaming = createContext({});
 export default function Create_LAG(): React.ReactElement {
 
   const [LAG, setLAG] = useState<ILAG>({
-    num: -1,
+    num: 0,
     date: "",
     subheading: "",
     content: LAG_CATEGORIES.map((category: string) => ({
@@ -41,11 +41,19 @@ export default function Create_LAG(): React.ReactElement {
       const Articles: React.ReactElement[] = [];
       for (let j = 0; j < category_group.articles.length; j++) {
         // const article: IArticle = category_group.articles[j];
-        Articles.push(<Article key={j} />);
+        Articles.push(
+          <Article
+            key={j}
+            category={category_group.category}
+            index={j}
+            context={LookAtGaming}
+            updateLAG={updateLAG}
+          />
+        );
       }
 
       result.push(
-        <div className="category-container">
+        <div key={i} className="category-container">
           <CategoryHeading
             key={i}
             category={category_group.category}
@@ -55,7 +63,7 @@ export default function Create_LAG(): React.ReactElement {
           </div>
           <button
             key={"a" + i}
-            className="btn add-entry"
+            className="btn add-article"
             onClick={() => addArticle(category_group.category)}
           >
             <PlusIcon color="white" size="24px" />
@@ -67,7 +75,7 @@ export default function Create_LAG(): React.ReactElement {
     return result;
   }
 
-  function handleChange(LAG_param: string): void {
+  function updateLAG(LAG_param: string): void {
     switch (LAG_param) {
       case "num": {
         const lag_num: HTMLInputElement = document.getElementById(
@@ -77,6 +85,7 @@ export default function Create_LAG(): React.ReactElement {
         try {
           const num: number = Number(lag_num.value);
           setLAG({ ...LAG, num });
+          return;
         } catch (err) {
           console.log(err);
         }
@@ -88,6 +97,7 @@ export default function Create_LAG(): React.ReactElement {
         try {
           const date: string = lag_date.value;
           setLAG({ ...LAG, date });
+          return;
         } catch (err) {
           console.log(err);
         }
@@ -99,15 +109,50 @@ export default function Create_LAG(): React.ReactElement {
         try {
           const subheading: string = lag_subheading.value;
           setLAG({ ...LAG, subheading });
+          return;
         } catch (err) {
           console.log(err);
         }
       } case "content": {
-        // let content: ICategoryGroup[] = [];
-        const cat_cont: HTMLDivElement = document.getElementById(
-          "category-container"
+        const content: ICategoryGroup[] = [];
+
+        const cgc: HTMLDivElement = document.getElementById(
+          "category-group-container"
         ) as HTMLDivElement;
-        console.log("Children: ", cat_cont.children);
+
+        for (let i = 0; i < cgc.children.length; i++) {
+          const cc: HTMLDivElement = cgc.children[i] as HTMLDivElement;
+          const category: string = cc
+            .children[0]
+            .children[0]
+            .textContent!;
+          const category_group: ICategoryGroup = {
+            category,
+            articles: [],
+          };
+          for (let j = 0; j < cc.children[1].children.length; j++) {
+            const article = cc
+              .children[1]
+              .children[j]
+              .children[0]
+              .children;
+            category_group.articles.push({
+              caption: (
+                article[0].lastChild as HTMLTextAreaElement
+              ).value || "",
+              link: (
+                article[1] as HTMLInputElement
+              ).value || "",
+              alt_text: (
+                article[2] as HTMLInputElement
+              ).value || "",
+            });
+          }
+          content.push(category_group);
+        }
+
+        setLAG({ ...LAG, content });
+        return;
       }
     }
   }
@@ -179,7 +224,7 @@ export default function Create_LAG(): React.ReactElement {
                   autoComplete="off"
                   onChange={(event) => {
                     event.target.value = event.target.value.trim();
-                    handleChange("num");
+                    updateLAG("num");
                   }}
                 />
               </div>
@@ -195,7 +240,7 @@ export default function Create_LAG(): React.ReactElement {
                   id="lag-date"
                   className="input lag-date"
                   type="date"
-                  onChange={() => handleChange("date")}
+                  onChange={() => updateLAG("date")}
                 />
               </div>
             </div>
@@ -211,6 +256,7 @@ export default function Create_LAG(): React.ReactElement {
                 id="lag-subheading"
                 className="input lag-textarea"
                 placeholder="gm gm"
+                onChange={() => updateLAG("subheading")}
               />
             </div>
 

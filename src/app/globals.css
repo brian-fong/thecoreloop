@@ -8,14 +8,15 @@
 /* thecoreloop colors */
 :root {
   --tcl-background: #292C35;
-  --tcl-yellow: #FCFB25;
+  --tcl-black: #212331;
   --tcl-blue: #3E50A2;
   --tcl-cyan: #6AF2EE;
-  --tcl-black: #212331;
-  --tcl-green: #51A576;
   --tcl-gray: #313244;
   --tcl-gray-alt: #797C8D;
+  --tcl-green: #51A576;
   --tcl-purple: #673CAD;
+  --tcl-red: #A55151;
+  --tcl-yellow: #FCFB25;
 }
 
 html, body {
@@ -262,19 +263,23 @@ label.category {
   box-sizing: border-box;
 }
 
-.article:last-child {
-  margin-bottom: 1rem;
-}
-
-.article-list .article {
+.article {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: start;
   align-items: start;
   width: 100%;
   border: none;
   border-radius: 4px;
   box-sizing: border-box;
+}
+
+.article:last-child {
+  margin-bottom: 1rem;
+}
+
+.article .content {
+  width: 100%;
 }
 
 .article .row {
@@ -298,12 +303,8 @@ label.category {
   box-sizing: border-box;
 }
 
-.article .caption .icon {
-  height: 80px;
-}
-
 .article textarea {
-  height: 80px;
+  height: 82px;
   resize: none;
 }
 
@@ -314,30 +315,32 @@ label.category {
 }
 
 .article .caption .icon {
+  height: 82px;
+  background-color: var(--tcl-gray-alt);
   border-radius: 4px 0 0 0;
 }
 
 .article .caption .input {
-  border-radius: 0 4px 0 0;
-  border: 1px solid var(--tcl-gray-alt);
+  border-top: 1px solid var(--tcl-gray-alt);
 }
 
 .article .link .icon {
+  background-color: var(--tcl-gray-alt);
   border-radius: 0;
 }
 
 .article .link .input {
-  border: 1px solid var(--tcl-gray-alt);
-  border-radius: 0;
+  border-top: 1px solid var(--tcl-gray-alt);
+  border-bottom: 1px solid var(--tcl-gray-alt);
 }
 
 .article .alt-text .icon {
+  background-color: var(--tcl-gray-alt);
   border-radius: 0 0 0 4px;
 }
 
 .article .alt-text .input {
-  border: 1px solid var(--tcl-gray-alt);
-  border-radius: 0 0 4px 0;
+  border-bottom: 1px solid var(--tcl-gray-alt);
 }
 
 .btn {
@@ -365,12 +368,20 @@ button:hover {
   filter: brightness(70%);
 }
 
-.btn.add-entry {
+.btn.add-article {
   padding: 0 1rem;
   width: 100%;
   height: 40px;
   background-color: var(--tcl-gray-alt);
   box-sizing: border-box;
+}
+
+.btn.delete {
+  height: 162px;
+  background-color: var(--tcl-red);
+  border: 1px solid var(--tcl-gray-alt);
+  border-left: none;
+  border-radius: 0 4px 4px 0;
 }
 
 .btn.lag-submit {
