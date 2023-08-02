@@ -12,7 +12,7 @@ Format: `<emoji> <category> [<scope>]: <message>`
 
 | Category      | Use                                                     |
 |---------------|:--------------------------------------------------------|
-| 🏗️ build      | when changing the build system or external dependencies |
+| 📦 build      | when changing the build system or external dependencies |
 | ✨ feat       | when adding a new feature                               |
 | 📝 docs       | when adding comments or documentation                   |
 | 🐛 fix        | when fixing a bug                                       |
