@@ -1,16 +1,23 @@
 "use client";   // Next.js: enable Client component
 
 // Packages
-import React, { createContext, useEffect, useState } from "react";
-import { BsPlusLg as PlusIcon } from "react-icons/bs";
+import React, {
+  createContext,
+  useEffect,
+  useState
+} from "react";
+import {
+  BsPlusLg as PlusIcon,
+} from "react-icons/bs";
 
 // thecoreloop Components
 import Article from "@/components/create_lag/Article";
 import CategoryHeading from "@/components/create_lag/CategoryHeading";
 
 // utils
-import LAG_CATEGORIES from "@/utils/lag-categories";
 import { ILAG, ICategoryGroup } from "@/utils/types";
+import LAG_CATEGORIES from "@/utils/lag-categories";
+import { formatDate, getTodaysDate } from "@/utils/date";
 
 // LAG Context
 const LookAtGaming = createContext({});
@@ -95,7 +102,7 @@ export default function Create_LAG(): React.ReactElement {
         ) as HTMLInputElement;
 
         try {
-          const date: string = lag_date.value;
+          const date: string = formatDate(lag_date.value);
           setLAG({ ...LAG, date });
           return;
         } catch (err) {
@@ -200,76 +207,120 @@ export default function Create_LAG(): React.ReactElement {
             </p>
           </div>
 
-          {/* Create LAG Container */}
-          <div className="tcl-container gray">
-            <h2 className="lag-heading">
-              Create Look at Gaming
-            </h2>
-
-            <div className="num-date-container">
-              <div className="input-container small row">
-                <label
-                  className="row"
-                  htmlFor="lag-number"
-                >
-                  Look at Gaming #:
-                </label>
-                <input
-                  id="lag-number"
-                  className="input lag-number"
-                  type="text"
-                  maxLength={3}
-                  placeholder="123"
-                  autoFocus={true}
-                  autoComplete="off"
-                  onChange={(event) => {
-                    event.target.value = event.target.value.trim();
-                    updateLAG("num");
-                  }}
-                />
-              </div>
-
-              <div className="input-container small row">
-                <label
-                  className="row"
-                  htmlFor="lag-date"
-                >
-                  Date:
-                </label>
-                <input
-                  id="lag-date"
-                  className="input lag-date"
-                  type="date"
-                  onChange={() => updateLAG("date")}
-                />
-              </div>
+          {/* Create LAG Description Container */}
+          <div className="tcl-container gray description">
+            <div>
+              <h2 className="lag-heading">
+                Look at Gaming
+              </h2>
+              <p className="lag-description">
+                A look at some gaming news headlines I found interesting. It's important to look at both web2 and web3 gaming industry news so that we can build the future of gaming.
+              </p>
             </div>
+          </div>
 
-            <div className="input-container column">
-              <label
-                className="column"
-                htmlFor="lag-subheading"
+          <div className="row-container">
+            {/* Create LAG Container */}
+            <div className="tcl-container gray">
+              <h2 className="lag-heading">
+                Create
+              </h2>
+
+              <div className="num-date-container">
+                <div className="input-container small row">
+                  <label
+                    className="row"
+                    htmlFor="lag-number"
+                  >
+                    Look at Gaming #:
+                  </label>
+                  <input
+                    id="lag-number"
+                    className="input lag-number"
+                    type="text"
+                    maxLength={4}
+                    placeholder="1234"
+                    autoFocus={true}
+                    autoComplete="off"
+                    onChange={(event) => {
+                      event.target.value = event.target.value.trim();
+                      updateLAG("num");
+                    }}
+                  />
+                </div>
+
+                <div className="input-container small row">
+                  <label
+                    className="row"
+                    htmlFor="lag-date"
+                  >
+                    Date:
+                  </label>
+                  <input
+                    id="lag-date"
+                    className="input lag-date"
+                    type="date"
+                    onChange={() => updateLAG("date")}
+                  />
+                </div>
+              </div>
+
+              <div className="input-container column">
+                <label
+                  className="column"
+                  htmlFor="lag-subheading"
+                >
+                  Subheading:
+                </label>
+                <textarea
+                  id="lag-subheading"
+                  className="input lag-textarea"
+                  placeholder="gm gm"
+                  onChange={() => updateLAG("subheading")}
+                />
+              </div>
+
+              <div id="category-group-container">
+                {renderCategories()}
+              </div>
+
+              <button
+                className="btn lag-submit"
+                onClick={handleSubmit}
               >
-                Subheading:
-              </label>
-              <textarea
-                id="lag-subheading"
-                className="input lag-textarea"
-                placeholder="gm gm"
-                onChange={() => updateLAG("subheading")}
-              />
+                Submit
+              </button>
             </div>
 
-            <div id="category-group-container">
-              {renderCategories()}
-            </div>
+            {/* Preview LAG Container */}
+            <div className="tcl-container gray">
+              <h2 className="lag-heading">
+                Telegram Preview
+              </h2>
 
-            <button
-              className="btn lag-submit"
-              onClick={handleSubmit}
-            >
-              Submit
-            </button>
+              <div className="lag-preview">
+                <h3 className="heading">
+                  {`Look at Gaming #`}
+                  <span>
+                    {LAG.num
+                      ? LAG.num
+                      : "XYZ"
+                    }
+                  </span>
+                  {` | `}
+                  <span>
+                    {LAG.date
+                      ? LAG.date
+                      : getTodaysDate()
+                    }
+                  </span>
+                </h3>
+
+                <p className="subheading">
+                  {LAG.subheading}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </main>

@@ -9,11 +9,12 @@
 :root {
   --tcl-background: #292C35;
   --tcl-black: #212331;
-  --tcl-blue: #3E50A2;
+  --tcl-blue: #223045;
   --tcl-cyan: #6AF2EE;
   --tcl-gray: #313244;
   --tcl-gray-alt: #797C8D;
   --tcl-green: #51A576;
+  --tcl-pink: #F93CA3;
   --tcl-purple: #673CAD;
   --tcl-red: #A55151;
   --tcl-yellow: #FCFB25;
@@ -29,10 +30,11 @@ main {
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  min-width: 600px;
+  min-width: 800px;
   min-height: 100vh;
-  padding: 0 40px;
+  padding: 4rem;
   background-color: var(--tcl-background);
+  transition: all 200ms ease-in-out;
 }
 
 .column-container {
@@ -41,10 +43,28 @@ main {
   justify-content: start;
   align-items: center;
   gap: 4rem;
-  padding: 50px 20px;
   width: 100%;
-  min-width: 600px;
+  box-sizing: border-box;
+}
+
+.column-container .tcl-container {
   max-width: 800px;
+}
+
+.row-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: start;
+  flex-wrap: wrap;
+  gap: 4rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.row-container .tcl-container {
+  width: 100%;
+  max-width: 780px;
 }
 
 .tcl-container {
@@ -56,6 +76,7 @@ main {
   padding: 2rem;
   position: relative;
   width: 100%;
+  min-width: 600px;
   min-height: 200px;
   border: 6px double white;
   border-radius: 8px;
@@ -103,6 +124,26 @@ main {
   font-weight: bold;
 }
 
+.tcl-container.description {
+  padding: 2rem;
+  height: min-content;
+  min-height: 0;
+  background-color: var(--tcl-blue);
+}
+
+.lag-italic {
+  color: var(--tcl-pink);
+  font-size: 18px;
+}
+
+.lag-description {
+  margin: 1rem 0 0;
+  padding: 0;
+  color: white;
+  text-align: justify;
+  line-height: 28px;
+}
+
 .lag-heading {
   margin: 0;
   padding: 0;
@@ -118,6 +159,8 @@ main {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
   width: 100%
 }
 
@@ -141,13 +184,7 @@ main {
   width: 100%
 }
 
-label {
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-}
-
-label {
+.tcl-container label {
   display: flex;
   flex-direction: row;
   justify-content: start;
@@ -155,18 +192,31 @@ label {
   margin: 0;
   padding: 0;
   height: 40px;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
   background-color: transparent;
   box-sizing: border-box;
 }
 
-label.row {
+.tcl-container label.row {
   border: none;
   border-radius: 4px 0 0 4px;
 }
 
-label.column {
+.tcl-container label.column {
   border: none;
   border-radius: 4px 4px 0 0;
+}
+
+.tcl-container label.category {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: -20px;
+  padding: 0 1rem;
+  background-color: var(--tcl-gray);
+  border-radius: 8px;
 }
 
 .input {
@@ -187,7 +237,7 @@ label.column {
 }
 
 .input.lag-number {
-  width: 70px;
+  width: 75px;
   letter-spacing: 2px;
   border: 1px solid var(--tcl-gray-alt);
 }
@@ -198,13 +248,16 @@ label.column {
 }
 
 .input.lag-textarea {
+  margin-bottom: 1rem;
   width: 100%;
-  min-height: 100px;
+  min-height: 120px;
+  max-height: 1000px;
   border: 1px solid var(--tcl-gray-alt);
+  resize: vertical;
 }
 
-input:focus,
-textarea:focus {
+.tcl-container input:focus,
+.tcl-container textarea:focus {
   z-index: 0;
   outline: 1px solid white;
   border: none;
@@ -228,9 +281,9 @@ textarea:focus {
   gap: 0.5rem;
   position: relative;
   width: 100%;
-  padding: 1rem;
-  border: 1px solid var(--tcl-gray-alt);
-  border-radius: 4px;
+  padding: 1.5rem;
+  border: 2px solid var(--tcl-gray-alt);
+  border-radius: 8px;
   box-sizing: border-box;
 }
 
@@ -241,16 +294,6 @@ textarea:focus {
   align-items: center;
   gap: 1rem;
   width: 100%
-}
-
-label.category {
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  top: -20px;
-  padding: 0 1rem;
-  background-color: var(--tcl-gray);
-  border-radius: 4px;
 }
 
 .article-list {
@@ -303,7 +346,7 @@ label.category {
   box-sizing: border-box;
 }
 
-.article textarea {
+.tcl-container .article textarea {
   height: 82px;
   resize: none;
 }
@@ -357,8 +400,8 @@ label.category {
   transition: all 100ms linear;
 }
 
-button:focus,
-button:hover {
+.tcl-container button:focus,
+.tcl-container button:hover {
   outline: none;
   filter: brightness(80%);
 }
@@ -388,3 +431,29 @@ button:hover {
   margin-left: auto;
 }
 
+.lag-preview {
+  margin: 0;
+  padding: 1rem;
+  width: 100%;
+  min-height: 200px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.lag-preview .heading {
+  margin: 0 0 1rem;
+  padding: 0;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.lag-preview .subheading {
+  margin: 0;
+  padding: 0;
+  font-style: italic;
+  text-align: justify;
+  white-space: pre-wrap;
+}
