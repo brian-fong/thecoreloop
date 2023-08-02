@@ -8,6 +8,7 @@ import React, {
 } from "react";
 import {
   BsPlusLg as PlusIcon,
+  BsTelegram as TelegramIcon,
 } from "react-icons/bs";
 
 // thecoreloop Components
@@ -294,9 +295,12 @@ export default function Create_LAG(): React.ReactElement {
 
             {/* Preview LAG Container */}
             <div className="tcl-container gray">
-              <h2 className="lag-heading">
-                Telegram Preview
-              </h2>
+              <div className="preview-heading-container">
+                <TelegramIcon size="2rem" color="#229ED9" />
+                <h2 className="lag-heading preview">
+                  Telegram Preview
+                </h2>
+              </div>
 
               <div className="lag-preview">
                 <h3 className="heading">
