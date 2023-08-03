@@ -1,0 +1,48 @@
+.logo .img-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%
+}
+
+.logo img.logo-img {
+  margin-bottom: 1rem;
+  width: auto;
+  height: 120px;
+}
+
+.logo .quote {
+  margin: 1rem;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  color: white;
+  font-style: italic;
+}
+
+.logo a.curve-link {
+  position: relative;
+  padding-bottom: 2px;
+  color: var(--tcl-yellow);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.logo a.curve-link::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--tcl-yellow);
+  transform: scaleX(0);
+  transform-origin: top left;
+  transition: transform 200ms ease;
+}
+
+.logo a:hover::before {
+  transform: scaleX(1);
+}
