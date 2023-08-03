@@ -26,7 +26,7 @@ export default function LAG_Create({
       for (let j = 0; j < category_group.articles.length; j++) {
         Articles.push(
           <Article
-            key={uuid()}
+            key={j}
             category={category_group.category}
             index={j}
             context={context}
@@ -36,7 +36,7 @@ export default function LAG_Create({
       }
 
       result.push(
-        <div key={uuid()} className={styles["category-container"]}>
+        <div key={"a" + i} className={styles["category-container"]}>
           <div className={styles["category"]}>
             <label className={styles["label"]}>
               {category_group.category}
@@ -109,10 +109,12 @@ export default function LAG_Create({
             .children[0]
             .children[0]
             .textContent!;
+
           const category_group: ICategoryGroup = {
             category,
             articles: [],
           };
+
           for (let j = 0; j < cc.children[1].children.length; j++) {
             const article = cc
               .children[1]

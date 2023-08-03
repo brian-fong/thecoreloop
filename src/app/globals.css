@@ -1,3 +1,10 @@
+/* Prefer dark theme */
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+
 /* thecoreloop colors */
 :root {
   --tcl-background: #292C35;
