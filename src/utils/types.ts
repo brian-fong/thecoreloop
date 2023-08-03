@@ -3,6 +3,7 @@ export interface ILAG {
   date: string;
   subheading: string;
   content: ICategoryGroup[];
+  footer: string;
 };
 
 export interface ICategoryGroup {

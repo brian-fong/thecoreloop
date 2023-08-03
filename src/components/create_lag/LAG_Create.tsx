@@ -214,7 +214,7 @@ export default function LAG_Create({
         </label>
         <textarea
           id="lag-subheading"
-          className={styles["input"]}
+          className={styles["textarea"]}
           placeholder="gm gm"
           onChange={() => updateLAG("subheading")}
           value={LAG.subheading}
@@ -226,6 +226,22 @@ export default function LAG_Create({
         className={styles["category-group-container"]}
       >
         {renderCategories()}
+      </div>
+
+      <div className={styles["footer-container"]}>
+        <label
+          className={styles["label"]}
+          htmlFor="lag-footer"
+        >
+          Footer:
+        </label>
+        <textarea
+          id="lag-footer"
+          className={styles["textarea"]}
+          placeholder="Drop a gg!"
+          onChange={() => updateLAG("footer")}
+          value={LAG.footer}
+        />
       </div>
     </div>
 );

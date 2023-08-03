@@ -87,7 +87,22 @@ export default function LAG_Preview({
           {LAG.subheading}
         </p>
 
+        {LAG.subheading
+          ? <p className="separator">_____</p>
+          : null
+        }
+
         {renderCategories()}
+
+        {LAG.footer
+          ? <p className="separator">_____</p>
+          : null
+        }
+
+        {LAG.footer
+          ? <p className={styles["footer"]}>{LAG.footer}</p>
+          : null
+        }
       </div>
     </div>
   );

@@ -125,6 +125,7 @@ You can read more about this in the Spotlight section.`,
       ],
     },
   ],
+  footer: "Drop a gg!",
 }
 
 export default LAG_SAMPLE;

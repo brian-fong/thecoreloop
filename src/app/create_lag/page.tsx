@@ -26,6 +26,7 @@ export default function Create_LAG(): React.ReactElement {
       category,
       articles: [],
     })),
+    footer: "",
   };
 
   // const [LAG, setLAG] = useState<ILAG>(LAG_EMPTY);

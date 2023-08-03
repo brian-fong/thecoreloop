@@ -50,11 +50,28 @@
   align-items: start;
   width: 100%;
 
-  .input {
+  .textarea {
     margin-bottom: 1rem;
     width: 100%;
     min-height: 200px;
     max-height: 1000px;
+    border: 1px solid var(--tcl-gray-alt);
+    resize: vertical;
+  }
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  width: 100%;
+
+  .textarea {
+    margin-bottom: 1rem;
+    width: 100%;
+    min-height: 100px;
+    max-height: 500px;
     border: 1px solid var(--tcl-gray-alt);
     resize: vertical;
   }
