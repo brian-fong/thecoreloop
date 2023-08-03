@@ -1,4 +1,3 @@
-// Packages
 import React, { useContext } from "react";
 import {
   BsChatRight as ChatIcon,
@@ -6,9 +5,8 @@ import {
   BsFonts as FontIcon,
   BsXLg as DeleteIcon,
 } from "react-icons/bs";
-
-// utils
-import { ICategoryGroup } from "@/utils/types";
+import styles from "./LAG_Create.module.css";
+import { ICategoryGroup, ILAG } from "@/utils/types";
 
 
 export default function Article({
@@ -18,7 +16,9 @@ export default function Article({
   updateLAG,
 }: any): React.ReactElement {
 
-  const { LAG, setLAG } = useContext(context) as any;
+  const { LAG, setLAG }: {
+    LAG: ILAG, setLAG: any
+  } = useContext(context) as any;
 
   function handleDelete() {
     const content: ICategoryGroup[] = [...LAG.content];
@@ -33,14 +33,14 @@ export default function Article({
   }
 
   return (
-    <div className="article" draggable>
-      <div className="content">
-        <div className="row caption">
-          <div className="icon">
+    <div className={styles["article"]}>
+      <div className={styles["content"]}>
+        <div className={`${styles["row"]} ${styles["caption"]}`}>
+          <div className={styles["icon"]}>
             <ChatIcon size="18px" />
           </div>
           <textarea
-            className="input"
+            className={styles["textarea"]}
             placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
             onChange={() => updateLAG("content")}
             value={LAG.content.filter((category_group: ICategoryGroup) => (
@@ -48,32 +48,38 @@ export default function Article({
             ))[0].articles[index].caption}
           />
         </div>
-        <div className="row link">
-          <div className="icon">
+        <div className={`${styles["row"]} ${styles["link"]}`}>
+          <div className={styles["icon"]}>
             <LinkIcon size="18px" />
           </div>
           <input
             type="text"
-            className="input"
+            className={styles["input"]}
             placeholder="https://loremipsum.io/"
             onChange={() => updateLAG("content")}
+            value={LAG.content.filter((category_group: ICategoryGroup) => (
+              category_group.category == category
+            ))[0].articles[index].link}
           />
         </div>
-        <div className="row alt-text">
-          <div className="icon">
+        <div className={`${styles["row"]} ${styles["alt-text"]}`}>
+          <div className={styles["icon"]}>
             <FontIcon size="18px" />
           </div>
           <input
             type="text"
-            className="input"
+            className={styles["input"]}
             placeholder="Alt-Text for Hyperlink"
             onChange={() => updateLAG("content")}
+            value={LAG.content.filter((category_group: ICategoryGroup) => (
+              category_group.category == category
+            ))[0].articles[index].alt_text}
           />
         </div>
       </div>
 
       <button
-        className="btn delete"
+        className={styles["delete"]}
         onClick={handleDelete}
       >
         <DeleteIcon color="white" size="24px" />

@@ -1,23 +1,20 @@
-// Packages
 import React, { useContext } from "react";
 import {
   BsPlusLg as PlusIcon,
 } from "react-icons/bs";
-
-// thecoreloop Components
+import { v4 as uuid } from "uuid";
 import Article from "@/components/create_lag/Article";
-import CategoryHeading from "@/components/create_lag/CategoryHeading";
-
-// utils
-import { ICategoryGroup } from "@/utils/types";
-import { formatDate } from "@/utils/date";
+import { ICategoryGroup, ILAG } from "@/utils/types";
+import styles from "./LAG_Create.module.css"
 
 
 export default function LAG_Create({
   context,
 }: any): React.ReactElement {
 
-  const { LAG, setLAG } = useContext(context) as any;
+  const { LAG, setLAG }: {
+    LAG: ILAG, setLAG: any
+  } = useContext(context) as any;
 
   function renderCategories(): React.ReactElement[] {
     let result: React.ReactElement[] = [];
@@ -27,10 +24,9 @@ export default function LAG_Create({
 
       const Articles: React.ReactElement[] = [];
       for (let j = 0; j < category_group.articles.length; j++) {
-        // const article: IArticle = category_group.articles[j];
         Articles.push(
           <Article
-            key={j}
+            key={uuid()}
             category={category_group.category}
             index={j}
             context={context}
@@ -40,17 +36,17 @@ export default function LAG_Create({
       }
 
       result.push(
-        <div key={i} className="category-container">
-          <CategoryHeading
-            key={i}
-            category={category_group.category}
-          />
-          <div className="article-list">
+        <div key={uuid()} className={styles["category-container"]}>
+          <div className={styles["category"]}>
+            <label className={styles["label"]}>
+              {category_group.category}
+            </label>
+          </div>
+          <div className={styles["article-container"]}>
             {Articles}
           </div>
           <button
-            key={"a" + i}
-            className="btn add-article"
+            className={styles["add"]}
             onClick={() => addArticle(category_group.category)}
           >
             <PlusIcon color="white" size="24px" />
@@ -82,7 +78,7 @@ export default function LAG_Create({
         ) as HTMLInputElement;
 
         try {
-          const date: string = formatDate(lag_date.value);
+          const date: string = lag_date.value;
           setLAG({ ...LAG, date });
           return;
         } catch (err) {
@@ -123,15 +119,16 @@ export default function LAG_Create({
               .children[j]
               .children[0]
               .children;
+
             category_group.articles.push({
               caption: (
                 article[0].lastChild as HTMLTextAreaElement
               ).value || "",
               link: (
-                article[1] as HTMLInputElement
+                article[1].lastChild as HTMLInputElement
               ).value || "",
               alt_text: (
-                article[2] as HTMLInputElement
+                article[2].lastChild as HTMLInputElement
               ).value || "",
             });
           }
@@ -146,9 +143,9 @@ export default function LAG_Create({
 
   function addArticle(category: string): void {
     const content: ICategoryGroup[] = LAG.content;
-    const category_group: ICategoryGroup = content.filter(category_group => (
-      category_group.category == category
-    ))[0];
+    const category_group: ICategoryGroup = content.filter(
+      category_group => category_group.category == category
+    )[0];
     category_group.articles.push({
       caption: "",
       link: "",
@@ -161,24 +158,23 @@ export default function LAG_Create({
     console.log("LAG: ", LAG);
   }
 
-
   return (
-    <div className="tcl-container gray">
-      <h2 className="lag-heading">
-        Create
+    <div className={`tcl-container gray ${styles["create-section"]}`}>
+      <h2>
+        Create LAG
       </h2>
 
-      <div className="num-date-container">
-        <div className="input-container small row">
+      <div className={styles["num-date-container"]}>
+        <div className={styles["row"]}>
           <label
-            className="row"
+            className={styles["label"]}
             htmlFor="lag-number"
           >
             Look at Gaming #:
           </label>
           <input
             id="lag-number"
-            className="input lag-number"
+            className={styles["lag-number"]}
             type="text"
             maxLength={4}
             placeholder="1234"
@@ -188,50 +184,49 @@ export default function LAG_Create({
               event.target.value = event.target.value.trim();
               updateLAG("num");
             }}
+            value={LAG.num}
           />
         </div>
 
-        <div className="input-container small row">
+        <div className={styles["row"]}>
           <label
-            className="row"
+            className={styles["label"]}
             htmlFor="lag-date"
           >
             Date:
           </label>
           <input
             id="lag-date"
-            className="input lag-date"
+            className={styles["lag-date"]}
             type="date"
             onChange={() => updateLAG("date")}
+            value={LAG.date}
           />
         </div>
       </div>
 
-      <div className="input-container column">
+      <div className={styles["subheading-container"]}>
         <label
-          className="column"
+          className={styles["label"]}
           htmlFor="lag-subheading"
         >
           Subheading:
         </label>
         <textarea
           id="lag-subheading"
-          className="input lag-textarea"
+          className={styles["input"]}
           placeholder="gm gm"
           onChange={() => updateLAG("subheading")}
+          value={LAG.subheading}
         />
       </div>
 
-      <div id="category-group-container">
+      <div
+        id="category-group-container"
+        className={styles["category-group-container"]}
+      >
         {renderCategories()}
       </div>
-
-      <button
-        className="btn lag-submit"
-        onClick={handleSubmit}
-      >
-        Submit
-      </button>
     </div>
 );
 }
