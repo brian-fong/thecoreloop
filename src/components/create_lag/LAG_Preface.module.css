@@ -1,0 +1,17 @@
+.preface {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  gap: 1rem;
+  background-color: var(--tcl-blue);
+}
+
+.preface .heading {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  color: white;
+  font-size: 24px;
+  text-align: center;
+  font-weight: bold;
+}

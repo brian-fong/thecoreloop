@@ -10,11 +10,11 @@ This repository contains the source code for thecoreloop's website.
 ### Commit Message Format
 Format: `<emoji> <category> [<scope>]: <message>`
 
-| Category   | Use                                                         |
-|------------|:------------------------------------------------------------|
-| 🏗️ build   | when changing the build system or external dependencies     |
-| ✨ feat    | when adding a new feature                                   |
-| 📝 docs    | when adding comments or documentation                       |
-| 🐛 fix     | when fixing a bug                                           |
-| 🎨 styles  | when changing styling of UI elements                        |
-
+| Category      | Use                                                     |
+|---------------|:--------------------------------------------------------|
+| 📦 build      | when changing the build system or external dependencies |
+| ✨ feat       | when adding a new feature                               |
+| 📝 docs       | when adding comments or documentation                   |
+| 🐛 fix        | when fixing a bug                                       |
+| 🎨 styles     | when changing styling of UI elements                    |
+| 🔁 refactor   | when refactoring source code                            |

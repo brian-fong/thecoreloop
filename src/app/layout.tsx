@@ -7,9 +7,7 @@ const font = JetBrains_Mono({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: "thecoreloop",
   description: "Next-gen media co-op delivering insights and curating content at the intersection of gaming, social, and consumer tech.",
-  icons: {
-    icon: "/thecoreloop-favicon.png",
-  },
+  icons: { icon: "/thecoreloop-favicon.png" },
   openGraph: {
     title: "thecoreloop",
     description: "Next-gen media co-op delivering insights and curating content at the intersection of gaming, social, and consumer tech.",
@@ -17,12 +15,13 @@ export const metadata: Metadata = {
       {
         url: "https://raw.githubusercontent.com/0xfrian/thecoreloop/dev/public/thecoreloop-logo.png",
       },
-      {
-        url: "https://raw.githubusercontent.com/0xfrian/thecoreloop/dev/public/thecoreloop-favicon.png",
-        width: 500,
-        height: 500,
-      },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "thecoreloop",
+    description: "Next-gen media co-op delivering insights and curating content at the intersection of gaming, social, and consumer tech.",
+    images: ["https://raw.githubusercontent.com/0xfrian/thecoreloop/dev/public/thecoreloop-logo.png"],
   },
 }
 
