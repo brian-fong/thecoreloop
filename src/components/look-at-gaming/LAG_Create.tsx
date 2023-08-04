@@ -2,10 +2,9 @@ import React, { useContext } from "react";
 import {
   BsPlusLg as PlusIcon,
 } from "react-icons/bs";
-import { v4 as uuid } from "uuid";
-import Article from "@/components/create_lag/Article";
+import Article from "@/components/look-at-gaming/Article";
 import { ICategoryGroup, ILAG } from "@/utils/types";
-import styles from "./LAG_Create.module.css"
+import styles from "@/components/look-at-gaming/LAG_Create.module.css"
 
 
 export default function LAG_Create({
@@ -26,7 +25,7 @@ export default function LAG_Create({
       for (let j = 0; j < category_group.articles.length; j++) {
         Articles.push(
           <Article
-            key={j}
+            key={"b" + j}
             category={category_group.category}
             index={j}
             context={context}

@@ -1,8 +1,8 @@
 .preview-section {
   display: flex;
   flex-direction: column;
-  justify-content:start;
-  align-items: start;
+  justify-content:flex-start;
+  align-items: flex-start;
   margin: 0;
   padding: 1rem;
   width: 100%;
@@ -51,7 +51,7 @@
   .article {
     display: flex;
     flex-direction: row;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     margin: 0 0 1rem;
     padding: 0;
@@ -61,7 +61,7 @@
 
     .bullet-point {
       display: inline;
-      justify-content: start;
+      justify-content: flex-start;
       align-items: center;
       margin-right: 0.5rem;
       height: 100%;

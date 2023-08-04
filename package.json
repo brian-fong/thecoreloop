@@ -20,6 +20,8 @@
   },
   "devDependencies": {
     "@types/uuid": "^9.0.2",
-    "react-icons": "^4.10.1"
+    "encoding": "^0.1.13",
+    "react-icons": "^4.10.1",
+    "unfurl.js": "^6.3.2"
   }
 }
