@@ -16,3 +16,11 @@ export interface IArticle {
   link: string;
   alt_text: string;
 };
+
+export interface IMetadata {
+  title: string,
+  description: string,
+  favicon: string,
+  image: string,
+  source: string,
+};
