@@ -30,7 +30,7 @@ html, body {
 main.root-container {
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   min-width: 600px;
   gap: 4rem;
@@ -100,12 +100,13 @@ input,
 textarea {
   display: flex;
   flex-direction: row;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   margin: 0;
   padding: 0.5rem 1rem;
   height: 40px;
   color: white;
+  width: 100%;
   font-size: 1rem;
   background-color: rgba(0, 0, 0, 0.3);
   border: 1px solid transparent;
@@ -119,4 +120,26 @@ textarea:focus {
   z-index: 0;
   outline: 1px solid white;
   border: none;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  height: 100%;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: all 100ms linear;
+}
+button:hover {
+  outline: none;
+  filter: brightness(80%);
+}
+button:active {
+  box-shadow: none;
+  filter: brightness(70%);
 }
