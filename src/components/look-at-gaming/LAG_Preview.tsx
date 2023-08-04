@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { v4 as uuid } from "uuid";
 import { formatDate, getTodaysDate } from "@/utils/date";
 import { IArticle, ICategoryGroup, ILAG } from "@/utils/types";
@@ -68,10 +68,7 @@ export default function LAG_Preview({
           </span>
           {` | `}
           <span>
-            {LAG.date
-              ? formatDate(LAG.date)
-              : getTodaysDate()
-            }
+            {formatDate(LAG.date)}
           </span>
         </p>
 

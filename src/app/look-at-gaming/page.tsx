@@ -10,6 +10,7 @@ import LAG_Preview from "@/components/look-at-gaming/LAG_Preview";
 import { ILAG } from "@/utils/types";
 import { LAG_CATEGORIES } from "@/utils/lag-categories";
 import LAG_SAMPLE from "@/utils/lag-samples";
+import { getTodaysDate } from "@/utils/date";
 
 const LookAtGaming = createContext({});
 
@@ -18,7 +19,7 @@ export default function Create_LAG(): React.ReactElement {
 
   const LAG_EMPTY: ILAG = {
     num: 0,
-    date: "",
+    date: getTodaysDate(),
     subheading: "",
     content: LAG_CATEGORIES.map((category: string) => ({
       category,
