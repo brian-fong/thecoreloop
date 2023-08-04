@@ -18,20 +18,13 @@ export const YEARS: string[] = [
   "2022", "2023", "2024"
 ];
 
-export function getTodaysDate(verbose: boolean = true): string {
-  const date: Date = new Date();
-  const weekday: string = new Intl.DateTimeFormat(
-    "en-US", 
-    { weekday: "long", timeZone: "UTC" },
-  ).format(date);
-  const day: string = DAYS[date.getDate()-1];
-  const month: string = MONTHS[date.getMonth()];
-  const year: string = date.getFullYear().toString();
-  if (verbose) {
-    return `${weekday} ${month} ${day} ${year}`;
-  } else {
-    return `${weekday.slice(0, 3)} ${month.slice(0, 3)} ${day} ${year}`;
-  }
+export function getTodaysDate(): string {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, '0');
+  const day = String(today.getDate()).padStart(2, '0');
+
+  return `${year}-${month}-${day}`;
 }
 
 export function formatDate(_date: string, verbose: boolean = true): string {
