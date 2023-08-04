@@ -13,34 +13,38 @@ export default function FetchBtn({
   } = useContext(context) as any;
 
   async function handleFetch(): Promise<void> {
-    const content: ICategoryGroup[] = [];
+    const content: ICategoryGroup[] = [...LAG.content];
     for (let i = 0; i < LAG.content.length; i++) {
-      const category_group: ICategoryGroup = {
-        category: LAG.content[i].category,
-        articles: [],
-      };
-      for (let j = 0; j < LAG.content[i].articles.length; j++) {
-        let article: IArticle = { ...LAG.content[i].articles[j] };
-        if (article.caption.length == 0 && isValidURL(article.link)) {
-          const api_route: string = "/api/fetch-metadata";
-          const response = await fetch(api_route, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ link: article.link }),
-          });
-          const metadata: IMetadata = await response.json();
-          console.log("Metadata: ", metadata);
-          if (metadata.title) {
-            article.caption = metadata.title;
-          } if (metadata.description) {
-            article.caption = metadata.description;
+      const category_group: ICategoryGroup = content[i];
+      for (let j = 0; j < category_group.articles.length; j++) {
+        let article: IArticle = category_group.articles[j];
+        if (article.caption.length == 0) {
+          if (!isValidURL(article.link)) {
+            console.debug(`Invalid URL: ${article.link}`);
+            continue;
+          }
+
+          try {
+            const api_route: string = "/api/fetch-metadata";
+            const response: Response = await fetch(api_route, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ link: article.link }),
+            });
+            const metadata: IMetadata = await response.json();
+            if (metadata.title) {
+              article.caption = metadata.title;
+            } if (metadata.description) {
+              article.caption = metadata.description;
+            }
+          } catch (error) {
+            console.debug(`Failed to fetch metadata for ${article.link}`);
+            continue;
           }
         }
-        category_group.articles.push(article);
+        setLAG({ ...LAG, content })
       }
-      content.push(category_group);
     }
-    setLAG({ ...LAG, content });
   }
 
   return (

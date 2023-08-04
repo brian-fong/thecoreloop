@@ -7,7 +7,6 @@ export function isValidURL(url: string): boolean {
     new URL(url);
     return true;
   } catch (error) {
-    // console.error(error);
     return false;
   }
 }
@@ -30,7 +29,6 @@ export async function fetchMeta(
 
   try {
     const result: any = await unfurl(link, options);
-    
     if (!parsed) return result;
     else {
       let result_parsed: IMetadata = {
@@ -42,10 +40,7 @@ export async function fetchMeta(
       };
       return result_parsed;
     }
-
-
   } catch (error) {
-    console.error(error);
-    return null;
+    throw error;
   }
 }

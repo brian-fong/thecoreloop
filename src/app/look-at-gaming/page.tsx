@@ -1,7 +1,6 @@
 "use client";
 import React, {
   createContext,
-  useEffect,
   useState
 } from "react";
 import TCL_Logo from "@/components/core/TCL_Logo";
@@ -10,6 +9,7 @@ import LAG_Preface from "@/components/look-at-gaming/LAG_Preface";
 import LAG_Preview from "@/components/look-at-gaming/LAG_Preview";
 import { ILAG } from "@/utils/types";
 import { LAG_CATEGORIES } from "@/utils/lag-categories";
+import LAG_SAMPLE from "@/utils/lag-samples";
 
 const LookAtGaming = createContext({});
 
@@ -28,10 +28,6 @@ export default function Create_LAG(): React.ReactElement {
   };
 
   const [LAG, setLAG] = useState<ILAG>(LAG_EMPTY);
-
-  useEffect(() => {
-    console.log("LAG: ", LAG);
-  }, [LAG]);
 
   return (
     <LookAtGaming.Provider value={{ LAG, setLAG }}>
