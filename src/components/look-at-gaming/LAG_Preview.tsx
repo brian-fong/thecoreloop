@@ -1,7 +1,4 @@
 import React, { useContext } from "react";
-import {
-  BsDot as BulletPoint,
-} from "react-icons/bs";
 import { v4 as uuid } from "uuid";
 import { formatDate, getTodaysDate } from "@/utils/date";
 import { IArticle, ICategoryGroup, ILAG } from "@/utils/types";
@@ -31,28 +28,23 @@ export default function LAG_Preview({
       for (let j = 0; j < cg.articles.length; j++) {
         const article: IArticle = cg.articles[j];
 
-        if (article.caption) {
-          result.push(
-            <div key={uuid()} className={styles["article"]}>
-              <div className={styles["bullet-point"]}>
-                <BulletPoint size="1.5rem" color="white" />
-              </div>
-              <p className={styles["caption"]}>
-                {article.caption} |
-                <a
-                  className={styles["link"]}
-                  href={article.link}
-                  target="_blank"
-                >
-                  {article.alt_text
-                    ? article.alt_text
-                    : article.link
-                  }
-                </a>
-              </p>
-            </div>
-          );
-        }
+        result.push(
+          <div key={uuid()} className={styles["article"]}>
+            <p className={styles["caption"]}>
+              • {article.caption || "<caption>"} |
+              <a
+                className={styles["link"]}
+                href={article.link}
+                target="_blank"
+              >
+                {article.alt_text
+                  ? article.alt_text
+                  : article.link  || "<link>"
+                }
+              </a>
+            </p>
+          </div>
+        );
       }
     }
 

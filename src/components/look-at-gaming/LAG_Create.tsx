@@ -1,8 +1,7 @@
 import React, { useContext } from "react";
-import {
-  BsPlusLg as PlusIcon,
-} from "react-icons/bs";
+import { BsPlusLg as PlusIcon } from "react-icons/bs";
 import Article from "@/components/look-at-gaming/Article";
+import FetchBtn from "./FetchBtn";
 import { ICategoryGroup, ILAG } from "@/utils/types";
 import styles from "@/components/look-at-gaming/LAG_Create.module.css"
 
@@ -57,7 +56,7 @@ export default function LAG_Create({
     return result;
   }
 
-  function updateLAG(LAG_param: string): void {
+  async function updateLAG(LAG_param: string): Promise<void> {
     switch (LAG_param) {
       case "num": {
         const lag_num: HTMLInputElement = document.getElementById(
@@ -115,23 +114,17 @@ export default function LAG_Create({
           };
 
           for (let j = 0; j < cc.children[1].children.length; j++) {
-            const article = cc
+            const article = Array.from(cc
               .children[1]
               .children[j]
               .children[0]
-              .children;
+              .children);
 
-            category_group.articles.push({
-              caption: (
-                article[0].lastChild as HTMLTextAreaElement
-              ).value || "",
-              link: (
-                article[1].lastChild as HTMLInputElement
-              ).value || "",
-              alt_text: (
-                article[2].lastChild as HTMLInputElement
-              ).value || "",
-            });
+            let [caption, link, alt_text] = article
+              .slice(0, 3)
+              .map((node: any) => node.lastChild.value);
+
+            category_group.articles.push({ caption, link, alt_text });
           }
           content.push(category_group);
         }
@@ -244,6 +237,8 @@ export default function LAG_Create({
           value={LAG.footer}
         />
       </div>
+
+      <FetchBtn context={context} />
     </div>
 );
 }

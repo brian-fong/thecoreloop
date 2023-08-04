@@ -11,11 +11,11 @@ export const LAG_CATEGORIES: string[] = [
 
 export const LAG_CATEGORIES_EMOJI: any = {
   "Spotlight": "⚡ Spotlight 🤩",
-  "Market": "🌊 MARKET 📞",
+  "Market": "🌊 MARKET ☎️",
   "Deep Dives": "💎 Deep Dives 🔎",
-  "Platforms": "🌈 Platforms 🏠",
-  "Web3 + Meta": "✨ Web3️⃣ + Meta 🌐",
-  "Knowledge Hub": "🧠 Knowledge Hub 📘",
+  "Platforms": "🌈 Platforms 🏔️",
+  "Web3 + Meta": "✨ Web 3️⃣ + Meta 🌎",
+  "Knowledge Hub": "🧠 Knowledge Hub 📚",
   "Fundraising": "💲 Fundraising 🤑",
   "Game & Stats Releases": "👾 Game & Stats Releases 📊",
 }

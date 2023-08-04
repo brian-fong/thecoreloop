@@ -1,7 +1,17 @@
 import { unfurl } from "unfurl.js";
 import { Opts } from "unfurl.js/dist/types";
+import { IMetadata } from "./types";
 
-export default async function fetchMeta(
+export function isValidURL(url: string): boolean {
+  try {
+    new URL(url);
+    return true;
+  } catch (error) {
+    return false;
+  }
+}
+
+export async function fetchMeta(
   link: string,
   parsed: boolean = true,
 ): Promise<any> {
@@ -19,10 +29,9 @@ export default async function fetchMeta(
 
   try {
     const result: any = await unfurl(link, options);
-    
     if (!parsed) return result;
     else {
-      let result_parsed: any = {
+      let result_parsed: IMetadata = {
         title: result?.title || "",
         description: result?.description || "",
         favicon: result?.favicon || "",
@@ -31,10 +40,7 @@ export default async function fetchMeta(
       };
       return result_parsed;
     }
-
-
   } catch (error) {
-    console.error(error);
-    return null;
+    throw error;
   }
 }
