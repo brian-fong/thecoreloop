@@ -2,9 +2,9 @@ import React, { useContext } from "react";
 import {
   BsPlusLg as PlusIcon,
 } from "react-icons/bs";
-import Article from "@/components/create_lag/Article";
+import Article from "@/components/look-at-gaming/Article";
 import { ICategoryGroup, ILAG } from "@/utils/types";
-import styles from "./LAG_Create.module.css"
+import styles from "@/components/look-at-gaming/LAG_Create.module.css"
 
 
 export default function LAG_Create({
