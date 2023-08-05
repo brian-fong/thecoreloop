@@ -1,5 +1,6 @@
 import styles from "@/components/core/TCL_Labs.module.css";
 
+
 export default function Home() {
   return (
     <main className={styles["tcl-labs"]}>
@@ -15,5 +16,5 @@ export default function Home() {
         thecoreloop.gg undergoing construction
       </h1>
     </main>
-  )
+  );
 }
