@@ -13,7 +13,7 @@ export default function Home() {
       />
 
       <h1 className={styles["tcl-heading"]}>
-        thecoreloop.gg undergoing construction
+        thecoreloop.gg undergoing construction 🏗️
       </h1>
     </main>
   );
