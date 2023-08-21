@@ -1,5 +1,19 @@
-![thecoreloop logo](public/thecoreloop-logo.png)
-This repository contains the source code for thecoreloop's website.
+<picture>
+    <source
+        media="(prefers-color-scheme: dark)"
+        srcset="./public/tcl-logo-alt.png"
+    >
+    <source
+        media="(prefers-color-scheme: light)"
+        srcset="./public/tcl-logo.png"
+    >
+    <img
+        alt="thecoreloop logo"
+        src="./public/tcl-logo.png"
+    >
+</picture>
+
+This repository contains the source code for thecoreloop's [website](https://thecoreloop.gg/).
 
 ### Tech Stack
 - Frontend: [React](https://react.dev/)

@@ -10,20 +10,20 @@ export const metadata: Metadata = {
   title: "thecoreloop",
   description: "Next-gen media co-op delivering insights and curating content at the intersection of gaming, social, and consumer tech.",
   icons: {
-    icon: "/thecoreloop-favicon.png"
+    icon: "/tcl-favicon.png"
   },
   openGraph: {
     title: "thecoreloop",
     description: "Next-gen media co-op delivering insights and curating content at the intersection of gaming, social, and consumer tech.",
     images: [{
-        url: "/thecoreloop-logo.png",
+        url: "/tcl-logo-solid-black.png",
     }],
   },
   twitter: {
     card: "summary_large_image",
     title: "thecoreloop",
     description: "Next-gen media co-op delivering insights and curating content at the intersection of gaming, social, and consumer tech.",
-    images: ["https://thecoreloop.gg/thecoreloop-logo.png"],
+    images: ["/tcl-logo-solid-black.png"],
   },
 }
 
